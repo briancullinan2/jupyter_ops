@@ -1,4 +1,4 @@
-// Generated from ./clojure/Clojure.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/clojure/Clojure.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ClojureListener from './ClojureListener.js';
@@ -118,22 +118,18 @@ export default class ClojureParser extends antlr4.Parser {
         this.symbolicNames = ClojureParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	file_() {
 	    let localctx = new File_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, ClojureParser.RULE_file_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 83;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ClojureParser.T__0) | (1 << ClojureParser.T__2) | (1 << ClojureParser.T__4) | (1 << ClojureParser.T__6) | (1 << ClojureParser.T__7) | (1 << ClojureParser.T__8) | (1 << ClojureParser.T__9) | (1 << ClojureParser.T__10) | (1 << ClojureParser.T__11) | (1 << ClojureParser.T__12) | (1 << ClojureParser.T__13) | (1 << ClojureParser.T__14) | (1 << ClojureParser.T__15) | (1 << ClojureParser.T__16) | (1 << ClojureParser.T__17) | (1 << ClojureParser.T__18) | (1 << ClojureParser.T__19) | (1 << ClojureParser.STRING) | (1 << ClojureParser.FLOAT) | (1 << ClojureParser.HEX) | (1 << ClojureParser.BIN) | (1 << ClojureParser.LONG) | (1 << ClojureParser.BIGN) | (1 << ClojureParser.CHAR_U) | (1 << ClojureParser.CHAR_NAMED) | (1 << ClojureParser.CHAR_ANY) | (1 << ClojureParser.NIL) | (1 << ClojureParser.BOOLEAN))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ClojureParser.SYMBOL - 32)) | (1 << (ClojureParser.NS_SYMBOL - 32)) | (1 << (ClojureParser.PARAM_NAME - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967210) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0)) {
 	            this.state = 80;
 	            this.form();
 	            this.state = 85;
@@ -216,13 +212,13 @@ export default class ClojureParser extends antlr4.Parser {
 	forms() {
 	    let localctx = new FormsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, ClojureParser.RULE_forms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 98;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ClojureParser.T__0) | (1 << ClojureParser.T__2) | (1 << ClojureParser.T__4) | (1 << ClojureParser.T__6) | (1 << ClojureParser.T__7) | (1 << ClojureParser.T__8) | (1 << ClojureParser.T__9) | (1 << ClojureParser.T__10) | (1 << ClojureParser.T__11) | (1 << ClojureParser.T__12) | (1 << ClojureParser.T__13) | (1 << ClojureParser.T__14) | (1 << ClojureParser.T__15) | (1 << ClojureParser.T__16) | (1 << ClojureParser.T__17) | (1 << ClojureParser.T__18) | (1 << ClojureParser.T__19) | (1 << ClojureParser.STRING) | (1 << ClojureParser.FLOAT) | (1 << ClojureParser.HEX) | (1 << ClojureParser.BIN) | (1 << ClojureParser.LONG) | (1 << ClojureParser.BIGN) | (1 << ClojureParser.CHAR_U) | (1 << ClojureParser.CHAR_NAMED) | (1 << ClojureParser.CHAR_ANY) | (1 << ClojureParser.NIL) | (1 << ClojureParser.BOOLEAN))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ClojureParser.SYMBOL - 32)) | (1 << (ClojureParser.NS_SYMBOL - 32)) | (1 << (ClojureParser.PARAM_NAME - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967210) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0)) {
 	            this.state = 95;
 	            this.form();
 	            this.state = 100;
@@ -302,7 +298,7 @@ export default class ClojureParser extends antlr4.Parser {
 	map_() {
 	    let localctx = new Map_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, ClojureParser.RULE_map_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 109;
@@ -310,7 +306,7 @@ export default class ClojureParser extends antlr4.Parser {
 	        this.state = 115;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ClojureParser.T__0) | (1 << ClojureParser.T__2) | (1 << ClojureParser.T__4) | (1 << ClojureParser.T__6) | (1 << ClojureParser.T__7) | (1 << ClojureParser.T__8) | (1 << ClojureParser.T__9) | (1 << ClojureParser.T__10) | (1 << ClojureParser.T__11) | (1 << ClojureParser.T__12) | (1 << ClojureParser.T__13) | (1 << ClojureParser.T__14) | (1 << ClojureParser.T__15) | (1 << ClojureParser.T__16) | (1 << ClojureParser.T__17) | (1 << ClojureParser.T__18) | (1 << ClojureParser.T__19) | (1 << ClojureParser.STRING) | (1 << ClojureParser.FLOAT) | (1 << ClojureParser.HEX) | (1 << ClojureParser.BIN) | (1 << ClojureParser.LONG) | (1 << ClojureParser.BIGN) | (1 << ClojureParser.CHAR_U) | (1 << ClojureParser.CHAR_NAMED) | (1 << ClojureParser.CHAR_ANY) | (1 << ClojureParser.NIL) | (1 << ClojureParser.BOOLEAN))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ClojureParser.SYMBOL - 32)) | (1 << (ClojureParser.NS_SYMBOL - 32)) | (1 << (ClojureParser.PARAM_NAME - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967210) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0)) {
 	            this.state = 110;
 	            this.form();
 	            this.state = 111;
@@ -659,7 +655,7 @@ export default class ClojureParser extends antlr4.Parser {
 	lambda_() {
 	    let localctx = new Lambda_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, ClojureParser.RULE_lambda_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 163;
@@ -667,7 +663,7 @@ export default class ClojureParser extends antlr4.Parser {
 	        this.state = 167;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ClojureParser.T__0) | (1 << ClojureParser.T__2) | (1 << ClojureParser.T__4) | (1 << ClojureParser.T__6) | (1 << ClojureParser.T__7) | (1 << ClojureParser.T__8) | (1 << ClojureParser.T__9) | (1 << ClojureParser.T__10) | (1 << ClojureParser.T__11) | (1 << ClojureParser.T__12) | (1 << ClojureParser.T__13) | (1 << ClojureParser.T__14) | (1 << ClojureParser.T__15) | (1 << ClojureParser.T__16) | (1 << ClojureParser.T__17) | (1 << ClojureParser.T__18) | (1 << ClojureParser.T__19) | (1 << ClojureParser.STRING) | (1 << ClojureParser.FLOAT) | (1 << ClojureParser.HEX) | (1 << ClojureParser.BIN) | (1 << ClojureParser.LONG) | (1 << ClojureParser.BIGN) | (1 << ClojureParser.CHAR_U) | (1 << ClojureParser.CHAR_NAMED) | (1 << ClojureParser.CHAR_ANY) | (1 << ClojureParser.NIL) | (1 << ClojureParser.BOOLEAN))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ClojureParser.SYMBOL - 32)) | (1 << (ClojureParser.NS_SYMBOL - 32)) | (1 << (ClojureParser.PARAM_NAME - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967210) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0)) {
 	            this.state = 164;
 	            this.form();
 	            this.state = 169;
@@ -868,49 +864,49 @@ export default class ClojureParser extends antlr4.Parser {
 	        this.state = 204;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ClojureParser.STRING:
+	        case 21:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 196;
 	            this.string_();
 	            break;
-	        case ClojureParser.FLOAT:
-	        case ClojureParser.HEX:
-	        case ClojureParser.BIN:
-	        case ClojureParser.LONG:
-	        case ClojureParser.BIGN:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 197;
 	            this.number();
 	            break;
-	        case ClojureParser.CHAR_U:
-	        case ClojureParser.CHAR_NAMED:
-	        case ClojureParser.CHAR_ANY:
+	        case 27:
+	        case 28:
+	        case 29:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 198;
 	            this.character();
 	            break;
-	        case ClojureParser.NIL:
+	        case 30:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 199;
 	            this.nil_();
 	            break;
-	        case ClojureParser.BOOLEAN:
+	        case 31:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 200;
 	            this.match(ClojureParser.BOOLEAN);
 	            break;
-	        case ClojureParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 201;
 	            this.keyword();
 	            break;
-	        case ClojureParser.SYMBOL:
-	        case ClojureParser.NS_SYMBOL:
+	        case 32:
+	        case 33:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 202;
 	            this.symbol();
 	            break;
-	        case ClojureParser.PARAM_NAME:
+	        case 34:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 203;
 	            this.param_name();
@@ -1033,27 +1029,27 @@ export default class ClojureParser extends antlr4.Parser {
 	        this.state = 219;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ClojureParser.FLOAT:
+	        case 22:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 214;
 	            this.match(ClojureParser.FLOAT);
 	            break;
-	        case ClojureParser.HEX:
+	        case 23:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 215;
 	            this.hex_();
 	            break;
-	        case ClojureParser.BIN:
+	        case 24:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 216;
 	            this.bin_();
 	            break;
-	        case ClojureParser.BIGN:
+	        case 26:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 217;
 	            this.bign();
 	            break;
-	        case ClojureParser.LONG:
+	        case 25:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 218;
 	            this.match(ClojureParser.LONG);
@@ -1084,17 +1080,17 @@ export default class ClojureParser extends antlr4.Parser {
 	        this.state = 224;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ClojureParser.CHAR_NAMED:
+	        case 28:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 221;
 	            this.named_char();
 	            break;
-	        case ClojureParser.CHAR_U:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 222;
 	            this.u_hex_quad();
 	            break;
-	        case ClojureParser.CHAR_ANY:
+	        case 29:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 223;
 	            this.any_char();
@@ -1306,12 +1302,12 @@ export default class ClojureParser extends antlr4.Parser {
 	        this.state = 247;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ClojureParser.NS_SYMBOL:
+	        case 33:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 245;
 	            this.ns_symbol();
 	            break;
-	        case ClojureParser.SYMBOL:
+	        case 32:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 246;
 	            this.simple_sym();
@@ -3110,3 +3106,12 @@ ClojureParser.SymbolContext = SymbolContext;
 ClojureParser.Simple_symContext = Simple_symContext; 
 ClojureParser.Ns_symbolContext = Ns_symbolContext; 
 ClojureParser.Param_nameContext = Param_nameContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

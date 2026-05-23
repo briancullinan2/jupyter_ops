@@ -1,23 +1,23 @@
-// Generated from ./gml/gml.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/gml/gml.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import gmlListener from './gmlListener.js';
-const serializedATN = [4,1,9,58,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,1,0,4,0,20,8,0,11,0,12,0,21,1,1,1,1,4,1,
-26,8,1,11,1,12,1,27,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,3,3,40,8,3,1,
-4,1,4,1,5,3,5,45,8,5,1,5,4,5,48,8,5,11,5,12,5,49,1,6,1,6,1,7,1,7,1,8,1,8,
-1,8,0,0,9,0,2,4,6,8,10,12,14,16,0,0,56,0,19,1,0,0,0,2,23,1,0,0,0,4,31,1,
-0,0,0,6,39,1,0,0,0,8,41,1,0,0,0,10,44,1,0,0,0,12,51,1,0,0,0,14,53,1,0,0,
-0,16,55,1,0,0,0,18,20,3,4,2,0,19,18,1,0,0,0,20,21,1,0,0,0,21,19,1,0,0,0,
-21,22,1,0,0,0,22,1,1,0,0,0,23,25,5,1,0,0,24,26,3,4,2,0,25,24,1,0,0,0,26,
-27,1,0,0,0,27,25,1,0,0,0,27,28,1,0,0,0,28,29,1,0,0,0,29,30,5,2,0,0,30,3,
-1,0,0,0,31,32,3,8,4,0,32,33,3,6,3,0,33,5,1,0,0,0,34,40,3,10,5,0,35,40,3,
-12,6,0,36,40,3,16,8,0,37,40,3,14,7,0,38,40,3,2,1,0,39,34,1,0,0,0,39,35,1,
-0,0,0,39,36,1,0,0,0,39,37,1,0,0,0,39,38,1,0,0,0,40,7,1,0,0,0,41,42,5,8,0,
-0,42,9,1,0,0,0,43,45,5,5,0,0,44,43,1,0,0,0,44,45,1,0,0,0,45,47,1,0,0,0,46,
-48,5,6,0,0,47,46,1,0,0,0,48,49,1,0,0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,11,
-1,0,0,0,51,52,5,4,0,0,52,13,1,0,0,0,53,54,5,8,0,0,54,15,1,0,0,0,55,56,5,
-3,0,0,56,17,1,0,0,0,5,21,27,39,44,49];
+const serializedATN = [4,1,9,60,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,1,0,4,0,20,8,0,11,0,12,0,21,1,0,1,0,1,1,
+1,1,4,1,28,8,1,11,1,12,1,29,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,3,3,
+42,8,3,1,4,1,4,1,5,3,5,47,8,5,1,5,4,5,50,8,5,11,5,12,5,51,1,6,1,6,1,7,1,
+7,1,8,1,8,1,8,0,0,9,0,2,4,6,8,10,12,14,16,0,0,58,0,19,1,0,0,0,2,25,1,0,0,
+0,4,33,1,0,0,0,6,41,1,0,0,0,8,43,1,0,0,0,10,46,1,0,0,0,12,53,1,0,0,0,14,
+55,1,0,0,0,16,57,1,0,0,0,18,20,3,4,2,0,19,18,1,0,0,0,20,21,1,0,0,0,21,19,
+1,0,0,0,21,22,1,0,0,0,22,23,1,0,0,0,23,24,5,0,0,1,24,1,1,0,0,0,25,27,5,1,
+0,0,26,28,3,4,2,0,27,26,1,0,0,0,28,29,1,0,0,0,29,27,1,0,0,0,29,30,1,0,0,
+0,30,31,1,0,0,0,31,32,5,2,0,0,32,3,1,0,0,0,33,34,3,8,4,0,34,35,3,6,3,0,35,
+5,1,0,0,0,36,42,3,10,5,0,37,42,3,12,6,0,38,42,3,16,8,0,39,42,3,14,7,0,40,
+42,3,2,1,0,41,36,1,0,0,0,41,37,1,0,0,0,41,38,1,0,0,0,41,39,1,0,0,0,41,40,
+1,0,0,0,42,7,1,0,0,0,43,44,5,8,0,0,44,9,1,0,0,0,45,47,5,5,0,0,46,45,1,0,
+0,0,46,47,1,0,0,0,47,49,1,0,0,0,48,50,5,6,0,0,49,48,1,0,0,0,50,51,1,0,0,
+0,51,49,1,0,0,0,51,52,1,0,0,0,52,11,1,0,0,0,53,54,5,4,0,0,54,13,1,0,0,0,
+55,56,5,8,0,0,56,15,1,0,0,0,57,58,5,3,0,0,58,17,1,0,0,0,5,21,29,41,46,51];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -43,16 +43,12 @@ export default class gmlParser extends antlr4.Parser {
         this.symbolicNames = gmlParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	graph() {
 	    let localctx = new GraphContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, gmlParser.RULE_graph);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 19; 
@@ -64,7 +60,9 @@ export default class gmlParser extends antlr4.Parser {
 	            this.state = 21; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===gmlParser.VALUE);
+	        } while(_la===8);
+	        this.state = 23;
+	        this.match(gmlParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -84,22 +82,22 @@ export default class gmlParser extends antlr4.Parser {
 	list_() {
 	    let localctx = new List_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, gmlParser.RULE_list_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 23;
+	        this.state = 25;
 	        this.match(gmlParser.T__0);
-	        this.state = 25; 
+	        this.state = 27; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 24;
+	            this.state = 26;
 	            this.kv();
-	            this.state = 27; 
+	            this.state = 29; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===gmlParser.VALUE);
-	        this.state = 29;
+	        } while(_la===8);
+	        this.state = 31;
 	        this.match(gmlParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -122,9 +120,9 @@ export default class gmlParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, gmlParser.RULE_kv);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 31;
+	        this.state = 33;
 	        this.key();
-	        this.state = 32;
+	        this.state = 34;
 	        this.value();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -146,33 +144,33 @@ export default class gmlParser extends antlr4.Parser {
 	    let localctx = new ValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, gmlParser.RULE_value);
 	    try {
-	        this.state = 39;
+	        this.state = 41;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case gmlParser.SIGN:
-	        case gmlParser.DIGIT:
+	        case 5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 34;
+	            this.state = 36;
 	            this.integer();
 	            break;
-	        case gmlParser.REAL:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 35;
+	            this.state = 37;
 	            this.realnum();
 	            break;
-	        case gmlParser.STRINGLITERAL:
+	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 36;
+	            this.state = 38;
 	            this.stringliteral();
 	            break;
-	        case gmlParser.VALUE:
+	        case 8:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 37;
+	            this.state = 39;
 	            this.str_();
 	            break;
-	        case gmlParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 38;
+	            this.state = 40;
 	            this.list_();
 	            break;
 	        default:
@@ -199,7 +197,7 @@ export default class gmlParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, gmlParser.RULE_key);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 41;
+	        this.state = 43;
 	        this.match(gmlParser.VALUE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -220,27 +218,27 @@ export default class gmlParser extends antlr4.Parser {
 	integer() {
 	    let localctx = new IntegerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, gmlParser.RULE_integer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 44;
+	        this.state = 46;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===gmlParser.SIGN) {
-	            this.state = 43;
+	        if(_la===5) {
+	            this.state = 45;
 	            this.match(gmlParser.SIGN);
 	        }
 
-	        this.state = 47; 
+	        this.state = 49; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 46;
+	            this.state = 48;
 	            this.match(gmlParser.DIGIT);
-	            this.state = 49; 
+	            this.state = 51; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===gmlParser.DIGIT);
+	        } while(_la===6);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -262,7 +260,7 @@ export default class gmlParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, gmlParser.RULE_realnum);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 51;
+	        this.state = 53;
 	        this.match(gmlParser.REAL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -285,7 +283,7 @@ export default class gmlParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, gmlParser.RULE_str_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 53;
+	        this.state = 55;
 	        this.match(gmlParser.VALUE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -308,7 +306,7 @@ export default class gmlParser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, gmlParser.RULE_stringliteral);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 55;
+	        this.state = 57;
 	        this.match(gmlParser.STRINGLITERAL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -361,6 +359,10 @@ class GraphContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = gmlParser.RULE_graph;
     }
+
+	EOF() {
+	    return this.getToken(gmlParser.EOF, 0);
+	};
 
 	kv = function(i) {
 	    if(i===undefined) {
@@ -719,3 +721,12 @@ gmlParser.IntegerContext = IntegerContext;
 gmlParser.RealnumContext = RealnumContext; 
 gmlParser.Str_Context = Str_Context; 
 gmlParser.StringliteralContext = StringliteralContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

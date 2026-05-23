@@ -1,4 +1,4 @@
-// Generated from ./doiurl/doiurl.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/doiurl/doiurl.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import doiurlListener from './doiurlListener.js';
@@ -45,16 +45,12 @@ export default class doiurlParser extends antlr4.Parser {
         this.symbolicNames = doiurlParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	doiuri() {
 	    let localctx = new DoiuriContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, doiurlParser.RULE_doiuri);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 16;
@@ -66,7 +62,7 @@ export default class doiurlParser extends antlr4.Parser {
 	        this.state = 21;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===doiurlParser.T__1) {
+	        if(_la===2) {
 	            this.state = 19;
 	            this.match(doiurlParser.T__1);
 	            this.state = 20;
@@ -76,7 +72,7 @@ export default class doiurlParser extends antlr4.Parser {
 	        this.state = 25;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===doiurlParser.T__2) {
+	        if(_la===3) {
 	            this.state = 23;
 	            this.match(doiurlParser.T__2);
 	            this.state = 24;
@@ -183,7 +179,7 @@ export default class doiurlParser extends antlr4.Parser {
 	suffix() {
 	    let localctx = new SuffixContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, doiurlParser.RULE_suffix);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 38;
@@ -191,7 +187,7 @@ export default class doiurlParser extends antlr4.Parser {
 	        this.state = 43;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===doiurlParser.T__4) {
+	        while(_la===5) {
 	            this.state = 39;
 	            this.match(doiurlParser.T__4);
 	            this.state = 40;
@@ -219,7 +215,7 @@ export default class doiurlParser extends antlr4.Parser {
 	segment() {
 	    let localctx = new SegmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, doiurlParser.RULE_segment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 47; 
@@ -231,7 +227,7 @@ export default class doiurlParser extends antlr4.Parser {
 	            this.state = 49; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===doiurlParser.PCHAR);
+	        } while(_la===6);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -251,16 +247,16 @@ export default class doiurlParser extends antlr4.Parser {
 	query() {
 	    let localctx = new QueryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, doiurlParser.RULE_query);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 54;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << doiurlParser.T__1) | (1 << doiurlParser.T__4) | (1 << doiurlParser.PCHAR))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 100) !== 0)) {
 	            this.state = 51;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << doiurlParser.T__1) | (1 << doiurlParser.T__4) | (1 << doiurlParser.PCHAR))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 100) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -290,16 +286,16 @@ export default class doiurlParser extends antlr4.Parser {
 	fragment_() {
 	    let localctx = new Fragment_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, doiurlParser.RULE_fragment_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 60;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << doiurlParser.T__1) | (1 << doiurlParser.T__4) | (1 << doiurlParser.PCHAR))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 100) !== 0)) {
 	            this.state = 57;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << doiurlParser.T__1) | (1 << doiurlParser.T__4) | (1 << doiurlParser.PCHAR))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 100) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -682,3 +678,12 @@ doiurlParser.SuffixContext = SuffixContext;
 doiurlParser.SegmentContext = SegmentContext; 
 doiurlParser.QueryContext = QueryContext; 
 doiurlParser.Fragment_Context = Fragment_Context; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

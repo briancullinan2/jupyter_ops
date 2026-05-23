@@ -1,4 +1,4 @@
-// Generated from ./vba/vba.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/vba/vba.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import vbaListener from './vbaListener.js';
@@ -1175,10 +1175,6 @@ export default class vbaParser extends antlr4.Parser {
         this.symbolicNames = vbaParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 100:
@@ -1266,7 +1262,7 @@ export default class vbaParser extends antlr4.Parser {
 	module() {
 	    let localctx = new ModuleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, vbaParser.RULE_module);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 298;
@@ -1293,7 +1289,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 313;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.VERSION) {
+	        if(_la===178) {
 	            this.state = 306;
 	            this.moduleHeader();
 	            this.state = 310;
@@ -1314,7 +1310,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 316;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.BEGIN) {
+	        if(_la===17) {
 	            this.state = 315;
 	            this.moduleConfig();
 	        }
@@ -1335,7 +1331,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 325;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.ATTRIBUTE) {
+	        if(_la===13) {
 	            this.state = 324;
 	            this.moduleAttributes();
 	        }
@@ -1377,7 +1373,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 343;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (vbaParser.FRIEND - 75)) | (1 << (vbaParser.FUNCTION - 75)) | (1 << (vbaParser.GLOBAL - 75)) | (1 << (vbaParser.MACRO_CONST - 75)) | (1 << (vbaParser.MACRO_IF - 75)))) !== 0) || ((((_la - 132)) & ~0x1f) == 0 && ((1 << (_la - 132)) & ((1 << (vbaParser.PRIVATE - 132)) | (1 << (vbaParser.PROPERTY_GET - 132)) | (1 << (vbaParser.PROPERTY_LET - 132)) | (1 << (vbaParser.PROPERTY_SET - 132)) | (1 << (vbaParser.PUBLIC - 132)) | (1 << (vbaParser.STATIC - 132)))) !== 0) || _la===vbaParser.SUB) {
+	        if(((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 805306389) !== 0) || ((((_la - 132)) & ~0x1f) === 0 && ((1 << (_la - 132)) & 536870959) !== 0) || _la===165) {
 	            this.state = 342;
 	            this.moduleBody();
 	        }
@@ -1398,7 +1394,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 352;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 351;
 	            this.match(vbaParser.WS);
 	        }
@@ -1453,7 +1449,7 @@ export default class vbaParser extends antlr4.Parser {
 	moduleConfig() {
 	    let localctx = new ModuleConfigContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, vbaParser.RULE_moduleConfig);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 360;
@@ -1461,7 +1457,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 364;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 213)) & ~0x1f) == 0 && ((1 << (_la - 213)) & ((1 << (vbaParser.NEWLINE - 213)) | (1 << (vbaParser.REMCOMMENT - 213)) | (1 << (vbaParser.COMMENT - 213)) | (1 << (vbaParser.WS - 213)))) !== 0)) {
+	        while(((((_la - 213)) & ~0x1f) === 0 && ((1 << (_la - 213)) & 71) !== 0)) {
 	            this.state = 361;
 	            this.endOfLine();
 	            this.state = 366;
@@ -1505,7 +1501,7 @@ export default class vbaParser extends antlr4.Parser {
 	moduleConfigElement() {
 	    let localctx = new ModuleConfigElementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, vbaParser.RULE_moduleConfigElement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 374;
@@ -1513,7 +1509,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 376;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 375;
 	            this.match(vbaParser.WS);
 	        }
@@ -1523,7 +1519,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 380;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 379;
 	            this.match(vbaParser.WS);
 	        }
@@ -1533,7 +1529,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 386;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 213)) & ~0x1f) == 0 && ((1 << (_la - 213)) & ((1 << (vbaParser.NEWLINE - 213)) | (1 << (vbaParser.REMCOMMENT - 213)) | (1 << (vbaParser.COMMENT - 213)) | (1 << (vbaParser.WS - 213)))) !== 0)) {
+	        while(((((_la - 213)) & ~0x1f) === 0 && ((1 << (_la - 213)) & 71) !== 0)) {
 	            this.state = 383;
 	            this.endOfLine();
 	            this.state = 388;
@@ -1559,7 +1555,7 @@ export default class vbaParser extends antlr4.Parser {
 	moduleAttributes() {
 	    let localctx = new ModuleAttributesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, vbaParser.RULE_moduleAttributes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 395; 
@@ -1587,7 +1583,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 397; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===vbaParser.ATTRIBUTE);
+	        } while(_la===13);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1672,12 +1668,12 @@ export default class vbaParser extends antlr4.Parser {
 	moduleOption() {
 	    let localctx = new ModuleOptionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, vbaParser.RULE_moduleOption);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 426;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.OPTION_BASE:
+	        case 123:
 	            localctx = new OptionBaseStmtContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 418;
@@ -1687,7 +1683,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 420;
 	            this.match(vbaParser.SHORTLITERAL);
 	            break;
-	        case vbaParser.OPTION_COMPARE:
+	        case 125:
 	            localctx = new OptionCompareStmtContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 421;
@@ -1696,7 +1692,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.match(vbaParser.WS);
 	            this.state = 423;
 	            _la = this._input.LA(1);
-	            if(!(_la===vbaParser.BINARY || _la===vbaParser.DATABASE || _la===vbaParser.TEXT)) {
+	            if(!(_la===19 || _la===32 || _la===167)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1704,13 +1700,13 @@ export default class vbaParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case vbaParser.OPTION_EXPLICIT:
+	        case 124:
 	            localctx = new OptionExplicitStmtContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 424;
 	            this.match(vbaParser.OPTION_EXPLICIT);
 	            break;
-	        case vbaParser.OPTION_PRIVATE_MODULE:
+	        case 126:
 	            localctx = new OptionPrivateModuleStmtContext(this, localctx);
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 425;
@@ -1827,12 +1823,12 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 442;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.MACRO_CONST:
+	        case 103:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 440;
 	            this.macroConstStmt();
 	            break;
-	        case vbaParser.MACRO_IF:
+	        case 104:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 441;
 	            this.macroIfThenElseStmt();
@@ -1859,7 +1855,7 @@ export default class vbaParser extends antlr4.Parser {
 	moduleBody() {
 	    let localctx = new ModuleBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, vbaParser.RULE_moduleBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 444;
@@ -1878,7 +1874,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 448; 
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                } while(((((_la - 213)) & ~0x1f) == 0 && ((1 << (_la - 213)) & ((1 << (vbaParser.NEWLINE - 213)) | (1 << (vbaParser.REMCOMMENT - 213)) | (1 << (vbaParser.COMMENT - 213)) | (1 << (vbaParser.WS - 213)))) !== 0));
+	                } while(((((_la - 213)) & ~0x1f) === 0 && ((1 << (_la - 213)) & 71) !== 0));
 	                this.state = 450;
 	                this.moduleBodyElement(); 
 	            }
@@ -1980,7 +1976,7 @@ export default class vbaParser extends antlr4.Parser {
 	attributeStmt() {
 	    let localctx = new AttributeStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, vbaParser.RULE_attributeStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 471;
@@ -1992,7 +1988,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 475;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 474;
 	            this.match(vbaParser.WS);
 	        }
@@ -2002,7 +1998,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 479;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 478;
 	            this.match(vbaParser.WS);
 	        }
@@ -2017,7 +2013,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 483;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 482;
 	                    this.match(vbaParser.WS);
 	                }
@@ -2027,7 +2023,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 487;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 486;
 	                    this.match(vbaParser.WS);
 	                }
@@ -2532,7 +2528,7 @@ export default class vbaParser extends antlr4.Parser {
 	appactivateStmt() {
 	    let localctx = new AppactivateStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, vbaParser.RULE_appactivateStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 576;
@@ -2548,7 +2544,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 580;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 579;
 	                this.match(vbaParser.WS);
 	            }
@@ -2558,7 +2554,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 584;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 583;
 	                this.match(vbaParser.WS);
 	            }
@@ -2663,7 +2659,7 @@ export default class vbaParser extends antlr4.Parser {
 	closeStmt() {
 	    let localctx = new CloseStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, vbaParser.RULE_closeStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 599;
@@ -2684,7 +2680,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 603;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 602;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -2694,7 +2690,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 607;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 606;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -2728,13 +2724,13 @@ export default class vbaParser extends antlr4.Parser {
 	constStmt() {
 	    let localctx = new ConstStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, vbaParser.RULE_constStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 620;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 617;
 	            this.visibility();
 	            this.state = 618;
@@ -2755,7 +2751,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 626;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 625;
 	                    this.match(vbaParser.WS);
 	                }
@@ -2765,7 +2761,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 630;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 629;
 	                    this.match(vbaParser.WS);
 	                }
@@ -2797,7 +2793,7 @@ export default class vbaParser extends antlr4.Parser {
 	constSubStmt() {
 	    let localctx = new ConstSubStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, vbaParser.RULE_constSubStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 638;
@@ -2805,7 +2801,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 640;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186) {
 	            this.state = 639;
 	            this.typeHint();
 	        }
@@ -2823,7 +2819,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 647;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 646;
 	            this.match(vbaParser.WS);
 	        }
@@ -2833,7 +2829,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 651;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 650;
 	            this.match(vbaParser.WS);
 	        }
@@ -2859,7 +2855,7 @@ export default class vbaParser extends antlr4.Parser {
 	dateStmt() {
 	    let localctx = new DateStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, vbaParser.RULE_dateStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 655;
@@ -2867,7 +2863,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 657;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 656;
 	            this.match(vbaParser.WS);
 	        }
@@ -2877,7 +2873,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 661;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 660;
 	            this.match(vbaParser.WS);
 	        }
@@ -2903,13 +2899,13 @@ export default class vbaParser extends antlr4.Parser {
 	declareStmt() {
 	    let localctx = new DeclareStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, vbaParser.RULE_declareStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 668;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 665;
 	            this.visibility();
 	            this.state = 666;
@@ -2923,7 +2919,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 674;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.PTRSAFE) {
+	        if(_la===136) {
 	            this.state = 672;
 	            this.match(vbaParser.PTRSAFE);
 	            this.state = 673;
@@ -2933,19 +2929,19 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 681;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.FUNCTION:
+	        case 77:
 	            this.state = 676;
 	            this.match(vbaParser.FUNCTION);
 	            this.state = 678;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186) {
 	                this.state = 677;
 	                this.typeHint();
 	            }
 
 	            break;
-	        case vbaParser.SUB:
+	        case 165:
 	            this.state = 680;
 	            this.match(vbaParser.SUB);
 	            break;
@@ -2959,7 +2955,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 686;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186) {
 	            this.state = 685;
 	            this.typeHint();
 	        }
@@ -2993,7 +2989,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 699;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 698;
 	                this.match(vbaParser.WS);
 	            }
@@ -3031,12 +3027,12 @@ export default class vbaParser extends antlr4.Parser {
 	deftypeStmt() {
 	    let localctx = new DeftypeStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, vbaParser.RULE_deftypeStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 708;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (vbaParser.DEFBOOL - 35)) | (1 << (vbaParser.DEFBYTE - 35)) | (1 << (vbaParser.DEFDATE - 35)) | (1 << (vbaParser.DEFDBL - 35)) | (1 << (vbaParser.DEFDEC - 35)) | (1 << (vbaParser.DEFCUR - 35)) | (1 << (vbaParser.DEFINT - 35)) | (1 << (vbaParser.DEFLNG - 35)) | (1 << (vbaParser.DEFOBJ - 35)) | (1 << (vbaParser.DEFSNG - 35)) | (1 << (vbaParser.DEFSTR - 35)) | (1 << (vbaParser.DEFVAR - 35)))) !== 0))) {
+	        if(!(((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 4095) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3055,7 +3051,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 712;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 711;
 	                    this.match(vbaParser.WS);
 	                }
@@ -3065,7 +3061,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 716;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 715;
 	                    this.match(vbaParser.WS);
 	                }
@@ -3097,7 +3093,7 @@ export default class vbaParser extends antlr4.Parser {
 	deleteSettingStmt() {
 	    let localctx = new DeleteSettingStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, vbaParser.RULE_deleteSettingStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 724;
@@ -3109,7 +3105,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 728;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 727;
 	            this.match(vbaParser.WS);
 	        }
@@ -3119,7 +3115,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 732;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 731;
 	            this.match(vbaParser.WS);
 	        }
@@ -3133,7 +3129,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 736;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 735;
 	                this.match(vbaParser.WS);
 	            }
@@ -3143,7 +3139,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 740;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 739;
 	                this.match(vbaParser.WS);
 	            }
@@ -3171,7 +3167,7 @@ export default class vbaParser extends antlr4.Parser {
 	doLoopStmt() {
 	    let localctx = new DoLoopStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, vbaParser.RULE_doLoopStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 772;
 	        this._errHandler.sync(this);
@@ -3203,7 +3199,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.match(vbaParser.WS);
 	            this.state = 754;
 	            _la = this._input.LA(1);
-	            if(!(_la===vbaParser.UNTIL || _la===vbaParser.WHILE)) {
+	            if(!(_la===176 || _la===180)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3242,7 +3238,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.match(vbaParser.WS);
 	            this.state = 768;
 	            _la = this._input.LA(1);
-	            if(!(_la===vbaParser.UNTIL || _la===vbaParser.WHILE)) {
+	            if(!(_la===176 || _la===180)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3298,13 +3294,13 @@ export default class vbaParser extends antlr4.Parser {
 	enumerationStmt() {
 	    let localctx = new EnumerationStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, vbaParser.RULE_enumerationStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 779;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 776;
 	            this.visibility();
 	            this.state = 777;
@@ -3322,7 +3318,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 788;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966784) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 785;
 	            this.enumerationStmt_Constant();
 	            this.state = 790;
@@ -3350,7 +3346,7 @@ export default class vbaParser extends antlr4.Parser {
 	enumerationStmt_Constant() {
 	    let localctx = new EnumerationStmt_ConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, vbaParser.RULE_enumerationStmt_Constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 793;
@@ -3362,7 +3358,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 795;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 794;
 	                this.match(vbaParser.WS);
 	            }
@@ -3372,7 +3368,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 799;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 798;
 	                this.match(vbaParser.WS);
 	            }
@@ -3402,7 +3398,7 @@ export default class vbaParser extends antlr4.Parser {
 	eraseStmt() {
 	    let localctx = new EraseStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, vbaParser.RULE_eraseStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 806;
@@ -3421,7 +3417,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 811;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 810;
 	                    this.match(vbaParser.WS);
 	                }
@@ -3480,13 +3476,13 @@ export default class vbaParser extends antlr4.Parser {
 	eventStmt() {
 	    let localctx = new EventStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, vbaParser.RULE_eventStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 826;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 823;
 	            this.visibility();
 	            this.state = 824;
@@ -3502,7 +3498,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 832;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 831;
 	            this.match(vbaParser.WS);
 	        }
@@ -3528,12 +3524,12 @@ export default class vbaParser extends antlr4.Parser {
 	exitStmt() {
 	    let localctx = new ExitStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, vbaParser.RULE_exitStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 836;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vbaParser.EXIT_DO - 68)) | (1 << (vbaParser.EXIT_FOR - 68)) | (1 << (vbaParser.EXIT_FUNCTION - 68)) | (1 << (vbaParser.EXIT_PROPERTY - 68)) | (1 << (vbaParser.EXIT_SUB - 68)))) !== 0))) {
+	        if(!(((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 31) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3559,7 +3555,7 @@ export default class vbaParser extends antlr4.Parser {
 	filecopyStmt() {
 	    let localctx = new FilecopyStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, vbaParser.RULE_filecopyStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 838;
@@ -3571,7 +3567,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 842;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 841;
 	            this.match(vbaParser.WS);
 	        }
@@ -3581,7 +3577,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 846;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 845;
 	            this.match(vbaParser.WS);
 	        }
@@ -3607,7 +3603,7 @@ export default class vbaParser extends antlr4.Parser {
 	forEachStmt() {
 	    let localctx = new ForEachStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, vbaParser.RULE_forEachStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 850;
@@ -3623,7 +3619,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 856;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186) {
 	            this.state = 855;
 	            this.typeHint();
 	        }
@@ -3677,7 +3673,7 @@ export default class vbaParser extends antlr4.Parser {
 	forNextStmt() {
 	    let localctx = new ForNextStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, vbaParser.RULE_forNextStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 871;
@@ -3689,7 +3685,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 875;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186) {
 	            this.state = 874;
 	            this.typeHint();
 	        }
@@ -3707,7 +3703,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 882;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 881;
 	            this.match(vbaParser.WS);
 	        }
@@ -3717,7 +3713,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 886;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 885;
 	            this.match(vbaParser.WS);
 	        }
@@ -3787,13 +3783,13 @@ export default class vbaParser extends antlr4.Parser {
 	functionStmt() {
 	    let localctx = new FunctionStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, vbaParser.RULE_functionStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 911;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 908;
 	            this.visibility();
 	            this.state = 909;
@@ -3803,7 +3799,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 915;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.STATIC) {
+	        if(_la===161) {
 	            this.state = 913;
 	            this.match(vbaParser.STATIC);
 	            this.state = 914;
@@ -3815,7 +3811,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 919;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 918;
 	            this.match(vbaParser.WS);
 	        }
@@ -3837,7 +3833,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 926;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 925;
 	                this.match(vbaParser.WS);
 	            }
@@ -3853,7 +3849,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 932;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 931;
 	                this.match(vbaParser.WS);
 	            }
@@ -3867,7 +3863,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 939;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2281697735) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 938;
 	            this.block();
 	        }
@@ -3893,7 +3889,7 @@ export default class vbaParser extends antlr4.Parser {
 	getStmt() {
 	    let localctx = new GetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, vbaParser.RULE_getStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 943;
@@ -3905,7 +3901,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 947;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 946;
 	            this.match(vbaParser.WS);
 	        }
@@ -3923,7 +3919,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 954;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || ((((_la - 193)) & ~0x1f) == 0 && ((1 << (_la - 193)) & ((1 << (vbaParser.LPAREN - 193)) | (1 << (vbaParser.MINUS - 193)) | (1 << (vbaParser.PLUS - 193)) | (1 << (vbaParser.STRINGLITERAL - 193)) | (1 << (vbaParser.OCTLITERAL - 193)) | (1 << (vbaParser.HEXLITERAL - 193)) | (1 << (vbaParser.SHORTLITERAL - 193)) | (1 << (vbaParser.INTEGERLITERAL - 193)) | (1 << (vbaParser.DOUBLELITERAL - 193)) | (1 << (vbaParser.DATELITERAL - 193)) | (1 << (vbaParser.IDENTIFIER - 193)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || ((((_la - 193)) & ~0x1f) === 0 && ((1 << (_la - 193)) & 134737989) !== 0)) {
 	            this.state = 953;
 	            this.valueStmt(0);
 	        }
@@ -3931,7 +3927,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 957;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 956;
 	            this.match(vbaParser.WS);
 	        }
@@ -3941,7 +3937,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 961;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 960;
 	            this.match(vbaParser.WS);
 	        }
@@ -4021,7 +4017,7 @@ export default class vbaParser extends antlr4.Parser {
 	ifThenElseStmt() {
 	    let localctx = new IfThenElseStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, vbaParser.RULE_ifThenElseStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 998;
 	        this._errHandler.sync(this);
@@ -4068,7 +4064,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 990;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vbaParser.ELSEIF) {
+	            while(_la===53) {
 	                this.state = 987;
 	                this.ifElseIfBlockStmt();
 	                this.state = 992;
@@ -4078,7 +4074,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 994;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.ELSE) {
+	            if(_la===52) {
 	                this.state = 993;
 	                this.ifElseBlockStmt();
 	            }
@@ -4212,7 +4208,7 @@ export default class vbaParser extends antlr4.Parser {
 	ifElseBlockStmt() {
 	    let localctx = new IfElseBlockStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, vbaParser.RULE_ifElseBlockStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1020;
@@ -4222,7 +4218,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1023;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2281697735) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 1022;
 	            this.block();
 	        }
@@ -4273,7 +4269,7 @@ export default class vbaParser extends antlr4.Parser {
 	inputStmt() {
 	    let localctx = new InputStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, vbaParser.RULE_inputStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1029;
@@ -4291,7 +4287,7 @@ export default class vbaParser extends antlr4.Parser {
 	        		this.state = 1033;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		if(_la===vbaParser.WS) {
+	        		if(_la===219) {
 	        		    this.state = 1032;
 	        		    this.match(vbaParser.WS);
 	        		}
@@ -4301,7 +4297,7 @@ export default class vbaParser extends antlr4.Parser {
 	        		this.state = 1037;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		if(_la===vbaParser.WS) {
+	        		if(_la===219) {
 	        		    this.state = 1036;
 	        		    this.match(vbaParser.WS);
 	        		}
@@ -4362,7 +4358,7 @@ export default class vbaParser extends antlr4.Parser {
 	letStmt() {
 	    let localctx = new LetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, vbaParser.RULE_letStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1050;
@@ -4380,14 +4376,14 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1054;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1053;
 	            this.match(vbaParser.WS);
 	        }
 
 	        this.state = 1056;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 189)) & ~0x1f) == 0 && ((1 << (_la - 189)) & ((1 << (vbaParser.EQ - 189)) | (1 << (vbaParser.MINUS_EQ - 189)) | (1 << (vbaParser.PLUS_EQ - 189)))) !== 0))) {
+	        if(!(((((_la - 189)) & ~0x1f) === 0 && ((1 << (_la - 189)) & 2177) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4397,7 +4393,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1058;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1057;
 	            this.match(vbaParser.WS);
 	        }
@@ -4423,7 +4419,7 @@ export default class vbaParser extends antlr4.Parser {
 	lineInputStmt() {
 	    let localctx = new LineInputStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, vbaParser.RULE_lineInputStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1062;
@@ -4435,7 +4431,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1066;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1065;
 	            this.match(vbaParser.WS);
 	        }
@@ -4445,7 +4441,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1070;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1069;
 	            this.match(vbaParser.WS);
 	        }
@@ -4498,7 +4494,7 @@ export default class vbaParser extends antlr4.Parser {
 	lockStmt() {
 	    let localctx = new LockStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, vbaParser.RULE_lockStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1078;
@@ -4514,7 +4510,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1082;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1081;
 	                this.match(vbaParser.WS);
 	            }
@@ -4524,7 +4520,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1086;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1085;
 	                this.match(vbaParser.WS);
 	            }
@@ -4566,7 +4562,7 @@ export default class vbaParser extends antlr4.Parser {
 	lsetStmt() {
 	    let localctx = new LsetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 106, vbaParser.RULE_lsetStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1097;
@@ -4578,7 +4574,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1101;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1100;
 	            this.match(vbaParser.WS);
 	        }
@@ -4588,7 +4584,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1105;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1104;
 	            this.match(vbaParser.WS);
 	        }
@@ -4614,7 +4610,7 @@ export default class vbaParser extends antlr4.Parser {
 	macroConstStmt() {
 	    let localctx = new MacroConstStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, vbaParser.RULE_macroConstStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1109;
@@ -4622,7 +4618,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1110;
 	            this.match(vbaParser.WS);
 	        }
@@ -4632,7 +4628,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1115;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1114;
 	            this.match(vbaParser.WS);
 	        }
@@ -4642,7 +4638,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1119;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1118;
 	            this.match(vbaParser.WS);
 	        }
@@ -4668,7 +4664,7 @@ export default class vbaParser extends antlr4.Parser {
 	macroIfThenElseStmt() {
 	    let localctx = new MacroIfThenElseStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, vbaParser.RULE_macroIfThenElseStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1123;
@@ -4676,7 +4672,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1127;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vbaParser.MACRO_ELSEIF) {
+	        while(_la===105) {
 	            this.state = 1124;
 	            this.macroElseIfBlockStmt();
 	            this.state = 1129;
@@ -4686,7 +4682,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1131;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.MACRO_ELSE) {
+	        if(_la===106) {
 	            this.state = 1130;
 	            this.macroElseBlockStmt();
 	        }
@@ -4712,7 +4708,7 @@ export default class vbaParser extends antlr4.Parser {
 	macroIfBlockStmt() {
 	    let localctx = new MacroIfBlockStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, vbaParser.RULE_macroIfBlockStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1135;
@@ -4720,7 +4716,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1137;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1136;
 	            this.match(vbaParser.WS);
 	        }
@@ -4736,7 +4732,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1148;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OPTION_BASE - 96)) | (1 << (vbaParser.OPTION_EXPLICIT - 96)) | (1 << (vbaParser.OPTION_COMPARE - 96)) | (1 << (vbaParser.OPTION_PRIVATE_MODULE - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PROPERTY_GET - 128)) | (1 << (vbaParser.PROPERTY_LET - 128)) | (1 << (vbaParser.PROPERTY_SET - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.COMMENT || _la===vbaParser.IDENTIFIER) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294963655) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934271) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===215 || _la===220) {
 	            this.state = 1146;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,136,this._ctx);
@@ -4780,7 +4776,7 @@ export default class vbaParser extends antlr4.Parser {
 	macroElseIfBlockStmt() {
 	    let localctx = new MacroElseIfBlockStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, vbaParser.RULE_macroElseIfBlockStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1151;
@@ -4788,7 +4784,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1153;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1152;
 	            this.match(vbaParser.WS);
 	        }
@@ -4804,7 +4800,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1164;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OPTION_BASE - 96)) | (1 << (vbaParser.OPTION_EXPLICIT - 96)) | (1 << (vbaParser.OPTION_COMPARE - 96)) | (1 << (vbaParser.OPTION_PRIVATE_MODULE - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PROPERTY_GET - 128)) | (1 << (vbaParser.PROPERTY_LET - 128)) | (1 << (vbaParser.PROPERTY_SET - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.COMMENT || _la===vbaParser.IDENTIFIER) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294963655) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934271) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===215 || _la===220) {
 	            this.state = 1162;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,139,this._ctx);
@@ -4848,7 +4844,7 @@ export default class vbaParser extends antlr4.Parser {
 	macroElseBlockStmt() {
 	    let localctx = new MacroElseBlockStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 116, vbaParser.RULE_macroElseBlockStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1167;
@@ -4858,7 +4854,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1174;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OPTION_BASE - 96)) | (1 << (vbaParser.OPTION_EXPLICIT - 96)) | (1 << (vbaParser.OPTION_COMPARE - 96)) | (1 << (vbaParser.OPTION_PRIVATE_MODULE - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PROPERTY_GET - 128)) | (1 << (vbaParser.PROPERTY_LET - 128)) | (1 << (vbaParser.PROPERTY_SET - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.COMMENT || _la===vbaParser.IDENTIFIER) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294963655) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934271) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===215 || _la===220) {
 	            this.state = 1172;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,141,this._ctx);
@@ -4902,7 +4898,7 @@ export default class vbaParser extends antlr4.Parser {
 	midStmt() {
 	    let localctx = new MidStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, vbaParser.RULE_midStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1177;
@@ -4910,7 +4906,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1179;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1178;
 	            this.match(vbaParser.WS);
 	        }
@@ -4930,7 +4926,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1187;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1186;
 	            this.match(vbaParser.WS);
 	        }
@@ -5018,12 +5014,12 @@ export default class vbaParser extends antlr4.Parser {
 	onErrorStmt() {
 	    let localctx = new OnErrorStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, vbaParser.RULE_onErrorStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1203;
 	        _la = this._input.LA(1);
-	        if(!(_la===vbaParser.ON_ERROR || _la===vbaParser.ON_LOCAL_ERROR)) {
+	        if(!(_la===119 || _la===120)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5035,7 +5031,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1211;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.GOTO:
+	        case 81:
 	            this.state = 1205;
 	            this.match(vbaParser.GOTO);
 	            this.state = 1206;
@@ -5043,7 +5039,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1207;
 	            this.valueStmt(0);
 	            break;
-	        case vbaParser.RESUME:
+	        case 147:
 	            this.state = 1208;
 	            this.match(vbaParser.RESUME);
 	            this.state = 1209;
@@ -5073,7 +5069,7 @@ export default class vbaParser extends antlr4.Parser {
 	onGoToStmt() {
 	    let localctx = new OnGoToStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 126, vbaParser.RULE_onGoToStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1213;
@@ -5098,7 +5094,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1221;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1220;
 	                    this.match(vbaParser.WS);
 	                }
@@ -5108,7 +5104,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1225;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1224;
 	                    this.match(vbaParser.WS);
 	                }
@@ -5140,7 +5136,7 @@ export default class vbaParser extends antlr4.Parser {
 	onGoSubStmt() {
 	    let localctx = new OnGoSubStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 128, vbaParser.RULE_onGoSubStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1233;
@@ -5165,7 +5161,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1241;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1240;
 	                    this.match(vbaParser.WS);
 	                }
@@ -5175,7 +5171,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1245;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1244;
 	                    this.match(vbaParser.WS);
 	                }
@@ -5207,7 +5203,7 @@ export default class vbaParser extends antlr4.Parser {
 	openStmt() {
 	    let localctx = new OpenStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 130, vbaParser.RULE_openStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1253;
@@ -5224,7 +5220,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.match(vbaParser.WS);
 	        this.state = 1259;
 	        _la = this._input.LA(1);
-	        if(!(_la===vbaParser.APPEND || _la===vbaParser.BINARY || _la===vbaParser.INPUT || _la===vbaParser.OUTPUT || _la===vbaParser.RANDOM)) {
+	        if(!(_la===15 || _la===19 || _la===86 || _la===128 || _la===139)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5243,7 +5239,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.match(vbaParser.WS);
 	            this.state = 1263;
 	            _la = this._input.LA(1);
-	            if(!(_la===vbaParser.READ || _la===vbaParser.READ_WRITE || _la===vbaParser.WRITE)) {
+	            if(!(_la===142 || _la===143 || _la===184)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5260,7 +5256,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.match(vbaParser.WS);
 	            this.state = 1267;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (vbaParser.LOCK_READ - 99)) | (1 << (vbaParser.LOCK_WRITE - 99)) | (1 << (vbaParser.LOCK_READ_WRITE - 99)))) !== 0) || _la===vbaParser.SHARED)) {
+	            if(!(((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 7) !== 0) || _la===158)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5288,7 +5284,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1277;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1276;
 	                this.match(vbaParser.WS);
 	            }
@@ -5298,7 +5294,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1281;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1280;
 	                this.match(vbaParser.WS);
 	            }
@@ -5326,7 +5322,7 @@ export default class vbaParser extends antlr4.Parser {
 	outputList() {
 	    let localctx = new OutputListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 132, vbaParser.RULE_outputList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1319;
 	        this._errHandler.sync(this);
@@ -5344,14 +5340,14 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1288;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1287;
 	                        this.match(vbaParser.WS);
 	                    }
 
 	                    this.state = 1290;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===vbaParser.T__0 || _la===vbaParser.T__1)) {
+	                    if(!(_la===1 || _la===2)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -5387,7 +5383,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1303;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || ((((_la - 193)) & ~0x1f) == 0 && ((1 << (_la - 193)) & ((1 << (vbaParser.LPAREN - 193)) | (1 << (vbaParser.MINUS - 193)) | (1 << (vbaParser.PLUS - 193)) | (1 << (vbaParser.STRINGLITERAL - 193)) | (1 << (vbaParser.OCTLITERAL - 193)) | (1 << (vbaParser.HEXLITERAL - 193)) | (1 << (vbaParser.SHORTLITERAL - 193)) | (1 << (vbaParser.INTEGERLITERAL - 193)) | (1 << (vbaParser.DOUBLELITERAL - 193)) | (1 << (vbaParser.DATELITERAL - 193)) | (1 << (vbaParser.IDENTIFIER - 193)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || ((((_la - 193)) & ~0x1f) === 0 && ((1 << (_la - 193)) & 134737989) !== 0)) {
 	                this.state = 1302;
 	                this.outputList_Expression();
 	            }
@@ -5401,14 +5397,14 @@ export default class vbaParser extends antlr4.Parser {
 	            		this.state = 1306;
 	            		this._errHandler.sync(this);
 	            		_la = this._input.LA(1);
-	            		if(_la===vbaParser.WS) {
+	            		if(_la===219) {
 	            		    this.state = 1305;
 	            		    this.match(vbaParser.WS);
 	            		}
 
 	            		this.state = 1308;
 	            		_la = this._input.LA(1);
-	            		if(!(_la===vbaParser.T__0 || _la===vbaParser.T__1)) {
+	            		if(!(_la===1 || _la===2)) {
 	            		this._errHandler.recoverInline(this);
 	            		}
 	            		else {
@@ -5461,7 +5457,7 @@ export default class vbaParser extends antlr4.Parser {
 	outputList_Expression() {
 	    let localctx = new OutputList_ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 134, vbaParser.RULE_outputList_Expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1338;
 	        this._errHandler.sync(this);
@@ -5477,7 +5473,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1322;
 	            _la = this._input.LA(1);
-	            if(!(_la===vbaParser.SPC || _la===vbaParser.TAB)) {
+	            if(!(_la===160 || _la===166)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5491,7 +5487,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1324;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1323;
 	                    this.match(vbaParser.WS);
 	                }
@@ -5511,7 +5507,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1332;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1331;
 	                    this.match(vbaParser.WS);
 	                }
@@ -5542,7 +5538,7 @@ export default class vbaParser extends antlr4.Parser {
 	printStmt() {
 	    let localctx = new PrintStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 136, vbaParser.RULE_printStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1340;
@@ -5554,7 +5550,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1344;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1343;
 	            this.match(vbaParser.WS);
 	        }
@@ -5596,13 +5592,13 @@ export default class vbaParser extends antlr4.Parser {
 	propertyGetStmt() {
 	    let localctx = new PropertyGetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 138, vbaParser.RULE_propertyGetStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1356;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 1353;
 	            this.visibility();
 	            this.state = 1354;
@@ -5612,7 +5608,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1360;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.STATIC) {
+	        if(_la===161) {
 	            this.state = 1358;
 	            this.match(vbaParser.STATIC);
 	            this.state = 1359;
@@ -5640,7 +5636,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1369;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1368;
 	                this.match(vbaParser.WS);
 	            }
@@ -5664,7 +5660,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1380;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2281697735) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 1379;
 	            this.block();
 	        }
@@ -5690,13 +5686,13 @@ export default class vbaParser extends antlr4.Parser {
 	propertySetStmt() {
 	    let localctx = new PropertySetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 140, vbaParser.RULE_propertySetStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1387;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 1384;
 	            this.visibility();
 	            this.state = 1385;
@@ -5706,7 +5702,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1391;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.STATIC) {
+	        if(_la===161) {
 	            this.state = 1389;
 	            this.match(vbaParser.STATIC);
 	            this.state = 1390;
@@ -5726,7 +5722,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1397;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1396;
 	                this.match(vbaParser.WS);
 	            }
@@ -5740,7 +5736,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1404;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2281697735) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 1403;
 	            this.block();
 	        }
@@ -5766,13 +5762,13 @@ export default class vbaParser extends antlr4.Parser {
 	propertyLetStmt() {
 	    let localctx = new PropertyLetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 142, vbaParser.RULE_propertyLetStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1411;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 1408;
 	            this.visibility();
 	            this.state = 1409;
@@ -5782,7 +5778,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1415;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.STATIC) {
+	        if(_la===161) {
 	            this.state = 1413;
 	            this.match(vbaParser.STATIC);
 	            this.state = 1414;
@@ -5802,7 +5798,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1421;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1420;
 	                this.match(vbaParser.WS);
 	            }
@@ -5816,7 +5812,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1428;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2281697735) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 1427;
 	            this.block();
 	        }
@@ -5842,7 +5838,7 @@ export default class vbaParser extends antlr4.Parser {
 	putStmt() {
 	    let localctx = new PutStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 144, vbaParser.RULE_putStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1432;
@@ -5854,7 +5850,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1436;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1435;
 	            this.match(vbaParser.WS);
 	        }
@@ -5872,7 +5868,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1443;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || ((((_la - 193)) & ~0x1f) == 0 && ((1 << (_la - 193)) & ((1 << (vbaParser.LPAREN - 193)) | (1 << (vbaParser.MINUS - 193)) | (1 << (vbaParser.PLUS - 193)) | (1 << (vbaParser.STRINGLITERAL - 193)) | (1 << (vbaParser.OCTLITERAL - 193)) | (1 << (vbaParser.HEXLITERAL - 193)) | (1 << (vbaParser.SHORTLITERAL - 193)) | (1 << (vbaParser.INTEGERLITERAL - 193)) | (1 << (vbaParser.DOUBLELITERAL - 193)) | (1 << (vbaParser.DATELITERAL - 193)) | (1 << (vbaParser.IDENTIFIER - 193)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || ((((_la - 193)) & ~0x1f) === 0 && ((1 << (_la - 193)) & 134737989) !== 0)) {
 	            this.state = 1442;
 	            this.valueStmt(0);
 	        }
@@ -5880,7 +5876,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1446;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1445;
 	            this.match(vbaParser.WS);
 	        }
@@ -5890,7 +5886,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1450;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1449;
 	            this.match(vbaParser.WS);
 	        }
@@ -5916,7 +5912,7 @@ export default class vbaParser extends antlr4.Parser {
 	raiseEventStmt() {
 	    let localctx = new RaiseEventStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, vbaParser.RULE_raiseEventStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1454;
@@ -5932,7 +5928,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1458;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1457;
 	                this.match(vbaParser.WS);
 	            }
@@ -5956,7 +5952,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1466;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1465;
 	                    this.match(vbaParser.WS);
 	                }
@@ -6019,7 +6015,7 @@ export default class vbaParser extends antlr4.Parser {
 	redimStmt() {
 	    let localctx = new RedimStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 150, vbaParser.RULE_redimStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1478;
@@ -6046,7 +6042,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1486;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1485;
 	                    this.match(vbaParser.WS);
 	                }
@@ -6056,7 +6052,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1490;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1489;
 	                    this.match(vbaParser.WS);
 	                }
@@ -6088,7 +6084,7 @@ export default class vbaParser extends antlr4.Parser {
 	redimSubStmt() {
 	    let localctx = new RedimSubStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 152, vbaParser.RULE_redimSubStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1498;
@@ -6096,7 +6092,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1500;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1499;
 	            this.match(vbaParser.WS);
 	        }
@@ -6106,7 +6102,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1504;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1503;
 	            this.match(vbaParser.WS);
 	        }
@@ -6116,7 +6112,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1508;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1507;
 	            this.match(vbaParser.WS);
 	        }
@@ -6271,7 +6267,7 @@ export default class vbaParser extends antlr4.Parser {
 	rsetStmt() {
 	    let localctx = new RsetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 162, vbaParser.RULE_rsetStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1531;
@@ -6283,7 +6279,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1535;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1534;
 	            this.match(vbaParser.WS);
 	        }
@@ -6293,7 +6289,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1539;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1538;
 	            this.match(vbaParser.WS);
 	        }
@@ -6319,7 +6315,7 @@ export default class vbaParser extends antlr4.Parser {
 	savepictureStmt() {
 	    let localctx = new SavepictureStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 164, vbaParser.RULE_savepictureStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1543;
@@ -6331,7 +6327,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1547;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1546;
 	            this.match(vbaParser.WS);
 	        }
@@ -6341,7 +6337,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1551;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1550;
 	            this.match(vbaParser.WS);
 	        }
@@ -6367,7 +6363,7 @@ export default class vbaParser extends antlr4.Parser {
 	saveSettingStmt() {
 	    let localctx = new SaveSettingStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 166, vbaParser.RULE_saveSettingStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1555;
@@ -6379,7 +6375,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1559;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1558;
 	            this.match(vbaParser.WS);
 	        }
@@ -6389,7 +6385,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1563;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1562;
 	            this.match(vbaParser.WS);
 	        }
@@ -6399,7 +6395,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1567;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1566;
 	            this.match(vbaParser.WS);
 	        }
@@ -6409,7 +6405,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1571;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1570;
 	            this.match(vbaParser.WS);
 	        }
@@ -6419,7 +6415,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1575;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1574;
 	            this.match(vbaParser.WS);
 	        }
@@ -6429,7 +6425,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1579;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1578;
 	            this.match(vbaParser.WS);
 	        }
@@ -6455,7 +6451,7 @@ export default class vbaParser extends antlr4.Parser {
 	seekStmt() {
 	    let localctx = new SeekStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 168, vbaParser.RULE_seekStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1583;
@@ -6467,7 +6463,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1587;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1586;
 	            this.match(vbaParser.WS);
 	        }
@@ -6477,7 +6473,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1591;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1590;
 	            this.match(vbaParser.WS);
 	        }
@@ -6503,7 +6499,7 @@ export default class vbaParser extends antlr4.Parser {
 	selectCaseStmt() {
 	    let localctx = new SelectCaseStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 170, vbaParser.RULE_selectCaseStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1595;
@@ -6521,7 +6517,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1604;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vbaParser.CASE) {
+	        while(_la===25) {
 	            this.state = 1601;
 	            this.sC_Case();
 	            this.state = 1606;
@@ -6549,7 +6545,7 @@ export default class vbaParser extends antlr4.Parser {
 	sC_Selection() {
 	    let localctx = new SC_SelectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 172, vbaParser.RULE_sC_Selection);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1626;
 	        this._errHandler.sync(this);
@@ -6563,7 +6559,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1611;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1610;
 	                this.match(vbaParser.WS);
 	            }
@@ -6573,7 +6569,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1615;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1614;
 	                this.match(vbaParser.WS);
 	            }
@@ -6661,7 +6657,7 @@ export default class vbaParser extends antlr4.Parser {
 	sC_Cond() {
 	    let localctx = new SC_CondContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 176, vbaParser.RULE_sC_Cond);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1650;
 	        this._errHandler.sync(this);
@@ -6687,7 +6683,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1638;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1637;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -6697,7 +6693,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1642;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1641;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -6732,7 +6728,7 @@ export default class vbaParser extends antlr4.Parser {
 	sendkeysStmt() {
 	    let localctx = new SendkeysStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 178, vbaParser.RULE_sendkeysStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1652;
@@ -6748,7 +6744,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1656;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1655;
 	                this.match(vbaParser.WS);
 	            }
@@ -6758,7 +6754,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1660;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1659;
 	                this.match(vbaParser.WS);
 	            }
@@ -6786,7 +6782,7 @@ export default class vbaParser extends antlr4.Parser {
 	setattrStmt() {
 	    let localctx = new SetattrStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 180, vbaParser.RULE_setattrStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1665;
@@ -6798,7 +6794,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1669;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1668;
 	            this.match(vbaParser.WS);
 	        }
@@ -6808,7 +6804,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1673;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1672;
 	            this.match(vbaParser.WS);
 	        }
@@ -6834,7 +6830,7 @@ export default class vbaParser extends antlr4.Parser {
 	setStmt() {
 	    let localctx = new SetStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, vbaParser.RULE_setStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1677;
@@ -6846,7 +6842,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1681;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1680;
 	            this.match(vbaParser.WS);
 	        }
@@ -6856,7 +6852,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1685;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1684;
 	            this.match(vbaParser.WS);
 	        }
@@ -6905,13 +6901,13 @@ export default class vbaParser extends antlr4.Parser {
 	subStmt() {
 	    let localctx = new SubStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 186, vbaParser.RULE_subStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1694;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 1691;
 	            this.visibility();
 	            this.state = 1692;
@@ -6921,7 +6917,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1698;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.STATIC) {
+	        if(_la===161) {
 	            this.state = 1696;
 	            this.match(vbaParser.STATIC);
 	            this.state = 1697;
@@ -6933,7 +6929,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1702;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1701;
 	            this.match(vbaParser.WS);
 	        }
@@ -6947,7 +6943,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1706;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1705;
 	                this.match(vbaParser.WS);
 	            }
@@ -6961,7 +6957,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1713;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2281697735) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 1712;
 	            this.block();
 	        }
@@ -6987,7 +6983,7 @@ export default class vbaParser extends antlr4.Parser {
 	timeStmt() {
 	    let localctx = new TimeStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 188, vbaParser.RULE_timeStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1717;
@@ -6995,7 +6991,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1719;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1718;
 	            this.match(vbaParser.WS);
 	        }
@@ -7005,7 +7001,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1723;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 1722;
 	            this.match(vbaParser.WS);
 	        }
@@ -7031,13 +7027,13 @@ export default class vbaParser extends antlr4.Parser {
 	typeStmt() {
 	    let localctx = new TypeStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 190, vbaParser.RULE_typeStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1730;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC) {
+	        if(_la===75 || _la===79 || _la===132 || _la===137) {
 	            this.state = 1727;
 	            this.visibility();
 	            this.state = 1728;
@@ -7055,7 +7051,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 1739;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966784) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 1736;
 	            this.typeStmt_Element();
 	            this.state = 1741;
@@ -7083,7 +7079,7 @@ export default class vbaParser extends antlr4.Parser {
 	typeStmt_Element() {
 	    let localctx = new TypeStmt_ElementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 192, vbaParser.RULE_typeStmt_Element);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1744;
@@ -7095,7 +7091,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1746;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1745;
 	                this.match(vbaParser.WS);
 	            }
@@ -7109,7 +7105,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1750;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1749;
 	                    this.match(vbaParser.WS);
 	                }
@@ -7121,7 +7117,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1756;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1755;
 	                this.match(vbaParser.WS);
 	            }
@@ -7229,7 +7225,7 @@ export default class vbaParser extends antlr4.Parser {
 	unlockStmt() {
 	    let localctx = new UnlockStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 198, vbaParser.RULE_unlockStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1780;
@@ -7245,7 +7241,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1784;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1783;
 	                this.match(vbaParser.WS);
 	            }
@@ -7255,7 +7251,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1788;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1787;
 	                this.match(vbaParser.WS);
 	            }
@@ -7303,7 +7299,7 @@ export default class vbaParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 200;
 	    this.enterRecursionRule(localctx, 200, vbaParser.RULE_valueStmt, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1859;
@@ -7336,7 +7332,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1804;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1803;
 	                this.match(vbaParser.WS);
 	            }
@@ -7346,11 +7342,11 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1817;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vbaParser.T__0 || _la===vbaParser.WS) {
+	            while(_la===1 || _la===219) {
 	                this.state = 1808;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1807;
 	                    this.match(vbaParser.WS);
 	                }
@@ -7360,7 +7356,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 1812;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 1811;
 	                    this.match(vbaParser.WS);
 	                }
@@ -7384,7 +7380,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1824;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1823;
 	                this.match(vbaParser.WS);
 	            }
@@ -7418,7 +7414,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1831;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1830;
 	                this.match(vbaParser.WS);
 	            }
@@ -7436,7 +7432,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1836;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1835;
 	                this.match(vbaParser.WS);
 	            }
@@ -7446,7 +7442,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1840;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1839;
 	                this.match(vbaParser.WS);
 	            }
@@ -7464,7 +7460,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1846;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1845;
 	                this.match(vbaParser.WS);
 	            }
@@ -7482,7 +7478,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1851;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1850;
 	                this.match(vbaParser.WS);
 	            }
@@ -7500,7 +7496,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 1856;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 1855;
 	                this.match(vbaParser.WS);
 	            }
@@ -7534,7 +7530,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1863;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1862;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7544,7 +7540,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1867;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1866;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7563,7 +7559,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1872;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1871;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7573,7 +7569,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1876;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1875;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7592,7 +7588,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1881;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1880;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7602,7 +7598,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1885;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1884;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7621,7 +7617,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1890;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1889;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7631,7 +7627,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1894;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1893;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7650,7 +7646,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1899;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1898;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7660,7 +7656,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1903;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1902;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7679,7 +7675,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1908;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1907;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7689,7 +7685,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1912;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1911;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7708,7 +7704,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1917;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1916;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7718,7 +7714,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1921;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1920;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7737,7 +7733,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1926;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1925;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7747,7 +7743,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1930;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1929;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7766,7 +7762,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1935;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1934;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7776,7 +7772,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1939;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1938;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7795,7 +7791,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1944;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1943;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7805,7 +7801,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1948;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1947;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7824,7 +7820,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1953;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1952;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7834,7 +7830,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1957;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1956;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7853,7 +7849,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1962;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1961;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7863,7 +7859,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1966;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1965;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7882,7 +7878,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1971;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1970;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7892,7 +7888,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1975;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1974;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7911,7 +7907,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1980;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1979;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7921,7 +7917,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1984;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1983;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7940,7 +7936,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1989;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1988;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7950,7 +7946,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1993;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1992;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7969,7 +7965,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 1998;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 1997;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7979,7 +7975,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2002;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2001;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -7998,7 +7994,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2007;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2006;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8008,7 +8004,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2011;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2010;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8027,7 +8023,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2016;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2015;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8037,7 +8033,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2020;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2019;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8056,7 +8052,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2025;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2024;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8066,7 +8062,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2029;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2028;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8085,7 +8081,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2034;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2033;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8095,7 +8091,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2038;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2037;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -8135,18 +8131,18 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2049;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.DIM:
+	        case 48:
 	            this.state = 2046;
 	            this.match(vbaParser.DIM);
 	            break;
-	        case vbaParser.STATIC:
+	        case 161:
 	            this.state = 2047;
 	            this.match(vbaParser.STATIC);
 	            break;
-	        case vbaParser.FRIEND:
-	        case vbaParser.GLOBAL:
-	        case vbaParser.PRIVATE:
-	        case vbaParser.PUBLIC:
+	        case 75:
+	        case 79:
+	        case 132:
+	        case 137:
 	            this.state = 2048;
 	            this.visibility();
 	            break;
@@ -8186,7 +8182,7 @@ export default class vbaParser extends antlr4.Parser {
 	variableListStmt() {
 	    let localctx = new VariableListStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 204, vbaParser.RULE_variableListStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2058;
@@ -8199,7 +8195,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2060;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2059;
 	                    this.match(vbaParser.WS);
 	                }
@@ -8209,7 +8205,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2064;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2063;
 	                    this.match(vbaParser.WS);
 	                }
@@ -8241,7 +8237,7 @@ export default class vbaParser extends antlr4.Parser {
 	variableSubStmt() {
 	    let localctx = new VariableSubStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 206, vbaParser.RULE_variableSubStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2072;
@@ -8253,7 +8249,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2074;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2073;
 	                this.match(vbaParser.WS);
 	            }
@@ -8263,7 +8259,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2078;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2077;
 	                this.match(vbaParser.WS);
 	            }
@@ -8271,13 +8267,13 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2084;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || ((((_la - 193)) & ~0x1f) == 0 && ((1 << (_la - 193)) & ((1 << (vbaParser.LPAREN - 193)) | (1 << (vbaParser.MINUS - 193)) | (1 << (vbaParser.PLUS - 193)) | (1 << (vbaParser.STRINGLITERAL - 193)) | (1 << (vbaParser.OCTLITERAL - 193)) | (1 << (vbaParser.HEXLITERAL - 193)) | (1 << (vbaParser.SHORTLITERAL - 193)) | (1 << (vbaParser.INTEGERLITERAL - 193)) | (1 << (vbaParser.DOUBLELITERAL - 193)) | (1 << (vbaParser.DATELITERAL - 193)) | (1 << (vbaParser.IDENTIFIER - 193)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || ((((_la - 193)) & ~0x1f) === 0 && ((1 << (_la - 193)) & 134737989) !== 0)) {
 	                this.state = 2080;
 	                this.subscripts();
 	                this.state = 2082;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2081;
 	                    this.match(vbaParser.WS);
 	                }
@@ -8372,7 +8368,7 @@ export default class vbaParser extends antlr4.Parser {
 	widthStmt() {
 	    let localctx = new WidthStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 210, vbaParser.RULE_widthStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2108;
@@ -8384,7 +8380,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2112;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2111;
 	            this.match(vbaParser.WS);
 	        }
@@ -8394,7 +8390,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2116;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2115;
 	            this.match(vbaParser.WS);
 	        }
@@ -8420,7 +8416,7 @@ export default class vbaParser extends antlr4.Parser {
 	withStmt() {
 	    let localctx = new WithStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 212, vbaParser.RULE_withStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2120;
@@ -8451,7 +8447,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2130;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.EXIT_DO - 64)) | (1 << (vbaParser.EXIT_FOR - 64)) | (1 << (vbaParser.EXIT_FUNCTION - 64)) | (1 << (vbaParser.EXIT_PROPERTY - 64)) | (1 << (vbaParser.EXIT_SUB - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LINE_INPUT - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.MACRO_CONST - 96)) | (1 << (vbaParser.MACRO_IF - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.ON_ERROR - 96)) | (1 << (vbaParser.ON_LOCAL_ERROR - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || _la===vbaParser.IDENTIFIER) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2281697735) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || _la===220) {
 	            this.state = 2129;
 	            this.block();
 	        }
@@ -8477,7 +8473,7 @@ export default class vbaParser extends antlr4.Parser {
 	writeStmt() {
 	    let localctx = new WriteStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 214, vbaParser.RULE_writeStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2134;
@@ -8489,7 +8485,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2138;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2137;
 	            this.match(vbaParser.WS);
 	        }
@@ -8531,13 +8527,13 @@ export default class vbaParser extends antlr4.Parser {
 	fileNumber() {
 	    let localctx = new FileNumberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 216, vbaParser.RULE_fileNumber);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2148;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.T__2) {
+	        if(_la===3) {
 	            this.state = 2147;
 	            this.match(vbaParser.T__2);
 	        }
@@ -8600,7 +8596,7 @@ export default class vbaParser extends antlr4.Parser {
 	eCS_ProcedureCall() {
 	    let localctx = new ECS_ProcedureCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 220, vbaParser.RULE_eCS_ProcedureCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2156;
@@ -8624,7 +8620,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2163;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2162;
 	                this.match(vbaParser.WS);
 	            }
@@ -8644,7 +8640,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2171;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2170;
 	                this.match(vbaParser.WS);
 	            }
@@ -8661,7 +8657,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2178;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2177;
 	                    this.match(vbaParser.WS);
 	                }
@@ -8697,7 +8693,7 @@ export default class vbaParser extends antlr4.Parser {
 	eCS_MemberProcedureCall() {
 	    let localctx = new ECS_MemberProcedureCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 222, vbaParser.RULE_eCS_MemberProcedureCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2189;
@@ -8731,7 +8727,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2200;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2199;
 	                this.match(vbaParser.WS);
 	            }
@@ -8751,7 +8747,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2208;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2207;
 	                this.match(vbaParser.WS);
 	            }
@@ -8768,7 +8764,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2215;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2214;
 	                    this.match(vbaParser.WS);
 	                }
@@ -8841,7 +8837,7 @@ export default class vbaParser extends antlr4.Parser {
 	iCS_B_MemberProcedureCall() {
 	    let localctx = new ICS_B_MemberProcedureCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 226, vbaParser.RULE_iCS_B_MemberProcedureCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2231;
@@ -8890,7 +8886,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2246;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2245;
 	                    this.match(vbaParser.WS);
 	                }
@@ -8926,7 +8922,7 @@ export default class vbaParser extends antlr4.Parser {
 	iCS_B_ProcedureCall() {
 	    let localctx = new ICS_B_ProcedureCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 228, vbaParser.RULE_iCS_B_ProcedureCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2257;
@@ -8949,7 +8945,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2263;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2262;
 	                    this.match(vbaParser.WS);
 	                }
@@ -9034,7 +9030,7 @@ export default class vbaParser extends antlr4.Parser {
 	iCS_S_VariableOrProcedureCall() {
 	    let localctx = new ICS_S_VariableOrProcedureCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 232, vbaParser.RULE_iCS_S_VariableOrProcedureCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2280;
@@ -9063,7 +9059,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2288;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2287;
 	                    this.match(vbaParser.WS);
 	                }
@@ -9099,7 +9095,7 @@ export default class vbaParser extends antlr4.Parser {
 	iCS_S_ProcedureOrArrayCall() {
 	    let localctx = new ICS_S_ProcedureOrArrayCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 234, vbaParser.RULE_iCS_S_ProcedureOrArrayCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2301;
@@ -9120,7 +9116,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2304;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186) {
 	            this.state = 2303;
 	            this.typeHint();
 	        }
@@ -9128,7 +9124,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2307;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2306;
 	            this.match(vbaParser.WS);
 	        }
@@ -9152,7 +9148,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2315;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2314;
 	                this.match(vbaParser.WS);
 	            }
@@ -9177,7 +9173,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2324;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2323;
 	                    this.match(vbaParser.WS);
 	                }
@@ -9213,7 +9209,7 @@ export default class vbaParser extends antlr4.Parser {
 	iCS_S_MembersCall() {
 	    let localctx = new ICS_S_MembersCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 236, vbaParser.RULE_iCS_S_MembersCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2337;
@@ -9260,7 +9256,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2348;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2347;
 	                    this.match(vbaParser.WS);
 	                }
@@ -9296,12 +9292,12 @@ export default class vbaParser extends antlr4.Parser {
 	iCS_S_MemberCall() {
 	    let localctx = new ICS_S_MemberCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 238, vbaParser.RULE_iCS_S_MemberCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2359;
 	        _la = this._input.LA(1);
-	        if(!(_la===vbaParser.T__3 || _la===vbaParser.T__4)) {
+	        if(!(_la===4 || _la===5)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -9365,7 +9361,7 @@ export default class vbaParser extends antlr4.Parser {
 	argsCall() {
 	    let localctx = new ArgsCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 242, vbaParser.RULE_argsCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2378;
@@ -9376,7 +9372,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2367;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__3) | (1 << vbaParser.T__4) | (1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0) || ((((_la - 193)) & ~0x1f) == 0 && ((1 << (_la - 193)) & ((1 << (vbaParser.LPAREN - 193)) | (1 << (vbaParser.MINUS - 193)) | (1 << (vbaParser.PLUS - 193)) | (1 << (vbaParser.RPAREN - 193)) | (1 << (vbaParser.STRINGLITERAL - 193)) | (1 << (vbaParser.OCTLITERAL - 193)) | (1 << (vbaParser.HEXLITERAL - 193)) | (1 << (vbaParser.SHORTLITERAL - 193)) | (1 << (vbaParser.INTEGERLITERAL - 193)) | (1 << (vbaParser.DOUBLELITERAL - 193)) | (1 << (vbaParser.DATELITERAL - 193)) | (1 << (vbaParser.IDENTIFIER - 193)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0) || ((((_la - 193)) & ~0x1f) === 0 && ((1 << (_la - 193)) & 134738501) !== 0)) {
 	                    this.state = 2366;
 	                    this.argCall();
 	                }
@@ -9384,14 +9380,14 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2370;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2369;
 	                    this.match(vbaParser.WS);
 	                }
 
 	                this.state = 2372;
 	                _la = this._input.LA(1);
-	                if(!(_la===vbaParser.T__0 || _la===vbaParser.T__1)) {
+	                if(!(_la===1 || _la===2)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -9422,14 +9418,14 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2383;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2382;
 	                    this.match(vbaParser.WS);
 	                }
 
 	                this.state = 2385;
 	                _la = this._input.LA(1);
-	                if(!(_la===vbaParser.T__0 || _la===vbaParser.T__1)) {
+	                if(!(_la===1 || _la===2)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -9477,7 +9473,7 @@ export default class vbaParser extends antlr4.Parser {
 	argCall() {
 	    let localctx = new ArgCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 244, vbaParser.RULE_argCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2398;
@@ -9494,7 +9490,7 @@ export default class vbaParser extends antlr4.Parser {
 	        if(la_===1) {
 	            this.state = 2400;
 	            _la = this._input.LA(1);
-	            if(!(_la===vbaParser.BYVAL || _la===vbaParser.BYREF || _la===vbaParser.PARAMARRAY)) {
+	            if(!(_la===21 || _la===22 || _la===129)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -9508,7 +9504,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2405;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.RPAREN) {
+	        if(_la===202) {
 	            this.state = 2404;
 	            this.match(vbaParser.RPAREN);
 	        }
@@ -9567,7 +9563,7 @@ export default class vbaParser extends antlr4.Parser {
 	argList() {
 	    let localctx = new ArgListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 248, vbaParser.RULE_argList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2414;
@@ -9579,7 +9575,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2416;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2415;
 	                this.match(vbaParser.WS);
 	            }
@@ -9594,7 +9590,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2420;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2419;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -9604,7 +9600,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2424;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2423;
 	                        this.match(vbaParser.WS);
 	                    }
@@ -9622,7 +9618,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2435;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2434;
 	            this.match(vbaParser.WS);
 	        }
@@ -9648,7 +9644,7 @@ export default class vbaParser extends antlr4.Parser {
 	arg() {
 	    let localctx = new ArgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 250, vbaParser.RULE_arg);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2441;
@@ -9667,7 +9663,7 @@ export default class vbaParser extends antlr4.Parser {
 	        if(la_===1) {
 	            this.state = 2443;
 	            _la = this._input.LA(1);
-	            if(!(_la===vbaParser.BYVAL || _la===vbaParser.BYREF)) {
+	            if(!(_la===21 || _la===22)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -9693,7 +9689,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2453;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186) {
 	            this.state = 2452;
 	            this.typeHint();
 	        }
@@ -9705,7 +9701,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2456;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2455;
 	                this.match(vbaParser.WS);
 	            }
@@ -9715,7 +9711,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2460;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2459;
 	                this.match(vbaParser.WS);
 	            }
@@ -9731,7 +9727,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2466;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2465;
 	                this.match(vbaParser.WS);
 	            }
@@ -9747,7 +9743,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2472;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2471;
 	                this.match(vbaParser.WS);
 	            }
@@ -9775,7 +9771,7 @@ export default class vbaParser extends antlr4.Parser {
 	argDefaultValue() {
 	    let localctx = new ArgDefaultValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 252, vbaParser.RULE_argDefaultValue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2477;
@@ -9783,7 +9779,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2479;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2478;
 	            this.match(vbaParser.WS);
 	        }
@@ -9809,7 +9805,7 @@ export default class vbaParser extends antlr4.Parser {
 	subscripts() {
 	    let localctx = new SubscriptsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 254, vbaParser.RULE_subscripts);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2483;
@@ -9822,7 +9818,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2485;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2484;
 	                    this.match(vbaParser.WS);
 	                }
@@ -9832,7 +9828,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2489;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2488;
 	                    this.match(vbaParser.WS);
 	                }
@@ -9912,154 +9908,154 @@ export default class vbaParser extends antlr4.Parser {
 	        		this.state = 2508;
 	        		this._errHandler.sync(this);
 	        		switch(this._input.LA(1)) {
-	        		case vbaParser.IDENTIFIER:
+	        		case 220:
 	        		    this.state = 2506;
 	        		    this.match(vbaParser.IDENTIFIER);
 	        		    break;
-	        		case vbaParser.ACCESS:
-	        		case vbaParser.ADDRESSOF:
-	        		case vbaParser.ALIAS:
-	        		case vbaParser.AND:
-	        		case vbaParser.ATTRIBUTE:
-	        		case vbaParser.APPACTIVATE:
-	        		case vbaParser.APPEND:
-	        		case vbaParser.AS:
-	        		case vbaParser.BEGIN:
-	        		case vbaParser.BEEP:
-	        		case vbaParser.BINARY:
-	        		case vbaParser.BOOLEAN:
-	        		case vbaParser.BYVAL:
-	        		case vbaParser.BYREF:
-	        		case vbaParser.BYTE:
-	        		case vbaParser.CALL:
-	        		case vbaParser.CASE:
-	        		case vbaParser.CHDIR:
-	        		case vbaParser.CHDRIVE:
-	        		case vbaParser.CLASS:
-	        		case vbaParser.CLOSE:
-	        		case vbaParser.COLLECTION:
-	        		case vbaParser.CONST:
-	        		case vbaParser.DATABASE:
-	        		case vbaParser.DATE:
-	        		case vbaParser.DECLARE:
-	        		case vbaParser.DEFBOOL:
-	        		case vbaParser.DEFBYTE:
-	        		case vbaParser.DEFDATE:
-	        		case vbaParser.DEFDBL:
-	        		case vbaParser.DEFDEC:
-	        		case vbaParser.DEFCUR:
-	        		case vbaParser.DEFINT:
-	        		case vbaParser.DEFLNG:
-	        		case vbaParser.DEFOBJ:
-	        		case vbaParser.DEFSNG:
-	        		case vbaParser.DEFSTR:
-	        		case vbaParser.DEFVAR:
-	        		case vbaParser.DELETESETTING:
-	        		case vbaParser.DIM:
-	        		case vbaParser.DO:
-	        		case vbaParser.DOUBLE:
-	        		case vbaParser.EACH:
-	        		case vbaParser.ELSE:
-	        		case vbaParser.ELSEIF:
-	        		case vbaParser.END:
-	        		case vbaParser.ENUM:
-	        		case vbaParser.EQV:
-	        		case vbaParser.ERASE:
-	        		case vbaParser.ERROR:
-	        		case vbaParser.EVENT:
-	        		case vbaParser.FALSE:
-	        		case vbaParser.FILECOPY:
-	        		case vbaParser.FRIEND:
-	        		case vbaParser.FOR:
-	        		case vbaParser.FUNCTION:
-	        		case vbaParser.GET:
-	        		case vbaParser.GLOBAL:
-	        		case vbaParser.GOSUB:
-	        		case vbaParser.GOTO:
-	        		case vbaParser.IF:
-	        		case vbaParser.IMP:
-	        		case vbaParser.IMPLEMENTS:
-	        		case vbaParser.IN:
-	        		case vbaParser.INPUT:
-	        		case vbaParser.IS:
-	        		case vbaParser.INTEGER:
-	        		case vbaParser.KILL:
-	        		case vbaParser.LOAD:
-	        		case vbaParser.LOCK:
-	        		case vbaParser.LONG:
-	        		case vbaParser.LOOP:
-	        		case vbaParser.LEN:
-	        		case vbaParser.LET:
-	        		case vbaParser.LIB:
-	        		case vbaParser.LIKE:
-	        		case vbaParser.LSET:
-	        		case vbaParser.ME:
-	        		case vbaParser.MID:
-	        		case vbaParser.MKDIR:
-	        		case vbaParser.MOD:
-	        		case vbaParser.NAME:
-	        		case vbaParser.NEXT:
-	        		case vbaParser.NEW:
-	        		case vbaParser.NOT:
-	        		case vbaParser.NOTHING:
-	        		case vbaParser.NULL_:
-	        		case vbaParser.ON:
-	        		case vbaParser.OPEN:
-	        		case vbaParser.OPTIONAL:
-	        		case vbaParser.OR:
-	        		case vbaParser.OUTPUT:
-	        		case vbaParser.PARAMARRAY:
-	        		case vbaParser.PRESERVE:
-	        		case vbaParser.PRINT:
-	        		case vbaParser.PRIVATE:
-	        		case vbaParser.PUBLIC:
-	        		case vbaParser.PUT:
-	        		case vbaParser.RANDOM:
-	        		case vbaParser.RANDOMIZE:
-	        		case vbaParser.RAISEEVENT:
-	        		case vbaParser.READ:
-	        		case vbaParser.REDIM:
-	        		case vbaParser.REM:
-	        		case vbaParser.RESET:
-	        		case vbaParser.RESUME:
-	        		case vbaParser.RETURN:
-	        		case vbaParser.RMDIR:
-	        		case vbaParser.RSET:
-	        		case vbaParser.SAVEPICTURE:
-	        		case vbaParser.SAVESETTING:
-	        		case vbaParser.SEEK:
-	        		case vbaParser.SELECT:
-	        		case vbaParser.SENDKEYS:
-	        		case vbaParser.SET:
-	        		case vbaParser.SETATTR:
-	        		case vbaParser.SHARED:
-	        		case vbaParser.SINGLE:
-	        		case vbaParser.SPC:
-	        		case vbaParser.STATIC:
-	        		case vbaParser.STEP:
-	        		case vbaParser.STOP:
-	        		case vbaParser.STRING:
-	        		case vbaParser.SUB:
-	        		case vbaParser.TAB:
-	        		case vbaParser.TEXT:
-	        		case vbaParser.THEN:
-	        		case vbaParser.TIME:
-	        		case vbaParser.TO:
-	        		case vbaParser.TRUE:
-	        		case vbaParser.TYPE:
-	        		case vbaParser.TYPEOF:
-	        		case vbaParser.UNLOAD:
-	        		case vbaParser.UNLOCK:
-	        		case vbaParser.UNTIL:
-	        		case vbaParser.VARIANT:
-	        		case vbaParser.VERSION:
-	        		case vbaParser.WEND:
-	        		case vbaParser.WHILE:
-	        		case vbaParser.WIDTH:
-	        		case vbaParser.WITH:
-	        		case vbaParser.WITHEVENTS:
-	        		case vbaParser.WRITE:
-	        		case vbaParser.XOR:
+	        		case 9:
+	        		case 10:
+	        		case 11:
+	        		case 12:
+	        		case 13:
+	        		case 14:
+	        		case 15:
+	        		case 16:
+	        		case 17:
+	        		case 18:
+	        		case 19:
+	        		case 20:
+	        		case 21:
+	        		case 22:
+	        		case 23:
+	        		case 24:
+	        		case 25:
+	        		case 26:
+	        		case 27:
+	        		case 28:
+	        		case 29:
+	        		case 30:
+	        		case 31:
+	        		case 32:
+	        		case 33:
+	        		case 34:
+	        		case 35:
+	        		case 36:
+	        		case 37:
+	        		case 38:
+	        		case 39:
+	        		case 40:
+	        		case 41:
+	        		case 42:
+	        		case 43:
+	        		case 44:
+	        		case 45:
+	        		case 46:
+	        		case 47:
+	        		case 48:
+	        		case 49:
+	        		case 50:
+	        		case 51:
+	        		case 52:
+	        		case 53:
+	        		case 62:
+	        		case 63:
+	        		case 64:
+	        		case 65:
+	        		case 66:
+	        		case 67:
+	        		case 73:
+	        		case 74:
+	        		case 75:
+	        		case 76:
+	        		case 77:
+	        		case 78:
+	        		case 79:
+	        		case 80:
+	        		case 81:
+	        		case 82:
+	        		case 83:
+	        		case 84:
+	        		case 85:
+	        		case 86:
+	        		case 87:
+	        		case 88:
+	        		case 89:
+	        		case 90:
+	        		case 91:
+	        		case 92:
+	        		case 93:
+	        		case 94:
+	        		case 95:
+	        		case 96:
+	        		case 97:
+	        		case 102:
+	        		case 108:
+	        		case 109:
+	        		case 110:
+	        		case 111:
+	        		case 112:
+	        		case 113:
+	        		case 114:
+	        		case 115:
+	        		case 116:
+	        		case 117:
+	        		case 118:
+	        		case 121:
+	        		case 122:
+	        		case 127:
+	        		case 128:
+	        		case 129:
+	        		case 130:
+	        		case 131:
+	        		case 132:
+	        		case 137:
+	        		case 138:
+	        		case 139:
+	        		case 140:
+	        		case 141:
+	        		case 142:
+	        		case 144:
+	        		case 145:
+	        		case 146:
+	        		case 147:
+	        		case 148:
+	        		case 149:
+	        		case 150:
+	        		case 151:
+	        		case 152:
+	        		case 153:
+	        		case 154:
+	        		case 155:
+	        		case 156:
+	        		case 157:
+	        		case 158:
+	        		case 159:
+	        		case 160:
+	        		case 161:
+	        		case 162:
+	        		case 163:
+	        		case 164:
+	        		case 165:
+	        		case 166:
+	        		case 167:
+	        		case 168:
+	        		case 169:
+	        		case 170:
+	        		case 171:
+	        		case 172:
+	        		case 173:
+	        		case 174:
+	        		case 175:
+	        		case 176:
+	        		case 177:
+	        		case 178:
+	        		case 179:
+	        		case 180:
+	        		case 181:
+	        		case 182:
+	        		case 183:
+	        		case 184:
+	        		case 185:
 	        		    this.state = 2507;
 	        		    this.ambiguousKeyword();
 	        		    break;
@@ -10093,7 +10089,7 @@ export default class vbaParser extends antlr4.Parser {
 	asTypeClause() {
 	    let localctx = new AsTypeClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 260, vbaParser.RULE_asTypeClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2512;
@@ -10101,7 +10097,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2514;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2513;
 	            this.match(vbaParser.WS);
 	        }
@@ -10125,7 +10121,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2522;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2521;
 	                this.match(vbaParser.WS);
 	            }
@@ -10153,52 +10149,52 @@ export default class vbaParser extends antlr4.Parser {
 	baseType() {
 	    let localctx = new BaseTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 262, vbaParser.RULE_baseType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2547;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.BOOLEAN:
+	        case 20:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2527;
 	            this.match(vbaParser.BOOLEAN);
 	            break;
-	        case vbaParser.BYTE:
+	        case 23:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2528;
 	            this.match(vbaParser.BYTE);
 	            break;
-	        case vbaParser.COLLECTION:
+	        case 30:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2529;
 	            this.match(vbaParser.COLLECTION);
 	            break;
-	        case vbaParser.DATE:
+	        case 33:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2530;
 	            this.match(vbaParser.DATE);
 	            break;
-	        case vbaParser.DOUBLE:
+	        case 50:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 2531;
 	            this.match(vbaParser.DOUBLE);
 	            break;
-	        case vbaParser.INTEGER:
+	        case 88:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 2532;
 	            this.match(vbaParser.INTEGER);
 	            break;
-	        case vbaParser.LONG:
+	        case 92:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 2533;
 	            this.match(vbaParser.LONG);
 	            break;
-	        case vbaParser.SINGLE:
+	        case 159:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 2534;
 	            this.match(vbaParser.SINGLE);
 	            break;
-	        case vbaParser.STRING:
+	        case 164:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 2535;
 	            this.match(vbaParser.STRING);
@@ -10209,7 +10205,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2537;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2536;
 	                    this.match(vbaParser.WS);
 	                }
@@ -10219,7 +10215,7 @@ export default class vbaParser extends antlr4.Parser {
 	                this.state = 2541;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===vbaParser.WS) {
+	                if(_la===219) {
 	                    this.state = 2540;
 	                    this.match(vbaParser.WS);
 	                }
@@ -10229,7 +10225,7 @@ export default class vbaParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case vbaParser.VARIANT:
+	        case 177:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 2546;
 	            this.match(vbaParser.VARIANT);
@@ -10260,7 +10256,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2564;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.IDENTIFIER:
+	        case 220:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2549;
 	            this.match(vbaParser.IDENTIFIER);
@@ -10272,154 +10268,154 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2552;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case vbaParser.ACCESS:
-	                    case vbaParser.ADDRESSOF:
-	                    case vbaParser.ALIAS:
-	                    case vbaParser.AND:
-	                    case vbaParser.ATTRIBUTE:
-	                    case vbaParser.APPACTIVATE:
-	                    case vbaParser.APPEND:
-	                    case vbaParser.AS:
-	                    case vbaParser.BEGIN:
-	                    case vbaParser.BEEP:
-	                    case vbaParser.BINARY:
-	                    case vbaParser.BOOLEAN:
-	                    case vbaParser.BYVAL:
-	                    case vbaParser.BYREF:
-	                    case vbaParser.BYTE:
-	                    case vbaParser.CALL:
-	                    case vbaParser.CASE:
-	                    case vbaParser.CHDIR:
-	                    case vbaParser.CHDRIVE:
-	                    case vbaParser.CLASS:
-	                    case vbaParser.CLOSE:
-	                    case vbaParser.COLLECTION:
-	                    case vbaParser.CONST:
-	                    case vbaParser.DATABASE:
-	                    case vbaParser.DATE:
-	                    case vbaParser.DECLARE:
-	                    case vbaParser.DEFBOOL:
-	                    case vbaParser.DEFBYTE:
-	                    case vbaParser.DEFDATE:
-	                    case vbaParser.DEFDBL:
-	                    case vbaParser.DEFDEC:
-	                    case vbaParser.DEFCUR:
-	                    case vbaParser.DEFINT:
-	                    case vbaParser.DEFLNG:
-	                    case vbaParser.DEFOBJ:
-	                    case vbaParser.DEFSNG:
-	                    case vbaParser.DEFSTR:
-	                    case vbaParser.DEFVAR:
-	                    case vbaParser.DELETESETTING:
-	                    case vbaParser.DIM:
-	                    case vbaParser.DO:
-	                    case vbaParser.DOUBLE:
-	                    case vbaParser.EACH:
-	                    case vbaParser.ELSE:
-	                    case vbaParser.ELSEIF:
-	                    case vbaParser.END:
-	                    case vbaParser.ENUM:
-	                    case vbaParser.EQV:
-	                    case vbaParser.ERASE:
-	                    case vbaParser.ERROR:
-	                    case vbaParser.EVENT:
-	                    case vbaParser.FALSE:
-	                    case vbaParser.FILECOPY:
-	                    case vbaParser.FRIEND:
-	                    case vbaParser.FOR:
-	                    case vbaParser.FUNCTION:
-	                    case vbaParser.GET:
-	                    case vbaParser.GLOBAL:
-	                    case vbaParser.GOSUB:
-	                    case vbaParser.GOTO:
-	                    case vbaParser.IF:
-	                    case vbaParser.IMP:
-	                    case vbaParser.IMPLEMENTS:
-	                    case vbaParser.IN:
-	                    case vbaParser.INPUT:
-	                    case vbaParser.IS:
-	                    case vbaParser.INTEGER:
-	                    case vbaParser.KILL:
-	                    case vbaParser.LOAD:
-	                    case vbaParser.LOCK:
-	                    case vbaParser.LONG:
-	                    case vbaParser.LOOP:
-	                    case vbaParser.LEN:
-	                    case vbaParser.LET:
-	                    case vbaParser.LIB:
-	                    case vbaParser.LIKE:
-	                    case vbaParser.LSET:
-	                    case vbaParser.ME:
-	                    case vbaParser.MID:
-	                    case vbaParser.MKDIR:
-	                    case vbaParser.MOD:
-	                    case vbaParser.NAME:
-	                    case vbaParser.NEXT:
-	                    case vbaParser.NEW:
-	                    case vbaParser.NOT:
-	                    case vbaParser.NOTHING:
-	                    case vbaParser.NULL_:
-	                    case vbaParser.ON:
-	                    case vbaParser.OPEN:
-	                    case vbaParser.OPTIONAL:
-	                    case vbaParser.OR:
-	                    case vbaParser.OUTPUT:
-	                    case vbaParser.PARAMARRAY:
-	                    case vbaParser.PRESERVE:
-	                    case vbaParser.PRINT:
-	                    case vbaParser.PRIVATE:
-	                    case vbaParser.PUBLIC:
-	                    case vbaParser.PUT:
-	                    case vbaParser.RANDOM:
-	                    case vbaParser.RANDOMIZE:
-	                    case vbaParser.RAISEEVENT:
-	                    case vbaParser.READ:
-	                    case vbaParser.REDIM:
-	                    case vbaParser.REM:
-	                    case vbaParser.RESET:
-	                    case vbaParser.RESUME:
-	                    case vbaParser.RETURN:
-	                    case vbaParser.RMDIR:
-	                    case vbaParser.RSET:
-	                    case vbaParser.SAVEPICTURE:
-	                    case vbaParser.SAVESETTING:
-	                    case vbaParser.SEEK:
-	                    case vbaParser.SELECT:
-	                    case vbaParser.SENDKEYS:
-	                    case vbaParser.SET:
-	                    case vbaParser.SETATTR:
-	                    case vbaParser.SHARED:
-	                    case vbaParser.SINGLE:
-	                    case vbaParser.SPC:
-	                    case vbaParser.STATIC:
-	                    case vbaParser.STEP:
-	                    case vbaParser.STOP:
-	                    case vbaParser.STRING:
-	                    case vbaParser.SUB:
-	                    case vbaParser.TAB:
-	                    case vbaParser.TEXT:
-	                    case vbaParser.THEN:
-	                    case vbaParser.TIME:
-	                    case vbaParser.TO:
-	                    case vbaParser.TRUE:
-	                    case vbaParser.TYPE:
-	                    case vbaParser.TYPEOF:
-	                    case vbaParser.UNLOAD:
-	                    case vbaParser.UNLOCK:
-	                    case vbaParser.UNTIL:
-	                    case vbaParser.VARIANT:
-	                    case vbaParser.VERSION:
-	                    case vbaParser.WEND:
-	                    case vbaParser.WHILE:
-	                    case vbaParser.WIDTH:
-	                    case vbaParser.WITH:
-	                    case vbaParser.WITHEVENTS:
-	                    case vbaParser.WRITE:
-	                    case vbaParser.XOR:
+	                    case 9:
+	                    case 10:
+	                    case 11:
+	                    case 12:
+	                    case 13:
+	                    case 14:
+	                    case 15:
+	                    case 16:
+	                    case 17:
+	                    case 18:
+	                    case 19:
+	                    case 20:
+	                    case 21:
+	                    case 22:
+	                    case 23:
+	                    case 24:
+	                    case 25:
+	                    case 26:
+	                    case 27:
+	                    case 28:
+	                    case 29:
+	                    case 30:
+	                    case 31:
+	                    case 32:
+	                    case 33:
+	                    case 34:
+	                    case 35:
+	                    case 36:
+	                    case 37:
+	                    case 38:
+	                    case 39:
+	                    case 40:
+	                    case 41:
+	                    case 42:
+	                    case 43:
+	                    case 44:
+	                    case 45:
+	                    case 46:
+	                    case 47:
+	                    case 48:
+	                    case 49:
+	                    case 50:
+	                    case 51:
+	                    case 52:
+	                    case 53:
+	                    case 62:
+	                    case 63:
+	                    case 64:
+	                    case 65:
+	                    case 66:
+	                    case 67:
+	                    case 73:
+	                    case 74:
+	                    case 75:
+	                    case 76:
+	                    case 77:
+	                    case 78:
+	                    case 79:
+	                    case 80:
+	                    case 81:
+	                    case 82:
+	                    case 83:
+	                    case 84:
+	                    case 85:
+	                    case 86:
+	                    case 87:
+	                    case 88:
+	                    case 89:
+	                    case 90:
+	                    case 91:
+	                    case 92:
+	                    case 93:
+	                    case 94:
+	                    case 95:
+	                    case 96:
+	                    case 97:
+	                    case 102:
+	                    case 108:
+	                    case 109:
+	                    case 110:
+	                    case 111:
+	                    case 112:
+	                    case 113:
+	                    case 114:
+	                    case 115:
+	                    case 116:
+	                    case 117:
+	                    case 118:
+	                    case 121:
+	                    case 122:
+	                    case 127:
+	                    case 128:
+	                    case 129:
+	                    case 130:
+	                    case 131:
+	                    case 132:
+	                    case 137:
+	                    case 138:
+	                    case 139:
+	                    case 140:
+	                    case 141:
+	                    case 142:
+	                    case 144:
+	                    case 145:
+	                    case 146:
+	                    case 147:
+	                    case 148:
+	                    case 149:
+	                    case 150:
+	                    case 151:
+	                    case 152:
+	                    case 153:
+	                    case 154:
+	                    case 155:
+	                    case 156:
+	                    case 157:
+	                    case 158:
+	                    case 159:
+	                    case 160:
+	                    case 161:
+	                    case 162:
+	                    case 163:
+	                    case 164:
+	                    case 165:
+	                    case 166:
+	                    case 167:
+	                    case 168:
+	                    case 169:
+	                    case 170:
+	                    case 171:
+	                    case 172:
+	                    case 173:
+	                    case 174:
+	                    case 175:
+	                    case 176:
+	                    case 177:
+	                    case 178:
+	                    case 179:
+	                    case 180:
+	                    case 181:
+	                    case 182:
+	                    case 183:
+	                    case 184:
+	                    case 185:
 	                        this.state = 2550;
 	                        this.ambiguousKeyword();
 	                        break;
-	                    case vbaParser.IDENTIFIER:
+	                    case 220:
 	                        this.state = 2551;
 	                        this.match(vbaParser.IDENTIFIER);
 	                        break;
@@ -10433,150 +10429,150 @@ export default class vbaParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case vbaParser.ACCESS:
-	        case vbaParser.ADDRESSOF:
-	        case vbaParser.ALIAS:
-	        case vbaParser.AND:
-	        case vbaParser.ATTRIBUTE:
-	        case vbaParser.APPACTIVATE:
-	        case vbaParser.APPEND:
-	        case vbaParser.AS:
-	        case vbaParser.BEGIN:
-	        case vbaParser.BEEP:
-	        case vbaParser.BINARY:
-	        case vbaParser.BOOLEAN:
-	        case vbaParser.BYVAL:
-	        case vbaParser.BYREF:
-	        case vbaParser.BYTE:
-	        case vbaParser.CALL:
-	        case vbaParser.CASE:
-	        case vbaParser.CHDIR:
-	        case vbaParser.CHDRIVE:
-	        case vbaParser.CLASS:
-	        case vbaParser.CLOSE:
-	        case vbaParser.COLLECTION:
-	        case vbaParser.CONST:
-	        case vbaParser.DATABASE:
-	        case vbaParser.DATE:
-	        case vbaParser.DECLARE:
-	        case vbaParser.DEFBOOL:
-	        case vbaParser.DEFBYTE:
-	        case vbaParser.DEFDATE:
-	        case vbaParser.DEFDBL:
-	        case vbaParser.DEFDEC:
-	        case vbaParser.DEFCUR:
-	        case vbaParser.DEFINT:
-	        case vbaParser.DEFLNG:
-	        case vbaParser.DEFOBJ:
-	        case vbaParser.DEFSNG:
-	        case vbaParser.DEFSTR:
-	        case vbaParser.DEFVAR:
-	        case vbaParser.DELETESETTING:
-	        case vbaParser.DIM:
-	        case vbaParser.DO:
-	        case vbaParser.DOUBLE:
-	        case vbaParser.EACH:
-	        case vbaParser.ELSE:
-	        case vbaParser.ELSEIF:
-	        case vbaParser.END:
-	        case vbaParser.ENUM:
-	        case vbaParser.EQV:
-	        case vbaParser.ERASE:
-	        case vbaParser.ERROR:
-	        case vbaParser.EVENT:
-	        case vbaParser.FALSE:
-	        case vbaParser.FILECOPY:
-	        case vbaParser.FRIEND:
-	        case vbaParser.FOR:
-	        case vbaParser.FUNCTION:
-	        case vbaParser.GET:
-	        case vbaParser.GLOBAL:
-	        case vbaParser.GOSUB:
-	        case vbaParser.GOTO:
-	        case vbaParser.IF:
-	        case vbaParser.IMP:
-	        case vbaParser.IMPLEMENTS:
-	        case vbaParser.IN:
-	        case vbaParser.INPUT:
-	        case vbaParser.IS:
-	        case vbaParser.INTEGER:
-	        case vbaParser.KILL:
-	        case vbaParser.LOAD:
-	        case vbaParser.LOCK:
-	        case vbaParser.LONG:
-	        case vbaParser.LOOP:
-	        case vbaParser.LEN:
-	        case vbaParser.LET:
-	        case vbaParser.LIB:
-	        case vbaParser.LIKE:
-	        case vbaParser.LSET:
-	        case vbaParser.ME:
-	        case vbaParser.MID:
-	        case vbaParser.MKDIR:
-	        case vbaParser.MOD:
-	        case vbaParser.NAME:
-	        case vbaParser.NEXT:
-	        case vbaParser.NEW:
-	        case vbaParser.NOT:
-	        case vbaParser.NOTHING:
-	        case vbaParser.NULL_:
-	        case vbaParser.ON:
-	        case vbaParser.OPEN:
-	        case vbaParser.OPTIONAL:
-	        case vbaParser.OR:
-	        case vbaParser.OUTPUT:
-	        case vbaParser.PARAMARRAY:
-	        case vbaParser.PRESERVE:
-	        case vbaParser.PRINT:
-	        case vbaParser.PRIVATE:
-	        case vbaParser.PUBLIC:
-	        case vbaParser.PUT:
-	        case vbaParser.RANDOM:
-	        case vbaParser.RANDOMIZE:
-	        case vbaParser.RAISEEVENT:
-	        case vbaParser.READ:
-	        case vbaParser.REDIM:
-	        case vbaParser.REM:
-	        case vbaParser.RESET:
-	        case vbaParser.RESUME:
-	        case vbaParser.RETURN:
-	        case vbaParser.RMDIR:
-	        case vbaParser.RSET:
-	        case vbaParser.SAVEPICTURE:
-	        case vbaParser.SAVESETTING:
-	        case vbaParser.SEEK:
-	        case vbaParser.SELECT:
-	        case vbaParser.SENDKEYS:
-	        case vbaParser.SET:
-	        case vbaParser.SETATTR:
-	        case vbaParser.SHARED:
-	        case vbaParser.SINGLE:
-	        case vbaParser.SPC:
-	        case vbaParser.STATIC:
-	        case vbaParser.STEP:
-	        case vbaParser.STOP:
-	        case vbaParser.STRING:
-	        case vbaParser.SUB:
-	        case vbaParser.TAB:
-	        case vbaParser.TEXT:
-	        case vbaParser.THEN:
-	        case vbaParser.TIME:
-	        case vbaParser.TO:
-	        case vbaParser.TRUE:
-	        case vbaParser.TYPE:
-	        case vbaParser.TYPEOF:
-	        case vbaParser.UNLOAD:
-	        case vbaParser.UNLOCK:
-	        case vbaParser.UNTIL:
-	        case vbaParser.VARIANT:
-	        case vbaParser.VERSION:
-	        case vbaParser.WEND:
-	        case vbaParser.WHILE:
-	        case vbaParser.WIDTH:
-	        case vbaParser.WITH:
-	        case vbaParser.WITHEVENTS:
-	        case vbaParser.WRITE:
-	        case vbaParser.XOR:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 102:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 121:
+	        case 122:
+	        case 127:
+	        case 128:
+	        case 129:
+	        case 130:
+	        case 131:
+	        case 132:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 142:
+	        case 144:
+	        case 145:
+	        case 146:
+	        case 147:
+	        case 148:
+	        case 149:
+	        case 150:
+	        case 151:
+	        case 152:
+	        case 153:
+	        case 154:
+	        case 155:
+	        case 156:
+	        case 157:
+	        case 158:
+	        case 159:
+	        case 160:
+	        case 161:
+	        case 162:
+	        case 163:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 167:
+	        case 168:
+	        case 169:
+	        case 170:
+	        case 171:
+	        case 172:
+	        case 173:
+	        case 174:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 178:
+	        case 179:
+	        case 180:
+	        case 181:
+	        case 182:
+	        case 183:
+	        case 184:
+	        case 185:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2557;
 	            this.ambiguousKeyword();
@@ -10589,154 +10585,154 @@ export default class vbaParser extends antlr4.Parser {
 	            		this.state = 2560;
 	            		this._errHandler.sync(this);
 	            		switch(this._input.LA(1)) {
-	            		case vbaParser.ACCESS:
-	            		case vbaParser.ADDRESSOF:
-	            		case vbaParser.ALIAS:
-	            		case vbaParser.AND:
-	            		case vbaParser.ATTRIBUTE:
-	            		case vbaParser.APPACTIVATE:
-	            		case vbaParser.APPEND:
-	            		case vbaParser.AS:
-	            		case vbaParser.BEGIN:
-	            		case vbaParser.BEEP:
-	            		case vbaParser.BINARY:
-	            		case vbaParser.BOOLEAN:
-	            		case vbaParser.BYVAL:
-	            		case vbaParser.BYREF:
-	            		case vbaParser.BYTE:
-	            		case vbaParser.CALL:
-	            		case vbaParser.CASE:
-	            		case vbaParser.CHDIR:
-	            		case vbaParser.CHDRIVE:
-	            		case vbaParser.CLASS:
-	            		case vbaParser.CLOSE:
-	            		case vbaParser.COLLECTION:
-	            		case vbaParser.CONST:
-	            		case vbaParser.DATABASE:
-	            		case vbaParser.DATE:
-	            		case vbaParser.DECLARE:
-	            		case vbaParser.DEFBOOL:
-	            		case vbaParser.DEFBYTE:
-	            		case vbaParser.DEFDATE:
-	            		case vbaParser.DEFDBL:
-	            		case vbaParser.DEFDEC:
-	            		case vbaParser.DEFCUR:
-	            		case vbaParser.DEFINT:
-	            		case vbaParser.DEFLNG:
-	            		case vbaParser.DEFOBJ:
-	            		case vbaParser.DEFSNG:
-	            		case vbaParser.DEFSTR:
-	            		case vbaParser.DEFVAR:
-	            		case vbaParser.DELETESETTING:
-	            		case vbaParser.DIM:
-	            		case vbaParser.DO:
-	            		case vbaParser.DOUBLE:
-	            		case vbaParser.EACH:
-	            		case vbaParser.ELSE:
-	            		case vbaParser.ELSEIF:
-	            		case vbaParser.END:
-	            		case vbaParser.ENUM:
-	            		case vbaParser.EQV:
-	            		case vbaParser.ERASE:
-	            		case vbaParser.ERROR:
-	            		case vbaParser.EVENT:
-	            		case vbaParser.FALSE:
-	            		case vbaParser.FILECOPY:
-	            		case vbaParser.FRIEND:
-	            		case vbaParser.FOR:
-	            		case vbaParser.FUNCTION:
-	            		case vbaParser.GET:
-	            		case vbaParser.GLOBAL:
-	            		case vbaParser.GOSUB:
-	            		case vbaParser.GOTO:
-	            		case vbaParser.IF:
-	            		case vbaParser.IMP:
-	            		case vbaParser.IMPLEMENTS:
-	            		case vbaParser.IN:
-	            		case vbaParser.INPUT:
-	            		case vbaParser.IS:
-	            		case vbaParser.INTEGER:
-	            		case vbaParser.KILL:
-	            		case vbaParser.LOAD:
-	            		case vbaParser.LOCK:
-	            		case vbaParser.LONG:
-	            		case vbaParser.LOOP:
-	            		case vbaParser.LEN:
-	            		case vbaParser.LET:
-	            		case vbaParser.LIB:
-	            		case vbaParser.LIKE:
-	            		case vbaParser.LSET:
-	            		case vbaParser.ME:
-	            		case vbaParser.MID:
-	            		case vbaParser.MKDIR:
-	            		case vbaParser.MOD:
-	            		case vbaParser.NAME:
-	            		case vbaParser.NEXT:
-	            		case vbaParser.NEW:
-	            		case vbaParser.NOT:
-	            		case vbaParser.NOTHING:
-	            		case vbaParser.NULL_:
-	            		case vbaParser.ON:
-	            		case vbaParser.OPEN:
-	            		case vbaParser.OPTIONAL:
-	            		case vbaParser.OR:
-	            		case vbaParser.OUTPUT:
-	            		case vbaParser.PARAMARRAY:
-	            		case vbaParser.PRESERVE:
-	            		case vbaParser.PRINT:
-	            		case vbaParser.PRIVATE:
-	            		case vbaParser.PUBLIC:
-	            		case vbaParser.PUT:
-	            		case vbaParser.RANDOM:
-	            		case vbaParser.RANDOMIZE:
-	            		case vbaParser.RAISEEVENT:
-	            		case vbaParser.READ:
-	            		case vbaParser.REDIM:
-	            		case vbaParser.REM:
-	            		case vbaParser.RESET:
-	            		case vbaParser.RESUME:
-	            		case vbaParser.RETURN:
-	            		case vbaParser.RMDIR:
-	            		case vbaParser.RSET:
-	            		case vbaParser.SAVEPICTURE:
-	            		case vbaParser.SAVESETTING:
-	            		case vbaParser.SEEK:
-	            		case vbaParser.SELECT:
-	            		case vbaParser.SENDKEYS:
-	            		case vbaParser.SET:
-	            		case vbaParser.SETATTR:
-	            		case vbaParser.SHARED:
-	            		case vbaParser.SINGLE:
-	            		case vbaParser.SPC:
-	            		case vbaParser.STATIC:
-	            		case vbaParser.STEP:
-	            		case vbaParser.STOP:
-	            		case vbaParser.STRING:
-	            		case vbaParser.SUB:
-	            		case vbaParser.TAB:
-	            		case vbaParser.TEXT:
-	            		case vbaParser.THEN:
-	            		case vbaParser.TIME:
-	            		case vbaParser.TO:
-	            		case vbaParser.TRUE:
-	            		case vbaParser.TYPE:
-	            		case vbaParser.TYPEOF:
-	            		case vbaParser.UNLOAD:
-	            		case vbaParser.UNLOCK:
-	            		case vbaParser.UNTIL:
-	            		case vbaParser.VARIANT:
-	            		case vbaParser.VERSION:
-	            		case vbaParser.WEND:
-	            		case vbaParser.WHILE:
-	            		case vbaParser.WIDTH:
-	            		case vbaParser.WITH:
-	            		case vbaParser.WITHEVENTS:
-	            		case vbaParser.WRITE:
-	            		case vbaParser.XOR:
+	            		case 9:
+	            		case 10:
+	            		case 11:
+	            		case 12:
+	            		case 13:
+	            		case 14:
+	            		case 15:
+	            		case 16:
+	            		case 17:
+	            		case 18:
+	            		case 19:
+	            		case 20:
+	            		case 21:
+	            		case 22:
+	            		case 23:
+	            		case 24:
+	            		case 25:
+	            		case 26:
+	            		case 27:
+	            		case 28:
+	            		case 29:
+	            		case 30:
+	            		case 31:
+	            		case 32:
+	            		case 33:
+	            		case 34:
+	            		case 35:
+	            		case 36:
+	            		case 37:
+	            		case 38:
+	            		case 39:
+	            		case 40:
+	            		case 41:
+	            		case 42:
+	            		case 43:
+	            		case 44:
+	            		case 45:
+	            		case 46:
+	            		case 47:
+	            		case 48:
+	            		case 49:
+	            		case 50:
+	            		case 51:
+	            		case 52:
+	            		case 53:
+	            		case 62:
+	            		case 63:
+	            		case 64:
+	            		case 65:
+	            		case 66:
+	            		case 67:
+	            		case 73:
+	            		case 74:
+	            		case 75:
+	            		case 76:
+	            		case 77:
+	            		case 78:
+	            		case 79:
+	            		case 80:
+	            		case 81:
+	            		case 82:
+	            		case 83:
+	            		case 84:
+	            		case 85:
+	            		case 86:
+	            		case 87:
+	            		case 88:
+	            		case 89:
+	            		case 90:
+	            		case 91:
+	            		case 92:
+	            		case 93:
+	            		case 94:
+	            		case 95:
+	            		case 96:
+	            		case 97:
+	            		case 102:
+	            		case 108:
+	            		case 109:
+	            		case 110:
+	            		case 111:
+	            		case 112:
+	            		case 113:
+	            		case 114:
+	            		case 115:
+	            		case 116:
+	            		case 117:
+	            		case 118:
+	            		case 121:
+	            		case 122:
+	            		case 127:
+	            		case 128:
+	            		case 129:
+	            		case 130:
+	            		case 131:
+	            		case 132:
+	            		case 137:
+	            		case 138:
+	            		case 139:
+	            		case 140:
+	            		case 141:
+	            		case 142:
+	            		case 144:
+	            		case 145:
+	            		case 146:
+	            		case 147:
+	            		case 148:
+	            		case 149:
+	            		case 150:
+	            		case 151:
+	            		case 152:
+	            		case 153:
+	            		case 154:
+	            		case 155:
+	            		case 156:
+	            		case 157:
+	            		case 158:
+	            		case 159:
+	            		case 160:
+	            		case 161:
+	            		case 162:
+	            		case 163:
+	            		case 164:
+	            		case 165:
+	            		case 166:
+	            		case 167:
+	            		case 168:
+	            		case 169:
+	            		case 170:
+	            		case 171:
+	            		case 172:
+	            		case 173:
+	            		case 174:
+	            		case 175:
+	            		case 176:
+	            		case 177:
+	            		case 178:
+	            		case 179:
+	            		case 180:
+	            		case 181:
+	            		case 182:
+	            		case 183:
+	            		case 184:
+	            		case 185:
 	            		    this.state = 2558;
 	            		    this.ambiguousKeyword();
 	            		    break;
-	            		case vbaParser.IDENTIFIER:
+	            		case 220:
 	            		    this.state = 2559;
 	            		    this.match(vbaParser.IDENTIFIER);
 	            		    break;
@@ -10774,12 +10770,12 @@ export default class vbaParser extends antlr4.Parser {
 	comparisonOperator() {
 	    let localctx = new ComparisonOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 266, vbaParser.RULE_comparisonOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2566;
 	        _la = this._input.LA(1);
-	        if(!(_la===vbaParser.IS || _la===vbaParser.LIKE || ((((_la - 189)) & ~0x1f) == 0 && ((1 << (_la - 189)) & ((1 << (vbaParser.EQ - 189)) | (1 << (vbaParser.GEQ - 189)) | (1 << (vbaParser.GT - 189)) | (1 << (vbaParser.LEQ - 189)) | (1 << (vbaParser.LT - 189)) | (1 << (vbaParser.NEQ - 189)))) !== 0))) {
+	        if(!(_la===87 || _la===97 || ((((_la - 189)) & ~0x1f) === 0 && ((1 << (_la - 189)) & 559) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -10805,7 +10801,7 @@ export default class vbaParser extends antlr4.Parser {
 	complexType() {
 	    let localctx = new ComplexTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 268, vbaParser.RULE_complexType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2568;
@@ -10817,7 +10813,7 @@ export default class vbaParser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 2569;
 	                _la = this._input.LA(1);
-	                if(!(_la===vbaParser.T__3 || _la===vbaParser.T__4)) {
+	                if(!(_la===4 || _la===5)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -10851,7 +10847,7 @@ export default class vbaParser extends antlr4.Parser {
 	fieldLength() {
 	    let localctx = new FieldLengthContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 270, vbaParser.RULE_fieldLength);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2576;
@@ -10859,7 +10855,7 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2578;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2577;
 	            this.match(vbaParser.WS);
 	        }
@@ -10867,155 +10863,155 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2582;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.INTEGERLITERAL:
+	        case 209:
 	            this.state = 2580;
 	            this.match(vbaParser.INTEGERLITERAL);
 	            break;
-	        case vbaParser.ACCESS:
-	        case vbaParser.ADDRESSOF:
-	        case vbaParser.ALIAS:
-	        case vbaParser.AND:
-	        case vbaParser.ATTRIBUTE:
-	        case vbaParser.APPACTIVATE:
-	        case vbaParser.APPEND:
-	        case vbaParser.AS:
-	        case vbaParser.BEGIN:
-	        case vbaParser.BEEP:
-	        case vbaParser.BINARY:
-	        case vbaParser.BOOLEAN:
-	        case vbaParser.BYVAL:
-	        case vbaParser.BYREF:
-	        case vbaParser.BYTE:
-	        case vbaParser.CALL:
-	        case vbaParser.CASE:
-	        case vbaParser.CHDIR:
-	        case vbaParser.CHDRIVE:
-	        case vbaParser.CLASS:
-	        case vbaParser.CLOSE:
-	        case vbaParser.COLLECTION:
-	        case vbaParser.CONST:
-	        case vbaParser.DATABASE:
-	        case vbaParser.DATE:
-	        case vbaParser.DECLARE:
-	        case vbaParser.DEFBOOL:
-	        case vbaParser.DEFBYTE:
-	        case vbaParser.DEFDATE:
-	        case vbaParser.DEFDBL:
-	        case vbaParser.DEFDEC:
-	        case vbaParser.DEFCUR:
-	        case vbaParser.DEFINT:
-	        case vbaParser.DEFLNG:
-	        case vbaParser.DEFOBJ:
-	        case vbaParser.DEFSNG:
-	        case vbaParser.DEFSTR:
-	        case vbaParser.DEFVAR:
-	        case vbaParser.DELETESETTING:
-	        case vbaParser.DIM:
-	        case vbaParser.DO:
-	        case vbaParser.DOUBLE:
-	        case vbaParser.EACH:
-	        case vbaParser.ELSE:
-	        case vbaParser.ELSEIF:
-	        case vbaParser.END:
-	        case vbaParser.ENUM:
-	        case vbaParser.EQV:
-	        case vbaParser.ERASE:
-	        case vbaParser.ERROR:
-	        case vbaParser.EVENT:
-	        case vbaParser.FALSE:
-	        case vbaParser.FILECOPY:
-	        case vbaParser.FRIEND:
-	        case vbaParser.FOR:
-	        case vbaParser.FUNCTION:
-	        case vbaParser.GET:
-	        case vbaParser.GLOBAL:
-	        case vbaParser.GOSUB:
-	        case vbaParser.GOTO:
-	        case vbaParser.IF:
-	        case vbaParser.IMP:
-	        case vbaParser.IMPLEMENTS:
-	        case vbaParser.IN:
-	        case vbaParser.INPUT:
-	        case vbaParser.IS:
-	        case vbaParser.INTEGER:
-	        case vbaParser.KILL:
-	        case vbaParser.LOAD:
-	        case vbaParser.LOCK:
-	        case vbaParser.LONG:
-	        case vbaParser.LOOP:
-	        case vbaParser.LEN:
-	        case vbaParser.LET:
-	        case vbaParser.LIB:
-	        case vbaParser.LIKE:
-	        case vbaParser.LSET:
-	        case vbaParser.ME:
-	        case vbaParser.MID:
-	        case vbaParser.MKDIR:
-	        case vbaParser.MOD:
-	        case vbaParser.NAME:
-	        case vbaParser.NEXT:
-	        case vbaParser.NEW:
-	        case vbaParser.NOT:
-	        case vbaParser.NOTHING:
-	        case vbaParser.NULL_:
-	        case vbaParser.ON:
-	        case vbaParser.OPEN:
-	        case vbaParser.OPTIONAL:
-	        case vbaParser.OR:
-	        case vbaParser.OUTPUT:
-	        case vbaParser.PARAMARRAY:
-	        case vbaParser.PRESERVE:
-	        case vbaParser.PRINT:
-	        case vbaParser.PRIVATE:
-	        case vbaParser.PUBLIC:
-	        case vbaParser.PUT:
-	        case vbaParser.RANDOM:
-	        case vbaParser.RANDOMIZE:
-	        case vbaParser.RAISEEVENT:
-	        case vbaParser.READ:
-	        case vbaParser.REDIM:
-	        case vbaParser.REM:
-	        case vbaParser.RESET:
-	        case vbaParser.RESUME:
-	        case vbaParser.RETURN:
-	        case vbaParser.RMDIR:
-	        case vbaParser.RSET:
-	        case vbaParser.SAVEPICTURE:
-	        case vbaParser.SAVESETTING:
-	        case vbaParser.SEEK:
-	        case vbaParser.SELECT:
-	        case vbaParser.SENDKEYS:
-	        case vbaParser.SET:
-	        case vbaParser.SETATTR:
-	        case vbaParser.SHARED:
-	        case vbaParser.SINGLE:
-	        case vbaParser.SPC:
-	        case vbaParser.STATIC:
-	        case vbaParser.STEP:
-	        case vbaParser.STOP:
-	        case vbaParser.STRING:
-	        case vbaParser.SUB:
-	        case vbaParser.TAB:
-	        case vbaParser.TEXT:
-	        case vbaParser.THEN:
-	        case vbaParser.TIME:
-	        case vbaParser.TO:
-	        case vbaParser.TRUE:
-	        case vbaParser.TYPE:
-	        case vbaParser.TYPEOF:
-	        case vbaParser.UNLOAD:
-	        case vbaParser.UNLOCK:
-	        case vbaParser.UNTIL:
-	        case vbaParser.VARIANT:
-	        case vbaParser.VERSION:
-	        case vbaParser.WEND:
-	        case vbaParser.WHILE:
-	        case vbaParser.WIDTH:
-	        case vbaParser.WITH:
-	        case vbaParser.WITHEVENTS:
-	        case vbaParser.WRITE:
-	        case vbaParser.XOR:
-	        case vbaParser.IDENTIFIER:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 102:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 121:
+	        case 122:
+	        case 127:
+	        case 128:
+	        case 129:
+	        case 130:
+	        case 131:
+	        case 132:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 142:
+	        case 144:
+	        case 145:
+	        case 146:
+	        case 147:
+	        case 148:
+	        case 149:
+	        case 150:
+	        case 151:
+	        case 152:
+	        case 153:
+	        case 154:
+	        case 155:
+	        case 156:
+	        case 157:
+	        case 158:
+	        case 159:
+	        case 160:
+	        case 161:
+	        case 162:
+	        case 163:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 167:
+	        case 168:
+	        case 169:
+	        case 170:
+	        case 171:
+	        case 172:
+	        case 173:
+	        case 174:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 178:
+	        case 179:
+	        case 180:
+	        case 181:
+	        case 182:
+	        case 183:
+	        case 184:
+	        case 185:
+	        case 220:
 	            this.state = 2581;
 	            this.ambiguousIdentifier();
 	            break;
@@ -11041,7 +11037,7 @@ export default class vbaParser extends antlr4.Parser {
 	letterrange() {
 	    let localctx = new LetterrangeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 272, vbaParser.RULE_letterrange);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2584;
@@ -11053,7 +11049,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2586;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2585;
 	                this.match(vbaParser.WS);
 	            }
@@ -11063,7 +11059,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2590;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2589;
 	                this.match(vbaParser.WS);
 	            }
@@ -11116,12 +11112,12 @@ export default class vbaParser extends antlr4.Parser {
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 276, vbaParser.RULE_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2598;
 	        _la = this._input.LA(1);
-	        if(!(_la===vbaParser.FALSE || _la===vbaParser.NOTHING || _la===vbaParser.NULL_ || _la===vbaParser.TRUE || ((((_la - 205)) & ~0x1f) == 0 && ((1 << (_la - 205)) & ((1 << (vbaParser.STRINGLITERAL - 205)) | (1 << (vbaParser.OCTLITERAL - 205)) | (1 << (vbaParser.HEXLITERAL - 205)) | (1 << (vbaParser.SHORTLITERAL - 205)) | (1 << (vbaParser.INTEGERLITERAL - 205)) | (1 << (vbaParser.DOUBLELITERAL - 205)) | (1 << (vbaParser.DATELITERAL - 205)))) !== 0))) {
+	        if(!(_la===73 || _la===116 || _la===117 || _la===171 || ((((_la - 205)) & ~0x1f) === 0 && ((1 << (_la - 205)) & 127) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -11147,7 +11143,7 @@ export default class vbaParser extends antlr4.Parser {
 	type_() {
 	    let localctx = new Type_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 278, vbaParser.RULE_type_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2602;
@@ -11172,7 +11168,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2605;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2604;
 	                this.match(vbaParser.WS);
 	            }
@@ -11182,7 +11178,7 @@ export default class vbaParser extends antlr4.Parser {
 	            this.state = 2609;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vbaParser.WS) {
+	            if(_la===219) {
 	                this.state = 2608;
 	                this.match(vbaParser.WS);
 	            }
@@ -11210,12 +11206,12 @@ export default class vbaParser extends antlr4.Parser {
 	typeHint() {
 	    let localctx = new TypeHintContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 280, vbaParser.RULE_typeHint);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2614;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.T__2) | (1 << vbaParser.T__4) | (1 << vbaParser.T__5) | (1 << vbaParser.T__6) | (1 << vbaParser.T__7))) !== 0) || _la===vbaParser.AMPERSAND)) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 488) !== 0) || _la===186)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -11241,12 +11237,12 @@ export default class vbaParser extends antlr4.Parser {
 	visibility() {
 	    let localctx = new VisibilityContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 282, vbaParser.RULE_visibility);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2616;
 	        _la = this._input.LA(1);
-	        if(!(_la===vbaParser.FRIEND || _la===vbaParser.GLOBAL || _la===vbaParser.PRIVATE || _la===vbaParser.PUBLIC)) {
+	        if(!(_la===75 || _la===79 || _la===132 || _la===137)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -11272,12 +11268,12 @@ export default class vbaParser extends antlr4.Parser {
 	ambiguousKeyword() {
 	    let localctx = new AmbiguousKeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 284, vbaParser.RULE_ambiguousKeyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2618;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vbaParser.ACCESS) | (1 << vbaParser.ADDRESSOF) | (1 << vbaParser.ALIAS) | (1 << vbaParser.AND) | (1 << vbaParser.ATTRIBUTE) | (1 << vbaParser.APPACTIVATE) | (1 << vbaParser.APPEND) | (1 << vbaParser.AS) | (1 << vbaParser.BEGIN) | (1 << vbaParser.BEEP) | (1 << vbaParser.BINARY) | (1 << vbaParser.BOOLEAN) | (1 << vbaParser.BYVAL) | (1 << vbaParser.BYREF) | (1 << vbaParser.BYTE) | (1 << vbaParser.CALL) | (1 << vbaParser.CASE) | (1 << vbaParser.CHDIR) | (1 << vbaParser.CHDRIVE) | (1 << vbaParser.CLASS) | (1 << vbaParser.CLOSE) | (1 << vbaParser.COLLECTION) | (1 << vbaParser.CONST))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (vbaParser.DATABASE - 32)) | (1 << (vbaParser.DATE - 32)) | (1 << (vbaParser.DECLARE - 32)) | (1 << (vbaParser.DEFBOOL - 32)) | (1 << (vbaParser.DEFBYTE - 32)) | (1 << (vbaParser.DEFDATE - 32)) | (1 << (vbaParser.DEFDBL - 32)) | (1 << (vbaParser.DEFDEC - 32)) | (1 << (vbaParser.DEFCUR - 32)) | (1 << (vbaParser.DEFINT - 32)) | (1 << (vbaParser.DEFLNG - 32)) | (1 << (vbaParser.DEFOBJ - 32)) | (1 << (vbaParser.DEFSNG - 32)) | (1 << (vbaParser.DEFSTR - 32)) | (1 << (vbaParser.DEFVAR - 32)) | (1 << (vbaParser.DELETESETTING - 32)) | (1 << (vbaParser.DIM - 32)) | (1 << (vbaParser.DO - 32)) | (1 << (vbaParser.DOUBLE - 32)) | (1 << (vbaParser.EACH - 32)) | (1 << (vbaParser.ELSE - 32)) | (1 << (vbaParser.ELSEIF - 32)) | (1 << (vbaParser.END - 32)) | (1 << (vbaParser.ENUM - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (vbaParser.EQV - 64)) | (1 << (vbaParser.ERASE - 64)) | (1 << (vbaParser.ERROR - 64)) | (1 << (vbaParser.EVENT - 64)) | (1 << (vbaParser.FALSE - 64)) | (1 << (vbaParser.FILECOPY - 64)) | (1 << (vbaParser.FRIEND - 64)) | (1 << (vbaParser.FOR - 64)) | (1 << (vbaParser.FUNCTION - 64)) | (1 << (vbaParser.GET - 64)) | (1 << (vbaParser.GLOBAL - 64)) | (1 << (vbaParser.GOSUB - 64)) | (1 << (vbaParser.GOTO - 64)) | (1 << (vbaParser.IF - 64)) | (1 << (vbaParser.IMP - 64)) | (1 << (vbaParser.IMPLEMENTS - 64)) | (1 << (vbaParser.IN - 64)) | (1 << (vbaParser.INPUT - 64)) | (1 << (vbaParser.IS - 64)) | (1 << (vbaParser.INTEGER - 64)) | (1 << (vbaParser.KILL - 64)) | (1 << (vbaParser.LOAD - 64)) | (1 << (vbaParser.LOCK - 64)) | (1 << (vbaParser.LONG - 64)) | (1 << (vbaParser.LOOP - 64)) | (1 << (vbaParser.LEN - 64)) | (1 << (vbaParser.LET - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (vbaParser.LIB - 96)) | (1 << (vbaParser.LIKE - 96)) | (1 << (vbaParser.LSET - 96)) | (1 << (vbaParser.ME - 96)) | (1 << (vbaParser.MID - 96)) | (1 << (vbaParser.MKDIR - 96)) | (1 << (vbaParser.MOD - 96)) | (1 << (vbaParser.NAME - 96)) | (1 << (vbaParser.NEXT - 96)) | (1 << (vbaParser.NEW - 96)) | (1 << (vbaParser.NOT - 96)) | (1 << (vbaParser.NOTHING - 96)) | (1 << (vbaParser.NULL_ - 96)) | (1 << (vbaParser.ON - 96)) | (1 << (vbaParser.OPEN - 96)) | (1 << (vbaParser.OPTIONAL - 96)) | (1 << (vbaParser.OR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (vbaParser.OUTPUT - 128)) | (1 << (vbaParser.PARAMARRAY - 128)) | (1 << (vbaParser.PRESERVE - 128)) | (1 << (vbaParser.PRINT - 128)) | (1 << (vbaParser.PRIVATE - 128)) | (1 << (vbaParser.PUBLIC - 128)) | (1 << (vbaParser.PUT - 128)) | (1 << (vbaParser.RANDOM - 128)) | (1 << (vbaParser.RANDOMIZE - 128)) | (1 << (vbaParser.RAISEEVENT - 128)) | (1 << (vbaParser.READ - 128)) | (1 << (vbaParser.REDIM - 128)) | (1 << (vbaParser.REM - 128)) | (1 << (vbaParser.RESET - 128)) | (1 << (vbaParser.RESUME - 128)) | (1 << (vbaParser.RETURN - 128)) | (1 << (vbaParser.RMDIR - 128)) | (1 << (vbaParser.RSET - 128)) | (1 << (vbaParser.SAVEPICTURE - 128)) | (1 << (vbaParser.SAVESETTING - 128)) | (1 << (vbaParser.SEEK - 128)) | (1 << (vbaParser.SELECT - 128)) | (1 << (vbaParser.SENDKEYS - 128)) | (1 << (vbaParser.SET - 128)) | (1 << (vbaParser.SETATTR - 128)) | (1 << (vbaParser.SHARED - 128)) | (1 << (vbaParser.SINGLE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (vbaParser.SPC - 160)) | (1 << (vbaParser.STATIC - 160)) | (1 << (vbaParser.STEP - 160)) | (1 << (vbaParser.STOP - 160)) | (1 << (vbaParser.STRING - 160)) | (1 << (vbaParser.SUB - 160)) | (1 << (vbaParser.TAB - 160)) | (1 << (vbaParser.TEXT - 160)) | (1 << (vbaParser.THEN - 160)) | (1 << (vbaParser.TIME - 160)) | (1 << (vbaParser.TO - 160)) | (1 << (vbaParser.TRUE - 160)) | (1 << (vbaParser.TYPE - 160)) | (1 << (vbaParser.TYPEOF - 160)) | (1 << (vbaParser.UNLOAD - 160)) | (1 << (vbaParser.UNLOCK - 160)) | (1 << (vbaParser.UNTIL - 160)) | (1 << (vbaParser.VARIANT - 160)) | (1 << (vbaParser.VERSION - 160)) | (1 << (vbaParser.WEND - 160)) | (1 << (vbaParser.WHILE - 160)) | (1 << (vbaParser.WIDTH - 160)) | (1 << (vbaParser.WITH - 160)) | (1 << (vbaParser.WITHEVENTS - 160)) | (1 << (vbaParser.WRITE - 160)) | (1 << (vbaParser.XOR - 160)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294966784) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3225419775) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294966799) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 2256531523) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294934047) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 67108863) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -11349,13 +11345,13 @@ export default class vbaParser extends antlr4.Parser {
 	endOfLine() {
 	    let localctx = new EndOfLineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 290, vbaParser.RULE_endOfLine);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2625;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vbaParser.WS) {
+	        if(_la===219) {
 	            this.state = 2624;
 	            this.match(vbaParser.WS);
 	        }
@@ -11363,15 +11359,15 @@ export default class vbaParser extends antlr4.Parser {
 	        this.state = 2630;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vbaParser.NEWLINE:
+	        case 213:
 	            this.state = 2627;
 	            this.match(vbaParser.NEWLINE);
 	            break;
-	        case vbaParser.COMMENT:
+	        case 215:
 	            this.state = 2628;
 	            this.comment();
 	            break;
-	        case vbaParser.REMCOMMENT:
+	        case 214:
 	            this.state = 2629;
 	            this.remComment();
 	            break;
@@ -11405,7 +11401,7 @@ export default class vbaParser extends antlr4.Parser {
 	endOfStatement() {
 	    let localctx = new EndOfStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 292, vbaParser.RULE_endOfStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2645;
@@ -11426,7 +11422,7 @@ export default class vbaParser extends antlr4.Parser {
 	                    this.state = 2637;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===vbaParser.WS) {
+	                    if(_la===219) {
 	                        this.state = 2636;
 	                        this.match(vbaParser.WS);
 	                    }

@@ -1,4 +1,4 @@
-// Generated from ./unreal_angelscript/UnrealAngelscriptParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/unreal_angelscript/UnrealAngelscriptParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import UnrealAngelscriptParserListener from './UnrealAngelscriptParserListener.js';
@@ -603,10 +603,6 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
         this.symbolicNames = UnrealAngelscriptParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 14:
@@ -659,13 +655,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	script() {
 	    let localctx = new ScriptContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, UnrealAngelscriptParser.RULE_script);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 277;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.UFunction) | (1 << UnrealAngelscriptParser.Import) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Mixin) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.Namespace - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Private - 32)) | (1 << (UnrealAngelscriptParser.Protected - 32)) | (1 << (UnrealAngelscriptParser.Public - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Semi - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294946302) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3923519585) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247573) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 355) !== 0)) {
 	            this.state = 276;
 	            this.declarationseq();
 	        }
@@ -691,7 +687,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	annotationList() {
 	    let localctx = new AnnotationListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, UnrealAngelscriptParser.RULE_annotationList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 281;
@@ -699,7 +695,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 286;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Comma) {
+	        while(_la===103) {
 	            this.state = 282;
 	            this.match(UnrealAngelscriptParser.Comma);
 	            this.state = 283;
@@ -727,7 +723,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	annotation() {
 	    let localctx = new AnnotationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, UnrealAngelscriptParser.RULE_annotation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 289;
@@ -735,7 +731,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 292;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Assign) {
+	        if(_la===82) {
 	            this.state = 290;
 	            this.match(UnrealAngelscriptParser.Assign);
 	            this.state = 291;
@@ -761,12 +757,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	utype() {
 	    let localctx = new UtypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, UnrealAngelscriptParser.RULE_utype);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 294;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.UClass || _la===UnrealAngelscriptParser.UStruct)) {
+	        if(!(_la===7 || _la===8)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -778,7 +774,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 297;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Identifier) {
+	        if(_la===109) {
 	            this.state = 296;
 	            this.annotationList();
 	        }
@@ -804,7 +800,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	uproperty() {
 	    let localctx = new UpropertyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, UnrealAngelscriptParser.RULE_uproperty);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 301;
@@ -814,7 +810,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 304;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Identifier) {
+	        if(_la===109) {
 	            this.state = 303;
 	            this.annotationList();
 	        }
@@ -840,7 +836,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	ufunction() {
 	    let localctx = new UfunctionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, UnrealAngelscriptParser.RULE_ufunction);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 308;
@@ -850,7 +846,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 311;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Identifier) {
+	        if(_la===109) {
 	            this.state = 310;
 	            this.annotationList();
 	        }
@@ -876,7 +872,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	moduleImport() {
 	    let localctx = new ModuleImportContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, UnrealAngelscriptParser.RULE_moduleImport);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 337;
 	        this._errHandler.sync(this);
@@ -891,7 +887,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 321;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===UnrealAngelscriptParser.Dot) {
+	            while(_la===108) {
 	                this.state = 317;
 	                this.match(UnrealAngelscriptParser.Dot);
 	                this.state = 318;
@@ -921,7 +917,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 331;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Property || _la===UnrealAngelscriptParser.Final || _la===UnrealAngelscriptParser.Override) {
+	            if(_la===14 || _la===46 || _la===53) {
 	                this.state = 330;
 	                this.postFuncSpecifierSeq();
 	            }
@@ -983,7 +979,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	simpleTypeSpecifierList() {
 	    let localctx = new SimpleTypeSpecifierListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, UnrealAngelscriptParser.RULE_simpleTypeSpecifierList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 344;
@@ -991,7 +987,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 349;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Comma) {
+	        while(_la===103) {
 	            this.state = 345;
 	            this.match(UnrealAngelscriptParser.Comma);
 	            this.state = 346;
@@ -1019,12 +1015,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	booleanLiteral() {
 	    let localctx = new BooleanLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, UnrealAngelscriptParser.RULE_booleanLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 352;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.False_ || _la===UnrealAngelscriptParser.True_)) {
+	        if(!(_la===45 || _la===62)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1190,11 +1186,11 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 378;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case UnrealAngelscriptParser.Identifier:
+	            case 109:
 	                this.state = 376;
 	                this.className();
 	                break;
-	            case UnrealAngelscriptParser.LeftParen:
+	            case 66:
 	                this.state = 377;
 	                this.decltypeSpecifier();
 	                break;
@@ -1319,7 +1315,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	lambdaExpression() {
 	    let localctx = new LambdaExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, UnrealAngelscriptParser.RULE_lambdaExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 401;
@@ -1327,7 +1323,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 403;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.LeftParen) {
+	        if(_la===66) {
 	            this.state = 402;
 	            this.lambdaDeclarator();
 	        }
@@ -1353,7 +1349,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	lambdaIntroducer() {
 	    let localctx = new LambdaIntroducerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, UnrealAngelscriptParser.RULE_lambdaIntroducer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 407;
@@ -1361,7 +1357,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 409;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 61)) & ~0x1f) == 0 && ((1 << (_la - 61)) & ((1 << (UnrealAngelscriptParser.This - 61)) | (1 << (UnrealAngelscriptParser.And - 61)) | (1 << (UnrealAngelscriptParser.Assign - 61)))) !== 0) || _la===UnrealAngelscriptParser.Identifier) {
+	        if(((((_la - 61)) & ~0x1f) === 0 && ((1 << (_la - 61)) & 2228225) !== 0) || _la===109) {
 	            this.state = 408;
 	            this.lambdaCapture();
 	        }
@@ -1387,7 +1383,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	lambdaCapture() {
 	    let localctx = new LambdaCaptureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, UnrealAngelscriptParser.RULE_lambdaCapture);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 419;
 	        this._errHandler.sync(this);
@@ -1406,7 +1402,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 417;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Comma) {
+	            if(_la===103) {
 	                this.state = 415;
 	                this.match(UnrealAngelscriptParser.Comma);
 	                this.state = 416;
@@ -1435,12 +1431,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	captureDefault() {
 	    let localctx = new CaptureDefaultContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, UnrealAngelscriptParser.RULE_captureDefault);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 421;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.And || _la===UnrealAngelscriptParser.Assign)) {
+	        if(!(_la===78 || _la===82)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1466,7 +1462,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	captureList() {
 	    let localctx = new CaptureListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, UnrealAngelscriptParser.RULE_captureList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 423;
@@ -1474,7 +1470,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 428;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Comma) {
+	        while(_la===103) {
 	            this.state = 424;
 	            this.match(UnrealAngelscriptParser.Comma);
 	            this.state = 425;
@@ -1539,18 +1535,18 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	simpleCapture() {
 	    let localctx = new SimpleCaptureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, UnrealAngelscriptParser.RULE_simpleCapture);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 440;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.And:
-	        case UnrealAngelscriptParser.Identifier:
+	        case 78:
+	        case 109:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 436;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.And) {
+	            if(_la===78) {
 	                this.state = 435;
 	                this.match(UnrealAngelscriptParser.And);
 	            }
@@ -1558,7 +1554,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 438;
 	            this.match(UnrealAngelscriptParser.Identifier);
 	            break;
-	        case UnrealAngelscriptParser.This:
+	        case 61:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 439;
 	            this.match(UnrealAngelscriptParser.This);
@@ -1585,13 +1581,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	initcapture() {
 	    let localctx = new InitcaptureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, UnrealAngelscriptParser.RULE_initcapture);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 443;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.And) {
+	        if(_la===78) {
 	            this.state = 442;
 	            this.match(UnrealAngelscriptParser.And);
 	        }
@@ -1619,7 +1615,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	lambdaDeclarator() {
 	    let localctx = new LambdaDeclaratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, UnrealAngelscriptParser.RULE_lambdaDeclarator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 448;
@@ -1627,7 +1623,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 450;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 7)) & ~0x1f) == 0 && ((1 << (_la - 7)) & ((1 << (UnrealAngelscriptParser.UClass - 7)) | (1 << (UnrealAngelscriptParser.UStruct - 7)) | (1 << (UnrealAngelscriptParser.Out - 7)) | (1 << (UnrealAngelscriptParser.Int - 7)) | (1 << (UnrealAngelscriptParser.Int8 - 7)) | (1 << (UnrealAngelscriptParser.Int16 - 7)) | (1 << (UnrealAngelscriptParser.Int32 - 7)) | (1 << (UnrealAngelscriptParser.Int64 - 7)) | (1 << (UnrealAngelscriptParser.UInt - 7)) | (1 << (UnrealAngelscriptParser.UInt8 - 7)) | (1 << (UnrealAngelscriptParser.UInt16 - 7)) | (1 << (UnrealAngelscriptParser.UInt32 - 7)) | (1 << (UnrealAngelscriptParser.UInt64 - 7)) | (1 << (UnrealAngelscriptParser.Float - 7)) | (1 << (UnrealAngelscriptParser.Double - 7)) | (1 << (UnrealAngelscriptParser.Bool - 7)) | (1 << (UnrealAngelscriptParser.Auto - 7)) | (1 << (UnrealAngelscriptParser.Class - 7)) | (1 << (UnrealAngelscriptParser.Const - 7)))) !== 0) || ((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (UnrealAngelscriptParser.Enum - 43)) | (1 << (UnrealAngelscriptParser.Struct - 43)) | (1 << (UnrealAngelscriptParser.Virtual - 43)) | (1 << (UnrealAngelscriptParser.Void - 43)) | (1 << (UnrealAngelscriptParser.LeftParen - 43)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	        if(((((_la - 7)) & ~0x1f) === 0 && ((1 << (_la - 7)) & 3288330307) !== 0) || ((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 11599873) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2415919105) !== 0)) {
 	            this.state = 449;
 	            this.parameterDeclarationClause();
 	        }
@@ -1659,7 +1655,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 48;
 	    this.enterRecursionRule(localctx, 48, UnrealAngelscriptParser.RULE_postfixExpression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 487;
@@ -1679,7 +1675,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 459;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.LeftBrace - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	            if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 984285377) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	                this.state = 458;
 	                this.expressionList();
 	            }
@@ -1694,13 +1690,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 470;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case UnrealAngelscriptParser.LeftParen:
+	            case 66:
 	                this.state = 464;
 	                this.match(UnrealAngelscriptParser.LeftParen);
 	                this.state = 466;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.LeftBrace - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	                if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 984285377) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	                    this.state = 465;
 	                    this.expressionList();
 	                }
@@ -1708,8 +1704,8 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                this.state = 468;
 	                this.match(UnrealAngelscriptParser.RightParen);
 	                break;
-	            case UnrealAngelscriptParser.LeftBracket:
-	            case UnrealAngelscriptParser.LeftBrace:
+	            case 68:
+	            case 70:
 	                this.state = 469;
 	                this.bracedInitList();
 	                break;
@@ -1812,7 +1808,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                    this.state = 500;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.LeftBrace - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	                    if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 984285377) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	                        this.state = 499;
 	                        this.expressionList();
 	                    }
@@ -1856,7 +1852,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 510;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===UnrealAngelscriptParser.PlusPlus || _la===UnrealAngelscriptParser.MinusMinus)) {
+	                    if(!(_la===101 || _la===102)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1914,7 +1910,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	pseudoDestructorName() {
 	    let localctx = new PseudoDestructorNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, UnrealAngelscriptParser.RULE_pseudoDestructorName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 535;
 	        this._errHandler.sync(this);
@@ -1933,7 +1929,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 524;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Identifier) {
+	            if(_la===109) {
 	                this.state = 521;
 	                this.theTypeName();
 	                this.state = 522;
@@ -2002,21 +1998,21 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 541;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case UnrealAngelscriptParser.PlusPlus:
+	            case 101:
 	                this.state = 538;
 	                this.match(UnrealAngelscriptParser.PlusPlus);
 	                break;
-	            case UnrealAngelscriptParser.MinusMinus:
+	            case 102:
 	                this.state = 539;
 	                this.match(UnrealAngelscriptParser.MinusMinus);
 	                break;
-	            case UnrealAngelscriptParser.Plus:
-	            case UnrealAngelscriptParser.Minus:
-	            case UnrealAngelscriptParser.Star:
-	            case UnrealAngelscriptParser.And:
-	            case UnrealAngelscriptParser.Or:
-	            case UnrealAngelscriptParser.Tilde:
-	            case UnrealAngelscriptParser.Not:
+	            case 72:
+	            case 73:
+	            case 74:
+	            case 78:
+	            case 79:
+	            case 80:
+	            case 81:
 	                this.state = 540;
 	                this.unaryOperator();
 	                break;
@@ -2057,12 +2053,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	unaryOperator() {
 	    let localctx = new UnaryOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, UnrealAngelscriptParser.RULE_unaryOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 550;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (UnrealAngelscriptParser.Plus - 72)) | (1 << (UnrealAngelscriptParser.Minus - 72)) | (1 << (UnrealAngelscriptParser.Star - 72)) | (1 << (UnrealAngelscriptParser.And - 72)) | (1 << (UnrealAngelscriptParser.Or - 72)) | (1 << (UnrealAngelscriptParser.Tilde - 72)) | (1 << (UnrealAngelscriptParser.Not - 72)))) !== 0))) {
+	        if(!(((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 967) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2115,19 +2111,19 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	newInitializer_() {
 	    let localctx = new NewInitializer_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, UnrealAngelscriptParser.RULE_newInitializer_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 562;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.LeftParen:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 556;
 	            this.match(UnrealAngelscriptParser.LeftParen);
 	            this.state = 558;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.LeftBrace - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	            if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 984285377) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	                this.state = 557;
 	                this.expressionList();
 	            }
@@ -2135,8 +2131,8 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 560;
 	            this.match(UnrealAngelscriptParser.RightParen);
 	            break;
-	        case UnrealAngelscriptParser.LeftBracket:
-	        case UnrealAngelscriptParser.LeftBrace:
+	        case 68:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 561;
 	            this.bracedInitList();
@@ -2212,7 +2208,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	multiplicativeExpression() {
 	    let localctx = new MultiplicativeExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, UnrealAngelscriptParser.RULE_multiplicativeExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 575;
@@ -2220,10 +2216,10 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 580;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 74)) & ~0x1f) == 0 && ((1 << (_la - 74)) & ((1 << (UnrealAngelscriptParser.Star - 74)) | (1 << (UnrealAngelscriptParser.Div - 74)) | (1 << (UnrealAngelscriptParser.Mod - 74)))) !== 0)) {
+	        while(((((_la - 74)) & ~0x1f) === 0 && ((1 << (_la - 74)) & 7) !== 0)) {
 	            this.state = 576;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 74)) & ~0x1f) == 0 && ((1 << (_la - 74)) & ((1 << (UnrealAngelscriptParser.Star - 74)) | (1 << (UnrealAngelscriptParser.Div - 74)) | (1 << (UnrealAngelscriptParser.Mod - 74)))) !== 0))) {
+	            if(!(((((_la - 74)) & ~0x1f) === 0 && ((1 << (_la - 74)) & 7) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2255,7 +2251,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	additiveExpression() {
 	    let localctx = new AdditiveExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, UnrealAngelscriptParser.RULE_additiveExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 583;
@@ -2263,10 +2259,10 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 588;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Plus || _la===UnrealAngelscriptParser.Minus) {
+	        while(_la===72 || _la===73) {
 	            this.state = 584;
 	            _la = this._input.LA(1);
-	            if(!(_la===UnrealAngelscriptParser.Plus || _la===UnrealAngelscriptParser.Minus)) {
+	            if(!(_la===72 || _la===73)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2340,14 +2336,14 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 604;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.Greater:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 600;
 	            this.match(UnrealAngelscriptParser.Greater);
 	            this.state = 601;
 	            this.match(UnrealAngelscriptParser.Greater);
 	            break;
-	        case UnrealAngelscriptParser.Less:
+	        case 83:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 602;
 	            this.match(UnrealAngelscriptParser.Less);
@@ -2376,7 +2372,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	relationalExpression() {
 	    let localctx = new RelationalExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, UnrealAngelscriptParser.RULE_relationalExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 606;
@@ -2384,10 +2380,10 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 611;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 83)) & ~0x1f) == 0 && ((1 << (_la - 83)) & ((1 << (UnrealAngelscriptParser.Less - 83)) | (1 << (UnrealAngelscriptParser.Greater - 83)) | (1 << (UnrealAngelscriptParser.LessEqual - 83)) | (1 << (UnrealAngelscriptParser.GreaterEqual - 83)))) !== 0)) {
+	        while(((((_la - 83)) & ~0x1f) === 0 && ((1 << (_la - 83)) & 49155) !== 0)) {
 	            this.state = 607;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 83)) & ~0x1f) == 0 && ((1 << (_la - 83)) & ((1 << (UnrealAngelscriptParser.Less - 83)) | (1 << (UnrealAngelscriptParser.Greater - 83)) | (1 << (UnrealAngelscriptParser.LessEqual - 83)) | (1 << (UnrealAngelscriptParser.GreaterEqual - 83)))) !== 0))) {
+	            if(!(((((_la - 83)) & ~0x1f) === 0 && ((1 << (_la - 83)) & 49155) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2419,7 +2415,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	equalityExpression() {
 	    let localctx = new EqualityExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, UnrealAngelscriptParser.RULE_equalityExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 614;
@@ -2427,10 +2423,10 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 619;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Equal || _la===UnrealAngelscriptParser.NotEqual) {
+	        while(_la===95 || _la===96) {
 	            this.state = 615;
 	            _la = this._input.LA(1);
-	            if(!(_la===UnrealAngelscriptParser.Equal || _la===UnrealAngelscriptParser.NotEqual)) {
+	            if(!(_la===95 || _la===96)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2462,7 +2458,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	andExpression() {
 	    let localctx = new AndExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, UnrealAngelscriptParser.RULE_andExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 622;
@@ -2470,7 +2466,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 627;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.And) {
+	        while(_la===78) {
 	            this.state = 623;
 	            this.match(UnrealAngelscriptParser.And);
 	            this.state = 624;
@@ -2498,7 +2494,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	exclusiveOrExpression() {
 	    let localctx = new ExclusiveOrExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, UnrealAngelscriptParser.RULE_exclusiveOrExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 630;
@@ -2506,7 +2502,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 635;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Xor) {
+	        while(_la===77) {
 	            this.state = 631;
 	            this.match(UnrealAngelscriptParser.Xor);
 	            this.state = 632;
@@ -2534,7 +2530,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	inclusiveOrExpression() {
 	    let localctx = new InclusiveOrExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, UnrealAngelscriptParser.RULE_inclusiveOrExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 638;
@@ -2542,7 +2538,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 643;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Or) {
+	        while(_la===79) {
 	            this.state = 639;
 	            this.match(UnrealAngelscriptParser.Or);
 	            this.state = 640;
@@ -2570,7 +2566,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	logicalAndExpression() {
 	    let localctx = new LogicalAndExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, UnrealAngelscriptParser.RULE_logicalAndExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 646;
@@ -2578,7 +2574,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 651;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.AndAnd) {
+	        while(_la===99) {
 	            this.state = 647;
 	            this.match(UnrealAngelscriptParser.AndAnd);
 	            this.state = 648;
@@ -2606,7 +2602,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	logicalOrExpression() {
 	    let localctx = new LogicalOrExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, UnrealAngelscriptParser.RULE_logicalOrExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 654;
@@ -2614,7 +2610,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 659;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.OrOr) {
+	        while(_la===100) {
 	            this.state = 655;
 	            this.match(UnrealAngelscriptParser.OrOr);
 	            this.state = 656;
@@ -2642,7 +2638,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	conditionalExpression() {
 	    let localctx = new ConditionalExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, UnrealAngelscriptParser.RULE_conditionalExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 662;
@@ -2650,7 +2646,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 668;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Question) {
+	        if(_la===104) {
 	            this.state = 663;
 	            this.match(UnrealAngelscriptParser.Question);
 	            this.state = 664;
@@ -2721,12 +2717,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	assignmentOperator() {
 	    let localctx = new AssignmentOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, UnrealAngelscriptParser.RULE_assignmentOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 677;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 82)) & ~0x1f) == 0 && ((1 << (_la - 82)) & ((1 << (UnrealAngelscriptParser.Assign - 82)) | (1 << (UnrealAngelscriptParser.PlusAssign - 82)) | (1 << (UnrealAngelscriptParser.MinusAssign - 82)) | (1 << (UnrealAngelscriptParser.StarAssign - 82)) | (1 << (UnrealAngelscriptParser.DivAssign - 82)) | (1 << (UnrealAngelscriptParser.ModAssign - 82)) | (1 << (UnrealAngelscriptParser.XorAssign - 82)) | (1 << (UnrealAngelscriptParser.AndAssign - 82)) | (1 << (UnrealAngelscriptParser.OrAssign - 82)) | (1 << (UnrealAngelscriptParser.LeftShiftAssign - 82)) | (1 << (UnrealAngelscriptParser.RightShiftAssign - 82)))) !== 0))) {
+	        if(!(((((_la - 82)) & ~0x1f) === 0 && ((1 << (_la - 82)) & 8185) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2835,71 +2831,71 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 696;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case UnrealAngelscriptParser.IntegerLiteral:
-	            case UnrealAngelscriptParser.CharacterLiteral:
-	            case UnrealAngelscriptParser.FloatingLiteral:
-	            case UnrealAngelscriptParser.StringLiteral:
-	            case UnrealAngelscriptParser.UserDefinedLiteral:
-	            case UnrealAngelscriptParser.Cast:
-	            case UnrealAngelscriptParser.Ensure:
-	            case UnrealAngelscriptParser.EnsureAlways:
-	            case UnrealAngelscriptParser.Check:
-	            case UnrealAngelscriptParser.Int:
-	            case UnrealAngelscriptParser.Int8:
-	            case UnrealAngelscriptParser.Int16:
-	            case UnrealAngelscriptParser.Int32:
-	            case UnrealAngelscriptParser.Int64:
-	            case UnrealAngelscriptParser.UInt:
-	            case UnrealAngelscriptParser.UInt8:
-	            case UnrealAngelscriptParser.UInt16:
-	            case UnrealAngelscriptParser.UInt32:
-	            case UnrealAngelscriptParser.UInt64:
-	            case UnrealAngelscriptParser.Float:
-	            case UnrealAngelscriptParser.Double:
-	            case UnrealAngelscriptParser.Bool:
-	            case UnrealAngelscriptParser.Auto:
-	            case UnrealAngelscriptParser.False_:
-	            case UnrealAngelscriptParser.Nullptr:
-	            case UnrealAngelscriptParser.Operator:
-	            case UnrealAngelscriptParser.This:
-	            case UnrealAngelscriptParser.True_:
-	            case UnrealAngelscriptParser.Void:
-	            case UnrealAngelscriptParser.LeftParen:
-	            case UnrealAngelscriptParser.LeftBracket:
-	            case UnrealAngelscriptParser.Plus:
-	            case UnrealAngelscriptParser.Minus:
-	            case UnrealAngelscriptParser.Star:
-	            case UnrealAngelscriptParser.And:
-	            case UnrealAngelscriptParser.Or:
-	            case UnrealAngelscriptParser.Tilde:
-	            case UnrealAngelscriptParser.Not:
-	            case UnrealAngelscriptParser.PlusPlus:
-	            case UnrealAngelscriptParser.MinusMinus:
-	            case UnrealAngelscriptParser.Doublecolon:
-	            case UnrealAngelscriptParser.Semi:
-	            case UnrealAngelscriptParser.Identifier:
+	            case 1:
+	            case 2:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 45:
+	            case 51:
+	            case 52:
+	            case 61:
+	            case 62:
+	            case 64:
+	            case 66:
+	            case 68:
+	            case 72:
+	            case 73:
+	            case 74:
+	            case 78:
+	            case 79:
+	            case 80:
+	            case 81:
+	            case 101:
+	            case 102:
+	            case 106:
+	            case 107:
+	            case 109:
 	                this.state = 691;
 	                this.expressionStatement();
 	                break;
-	            case UnrealAngelscriptParser.LeftBrace:
+	            case 70:
 	                this.state = 692;
 	                this.compoundStatement();
 	                break;
-	            case UnrealAngelscriptParser.If:
-	            case UnrealAngelscriptParser.Switch:
+	            case 49:
+	            case 60:
 	                this.state = 693;
 	                this.selectionStatement();
 	                break;
-	            case UnrealAngelscriptParser.Do:
-	            case UnrealAngelscriptParser.For:
-	            case UnrealAngelscriptParser.While:
+	            case 41:
+	            case 47:
+	            case 65:
 	                this.state = 694;
 	                this.iterationStatement();
 	                break;
-	            case UnrealAngelscriptParser.Break:
-	            case UnrealAngelscriptParser.Continue:
-	            case UnrealAngelscriptParser.Goto:
-	            case UnrealAngelscriptParser.Return:
+	            case 33:
+	            case 39:
+	            case 48:
+	            case 57:
 	                this.state = 695;
 	                this.jumpStatement();
 	                break;
@@ -2933,17 +2929,17 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 704;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.Identifier:
+	        case 109:
 	            this.state = 700;
 	            this.match(UnrealAngelscriptParser.Identifier);
 	            break;
-	        case UnrealAngelscriptParser.Case:
+	        case 34:
 	            this.state = 701;
 	            this.match(UnrealAngelscriptParser.Case);
 	            this.state = 702;
 	            this.constantExpression();
 	            break;
-	        case UnrealAngelscriptParser.Default:
+	        case 40:
 	            this.state = 703;
 	            this.match(UnrealAngelscriptParser.Default);
 	            break;
@@ -2973,13 +2969,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	expressionStatement() {
 	    let localctx = new ExpressionStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, UnrealAngelscriptParser.RULE_expressionStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 710;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	        if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 950730945) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	            this.state = 709;
 	            this.expression();
 	        }
@@ -3005,7 +3001,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	compoundStatement() {
 	    let localctx = new CompoundStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, UnrealAngelscriptParser.RULE_compoundStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 714;
@@ -3013,7 +3009,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 716;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Break - 32)) | (1 << (UnrealAngelscriptParser.Case - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Continue - 32)) | (1 << (UnrealAngelscriptParser.Default - 32)) | (1 << (UnrealAngelscriptParser.Do - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.For - 32)) | (1 << (UnrealAngelscriptParser.Goto - 32)) | (1 << (UnrealAngelscriptParser.If - 32)) | (1 << (UnrealAngelscriptParser.Namespace - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Return - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.Switch - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.While - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.LeftBrace - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Semi - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294681086) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4196379623) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247639) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 355) !== 0)) {
 	            this.state = 715;
 	            this.statementSeq();
 	        }
@@ -3039,7 +3035,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	statementSeq() {
 	    let localctx = new StatementSeqContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, UnrealAngelscriptParser.RULE_statementSeq);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 721; 
@@ -3051,7 +3047,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 723; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Break - 32)) | (1 << (UnrealAngelscriptParser.Case - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Continue - 32)) | (1 << (UnrealAngelscriptParser.Default - 32)) | (1 << (UnrealAngelscriptParser.Do - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.For - 32)) | (1 << (UnrealAngelscriptParser.Goto - 32)) | (1 << (UnrealAngelscriptParser.If - 32)) | (1 << (UnrealAngelscriptParser.Namespace - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Return - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.Switch - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.While - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.LeftBrace - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Semi - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294681086) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4196379623) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247639) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 355) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -3075,7 +3071,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 740;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.If:
+	        case 49:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 725;
 	            this.match(UnrealAngelscriptParser.If);
@@ -3098,7 +3094,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case UnrealAngelscriptParser.Switch:
+	        case 60:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 734;
 	            this.match(UnrealAngelscriptParser.Switch);
@@ -3153,14 +3149,14 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 748;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case UnrealAngelscriptParser.Assign:
+	            case 82:
 	                this.state = 745;
 	                this.match(UnrealAngelscriptParser.Assign);
 	                this.state = 746;
 	                this.initializerClause();
 	                break;
-	            case UnrealAngelscriptParser.LeftBracket:
-	            case UnrealAngelscriptParser.LeftBrace:
+	            case 68:
+	            case 70:
 	                this.state = 747;
 	                this.bracedInitList();
 	                break;
@@ -3189,12 +3185,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	iterationStatement() {
 	    let localctx = new IterationStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, UnrealAngelscriptParser.RULE_iterationStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 785;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.While:
+	        case 65:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 752;
 	            this.match(UnrealAngelscriptParser.While);
@@ -3207,7 +3203,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 756;
 	            this.statement();
 	            break;
-	        case UnrealAngelscriptParser.Do:
+	        case 41:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 758;
 	            this.match(UnrealAngelscriptParser.Do);
@@ -3224,7 +3220,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 764;
 	            this.match(UnrealAngelscriptParser.Semi);
 	            break;
-	        case UnrealAngelscriptParser.For:
+	        case 47:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 766;
 	            this.match(UnrealAngelscriptParser.For);
@@ -3240,7 +3236,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                this.state = 770;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294681086) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3893897313) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247573) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 291) !== 0)) {
 	                    this.state = 769;
 	                    this.condition();
 	                }
@@ -3250,7 +3246,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                this.state = 774;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	                if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 950730945) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	                    this.state = 773;
 	                    this.expression();
 	                }
@@ -3398,15 +3394,15 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 807;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.Break:
+	        case 33:
 	            this.state = 798;
 	            this.match(UnrealAngelscriptParser.Break);
 	            break;
-	        case UnrealAngelscriptParser.Continue:
+	        case 39:
 	            this.state = 799;
 	            this.match(UnrealAngelscriptParser.Continue);
 	            break;
-	        case UnrealAngelscriptParser.Return:
+	        case 57:
 	            this.state = 800;
 	            this.match(UnrealAngelscriptParser.Return);
 	            this.state = 803;
@@ -3422,7 +3418,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case UnrealAngelscriptParser.Goto:
+	        case 48:
 	            this.state = 805;
 	            this.match(UnrealAngelscriptParser.Goto);
 	            this.state = 806;
@@ -3475,7 +3471,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	declarationseq() {
 	    let localctx = new DeclarationseqContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 122, UnrealAngelscriptParser.RULE_declarationseq);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 814; 
@@ -3487,7 +3483,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 816; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.UFunction) | (1 << UnrealAngelscriptParser.Import) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Mixin) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.Namespace - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Private - 32)) | (1 << (UnrealAngelscriptParser.Protected - 32)) | (1 << (UnrealAngelscriptParser.Public - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Semi - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294946302) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3923519585) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247573) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 355) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -3710,37 +3706,37 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 849;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.UClass:
-	        case UnrealAngelscriptParser.UStruct:
-	        case UnrealAngelscriptParser.Out:
-	        case UnrealAngelscriptParser.Int:
-	        case UnrealAngelscriptParser.Int8:
-	        case UnrealAngelscriptParser.Int16:
-	        case UnrealAngelscriptParser.Int32:
-	        case UnrealAngelscriptParser.Int64:
-	        case UnrealAngelscriptParser.UInt:
-	        case UnrealAngelscriptParser.UInt8:
-	        case UnrealAngelscriptParser.UInt16:
-	        case UnrealAngelscriptParser.UInt32:
-	        case UnrealAngelscriptParser.UInt64:
-	        case UnrealAngelscriptParser.Float:
-	        case UnrealAngelscriptParser.Double:
-	        case UnrealAngelscriptParser.Bool:
-	        case UnrealAngelscriptParser.Auto:
-	        case UnrealAngelscriptParser.Class:
-	        case UnrealAngelscriptParser.Const:
-	        case UnrealAngelscriptParser.Enum:
-	        case UnrealAngelscriptParser.Struct:
-	        case UnrealAngelscriptParser.Void:
-	        case UnrealAngelscriptParser.LeftParen:
-	        case UnrealAngelscriptParser.And:
-	        case UnrealAngelscriptParser.Doublecolon:
-	        case UnrealAngelscriptParser.Identifier:
+	        case 7:
+	        case 8:
+	        case 13:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 37:
+	        case 38:
+	        case 43:
+	        case 59:
+	        case 64:
+	        case 66:
+	        case 78:
+	        case 106:
+	        case 109:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 847;
 	            this.typeSpecifier();
 	            break;
-	        case UnrealAngelscriptParser.Virtual:
+	        case 63:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 848;
 	            this.functionSpecifier();
@@ -3897,46 +3893,46 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 870;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.Int:
-	        case UnrealAngelscriptParser.Int8:
-	        case UnrealAngelscriptParser.Int16:
-	        case UnrealAngelscriptParser.Int32:
-	        case UnrealAngelscriptParser.Int64:
-	        case UnrealAngelscriptParser.UInt:
-	        case UnrealAngelscriptParser.UInt8:
-	        case UnrealAngelscriptParser.UInt16:
-	        case UnrealAngelscriptParser.UInt32:
-	        case UnrealAngelscriptParser.UInt64:
-	        case UnrealAngelscriptParser.Float:
-	        case UnrealAngelscriptParser.Double:
-	        case UnrealAngelscriptParser.Bool:
-	        case UnrealAngelscriptParser.Auto:
-	        case UnrealAngelscriptParser.Void:
-	        case UnrealAngelscriptParser.LeftParen:
-	        case UnrealAngelscriptParser.Doublecolon:
-	        case UnrealAngelscriptParser.Identifier:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 64:
+	        case 66:
+	        case 106:
+	        case 109:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 865;
 	            this.simpleTypeSpecifier();
 	            break;
-	        case UnrealAngelscriptParser.Class:
-	        case UnrealAngelscriptParser.Enum:
-	        case UnrealAngelscriptParser.Struct:
+	        case 37:
+	        case 43:
+	        case 59:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 866;
 	            this.elaboratedTypeSpecifier();
 	            break;
-	        case UnrealAngelscriptParser.Const:
+	        case 38:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 867;
 	            this.match(UnrealAngelscriptParser.Const);
 	            break;
-	        case UnrealAngelscriptParser.And:
+	        case 78:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 868;
 	            this.match(UnrealAngelscriptParser.And);
 	            break;
-	        case UnrealAngelscriptParser.Out:
+	        case 13:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 869;
 	            this.match(UnrealAngelscriptParser.Out);
@@ -3963,7 +3959,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	typeSpecifierSeq() {
 	    let localctx = new TypeSpecifierSeqContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, UnrealAngelscriptParser.RULE_typeSpecifierSeq);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 873; 
@@ -3975,7 +3971,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 875; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 7)) & ~0x1f) == 0 && ((1 << (_la - 7)) & ((1 << (UnrealAngelscriptParser.UClass - 7)) | (1 << (UnrealAngelscriptParser.UStruct - 7)) | (1 << (UnrealAngelscriptParser.Out - 7)) | (1 << (UnrealAngelscriptParser.Int - 7)) | (1 << (UnrealAngelscriptParser.Int8 - 7)) | (1 << (UnrealAngelscriptParser.Int16 - 7)) | (1 << (UnrealAngelscriptParser.Int32 - 7)) | (1 << (UnrealAngelscriptParser.Int64 - 7)) | (1 << (UnrealAngelscriptParser.UInt - 7)) | (1 << (UnrealAngelscriptParser.UInt8 - 7)) | (1 << (UnrealAngelscriptParser.UInt16 - 7)) | (1 << (UnrealAngelscriptParser.UInt32 - 7)) | (1 << (UnrealAngelscriptParser.UInt64 - 7)) | (1 << (UnrealAngelscriptParser.Float - 7)) | (1 << (UnrealAngelscriptParser.Double - 7)) | (1 << (UnrealAngelscriptParser.Bool - 7)) | (1 << (UnrealAngelscriptParser.Auto - 7)) | (1 << (UnrealAngelscriptParser.Class - 7)) | (1 << (UnrealAngelscriptParser.Const - 7)))) !== 0) || ((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (UnrealAngelscriptParser.Enum - 43)) | (1 << (UnrealAngelscriptParser.Struct - 43)) | (1 << (UnrealAngelscriptParser.Void - 43)) | (1 << (UnrealAngelscriptParser.LeftParen - 43)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0));
+	        } while(((((_la - 7)) & ~0x1f) === 0 && ((1 << (_la - 7)) & 3288330307) !== 0) || ((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 10551297) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2415919105) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -3995,7 +3991,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	trailingTypeSpecifierSeq() {
 	    let localctx = new TrailingTypeSpecifierSeqContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 148, UnrealAngelscriptParser.RULE_trailingTypeSpecifierSeq);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 878; 
@@ -4007,7 +4003,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 880; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 13)) & ~0x1f) == 0 && ((1 << (_la - 13)) & ((1 << (UnrealAngelscriptParser.Out - 13)) | (1 << (UnrealAngelscriptParser.Int - 13)) | (1 << (UnrealAngelscriptParser.Int8 - 13)) | (1 << (UnrealAngelscriptParser.Int16 - 13)) | (1 << (UnrealAngelscriptParser.Int32 - 13)) | (1 << (UnrealAngelscriptParser.Int64 - 13)) | (1 << (UnrealAngelscriptParser.UInt - 13)) | (1 << (UnrealAngelscriptParser.UInt8 - 13)) | (1 << (UnrealAngelscriptParser.UInt16 - 13)) | (1 << (UnrealAngelscriptParser.UInt32 - 13)) | (1 << (UnrealAngelscriptParser.UInt64 - 13)) | (1 << (UnrealAngelscriptParser.Float - 13)) | (1 << (UnrealAngelscriptParser.Double - 13)) | (1 << (UnrealAngelscriptParser.Bool - 13)) | (1 << (UnrealAngelscriptParser.Auto - 13)) | (1 << (UnrealAngelscriptParser.Class - 13)) | (1 << (UnrealAngelscriptParser.Const - 13)) | (1 << (UnrealAngelscriptParser.Enum - 13)))) !== 0) || ((((_la - 59)) & ~0x1f) == 0 && ((1 << (_la - 59)) & ((1 << (UnrealAngelscriptParser.Struct - 59)) | (1 << (UnrealAngelscriptParser.Void - 59)) | (1 << (UnrealAngelscriptParser.LeftParen - 59)) | (1 << (UnrealAngelscriptParser.And - 59)))) !== 0) || _la===UnrealAngelscriptParser.Doublecolon || _la===UnrealAngelscriptParser.Identifier);
+	        } while(((((_la - 13)) & ~0x1f) === 0 && ((1 << (_la - 13)) & 1125121985) !== 0) || ((((_la - 59)) & ~0x1f) === 0 && ((1 << (_la - 59)) & 524449) !== 0) || _la===106 || _la===109);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -4168,12 +4164,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	assertSpecifier() {
 	    let localctx = new AssertSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 152, UnrealAngelscriptParser.RULE_assertSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 905;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 229376) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4286,8 +4282,8 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 932;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.Class:
-	        case UnrealAngelscriptParser.Struct:
+	        case 37:
+	        case 59:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 919;
 	            this.classKey();
@@ -4315,7 +4311,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case UnrealAngelscriptParser.Enum:
+	        case 43:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 927;
 	            this.match(UnrealAngelscriptParser.Enum);
@@ -4375,7 +4371,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	enumSpecifier() {
 	    let localctx = new EnumSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 162, UnrealAngelscriptParser.RULE_enumSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 936;
@@ -4385,13 +4381,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 942;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Identifier) {
+	        if(_la===109) {
 	            this.state = 938;
 	            this.enumeratorList();
 	            this.state = 940;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Comma) {
+	            if(_la===103) {
 	                this.state = 939;
 	                this.match(UnrealAngelscriptParser.Comma);
 	            }
@@ -4419,7 +4415,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	enumHead() {
 	    let localctx = new EnumHeadContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 164, UnrealAngelscriptParser.RULE_enumHead);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 946;
@@ -4427,7 +4423,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 951;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.LeftParen || _la===UnrealAngelscriptParser.Doublecolon || _la===UnrealAngelscriptParser.Identifier) {
+	        if(_la===66 || _la===106 || _la===109) {
 	            this.state = 948;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,99,this._ctx);
@@ -4443,7 +4439,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 954;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Colon) {
+	        if(_la===105) {
 	            this.state = 953;
 	            this.enumbase();
 	        }
@@ -4467,7 +4463,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	opaqueEnumDeclaration() {
 	    let localctx = new OpaqueEnumDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 166, UnrealAngelscriptParser.RULE_opaqueEnumDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 956;
@@ -4477,7 +4473,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 959;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Colon) {
+	        if(_la===105) {
 	            this.state = 958;
 	            this.enumbase();
 	        }
@@ -4589,7 +4585,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	enumeratorDefinition() {
 	    let localctx = new EnumeratorDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 174, UnrealAngelscriptParser.RULE_enumeratorDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 976;
@@ -4597,7 +4593,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 979;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Assign) {
+	        if(_la===82) {
 	            this.state = 977;
 	            this.match(UnrealAngelscriptParser.Assign);
 	            this.state = 978;
@@ -4706,7 +4702,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	namespaceDefinition() {
 	    let localctx = new NamespaceDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, UnrealAngelscriptParser.RULE_namespaceDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 989;
@@ -4728,7 +4724,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 996;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.UFunction) | (1 << UnrealAngelscriptParser.Import) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Mixin) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.Namespace - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Private - 32)) | (1 << (UnrealAngelscriptParser.Protected - 32)) | (1 << (UnrealAngelscriptParser.Public - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Semi - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294946302) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3923519585) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247573) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 355) !== 0)) {
 	            this.state = 995;
 	            localctx.namespaceBody = this.declarationseq();
 	        }
@@ -4839,7 +4835,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	balancedTokenSeq() {
 	    let localctx = new BalancedTokenSeqContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 190, UnrealAngelscriptParser.RULE_balancedTokenSeq);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1014; 
@@ -4851,7 +4847,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1016; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.UProperty) | (1 << UnrealAngelscriptParser.UFunction) | (1 << UnrealAngelscriptParser.Import) | (1 << UnrealAngelscriptParser.From) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Property) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Mixin) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Break - 32)) | (1 << (UnrealAngelscriptParser.Case - 32)) | (1 << (UnrealAngelscriptParser.Catch - 32)) | (1 << (UnrealAngelscriptParser.Char - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Continue - 32)) | (1 << (UnrealAngelscriptParser.Default - 32)) | (1 << (UnrealAngelscriptParser.Do - 32)) | (1 << (UnrealAngelscriptParser.Else - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.Export - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.Final - 32)) | (1 << (UnrealAngelscriptParser.For - 32)) | (1 << (UnrealAngelscriptParser.Goto - 32)) | (1 << (UnrealAngelscriptParser.If - 32)) | (1 << (UnrealAngelscriptParser.Namespace - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Override - 32)) | (1 << (UnrealAngelscriptParser.Private - 32)) | (1 << (UnrealAngelscriptParser.Protected - 32)) | (1 << (UnrealAngelscriptParser.Public - 32)) | (1 << (UnrealAngelscriptParser.Return - 32)) | (1 << (UnrealAngelscriptParser.Short - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.Switch - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.While - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.LeftBrace - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.Div - 64)) | (1 << (UnrealAngelscriptParser.Mod - 64)) | (1 << (UnrealAngelscriptParser.Xor - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)) | (1 << (UnrealAngelscriptParser.Assign - 64)) | (1 << (UnrealAngelscriptParser.Less - 64)) | (1 << (UnrealAngelscriptParser.Greater - 64)) | (1 << (UnrealAngelscriptParser.PlusAssign - 64)) | (1 << (UnrealAngelscriptParser.MinusAssign - 64)) | (1 << (UnrealAngelscriptParser.StarAssign - 64)) | (1 << (UnrealAngelscriptParser.DivAssign - 64)) | (1 << (UnrealAngelscriptParser.ModAssign - 64)) | (1 << (UnrealAngelscriptParser.XorAssign - 64)) | (1 << (UnrealAngelscriptParser.AndAssign - 64)) | (1 << (UnrealAngelscriptParser.OrAssign - 64)) | (1 << (UnrealAngelscriptParser.LeftShiftAssign - 64)) | (1 << (UnrealAngelscriptParser.RightShiftAssign - 64)) | (1 << (UnrealAngelscriptParser.Equal - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (UnrealAngelscriptParser.NotEqual - 96)) | (1 << (UnrealAngelscriptParser.LessEqual - 96)) | (1 << (UnrealAngelscriptParser.GreaterEqual - 96)) | (1 << (UnrealAngelscriptParser.AndAnd - 96)) | (1 << (UnrealAngelscriptParser.OrOr - 96)) | (1 << (UnrealAngelscriptParser.PlusPlus - 96)) | (1 << (UnrealAngelscriptParser.MinusMinus - 96)) | (1 << (UnrealAngelscriptParser.Comma - 96)) | (1 << (UnrealAngelscriptParser.Question - 96)) | (1 << (UnrealAngelscriptParser.Colon - 96)) | (1 << (UnrealAngelscriptParser.Doublecolon - 96)) | (1 << (UnrealAngelscriptParser.Semi - 96)) | (1 << (UnrealAngelscriptParser.Dot - 96)) | (1 << (UnrealAngelscriptParser.Identifier - 96)) | (1 << (UnrealAngelscriptParser.DecimalLiteral - 96)) | (1 << (UnrealAngelscriptParser.OctalLiteral - 96)) | (1 << (UnrealAngelscriptParser.HexadecimalLiteral - 96)) | (1 << (UnrealAngelscriptParser.BinaryLiteral - 96)) | (1 << (UnrealAngelscriptParser.Integersuffix - 96)) | (1 << (UnrealAngelscriptParser.UserDefinedIntegerLiteral - 96)) | (1 << (UnrealAngelscriptParser.UserDefinedFloatingLiteral - 96)) | (1 << (UnrealAngelscriptParser.UserDefinedStringLiteral - 96)) | (1 << (UnrealAngelscriptParser.UserDefinedCharacterLiteral - 96)) | (1 << (UnrealAngelscriptParser.Whitespace - 96)) | (1 << (UnrealAngelscriptParser.Newline - 96)) | (1 << (UnrealAngelscriptParser.BlockComment - 96)) | (1 << (UnrealAngelscriptParser.LineComment - 96)) | (1 << (UnrealAngelscriptParser.PreprocessorBranchRemoval - 96)) | (1 << (UnrealAngelscriptParser.Preprocessor - 96)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4294967295) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967127) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 536870911) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -4871,12 +4867,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	balancedtoken() {
 	    let localctx = new BalancedtokenContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 192, UnrealAngelscriptParser.RULE_balancedtoken);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1035;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.LeftParen:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1018;
 	            this.match(UnrealAngelscriptParser.LeftParen);
@@ -4885,7 +4881,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1020;
 	            this.match(UnrealAngelscriptParser.RightParen);
 	            break;
-	        case UnrealAngelscriptParser.LeftBracket:
+	        case 68:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1022;
 	            this.match(UnrealAngelscriptParser.LeftBracket);
@@ -4894,7 +4890,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1024;
 	            this.match(UnrealAngelscriptParser.RightBracket);
 	            break;
-	        case UnrealAngelscriptParser.LeftBrace:
+	        case 70:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1026;
 	            this.match(UnrealAngelscriptParser.LeftBrace);
@@ -4903,124 +4899,124 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1028;
 	            this.match(UnrealAngelscriptParser.RightBrace);
 	            break;
-	        case UnrealAngelscriptParser.IntegerLiteral:
-	        case UnrealAngelscriptParser.CharacterLiteral:
-	        case UnrealAngelscriptParser.FloatingLiteral:
-	        case UnrealAngelscriptParser.StringLiteral:
-	        case UnrealAngelscriptParser.UserDefinedLiteral:
-	        case UnrealAngelscriptParser.Cast:
-	        case UnrealAngelscriptParser.UClass:
-	        case UnrealAngelscriptParser.UStruct:
-	        case UnrealAngelscriptParser.UProperty:
-	        case UnrealAngelscriptParser.UFunction:
-	        case UnrealAngelscriptParser.Import:
-	        case UnrealAngelscriptParser.From:
-	        case UnrealAngelscriptParser.Out:
-	        case UnrealAngelscriptParser.Property:
-	        case UnrealAngelscriptParser.Ensure:
-	        case UnrealAngelscriptParser.EnsureAlways:
-	        case UnrealAngelscriptParser.Check:
-	        case UnrealAngelscriptParser.Mixin:
-	        case UnrealAngelscriptParser.Int:
-	        case UnrealAngelscriptParser.Int8:
-	        case UnrealAngelscriptParser.Int16:
-	        case UnrealAngelscriptParser.Int32:
-	        case UnrealAngelscriptParser.Int64:
-	        case UnrealAngelscriptParser.UInt:
-	        case UnrealAngelscriptParser.UInt8:
-	        case UnrealAngelscriptParser.UInt16:
-	        case UnrealAngelscriptParser.UInt32:
-	        case UnrealAngelscriptParser.UInt64:
-	        case UnrealAngelscriptParser.Float:
-	        case UnrealAngelscriptParser.Double:
-	        case UnrealAngelscriptParser.Bool:
-	        case UnrealAngelscriptParser.Auto:
-	        case UnrealAngelscriptParser.Break:
-	        case UnrealAngelscriptParser.Case:
-	        case UnrealAngelscriptParser.Catch:
-	        case UnrealAngelscriptParser.Char:
-	        case UnrealAngelscriptParser.Class:
-	        case UnrealAngelscriptParser.Const:
-	        case UnrealAngelscriptParser.Continue:
-	        case UnrealAngelscriptParser.Default:
-	        case UnrealAngelscriptParser.Do:
-	        case UnrealAngelscriptParser.Else:
-	        case UnrealAngelscriptParser.Enum:
-	        case UnrealAngelscriptParser.Export:
-	        case UnrealAngelscriptParser.False_:
-	        case UnrealAngelscriptParser.Final:
-	        case UnrealAngelscriptParser.For:
-	        case UnrealAngelscriptParser.Goto:
-	        case UnrealAngelscriptParser.If:
-	        case UnrealAngelscriptParser.Namespace:
-	        case UnrealAngelscriptParser.Nullptr:
-	        case UnrealAngelscriptParser.Operator:
-	        case UnrealAngelscriptParser.Override:
-	        case UnrealAngelscriptParser.Private:
-	        case UnrealAngelscriptParser.Protected:
-	        case UnrealAngelscriptParser.Public:
-	        case UnrealAngelscriptParser.Return:
-	        case UnrealAngelscriptParser.Short:
-	        case UnrealAngelscriptParser.Struct:
-	        case UnrealAngelscriptParser.Switch:
-	        case UnrealAngelscriptParser.This:
-	        case UnrealAngelscriptParser.True_:
-	        case UnrealAngelscriptParser.Virtual:
-	        case UnrealAngelscriptParser.Void:
-	        case UnrealAngelscriptParser.While:
-	        case UnrealAngelscriptParser.Plus:
-	        case UnrealAngelscriptParser.Minus:
-	        case UnrealAngelscriptParser.Star:
-	        case UnrealAngelscriptParser.Div:
-	        case UnrealAngelscriptParser.Mod:
-	        case UnrealAngelscriptParser.Xor:
-	        case UnrealAngelscriptParser.And:
-	        case UnrealAngelscriptParser.Or:
-	        case UnrealAngelscriptParser.Tilde:
-	        case UnrealAngelscriptParser.Not:
-	        case UnrealAngelscriptParser.Assign:
-	        case UnrealAngelscriptParser.Less:
-	        case UnrealAngelscriptParser.Greater:
-	        case UnrealAngelscriptParser.PlusAssign:
-	        case UnrealAngelscriptParser.MinusAssign:
-	        case UnrealAngelscriptParser.StarAssign:
-	        case UnrealAngelscriptParser.DivAssign:
-	        case UnrealAngelscriptParser.ModAssign:
-	        case UnrealAngelscriptParser.XorAssign:
-	        case UnrealAngelscriptParser.AndAssign:
-	        case UnrealAngelscriptParser.OrAssign:
-	        case UnrealAngelscriptParser.LeftShiftAssign:
-	        case UnrealAngelscriptParser.RightShiftAssign:
-	        case UnrealAngelscriptParser.Equal:
-	        case UnrealAngelscriptParser.NotEqual:
-	        case UnrealAngelscriptParser.LessEqual:
-	        case UnrealAngelscriptParser.GreaterEqual:
-	        case UnrealAngelscriptParser.AndAnd:
-	        case UnrealAngelscriptParser.OrOr:
-	        case UnrealAngelscriptParser.PlusPlus:
-	        case UnrealAngelscriptParser.MinusMinus:
-	        case UnrealAngelscriptParser.Comma:
-	        case UnrealAngelscriptParser.Question:
-	        case UnrealAngelscriptParser.Colon:
-	        case UnrealAngelscriptParser.Doublecolon:
-	        case UnrealAngelscriptParser.Semi:
-	        case UnrealAngelscriptParser.Dot:
-	        case UnrealAngelscriptParser.Identifier:
-	        case UnrealAngelscriptParser.DecimalLiteral:
-	        case UnrealAngelscriptParser.OctalLiteral:
-	        case UnrealAngelscriptParser.HexadecimalLiteral:
-	        case UnrealAngelscriptParser.BinaryLiteral:
-	        case UnrealAngelscriptParser.Integersuffix:
-	        case UnrealAngelscriptParser.UserDefinedIntegerLiteral:
-	        case UnrealAngelscriptParser.UserDefinedFloatingLiteral:
-	        case UnrealAngelscriptParser.UserDefinedStringLiteral:
-	        case UnrealAngelscriptParser.UserDefinedCharacterLiteral:
-	        case UnrealAngelscriptParser.Whitespace:
-	        case UnrealAngelscriptParser.Newline:
-	        case UnrealAngelscriptParser.BlockComment:
-	        case UnrealAngelscriptParser.LineComment:
-	        case UnrealAngelscriptParser.PreprocessorBranchRemoval:
-	        case UnrealAngelscriptParser.Preprocessor:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1031; 
 	            this._errHandler.sync(this);
@@ -5030,7 +5026,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            	case 1:
 	            		this.state = 1030;
 	            		_la = this._input.LA(1);
-	            		if(_la<=0 || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (UnrealAngelscriptParser.LeftParen - 66)) | (1 << (UnrealAngelscriptParser.RightParen - 66)) | (1 << (UnrealAngelscriptParser.LeftBracket - 66)) | (1 << (UnrealAngelscriptParser.RightBracket - 66)) | (1 << (UnrealAngelscriptParser.LeftBrace - 66)) | (1 << (UnrealAngelscriptParser.RightBrace - 66)))) !== 0)) {
+	            		if(_la<=0 || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 63) !== 0)) {
 	            		this._errHandler.recoverInline(this);
 	            		}
 	            		else {
@@ -5068,7 +5064,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	initDeclaratorList() {
 	    let localctx = new InitDeclaratorListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 194, UnrealAngelscriptParser.RULE_initDeclaratorList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1037;
@@ -5076,7 +5072,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1042;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Comma) {
+	        while(_la===103) {
 	            this.state = 1038;
 	            this.match(UnrealAngelscriptParser.Comma);
 	            this.state = 1039;
@@ -5104,7 +5100,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	initDeclarator() {
 	    let localctx = new InitDeclaratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 196, UnrealAngelscriptParser.RULE_initDeclarator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1045;
@@ -5112,7 +5108,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1047;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (UnrealAngelscriptParser.LeftParen - 66)) | (1 << (UnrealAngelscriptParser.LeftBracket - 66)) | (1 << (UnrealAngelscriptParser.LeftBrace - 66)) | (1 << (UnrealAngelscriptParser.Assign - 66)))) !== 0)) {
+	        if(((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 65557) !== 0)) {
 	            this.state = 1046;
 	            this.initializer();
 	        }
@@ -5167,7 +5163,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 200;
 	    this.enterRecursionRule(localctx, 200, UnrealAngelscriptParser.RULE_declaratorDef, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1053;
@@ -5191,17 +5187,17 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                this.state = 1062;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case UnrealAngelscriptParser.LeftParen:
+	                case 66:
 	                    this.state = 1056;
 	                    this.parametersAndQualifiers();
 	                    break;
-	                case UnrealAngelscriptParser.LeftBracket:
+	                case 68:
 	                    this.state = 1057;
 	                    this.match(UnrealAngelscriptParser.LeftBracket);
 	                    this.state = 1059;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	                    if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 950730945) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	                        this.state = 1058;
 	                        this.constantExpression();
 	                    }
@@ -5237,7 +5233,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	parametersAndQualifiers() {
 	    let localctx = new ParametersAndQualifiersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 202, UnrealAngelscriptParser.RULE_parametersAndQualifiers);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1069;
@@ -5245,7 +5241,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1071;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 7)) & ~0x1f) == 0 && ((1 << (_la - 7)) & ((1 << (UnrealAngelscriptParser.UClass - 7)) | (1 << (UnrealAngelscriptParser.UStruct - 7)) | (1 << (UnrealAngelscriptParser.Out - 7)) | (1 << (UnrealAngelscriptParser.Int - 7)) | (1 << (UnrealAngelscriptParser.Int8 - 7)) | (1 << (UnrealAngelscriptParser.Int16 - 7)) | (1 << (UnrealAngelscriptParser.Int32 - 7)) | (1 << (UnrealAngelscriptParser.Int64 - 7)) | (1 << (UnrealAngelscriptParser.UInt - 7)) | (1 << (UnrealAngelscriptParser.UInt8 - 7)) | (1 << (UnrealAngelscriptParser.UInt16 - 7)) | (1 << (UnrealAngelscriptParser.UInt32 - 7)) | (1 << (UnrealAngelscriptParser.UInt64 - 7)) | (1 << (UnrealAngelscriptParser.Float - 7)) | (1 << (UnrealAngelscriptParser.Double - 7)) | (1 << (UnrealAngelscriptParser.Bool - 7)) | (1 << (UnrealAngelscriptParser.Auto - 7)) | (1 << (UnrealAngelscriptParser.Class - 7)) | (1 << (UnrealAngelscriptParser.Const - 7)))) !== 0) || ((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (UnrealAngelscriptParser.Enum - 43)) | (1 << (UnrealAngelscriptParser.Struct - 43)) | (1 << (UnrealAngelscriptParser.Virtual - 43)) | (1 << (UnrealAngelscriptParser.Void - 43)) | (1 << (UnrealAngelscriptParser.LeftParen - 43)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	        if(((((_la - 7)) & ~0x1f) === 0 && ((1 << (_la - 7)) & 3288330307) !== 0) || ((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 11599873) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2415919105) !== 0)) {
 	            this.state = 1070;
 	            this.parameterDeclarationClause();
 	        }
@@ -5287,12 +5283,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	refqualifier() {
 	    let localctx = new RefqualifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 204, UnrealAngelscriptParser.RULE_refqualifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1080;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.And || _la===UnrealAngelscriptParser.AndAnd)) {
+	        if(!(_la===78 || _la===99)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5387,7 +5383,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	parameterDeclarationList() {
 	    let localctx = new ParameterDeclarationListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 212, UnrealAngelscriptParser.RULE_parameterDeclarationList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1088;
@@ -5395,7 +5391,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1093;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Comma) {
+	        while(_la===103) {
 	            this.state = 1089;
 	            this.match(UnrealAngelscriptParser.Comma);
 	            this.state = 1090;
@@ -5423,7 +5419,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	parameterDeclaration() {
 	    let localctx = new ParameterDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 214, UnrealAngelscriptParser.RULE_parameterDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1096;
@@ -5431,7 +5427,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1098;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Identifier) {
+	        if(_la===109) {
 	            this.state = 1097;
 	            this.match(UnrealAngelscriptParser.Identifier);
 	        }
@@ -5439,7 +5435,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1102;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Assign) {
+	        if(_la===82) {
 	            this.state = 1100;
 	            this.match(UnrealAngelscriptParser.Assign);
 	            this.state = 1101;
@@ -5465,13 +5461,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	functionDefinition() {
 	    let localctx = new FunctionDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 216, UnrealAngelscriptParser.RULE_functionDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1105;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.UFunction) {
+	        if(_la===10) {
 	            this.state = 1104;
 	            this.ufunction();
 	        }
@@ -5479,7 +5475,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1108;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (UnrealAngelscriptParser.Private - 54)) | (1 << (UnrealAngelscriptParser.Protected - 54)) | (1 << (UnrealAngelscriptParser.Public - 54)))) !== 0)) {
+	        if(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 7) !== 0)) {
 	            this.state = 1107;
 	            this.accessSpecifier();
 	        }
@@ -5487,7 +5483,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Mixin) {
+	        if(_la===18) {
 	            this.state = 1110;
 	            this.match(UnrealAngelscriptParser.Mixin);
 	        }
@@ -5505,7 +5501,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1118;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Property || _la===UnrealAngelscriptParser.Final || _la===UnrealAngelscriptParser.Override) {
+	        if(_la===14 || _la===46 || _la===53) {
 	            this.state = 1117;
 	            this.postFuncSpecifierSeq();
 	        }
@@ -5535,12 +5531,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1127;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.LeftBrace:
+	        case 70:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1122;
 	            this.compoundStatement();
 	            break;
-	        case UnrealAngelscriptParser.Assign:
+	        case 82:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1123;
 	            this.match(UnrealAngelscriptParser.Assign);
@@ -5549,7 +5545,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1125;
 	            this.match(UnrealAngelscriptParser.Semi);
 	            break;
-	        case UnrealAngelscriptParser.Semi:
+	        case 107:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1126;
 	            this.match(UnrealAngelscriptParser.Semi);
@@ -5580,14 +5576,14 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1134;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.LeftBracket:
-	        case UnrealAngelscriptParser.LeftBrace:
-	        case UnrealAngelscriptParser.Assign:
+	        case 68:
+	        case 70:
+	        case 82:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1129;
 	            this.braceOrEqualInitializer();
 	            break;
-	        case UnrealAngelscriptParser.LeftParen:
+	        case 66:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1130;
 	            this.match(UnrealAngelscriptParser.LeftParen);
@@ -5622,15 +5618,15 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1139;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.Assign:
+	        case 82:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1136;
 	            this.match(UnrealAngelscriptParser.Assign);
 	            this.state = 1137;
 	            this.initializerClause();
 	            break;
-	        case UnrealAngelscriptParser.LeftBracket:
-	        case UnrealAngelscriptParser.LeftBrace:
+	        case 68:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1138;
 	            this.bracedInitList();
@@ -5740,12 +5736,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	bracedInitList() {
 	    let localctx = new BracedInitListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 228, UnrealAngelscriptParser.RULE_bracedInitList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1156;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.LeftBracket || _la===UnrealAngelscriptParser.LeftBrace)) {
+	        if(!(_la===68 || _la===70)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5755,13 +5751,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1161;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (UnrealAngelscriptParser.IntegerLiteral - 1)) | (1 << (UnrealAngelscriptParser.CharacterLiteral - 1)) | (1 << (UnrealAngelscriptParser.FloatingLiteral - 1)) | (1 << (UnrealAngelscriptParser.StringLiteral - 1)) | (1 << (UnrealAngelscriptParser.UserDefinedLiteral - 1)) | (1 << (UnrealAngelscriptParser.Cast - 1)) | (1 << (UnrealAngelscriptParser.Ensure - 1)) | (1 << (UnrealAngelscriptParser.EnsureAlways - 1)) | (1 << (UnrealAngelscriptParser.Check - 1)) | (1 << (UnrealAngelscriptParser.Int - 1)) | (1 << (UnrealAngelscriptParser.Int8 - 1)) | (1 << (UnrealAngelscriptParser.Int16 - 1)) | (1 << (UnrealAngelscriptParser.Int32 - 1)) | (1 << (UnrealAngelscriptParser.Int64 - 1)) | (1 << (UnrealAngelscriptParser.UInt - 1)) | (1 << (UnrealAngelscriptParser.UInt8 - 1)) | (1 << (UnrealAngelscriptParser.UInt16 - 1)) | (1 << (UnrealAngelscriptParser.UInt32 - 1)) | (1 << (UnrealAngelscriptParser.UInt64 - 1)) | (1 << (UnrealAngelscriptParser.Float - 1)) | (1 << (UnrealAngelscriptParser.Double - 1)) | (1 << (UnrealAngelscriptParser.Bool - 1)) | (1 << (UnrealAngelscriptParser.Auto - 1)))) !== 0) || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (UnrealAngelscriptParser.False_ - 45)) | (1 << (UnrealAngelscriptParser.Nullptr - 45)) | (1 << (UnrealAngelscriptParser.Operator - 45)) | (1 << (UnrealAngelscriptParser.This - 45)) | (1 << (UnrealAngelscriptParser.True_ - 45)) | (1 << (UnrealAngelscriptParser.Void - 45)) | (1 << (UnrealAngelscriptParser.LeftParen - 45)) | (1 << (UnrealAngelscriptParser.LeftBracket - 45)) | (1 << (UnrealAngelscriptParser.LeftBrace - 45)) | (1 << (UnrealAngelscriptParser.Plus - 45)) | (1 << (UnrealAngelscriptParser.Minus - 45)) | (1 << (UnrealAngelscriptParser.Star - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (UnrealAngelscriptParser.And - 78)) | (1 << (UnrealAngelscriptParser.Or - 78)) | (1 << (UnrealAngelscriptParser.Tilde - 78)) | (1 << (UnrealAngelscriptParser.Not - 78)) | (1 << (UnrealAngelscriptParser.PlusPlus - 78)) | (1 << (UnrealAngelscriptParser.MinusMinus - 78)) | (1 << (UnrealAngelscriptParser.Doublecolon - 78)) | (1 << (UnrealAngelscriptParser.Identifier - 78)))) !== 0)) {
+	        if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 4294819903) !== 0) || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 984285377) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 2441084943) !== 0)) {
 	            this.state = 1157;
 	            this.initializerList();
 	            this.state = 1159;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Comma) {
+	            if(_la===103) {
 	                this.state = 1158;
 	                this.match(UnrealAngelscriptParser.Comma);
 	            }
@@ -5770,7 +5766,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 
 	        this.state = 1163;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.RightBracket || _la===UnrealAngelscriptParser.RightBrace)) {
+	        if(!(_la===69 || _la===71)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5819,7 +5815,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	classSpecifier() {
 	    let localctx = new ClassSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 232, UnrealAngelscriptParser.RULE_classSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1167;
@@ -5829,7 +5825,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1170;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.UProperty) | (1 << UnrealAngelscriptParser.UFunction) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Mixin) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Default - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Private - 32)) | (1 << (UnrealAngelscriptParser.Protected - 32)) | (1 << (UnrealAngelscriptParser.Public - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Colon - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Semi - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294944766) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3923257697) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247573) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 371) !== 0)) {
 	            this.state = 1169;
 	            this.memberSpecification();
 	        }
@@ -5855,13 +5851,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	classHead() {
 	    let localctx = new ClassHeadContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 234, UnrealAngelscriptParser.RULE_classHead);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1175;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.UClass || _la===UnrealAngelscriptParser.UStruct) {
+	        if(_la===7 || _la===8) {
 	            this.state = 1174;
 	            this.utype();
 	        }
@@ -5871,13 +5867,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1182;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.LeftParen || _la===UnrealAngelscriptParser.Doublecolon || _la===UnrealAngelscriptParser.Identifier) {
+	        if(_la===66 || _la===106 || _la===109) {
 	            this.state = 1178;
 	            this.classHeadName();
 	            this.state = 1180;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Final) {
+	            if(_la===46) {
 	                this.state = 1179;
 	                this.classVirtSpecifier();
 	            }
@@ -5887,7 +5883,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1185;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Colon) {
+	        if(_la===105) {
 	            this.state = 1184;
 	            this.baseClause();
 	        }
@@ -5965,12 +5961,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	classKey() {
 	    let localctx = new ClassKeyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 240, UnrealAngelscriptParser.RULE_classKey);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1194;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.Class || _la===UnrealAngelscriptParser.Struct)) {
+	        if(!(_la===37 || _la===59)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5996,7 +5992,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	memberSpecification() {
 	    let localctx = new MemberSpecificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 242, UnrealAngelscriptParser.RULE_memberSpecification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1200; 
@@ -6023,7 +6019,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1202; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << UnrealAngelscriptParser.IntegerLiteral) | (1 << UnrealAngelscriptParser.CharacterLiteral) | (1 << UnrealAngelscriptParser.FloatingLiteral) | (1 << UnrealAngelscriptParser.StringLiteral) | (1 << UnrealAngelscriptParser.UserDefinedLiteral) | (1 << UnrealAngelscriptParser.Cast) | (1 << UnrealAngelscriptParser.UClass) | (1 << UnrealAngelscriptParser.UStruct) | (1 << UnrealAngelscriptParser.UProperty) | (1 << UnrealAngelscriptParser.UFunction) | (1 << UnrealAngelscriptParser.Out) | (1 << UnrealAngelscriptParser.Ensure) | (1 << UnrealAngelscriptParser.EnsureAlways) | (1 << UnrealAngelscriptParser.Check) | (1 << UnrealAngelscriptParser.Mixin) | (1 << UnrealAngelscriptParser.Int) | (1 << UnrealAngelscriptParser.Int8) | (1 << UnrealAngelscriptParser.Int16) | (1 << UnrealAngelscriptParser.Int32) | (1 << UnrealAngelscriptParser.Int64) | (1 << UnrealAngelscriptParser.UInt) | (1 << UnrealAngelscriptParser.UInt8) | (1 << UnrealAngelscriptParser.UInt16) | (1 << UnrealAngelscriptParser.UInt32) | (1 << UnrealAngelscriptParser.UInt64) | (1 << UnrealAngelscriptParser.Float) | (1 << UnrealAngelscriptParser.Double) | (1 << UnrealAngelscriptParser.Bool))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (UnrealAngelscriptParser.Auto - 32)) | (1 << (UnrealAngelscriptParser.Class - 32)) | (1 << (UnrealAngelscriptParser.Const - 32)) | (1 << (UnrealAngelscriptParser.Default - 32)) | (1 << (UnrealAngelscriptParser.Enum - 32)) | (1 << (UnrealAngelscriptParser.False_ - 32)) | (1 << (UnrealAngelscriptParser.Nullptr - 32)) | (1 << (UnrealAngelscriptParser.Operator - 32)) | (1 << (UnrealAngelscriptParser.Private - 32)) | (1 << (UnrealAngelscriptParser.Protected - 32)) | (1 << (UnrealAngelscriptParser.Public - 32)) | (1 << (UnrealAngelscriptParser.Struct - 32)) | (1 << (UnrealAngelscriptParser.This - 32)) | (1 << (UnrealAngelscriptParser.True_ - 32)) | (1 << (UnrealAngelscriptParser.Virtual - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (UnrealAngelscriptParser.Void - 64)) | (1 << (UnrealAngelscriptParser.LeftParen - 64)) | (1 << (UnrealAngelscriptParser.LeftBracket - 64)) | (1 << (UnrealAngelscriptParser.Plus - 64)) | (1 << (UnrealAngelscriptParser.Minus - 64)) | (1 << (UnrealAngelscriptParser.Star - 64)) | (1 << (UnrealAngelscriptParser.And - 64)) | (1 << (UnrealAngelscriptParser.Or - 64)) | (1 << (UnrealAngelscriptParser.Tilde - 64)) | (1 << (UnrealAngelscriptParser.Not - 64)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (UnrealAngelscriptParser.PlusPlus - 101)) | (1 << (UnrealAngelscriptParser.MinusMinus - 101)) | (1 << (UnrealAngelscriptParser.Colon - 101)) | (1 << (UnrealAngelscriptParser.Doublecolon - 101)) | (1 << (UnrealAngelscriptParser.Semi - 101)) | (1 << (UnrealAngelscriptParser.Identifier - 101)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294944766) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3923257697) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 247573) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 371) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -6092,13 +6088,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	propertyDefinition() {
 	    let localctx = new PropertyDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 246, UnrealAngelscriptParser.RULE_propertyDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1211;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.UProperty) {
+	        if(_la===9) {
 	            this.state = 1210;
 	            this.uproperty();
 	        }
@@ -6106,7 +6102,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1214;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (UnrealAngelscriptParser.Private - 54)) | (1 << (UnrealAngelscriptParser.Protected - 54)) | (1 << (UnrealAngelscriptParser.Public - 54)))) !== 0)) {
+	        if(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 7) !== 0)) {
 	            this.state = 1213;
 	            this.accessSpecifier();
 	        }
@@ -6114,7 +6110,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1217;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===UnrealAngelscriptParser.Default) {
+	        if(_la===40) {
 	            this.state = 1216;
 	            this.match(UnrealAngelscriptParser.Default);
 	        }
@@ -6160,7 +6156,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	memberDeclaratorList() {
 	    let localctx = new MemberDeclaratorListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 248, UnrealAngelscriptParser.RULE_memberDeclaratorList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1228;
@@ -6168,7 +6164,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1233;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Comma) {
+	        while(_la===103) {
 	            this.state = 1229;
 	            this.match(UnrealAngelscriptParser.Comma);
 	            this.state = 1230;
@@ -6196,7 +6192,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	memberDeclarator() {
 	    let localctx = new MemberDeclaratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 250, UnrealAngelscriptParser.RULE_memberDeclarator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1251;
 	        this._errHandler.sync(this);
@@ -6214,7 +6210,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                this.state = 1238;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===UnrealAngelscriptParser.Property || _la===UnrealAngelscriptParser.Final || _la===UnrealAngelscriptParser.Override) {
+	                if(_la===14 || _la===46 || _la===53) {
 	                    this.state = 1237;
 	                    this.postFuncSpecifierSeq();
 	                }
@@ -6225,7 +6221,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	                this.state = 1241;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (UnrealAngelscriptParser.LeftBracket - 68)) | (1 << (UnrealAngelscriptParser.LeftBrace - 68)) | (1 << (UnrealAngelscriptParser.Assign - 68)))) !== 0)) {
+	                if(((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 16389) !== 0)) {
 	                    this.state = 1240;
 	                    this.braceOrEqualInitializer();
 	                }
@@ -6240,7 +6236,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1246;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Identifier) {
+	            if(_la===109) {
 	                this.state = 1245;
 	                this.match(UnrealAngelscriptParser.Identifier);
 	            }
@@ -6277,7 +6273,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	postFuncSpecifierSeq() {
 	    let localctx = new PostFuncSpecifierSeqContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 252, UnrealAngelscriptParser.RULE_postFuncSpecifierSeq);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1254; 
@@ -6289,7 +6285,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1256; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===UnrealAngelscriptParser.Property || _la===UnrealAngelscriptParser.Final || _la===UnrealAngelscriptParser.Override);
+	        } while(_la===14 || _la===46 || _la===53);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -6309,12 +6305,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	virtualSpecifier() {
 	    let localctx = new VirtualSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 254, UnrealAngelscriptParser.RULE_virtualSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1258;
 	        _la = this._input.LA(1);
-	        if(!(_la===UnrealAngelscriptParser.Property || _la===UnrealAngelscriptParser.Final || _la===UnrealAngelscriptParser.Override)) {
+	        if(!(_la===14 || _la===46 || _la===53)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6365,7 +6361,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	baseSpecifierList() {
 	    let localctx = new BaseSpecifierListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 258, UnrealAngelscriptParser.RULE_baseSpecifierList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1263;
@@ -6373,7 +6369,7 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1268;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===UnrealAngelscriptParser.Comma) {
+	        while(_la===103) {
 	            this.state = 1264;
 	            this.match(UnrealAngelscriptParser.Comma);
 	            this.state = 1265;
@@ -6401,25 +6397,25 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	baseSpecifier() {
 	    let localctx = new BaseSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 260, UnrealAngelscriptParser.RULE_baseSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1283;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.LeftParen:
-	        case UnrealAngelscriptParser.Doublecolon:
-	        case UnrealAngelscriptParser.Identifier:
+	        case 66:
+	        case 106:
+	        case 109:
 	            this.state = 1271;
 	            this.baseTypeSpecifier();
 	            break;
-	        case UnrealAngelscriptParser.Virtual:
+	        case 63:
 	            this.state = 1272;
 	            this.match(UnrealAngelscriptParser.Virtual);
 	            this.state = 1274;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (UnrealAngelscriptParser.Private - 54)) | (1 << (UnrealAngelscriptParser.Protected - 54)) | (1 << (UnrealAngelscriptParser.Public - 54)))) !== 0)) {
+	            if(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 7) !== 0)) {
 	                this.state = 1273;
 	                this.accessSpecifier();
 	            }
@@ -6427,15 +6423,15 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	            this.state = 1276;
 	            this.baseTypeSpecifier();
 	            break;
-	        case UnrealAngelscriptParser.Private:
-	        case UnrealAngelscriptParser.Protected:
-	        case UnrealAngelscriptParser.Public:
+	        case 54:
+	        case 55:
+	        case 56:
 	            this.state = 1277;
 	            this.accessSpecifier();
 	            this.state = 1279;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===UnrealAngelscriptParser.Virtual) {
+	            if(_la===63) {
 	                this.state = 1278;
 	                this.match(UnrealAngelscriptParser.Virtual);
 	            }
@@ -6533,12 +6529,12 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	accessSpecifier() {
 	    let localctx = new AccessSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 266, UnrealAngelscriptParser.RULE_accessSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1294;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (UnrealAngelscriptParser.Private - 54)) | (1 << (UnrealAngelscriptParser.Protected - 54)) | (1 << (UnrealAngelscriptParser.Public - 54)))) !== 0))) {
+	        if(!(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6596,13 +6592,13 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1303;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.StringLiteral:
+	        case 4:
 	            this.state = 1300;
 	            this.match(UnrealAngelscriptParser.StringLiteral);
 	            this.state = 1301;
 	            this.match(UnrealAngelscriptParser.Identifier);
 	            break;
-	        case UnrealAngelscriptParser.UserDefinedStringLiteral:
+	        case 117:
 	            this.state = 1302;
 	            this.match(UnrealAngelscriptParser.UserDefinedStringLiteral);
 	            break;
@@ -6880,38 +6876,38 @@ export default class UnrealAngelscriptParser extends antlr4.Parser {
 	        this.state = 1354;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case UnrealAngelscriptParser.IntegerLiteral:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1347;
 	            this.match(UnrealAngelscriptParser.IntegerLiteral);
 	            break;
-	        case UnrealAngelscriptParser.CharacterLiteral:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1348;
 	            this.match(UnrealAngelscriptParser.CharacterLiteral);
 	            break;
-	        case UnrealAngelscriptParser.FloatingLiteral:
+	        case 3:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1349;
 	            this.match(UnrealAngelscriptParser.FloatingLiteral);
 	            break;
-	        case UnrealAngelscriptParser.StringLiteral:
+	        case 4:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1350;
 	            this.match(UnrealAngelscriptParser.StringLiteral);
 	            break;
-	        case UnrealAngelscriptParser.False_:
-	        case UnrealAngelscriptParser.True_:
+	        case 45:
+	        case 62:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1351;
 	            this.booleanLiteral();
 	            break;
-	        case UnrealAngelscriptParser.UserDefinedLiteral:
+	        case 5:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 1352;
 	            this.match(UnrealAngelscriptParser.UserDefinedLiteral);
 	            break;
-	        case UnrealAngelscriptParser.Nullptr:
+	        case 51:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 1353;
 	            this.match(UnrealAngelscriptParser.Nullptr);
@@ -11782,7 +11778,7 @@ class NamespaceDefinitionContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = UnrealAngelscriptParser.RULE_namespaceDefinition;
-        this.namespaceBody = null; // DeclarationseqContext
+        this.namespaceBody = null;
     }
 
 	Namespace() {
@@ -14266,3 +14262,12 @@ UnrealAngelscriptParser.OperatorFunctionIdContext = OperatorFunctionIdContext;
 UnrealAngelscriptParser.LiteralOperatorIdContext = LiteralOperatorIdContext; 
 UnrealAngelscriptParser.TheOperatorContext = TheOperatorContext; 
 UnrealAngelscriptParser.LiteralContext = LiteralContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

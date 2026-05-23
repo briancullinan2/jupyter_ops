@@ -1,70 +1,68 @@
-// Generated from ./lark/LarkParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/lark/LarkParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import LarkParserListener from './LarkParserListener.js';
-const serializedATN = [4,1,26,200,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,26,196,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
-2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,1,0,3,0,36,8,0,1,0,5,0,39,8,0,10,
-0,12,0,42,9,0,1,0,3,0,45,8,0,1,1,1,1,1,1,3,1,50,8,1,1,2,1,2,1,2,3,2,55,8,
-2,1,2,1,2,1,2,1,3,1,3,1,3,3,3,63,8,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,5,4,72,
-8,4,10,4,12,4,75,9,4,1,4,3,4,78,8,4,1,5,1,5,1,5,1,5,5,5,84,8,5,10,5,12,5,
-87,9,5,1,5,3,5,90,8,5,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,3,7,101,8,7,1,
-7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,4,7,111,8,7,11,7,12,7,112,3,7,115,8,7,1,8,
-3,8,118,8,8,1,8,1,8,1,8,5,8,123,8,8,10,8,12,8,126,9,8,1,9,1,9,1,9,1,9,5,
-9,132,8,9,10,9,12,9,135,9,9,1,9,1,9,1,10,1,10,1,10,5,10,142,8,10,10,10,12,
-10,145,9,10,1,11,1,11,1,11,3,11,150,8,11,1,12,5,12,153,8,12,10,12,12,12,
-156,9,12,1,13,1,13,1,13,1,13,1,13,1,13,3,13,164,8,13,3,13,166,8,13,1,14,
-1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,177,8,14,1,15,1,15,1,15,1,15,
-1,15,1,15,1,15,1,15,1,15,1,15,5,15,189,8,15,10,15,12,15,192,9,15,1,15,1,
-15,3,15,196,8,15,1,16,1,16,1,16,0,0,17,0,2,4,6,8,10,12,14,16,18,20,22,24,
-26,28,30,32,0,2,1,0,21,22,1,0,19,20,214,0,40,1,0,0,0,2,49,1,0,0,0,4,51,1,
-0,0,0,6,59,1,0,0,0,8,77,1,0,0,0,10,89,1,0,0,0,12,91,1,0,0,0,14,114,1,0,0,
-0,16,117,1,0,0,0,18,127,1,0,0,0,20,138,1,0,0,0,22,146,1,0,0,0,24,154,1,0,
-0,0,26,157,1,0,0,0,28,176,1,0,0,0,30,195,1,0,0,0,32,197,1,0,0,0,34,36,3,
-2,1,0,35,34,1,0,0,0,35,36,1,0,0,0,36,37,1,0,0,0,37,39,5,23,0,0,38,35,1,0,
-0,0,39,42,1,0,0,0,40,38,1,0,0,0,40,41,1,0,0,0,41,44,1,0,0,0,42,40,1,0,0,
-0,43,45,3,2,1,0,44,43,1,0,0,0,44,45,1,0,0,0,45,1,1,0,0,0,46,50,3,4,2,0,47,
-50,3,6,3,0,48,50,3,14,7,0,49,46,1,0,0,0,49,47,1,0,0,0,49,48,1,0,0,0,50,3,
-1,0,0,0,51,52,5,19,0,0,52,54,3,8,4,0,53,55,3,12,6,0,54,53,1,0,0,0,54,55,
-1,0,0,0,55,56,1,0,0,0,56,57,5,1,0,0,57,58,3,20,10,0,58,5,1,0,0,0,59,60,5,
-20,0,0,60,62,3,10,5,0,61,63,3,12,6,0,62,61,1,0,0,0,62,63,1,0,0,0,63,64,1,
-0,0,0,64,65,5,1,0,0,65,66,3,20,10,0,66,7,1,0,0,0,67,68,5,2,0,0,68,73,5,19,
-0,0,69,70,5,8,0,0,70,72,5,19,0,0,71,69,1,0,0,0,72,75,1,0,0,0,73,71,1,0,0,
-0,73,74,1,0,0,0,74,76,1,0,0,0,75,73,1,0,0,0,76,78,5,3,0,0,77,67,1,0,0,0,
-77,78,1,0,0,0,78,9,1,0,0,0,79,80,5,2,0,0,80,85,5,20,0,0,81,82,5,8,0,0,82,
-84,5,20,0,0,83,81,1,0,0,0,84,87,1,0,0,0,85,83,1,0,0,0,85,86,1,0,0,0,86,88,
-1,0,0,0,87,85,1,0,0,0,88,90,5,3,0,0,89,79,1,0,0,0,89,90,1,0,0,0,90,11,1,
-0,0,0,91,92,5,9,0,0,92,93,5,24,0,0,93,13,1,0,0,0,94,95,5,11,0,0,95,115,3,
-20,10,0,96,97,5,12,0,0,97,100,3,16,8,0,98,99,5,10,0,0,99,101,3,32,16,0,100,
-98,1,0,0,0,100,101,1,0,0,0,101,115,1,0,0,0,102,103,5,12,0,0,103,104,3,16,
-8,0,104,105,3,18,9,0,105,115,1,0,0,0,106,107,5,13,0,0,107,115,3,4,2,0,108,
-110,5,14,0,0,109,111,3,32,16,0,110,109,1,0,0,0,111,112,1,0,0,0,112,110,1,
-0,0,0,112,113,1,0,0,0,113,115,1,0,0,0,114,94,1,0,0,0,114,96,1,0,0,0,114,
-102,1,0,0,0,114,106,1,0,0,0,114,108,1,0,0,0,115,15,1,0,0,0,116,118,5,9,0,
-0,117,116,1,0,0,0,117,118,1,0,0,0,118,119,1,0,0,0,119,124,3,32,16,0,120,
-121,5,9,0,0,121,123,3,32,16,0,122,120,1,0,0,0,123,126,1,0,0,0,124,122,1,
-0,0,0,124,125,1,0,0,0,125,17,1,0,0,0,126,124,1,0,0,0,127,128,5,4,0,0,128,
-133,3,32,16,0,129,130,5,8,0,0,130,132,3,32,16,0,131,129,1,0,0,0,132,135,
-1,0,0,0,133,131,1,0,0,0,133,134,1,0,0,0,134,136,1,0,0,0,135,133,1,0,0,0,
-136,137,5,5,0,0,137,19,1,0,0,0,138,143,3,22,11,0,139,140,5,17,0,0,140,142,
-3,22,11,0,141,139,1,0,0,0,142,145,1,0,0,0,143,141,1,0,0,0,143,144,1,0,0,
-0,144,21,1,0,0,0,145,143,1,0,0,0,146,149,3,24,12,0,147,148,5,10,0,0,148,
-150,5,19,0,0,149,147,1,0,0,0,149,150,1,0,0,0,150,23,1,0,0,0,151,153,3,26,
-13,0,152,151,1,0,0,0,153,156,1,0,0,0,154,152,1,0,0,0,154,155,1,0,0,0,155,
-25,1,0,0,0,156,154,1,0,0,0,157,165,3,28,14,0,158,166,5,18,0,0,159,160,5,
-16,0,0,160,163,5,24,0,0,161,162,5,15,0,0,162,164,5,24,0,0,163,161,1,0,0,
-0,163,164,1,0,0,0,164,166,1,0,0,0,165,158,1,0,0,0,165,159,1,0,0,0,165,166,
-1,0,0,0,166,27,1,0,0,0,167,168,5,4,0,0,168,169,3,20,10,0,169,170,5,5,0,0,
-170,177,1,0,0,0,171,172,5,6,0,0,172,173,3,20,10,0,173,174,5,7,0,0,174,177,
-1,0,0,0,175,177,3,30,15,0,176,167,1,0,0,0,176,171,1,0,0,0,176,175,1,0,0,
-0,177,29,1,0,0,0,178,179,5,21,0,0,179,180,5,15,0,0,180,196,5,21,0,0,181,
-196,3,32,16,0,182,196,7,0,0,0,183,184,3,32,16,0,184,185,5,2,0,0,185,190,
-3,30,15,0,186,187,5,8,0,0,187,189,3,30,15,0,188,186,1,0,0,0,189,192,1,0,
-0,0,190,188,1,0,0,0,190,191,1,0,0,0,191,193,1,0,0,0,192,190,1,0,0,0,193,
-194,5,3,0,0,194,196,1,0,0,0,195,178,1,0,0,0,195,181,1,0,0,0,195,182,1,0,
-0,0,195,183,1,0,0,0,196,31,1,0,0,0,197,198,7,1,0,0,198,33,1,0,0,0,24,35,
-40,44,49,54,62,73,77,85,89,100,112,114,117,124,133,143,149,154,163,165,176,
-190,195];
+2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,1,0,5,0,36,8,0,10,0,12,0,39,9,0,
+1,0,1,0,1,1,1,1,1,1,3,1,46,8,1,1,2,1,2,1,2,3,2,51,8,2,1,2,1,2,1,2,1,3,1,
+3,1,3,3,3,59,8,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,5,4,68,8,4,10,4,12,4,71,9,4,
+1,4,3,4,74,8,4,1,5,1,5,1,5,1,5,5,5,80,8,5,10,5,12,5,83,9,5,1,5,3,5,86,8,
+5,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,3,7,97,8,7,1,7,1,7,1,7,1,7,1,7,1,7,
+1,7,1,7,4,7,107,8,7,11,7,12,7,108,3,7,111,8,7,1,8,3,8,114,8,8,1,8,1,8,1,
+8,5,8,119,8,8,10,8,12,8,122,9,8,1,9,1,9,1,9,1,9,5,9,128,8,9,10,9,12,9,131,
+9,9,1,9,1,9,1,10,1,10,1,10,5,10,138,8,10,10,10,12,10,141,9,10,1,11,1,11,
+1,11,3,11,146,8,11,1,12,5,12,149,8,12,10,12,12,12,152,9,12,1,13,1,13,1,13,
+1,13,1,13,1,13,3,13,160,8,13,3,13,162,8,13,1,14,1,14,1,14,1,14,1,14,1,14,
+1,14,1,14,1,14,3,14,173,8,14,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,
+1,15,5,15,185,8,15,10,15,12,15,188,9,15,1,15,1,15,3,15,192,8,15,1,16,1,16,
+1,16,0,0,17,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,0,2,1,0,21,22,
+1,0,19,20,208,0,37,1,0,0,0,2,45,1,0,0,0,4,47,1,0,0,0,6,55,1,0,0,0,8,73,1,
+0,0,0,10,85,1,0,0,0,12,87,1,0,0,0,14,110,1,0,0,0,16,113,1,0,0,0,18,123,1,
+0,0,0,20,134,1,0,0,0,22,142,1,0,0,0,24,150,1,0,0,0,26,153,1,0,0,0,28,172,
+1,0,0,0,30,191,1,0,0,0,32,193,1,0,0,0,34,36,3,2,1,0,35,34,1,0,0,0,36,39,
+1,0,0,0,37,35,1,0,0,0,37,38,1,0,0,0,38,40,1,0,0,0,39,37,1,0,0,0,40,41,5,
+0,0,1,41,1,1,0,0,0,42,46,3,4,2,0,43,46,3,6,3,0,44,46,3,14,7,0,45,42,1,0,
+0,0,45,43,1,0,0,0,45,44,1,0,0,0,46,3,1,0,0,0,47,48,5,19,0,0,48,50,3,8,4,
+0,49,51,3,12,6,0,50,49,1,0,0,0,50,51,1,0,0,0,51,52,1,0,0,0,52,53,5,1,0,0,
+53,54,3,20,10,0,54,5,1,0,0,0,55,56,5,20,0,0,56,58,3,10,5,0,57,59,3,12,6,
+0,58,57,1,0,0,0,58,59,1,0,0,0,59,60,1,0,0,0,60,61,5,1,0,0,61,62,3,20,10,
+0,62,7,1,0,0,0,63,64,5,2,0,0,64,69,5,19,0,0,65,66,5,8,0,0,66,68,5,19,0,0,
+67,65,1,0,0,0,68,71,1,0,0,0,69,67,1,0,0,0,69,70,1,0,0,0,70,72,1,0,0,0,71,
+69,1,0,0,0,72,74,5,3,0,0,73,63,1,0,0,0,73,74,1,0,0,0,74,9,1,0,0,0,75,76,
+5,2,0,0,76,81,5,20,0,0,77,78,5,8,0,0,78,80,5,20,0,0,79,77,1,0,0,0,80,83,
+1,0,0,0,81,79,1,0,0,0,81,82,1,0,0,0,82,84,1,0,0,0,83,81,1,0,0,0,84,86,5,
+3,0,0,85,75,1,0,0,0,85,86,1,0,0,0,86,11,1,0,0,0,87,88,5,9,0,0,88,89,5,24,
+0,0,89,13,1,0,0,0,90,91,5,11,0,0,91,111,3,20,10,0,92,93,5,12,0,0,93,96,3,
+16,8,0,94,95,5,10,0,0,95,97,3,32,16,0,96,94,1,0,0,0,96,97,1,0,0,0,97,111,
+1,0,0,0,98,99,5,12,0,0,99,100,3,16,8,0,100,101,3,18,9,0,101,111,1,0,0,0,
+102,103,5,13,0,0,103,111,3,4,2,0,104,106,5,14,0,0,105,107,3,32,16,0,106,
+105,1,0,0,0,107,108,1,0,0,0,108,106,1,0,0,0,108,109,1,0,0,0,109,111,1,0,
+0,0,110,90,1,0,0,0,110,92,1,0,0,0,110,98,1,0,0,0,110,102,1,0,0,0,110,104,
+1,0,0,0,111,15,1,0,0,0,112,114,5,9,0,0,113,112,1,0,0,0,113,114,1,0,0,0,114,
+115,1,0,0,0,115,120,3,32,16,0,116,117,5,9,0,0,117,119,3,32,16,0,118,116,
+1,0,0,0,119,122,1,0,0,0,120,118,1,0,0,0,120,121,1,0,0,0,121,17,1,0,0,0,122,
+120,1,0,0,0,123,124,5,4,0,0,124,129,3,32,16,0,125,126,5,8,0,0,126,128,3,
+32,16,0,127,125,1,0,0,0,128,131,1,0,0,0,129,127,1,0,0,0,129,130,1,0,0,0,
+130,132,1,0,0,0,131,129,1,0,0,0,132,133,5,5,0,0,133,19,1,0,0,0,134,139,3,
+22,11,0,135,136,5,17,0,0,136,138,3,22,11,0,137,135,1,0,0,0,138,141,1,0,0,
+0,139,137,1,0,0,0,139,140,1,0,0,0,140,21,1,0,0,0,141,139,1,0,0,0,142,145,
+3,24,12,0,143,144,5,10,0,0,144,146,5,19,0,0,145,143,1,0,0,0,145,146,1,0,
+0,0,146,23,1,0,0,0,147,149,3,26,13,0,148,147,1,0,0,0,149,152,1,0,0,0,150,
+148,1,0,0,0,150,151,1,0,0,0,151,25,1,0,0,0,152,150,1,0,0,0,153,161,3,28,
+14,0,154,162,5,18,0,0,155,156,5,16,0,0,156,159,5,24,0,0,157,158,5,15,0,0,
+158,160,5,24,0,0,159,157,1,0,0,0,159,160,1,0,0,0,160,162,1,0,0,0,161,154,
+1,0,0,0,161,155,1,0,0,0,161,162,1,0,0,0,162,27,1,0,0,0,163,164,5,4,0,0,164,
+165,3,20,10,0,165,166,5,5,0,0,166,173,1,0,0,0,167,168,5,6,0,0,168,169,3,
+20,10,0,169,170,5,7,0,0,170,173,1,0,0,0,171,173,3,30,15,0,172,163,1,0,0,
+0,172,167,1,0,0,0,172,171,1,0,0,0,173,29,1,0,0,0,174,175,5,21,0,0,175,176,
+5,15,0,0,176,192,5,21,0,0,177,192,3,32,16,0,178,192,7,0,0,0,179,180,3,32,
+16,0,180,181,5,2,0,0,181,186,3,30,15,0,182,183,5,8,0,0,183,185,3,30,15,0,
+184,182,1,0,0,0,185,188,1,0,0,0,186,184,1,0,0,0,186,187,1,0,0,0,187,189,
+1,0,0,0,188,186,1,0,0,0,189,190,5,3,0,0,190,192,1,0,0,0,191,174,1,0,0,0,
+191,177,1,0,0,0,191,178,1,0,0,0,191,179,1,0,0,0,192,31,1,0,0,0,193,194,7,
+1,0,0,194,33,1,0,0,0,22,37,45,50,58,69,73,81,85,96,108,110,113,120,129,139,
+145,150,159,161,172,186,191];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -85,7 +83,7 @@ export default class LarkParser extends antlr4.Parser {
                              "OVERRIDE", "DECLARE", "DD", "SQ", "VBAR", 
                              "OP", "RULE", "TOKEN", "STRING", "REGEXP", 
                              "NL", "NUMBER", "WS_INLINE", "COMMENT" ];
-    static ruleNames = [ "start", "item", "rule_", "token", "rule_params", 
+    static ruleNames = [ "start_", "item", "rule_", "token", "rule_params", 
                          "token_params", "priority", "statement", "import_path", 
                          "name_list", "expansions", "alias", "expansion", 
                          "expr", "atom", "value", "name" ];
@@ -98,47 +96,26 @@ export default class LarkParser extends antlr4.Parser {
         this.symbolicNames = LarkParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
 
 
-
-	start() {
-	    let localctx = new StartContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 0, LarkParser.RULE_start);
-	    var _la = 0; // Token type
+	start_() {
+	    let localctx = new Start_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, LarkParser.RULE_start_);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 40;
-	        this._errHandler.sync(this);
-	        var _alt = this._interp.adaptivePredict(this._input,1,this._ctx)
-	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
-	            if(_alt===1) {
-	                this.state = 35;
-	                this._errHandler.sync(this);
-	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << LarkParser.IGNORE) | (1 << LarkParser.IMPORT) | (1 << LarkParser.OVERRIDE) | (1 << LarkParser.DECLARE) | (1 << LarkParser.RULE) | (1 << LarkParser.TOKEN))) !== 0)) {
-	                    this.state = 34;
-	                    this.item();
-	                }
-
-	                this.state = 37;
-	                this.match(LarkParser.NL); 
-	            }
-	            this.state = 42;
-	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,1,this._ctx);
-	        }
-
-	        this.state = 44;
+	        this.state = 37;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << LarkParser.IGNORE) | (1 << LarkParser.IMPORT) | (1 << LarkParser.OVERRIDE) | (1 << LarkParser.DECLARE) | (1 << LarkParser.RULE) | (1 << LarkParser.TOKEN))) !== 0)) {
-	            this.state = 43;
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1603584) !== 0)) {
+	            this.state = 34;
 	            this.item();
+	            this.state = 39;
+	            this._errHandler.sync(this);
+	            _la = this._input.LA(1);
 	        }
-
+	        this.state = 40;
+	        this.match(LarkParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -159,25 +136,25 @@ export default class LarkParser extends antlr4.Parser {
 	    let localctx = new ItemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, LarkParser.RULE_item);
 	    try {
-	        this.state = 49;
+	        this.state = 45;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LarkParser.RULE:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 46;
+	            this.state = 42;
 	            this.rule_();
 	            break;
-	        case LarkParser.TOKEN:
+	        case 20:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 47;
+	            this.state = 43;
 	            this.token();
 	            break;
-	        case LarkParser.IGNORE:
-	        case LarkParser.IMPORT:
-	        case LarkParser.OVERRIDE:
-	        case LarkParser.DECLARE:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 48;
+	            this.state = 44;
 	            this.statement();
 	            break;
 	        default:
@@ -202,24 +179,24 @@ export default class LarkParser extends antlr4.Parser {
 	rule_() {
 	    let localctx = new Rule_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, LarkParser.RULE_rule_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 51;
+	        this.state = 47;
 	        this.match(LarkParser.RULE);
-	        this.state = 52;
+	        this.state = 48;
 	        this.rule_params();
-	        this.state = 54;
+	        this.state = 50;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===LarkParser.DOT) {
-	            this.state = 53;
+	        if(_la===9) {
+	            this.state = 49;
 	            this.priority();
 	        }
 
-	        this.state = 56;
+	        this.state = 52;
 	        this.match(LarkParser.COLON);
-	        this.state = 57;
+	        this.state = 53;
 	        this.expansions();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -240,24 +217,24 @@ export default class LarkParser extends antlr4.Parser {
 	token() {
 	    let localctx = new TokenContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, LarkParser.RULE_token);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 59;
+	        this.state = 55;
 	        this.match(LarkParser.TOKEN);
-	        this.state = 60;
+	        this.state = 56;
 	        this.token_params();
-	        this.state = 62;
+	        this.state = 58;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===LarkParser.DOT) {
-	            this.state = 61;
+	        if(_la===9) {
+	            this.state = 57;
 	            this.priority();
 	        }
 
-	        this.state = 64;
+	        this.state = 60;
 	        this.match(LarkParser.COLON);
-	        this.state = 65;
+	        this.state = 61;
 	        this.expansions();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -278,30 +255,30 @@ export default class LarkParser extends antlr4.Parser {
 	rule_params() {
 	    let localctx = new Rule_paramsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, LarkParser.RULE_rule_params);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 77;
+	        this.state = 73;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===LarkParser.LC) {
-	            this.state = 67;
+	        if(_la===2) {
+	            this.state = 63;
 	            this.match(LarkParser.LC);
-	            this.state = 68;
+	            this.state = 64;
 	            this.match(LarkParser.RULE);
-	            this.state = 73;
+	            this.state = 69;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===LarkParser.COMMA) {
-	                this.state = 69;
+	            while(_la===8) {
+	                this.state = 65;
 	                this.match(LarkParser.COMMA);
-	                this.state = 70;
+	                this.state = 66;
 	                this.match(LarkParser.RULE);
-	                this.state = 75;
+	                this.state = 71;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 76;
+	            this.state = 72;
 	            this.match(LarkParser.RC);
 	        }
 
@@ -324,30 +301,30 @@ export default class LarkParser extends antlr4.Parser {
 	token_params() {
 	    let localctx = new Token_paramsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, LarkParser.RULE_token_params);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 89;
+	        this.state = 85;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===LarkParser.LC) {
-	            this.state = 79;
+	        if(_la===2) {
+	            this.state = 75;
 	            this.match(LarkParser.LC);
-	            this.state = 80;
+	            this.state = 76;
 	            this.match(LarkParser.TOKEN);
-	            this.state = 85;
+	            this.state = 81;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===LarkParser.COMMA) {
-	                this.state = 81;
+	            while(_la===8) {
+	                this.state = 77;
 	                this.match(LarkParser.COMMA);
-	                this.state = 82;
+	                this.state = 78;
 	                this.match(LarkParser.TOKEN);
-	                this.state = 87;
+	                this.state = 83;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 88;
+	            this.state = 84;
 	            this.match(LarkParser.RC);
 	        }
 
@@ -372,9 +349,9 @@ export default class LarkParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, LarkParser.RULE_priority);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 91;
+	        this.state = 87;
 	        this.match(LarkParser.DOT);
-	        this.state = 92;
+	        this.state = 88;
 	        this.match(LarkParser.NUMBER);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -395,33 +372,33 @@ export default class LarkParser extends antlr4.Parser {
 	statement() {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, LarkParser.RULE_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 114;
+	        this.state = 110;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 94;
+	            this.state = 90;
 	            this.match(LarkParser.IGNORE);
-	            this.state = 95;
+	            this.state = 91;
 	            this.expansions();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 96;
+	            this.state = 92;
 	            this.match(LarkParser.IMPORT);
-	            this.state = 97;
+	            this.state = 93;
 	            this.import_path();
-	            this.state = 100;
+	            this.state = 96;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===LarkParser.ARROW) {
-	                this.state = 98;
+	            if(_la===10) {
+	                this.state = 94;
 	                this.match(LarkParser.ARROW);
-	                this.state = 99;
+	                this.state = 95;
 	                this.name();
 	            }
 
@@ -429,36 +406,42 @@ export default class LarkParser extends antlr4.Parser {
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 102;
+	            this.state = 98;
 	            this.match(LarkParser.IMPORT);
-	            this.state = 103;
+	            this.state = 99;
 	            this.import_path();
-	            this.state = 104;
+	            this.state = 100;
 	            this.name_list();
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 106;
+	            this.state = 102;
 	            this.match(LarkParser.OVERRIDE);
-	            this.state = 107;
+	            this.state = 103;
 	            this.rule_();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 108;
+	            this.state = 104;
 	            this.match(LarkParser.DECLARE);
-	            this.state = 110; 
+	            this.state = 106; 
 	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
+	            var _alt = 1;
 	            do {
-	                this.state = 109;
-	                this.name();
-	                this.state = 112; 
-	                this._errHandler.sync(this);
-	                _la = this._input.LA(1);
-	            } while(_la===LarkParser.RULE || _la===LarkParser.TOKEN);
+	            	switch (_alt) {
+	            	case 1:
+	            		this.state = 105;
+	            		this.name();
+	            		break;
+	            	default:
+	            		throw new antlr4.error.NoViableAltException(this);
+	            	}
+	            	this.state = 108; 
+	            	this._errHandler.sync(this);
+	            	_alt = this._interp.adaptivePredict(this._input,9, this._ctx);
+	            } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
 	            break;
 
 	        }
@@ -481,28 +464,28 @@ export default class LarkParser extends antlr4.Parser {
 	import_path() {
 	    let localctx = new Import_pathContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, LarkParser.RULE_import_path);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 117;
+	        this.state = 113;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===LarkParser.DOT) {
-	            this.state = 116;
+	        if(_la===9) {
+	            this.state = 112;
 	            this.match(LarkParser.DOT);
 	        }
 
-	        this.state = 119;
+	        this.state = 115;
 	        this.name();
-	        this.state = 124;
+	        this.state = 120;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===LarkParser.DOT) {
-	            this.state = 120;
+	        while(_la===9) {
+	            this.state = 116;
 	            this.match(LarkParser.DOT);
-	            this.state = 121;
+	            this.state = 117;
 	            this.name();
-	            this.state = 126;
+	            this.state = 122;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -525,26 +508,26 @@ export default class LarkParser extends antlr4.Parser {
 	name_list() {
 	    let localctx = new Name_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, LarkParser.RULE_name_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 127;
+	        this.state = 123;
 	        this.match(LarkParser.LP);
-	        this.state = 128;
+	        this.state = 124;
 	        this.name();
-	        this.state = 133;
+	        this.state = 129;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===LarkParser.COMMA) {
-	            this.state = 129;
+	        while(_la===8) {
+	            this.state = 125;
 	            this.match(LarkParser.COMMA);
-	            this.state = 130;
+	            this.state = 126;
 	            this.name();
-	            this.state = 135;
+	            this.state = 131;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 136;
+	        this.state = 132;
 	        this.match(LarkParser.RP);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -565,20 +548,20 @@ export default class LarkParser extends antlr4.Parser {
 	expansions() {
 	    let localctx = new ExpansionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, LarkParser.RULE_expansions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 138;
+	        this.state = 134;
 	        this.alias();
-	        this.state = 143;
+	        this.state = 139;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===LarkParser.VBAR) {
-	            this.state = 139;
+	        while(_la===17) {
+	            this.state = 135;
 	            this.match(LarkParser.VBAR);
-	            this.state = 140;
+	            this.state = 136;
 	            this.alias();
-	            this.state = 145;
+	            this.state = 141;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -601,18 +584,18 @@ export default class LarkParser extends antlr4.Parser {
 	alias() {
 	    let localctx = new AliasContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, LarkParser.RULE_alias);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 146;
+	        this.state = 142;
 	        this.expansion();
-	        this.state = 149;
+	        this.state = 145;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===LarkParser.ARROW) {
-	            this.state = 147;
+	        if(_la===10) {
+	            this.state = 143;
 	            this.match(LarkParser.ARROW);
-	            this.state = 148;
+	            this.state = 144;
 	            this.match(LarkParser.RULE);
 	        }
 
@@ -635,19 +618,21 @@ export default class LarkParser extends antlr4.Parser {
 	expansion() {
 	    let localctx = new ExpansionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, LarkParser.RULE_expansion);
-	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 154;
+	        this.state = 150;
 	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << LarkParser.LP) | (1 << LarkParser.LB) | (1 << LarkParser.RULE) | (1 << LarkParser.TOKEN) | (1 << LarkParser.STRING) | (1 << LarkParser.REGEXP))) !== 0)) {
-	            this.state = 151;
-	            this.expr();
-	            this.state = 156;
+	        var _alt = this._interp.adaptivePredict(this._input,16,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                this.state = 147;
+	                this.expr(); 
+	            }
+	            this.state = 152;
 	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
+	            _alt = this._interp.adaptivePredict(this._input,16,this._ctx);
 	        }
+
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -667,46 +652,49 @@ export default class LarkParser extends antlr4.Parser {
 	expr() {
 	    let localctx = new ExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, LarkParser.RULE_expr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 157;
+	        this.state = 153;
 	        this.atom();
-	        this.state = 165;
+	        this.state = 161;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case LarkParser.OP:
-	        	this.state = 158;
+	        case 18:
+	        	this.state = 154;
 	        	this.match(LarkParser.OP);
 	        	break;
-	        case LarkParser.SQ:
-	        	this.state = 159;
+	        case 16:
+	        	this.state = 155;
 	        	this.match(LarkParser.SQ);
-	        	this.state = 160;
+	        	this.state = 156;
 	        	this.match(LarkParser.NUMBER);
-	        	this.state = 163;
+	        	this.state = 159;
 	        	this._errHandler.sync(this);
 	        	_la = this._input.LA(1);
-	        	if(_la===LarkParser.DD) {
-	        	    this.state = 161;
+	        	if(_la===15) {
+	        	    this.state = 157;
 	        	    this.match(LarkParser.DD);
-	        	    this.state = 162;
+	        	    this.state = 158;
 	        	    this.match(LarkParser.NUMBER);
 	        	}
 
 	        	break;
-	        case LarkParser.EOF:
-	        case LarkParser.LP:
-	        case LarkParser.RP:
-	        case LarkParser.LB:
-	        case LarkParser.RB:
-	        case LarkParser.ARROW:
-	        case LarkParser.VBAR:
-	        case LarkParser.RULE:
-	        case LarkParser.TOKEN:
-	        case LarkParser.STRING:
-	        case LarkParser.REGEXP:
-	        case LarkParser.NL:
+	        case -1:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 17:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
 	        	break;
 	        default:
 	        	break;
@@ -731,33 +719,33 @@ export default class LarkParser extends antlr4.Parser {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, LarkParser.RULE_atom);
 	    try {
-	        this.state = 176;
+	        this.state = 172;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LarkParser.LP:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 167;
+	            this.state = 163;
 	            this.match(LarkParser.LP);
+	            this.state = 164;
+	            this.expansions();
+	            this.state = 165;
+	            this.match(LarkParser.RP);
+	            break;
+	        case 6:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 167;
+	            this.match(LarkParser.LB);
 	            this.state = 168;
 	            this.expansions();
 	            this.state = 169;
-	            this.match(LarkParser.RP);
-	            break;
-	        case LarkParser.LB:
-	            this.enterOuterAlt(localctx, 2);
-	            this.state = 171;
-	            this.match(LarkParser.LB);
-	            this.state = 172;
-	            this.expansions();
-	            this.state = 173;
 	            this.match(LarkParser.RB);
 	            break;
-	        case LarkParser.RULE:
-	        case LarkParser.TOKEN:
-	        case LarkParser.STRING:
-	        case LarkParser.REGEXP:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 175;
+	            this.state = 171;
 	            this.value();
 	            break;
 	        default:
@@ -782,33 +770,33 @@ export default class LarkParser extends antlr4.Parser {
 	value() {
 	    let localctx = new ValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, LarkParser.RULE_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 195;
+	        this.state = 191;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,23,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,21,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 178;
+	            this.state = 174;
 	            this.match(LarkParser.STRING);
-	            this.state = 179;
+	            this.state = 175;
 	            this.match(LarkParser.DD);
-	            this.state = 180;
+	            this.state = 176;
 	            this.match(LarkParser.STRING);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 181;
+	            this.state = 177;
 	            this.name();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 182;
+	            this.state = 178;
 	            _la = this._input.LA(1);
-	            if(!(_la===LarkParser.STRING || _la===LarkParser.REGEXP)) {
+	            if(!(_la===21 || _la===22)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -819,25 +807,25 @@ export default class LarkParser extends antlr4.Parser {
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 183;
+	            this.state = 179;
 	            this.name();
-	            this.state = 184;
+	            this.state = 180;
 	            this.match(LarkParser.LC);
-	            this.state = 185;
+	            this.state = 181;
 	            this.value();
-	            this.state = 190;
+	            this.state = 186;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===LarkParser.COMMA) {
-	                this.state = 186;
+	            while(_la===8) {
+	                this.state = 182;
 	                this.match(LarkParser.COMMA);
-	                this.state = 187;
+	                this.state = 183;
 	                this.value();
-	                this.state = 192;
+	                this.state = 188;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 193;
+	            this.state = 189;
 	            this.match(LarkParser.RC);
 	            break;
 
@@ -861,12 +849,12 @@ export default class LarkParser extends antlr4.Parser {
 	name() {
 	    let localctx = new NameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, LarkParser.RULE_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 197;
+	        this.state = 193;
 	        _la = this._input.LA(1);
-	        if(!(_la===LarkParser.RULE || _la===LarkParser.TOKEN)) {
+	        if(!(_la===19 || _la===20)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -918,7 +906,7 @@ LarkParser.NUMBER = 24;
 LarkParser.WS_INLINE = 25;
 LarkParser.COMMENT = 26;
 
-LarkParser.RULE_start = 0;
+LarkParser.RULE_start_ = 0;
 LarkParser.RULE_item = 1;
 LarkParser.RULE_rule_ = 2;
 LarkParser.RULE_token = 3;
@@ -936,7 +924,7 @@ LarkParser.RULE_atom = 14;
 LarkParser.RULE_value = 15;
 LarkParser.RULE_name = 16;
 
-class StartContext extends antlr4.ParserRuleContext {
+class Start_Context extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
         if(parent===undefined) {
@@ -947,20 +935,12 @@ class StartContext extends antlr4.ParserRuleContext {
         }
         super(parent, invokingState);
         this.parser = parser;
-        this.ruleIndex = LarkParser.RULE_start;
+        this.ruleIndex = LarkParser.RULE_start_;
     }
 
-	NL = function(i) {
-		if(i===undefined) {
-			i = null;
-		}
-	    if(i===null) {
-	        return this.getTokens(LarkParser.NL);
-	    } else {
-	        return this.getToken(LarkParser.NL, i);
-	    }
+	EOF() {
+	    return this.getToken(LarkParser.EOF, 0);
 	};
-
 
 	item = function(i) {
 	    if(i===undefined) {
@@ -975,13 +955,13 @@ class StartContext extends antlr4.ParserRuleContext {
 
 	enterRule(listener) {
 	    if(listener instanceof LarkParserListener ) {
-	        listener.enterStart(this);
+	        listener.enterStart_(this);
 		}
 	}
 
 	exitRule(listener) {
 	    if(listener instanceof LarkParserListener ) {
-	        listener.exitStart(this);
+	        listener.exitStart_(this);
 		}
 	}
 
@@ -1873,7 +1853,7 @@ class NameContext extends antlr4.ParserRuleContext {
 
 
 
-LarkParser.StartContext = StartContext; 
+LarkParser.Start_Context = Start_Context; 
 LarkParser.ItemContext = ItemContext; 
 LarkParser.Rule_Context = Rule_Context; 
 LarkParser.TokenContext = TokenContext; 
@@ -1890,3 +1870,12 @@ LarkParser.ExprContext = ExprContext;
 LarkParser.AtomContext = AtomContext; 
 LarkParser.ValueContext = ValueContext; 
 LarkParser.NameContext = NameContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

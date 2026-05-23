@@ -1,4 +1,4 @@
-// Generated from ./vb6/VisualBasic6Parser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/vb6/VisualBasic6Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

@@ -1,4 +1,4 @@
-// Generated from ./rexx/RexxParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/rexx/RexxParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -779,6 +779,33 @@ export default class RexxParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by RexxParser#concatenation_op.
+	enterConcatenation_op(ctx) {
+	}
+
+	// Exit a parse tree produced by RexxParser#concatenation_op.
+	exitConcatenation_op(ctx) {
+	}
+
+
+	// Enter a parse tree produced by RexxParser#normal_concatenation_op.
+	enterNormal_concatenation_op(ctx) {
+	}
+
+	// Exit a parse tree produced by RexxParser#normal_concatenation_op.
+	exitNormal_concatenation_op(ctx) {
+	}
+
+
+	// Enter a parse tree produced by RexxParser#blank_concatenation_op.
+	enterBlank_concatenation_op(ctx) {
+	}
+
+	// Exit a parse tree produced by RexxParser#blank_concatenation_op.
+	exitBlank_concatenation_op(ctx) {
+	}
+
+
 	// Enter a parse tree produced by RexxParser#addition.
 	enterAddition(ctx) {
 	}
@@ -839,6 +866,33 @@ export default class RexxParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by RexxParser#term.
 	exitTerm(ctx) {
+	}
+
+
+	// Enter a parse tree produced by RexxParser#binary_string.
+	enterBinary_string(ctx) {
+	}
+
+	// Exit a parse tree produced by RexxParser#binary_string.
+	exitBinary_string(ctx) {
+	}
+
+
+	// Enter a parse tree produced by RexxParser#hex_string.
+	enterHex_string(ctx) {
+	}
+
+	// Exit a parse tree produced by RexxParser#hex_string.
+	exitHex_string(ctx) {
+	}
+
+
+	// Enter a parse tree produced by RexxParser#string.
+	enterString(ctx) {
+	}
+
+	// Exit a parse tree produced by RexxParser#string.
+	exitString(ctx) {
 	}
 
 

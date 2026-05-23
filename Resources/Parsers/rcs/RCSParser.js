@@ -1,4 +1,4 @@
-// Generated from ./rcs/RCS.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/rcs/RCS.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import RCSListener from './RCSListener.js';
@@ -107,10 +107,6 @@ export default class RCSParser extends antlr4.Parser {
         this.symbolicNames = RCSParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	rcstext() {
@@ -195,7 +191,7 @@ export default class RCSParser extends antlr4.Parser {
 	admin() {
 	    let localctx = new AdminContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, RCSParser.RULE_admin);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 63;
@@ -203,7 +199,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 65;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.LITERAL_BRANCH) {
+	        if(_la===6) {
 	            this.state = 64;
 	            this.branch();
 	        }
@@ -215,7 +211,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 70;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.LITERAL_LOCKS) {
+	        if(_la===9) {
 	            this.state = 69;
 	            this.locks();
 	        }
@@ -223,7 +219,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 73;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.LITERAL_STRICT) {
+	        if(_la===10) {
 	            this.state = 72;
 	            this.strict();
 	        }
@@ -231,7 +227,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 76;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.LITERAL_COMMENT) {
+	        if(_la===11) {
 	            this.state = 75;
 	            this.comment();
 	        }
@@ -239,7 +235,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 79;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.LITERAL_EXPAND) {
+	        if(_la===12) {
 	            this.state = 78;
 	            this.expand();
 	        }
@@ -247,7 +243,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 84;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.IDENT) {
+	        while(_la===21) {
 	            this.state = 81;
 	            this.newphrase();
 	            this.state = 86;
@@ -327,7 +323,7 @@ export default class RCSParser extends antlr4.Parser {
 	access() {
 	    let localctx = new AccessContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, RCSParser.RULE_access);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 95;
@@ -335,7 +331,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 99;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.IDENT) {
+	        while(_la===21) {
 	            this.state = 96;
 	            this.match(RCSParser.IDENT);
 	            this.state = 101;
@@ -363,7 +359,7 @@ export default class RCSParser extends antlr4.Parser {
 	symbols() {
 	    let localctx = new SymbolsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, RCSParser.RULE_symbols);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 104;
@@ -371,7 +367,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 108;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.IDENT) {
+	        while(_la===21) {
 	            this.state = 105;
 	            this.tags();
 	            this.state = 110;
@@ -426,7 +422,7 @@ export default class RCSParser extends antlr4.Parser {
 	locks() {
 	    let localctx = new LocksContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, RCSParser.RULE_locks);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 117;
@@ -434,7 +430,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 121;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.IDENT) {
+	        while(_la===21) {
 	            this.state = 118;
 	            this.match(RCSParser.IDENT);
 	            this.state = 123;
@@ -487,7 +483,7 @@ export default class RCSParser extends antlr4.Parser {
 	comment() {
 	    let localctx = new CommentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, RCSParser.RULE_comment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 129;
@@ -495,7 +491,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 131;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.STRING) {
+	        if(_la===24) {
 	            this.state = 130;
 	            this.match(RCSParser.STRING);
 	        }
@@ -521,7 +517,7 @@ export default class RCSParser extends antlr4.Parser {
 	expand() {
 	    let localctx = new ExpandContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, RCSParser.RULE_expand);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 135;
@@ -529,7 +525,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 137;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.STRING) {
+	        if(_la===24) {
 	            this.state = 136;
 	            this.match(RCSParser.STRING);
 	        }
@@ -555,13 +551,13 @@ export default class RCSParser extends antlr4.Parser {
 	deltalist() {
 	    let localctx = new DeltalistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, RCSParser.RULE_deltalist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 144;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.REVISION) {
+	        while(_la===23) {
 	            this.state = 141;
 	            this.delta();
 	            this.state = 146;
@@ -587,7 +583,7 @@ export default class RCSParser extends antlr4.Parser {
 	delta() {
 	    let localctx = new DeltaContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, RCSParser.RULE_delta);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 147;
@@ -605,7 +601,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 156;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.IDENT) {
+	        while(_la===21) {
 	            this.state = 153;
 	            this.newphrase();
 	            this.state = 158;
@@ -712,7 +708,7 @@ export default class RCSParser extends antlr4.Parser {
 	delta_branches() {
 	    let localctx = new Delta_branchesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, RCSParser.RULE_delta_branches);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 171;
@@ -720,7 +716,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 175;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.REVISION) {
+	        while(_la===23) {
 	            this.state = 172;
 	            this.match(RCSParser.REVISION);
 	            this.state = 177;
@@ -748,7 +744,7 @@ export default class RCSParser extends antlr4.Parser {
 	delta_next() {
 	    let localctx = new Delta_nextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, RCSParser.RULE_delta_next);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 180;
@@ -756,7 +752,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 182;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RCSParser.REVISION) {
+	        if(_la===23) {
 	            this.state = 181;
 	            this.match(RCSParser.REVISION);
 	        }
@@ -807,13 +803,13 @@ export default class RCSParser extends antlr4.Parser {
 	deltatextlist() {
 	    let localctx = new DeltatextlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, RCSParser.RULE_deltatextlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 192;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.REVISION) {
+	        while(_la===23) {
 	            this.state = 189;
 	            this.deltatext();
 	            this.state = 194;
@@ -839,7 +835,7 @@ export default class RCSParser extends antlr4.Parser {
 	deltatext() {
 	    let localctx = new DeltatextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, RCSParser.RULE_deltatext);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 195;
@@ -849,7 +845,7 @@ export default class RCSParser extends antlr4.Parser {
 	        this.state = 200;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RCSParser.IDENT) {
+	        while(_la===21) {
 	            this.state = 197;
 	            this.newphrase();
 	            this.state = 202;
@@ -927,7 +923,7 @@ export default class RCSParser extends antlr4.Parser {
 	newphrase() {
 	    let localctx = new NewphraseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, RCSParser.RULE_newphrase);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 212; 
@@ -939,7 +935,7 @@ export default class RCSParser extends antlr4.Parser {
 	            this.state = 214; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===RCSParser.IDENT);
+	        } while(_la===21);
 	        this.state = 216;
 	        this.match(RCSParser.SEMI);
 	    } catch (re) {
@@ -2238,3 +2234,12 @@ RCSParser.DeltatextContext = DeltatextContext;
 RCSParser.Deltatext_logContext = Deltatext_logContext; 
 RCSParser.Deltatext_textContext = Deltatext_textContext; 
 RCSParser.NewphraseContext = NewphraseContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./brainfuck/brainfuck.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/brainfuck/brainfuck.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import brainfuckListener from './brainfuckListener.js';
@@ -35,22 +35,18 @@ export default class brainfuckParser extends antlr4.Parser {
         this.symbolicNames = brainfuckParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	file_() {
 	    let localctx = new File_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, brainfuckParser.RULE_file_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 9;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainfuckParser.GT) | (1 << brainfuckParser.LT) | (1 << brainfuckParser.PLUS) | (1 << brainfuckParser.MINUS) | (1 << brainfuckParser.DOT) | (1 << brainfuckParser.COMMA) | (1 << brainfuckParser.LPAREN))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 254) !== 0)) {
 	            this.state = 6;
 	            this.statement();
 	            this.state = 11;
@@ -76,29 +72,29 @@ export default class brainfuckParser extends antlr4.Parser {
 	statement() {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, brainfuckParser.RULE_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 21;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case brainfuckParser.GT:
-	        case brainfuckParser.LT:
-	        case brainfuckParser.PLUS:
-	        case brainfuckParser.MINUS:
-	        case brainfuckParser.DOT:
-	        case brainfuckParser.COMMA:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 12;
 	            this.opcode();
 	            break;
-	        case brainfuckParser.LPAREN:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 13;
 	            this.match(brainfuckParser.LPAREN);
 	            this.state = 17;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainfuckParser.GT) | (1 << brainfuckParser.LT) | (1 << brainfuckParser.PLUS) | (1 << brainfuckParser.MINUS) | (1 << brainfuckParser.DOT) | (1 << brainfuckParser.COMMA) | (1 << brainfuckParser.LPAREN))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 254) !== 0)) {
 	                this.state = 14;
 	                this.statement();
 	                this.state = 19;
@@ -130,12 +126,12 @@ export default class brainfuckParser extends antlr4.Parser {
 	opcode() {
 	    let localctx = new OpcodeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, brainfuckParser.RULE_opcode);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 23;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainfuckParser.GT) | (1 << brainfuckParser.LT) | (1 << brainfuckParser.PLUS) | (1 << brainfuckParser.MINUS) | (1 << brainfuckParser.DOT) | (1 << brainfuckParser.COMMA))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 126) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {

@@ -1,4 +1,4 @@
-// Generated from ./abnf/Abnf.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/abnf/Abnf.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import AbnfListener from './AbnfListener.js';
@@ -53,22 +53,18 @@ export default class AbnfParser extends antlr4.Parser {
         this.symbolicNames = AbnfParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	rulelist() {
 	    let localctx = new RulelistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, AbnfParser.RULE_rulelist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 23;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===AbnfParser.ID) {
+	        while(_la===10) {
 	            this.state = 20;
 	            this.rule_();
 	            this.state = 25;
@@ -96,7 +92,7 @@ export default class AbnfParser extends antlr4.Parser {
 	rule_() {
 	    let localctx = new Rule_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, AbnfParser.RULE_rule_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 28;
@@ -106,7 +102,7 @@ export default class AbnfParser extends antlr4.Parser {
 	        this.state = 31;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===AbnfParser.T__1) {
+	        if(_la===2) {
 	            this.state = 30;
 	            this.match(AbnfParser.T__1);
 	        }
@@ -155,7 +151,7 @@ export default class AbnfParser extends antlr4.Parser {
 	alternation() {
 	    let localctx = new AlternationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, AbnfParser.RULE_alternation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 37;
@@ -163,7 +159,7 @@ export default class AbnfParser extends antlr4.Parser {
 	        this.state = 42;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===AbnfParser.T__1) {
+	        while(_la===2) {
 	            this.state = 38;
 	            this.match(AbnfParser.T__1);
 	            this.state = 39;
@@ -228,13 +224,13 @@ export default class AbnfParser extends antlr4.Parser {
 	repetition() {
 	    let localctx = new RepetitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, AbnfParser.RULE_repetition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 51;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===AbnfParser.T__2 || _la===AbnfParser.INT) {
+	        if(_la===3 || _la===11) {
 	            this.state = 50;
 	            this.repeat_();
 	        }
@@ -260,7 +256,7 @@ export default class AbnfParser extends antlr4.Parser {
 	repeat_() {
 	    let localctx = new Repeat_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, AbnfParser.RULE_repeat_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 63;
 	        this._errHandler.sync(this);
@@ -277,7 +273,7 @@ export default class AbnfParser extends antlr4.Parser {
 	            this.state = 57;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===AbnfParser.INT) {
+	            if(_la===11) {
 	                this.state = 56;
 	                this.match(AbnfParser.INT);
 	            }
@@ -287,7 +283,7 @@ export default class AbnfParser extends antlr4.Parser {
 	            this.state = 61;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===AbnfParser.INT) {
+	            if(_la===11) {
 	                this.state = 60;
 	                this.match(AbnfParser.INT);
 	            }
@@ -318,32 +314,32 @@ export default class AbnfParser extends antlr4.Parser {
 	        this.state = 71;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case AbnfParser.ID:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 65;
 	            this.match(AbnfParser.ID);
 	            break;
-	        case AbnfParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 66;
 	            this.group();
 	            break;
-	        case AbnfParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 67;
 	            this.option();
 	            break;
-	        case AbnfParser.STRING:
+	        case 14:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 68;
 	            this.match(AbnfParser.STRING);
 	            break;
-	        case AbnfParser.NumberValue:
+	        case 8:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 69;
 	            this.match(AbnfParser.NumberValue);
 	            break;
-	        case AbnfParser.ProseValue:
+	        case 9:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 70;
 	            this.match(AbnfParser.ProseValue);
@@ -871,3 +867,12 @@ AbnfParser.Repeat_Context = Repeat_Context;
 AbnfParser.ElementContext = ElementContext; 
 AbnfParser.GroupContext = GroupContext; 
 AbnfParser.OptionContext = OptionContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

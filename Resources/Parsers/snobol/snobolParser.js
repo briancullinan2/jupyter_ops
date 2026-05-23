@@ -1,123 +1,123 @@
-// Generated from ./snobol/snobol.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/snobol/snobol.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import snobolListener from './snobolListener.js';
-const serializedATN = [4,1,55,376,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,55,378,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
 7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,2,34,7,
 34,2,35,7,35,2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,2,40,7,40,2,41,7,41,
-1,0,4,0,86,8,0,11,0,12,0,87,1,1,3,1,91,8,1,1,1,1,1,1,2,3,2,96,8,2,1,2,1,
-2,3,2,100,8,2,1,2,1,2,4,2,104,8,2,11,2,12,2,105,3,2,108,8,2,1,2,1,2,3,2,
-112,8,2,1,2,1,2,1,2,3,2,117,8,2,1,3,1,3,1,4,3,4,122,8,4,1,4,1,4,1,4,1,4,
-1,4,5,4,129,8,4,10,4,12,4,132,9,4,1,4,3,4,135,8,4,1,5,1,5,1,6,1,6,1,6,5,
-6,142,8,6,10,6,12,6,145,9,6,1,7,1,7,1,7,5,7,150,8,7,10,7,12,7,153,9,7,1,
-8,1,8,1,8,3,8,158,8,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,167,8,9,10,9,12,9,
-170,9,9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,178,8,9,1,10,1,10,1,10,1,10,1,10,1,10,
+1,0,4,0,86,8,0,11,0,12,0,87,1,0,1,0,1,1,3,1,93,8,1,1,1,1,1,1,2,3,2,98,8,
+2,1,2,1,2,3,2,102,8,2,1,2,1,2,4,2,106,8,2,11,2,12,2,107,3,2,110,8,2,1,2,
+1,2,3,2,114,8,2,1,2,1,2,1,2,3,2,119,8,2,1,3,1,3,1,4,3,4,124,8,4,1,4,1,4,
+1,4,1,4,1,4,5,4,131,8,4,10,4,12,4,134,9,4,1,4,3,4,137,8,4,1,5,1,5,1,6,1,
+6,1,6,5,6,144,8,6,10,6,12,6,147,9,6,1,7,1,7,1,7,5,7,152,8,7,10,7,12,7,155,
+9,7,1,8,1,8,1,8,3,8,160,8,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,169,8,9,10,9,
+12,9,172,9,9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,180,8,9,1,10,1,10,1,10,1,10,1,10,
 1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,
-10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,207,8,10,1,11,1,11,1,11,1,11,1,11,
-1,12,1,12,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,14,1,14,1,14,1,14,1,
-14,1,15,1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,
-1,17,1,18,1,18,1,18,1,18,1,18,1,19,1,19,1,19,1,19,1,19,1,20,1,20,1,20,1,
-20,1,20,1,21,1,21,1,21,1,21,1,21,1,22,1,22,1,22,1,22,1,22,1,23,1,23,1,23,
-1,23,1,23,1,24,1,24,1,24,1,24,1,24,1,25,1,25,1,25,1,25,1,25,1,26,1,26,1,
-26,1,26,1,26,1,27,1,27,1,27,1,27,1,27,1,28,1,28,1,28,1,28,1,28,1,29,1,29,
-1,29,1,29,1,29,1,29,1,29,1,30,1,30,1,30,1,30,1,30,1,31,1,31,1,31,1,31,1,
-32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,33,1,33,1,33,1,33,1,33,1,34,
-1,34,1,34,1,34,1,34,1,35,1,35,1,35,1,35,1,35,1,35,1,35,1,36,1,36,1,36,1,
-36,1,36,1,36,1,36,1,37,1,37,1,37,1,37,1,37,1,38,1,38,1,38,1,38,1,38,1,39,
-1,39,1,39,1,39,1,39,1,40,3,40,364,8,40,1,40,1,40,1,40,3,40,369,8,40,1,40,
-3,40,372,8,40,1,41,1,41,1,41,0,0,42,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
-28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,
-76,78,80,82,0,6,2,0,47,47,53,53,1,0,48,49,1,0,40,41,1,0,42,43,2,0,48,49,
-51,51,1,0,32,35,382,0,85,1,0,0,0,2,90,1,0,0,0,4,116,1,0,0,0,6,118,1,0,0,
-0,8,121,1,0,0,0,10,136,1,0,0,0,12,138,1,0,0,0,14,146,1,0,0,0,16,154,1,0,
-0,0,18,177,1,0,0,0,20,206,1,0,0,0,22,208,1,0,0,0,24,213,1,0,0,0,26,218,1,
-0,0,0,28,223,1,0,0,0,30,228,1,0,0,0,32,233,1,0,0,0,34,238,1,0,0,0,36,243,
-1,0,0,0,38,248,1,0,0,0,40,253,1,0,0,0,42,258,1,0,0,0,44,263,1,0,0,0,46,268,
-1,0,0,0,48,273,1,0,0,0,50,278,1,0,0,0,52,283,1,0,0,0,54,288,1,0,0,0,56,293,
-1,0,0,0,58,298,1,0,0,0,60,305,1,0,0,0,62,310,1,0,0,0,64,314,1,0,0,0,66,323,
-1,0,0,0,68,328,1,0,0,0,70,333,1,0,0,0,72,340,1,0,0,0,74,347,1,0,0,0,76,352,
-1,0,0,0,78,357,1,0,0,0,80,371,1,0,0,0,82,373,1,0,0,0,84,86,3,2,1,0,85,84,
-1,0,0,0,86,87,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,1,1,0,0,0,89,91,3,4,
-2,0,90,89,1,0,0,0,90,91,1,0,0,0,91,92,1,0,0,0,92,93,5,54,0,0,93,3,1,0,0,
-0,94,96,3,6,3,0,95,94,1,0,0,0,95,96,1,0,0,0,96,97,1,0,0,0,97,99,3,8,4,0,
-98,100,3,10,5,0,99,98,1,0,0,0,99,100,1,0,0,0,100,107,1,0,0,0,101,103,5,45,
-0,0,102,104,3,12,6,0,103,102,1,0,0,0,104,105,1,0,0,0,105,103,1,0,0,0,105,
-106,1,0,0,0,106,108,1,0,0,0,107,101,1,0,0,0,107,108,1,0,0,0,108,111,1,0,
-0,0,109,110,5,46,0,0,110,112,3,80,40,0,111,109,1,0,0,0,111,112,1,0,0,0,112,
-117,1,0,0,0,113,114,5,46,0,0,114,117,3,80,40,0,115,117,7,0,0,0,116,95,1,
-0,0,0,116,113,1,0,0,0,116,115,1,0,0,0,117,5,1,0,0,0,118,119,5,50,0,0,119,
-7,1,0,0,0,120,122,5,39,0,0,121,120,1,0,0,0,121,122,1,0,0,0,122,123,1,0,0,
-0,123,134,5,50,0,0,124,125,5,1,0,0,125,130,5,50,0,0,126,127,5,36,0,0,127,
-129,5,50,0,0,128,126,1,0,0,0,129,132,1,0,0,0,130,128,1,0,0,0,130,131,1,0,
-0,0,131,133,1,0,0,0,132,130,1,0,0,0,133,135,5,2,0,0,134,124,1,0,0,0,134,
-135,1,0,0,0,135,9,1,0,0,0,136,137,7,1,0,0,137,11,1,0,0,0,138,143,3,14,7,
-0,139,140,7,2,0,0,140,142,3,14,7,0,141,139,1,0,0,0,142,145,1,0,0,0,143,141,
-1,0,0,0,143,144,1,0,0,0,144,13,1,0,0,0,145,143,1,0,0,0,146,151,3,16,8,0,
-147,148,7,3,0,0,148,150,3,16,8,0,149,147,1,0,0,0,150,153,1,0,0,0,151,149,
-1,0,0,0,151,152,1,0,0,0,152,15,1,0,0,0,153,151,1,0,0,0,154,157,3,18,9,0,
-155,156,5,44,0,0,156,158,3,12,6,0,157,155,1,0,0,0,157,158,1,0,0,0,158,17,
-1,0,0,0,159,178,7,4,0,0,160,178,3,8,4,0,161,178,3,20,10,0,162,163,5,1,0,
-0,163,168,3,12,6,0,164,165,5,36,0,0,165,167,3,12,6,0,166,164,1,0,0,0,167,
-170,1,0,0,0,168,166,1,0,0,0,168,169,1,0,0,0,169,171,1,0,0,0,170,168,1,0,
-0,0,171,172,5,2,0,0,172,178,1,0,0,0,173,174,5,37,0,0,174,175,3,12,6,0,175,
-176,5,38,0,0,176,178,1,0,0,0,177,159,1,0,0,0,177,160,1,0,0,0,177,161,1,0,
-0,0,177,162,1,0,0,0,177,173,1,0,0,0,178,19,1,0,0,0,179,207,3,22,11,0,180,
-207,3,24,12,0,181,207,3,26,13,0,182,207,3,28,14,0,183,207,3,30,15,0,184,
-207,3,34,17,0,185,207,3,36,18,0,186,207,3,38,19,0,187,207,3,40,20,0,188,
-207,3,42,21,0,189,207,3,44,22,0,190,207,3,46,23,0,191,207,3,48,24,0,192,
-207,3,50,25,0,193,207,3,52,26,0,194,207,3,54,27,0,195,207,3,56,28,0,196,
-207,3,62,31,0,197,207,3,58,29,0,198,207,3,60,30,0,199,207,3,64,32,0,200,
-207,3,66,33,0,201,207,3,68,34,0,202,207,3,70,35,0,203,207,3,76,38,0,204,
-207,3,74,37,0,205,207,3,78,39,0,206,179,1,0,0,0,206,180,1,0,0,0,206,181,
-1,0,0,0,206,182,1,0,0,0,206,183,1,0,0,0,206,184,1,0,0,0,206,185,1,0,0,0,
-206,186,1,0,0,0,206,187,1,0,0,0,206,188,1,0,0,0,206,189,1,0,0,0,206,190,
-1,0,0,0,206,191,1,0,0,0,206,192,1,0,0,0,206,193,1,0,0,0,206,194,1,0,0,0,
-206,195,1,0,0,0,206,196,1,0,0,0,206,197,1,0,0,0,206,198,1,0,0,0,206,199,
-1,0,0,0,206,200,1,0,0,0,206,201,1,0,0,0,206,202,1,0,0,0,206,203,1,0,0,0,
-206,204,1,0,0,0,206,205,1,0,0,0,207,21,1,0,0,0,208,209,5,3,0,0,209,210,5,
-37,0,0,210,211,3,12,6,0,211,212,5,38,0,0,212,23,1,0,0,0,213,214,5,4,0,0,
-214,215,5,37,0,0,215,216,3,12,6,0,216,217,5,38,0,0,217,25,1,0,0,0,218,219,
-5,5,0,0,219,220,5,37,0,0,220,221,3,12,6,0,221,222,5,38,0,0,222,27,1,0,0,
-0,223,224,5,6,0,0,224,225,5,37,0,0,225,226,3,12,6,0,226,227,5,38,0,0,227,
-29,1,0,0,0,228,229,5,7,0,0,229,230,5,37,0,0,230,231,3,12,6,0,231,232,5,38,
-0,0,232,31,1,0,0,0,233,234,5,8,0,0,234,235,5,37,0,0,235,236,3,12,6,0,236,
-237,5,38,0,0,237,33,1,0,0,0,238,239,5,9,0,0,239,240,5,37,0,0,240,241,3,12,
-6,0,241,242,5,38,0,0,242,35,1,0,0,0,243,244,5,10,0,0,244,245,5,37,0,0,245,
-246,3,12,6,0,246,247,5,38,0,0,247,37,1,0,0,0,248,249,5,11,0,0,249,250,5,
-37,0,0,250,251,3,12,6,0,251,252,5,38,0,0,252,39,1,0,0,0,253,254,5,12,0,0,
-254,255,5,37,0,0,255,256,3,12,6,0,256,257,5,38,0,0,257,41,1,0,0,0,258,259,
-5,13,0,0,259,260,5,37,0,0,260,261,3,12,6,0,261,262,5,38,0,0,262,43,1,0,0,
-0,263,264,5,14,0,0,264,265,5,37,0,0,265,266,3,12,6,0,266,267,5,38,0,0,267,
-45,1,0,0,0,268,269,5,15,0,0,269,270,5,37,0,0,270,271,3,12,6,0,271,272,5,
-38,0,0,272,47,1,0,0,0,273,274,5,16,0,0,274,275,5,37,0,0,275,276,3,12,6,0,
-276,277,5,38,0,0,277,49,1,0,0,0,278,279,5,17,0,0,279,280,5,37,0,0,280,281,
-3,12,6,0,281,282,5,38,0,0,282,51,1,0,0,0,283,284,5,18,0,0,284,285,5,37,0,
-0,285,286,3,12,6,0,286,287,5,38,0,0,287,53,1,0,0,0,288,289,5,19,0,0,289,
-290,5,37,0,0,290,291,3,12,6,0,291,292,5,38,0,0,292,55,1,0,0,0,293,294,5,
-20,0,0,294,295,5,37,0,0,295,296,3,12,6,0,296,297,5,38,0,0,297,57,1,0,0,0,
-298,299,5,21,0,0,299,300,5,37,0,0,300,301,3,12,6,0,301,302,5,36,0,0,302,
-303,3,12,6,0,303,304,5,38,0,0,304,59,1,0,0,0,305,306,5,22,0,0,306,307,5,
-37,0,0,307,308,3,12,6,0,308,309,5,38,0,0,309,61,1,0,0,0,310,311,5,23,0,0,
-311,312,5,37,0,0,312,313,5,38,0,0,313,63,1,0,0,0,314,315,5,24,0,0,315,316,
-5,37,0,0,316,317,3,12,6,0,317,318,5,36,0,0,318,319,3,12,6,0,319,320,5,36,
-0,0,320,321,3,12,6,0,321,322,5,38,0,0,322,65,1,0,0,0,323,324,5,25,0,0,324,
-325,5,37,0,0,325,326,3,12,6,0,326,327,5,38,0,0,327,67,1,0,0,0,328,329,5,
-26,0,0,329,330,5,37,0,0,330,331,3,12,6,0,331,332,5,38,0,0,332,69,1,0,0,0,
-333,334,5,27,0,0,334,335,5,37,0,0,335,336,3,12,6,0,336,337,5,36,0,0,337,
-338,3,12,6,0,338,339,5,38,0,0,339,71,1,0,0,0,340,341,5,28,0,0,341,342,5,
-37,0,0,342,343,3,12,6,0,343,344,5,36,0,0,344,345,3,12,6,0,345,346,5,38,0,
-0,346,73,1,0,0,0,347,348,5,29,0,0,348,349,5,37,0,0,349,350,3,12,6,0,350,
-351,5,38,0,0,351,75,1,0,0,0,352,353,5,30,0,0,353,354,5,37,0,0,354,355,3,
-12,6,0,355,356,5,38,0,0,356,77,1,0,0,0,357,358,5,31,0,0,358,359,5,37,0,0,
-359,360,3,12,6,0,360,361,5,38,0,0,361,79,1,0,0,0,362,364,3,82,41,0,363,362,
-1,0,0,0,363,364,1,0,0,0,364,365,1,0,0,0,365,368,5,37,0,0,366,369,3,6,3,0,
-367,369,5,47,0,0,368,366,1,0,0,0,368,367,1,0,0,0,369,370,1,0,0,0,370,372,
-5,38,0,0,371,363,1,0,0,0,371,372,1,0,0,0,372,81,1,0,0,0,373,374,7,5,0,0,
-374,83,1,0,0,0,20,87,90,95,99,105,107,111,116,121,130,134,143,151,157,168,
-177,206,363,368,371];
+10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,209,8,10,1,11,1,11,1,11,1,11,
+1,11,1,12,1,12,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,14,1,14,1,14,1,
+14,1,14,1,15,1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,
+1,17,1,17,1,18,1,18,1,18,1,18,1,18,1,19,1,19,1,19,1,19,1,19,1,20,1,20,1,
+20,1,20,1,20,1,21,1,21,1,21,1,21,1,21,1,22,1,22,1,22,1,22,1,22,1,23,1,23,
+1,23,1,23,1,23,1,24,1,24,1,24,1,24,1,24,1,25,1,25,1,25,1,25,1,25,1,26,1,
+26,1,26,1,26,1,26,1,27,1,27,1,27,1,27,1,27,1,28,1,28,1,28,1,28,1,28,1,29,
+1,29,1,29,1,29,1,29,1,29,1,29,1,30,1,30,1,30,1,30,1,30,1,31,1,31,1,31,1,
+31,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,33,1,33,1,33,1,33,1,33,
+1,34,1,34,1,34,1,34,1,34,1,35,1,35,1,35,1,35,1,35,1,35,1,35,1,36,1,36,1,
+36,1,36,1,36,1,36,1,36,1,37,1,37,1,37,1,37,1,37,1,38,1,38,1,38,1,38,1,38,
+1,39,1,39,1,39,1,39,1,39,1,40,3,40,366,8,40,1,40,1,40,1,40,3,40,371,8,40,
+1,40,3,40,374,8,40,1,41,1,41,1,41,0,0,42,0,2,4,6,8,10,12,14,16,18,20,22,
+24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,
+72,74,76,78,80,82,0,6,2,0,47,47,53,53,1,0,48,49,1,0,40,41,1,0,42,43,2,0,
+48,49,51,51,1,0,32,35,384,0,85,1,0,0,0,2,92,1,0,0,0,4,118,1,0,0,0,6,120,
+1,0,0,0,8,123,1,0,0,0,10,138,1,0,0,0,12,140,1,0,0,0,14,148,1,0,0,0,16,156,
+1,0,0,0,18,179,1,0,0,0,20,208,1,0,0,0,22,210,1,0,0,0,24,215,1,0,0,0,26,220,
+1,0,0,0,28,225,1,0,0,0,30,230,1,0,0,0,32,235,1,0,0,0,34,240,1,0,0,0,36,245,
+1,0,0,0,38,250,1,0,0,0,40,255,1,0,0,0,42,260,1,0,0,0,44,265,1,0,0,0,46,270,
+1,0,0,0,48,275,1,0,0,0,50,280,1,0,0,0,52,285,1,0,0,0,54,290,1,0,0,0,56,295,
+1,0,0,0,58,300,1,0,0,0,60,307,1,0,0,0,62,312,1,0,0,0,64,316,1,0,0,0,66,325,
+1,0,0,0,68,330,1,0,0,0,70,335,1,0,0,0,72,342,1,0,0,0,74,349,1,0,0,0,76,354,
+1,0,0,0,78,359,1,0,0,0,80,373,1,0,0,0,82,375,1,0,0,0,84,86,3,2,1,0,85,84,
+1,0,0,0,86,87,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,89,1,0,0,0,89,90,5,
+0,0,1,90,1,1,0,0,0,91,93,3,4,2,0,92,91,1,0,0,0,92,93,1,0,0,0,93,94,1,0,0,
+0,94,95,5,54,0,0,95,3,1,0,0,0,96,98,3,6,3,0,97,96,1,0,0,0,97,98,1,0,0,0,
+98,99,1,0,0,0,99,101,3,8,4,0,100,102,3,10,5,0,101,100,1,0,0,0,101,102,1,
+0,0,0,102,109,1,0,0,0,103,105,5,45,0,0,104,106,3,12,6,0,105,104,1,0,0,0,
+106,107,1,0,0,0,107,105,1,0,0,0,107,108,1,0,0,0,108,110,1,0,0,0,109,103,
+1,0,0,0,109,110,1,0,0,0,110,113,1,0,0,0,111,112,5,46,0,0,112,114,3,80,40,
+0,113,111,1,0,0,0,113,114,1,0,0,0,114,119,1,0,0,0,115,116,5,46,0,0,116,119,
+3,80,40,0,117,119,7,0,0,0,118,97,1,0,0,0,118,115,1,0,0,0,118,117,1,0,0,0,
+119,5,1,0,0,0,120,121,5,50,0,0,121,7,1,0,0,0,122,124,5,39,0,0,123,122,1,
+0,0,0,123,124,1,0,0,0,124,125,1,0,0,0,125,136,5,50,0,0,126,127,5,1,0,0,127,
+132,5,50,0,0,128,129,5,36,0,0,129,131,5,50,0,0,130,128,1,0,0,0,131,134,1,
+0,0,0,132,130,1,0,0,0,132,133,1,0,0,0,133,135,1,0,0,0,134,132,1,0,0,0,135,
+137,5,2,0,0,136,126,1,0,0,0,136,137,1,0,0,0,137,9,1,0,0,0,138,139,7,1,0,
+0,139,11,1,0,0,0,140,145,3,14,7,0,141,142,7,2,0,0,142,144,3,14,7,0,143,141,
+1,0,0,0,144,147,1,0,0,0,145,143,1,0,0,0,145,146,1,0,0,0,146,13,1,0,0,0,147,
+145,1,0,0,0,148,153,3,16,8,0,149,150,7,3,0,0,150,152,3,16,8,0,151,149,1,
+0,0,0,152,155,1,0,0,0,153,151,1,0,0,0,153,154,1,0,0,0,154,15,1,0,0,0,155,
+153,1,0,0,0,156,159,3,18,9,0,157,158,5,44,0,0,158,160,3,12,6,0,159,157,1,
+0,0,0,159,160,1,0,0,0,160,17,1,0,0,0,161,180,7,4,0,0,162,180,3,8,4,0,163,
+180,3,20,10,0,164,165,5,1,0,0,165,170,3,12,6,0,166,167,5,36,0,0,167,169,
+3,12,6,0,168,166,1,0,0,0,169,172,1,0,0,0,170,168,1,0,0,0,170,171,1,0,0,0,
+171,173,1,0,0,0,172,170,1,0,0,0,173,174,5,2,0,0,174,180,1,0,0,0,175,176,
+5,37,0,0,176,177,3,12,6,0,177,178,5,38,0,0,178,180,1,0,0,0,179,161,1,0,0,
+0,179,162,1,0,0,0,179,163,1,0,0,0,179,164,1,0,0,0,179,175,1,0,0,0,180,19,
+1,0,0,0,181,209,3,22,11,0,182,209,3,24,12,0,183,209,3,26,13,0,184,209,3,
+28,14,0,185,209,3,30,15,0,186,209,3,34,17,0,187,209,3,36,18,0,188,209,3,
+38,19,0,189,209,3,40,20,0,190,209,3,42,21,0,191,209,3,44,22,0,192,209,3,
+46,23,0,193,209,3,48,24,0,194,209,3,50,25,0,195,209,3,52,26,0,196,209,3,
+54,27,0,197,209,3,56,28,0,198,209,3,62,31,0,199,209,3,58,29,0,200,209,3,
+60,30,0,201,209,3,64,32,0,202,209,3,66,33,0,203,209,3,68,34,0,204,209,3,
+70,35,0,205,209,3,76,38,0,206,209,3,74,37,0,207,209,3,78,39,0,208,181,1,
+0,0,0,208,182,1,0,0,0,208,183,1,0,0,0,208,184,1,0,0,0,208,185,1,0,0,0,208,
+186,1,0,0,0,208,187,1,0,0,0,208,188,1,0,0,0,208,189,1,0,0,0,208,190,1,0,
+0,0,208,191,1,0,0,0,208,192,1,0,0,0,208,193,1,0,0,0,208,194,1,0,0,0,208,
+195,1,0,0,0,208,196,1,0,0,0,208,197,1,0,0,0,208,198,1,0,0,0,208,199,1,0,
+0,0,208,200,1,0,0,0,208,201,1,0,0,0,208,202,1,0,0,0,208,203,1,0,0,0,208,
+204,1,0,0,0,208,205,1,0,0,0,208,206,1,0,0,0,208,207,1,0,0,0,209,21,1,0,0,
+0,210,211,5,3,0,0,211,212,5,37,0,0,212,213,3,12,6,0,213,214,5,38,0,0,214,
+23,1,0,0,0,215,216,5,4,0,0,216,217,5,37,0,0,217,218,3,12,6,0,218,219,5,38,
+0,0,219,25,1,0,0,0,220,221,5,5,0,0,221,222,5,37,0,0,222,223,3,12,6,0,223,
+224,5,38,0,0,224,27,1,0,0,0,225,226,5,6,0,0,226,227,5,37,0,0,227,228,3,12,
+6,0,228,229,5,38,0,0,229,29,1,0,0,0,230,231,5,7,0,0,231,232,5,37,0,0,232,
+233,3,12,6,0,233,234,5,38,0,0,234,31,1,0,0,0,235,236,5,8,0,0,236,237,5,37,
+0,0,237,238,3,12,6,0,238,239,5,38,0,0,239,33,1,0,0,0,240,241,5,9,0,0,241,
+242,5,37,0,0,242,243,3,12,6,0,243,244,5,38,0,0,244,35,1,0,0,0,245,246,5,
+10,0,0,246,247,5,37,0,0,247,248,3,12,6,0,248,249,5,38,0,0,249,37,1,0,0,0,
+250,251,5,11,0,0,251,252,5,37,0,0,252,253,3,12,6,0,253,254,5,38,0,0,254,
+39,1,0,0,0,255,256,5,12,0,0,256,257,5,37,0,0,257,258,3,12,6,0,258,259,5,
+38,0,0,259,41,1,0,0,0,260,261,5,13,0,0,261,262,5,37,0,0,262,263,3,12,6,0,
+263,264,5,38,0,0,264,43,1,0,0,0,265,266,5,14,0,0,266,267,5,37,0,0,267,268,
+3,12,6,0,268,269,5,38,0,0,269,45,1,0,0,0,270,271,5,15,0,0,271,272,5,37,0,
+0,272,273,3,12,6,0,273,274,5,38,0,0,274,47,1,0,0,0,275,276,5,16,0,0,276,
+277,5,37,0,0,277,278,3,12,6,0,278,279,5,38,0,0,279,49,1,0,0,0,280,281,5,
+17,0,0,281,282,5,37,0,0,282,283,3,12,6,0,283,284,5,38,0,0,284,51,1,0,0,0,
+285,286,5,18,0,0,286,287,5,37,0,0,287,288,3,12,6,0,288,289,5,38,0,0,289,
+53,1,0,0,0,290,291,5,19,0,0,291,292,5,37,0,0,292,293,3,12,6,0,293,294,5,
+38,0,0,294,55,1,0,0,0,295,296,5,20,0,0,296,297,5,37,0,0,297,298,3,12,6,0,
+298,299,5,38,0,0,299,57,1,0,0,0,300,301,5,21,0,0,301,302,5,37,0,0,302,303,
+3,12,6,0,303,304,5,36,0,0,304,305,3,12,6,0,305,306,5,38,0,0,306,59,1,0,0,
+0,307,308,5,22,0,0,308,309,5,37,0,0,309,310,3,12,6,0,310,311,5,38,0,0,311,
+61,1,0,0,0,312,313,5,23,0,0,313,314,5,37,0,0,314,315,5,38,0,0,315,63,1,0,
+0,0,316,317,5,24,0,0,317,318,5,37,0,0,318,319,3,12,6,0,319,320,5,36,0,0,
+320,321,3,12,6,0,321,322,5,36,0,0,322,323,3,12,6,0,323,324,5,38,0,0,324,
+65,1,0,0,0,325,326,5,25,0,0,326,327,5,37,0,0,327,328,3,12,6,0,328,329,5,
+38,0,0,329,67,1,0,0,0,330,331,5,26,0,0,331,332,5,37,0,0,332,333,3,12,6,0,
+333,334,5,38,0,0,334,69,1,0,0,0,335,336,5,27,0,0,336,337,5,37,0,0,337,338,
+3,12,6,0,338,339,5,36,0,0,339,340,3,12,6,0,340,341,5,38,0,0,341,71,1,0,0,
+0,342,343,5,28,0,0,343,344,5,37,0,0,344,345,3,12,6,0,345,346,5,36,0,0,346,
+347,3,12,6,0,347,348,5,38,0,0,348,73,1,0,0,0,349,350,5,29,0,0,350,351,5,
+37,0,0,351,352,3,12,6,0,352,353,5,38,0,0,353,75,1,0,0,0,354,355,5,30,0,0,
+355,356,5,37,0,0,356,357,3,12,6,0,357,358,5,38,0,0,358,77,1,0,0,0,359,360,
+5,31,0,0,360,361,5,37,0,0,361,362,3,12,6,0,362,363,5,38,0,0,363,79,1,0,0,
+0,364,366,3,82,41,0,365,364,1,0,0,0,365,366,1,0,0,0,366,367,1,0,0,0,367,
+370,5,37,0,0,368,371,3,6,3,0,369,371,5,47,0,0,370,368,1,0,0,0,370,369,1,
+0,0,0,371,372,1,0,0,0,372,374,5,38,0,0,373,365,1,0,0,0,373,374,1,0,0,0,374,
+81,1,0,0,0,375,376,7,5,0,0,376,83,1,0,0,0,20,87,92,97,101,107,109,113,118,
+123,132,136,145,153,159,170,179,208,365,370,373];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -164,16 +164,12 @@ export default class snobolParser extends antlr4.Parser {
         this.symbolicNames = snobolParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	prog() {
 	    let localctx = new ProgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, snobolParser.RULE_prog);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 85; 
@@ -185,7 +181,9 @@ export default class snobolParser extends antlr4.Parser {
 	            this.state = 87; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (snobolParser.AMP - 39)) | (1 << (snobolParser.COLON - 39)) | (1 << (snobolParser.END - 39)) | (1 << (snobolParser.STRING - 39)) | (1 << (snobolParser.COMMENT - 39)) | (1 << (snobolParser.EOL - 39)))) !== 0));
+	        } while(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 51585) !== 0));
+	        this.state = 89;
+	        this.match(snobolParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -205,18 +203,18 @@ export default class snobolParser extends antlr4.Parser {
 	lin() {
 	    let localctx = new LinContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, snobolParser.RULE_lin);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 90;
+	        this.state = 92;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (snobolParser.AMP - 39)) | (1 << (snobolParser.COLON - 39)) | (1 << (snobolParser.END - 39)) | (1 << (snobolParser.STRING - 39)) | (1 << (snobolParser.COMMENT - 39)))) !== 0)) {
-	            this.state = 89;
+	        if(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 18817) !== 0)) {
+	            this.state = 91;
 	            this.line();
 	        }
 
-	        this.state = 92;
+	        this.state = 94;
 	        this.match(snobolParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -237,74 +235,74 @@ export default class snobolParser extends antlr4.Parser {
 	line() {
 	    let localctx = new LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, snobolParser.RULE_line);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 116;
+	        this.state = 118;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case snobolParser.AMP:
-	        case snobolParser.STRING:
+	        case 39:
+	        case 50:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 95;
+	            this.state = 97;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
 	            if(la_===1) {
-	                this.state = 94;
+	                this.state = 96;
 	                this.label();
 
 	            }
-	            this.state = 97;
-	            this.subject();
 	            this.state = 99;
+	            this.subject();
+	            this.state = 101;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===snobolParser.STRINGLITERAL1 || _la===snobolParser.STRINGLITERAL2) {
-	                this.state = 98;
+	            if(_la===48 || _la===49) {
+	                this.state = 100;
 	                this.pattern();
 	            }
 
-	            this.state = 107;
+	            this.state = 109;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===snobolParser.EQ) {
-	                this.state = 101;
+	            if(_la===45) {
+	                this.state = 103;
 	                this.match(snobolParser.EQ);
-	                this.state = 103; 
+	                this.state = 105; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	                do {
-	                    this.state = 102;
+	                    this.state = 104;
 	                    this.expression();
-	                    this.state = 105; 
+	                    this.state = 107; 
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << snobolParser.T__0) | (1 << snobolParser.T__2) | (1 << snobolParser.T__3) | (1 << snobolParser.T__4) | (1 << snobolParser.T__5) | (1 << snobolParser.T__6) | (1 << snobolParser.T__8) | (1 << snobolParser.T__9) | (1 << snobolParser.T__10) | (1 << snobolParser.T__11) | (1 << snobolParser.T__12) | (1 << snobolParser.T__13) | (1 << snobolParser.T__14) | (1 << snobolParser.T__15) | (1 << snobolParser.T__16) | (1 << snobolParser.T__17) | (1 << snobolParser.T__18) | (1 << snobolParser.T__19) | (1 << snobolParser.T__20) | (1 << snobolParser.T__21) | (1 << snobolParser.T__22) | (1 << snobolParser.T__23) | (1 << snobolParser.T__24) | (1 << snobolParser.T__25) | (1 << snobolParser.T__26) | (1 << snobolParser.T__28) | (1 << snobolParser.T__29) | (1 << snobolParser.T__30))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (snobolParser.LPAREN - 37)) | (1 << (snobolParser.AMP - 37)) | (1 << (snobolParser.STRINGLITERAL1 - 37)) | (1 << (snobolParser.STRINGLITERAL2 - 37)) | (1 << (snobolParser.STRING - 37)) | (1 << (snobolParser.INTEGER - 37)))) !== 0));
+	                } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4026531578) !== 0) || ((((_la - 37)) & ~0x1f) === 0 && ((1 << (_la - 37)) & 30725) !== 0));
 	            }
 
-	            this.state = 111;
+	            this.state = 113;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===snobolParser.COLON) {
-	                this.state = 109;
+	            if(_la===46) {
+	                this.state = 111;
 	                this.match(snobolParser.COLON);
-	                this.state = 110;
+	                this.state = 112;
 	                this.transfer();
 	            }
 
 	            break;
-	        case snobolParser.COLON:
+	        case 46:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 113;
+	            this.state = 115;
 	            this.match(snobolParser.COLON);
-	            this.state = 114;
+	            this.state = 116;
 	            this.transfer();
 	            break;
-	        case snobolParser.END:
-	        case snobolParser.COMMENT:
+	        case 47:
+	        case 53:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 115;
+	            this.state = 117;
 	            _la = this._input.LA(1);
-	            if(!(_la===snobolParser.END || _la===snobolParser.COMMENT)) {
+	            if(!(_la===47 || _la===53)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -336,7 +334,7 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, snobolParser.RULE_label);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 118;
+	        this.state = 120;
 	        this.match(snobolParser.STRING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -357,40 +355,40 @@ export default class snobolParser extends antlr4.Parser {
 	subject() {
 	    let localctx = new SubjectContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, snobolParser.RULE_subject);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 121;
+	        this.state = 123;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===snobolParser.AMP) {
-	            this.state = 120;
+	        if(_la===39) {
+	            this.state = 122;
 	            this.match(snobolParser.AMP);
 	        }
 
-	        this.state = 123;
+	        this.state = 125;
 	        this.match(snobolParser.STRING);
-	        this.state = 134;
+	        this.state = 136;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
 	        if(la_===1) {
-	            this.state = 124;
+	            this.state = 126;
 	            this.match(snobolParser.T__0);
-	            this.state = 125;
+	            this.state = 127;
 	            this.match(snobolParser.STRING);
-	            this.state = 130;
+	            this.state = 132;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snobolParser.COMMA) {
-	                this.state = 126;
+	            while(_la===36) {
+	                this.state = 128;
 	                this.match(snobolParser.COMMA);
-	                this.state = 127;
+	                this.state = 129;
 	                this.match(snobolParser.STRING);
-	                this.state = 132;
+	                this.state = 134;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 133;
+	            this.state = 135;
 	            this.match(snobolParser.T__1);
 
 	        }
@@ -413,12 +411,12 @@ export default class snobolParser extends antlr4.Parser {
 	pattern() {
 	    let localctx = new PatternContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, snobolParser.RULE_pattern);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 136;
+	        this.state = 138;
 	        _la = this._input.LA(1);
-	        if(!(_la===snobolParser.STRINGLITERAL1 || _la===snobolParser.STRINGLITERAL2)) {
+	        if(!(_la===48 || _la===49)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -444,29 +442,29 @@ export default class snobolParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, snobolParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 138;
+	        this.state = 140;
 	        this.multiplyingExpression();
-	        this.state = 143;
+	        this.state = 145;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,11,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 139;
+	                this.state = 141;
 	                _la = this._input.LA(1);
-	                if(!(_la===snobolParser.PLUS || _la===snobolParser.MINUS)) {
+	                if(!(_la===40 || _la===41)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
 	                	this._errHandler.reportMatch(this);
 	                    this.consume();
 	                }
-	                this.state = 140;
+	                this.state = 142;
 	                this.multiplyingExpression(); 
 	            }
-	            this.state = 145;
+	            this.state = 147;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,11,this._ctx);
 	        }
@@ -490,29 +488,29 @@ export default class snobolParser extends antlr4.Parser {
 	multiplyingExpression() {
 	    let localctx = new MultiplyingExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, snobolParser.RULE_multiplyingExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 146;
+	        this.state = 148;
 	        this.powExpression();
-	        this.state = 151;
+	        this.state = 153;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,12,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 147;
+	                this.state = 149;
 	                _la = this._input.LA(1);
-	                if(!(_la===snobolParser.TIMES || _la===snobolParser.DIV)) {
+	                if(!(_la===42 || _la===43)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
 	                	this._errHandler.reportMatch(this);
 	                    this.consume();
 	                }
-	                this.state = 148;
+	                this.state = 150;
 	                this.powExpression(); 
 	            }
-	            this.state = 153;
+	            this.state = 155;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,12,this._ctx);
 	        }
@@ -536,18 +534,18 @@ export default class snobolParser extends antlr4.Parser {
 	powExpression() {
 	    let localctx = new PowExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, snobolParser.RULE_powExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 154;
+	        this.state = 156;
 	        this.atom();
-	        this.state = 157;
+	        this.state = 159;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===snobolParser.POW) {
-	            this.state = 155;
+	        if(_la===44) {
+	            this.state = 157;
 	            this.match(snobolParser.POW);
-	            this.state = 156;
+	            this.state = 158;
 	            this.expression();
 	        }
 
@@ -570,18 +568,18 @@ export default class snobolParser extends antlr4.Parser {
 	atom() {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, snobolParser.RULE_atom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 177;
+	        this.state = 179;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case snobolParser.STRINGLITERAL1:
-	        case snobolParser.STRINGLITERAL2:
-	        case snobolParser.INTEGER:
+	        case 48:
+	        case 49:
+	        case 51:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 159;
+	            this.state = 161;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 48)) & ~0x1f) == 0 && ((1 << (_la - 48)) & ((1 << (snobolParser.STRINGLITERAL1 - 48)) | (1 << (snobolParser.STRINGLITERAL2 - 48)) | (1 << (snobolParser.INTEGER - 48)))) !== 0))) {
+	            if(!(((((_la - 48)) & ~0x1f) === 0 && ((1 << (_la - 48)) & 11) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -589,71 +587,71 @@ export default class snobolParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case snobolParser.AMP:
-	        case snobolParser.STRING:
+	        case 39:
+	        case 50:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 160;
+	            this.state = 162;
 	            this.subject();
 	            break;
-	        case snobolParser.T__2:
-	        case snobolParser.T__3:
-	        case snobolParser.T__4:
-	        case snobolParser.T__5:
-	        case snobolParser.T__6:
-	        case snobolParser.T__8:
-	        case snobolParser.T__9:
-	        case snobolParser.T__10:
-	        case snobolParser.T__11:
-	        case snobolParser.T__12:
-	        case snobolParser.T__13:
-	        case snobolParser.T__14:
-	        case snobolParser.T__15:
-	        case snobolParser.T__16:
-	        case snobolParser.T__17:
-	        case snobolParser.T__18:
-	        case snobolParser.T__19:
-	        case snobolParser.T__20:
-	        case snobolParser.T__21:
-	        case snobolParser.T__22:
-	        case snobolParser.T__23:
-	        case snobolParser.T__24:
-	        case snobolParser.T__25:
-	        case snobolParser.T__26:
-	        case snobolParser.T__28:
-	        case snobolParser.T__29:
-	        case snobolParser.T__30:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 29:
+	        case 30:
+	        case 31:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 161;
+	            this.state = 163;
 	            this.command();
 	            break;
-	        case snobolParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 162;
+	            this.state = 164;
 	            this.match(snobolParser.T__0);
-	            this.state = 163;
+	            this.state = 165;
 	            this.expression();
-	            this.state = 168;
+	            this.state = 170;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snobolParser.COMMA) {
-	                this.state = 164;
+	            while(_la===36) {
+	                this.state = 166;
 	                this.match(snobolParser.COMMA);
-	                this.state = 165;
+	                this.state = 167;
 	                this.expression();
-	                this.state = 170;
+	                this.state = 172;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 171;
+	            this.state = 173;
 	            this.match(snobolParser.T__1);
 	            break;
-	        case snobolParser.LPAREN:
+	        case 37:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 173;
-	            this.match(snobolParser.LPAREN);
-	            this.state = 174;
-	            this.expression();
 	            this.state = 175;
+	            this.match(snobolParser.LPAREN);
+	            this.state = 176;
+	            this.expression();
+	            this.state = 177;
 	            this.match(snobolParser.RPAREN);
 	            break;
 	        default:
@@ -679,142 +677,142 @@ export default class snobolParser extends antlr4.Parser {
 	    let localctx = new CommandContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, snobolParser.RULE_command);
 	    try {
-	        this.state = 206;
+	        this.state = 208;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case snobolParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 179;
+	            this.state = 181;
 	            this.ident();
 	            break;
-	        case snobolParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 180;
+	            this.state = 182;
 	            this.differ();
 	            break;
-	        case snobolParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 181;
+	            this.state = 183;
 	            this.eq();
 	            break;
-	        case snobolParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 182;
+	            this.state = 184;
 	            this.ne();
 	            break;
-	        case snobolParser.T__6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 183;
+	            this.state = 185;
 	            this.ge();
 	            break;
-	        case snobolParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 184;
+	            this.state = 186;
 	            this.le();
 	            break;
-	        case snobolParser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 185;
+	            this.state = 187;
 	            this.lt();
 	            break;
-	        case snobolParser.T__10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 186;
+	            this.state = 188;
 	            this.integer();
 	            break;
-	        case snobolParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 9);
-	            this.state = 187;
+	            this.state = 189;
 	            this.lgt();
 	            break;
-	        case snobolParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 10);
-	            this.state = 188;
+	            this.state = 190;
 	            this.atan();
 	            break;
-	        case snobolParser.T__13:
+	        case 14:
 	            this.enterOuterAlt(localctx, 11);
-	            this.state = 189;
+	            this.state = 191;
 	            this.chop();
 	            break;
-	        case snobolParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 12);
-	            this.state = 190;
+	            this.state = 192;
 	            this.cos();
 	            break;
-	        case snobolParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 13);
-	            this.state = 191;
+	            this.state = 193;
 	            this.exp();
 	            break;
-	        case snobolParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 14);
-	            this.state = 192;
+	            this.state = 194;
 	            this.ln();
 	            break;
-	        case snobolParser.T__17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 15);
-	            this.state = 193;
+	            this.state = 195;
 	            this.remdr();
 	            break;
-	        case snobolParser.T__18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 16);
-	            this.state = 194;
+	            this.state = 196;
 	            this.sin();
 	            break;
-	        case snobolParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 17);
-	            this.state = 195;
+	            this.state = 197;
 	            this.tan();
 	            break;
-	        case snobolParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 18);
-	            this.state = 196;
+	            this.state = 198;
 	            this.date();
 	            break;
-	        case snobolParser.T__20:
+	        case 21:
 	            this.enterOuterAlt(localctx, 19);
-	            this.state = 197;
+	            this.state = 199;
 	            this.dupl();
 	            break;
-	        case snobolParser.T__21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 20);
-	            this.state = 198;
+	            this.state = 200;
 	            this.reverse();
 	            break;
-	        case snobolParser.T__23:
+	        case 24:
 	            this.enterOuterAlt(localctx, 21);
-	            this.state = 199;
+	            this.state = 201;
 	            this.replace();
 	            break;
-	        case snobolParser.T__24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 22);
-	            this.state = 200;
+	            this.state = 202;
 	            this.size();
 	            break;
-	        case snobolParser.T__25:
+	        case 26:
 	            this.enterOuterAlt(localctx, 23);
-	            this.state = 201;
+	            this.state = 203;
 	            this.trim();
 	            break;
-	        case snobolParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 24);
-	            this.state = 202;
+	            this.state = 204;
 	            this.array_();
 	            break;
-	        case snobolParser.T__29:
+	        case 30:
 	            this.enterOuterAlt(localctx, 25);
-	            this.state = 203;
+	            this.state = 205;
 	            this.sort();
 	            break;
-	        case snobolParser.T__28:
+	        case 29:
 	            this.enterOuterAlt(localctx, 26);
-	            this.state = 204;
+	            this.state = 206;
 	            this.table();
 	            break;
-	        case snobolParser.T__30:
+	        case 31:
 	            this.enterOuterAlt(localctx, 27);
-	            this.state = 205;
+	            this.state = 207;
 	            this.break_();
 	            break;
 	        default:
@@ -841,13 +839,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 22, snobolParser.RULE_ident);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 208;
-	        this.match(snobolParser.T__2);
-	        this.state = 209;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 210;
-	        this.expression();
+	        this.match(snobolParser.T__2);
 	        this.state = 211;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 212;
+	        this.expression();
+	        this.state = 213;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -870,13 +868,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, snobolParser.RULE_differ);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 213;
-	        this.match(snobolParser.T__3);
-	        this.state = 214;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 215;
-	        this.expression();
+	        this.match(snobolParser.T__3);
 	        this.state = 216;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 217;
+	        this.expression();
+	        this.state = 218;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -899,13 +897,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 26, snobolParser.RULE_eq);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 218;
-	        this.match(snobolParser.T__4);
-	        this.state = 219;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 220;
-	        this.expression();
+	        this.match(snobolParser.T__4);
 	        this.state = 221;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 222;
+	        this.expression();
+	        this.state = 223;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -928,13 +926,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 28, snobolParser.RULE_ne);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 223;
-	        this.match(snobolParser.T__5);
-	        this.state = 224;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 225;
-	        this.expression();
+	        this.match(snobolParser.T__5);
 	        this.state = 226;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 227;
+	        this.expression();
+	        this.state = 228;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -957,13 +955,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, snobolParser.RULE_ge);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 228;
-	        this.match(snobolParser.T__6);
-	        this.state = 229;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 230;
-	        this.expression();
+	        this.match(snobolParser.T__6);
 	        this.state = 231;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 232;
+	        this.expression();
+	        this.state = 233;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -986,13 +984,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 32, snobolParser.RULE_gt);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 233;
-	        this.match(snobolParser.T__7);
-	        this.state = 234;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 235;
-	        this.expression();
+	        this.match(snobolParser.T__7);
 	        this.state = 236;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 237;
+	        this.expression();
+	        this.state = 238;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1015,13 +1013,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 34, snobolParser.RULE_le);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 238;
-	        this.match(snobolParser.T__8);
-	        this.state = 239;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 240;
-	        this.expression();
+	        this.match(snobolParser.T__8);
 	        this.state = 241;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 242;
+	        this.expression();
+	        this.state = 243;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1044,13 +1042,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 36, snobolParser.RULE_lt);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 243;
-	        this.match(snobolParser.T__9);
-	        this.state = 244;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 245;
-	        this.expression();
+	        this.match(snobolParser.T__9);
 	        this.state = 246;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 247;
+	        this.expression();
+	        this.state = 248;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1073,13 +1071,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 38, snobolParser.RULE_integer);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 248;
-	        this.match(snobolParser.T__10);
-	        this.state = 249;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 250;
-	        this.expression();
+	        this.match(snobolParser.T__10);
 	        this.state = 251;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 252;
+	        this.expression();
+	        this.state = 253;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1102,13 +1100,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 40, snobolParser.RULE_lgt);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 253;
-	        this.match(snobolParser.T__11);
-	        this.state = 254;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 255;
-	        this.expression();
+	        this.match(snobolParser.T__11);
 	        this.state = 256;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 257;
+	        this.expression();
+	        this.state = 258;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1131,13 +1129,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 42, snobolParser.RULE_atan);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 258;
-	        this.match(snobolParser.T__12);
-	        this.state = 259;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 260;
-	        this.expression();
+	        this.match(snobolParser.T__12);
 	        this.state = 261;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 262;
+	        this.expression();
+	        this.state = 263;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1160,13 +1158,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 44, snobolParser.RULE_chop);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 263;
-	        this.match(snobolParser.T__13);
-	        this.state = 264;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 265;
-	        this.expression();
+	        this.match(snobolParser.T__13);
 	        this.state = 266;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 267;
+	        this.expression();
+	        this.state = 268;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1189,13 +1187,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 46, snobolParser.RULE_cos);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 268;
-	        this.match(snobolParser.T__14);
-	        this.state = 269;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 270;
-	        this.expression();
+	        this.match(snobolParser.T__14);
 	        this.state = 271;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 272;
+	        this.expression();
+	        this.state = 273;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1218,13 +1216,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 48, snobolParser.RULE_exp);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 273;
-	        this.match(snobolParser.T__15);
-	        this.state = 274;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 275;
-	        this.expression();
+	        this.match(snobolParser.T__15);
 	        this.state = 276;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 277;
+	        this.expression();
+	        this.state = 278;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1247,13 +1245,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 50, snobolParser.RULE_ln);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 278;
-	        this.match(snobolParser.T__16);
-	        this.state = 279;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 280;
-	        this.expression();
+	        this.match(snobolParser.T__16);
 	        this.state = 281;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 282;
+	        this.expression();
+	        this.state = 283;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1276,13 +1274,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 52, snobolParser.RULE_remdr);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 283;
-	        this.match(snobolParser.T__17);
-	        this.state = 284;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 285;
-	        this.expression();
+	        this.match(snobolParser.T__17);
 	        this.state = 286;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 287;
+	        this.expression();
+	        this.state = 288;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1305,13 +1303,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 54, snobolParser.RULE_sin);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 288;
-	        this.match(snobolParser.T__18);
-	        this.state = 289;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 290;
-	        this.expression();
+	        this.match(snobolParser.T__18);
 	        this.state = 291;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 292;
+	        this.expression();
+	        this.state = 293;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1334,13 +1332,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 56, snobolParser.RULE_tan);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 293;
-	        this.match(snobolParser.T__19);
-	        this.state = 294;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 295;
-	        this.expression();
+	        this.match(snobolParser.T__19);
 	        this.state = 296;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 297;
+	        this.expression();
+	        this.state = 298;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1363,17 +1361,17 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 58, snobolParser.RULE_dupl);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 298;
-	        this.match(snobolParser.T__20);
-	        this.state = 299;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 300;
-	        this.expression();
+	        this.match(snobolParser.T__20);
 	        this.state = 301;
-	        this.match(snobolParser.COMMA);
+	        this.match(snobolParser.LPAREN);
 	        this.state = 302;
 	        this.expression();
 	        this.state = 303;
+	        this.match(snobolParser.COMMA);
+	        this.state = 304;
+	        this.expression();
+	        this.state = 305;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1396,13 +1394,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 60, snobolParser.RULE_reverse);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 305;
-	        this.match(snobolParser.T__21);
-	        this.state = 306;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 307;
-	        this.expression();
+	        this.match(snobolParser.T__21);
 	        this.state = 308;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 309;
+	        this.expression();
+	        this.state = 310;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1425,11 +1423,11 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 62, snobolParser.RULE_date);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 310;
-	        this.match(snobolParser.T__22);
-	        this.state = 311;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 312;
+	        this.match(snobolParser.T__22);
+	        this.state = 313;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 314;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1452,14 +1450,10 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 64, snobolParser.RULE_replace);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 314;
-	        this.match(snobolParser.T__23);
-	        this.state = 315;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 316;
-	        this.expression();
+	        this.match(snobolParser.T__23);
 	        this.state = 317;
-	        this.match(snobolParser.COMMA);
+	        this.match(snobolParser.LPAREN);
 	        this.state = 318;
 	        this.expression();
 	        this.state = 319;
@@ -1467,6 +1461,10 @@ export default class snobolParser extends antlr4.Parser {
 	        this.state = 320;
 	        this.expression();
 	        this.state = 321;
+	        this.match(snobolParser.COMMA);
+	        this.state = 322;
+	        this.expression();
+	        this.state = 323;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1489,13 +1487,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 66, snobolParser.RULE_size);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 323;
-	        this.match(snobolParser.T__24);
-	        this.state = 324;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 325;
-	        this.expression();
+	        this.match(snobolParser.T__24);
 	        this.state = 326;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 327;
+	        this.expression();
+	        this.state = 328;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1518,13 +1516,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 68, snobolParser.RULE_trim);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 328;
-	        this.match(snobolParser.T__25);
-	        this.state = 329;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 330;
-	        this.expression();
+	        this.match(snobolParser.T__25);
 	        this.state = 331;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 332;
+	        this.expression();
+	        this.state = 333;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1547,17 +1545,17 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 70, snobolParser.RULE_array_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 333;
-	        this.match(snobolParser.T__26);
-	        this.state = 334;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 335;
-	        this.expression();
+	        this.match(snobolParser.T__26);
 	        this.state = 336;
-	        this.match(snobolParser.COMMA);
+	        this.match(snobolParser.LPAREN);
 	        this.state = 337;
 	        this.expression();
 	        this.state = 338;
+	        this.match(snobolParser.COMMA);
+	        this.state = 339;
+	        this.expression();
+	        this.state = 340;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1580,17 +1578,17 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 72, snobolParser.RULE_convert);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 340;
-	        this.match(snobolParser.T__27);
-	        this.state = 341;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 342;
-	        this.expression();
+	        this.match(snobolParser.T__27);
 	        this.state = 343;
-	        this.match(snobolParser.COMMA);
+	        this.match(snobolParser.LPAREN);
 	        this.state = 344;
 	        this.expression();
 	        this.state = 345;
+	        this.match(snobolParser.COMMA);
+	        this.state = 346;
+	        this.expression();
+	        this.state = 347;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1613,13 +1611,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 74, snobolParser.RULE_table);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 347;
-	        this.match(snobolParser.T__28);
-	        this.state = 348;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 349;
-	        this.expression();
+	        this.match(snobolParser.T__28);
 	        this.state = 350;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 351;
+	        this.expression();
+	        this.state = 352;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1642,13 +1640,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 76, snobolParser.RULE_sort);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 352;
-	        this.match(snobolParser.T__29);
-	        this.state = 353;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 354;
-	        this.expression();
+	        this.match(snobolParser.T__29);
 	        this.state = 355;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 356;
+	        this.expression();
+	        this.state = 357;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1671,13 +1669,13 @@ export default class snobolParser extends antlr4.Parser {
 	    this.enterRule(localctx, 78, snobolParser.RULE_break_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 357;
-	        this.match(snobolParser.T__30);
-	        this.state = 358;
-	        this.match(snobolParser.LPAREN);
 	        this.state = 359;
-	        this.expression();
+	        this.match(snobolParser.T__30);
 	        this.state = 360;
+	        this.match(snobolParser.LPAREN);
+	        this.state = 361;
+	        this.expression();
+	        this.state = 362;
 	        this.match(snobolParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1698,38 +1696,38 @@ export default class snobolParser extends antlr4.Parser {
 	transfer() {
 	    let localctx = new TransferContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, snobolParser.RULE_transfer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 371;
+	        this.state = 373;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (snobolParser.T__31 - 32)) | (1 << (snobolParser.T__32 - 32)) | (1 << (snobolParser.T__33 - 32)) | (1 << (snobolParser.T__34 - 32)) | (1 << (snobolParser.LPAREN - 32)))) !== 0)) {
-	            this.state = 363;
+	        if(((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 47) !== 0)) {
+	            this.state = 365;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (snobolParser.T__31 - 32)) | (1 << (snobolParser.T__32 - 32)) | (1 << (snobolParser.T__33 - 32)) | (1 << (snobolParser.T__34 - 32)))) !== 0)) {
-	                this.state = 362;
+	            if(((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 15) !== 0)) {
+	                this.state = 364;
 	                this.transferpre();
 	            }
 
-	            this.state = 365;
+	            this.state = 367;
 	            this.match(snobolParser.LPAREN);
-	            this.state = 368;
+	            this.state = 370;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case snobolParser.STRING:
-	                this.state = 366;
+	            case 50:
+	                this.state = 368;
 	                this.label();
 	                break;
-	            case snobolParser.END:
-	                this.state = 367;
+	            case 47:
+	                this.state = 369;
 	                this.match(snobolParser.END);
 	                break;
 	            default:
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
-	            this.state = 370;
+	            this.state = 372;
 	            this.match(snobolParser.RPAREN);
 	        }
 
@@ -1752,12 +1750,12 @@ export default class snobolParser extends antlr4.Parser {
 	transferpre() {
 	    let localctx = new TransferpreContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, snobolParser.RULE_transferpre);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 373;
+	        this.state = 375;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (snobolParser.T__31 - 32)) | (1 << (snobolParser.T__32 - 32)) | (1 << (snobolParser.T__33 - 32)) | (1 << (snobolParser.T__34 - 32)))) !== 0))) {
+	        if(!(((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 15) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1894,6 +1892,10 @@ class ProgContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = snobolParser.RULE_prog;
     }
+
+	EOF() {
+	    return this.getToken(snobolParser.EOF, 0);
+	};
 
 	lin = function(i) {
 	    if(i===undefined) {
@@ -3986,3 +3988,12 @@ snobolParser.SortContext = SortContext;
 snobolParser.Break_Context = Break_Context; 
 snobolParser.TransferContext = TransferContext; 
 snobolParser.TransferpreContext = TransferpreContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

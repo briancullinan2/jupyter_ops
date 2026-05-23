@@ -2,5 +2,6 @@
     "search.usePCRE2": true,
     "[c]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
-    }
+    },
+    "git.ignoreLimitWarning": true
 }

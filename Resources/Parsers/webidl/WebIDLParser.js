@@ -1,4 +1,4 @@
-// Generated from ./webidl/WebIDL.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/webidl/WebIDL.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import WebIDLListener from './WebIDLListener.js';
@@ -384,10 +384,6 @@ export default class WebIDLParser extends antlr4.Parser {
         this.symbolicNames = WebIDLParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	webIDL() {
@@ -422,15 +418,15 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 234;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 3:
+	        case 7:
+	        case 8:
+	        case 12:
+	        case 16:
+	        case 17:
+	        case 24:
+	        case 36:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 229;
 	            this.extendedAttributeList();
@@ -439,7 +435,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 231;
 	            this.definitions();
 	            break;
-	        case WebIDLParser.EOF:
+	        case -1:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -469,38 +465,38 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 243;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__11:
+	        case 3:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 236;
 	            this.callbackOrInterfaceOrMixin();
 	            break;
-	        case WebIDLParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 237;
 	            this.namespace_();
 	            break;
-	        case WebIDLParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 238;
 	            this.partial();
 	            break;
-	        case WebIDLParser.T__6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 239;
 	            this.dictionary();
 	            break;
-	        case WebIDLParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 240;
 	            this.enum_();
 	            break;
-	        case WebIDLParser.T__23:
+	        case 24:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 241;
 	            this.typedef_();
 	            break;
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 242;
 	            this.includesStatement();
@@ -527,12 +523,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	argumentNameKeyword() {
 	    let localctx = new ArgumentNameKeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, WebIDLParser.RULE_argumentNameKeyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 245;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << WebIDLParser.T__0) | (1 << WebIDLParser.T__1) | (1 << WebIDLParser.T__2) | (1 << WebIDLParser.T__3) | (1 << WebIDLParser.T__4) | (1 << WebIDLParser.T__5) | (1 << WebIDLParser.T__6) | (1 << WebIDLParser.T__7) | (1 << WebIDLParser.T__8) | (1 << WebIDLParser.T__9) | (1 << WebIDLParser.T__10) | (1 << WebIDLParser.T__11) | (1 << WebIDLParser.T__12) | (1 << WebIDLParser.T__13) | (1 << WebIDLParser.T__14) | (1 << WebIDLParser.T__15) | (1 << WebIDLParser.T__16) | (1 << WebIDLParser.T__17) | (1 << WebIDLParser.T__18) | (1 << WebIDLParser.T__19) | (1 << WebIDLParser.T__20) | (1 << WebIDLParser.T__21) | (1 << WebIDLParser.T__22) | (1 << WebIDLParser.T__23) | (1 << WebIDLParser.T__24))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 67108862) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -562,14 +558,14 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 251;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 247;
 	            this.match(WebIDLParser.T__2);
 	            this.state = 248;
 	            this.callbackRestOrInterface();
 	            break;
-	        case WebIDLParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 249;
 	            this.match(WebIDLParser.T__11);
@@ -602,12 +598,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 255;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 253;
 	            this.interfaceRest();
 	            break;
-	        case WebIDLParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 254;
 	            this.mixinRest();
@@ -696,19 +692,19 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 271;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 267;
 	            this.match(WebIDLParser.T__11);
 	            this.state = 268;
 	            this.partialInterfaceOrPartialMixin();
 	            break;
-	        case WebIDLParser.T__6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 269;
 	            this.partialDictionary();
 	            break;
-	        case WebIDLParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 270;
 	            this.namespace_();
@@ -739,12 +735,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 275;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 273;
 	            this.partialInterfaceRest();
 	            break;
-	        case WebIDLParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 274;
 	            this.mixinRest();
@@ -806,56 +802,56 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 288;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 9:
+	        case 11:
+	        case 13:
+	        case 14:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 25:
+	        case 36:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 283;
 	            this.extendedAttributeList();
@@ -864,7 +860,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 285;
 	            this.interfaceMembers();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -894,59 +890,59 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 292;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 4:
+	        case 6:
+	        case 9:
+	        case 11:
+	        case 13:
+	        case 14:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 290;
 	            this.partialInterfaceMember();
 	            break;
-	        case WebIDLParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 291;
 	            this.constructor();
@@ -977,55 +973,55 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 299;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 4:
+	        case 6:
+	        case 9:
+	        case 11:
+	        case 13:
+	        case 14:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 25:
+	        case 36:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 294;
 	            this.extendedAttributeList();
@@ -1034,7 +1030,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 296;
 	            this.partialInterfaceMembers();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -1064,94 +1060,94 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 312;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 301;
 	            this.const_();
 	            break;
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 6:
+	        case 9:
+	        case 21:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 302;
 	            this.operation();
 	            break;
-	        case WebIDLParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 303;
 	            this.stringifier();
 	            break;
-	        case WebIDLParser.T__21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 304;
 	            this.staticMember();
 	            break;
-	        case WebIDLParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 305;
 	            this.iterable();
 	            break;
-	        case WebIDLParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 306;
 	            this.asyncIterable();
 	            break;
-	        case WebIDLParser.T__17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 307;
 	            this.readonlyMember();
 	            break;
-	        case WebIDLParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 308;
 	            this.readWriteAttribute();
 	            break;
-	        case WebIDLParser.T__13:
+	        case 14:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 309;
 	            this.readWriteMaplike();
 	            break;
-	        case WebIDLParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 310;
 	            this.readWriteSetlike();
 	            break;
-	        case WebIDLParser.T__10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 311;
 	            this.inheritAttribute();
@@ -1182,14 +1178,14 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 317;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__28:
+	        case 29:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 314;
 	            this.match(WebIDLParser.T__28);
 	            this.state = 315;
 	            this.match(WebIDLParser.IDENTIFIER_WEBIDL);
 	            break;
-	        case WebIDLParser.T__25:
+	        case 26:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -1252,46 +1248,46 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 331;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 2:
+	        case 4:
+	        case 18:
+	        case 23:
+	        case 25:
+	        case 36:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 326;
 	            this.extendedAttributeList();
@@ -1300,7 +1296,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 328;
 	            this.mixinMembers();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -1330,57 +1326,57 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 339;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 333;
 	            this.const_();
 	            break;
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 334;
 	            this.regularOperation();
 	            break;
-	        case WebIDLParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 335;
 	            this.stringifier();
 	            break;
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__17:
+	        case 2:
+	        case 18:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 336;
 	            this.optionalReadOnly();
@@ -1442,12 +1438,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 354;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 346;
 	            this.callbackRest();
 	            break;
-	        case WebIDLParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 347;
 	            this.match(WebIDLParser.T__11);
@@ -1488,43 +1484,43 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 361;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 4:
+	        case 25:
+	        case 36:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 356;
 	            this.extendedAttributeList();
@@ -1533,7 +1529,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 358;
 	            this.callbackInterfaceMembers();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -1563,46 +1559,46 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 365;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 363;
 	            this.const_();
 	            break;
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 364;
 	            this.regularOperation();
@@ -1666,21 +1662,21 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 377;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__30:
-	        case WebIDLParser.T__31:
+	        case 31:
+	        case 32:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 374;
 	            this.booleanLiteral();
 	            break;
-	        case WebIDLParser.T__32:
-	        case WebIDLParser.T__33:
-	        case WebIDLParser.T__34:
-	        case WebIDLParser.DECIMAL_WEBIDL:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 83:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 375;
 	            this.floatLiteral();
 	            break;
-	        case WebIDLParser.INTEGER_WEBIDL:
+	        case 82:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 376;
 	            this.match(WebIDLParser.INTEGER_WEBIDL);
@@ -1707,12 +1703,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	booleanLiteral() {
 	    let localctx = new BooleanLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, WebIDLParser.RULE_booleanLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 379;
 	        _la = this._input.LA(1);
-	        if(!(_la===WebIDLParser.T__30 || _la===WebIDLParser.T__31)) {
+	        if(!(_la===31 || _la===32)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1738,12 +1734,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	floatLiteral() {
 	    let localctx = new FloatLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, WebIDLParser.RULE_floatLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 381;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (WebIDLParser.T__32 - 33)) | (1 << (WebIDLParser.T__33 - 33)) | (1 << (WebIDLParser.T__34 - 33)))) !== 0) || _la===WebIDLParser.DECIMAL_WEBIDL)) {
+	        if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 7) !== 0) || _la===83)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1773,22 +1769,22 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 385;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
+	        case 25:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 383;
 	            this.primitiveType();
 	            break;
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 384;
 	            this.match(WebIDLParser.IDENTIFIER_WEBIDL);
@@ -1844,17 +1840,17 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 393;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 390;
 	            this.attributeRest();
 	            break;
-	        case WebIDLParser.T__13:
+	        case 14:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 391;
 	            this.maplikeRest();
 	            break;
-	        case WebIDLParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 392;
 	            this.setlikeRest();
@@ -1962,13 +1958,13 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 407;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__18:
+	        case 1:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 405;
 	            this.attributeNameKeyword();
 	            break;
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 406;
 	            this.match(WebIDLParser.IDENTIFIER_WEBIDL);
@@ -1995,12 +1991,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	attributeNameKeyword() {
 	    let localctx = new AttributeNameKeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, WebIDLParser.RULE_attributeNameKeyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 409;
 	        _la = this._input.LA(1);
-	        if(!(_la===WebIDLParser.T__0 || _la===WebIDLParser.T__18)) {
+	        if(!(_la===1 || _la===19)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2030,12 +2026,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 413;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 411;
 	            this.match(WebIDLParser.T__17);
 	            break;
-	        case WebIDLParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -2065,37 +2061,37 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 422;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__30:
-	        case WebIDLParser.T__31:
-	        case WebIDLParser.T__32:
-	        case WebIDLParser.T__33:
-	        case WebIDLParser.T__34:
-	        case WebIDLParser.INTEGER_WEBIDL:
-	        case WebIDLParser.DECIMAL_WEBIDL:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 82:
+	        case 83:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 415;
 	            this.constValue();
 	            break;
-	        case WebIDLParser.STRING_WEBIDL:
+	        case 85:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 416;
 	            this.match(WebIDLParser.STRING_WEBIDL);
 	            break;
-	        case WebIDLParser.T__35:
+	        case 36:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 417;
 	            this.match(WebIDLParser.T__35);
 	            this.state = 418;
 	            this.match(WebIDLParser.T__36);
 	            break;
-	        case WebIDLParser.T__25:
+	        case 26:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 419;
 	            this.match(WebIDLParser.T__25);
 	            this.state = 420;
 	            this.match(WebIDLParser.T__26);
 	            break;
-	        case WebIDLParser.T__37:
+	        case 38:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 421;
 	            this.match(WebIDLParser.T__37);
@@ -2126,48 +2122,48 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 426;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 424;
 	            this.regularOperation();
 	            break;
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__20:
+	        case 6:
+	        case 9:
+	        case 21:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 425;
 	            this.specialOperation();
@@ -2244,12 +2240,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	special() {
 	    let localctx = new SpecialContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, WebIDLParser.RULE_special);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 434;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << WebIDLParser.T__5) | (1 << WebIDLParser.T__8) | (1 << WebIDLParser.T__20))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2097728) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2310,13 +2306,13 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 444;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__9:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 10:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 442;
 	            this.operationName();
 	            break;
-	        case WebIDLParser.T__38:
+	        case 39:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -2346,12 +2342,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 448;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 446;
 	            this.operationNameKeyword();
 	            break;
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 447;
 	            this.match(WebIDLParser.IDENTIFIER_WEBIDL);
@@ -2405,50 +2401,50 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 456;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__41:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 36:
+	        case 39:
+	        case 42:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 452;
 	            this.argument();
 	            this.state = 453;
 	            this.arguments();
 	            break;
-	        case WebIDLParser.T__39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -2478,7 +2474,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 463;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 458;
 	            this.match(WebIDLParser.T__40);
@@ -2487,7 +2483,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 460;
 	            this.arguments();
 	            break;
-	        case WebIDLParser.T__39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -2542,7 +2538,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 477;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__41:
+	        case 42:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 468;
 	            this.match(WebIDLParser.T__41);
@@ -2553,41 +2549,41 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 471;
 	            this.default_();
 	            break;
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 473;
 	            this.type_();
@@ -2622,36 +2618,36 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 481;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__9:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__14:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__24:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 479;
 	            this.argumentNameKeyword();
 	            break;
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 480;
 	            this.match(WebIDLParser.IDENTIFIER_WEBIDL);
@@ -2682,37 +2678,37 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 485;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__42:
+	        case 43:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 483;
 	            this.match(WebIDLParser.T__42);
 	            break;
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__9:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__14:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -2798,54 +2794,54 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 501;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__17:
+	        case 2:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 496;
 	            this.optionalReadOnly();
 	            this.state = 497;
 	            this.attributeRest();
 	            break;
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 499;
 	            this.regularOperation();
 	            break;
-	        case WebIDLParser.T__27:
+	        case 28:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 500;
 	            this.match(WebIDLParser.T__27);
@@ -2901,49 +2897,49 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 510;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__17:
+	        case 2:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 506;
 	            this.optionalReadOnly();
 	            this.state = 507;
 	            this.attributeRest();
 	            break;
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 509;
 	            this.regularOperation();
@@ -3007,14 +3003,14 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 522;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 519;
 	            this.match(WebIDLParser.T__40);
 	            this.state = 520;
 	            this.typeWithExtendedAttributes();
 	            break;
-	        case WebIDLParser.T__44:
+	        case 45:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -3081,7 +3077,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 538;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__38:
+	        case 39:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 533;
 	            this.match(WebIDLParser.T__38);
@@ -3090,7 +3086,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 535;
 	            this.match(WebIDLParser.T__39);
 	            break;
-	        case WebIDLParser.T__27:
+	        case 28:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -3265,44 +3261,44 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 570;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 4:
+	        case 18:
+	        case 25:
+	        case 36:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 565;
 	            this.extendedAttributeList();
@@ -3311,7 +3307,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 567;
 	            this.namespaceMembers();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -3341,53 +3337,53 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 576;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 572;
 	            this.regularOperation();
 	            break;
-	        case WebIDLParser.T__17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 573;
 	            this.match(WebIDLParser.T__17);
 	            this.state = 574;
 	            this.attributeRest();
 	            break;
-	        case WebIDLParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 575;
 	            this.const_();
@@ -3453,50 +3449,50 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 590;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 19:
+	        case 25:
+	        case 36:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 586;
 	            this.dictionaryMember();
 	            this.state = 587;
 	            this.dictionaryMembers();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -3551,7 +3547,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 605;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 595;
 	            this.match(WebIDLParser.T__18);
@@ -3562,41 +3558,41 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 598;
 	            this.match(WebIDLParser.T__27);
 	            break;
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 39:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 600;
 	            this.type_();
@@ -3666,16 +3662,16 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 617;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__29:
+	        case 30:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 614;
 	            this.match(WebIDLParser.T__29);
 	            this.state = 615;
 	            this.defaultValue();
 	            break;
-	        case WebIDLParser.T__27:
-	        case WebIDLParser.T__39:
-	        case WebIDLParser.T__40:
+	        case 28:
+	        case 40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -3763,14 +3759,14 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 632;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 629;
 	            this.match(WebIDLParser.T__40);
 	            this.state = 630;
 	            this.enumValueListString();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -3800,14 +3796,14 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 637;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.STRING_WEBIDL:
+	        case 85:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 634;
 	            this.match(WebIDLParser.STRING_WEBIDL);
 	            this.state = 635;
 	            this.enumValueListComma();
 	            break;
-	        case WebIDLParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -3901,45 +3897,45 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 656;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 652;
 	            this.singleType();
 	            break;
-	        case WebIDLParser.T__38:
+	        case 39:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 653;
 	            this.unionType();
@@ -3997,48 +3993,48 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 664;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 661;
 	            this.distinguishableType();
 	            break;
-	        case WebIDLParser.T__45:
+	        case 46:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 662;
 	            this.match(WebIDLParser.T__45);
 	            break;
-	        case WebIDLParser.T__65:
+	        case 66:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 663;
 	            this.promiseType();
@@ -4102,46 +4098,46 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 679;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__35:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 25:
+	        case 36:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 673;
 	            this.extendedAttributeList();
 	            this.state = 674;
 	            this.distinguishableType();
 	            break;
-	        case WebIDLParser.T__38:
+	        case 39:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 676;
 	            this.unionType();
@@ -4174,7 +4170,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 686;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__46:
+	        case 47:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 681;
 	            this.match(WebIDLParser.T__46);
@@ -4183,7 +4179,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 683;
 	            this.unionMemberTypes();
 	            break;
-	        case WebIDLParser.T__39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -4213,40 +4209,40 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 724;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
+	        case 25:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 688;
 	            this.primitiveType();
 	            this.state = 689;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
+	        case 63:
+	        case 64:
+	        case 65:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 691;
 	            this.stringType();
 	            this.state = 692;
 	            this.null_();
 	            break;
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 694;
 	            this.match(WebIDLParser.IDENTIFIER_WEBIDL);
 	            this.state = 695;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__47:
+	        case 48:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 696;
 	            this.match(WebIDLParser.T__47);
@@ -4259,38 +4255,38 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 700;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__48:
+	        case 49:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 702;
 	            this.match(WebIDLParser.T__48);
 	            this.state = 703;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__49:
+	        case 50:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 704;
 	            this.match(WebIDLParser.T__49);
 	            this.state = 705;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 706;
 	            this.bufferRelatedType();
 	            this.state = 707;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__50:
+	        case 51:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 709;
 	            this.match(WebIDLParser.T__50);
@@ -4303,7 +4299,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 713;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__51:
+	        case 52:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 715;
 	            this.match(WebIDLParser.T__51);
@@ -4316,7 +4312,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 719;
 	            this.null_();
 	            break;
-	        case WebIDLParser.T__66:
+	        case 67:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 721;
 	            this.recordType();
@@ -4349,41 +4345,41 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 733;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
+	        case 60:
+	        case 61:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 726;
 	            this.unsignedIntegerType();
 	            break;
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
+	        case 25:
+	        case 58:
+	        case 59:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 727;
 	            this.unrestrictedFloatType();
 	            break;
-	        case WebIDLParser.T__52:
+	        case 53:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 728;
 	            this.match(WebIDLParser.T__52);
 	            break;
-	        case WebIDLParser.T__53:
+	        case 54:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 729;
 	            this.match(WebIDLParser.T__53);
 	            break;
-	        case WebIDLParser.T__54:
+	        case 55:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 730;
 	            this.match(WebIDLParser.T__54);
 	            break;
-	        case WebIDLParser.T__55:
+	        case 56:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 731;
 	            this.match(WebIDLParser.T__55);
 	            break;
-	        case WebIDLParser.T__56:
+	        case 57:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 732;
 	            this.match(WebIDLParser.T__56);
@@ -4414,15 +4410,15 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 738;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 735;
 	            this.match(WebIDLParser.T__24);
 	            this.state = 736;
 	            this.floatType();
 	            break;
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
+	        case 58:
+	        case 59:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 737;
 	            this.floatType();
@@ -4449,12 +4445,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	floatType() {
 	    let localctx = new FloatTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 176, WebIDLParser.RULE_floatType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 740;
 	        _la = this._input.LA(1);
-	        if(!(_la===WebIDLParser.T__57 || _la===WebIDLParser.T__58)) {
+	        if(!(_la===58 || _la===59)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4484,15 +4480,15 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 745;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__59:
+	        case 60:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 742;
 	            this.match(WebIDLParser.T__59);
 	            this.state = 743;
 	            this.integerType();
 	            break;
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
+	        case 61:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 744;
 	            this.integerType();
@@ -4523,12 +4519,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 750;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__60:
+	        case 61:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 747;
 	            this.match(WebIDLParser.T__60);
 	            break;
-	        case WebIDLParser.T__61:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 748;
 	            this.match(WebIDLParser.T__61);
@@ -4561,44 +4557,44 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 754;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__61:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 752;
 	            this.match(WebIDLParser.T__61);
 	            break;
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__9:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__14:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__39:
-	        case WebIDLParser.T__40:
-	        case WebIDLParser.T__42:
-	        case WebIDLParser.T__44:
-	        case WebIDLParser.T__46:
-	        case WebIDLParser.T__67:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 43:
+	        case 45:
+	        case 47:
+	        case 68:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -4624,12 +4620,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	stringType() {
 	    let localctx = new StringTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 184, WebIDLParser.RULE_stringType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 756;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 63)) & ~0x1f) == 0 && ((1 << (_la - 63)) & ((1 << (WebIDLParser.T__62 - 63)) | (1 << (WebIDLParser.T__63 - 63)) | (1 << (WebIDLParser.T__64 - 63)))) !== 0))) {
+	        if(!(((((_la - 63)) & ~0x1f) === 0 && ((1 << (_la - 63)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4721,43 +4717,43 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 772;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__67:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 770;
 	            this.match(WebIDLParser.T__67);
 	            break;
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__9:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__14:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__39:
-	        case WebIDLParser.T__40:
-	        case WebIDLParser.T__42:
-	        case WebIDLParser.T__44:
-	        case WebIDLParser.T__46:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 43:
+	        case 45:
+	        case 47:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -4783,12 +4779,12 @@ export default class WebIDLParser extends antlr4.Parser {
 	bufferRelatedType() {
 	    let localctx = new BufferRelatedTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 192, WebIDLParser.RULE_bufferRelatedType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 774;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 69)) & ~0x1f) == 0 && ((1 << (_la - 69)) & ((1 << (WebIDLParser.T__68 - 69)) | (1 << (WebIDLParser.T__69 - 69)) | (1 << (WebIDLParser.T__70 - 69)) | (1 << (WebIDLParser.T__71 - 69)) | (1 << (WebIDLParser.T__72 - 69)) | (1 << (WebIDLParser.T__73 - 69)) | (1 << (WebIDLParser.T__74 - 69)) | (1 << (WebIDLParser.T__75 - 69)) | (1 << (WebIDLParser.T__76 - 69)) | (1 << (WebIDLParser.T__77 - 69)) | (1 << (WebIDLParser.T__78 - 69)))) !== 0))) {
+	        if(!(((((_la - 69)) & ~0x1f) === 0 && ((1 << (_la - 69)) & 2047) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4818,7 +4814,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 782;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__35:
+	        case 36:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 776;
 	            this.match(WebIDLParser.T__35);
@@ -4829,64 +4825,64 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 779;
 	            this.match(WebIDLParser.T__36);
 	            break;
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__38:
-	        case WebIDLParser.T__41:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 39:
+	        case 42:
+	        case 46:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 84:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -4916,7 +4912,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 789;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 784;
 	            this.match(WebIDLParser.T__40);
@@ -4925,7 +4921,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 786;
 	            this.extendedAttributes();
 	            break;
-	        case WebIDLParser.T__36:
+	        case 37:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -5022,261 +5018,261 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 845;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.INTEGER_WEBIDL:
+	        case 82:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 800;
 	            this.match(WebIDLParser.INTEGER_WEBIDL);
 	            break;
-	        case WebIDLParser.DECIMAL_WEBIDL:
+	        case 83:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 801;
 	            this.match(WebIDLParser.DECIMAL_WEBIDL);
 	            break;
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
+	        case 84:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 802;
 	            this.match(WebIDLParser.IDENTIFIER_WEBIDL);
 	            break;
-	        case WebIDLParser.STRING_WEBIDL:
+	        case 85:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 803;
 	            this.match(WebIDLParser.STRING_WEBIDL);
 	            break;
-	        case WebIDLParser.OTHER_WEBIDL:
+	        case 88:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 804;
 	            this.match(WebIDLParser.OTHER_WEBIDL);
 	            break;
-	        case WebIDLParser.T__79:
+	        case 80:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 805;
 	            this.match(WebIDLParser.T__79);
 	            break;
-	        case WebIDLParser.T__32:
+	        case 33:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 806;
 	            this.match(WebIDLParser.T__32);
 	            break;
-	        case WebIDLParser.T__80:
+	        case 81:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 807;
 	            this.match(WebIDLParser.T__80);
 	            break;
-	        case WebIDLParser.T__42:
+	        case 43:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 808;
 	            this.match(WebIDLParser.T__42);
 	            break;
-	        case WebIDLParser.T__28:
+	        case 29:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 809;
 	            this.match(WebIDLParser.T__28);
 	            break;
-	        case WebIDLParser.T__27:
+	        case 28:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 810;
 	            this.match(WebIDLParser.T__27);
 	            break;
-	        case WebIDLParser.T__43:
+	        case 44:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 811;
 	            this.match(WebIDLParser.T__43);
 	            break;
-	        case WebIDLParser.T__29:
+	        case 30:
 	            this.enterOuterAlt(localctx, 13);
 	            this.state = 812;
 	            this.match(WebIDLParser.T__29);
 	            break;
-	        case WebIDLParser.T__44:
+	        case 45:
 	            this.enterOuterAlt(localctx, 14);
 	            this.state = 813;
 	            this.match(WebIDLParser.T__44);
 	            break;
-	        case WebIDLParser.T__67:
+	        case 68:
 	            this.enterOuterAlt(localctx, 15);
 	            this.state = 814;
 	            this.match(WebIDLParser.T__67);
 	            break;
-	        case WebIDLParser.T__62:
+	        case 63:
 	            this.enterOuterAlt(localctx, 16);
 	            this.state = 815;
 	            this.match(WebIDLParser.T__62);
 	            break;
-	        case WebIDLParser.T__63:
+	        case 64:
 	            this.enterOuterAlt(localctx, 17);
 	            this.state = 816;
 	            this.match(WebIDLParser.T__63);
 	            break;
-	        case WebIDLParser.T__50:
+	        case 51:
 	            this.enterOuterAlt(localctx, 18);
 	            this.state = 817;
 	            this.match(WebIDLParser.T__50);
 	            break;
-	        case WebIDLParser.T__33:
+	        case 34:
 	            this.enterOuterAlt(localctx, 19);
 	            this.state = 818;
 	            this.match(WebIDLParser.T__33);
 	            break;
-	        case WebIDLParser.T__34:
+	        case 35:
 	            this.enterOuterAlt(localctx, 20);
 	            this.state = 819;
 	            this.match(WebIDLParser.T__34);
 	            break;
-	        case WebIDLParser.T__51:
+	        case 52:
 	            this.enterOuterAlt(localctx, 21);
 	            this.state = 820;
 	            this.match(WebIDLParser.T__51);
 	            break;
-	        case WebIDLParser.T__65:
+	        case 66:
 	            this.enterOuterAlt(localctx, 22);
 	            this.state = 821;
 	            this.match(WebIDLParser.T__65);
 	            break;
-	        case WebIDLParser.T__64:
+	        case 65:
 	            this.enterOuterAlt(localctx, 23);
 	            this.state = 822;
 	            this.match(WebIDLParser.T__64);
 	            break;
-	        case WebIDLParser.T__45:
+	        case 46:
 	            this.enterOuterAlt(localctx, 24);
 	            this.state = 823;
 	            this.match(WebIDLParser.T__45);
 	            break;
-	        case WebIDLParser.T__56:
+	        case 57:
 	            this.enterOuterAlt(localctx, 25);
 	            this.state = 824;
 	            this.match(WebIDLParser.T__56);
 	            break;
-	        case WebIDLParser.T__53:
+	        case 54:
 	            this.enterOuterAlt(localctx, 26);
 	            this.state = 825;
 	            this.match(WebIDLParser.T__53);
 	            break;
-	        case WebIDLParser.T__54:
+	        case 55:
 	            this.enterOuterAlt(localctx, 27);
 	            this.state = 826;
 	            this.match(WebIDLParser.T__54);
 	            break;
-	        case WebIDLParser.T__58:
+	        case 59:
 	            this.enterOuterAlt(localctx, 28);
 	            this.state = 827;
 	            this.match(WebIDLParser.T__58);
 	            break;
-	        case WebIDLParser.T__31:
+	        case 32:
 	            this.enterOuterAlt(localctx, 29);
 	            this.state = 828;
 	            this.match(WebIDLParser.T__31);
 	            break;
-	        case WebIDLParser.T__57:
+	        case 58:
 	            this.enterOuterAlt(localctx, 30);
 	            this.state = 829;
 	            this.match(WebIDLParser.T__57);
 	            break;
-	        case WebIDLParser.T__61:
+	        case 62:
 	            this.enterOuterAlt(localctx, 31);
 	            this.state = 830;
 	            this.match(WebIDLParser.T__61);
 	            break;
-	        case WebIDLParser.T__37:
+	        case 38:
 	            this.enterOuterAlt(localctx, 32);
 	            this.state = 831;
 	            this.match(WebIDLParser.T__37);
 	            break;
-	        case WebIDLParser.T__48:
+	        case 49:
 	            this.enterOuterAlt(localctx, 33);
 	            this.state = 832;
 	            this.match(WebIDLParser.T__48);
 	            break;
-	        case WebIDLParser.T__55:
+	        case 56:
 	            this.enterOuterAlt(localctx, 34);
 	            this.state = 833;
 	            this.match(WebIDLParser.T__55);
 	            break;
-	        case WebIDLParser.T__46:
+	        case 47:
 	            this.enterOuterAlt(localctx, 35);
 	            this.state = 834;
 	            this.match(WebIDLParser.T__46);
 	            break;
-	        case WebIDLParser.T__41:
+	        case 42:
 	            this.enterOuterAlt(localctx, 36);
 	            this.state = 835;
 	            this.match(WebIDLParser.T__41);
 	            break;
-	        case WebIDLParser.T__66:
+	        case 67:
 	            this.enterOuterAlt(localctx, 37);
 	            this.state = 836;
 	            this.match(WebIDLParser.T__66);
 	            break;
-	        case WebIDLParser.T__47:
+	        case 48:
 	            this.enterOuterAlt(localctx, 38);
 	            this.state = 837;
 	            this.match(WebIDLParser.T__47);
 	            break;
-	        case WebIDLParser.T__60:
+	        case 61:
 	            this.enterOuterAlt(localctx, 39);
 	            this.state = 838;
 	            this.match(WebIDLParser.T__60);
 	            break;
-	        case WebIDLParser.T__49:
+	        case 50:
 	            this.enterOuterAlt(localctx, 40);
 	            this.state = 839;
 	            this.match(WebIDLParser.T__49);
 	            break;
-	        case WebIDLParser.T__30:
+	        case 31:
 	            this.enterOuterAlt(localctx, 41);
 	            this.state = 840;
 	            this.match(WebIDLParser.T__30);
 	            break;
-	        case WebIDLParser.T__59:
+	        case 60:
 	            this.enterOuterAlt(localctx, 42);
 	            this.state = 841;
 	            this.match(WebIDLParser.T__59);
 	            break;
-	        case WebIDLParser.T__52:
+	        case 53:
 	            this.enterOuterAlt(localctx, 43);
 	            this.state = 842;
 	            this.match(WebIDLParser.T__52);
 	            break;
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__9:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__14:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__24:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 44);
 	            this.state = 843;
 	            this.argumentNameKeyword();
 	            break;
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
 	            this.enterOuterAlt(localctx, 45);
 	            this.state = 844;
 	            this.bufferRelatedType();
@@ -5307,90 +5303,90 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 849;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__0:
-	        case WebIDLParser.T__1:
-	        case WebIDLParser.T__2:
-	        case WebIDLParser.T__3:
-	        case WebIDLParser.T__4:
-	        case WebIDLParser.T__5:
-	        case WebIDLParser.T__6:
-	        case WebIDLParser.T__7:
-	        case WebIDLParser.T__8:
-	        case WebIDLParser.T__9:
-	        case WebIDLParser.T__10:
-	        case WebIDLParser.T__11:
-	        case WebIDLParser.T__12:
-	        case WebIDLParser.T__13:
-	        case WebIDLParser.T__14:
-	        case WebIDLParser.T__15:
-	        case WebIDLParser.T__16:
-	        case WebIDLParser.T__17:
-	        case WebIDLParser.T__18:
-	        case WebIDLParser.T__19:
-	        case WebIDLParser.T__20:
-	        case WebIDLParser.T__21:
-	        case WebIDLParser.T__22:
-	        case WebIDLParser.T__23:
-	        case WebIDLParser.T__24:
-	        case WebIDLParser.T__27:
-	        case WebIDLParser.T__28:
-	        case WebIDLParser.T__29:
-	        case WebIDLParser.T__30:
-	        case WebIDLParser.T__31:
-	        case WebIDLParser.T__32:
-	        case WebIDLParser.T__33:
-	        case WebIDLParser.T__34:
-	        case WebIDLParser.T__37:
-	        case WebIDLParser.T__41:
-	        case WebIDLParser.T__42:
-	        case WebIDLParser.T__43:
-	        case WebIDLParser.T__44:
-	        case WebIDLParser.T__45:
-	        case WebIDLParser.T__46:
-	        case WebIDLParser.T__47:
-	        case WebIDLParser.T__48:
-	        case WebIDLParser.T__49:
-	        case WebIDLParser.T__50:
-	        case WebIDLParser.T__51:
-	        case WebIDLParser.T__52:
-	        case WebIDLParser.T__53:
-	        case WebIDLParser.T__54:
-	        case WebIDLParser.T__55:
-	        case WebIDLParser.T__56:
-	        case WebIDLParser.T__57:
-	        case WebIDLParser.T__58:
-	        case WebIDLParser.T__59:
-	        case WebIDLParser.T__60:
-	        case WebIDLParser.T__61:
-	        case WebIDLParser.T__62:
-	        case WebIDLParser.T__63:
-	        case WebIDLParser.T__64:
-	        case WebIDLParser.T__65:
-	        case WebIDLParser.T__66:
-	        case WebIDLParser.T__67:
-	        case WebIDLParser.T__68:
-	        case WebIDLParser.T__69:
-	        case WebIDLParser.T__70:
-	        case WebIDLParser.T__71:
-	        case WebIDLParser.T__72:
-	        case WebIDLParser.T__73:
-	        case WebIDLParser.T__74:
-	        case WebIDLParser.T__75:
-	        case WebIDLParser.T__76:
-	        case WebIDLParser.T__77:
-	        case WebIDLParser.T__78:
-	        case WebIDLParser.T__79:
-	        case WebIDLParser.T__80:
-	        case WebIDLParser.INTEGER_WEBIDL:
-	        case WebIDLParser.DECIMAL_WEBIDL:
-	        case WebIDLParser.IDENTIFIER_WEBIDL:
-	        case WebIDLParser.STRING_WEBIDL:
-	        case WebIDLParser.OTHER_WEBIDL:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 88:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 847;
 	            this.other();
 	            break;
-	        case WebIDLParser.T__40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 848;
 	            this.match(WebIDLParser.T__40);
@@ -5446,7 +5442,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 858;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 854;
 	            this.match(WebIDLParser.T__40);
@@ -5455,7 +5451,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 856;
 	            this.identifiers();
 	            break;
-	        case WebIDLParser.T__39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -5711,7 +5707,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	        this.state = 901;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WebIDLParser.T__40:
+	        case 41:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 897;
 	            this.match(WebIDLParser.T__40);
@@ -5720,7 +5716,7 @@ export default class WebIDLParser extends antlr4.Parser {
 	            this.state = 899;
 	            this.strings();
 	            break;
-	        case WebIDLParser.T__39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -10551,3 +10547,12 @@ WebIDLParser.ExtendedAttributeStringContext = ExtendedAttributeStringContext;
 WebIDLParser.ExtendedAttributeStringListContext = ExtendedAttributeStringListContext; 
 WebIDLParser.StringListContext = StringListContext; 
 WebIDLParser.StringsContext = StringsContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

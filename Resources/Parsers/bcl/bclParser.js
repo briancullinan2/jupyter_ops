@@ -1,4 +1,4 @@
-// Generated from ./bcl/bcl.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/bcl/bcl.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import bclListener from './bclListener.js';
@@ -31,22 +31,18 @@ export default class bclParser extends antlr4.Parser {
         this.symbolicNames = bclParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	bcl() {
 	    let localctx = new BclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, bclParser.RULE_bcl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 7;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << bclParser.T__0) | (1 << bclParser.T__1) | (1 << bclParser.T__2))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 14) !== 0)) {
 	            this.state = 4;
 	            this.term();
 	            this.state = 9;
@@ -78,17 +74,17 @@ export default class bclParser extends antlr4.Parser {
 	        this.state = 18;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bclParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 12;
 	            this.match(bclParser.T__0);
 	            break;
-	        case bclParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 13;
 	            this.match(bclParser.T__1);
 	            break;
-	        case bclParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 14;
 	            this.match(bclParser.T__2);
@@ -217,3 +213,12 @@ class TermContext extends antlr4.ParserRuleContext {
 
 bclParser.BclContext = BclContext; 
 bclParser.TermContext = TermContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

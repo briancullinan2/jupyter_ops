@@ -1,4 +1,4 @@
-// Generated from ./less/LessLexer.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/less/LessLexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -570,10 +570,6 @@ export default class LessLexer extends antlr4.Lexer {
         super(input)
         this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.atn.PredictionContextCache());
     }
-
-    get atn() {
-        return atn;
-    }
 }
 
 LessLexer.EOF = antlr4.Token.EOF;
@@ -727,3 +723,12 @@ LessLexer.IDENTIFY = 2;
 
 
 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

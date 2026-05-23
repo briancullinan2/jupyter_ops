@@ -1,4 +1,4 @@
-// Generated from ./abb/abbParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/abb/abbParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import abbParserListener from './abbParserListener.js';
@@ -59,13 +59,14 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class abbParser extends antlr4.Parser {
 
     static grammarFileName = "abbParser.g4";
-    static literalNames = [ null, "'module'", "'endmodule'", null, null, 
-                            null, null, null, null, null, null, null, null, 
-                            null, null, null, null, "'/'", "':='", "','", 
-                            "'{'", "'}'", "':'", "';'", "'('", "')'", "'['", 
-                            "']'", "'.'", "'..'", "'>'", "'>='", "'<'", 
-                            "'<='", "'=='", "'<>'", "'+'", "'-'", "'*'", 
-                            "'%'", "'#'" ];
+    static literalNames = [ null, "'module'", "'endmodule'", "'PROC'", "'ENDPROC'", 
+                            "'LOCAL'", "'CONST'", "'PERS'", "'VAR'", "'TOOLDATA'", 
+                            "'WOBJDATA'", "'SPEEDDATA'", "'ZONEDATA'", "'CLOCK'", 
+                            "'BOOL'", "'\\ON'", "'\\OFF'", "'/'", "':='", 
+                            "','", "'{'", "'}'", "':'", "';'", "'('", "')'", 
+                            "'['", "']'", "'.'", "'..'", "'>'", "'>='", 
+                            "'<'", "'<='", "'=='", "'<>'", "'+'", "'-'", 
+                            "'*'", "'%'", "'#'" ];
     static symbolicNames = [ null, "MODULE", "ENDMODULE", "PROC", "ENDPROC", 
                              "LOCAL", "CONST", "PERS", "VAR", "TOOLDATA", 
                              "WOBJDATA", "SPEEDDATA", "ZONEDATA", "CLOCK", 
@@ -79,7 +80,7 @@ export default class abbParser extends antlr4.Parser {
                              "WS", "NEWLINE", "LINE_COMMENT", "BOOLLITERAL", 
                              "CHARLITERAL", "STRINGLITERAL", "FLOATLITERAL", 
                              "INTLITERAL", "IDENTIFIER" ];
-    static ruleNames = [ "module", "moduleData", "moduleName", "dataList", 
+    static ruleNames = [ "module_", "moduleData", "moduleName", "dataList", 
                          "procedure", "procCall", "procName", "procParameter", 
                          "functionCall", "functionParameter", "declaration", 
                          "type_", "init_", "expression", "array_", "primitive" ];
@@ -92,15 +93,11 @@ export default class abbParser extends antlr4.Parser {
         this.symbolicNames = abbParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
 
 
-
-	module() {
-	    let localctx = new ModuleContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 0, abbParser.RULE_module);
+	module_() {
+	    let localctx = new Module_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, abbParser.RULE_module_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 32;
@@ -126,7 +123,7 @@ export default class abbParser extends antlr4.Parser {
 	moduleData() {
 	    let localctx = new ModuleDataContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, abbParser.RULE_moduleData);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 35;
@@ -140,7 +137,7 @@ export default class abbParser extends antlr4.Parser {
 	        this.state = 42;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===abbParser.NEWLINE) {
+	        while(_la===42) {
 	            this.state = 39;
 	            this.match(abbParser.NEWLINE);
 	            this.state = 44;
@@ -215,20 +212,20 @@ export default class abbParser extends antlr4.Parser {
 	                this.state = 58;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case abbParser.NEWLINE:
+	                case 42:
 	                    this.state = 51;
 	                    this.match(abbParser.NEWLINE);
 	                    break;
-	                case abbParser.LOCAL:
-	                case abbParser.CONST:
-	                case abbParser.PERS:
-	                case abbParser.VAR:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
 	                    this.state = 52;
 	                    this.declaration();
 	                    this.state = 53;
 	                    this.match(abbParser.NEWLINE);
 	                    break;
-	                case abbParser.PROC:
+	                case 3:
 	                    this.state = 55;
 	                    this.procedure();
 	                    this.state = 56;
@@ -262,7 +259,7 @@ export default class abbParser extends antlr4.Parser {
 	procedure() {
 	    let localctx = new ProcedureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, abbParser.RULE_procedure);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 63;
@@ -274,7 +271,7 @@ export default class abbParser extends antlr4.Parser {
 	        this.state = 71;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===abbParser.IDENTIFIER) {
+	        while(_la===49) {
 	            this.state = 66;
 	            this.functionCall();
 	            this.state = 67;
@@ -304,7 +301,7 @@ export default class abbParser extends antlr4.Parser {
 	procCall() {
 	    let localctx = new ProcCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, abbParser.RULE_procCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 76;
@@ -312,7 +309,7 @@ export default class abbParser extends antlr4.Parser {
 	        this.state = 78;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===abbParser.BRACKET_OPEN) {
+	        if(_la===24) {
 	            this.state = 77;
 	            this.procParameter();
 	        }
@@ -359,7 +356,7 @@ export default class abbParser extends antlr4.Parser {
 	procParameter() {
 	    let localctx = new ProcParameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, abbParser.RULE_procParameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 82;
@@ -367,7 +364,7 @@ export default class abbParser extends antlr4.Parser {
 	        this.state = 84;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===abbParser.IDENTIFIER) {
+	        if(_la===49) {
 	            this.state = 83;
 	            this.match(abbParser.IDENTIFIER);
 	        }
@@ -439,28 +436,28 @@ export default class abbParser extends antlr4.Parser {
 	        this.state = 104;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case abbParser.ON_CALL:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 100;
 	            this.match(abbParser.ON_CALL);
 	            break;
-	        case abbParser.OFF_CALL:
+	        case 16:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 101;
 	            this.match(abbParser.OFF_CALL);
 	            break;
-	        case abbParser.PLUS:
-	        case abbParser.MINUS:
-	        case abbParser.BOOLLITERAL:
-	        case abbParser.CHARLITERAL:
-	        case abbParser.STRINGLITERAL:
-	        case abbParser.FLOATLITERAL:
-	        case abbParser.INTLITERAL:
+	        case 36:
+	        case 37:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 102;
 	            this.primitive();
 	            break;
-	        case abbParser.IDENTIFIER:
+	        case 49:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 103;
 	            this.match(abbParser.IDENTIFIER);
@@ -487,7 +484,7 @@ export default class abbParser extends antlr4.Parser {
 	declaration() {
 	    let localctx = new DeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, abbParser.RULE_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 106;
@@ -499,7 +496,7 @@ export default class abbParser extends antlr4.Parser {
 	        this.state = 111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===abbParser.EQUALS) {
+	        if(_la===18) {
 	            this.state = 109;
 	            this.match(abbParser.EQUALS);
 	            this.state = 110;
@@ -527,12 +524,12 @@ export default class abbParser extends antlr4.Parser {
 	type_() {
 	    let localctx = new Type_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, abbParser.RULE_type_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 115;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << abbParser.TOOLDATA) | (1 << abbParser.WOBJDATA) | (1 << abbParser.SPEEDDATA) | (1 << abbParser.ZONEDATA) | (1 << abbParser.CLOCK) | (1 << abbParser.BOOL))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 32256) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -558,20 +555,20 @@ export default class abbParser extends antlr4.Parser {
 	init_() {
 	    let localctx = new Init_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, abbParser.RULE_init_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 118;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===abbParser.LOCAL) {
+	        if(_la===5) {
 	            this.state = 117;
 	            this.match(abbParser.LOCAL);
 	        }
 
 	        this.state = 120;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << abbParser.CONST) | (1 << abbParser.PERS) | (1 << abbParser.VAR))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 448) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -601,18 +598,18 @@ export default class abbParser extends antlr4.Parser {
 	        this.state = 124;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case abbParser.SQUARE_OPEN:
+	        case 26:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 122;
 	            this.array_();
 	            break;
-	        case abbParser.PLUS:
-	        case abbParser.MINUS:
-	        case abbParser.BOOLLITERAL:
-	        case abbParser.CHARLITERAL:
-	        case abbParser.STRINGLITERAL:
-	        case abbParser.FLOATLITERAL:
-	        case abbParser.INTLITERAL:
+	        case 36:
+	        case 37:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 123;
 	            this.primitive();
@@ -681,7 +678,7 @@ export default class abbParser extends antlr4.Parser {
 	primitive() {
 	    let localctx = new PrimitiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, abbParser.RULE_primitive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 149;
 	        this._errHandler.sync(this);
@@ -710,10 +707,10 @@ export default class abbParser extends antlr4.Parser {
 	            this.state = 142;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===abbParser.PLUS || _la===abbParser.MINUS) {
+	            if(_la===36 || _la===37) {
 	                this.state = 141;
 	                _la = this._input.LA(1);
-	                if(!(_la===abbParser.PLUS || _la===abbParser.MINUS)) {
+	                if(!(_la===36 || _la===37)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -731,10 +728,10 @@ export default class abbParser extends antlr4.Parser {
 	            this.state = 146;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===abbParser.PLUS || _la===abbParser.MINUS) {
+	            if(_la===36 || _la===37) {
 	                this.state = 145;
 	                _la = this._input.LA(1);
-	                if(!(_la===abbParser.PLUS || _la===abbParser.MINUS)) {
+	                if(!(_la===36 || _la===37)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -816,7 +813,7 @@ abbParser.FLOATLITERAL = 47;
 abbParser.INTLITERAL = 48;
 abbParser.IDENTIFIER = 49;
 
-abbParser.RULE_module = 0;
+abbParser.RULE_module_ = 0;
 abbParser.RULE_moduleData = 1;
 abbParser.RULE_moduleName = 2;
 abbParser.RULE_dataList = 3;
@@ -833,7 +830,7 @@ abbParser.RULE_expression = 13;
 abbParser.RULE_array_ = 14;
 abbParser.RULE_primitive = 15;
 
-class ModuleContext extends antlr4.ParserRuleContext {
+class Module_Context extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
         if(parent===undefined) {
@@ -844,7 +841,7 @@ class ModuleContext extends antlr4.ParserRuleContext {
         }
         super(parent, invokingState);
         this.parser = parser;
-        this.ruleIndex = abbParser.RULE_module;
+        this.ruleIndex = abbParser.RULE_module_;
     }
 
 	moduleData() {
@@ -857,13 +854,13 @@ class ModuleContext extends antlr4.ParserRuleContext {
 
 	enterRule(listener) {
 	    if(listener instanceof abbParserListener ) {
-	        listener.enterModule(this);
+	        listener.enterModule_(this);
 		}
 	}
 
 	exitRule(listener) {
 	    if(listener instanceof abbParserListener ) {
-	        listener.exitModule(this);
+	        listener.exitModule_(this);
 		}
 	}
 
@@ -1645,7 +1642,7 @@ class PrimitiveContext extends antlr4.ParserRuleContext {
 
 
 
-abbParser.ModuleContext = ModuleContext; 
+abbParser.Module_Context = Module_Context; 
 abbParser.ModuleDataContext = ModuleDataContext; 
 abbParser.ModuleNameContext = ModuleNameContext; 
 abbParser.DataListContext = DataListContext; 
@@ -1661,3 +1658,12 @@ abbParser.Init_Context = Init_Context;
 abbParser.ExpressionContext = ExpressionContext; 
 abbParser.Array_Context = Array_Context; 
 abbParser.PrimitiveContext = PrimitiveContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

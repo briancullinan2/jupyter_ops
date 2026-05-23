@@ -1,4 +1,4 @@
-// Generated from ./loop/loop.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/loop/loop.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import loopListener from './loopListener.js';
@@ -42,16 +42,12 @@ export default class loopParser extends antlr4.Parser {
         this.symbolicNames = loopParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	prog() {
 	    let localctx = new ProgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, loopParser.RULE_prog);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 17; 
@@ -63,7 +59,7 @@ export default class loopParser extends antlr4.Parser {
 	            this.state = 19; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===loopParser.T__4 || _la===loopParser.ID);
+	        } while(_la===5 || _la===8);
 	        this.state = 21;
 	        this.match(loopParser.EOF);
 	    } catch (re) {
@@ -85,7 +81,7 @@ export default class loopParser extends antlr4.Parser {
 	statementlist() {
 	    let localctx = new StatementlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, loopParser.RULE_statementlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 23;
@@ -93,7 +89,7 @@ export default class loopParser extends antlr4.Parser {
 	        this.state = 26;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===loopParser.T__0) {
+	        if(_la===1) {
 	            this.state = 24;
 	            this.match(loopParser.T__0);
 	            this.state = 25;
@@ -191,7 +187,7 @@ export default class loopParser extends antlr4.Parser {
 	incrementstmt() {
 	    let localctx = new IncrementstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, loopParser.RULE_incrementstmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 38;
@@ -202,7 +198,7 @@ export default class loopParser extends antlr4.Parser {
 	        this.var_();
 	        this.state = 41;
 	        _la = this._input.LA(1);
-	        if(!(_la===loopParser.T__2 || _la===loopParser.T__3)) {
+	        if(!(_la===3 || _la===4)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {

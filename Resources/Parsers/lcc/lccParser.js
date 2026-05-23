@@ -1,4 +1,4 @@
-// Generated from ./lcc/lcc.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/lcc/lcc.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import lccListener from './lccListener.js';
@@ -48,16 +48,12 @@ export default class lccParser extends antlr4.Parser {
         this.symbolicNames = lccParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	lcc() {
 	    let localctx = new LccContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, lccParser.RULE_lcc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 16;
@@ -73,7 +69,7 @@ export default class lccParser extends antlr4.Parser {
 	        this.state = 21;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===lccParser.LETTER) {
+	        if(_la===4) {
 	            this.state = 20;
 	            this.subtopic();
 	        }
@@ -81,7 +77,7 @@ export default class lccParser extends antlr4.Parser {
 	        this.state = 24;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===lccParser.T__0) {
+	        if(_la===1) {
 	            this.state = 23;
 	            this.match(lccParser.T__0);
 	        }
@@ -99,7 +95,7 @@ export default class lccParser extends antlr4.Parser {
 	        this.state = 32;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===lccParser.T__1) {
+	        if(_la===2) {
 	            this.state = 30;
 	            this.match(lccParser.T__1);
 	            this.state = 31;
@@ -109,7 +105,7 @@ export default class lccParser extends antlr4.Parser {
 	        this.state = 36;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===lccParser.T__0) {
+	        if(_la===1) {
 	            this.state = 34;
 	            this.match(lccParser.T__0);
 	            this.state = 35;
@@ -221,7 +217,7 @@ export default class lccParser extends antlr4.Parser {
 	subclass() {
 	    let localctx = new SubclassContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, lccParser.RULE_subclass);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 53; 
@@ -233,7 +229,7 @@ export default class lccParser extends antlr4.Parser {
 	            this.state = 55; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===lccParser.DIGIT);
+	        } while(_la===3);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -291,7 +287,7 @@ export default class lccParser extends antlr4.Parser {
 	cutter() {
 	    let localctx = new CutterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, lccParser.RULE_cutter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 65;
@@ -305,7 +301,7 @@ export default class lccParser extends antlr4.Parser {
 	            this.state = 69; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===lccParser.DIGIT);
+	        } while(_la===3);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -719,3 +715,12 @@ lccParser.SubclassContext = SubclassContext;
 lccParser.CuttersContext = CuttersContext; 
 lccParser.CutterContext = CutterContext; 
 lccParser.DateContext = DateContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

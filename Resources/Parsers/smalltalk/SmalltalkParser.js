@@ -1,4 +1,4 @@
-// Generated from ./smalltalk/Smalltalk.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/smalltalk/Smalltalk.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import SmalltalkListener from './SmalltalkListener.js';
@@ -206,10 +206,6 @@ export default class SmalltalkParser extends antlr4.Parser {
         this.symbolicNames = SmalltalkParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	script() {
@@ -240,19 +236,19 @@ export default class SmalltalkParser extends antlr4.Parser {
 	sequence() {
 	    let localctx = new SequenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, SmalltalkParser.RULE_sequence);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 110;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SmalltalkParser.PIPE:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 99;
 	            this.temps();
 	            this.state = 101;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	            if(_la===1 || _la===3) {
 	                this.state = 100;
 	                this.ws();
 	            }
@@ -260,34 +256,34 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 104;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (SmalltalkParser.STRING - 2)) | (1 << (SmalltalkParser.BLOCK_START - 2)) | (1 << (SmalltalkParser.OPEN_PAREN - 2)) | (1 << (SmalltalkParser.LT - 2)) | (1 << (SmalltalkParser.MINUS - 2)) | (1 << (SmalltalkParser.RESERVED_WORD - 2)) | (1 << (SmalltalkParser.IDENTIFIER - 2)) | (1 << (SmalltalkParser.CARROT - 2)) | (1 << (SmalltalkParser.HASH - 2)) | (1 << (SmalltalkParser.HEX - 2)) | (1 << (SmalltalkParser.LITARR_START - 2)) | (1 << (SmalltalkParser.DYNDICT_START - 2)) | (1 << (SmalltalkParser.DYNARR_START - 2)) | (1 << (SmalltalkParser.DIGIT - 2)) | (1 << (SmalltalkParser.CHARACTER_CONSTANT - 2)))) !== 0)) {
+	            if(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 1189409829) !== 0)) {
 	                this.state = 103;
 	                this.statements();
 	            }
 
 	            break;
-	        case SmalltalkParser.SEPARATOR:
-	        case SmalltalkParser.STRING:
-	        case SmalltalkParser.COMMENT:
-	        case SmalltalkParser.BLOCK_START:
-	        case SmalltalkParser.OPEN_PAREN:
-	        case SmalltalkParser.LT:
-	        case SmalltalkParser.MINUS:
-	        case SmalltalkParser.RESERVED_WORD:
-	        case SmalltalkParser.IDENTIFIER:
-	        case SmalltalkParser.CARROT:
-	        case SmalltalkParser.HASH:
-	        case SmalltalkParser.HEX:
-	        case SmalltalkParser.LITARR_START:
-	        case SmalltalkParser.DYNDICT_START:
-	        case SmalltalkParser.DYNARR_START:
-	        case SmalltalkParser.DIGIT:
-	        case SmalltalkParser.CHARACTER_CONSTANT:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 7:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 20:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 27:
+	        case 28:
+	        case 32:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 107;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	            if(_la===1 || _la===3) {
 	                this.state = 106;
 	                this.ws();
 	            }
@@ -317,7 +313,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	ws() {
 	    let localctx = new WsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, SmalltalkParser.RULE_ws);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 113; 
@@ -328,7 +324,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        	case 1:
 	        		this.state = 112;
 	        		_la = this._input.LA(1);
-	        		if(!(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT)) {
+	        		if(!(_la===1 || _la===3)) {
 	        		this._errHandler.recoverInline(this);
 	        		}
 	        		else {
@@ -362,7 +358,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	temps() {
 	    let localctx = new TempsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, SmalltalkParser.RULE_temps);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 117;
@@ -376,7 +372,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        		this.state = 119;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        		if(_la===1 || _la===3) {
 	        		    this.state = 118;
 	        		    this.ws();
 	        		}
@@ -394,7 +390,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 127;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 126;
 	            this.ws();
 	        }
@@ -420,7 +416,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	statements() {
 	    let localctx = new StatementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, SmalltalkParser.RULE_statements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 152;
 	        this._errHandler.sync(this);
@@ -434,7 +430,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 133;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	            if(_la===1 || _la===3) {
 	                this.state = 132;
 	                this.ws();
 	            }
@@ -449,7 +445,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 137;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	            if(_la===1 || _la===3) {
 	                this.state = 136;
 	                this.ws();
 	            }
@@ -459,7 +455,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 141;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	            if(_la===1 || _la===3) {
 	                this.state = 140;
 	                this.ws();
 	            }
@@ -476,7 +472,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 147;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.PERIOD) {
+	            if(_la===9) {
 	                this.state = 146;
 	                this.match(SmalltalkParser.PERIOD);
 	            }
@@ -484,7 +480,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 150;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	            if(_la===1 || _la===3) {
 	                this.state = 149;
 	                this.ws();
 	            }
@@ -511,7 +507,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	answer() {
 	    let localctx = new AnswerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, SmalltalkParser.RULE_answer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 154;
@@ -519,7 +515,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 156;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 155;
 	            this.ws();
 	        }
@@ -537,7 +533,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 163;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.PERIOD) {
+	        if(_la===9) {
 	            this.state = 162;
 	            this.match(SmalltalkParser.PERIOD);
 	        }
@@ -652,7 +648,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	expressionList() {
 	    let localctx = new ExpressionListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, SmalltalkParser.RULE_expressionList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 179;
@@ -660,7 +656,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 181;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 180;
 	            this.ws();
 	        }
@@ -686,7 +682,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	cascade() {
 	    let localctx = new CascadeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, SmalltalkParser.RULE_cascade);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 187;
@@ -713,7 +709,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        		this.state = 190;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        		if(_la===1 || _la===3) {
 	        		    this.state = 189;
 	        		    this.ws();
 	        		}
@@ -800,7 +796,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	assignment() {
 	    let localctx = new AssignmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, SmalltalkParser.RULE_assignment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 206;
@@ -808,7 +804,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 208;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 207;
 	            this.ws();
 	        }
@@ -818,7 +814,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 212;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 211;
 	            this.ws();
 	        }
@@ -962,13 +958,13 @@ export default class SmalltalkParser extends antlr4.Parser {
 	keywordMessage() {
 	    let localctx = new KeywordMessageContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, SmalltalkParser.RULE_keywordMessage);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 233;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 232;
 	            this.ws();
 	        }
@@ -990,7 +986,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 241; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SmalltalkParser.KEYWORD);
+	        } while(_la===30);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1010,7 +1006,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	keywordPair() {
 	    let localctx = new KeywordPairContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, SmalltalkParser.RULE_keywordPair);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 243;
@@ -1018,7 +1014,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 245;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 244;
 	            this.ws();
 	        }
@@ -1056,27 +1052,27 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 254;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SmalltalkParser.STRING:
-	        case SmalltalkParser.BLOCK_START:
-	        case SmalltalkParser.MINUS:
-	        case SmalltalkParser.RESERVED_WORD:
-	        case SmalltalkParser.HASH:
-	        case SmalltalkParser.HEX:
-	        case SmalltalkParser.LITARR_START:
-	        case SmalltalkParser.DYNDICT_START:
-	        case SmalltalkParser.DYNARR_START:
-	        case SmalltalkParser.DIGIT:
-	        case SmalltalkParser.CHARACTER_CONSTANT:
+	        case 2:
+	        case 4:
+	        case 14:
+	        case 15:
+	        case 20:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 27:
+	        case 28:
+	        case 32:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 251;
 	            this.literal();
 	            break;
-	        case SmalltalkParser.IDENTIFIER:
+	        case 16:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 252;
 	            this.reference();
 	            break;
-	        case SmalltalkParser.OPEN_PAREN:
+	        case 7:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 253;
 	            this.subexpression();
@@ -1103,7 +1099,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	subexpression() {
 	    let localctx = new SubexpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, SmalltalkParser.RULE_subexpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 256;
@@ -1111,7 +1107,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 258;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 257;
 	            this.ws();
 	        }
@@ -1121,7 +1117,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 262;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 261;
 	            this.ws();
 	        }
@@ -1151,21 +1147,21 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 268;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SmalltalkParser.BLOCK_START:
-	        case SmalltalkParser.DYNDICT_START:
-	        case SmalltalkParser.DYNARR_START:
+	        case 4:
+	        case 25:
+	        case 27:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 266;
 	            this.runtimeLiteral();
 	            break;
-	        case SmalltalkParser.STRING:
-	        case SmalltalkParser.MINUS:
-	        case SmalltalkParser.RESERVED_WORD:
-	        case SmalltalkParser.HASH:
-	        case SmalltalkParser.HEX:
-	        case SmalltalkParser.LITARR_START:
-	        case SmalltalkParser.DIGIT:
-	        case SmalltalkParser.CHARACTER_CONSTANT:
+	        case 2:
+	        case 14:
+	        case 15:
+	        case 20:
+	        case 23:
+	        case 24:
+	        case 28:
+	        case 32:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 267;
 	            this.parsetimeLiteral();
@@ -1196,17 +1192,17 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 273;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SmalltalkParser.DYNDICT_START:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 270;
 	            this.dynamicDictionary();
 	            break;
-	        case SmalltalkParser.DYNARR_START:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 271;
 	            this.dynamicArray();
 	            break;
-	        case SmalltalkParser.BLOCK_START:
+	        case 4:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 272;
 	            this.block();
@@ -1233,7 +1229,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	block() {
 	    let localctx = new BlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, SmalltalkParser.RULE_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 275;
@@ -1257,7 +1253,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 283;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 1)) & ~0x1f) == 0 && ((1 << (_la - 1)) & ((1 << (SmalltalkParser.SEPARATOR - 1)) | (1 << (SmalltalkParser.STRING - 1)) | (1 << (SmalltalkParser.COMMENT - 1)) | (1 << (SmalltalkParser.BLOCK_START - 1)) | (1 << (SmalltalkParser.OPEN_PAREN - 1)) | (1 << (SmalltalkParser.PIPE - 1)) | (1 << (SmalltalkParser.LT - 1)) | (1 << (SmalltalkParser.MINUS - 1)) | (1 << (SmalltalkParser.RESERVED_WORD - 1)) | (1 << (SmalltalkParser.IDENTIFIER - 1)) | (1 << (SmalltalkParser.CARROT - 1)) | (1 << (SmalltalkParser.HASH - 1)) | (1 << (SmalltalkParser.HEX - 1)) | (1 << (SmalltalkParser.LITARR_START - 1)) | (1 << (SmalltalkParser.DYNDICT_START - 1)) | (1 << (SmalltalkParser.DYNARR_START - 1)) | (1 << (SmalltalkParser.DIGIT - 1)) | (1 << (SmalltalkParser.CHARACTER_CONSTANT - 1)))) !== 0)) {
+	        if(((((_la - 1)) & ~0x1f) === 0 && ((1 << (_la - 1)) & 2378819791) !== 0)) {
 	            this.state = 282;
 	            this.sequence();
 	        }
@@ -1283,7 +1279,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	blockParamList() {
 	    let localctx = new BlockParamListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, SmalltalkParser.RULE_blockParamList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 291; 
@@ -1295,7 +1291,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        		this.state = 288;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        		if(_la===1 || _la===3) {
 	        		    this.state = 287;
 	        		    this.ws();
 	        		}
@@ -1329,7 +1325,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	dynamicDictionary() {
 	    let localctx = new DynamicDictionaryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, SmalltalkParser.RULE_dynamicDictionary);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 295;
@@ -1345,7 +1341,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 300;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (SmalltalkParser.STRING - 2)) | (1 << (SmalltalkParser.BLOCK_START - 2)) | (1 << (SmalltalkParser.OPEN_PAREN - 2)) | (1 << (SmalltalkParser.LT - 2)) | (1 << (SmalltalkParser.MINUS - 2)) | (1 << (SmalltalkParser.RESERVED_WORD - 2)) | (1 << (SmalltalkParser.IDENTIFIER - 2)) | (1 << (SmalltalkParser.HASH - 2)) | (1 << (SmalltalkParser.HEX - 2)) | (1 << (SmalltalkParser.LITARR_START - 2)) | (1 << (SmalltalkParser.DYNDICT_START - 2)) | (1 << (SmalltalkParser.DYNARR_START - 2)) | (1 << (SmalltalkParser.DIGIT - 2)) | (1 << (SmalltalkParser.CHARACTER_CONSTANT - 2)))) !== 0)) {
+	        if(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 1189377061) !== 0)) {
 	            this.state = 299;
 	            this.expressions();
 	        }
@@ -1353,7 +1349,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 303;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 302;
 	            this.ws();
 	        }
@@ -1379,7 +1375,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	dynamicArray() {
 	    let localctx = new DynamicArrayContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, SmalltalkParser.RULE_dynamicArray);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 307;
@@ -1395,7 +1391,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 312;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (SmalltalkParser.STRING - 2)) | (1 << (SmalltalkParser.BLOCK_START - 2)) | (1 << (SmalltalkParser.OPEN_PAREN - 2)) | (1 << (SmalltalkParser.LT - 2)) | (1 << (SmalltalkParser.MINUS - 2)) | (1 << (SmalltalkParser.RESERVED_WORD - 2)) | (1 << (SmalltalkParser.IDENTIFIER - 2)) | (1 << (SmalltalkParser.HASH - 2)) | (1 << (SmalltalkParser.HEX - 2)) | (1 << (SmalltalkParser.LITARR_START - 2)) | (1 << (SmalltalkParser.DYNDICT_START - 2)) | (1 << (SmalltalkParser.DYNARR_START - 2)) | (1 << (SmalltalkParser.DIGIT - 2)) | (1 << (SmalltalkParser.CHARACTER_CONSTANT - 2)))) !== 0)) {
+	        if(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 1189377061) !== 0)) {
 	            this.state = 311;
 	            this.expressions();
 	        }
@@ -1403,7 +1399,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 315;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 314;
 	            this.ws();
 	        }
@@ -1433,34 +1429,34 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 325;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SmalltalkParser.RESERVED_WORD:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 319;
 	            this.pseudoVariable();
 	            break;
-	        case SmalltalkParser.MINUS:
-	        case SmalltalkParser.HEX:
-	        case SmalltalkParser.DIGIT:
+	        case 14:
+	        case 23:
+	        case 28:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 320;
 	            this.number();
 	            break;
-	        case SmalltalkParser.CHARACTER_CONSTANT:
+	        case 32:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 321;
 	            this.charConstant();
 	            break;
-	        case SmalltalkParser.LITARR_START:
+	        case 24:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 322;
 	            this.literalArray();
 	            break;
-	        case SmalltalkParser.STRING:
+	        case 2:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 323;
 	            this.string();
 	            break;
-	        case SmalltalkParser.HASH:
+	        case 20:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 324;
 	            this.symbol();
@@ -1599,13 +1595,13 @@ export default class SmalltalkParser extends antlr4.Parser {
 	hex_() {
 	    let localctx = new Hex_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, SmalltalkParser.RULE_hex_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 343;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.MINUS) {
+	        if(_la===14) {
 	            this.state = 342;
 	            this.match(SmalltalkParser.MINUS);
 	        }
@@ -1621,7 +1617,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 349; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SmalltalkParser.HEXDIGIT);
+	        } while(_la===29);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1641,13 +1637,13 @@ export default class SmalltalkParser extends antlr4.Parser {
 	stInteger() {
 	    let localctx = new StIntegerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, SmalltalkParser.RULE_stInteger);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 352;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.MINUS) {
+	        if(_la===14) {
 	            this.state = 351;
 	            this.match(SmalltalkParser.MINUS);
 	        }
@@ -1687,13 +1683,13 @@ export default class SmalltalkParser extends antlr4.Parser {
 	stFloat() {
 	    let localctx = new StFloatContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, SmalltalkParser.RULE_stFloat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 360;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.MINUS) {
+	        if(_la===14) {
 	            this.state = 359;
 	            this.match(SmalltalkParser.MINUS);
 	        }
@@ -1707,7 +1703,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 365; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SmalltalkParser.DIGIT);
+	        } while(_la===28);
 	        this.state = 367;
 	        this.match(SmalltalkParser.PERIOD);
 	        this.state = 369; 
@@ -1816,7 +1812,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	primitive() {
 	    let localctx = new PrimitiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, SmalltalkParser.RULE_primitive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 380;
@@ -1824,7 +1820,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 382;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 381;
 	            this.ws();
 	        }
@@ -1834,7 +1830,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 386;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 385;
 	            this.ws();
 	        }
@@ -1848,11 +1844,11 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 391; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SmalltalkParser.DIGIT);
+	        } while(_la===28);
 	        this.state = 394;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 393;
 	            this.ws();
 	        }
@@ -1878,17 +1874,17 @@ export default class SmalltalkParser extends antlr4.Parser {
 	bareSymbol() {
 	    let localctx = new BareSymbolContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, SmalltalkParser.RULE_bareSymbol);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 405;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SmalltalkParser.BINARY_SELECTOR:
-	        case SmalltalkParser.IDENTIFIER:
+	        case 11:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 398;
 	            _la = this._input.LA(1);
-	            if(!(_la===SmalltalkParser.BINARY_SELECTOR || _la===SmalltalkParser.IDENTIFIER)) {
+	            if(!(_la===11 || _la===16)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1896,7 +1892,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case SmalltalkParser.KEYWORD:
+	        case 30:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 400; 
 	            this._errHandler.sync(this);
@@ -1915,7 +1911,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            	_alt = this._interp.adaptivePredict(this._input,65, this._ctx);
 	            } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
 	            break;
-	        case SmalltalkParser.STRING:
+	        case 2:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 404;
 	            this.string();
@@ -1967,13 +1963,13 @@ export default class SmalltalkParser extends antlr4.Parser {
 	literalArrayRest() {
 	    let localctx = new LiteralArrayRestContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, SmalltalkParser.RULE_literalArrayRest);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 411;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 410;
 	            this.ws();
 	        }
@@ -1981,7 +1977,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 423;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (SmalltalkParser.STRING - 2)) | (1 << (SmalltalkParser.OPEN_PAREN - 2)) | (1 << (SmalltalkParser.BINARY_SELECTOR - 2)) | (1 << (SmalltalkParser.MINUS - 2)) | (1 << (SmalltalkParser.RESERVED_WORD - 2)) | (1 << (SmalltalkParser.IDENTIFIER - 2)) | (1 << (SmalltalkParser.HASH - 2)) | (1 << (SmalltalkParser.HEX - 2)) | (1 << (SmalltalkParser.LITARR_START - 2)) | (1 << (SmalltalkParser.DIGIT - 2)) | (1 << (SmalltalkParser.KEYWORD - 2)) | (1 << (SmalltalkParser.CHARACTER_CONSTANT - 2)))) !== 0)) {
+	        while(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 1415868961) !== 0)) {
 	            this.state = 416;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,68,this._ctx);
@@ -2005,7 +2001,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 419;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	            if(_la===1 || _la===3) {
 	                this.state = 418;
 	                this.ws();
 	            }
@@ -2107,13 +2103,13 @@ export default class SmalltalkParser extends antlr4.Parser {
 	unaryMessage() {
 	    let localctx = new UnaryMessageContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, SmalltalkParser.RULE_unaryMessage);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 442;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 441;
 	            this.ws();
 	        }
@@ -2162,7 +2158,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	keywords() {
 	    let localctx = new KeywordsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, SmalltalkParser.RULE_keywords);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 449; 
@@ -2174,7 +2170,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	            this.state = 451; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SmalltalkParser.KEYWORD);
+	        } while(_la===30);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -2248,13 +2244,13 @@ export default class SmalltalkParser extends antlr4.Parser {
 	binaryMessage() {
 	    let localctx = new BinaryMessageContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, SmalltalkParser.RULE_binaryMessage);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 460;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 459;
 	            this.ws();
 	        }
@@ -2264,7 +2260,7 @@ export default class SmalltalkParser extends antlr4.Parser {
 	        this.state = 464;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SmalltalkParser.SEPARATOR || _la===SmalltalkParser.COMMENT) {
+	        if(_la===1 || _la===3) {
 	            this.state = 463;
 	            this.ws();
 	        }
@@ -4807,3 +4803,12 @@ SmalltalkParser.KeywordsContext = KeywordsContext;
 SmalltalkParser.ReferenceContext = ReferenceContext; 
 SmalltalkParser.BinaryTailContext = BinaryTailContext; 
 SmalltalkParser.BinaryMessageContext = BinaryMessageContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./cobol85/Cobol85Preprocessor.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cobol85/Cobol85Preprocessor.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -1069,10 +1069,6 @@ export default class Cobol85PreprocessorLexer extends antlr4.Lexer {
         super(input)
         this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.atn.PredictionContextCache());
     }
-
-    get atn() {
-        return atn;
-    }
 }
 
 Cobol85PreprocessorLexer.EOF = antlr4.Token.EOF;
@@ -1371,3 +1367,12 @@ Cobol85PreprocessorLexer.TEXT = 292;
 
 
 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

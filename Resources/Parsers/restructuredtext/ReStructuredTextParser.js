@@ -1,4 +1,4 @@
-// Generated from ./restructuredtext/ReStructuredText.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/restructuredtext/ReStructuredText.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ReStructuredTextListener from './ReStructuredTextListener.js';
@@ -334,10 +334,6 @@ export default class ReStructuredTextParser extends antlr4.Parser {
         this.symbolicNames = ReStructuredTextParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	parse() {
@@ -487,13 +483,13 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	comment() {
 	    let localctx = new CommentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, ReStructuredTextParser.RULE_comment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 140;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ReStructuredTextParser.Space) {
+	        while(_la===28) {
 	            this.state = 137;
 	            this.match(ReStructuredTextParser.Space);
 	            this.state = 142;
@@ -702,7 +698,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	commentLineAtoms() {
 	    let localctx = new CommentLineAtomsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, ReStructuredTextParser.RULE_commentLineAtoms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 181; 
@@ -713,7 +709,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	        	case 1:
 	        		this.state = 180;
 	        		_la = this._input.LA(1);
-	        		if(_la<=0 || _la===ReStructuredTextParser.LineBreak) {
+	        		if(_la<=0 || _la===29) {
 	        		this._errHandler.recoverInline(this);
 	        		}
 	        		else {
@@ -770,7 +766,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	section() {
 	    let localctx = new SectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, ReStructuredTextParser.RULE_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 189;
@@ -788,7 +784,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	        this.state = 193;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ReStructuredTextParser.LineBreak) {
+	        if(_la===29) {
 	            this.state = 192;
 	            this.match(ReStructuredTextParser.LineBreak);
 	        }
@@ -840,7 +836,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	title() {
 	    let localctx = new TitleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, ReStructuredTextParser.RULE_title);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 222;
 	        this._errHandler.sync(this);
@@ -879,7 +875,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 218;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.T__0) | (1 << ReStructuredTextParser.TimeStar) | (1 << ReStructuredTextParser.Alphabet) | (1 << ReStructuredTextParser.Numbers) | (1 << ReStructuredTextParser.SquareLeft) | (1 << ReStructuredTextParser.SquareRight) | (1 << ReStructuredTextParser.RoundLeft) | (1 << ReStructuredTextParser.RoundRight) | (1 << ReStructuredTextParser.AngleLeft) | (1 << ReStructuredTextParser.AngleRight) | (1 << ReStructuredTextParser.Hat) | (1 << ReStructuredTextParser.QuotationDouble) | (1 << ReStructuredTextParser.QuotationSingle) | (1 << ReStructuredTextParser.Dot) | (1 << ReStructuredTextParser.SemiColon) | (1 << ReStructuredTextParser.Colon) | (1 << ReStructuredTextParser.Equal) | (1 << ReStructuredTextParser.Plus) | (1 << ReStructuredTextParser.Minus) | (1 << ReStructuredTextParser.Block) | (1 << ReStructuredTextParser.UnderScore) | (1 << ReStructuredTextParser.BackTick) | (1 << ReStructuredTextParser.Space) | (1 << ReStructuredTextParser.Any))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1459617650) !== 0)) {
 	                this.state = 217;
 	                this.paragraphNoBreak();
 	            }
@@ -918,7 +914,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	lineBlock() {
 	    let localctx = new LineBlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, ReStructuredTextParser.RULE_lineBlock);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 224;
@@ -936,7 +932,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ReStructuredTextParser.Block) {
+	        while(_la===23) {
 	            this.state = 229;
 	            this.lineBlockLine();
 	            this.state = 234;
@@ -1050,7 +1046,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	listItemBullet() {
 	    let localctx = new ListItemBulletContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, ReStructuredTextParser.RULE_listItemBullet);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 269;
 	        this._errHandler.sync(this);
@@ -1075,7 +1071,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 265;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ReStructuredTextParser.Space) {
+	            while(_la===28) {
 	                this.state = 262;
 	                this.match(ReStructuredTextParser.Space);
 	                this.state = 267;
@@ -1085,7 +1081,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 268;
 	            localctx.special = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(_la===ReStructuredTextParser.Plus || _la===ReStructuredTextParser.Minus)) {
+	            if(!(_la===21 || _la===22)) {
 	                localctx.special = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1114,7 +1110,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	bulletCrossLine() {
 	    let localctx = new BulletCrossLineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, ReStructuredTextParser.RULE_bulletCrossLine);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 271;
@@ -1122,7 +1118,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	        this.state = 275;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ReStructuredTextParser.Space) {
+	        while(_la===28) {
 	            this.state = 272;
 	            this.match(ReStructuredTextParser.Space);
 	            this.state = 277;
@@ -1185,7 +1181,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	bulletSimple() {
 	    let localctx = new BulletSimpleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, ReStructuredTextParser.RULE_bulletSimple);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 292;
@@ -1193,7 +1189,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	        this.state = 296;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ReStructuredTextParser.Space) {
+	        while(_la===28) {
 	            this.state = 293;
 	            this.match(ReStructuredTextParser.Space);
 	            this.state = 298;
@@ -1252,12 +1248,12 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	bullet() {
 	    let localctx = new BulletContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, ReStructuredTextParser.RULE_bullet);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 312;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.Plus) | (1 << ReStructuredTextParser.Minus) | (1 << ReStructuredTextParser.Star))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 140509184) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1381,13 +1377,13 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	lineNoBreak() {
 	    let localctx = new LineNoBreakContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, ReStructuredTextParser.RULE_lineNoBreak);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 338;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ReStructuredTextParser.Space) {
+	        if(_la===28) {
 	            this.state = 337;
 	            this.indentation();
 	        }
@@ -1564,7 +1560,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	lineNormal() {
 	    let localctx = new LineNormalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, ReStructuredTextParser.RULE_lineNormal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 393;
 	        this._errHandler.sync(this);
@@ -1577,7 +1573,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 372;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ReStructuredTextParser.Space) {
+	            if(_la===28) {
 	                this.state = 371;
 	                this.indentation();
 	            }
@@ -1661,7 +1657,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	lineStar() {
 	    let localctx = new LineStarContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, ReStructuredTextParser.RULE_lineStar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 417;
 	        this._errHandler.sync(this);
@@ -1674,7 +1670,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 397;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ReStructuredTextParser.Space) {
+	            if(_la===28) {
 	                this.state = 396;
 	                this.indentation();
 	            }
@@ -1748,7 +1744,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	lineSpecial() {
 	    let localctx = new LineSpecialContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, ReStructuredTextParser.RULE_lineSpecial);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 444;
 	        this._errHandler.sync(this);
@@ -1769,7 +1765,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 423;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ReStructuredTextParser.Space) {
+	            if(_la===28) {
 	                this.state = 422;
 	                this.indentation();
 	            }
@@ -1785,7 +1781,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 428;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ReStructuredTextParser.Space) {
+	            if(_la===28) {
 	                this.state = 427;
 	                this.indentation();
 	            }
@@ -1802,7 +1798,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.state = 434; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===ReStructuredTextParser.Space);
+	            } while(_la===28);
 	            this.state = 436;
 	            this.match(ReStructuredTextParser.SectionSeparator);
 	            this.state = 441;
@@ -2036,7 +2032,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	lineStart_fragment() {
 	    let localctx = new LineStart_fragmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, ReStructuredTextParser.RULE_lineStart_fragment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 514;
 	        this._errHandler.sync(this);
@@ -2048,7 +2044,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.match(ReStructuredTextParser.Minus);
 	            this.state = 480;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || (((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.Star) | (1 << ReStructuredTextParser.Space) | (1 << ReStructuredTextParser.LineBreak))) !== 0)) {
+	            if(_la<=0 || (((_la) & ~0x1f) === 0 && ((1 << _la) & 939524096) !== 0)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2063,7 +2059,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.match(ReStructuredTextParser.Plus);
 	            this.state = 482;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || _la===ReStructuredTextParser.Star || _la===ReStructuredTextParser.Space) {
+	            if(_la<=0 || _la===27 || _la===28) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2080,7 +2076,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.match(ReStructuredTextParser.Dot);
 	            this.state = 485;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || (((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.Star) | (1 << ReStructuredTextParser.Space) | (1 << ReStructuredTextParser.LineBreak))) !== 0)) {
+	            if(_la<=0 || (((_la) & ~0x1f) === 0 && ((1 << _la) & 939524096) !== 0)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2095,7 +2091,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.match(ReStructuredTextParser.Numbers);
 	            this.state = 487;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || (((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.Dot) | (1 << ReStructuredTextParser.Star) | (1 << ReStructuredTextParser.LineBreak))) !== 0)) {
+	            if(_la<=0 || (((_la) & ~0x1f) === 0 && ((1 << _la) & 671219712) !== 0)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2118,7 +2114,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.match(ReStructuredTextParser.Block);
 	            this.state = 491;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || _la===ReStructuredTextParser.Star || _la===ReStructuredTextParser.Space) {
+	            if(_la<=0 || _la===27 || _la===28) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2133,7 +2129,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.match(ReStructuredTextParser.UnderScore);
 	            this.state = 493;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || _la===ReStructuredTextParser.Star || _la===ReStructuredTextParser.Space) {
+	            if(_la<=0 || _la===27 || _la===28) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2148,7 +2144,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.match(ReStructuredTextParser.Alphabet);
 	            this.state = 495;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || (((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.Dot) | (1 << ReStructuredTextParser.Star) | (1 << ReStructuredTextParser.LineBreak))) !== 0)) {
+	            if(_la<=0 || (((_la) & ~0x1f) === 0 && ((1 << _la) & 671219712) !== 0)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2600,87 +2596,87 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	        this.state = 589;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ReStructuredTextParser.SemiColon:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 572;
 	            this.match(ReStructuredTextParser.SemiColon);
 	            break;
-	        case ReStructuredTextParser.Numbers:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 573;
 	            this.match(ReStructuredTextParser.Numbers);
 	            break;
-	        case ReStructuredTextParser.Alphabet:
+	        case 5:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 574;
 	            this.match(ReStructuredTextParser.Alphabet);
 	            break;
-	        case ReStructuredTextParser.Space:
+	        case 28:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 575;
 	            this.match(ReStructuredTextParser.Space);
 	            break;
-	        case ReStructuredTextParser.SquareLeft:
+	        case 8:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 576;
 	            this.match(ReStructuredTextParser.SquareLeft);
 	            break;
-	        case ReStructuredTextParser.SquareRight:
+	        case 9:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 577;
 	            this.match(ReStructuredTextParser.SquareRight);
 	            break;
-	        case ReStructuredTextParser.RoundLeft:
+	        case 10:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 578;
 	            this.match(ReStructuredTextParser.RoundLeft);
 	            break;
-	        case ReStructuredTextParser.RoundRight:
+	        case 11:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 579;
 	            this.match(ReStructuredTextParser.RoundRight);
 	            break;
-	        case ReStructuredTextParser.Colon:
+	        case 19:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 580;
 	            this.match(ReStructuredTextParser.Colon);
 	            break;
-	        case ReStructuredTextParser.Hat:
-	        case ReStructuredTextParser.Equal:
-	        case ReStructuredTextParser.Plus:
-	        case ReStructuredTextParser.Minus:
+	        case 14:
+	        case 20:
+	        case 21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 581;
 	            this.separator();
 	            break;
-	        case ReStructuredTextParser.AngleLeft:
+	        case 12:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 582;
 	            this.match(ReStructuredTextParser.AngleLeft);
 	            break;
-	        case ReStructuredTextParser.AngleRight:
+	        case 13:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 583;
 	            this.match(ReStructuredTextParser.AngleRight);
 	            break;
-	        case ReStructuredTextParser.QuotationDouble:
+	        case 15:
 	            this.enterOuterAlt(localctx, 13);
 	            this.state = 584;
 	            this.match(ReStructuredTextParser.QuotationDouble);
 	            break;
-	        case ReStructuredTextParser.Dot:
+	        case 17:
 	            this.enterOuterAlt(localctx, 14);
 	            this.state = 585;
 	            this.match(ReStructuredTextParser.Dot);
 	            break;
-	        case ReStructuredTextParser.Star:
+	        case 27:
 	            this.enterOuterAlt(localctx, 15);
 	            this.state = 586;
 	            this.match(ReStructuredTextParser.Star);
 	            this.state = 587;
 	            this.match(ReStructuredTextParser.Space);
 	            break;
-	        case ReStructuredTextParser.Any:
+	        case 30:
 	            this.enterOuterAlt(localctx, 16);
 	            this.state = 588;
 	            this.match(ReStructuredTextParser.Any);
@@ -2774,7 +2770,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	starText() {
 	    let localctx = new StarTextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, ReStructuredTextParser.RULE_starText);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 669;
 	        this._errHandler.sync(this);
@@ -2791,7 +2787,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.state = 603; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===ReStructuredTextParser.Star);
+	            } while(_la===27);
 	            this.state = 605;
 	            this.match(ReStructuredTextParser.LineBreak);
 	            break;
@@ -2807,7 +2803,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.state = 609; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===ReStructuredTextParser.Star);
+	            } while(_la===27);
 	            this.state = 611;
 	            this.starNoSpace();
 	            this.state = 612;
@@ -2822,7 +2818,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                    this.state = 617;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===ReStructuredTextParser.Star) {
+	                    while(_la===27) {
 	                        this.state = 614;
 	                        this.match(ReStructuredTextParser.Star);
 	                        this.state = 619;
@@ -2842,7 +2838,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 631;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ReStructuredTextParser.Star) {
+	            while(_la===27) {
 	                this.state = 628;
 	                this.match(ReStructuredTextParser.Star);
 	                this.state = 633;
@@ -2864,7 +2860,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.state = 639; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===ReStructuredTextParser.Star);
+	            } while(_la===27);
 	            this.state = 641;
 	            this.starNoSpace();
 	            this.state = 642;
@@ -2872,7 +2868,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 646;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ReStructuredTextParser.Star) {
+	            while(_la===27) {
 	                this.state = 643;
 	                this.match(ReStructuredTextParser.Star);
 	                this.state = 648;
@@ -2894,7 +2890,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.state = 654; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===ReStructuredTextParser.Star);
+	            } while(_la===27);
 	            this.state = 657; 
 	            this._errHandler.sync(this);
 	            var _alt = 1;
@@ -2922,7 +2918,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.state = 665; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===ReStructuredTextParser.Star);
+	            } while(_la===27);
 	            this.state = 667;
 	            this.match(ReStructuredTextParser.LineBreak);
 	            break;
@@ -2947,7 +2943,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	starAtoms() {
 	    let localctx = new StarAtomsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, ReStructuredTextParser.RULE_starAtoms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 674;
@@ -2971,7 +2967,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.state = 680;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===ReStructuredTextParser.Star) {
+	                while(_la===27) {
 	                    this.state = 677;
 	                    this.match(ReStructuredTextParser.Star);
 	                    this.state = 682;
@@ -3005,12 +3001,12 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	starNoSpace() {
 	    let localctx = new StarNoSpaceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, ReStructuredTextParser.RULE_starNoSpace);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 689;
 	        _la = this._input.LA(1);
-	        if(_la<=0 || (((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.SectionSeparator) | (1 << ReStructuredTextParser.Star) | (1 << ReStructuredTextParser.Space) | (1 << ReStructuredTextParser.LineBreak))) !== 0)) {
+	        if(_la<=0 || (((_la) & ~0x1f) === 0 && ((1 << _la) & 939524100) !== 0)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3036,12 +3032,12 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	starAtom() {
 	    let localctx = new StarAtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, ReStructuredTextParser.RULE_starAtom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 691;
 	        _la = this._input.LA(1);
-	        if(_la<=0 || _la===ReStructuredTextParser.Star || _la===ReStructuredTextParser.LineBreak) {
+	        if(_la<=0 || _la===27 || _la===29) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3067,13 +3063,13 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	backTickText() {
 	    let localctx = new BackTickTextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, ReStructuredTextParser.RULE_backTickText);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 696;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ReStructuredTextParser.Colon) {
+	        if(_la===19) {
 	            this.state = 693;
 	            this.match(ReStructuredTextParser.Colon);
 	            this.state = 694;
@@ -3244,12 +3240,12 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	backTickNoSpace() {
 	    let localctx = new BackTickNoSpaceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, ReStructuredTextParser.RULE_backTickNoSpace);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 732;
 	        _la = this._input.LA(1);
-	        if(_la<=0 || (((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.BackTick) | (1 << ReStructuredTextParser.Space) | (1 << ReStructuredTextParser.LineBreak))) !== 0)) {
+	        if(_la<=0 || (((_la) & ~0x1f) === 0 && ((1 << _la) & 872415232) !== 0)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3275,43 +3271,43 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	backTickAtom() {
 	    let localctx = new BackTickAtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, ReStructuredTextParser.RULE_backTickAtom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 737;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ReStructuredTextParser.T__0:
-	        case ReStructuredTextParser.SectionSeparator:
-	        case ReStructuredTextParser.Literal:
-	        case ReStructuredTextParser.TimeStar:
-	        case ReStructuredTextParser.Alphabet:
-	        case ReStructuredTextParser.Numbers:
-	        case ReStructuredTextParser.Quote:
-	        case ReStructuredTextParser.SquareLeft:
-	        case ReStructuredTextParser.SquareRight:
-	        case ReStructuredTextParser.RoundLeft:
-	        case ReStructuredTextParser.RoundRight:
-	        case ReStructuredTextParser.AngleLeft:
-	        case ReStructuredTextParser.AngleRight:
-	        case ReStructuredTextParser.Hat:
-	        case ReStructuredTextParser.QuotationDouble:
-	        case ReStructuredTextParser.QuotationSingle:
-	        case ReStructuredTextParser.Dot:
-	        case ReStructuredTextParser.SemiColon:
-	        case ReStructuredTextParser.Colon:
-	        case ReStructuredTextParser.Equal:
-	        case ReStructuredTextParser.Plus:
-	        case ReStructuredTextParser.Minus:
-	        case ReStructuredTextParser.Block:
-	        case ReStructuredTextParser.Comment:
-	        case ReStructuredTextParser.UnderScore:
-	        case ReStructuredTextParser.Star:
-	        case ReStructuredTextParser.Space:
-	        case ReStructuredTextParser.Any:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 27:
+	        case 28:
+	        case 30:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 734;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || _la===ReStructuredTextParser.BackTick || _la===ReStructuredTextParser.LineBreak) {
+	            if(_la<=0 || _la===26 || _la===29) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3319,13 +3315,13 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case ReStructuredTextParser.BackTick:
+	        case 26:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 735;
 	            this.match(ReStructuredTextParser.BackTick);
 	            this.state = 736;
 	            _la = this._input.LA(1);
-	            if(_la<=0 || _la===ReStructuredTextParser.BackTick || _la===ReStructuredTextParser.LineBreak) {
+	            if(_la<=0 || _la===26 || _la===29) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3355,7 +3351,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	reference() {
 	    let localctx = new ReferenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, ReStructuredTextParser.RULE_reference);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 740; 
@@ -3367,7 +3363,7 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	            this.state = 742; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ReStructuredTextParser.Any);
+	        } while(_la===30);
 	        this.state = 744;
 	        this.match(ReStructuredTextParser.UnderScore);
 	    } catch (re) {
@@ -3634,12 +3630,12 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	urlAtom() {
 	    let localctx = new UrlAtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, ReStructuredTextParser.RULE_urlAtom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 801;
 	        _la = this._input.LA(1);
-	        if(_la<=0 || _la===ReStructuredTextParser.BackTick || _la===ReStructuredTextParser.LineBreak) {
+	        if(_la<=0 || _la===26 || _la===29) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3665,12 +3661,12 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	hyperlinkAtom() {
 	    let localctx = new HyperlinkAtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, ReStructuredTextParser.RULE_hyperlinkAtom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 803;
 	        _la = this._input.LA(1);
-	        if(_la<=0 || (((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.AngleLeft) | (1 << ReStructuredTextParser.AngleRight) | (1 << ReStructuredTextParser.BackTick) | (1 << ReStructuredTextParser.Star) | (1 << ReStructuredTextParser.LineBreak))) !== 0)) {
+	        if(_la<=0 || (((_la) & ~0x1f) === 0 && ((1 << _la) & 738209792) !== 0)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3696,12 +3692,12 @@ export default class ReStructuredTextParser extends antlr4.Parser {
 	separator() {
 	    let localctx = new SeparatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 116, ReStructuredTextParser.RULE_separator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 805;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ReStructuredTextParser.Hat) | (1 << ReStructuredTextParser.Equal) | (1 << ReStructuredTextParser.Plus) | (1 << ReStructuredTextParser.Minus))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 7356416) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4031,7 +4027,7 @@ class CommentParagraphsContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = ReStructuredTextParser.RULE_commentParagraphs;
-        this.main = null; // CommentParagraphContext
+        this.main = null;
     }
 
 	commentRest() {
@@ -4330,7 +4326,7 @@ class SectionContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = ReStructuredTextParser.RULE_section;
-        this.overline = null; // Token
+        this.overline = null;
     }
 
 	title() {
@@ -4580,7 +4576,7 @@ class ListItemBulletContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = ReStructuredTextParser.RULE_listItemBullet;
-        this.special = null; // Token
+        this.special = null;
     }
 
 	bulletCrossLine() {
@@ -4815,7 +4811,7 @@ class ListItemEnumeratedContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = ReStructuredTextParser.RULE_listItemEnumerated;
-        this.enumerated = null; // LineSpecialContext
+        this.enumerated = null;
     }
 
 	LineBreak() {
@@ -6365,7 +6361,7 @@ class BackTickTextContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = ReStructuredTextParser.RULE_backTickText;
-        this.titled = null; // Token
+        this.titled = null;
     }
 
 	body() {
@@ -7135,3 +7131,12 @@ ReStructuredTextParser.UrlContext = UrlContext;
 ReStructuredTextParser.UrlAtomContext = UrlAtomContext; 
 ReStructuredTextParser.HyperlinkAtomContext = HyperlinkAtomContext; 
 ReStructuredTextParser.SeparatorContext = SeparatorContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

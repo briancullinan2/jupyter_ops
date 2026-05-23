@@ -1,17 +1,17 @@
-// Generated from ./useragent/useragent.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/useragent/useragent.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import useragentListener from './useragentListener.js';
-const serializedATN = [4,1,5,35,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-1,0,1,0,3,0,13,8,0,4,0,15,8,0,11,0,12,0,16,1,1,1,1,1,1,1,1,1,2,1,2,1,3,1,
-3,1,3,5,3,28,8,3,10,3,12,3,31,9,3,1,4,1,4,1,4,0,0,5,0,2,4,6,8,0,0,32,0,14,
-1,0,0,0,2,18,1,0,0,0,4,22,1,0,0,0,6,24,1,0,0,0,8,32,1,0,0,0,10,12,3,2,1,
-0,11,13,3,8,4,0,12,11,1,0,0,0,12,13,1,0,0,0,13,15,1,0,0,0,14,10,1,0,0,0,
-15,16,1,0,0,0,16,14,1,0,0,0,16,17,1,0,0,0,17,1,1,0,0,0,18,19,3,4,2,0,19,
-20,5,1,0,0,20,21,3,6,3,0,21,3,1,0,0,0,22,23,5,4,0,0,23,5,1,0,0,0,24,29,5,
-4,0,0,25,26,5,2,0,0,26,28,5,4,0,0,27,25,1,0,0,0,28,31,1,0,0,0,29,27,1,0,
-0,0,29,30,1,0,0,0,30,7,1,0,0,0,31,29,1,0,0,0,32,33,5,3,0,0,33,9,1,0,0,0,
-3,12,16,29];
+const serializedATN = [4,1,5,37,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+1,0,1,0,3,0,13,8,0,4,0,15,8,0,11,0,12,0,16,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,
+2,1,3,1,3,1,3,5,3,30,8,3,10,3,12,3,33,9,3,1,4,1,4,1,4,0,0,5,0,2,4,6,8,0,
+0,34,0,14,1,0,0,0,2,20,1,0,0,0,4,24,1,0,0,0,6,26,1,0,0,0,8,34,1,0,0,0,10,
+12,3,2,1,0,11,13,3,8,4,0,12,11,1,0,0,0,12,13,1,0,0,0,13,15,1,0,0,0,14,10,
+1,0,0,0,15,16,1,0,0,0,16,14,1,0,0,0,16,17,1,0,0,0,17,18,1,0,0,0,18,19,5,
+0,0,1,19,1,1,0,0,0,20,21,3,4,2,0,21,22,5,1,0,0,22,23,3,6,3,0,23,3,1,0,0,
+0,24,25,5,4,0,0,25,5,1,0,0,0,26,31,5,4,0,0,27,28,5,2,0,0,28,30,5,4,0,0,29,
+27,1,0,0,0,30,33,1,0,0,0,31,29,1,0,0,0,31,32,1,0,0,0,32,7,1,0,0,0,33,31,
+1,0,0,0,34,35,5,3,0,0,35,9,1,0,0,0,3,12,16,31];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -35,16 +35,12 @@ export default class useragentParser extends antlr4.Parser {
         this.symbolicNames = useragentParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	prog() {
 	    let localctx = new ProgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, useragentParser.RULE_prog);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 14; 
@@ -56,7 +52,7 @@ export default class useragentParser extends antlr4.Parser {
 	            this.state = 12;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===useragentParser.COMMENT) {
+	            if(_la===3) {
 	                this.state = 11;
 	                this.comment();
 	            }
@@ -64,7 +60,9 @@ export default class useragentParser extends antlr4.Parser {
 	            this.state = 16; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===useragentParser.STRING);
+	        } while(_la===4);
+	        this.state = 18;
+	        this.match(useragentParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -86,11 +84,11 @@ export default class useragentParser extends antlr4.Parser {
 	    this.enterRule(localctx, 2, useragentParser.RULE_product);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 18;
-	        this.name();
-	        this.state = 19;
-	        this.match(useragentParser.T__0);
 	        this.state = 20;
+	        this.name();
+	        this.state = 21;
+	        this.match(useragentParser.T__0);
+	        this.state = 22;
 	        this.version();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -113,7 +111,7 @@ export default class useragentParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, useragentParser.RULE_name);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 22;
+	        this.state = 24;
 	        this.match(useragentParser.STRING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -134,20 +132,20 @@ export default class useragentParser extends antlr4.Parser {
 	version() {
 	    let localctx = new VersionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, useragentParser.RULE_version);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 24;
+	        this.state = 26;
 	        this.match(useragentParser.STRING);
-	        this.state = 29;
+	        this.state = 31;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===useragentParser.T__1) {
-	            this.state = 25;
+	        while(_la===2) {
+	            this.state = 27;
 	            this.match(useragentParser.T__1);
-	            this.state = 26;
+	            this.state = 28;
 	            this.match(useragentParser.STRING);
-	            this.state = 31;
+	            this.state = 33;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -172,7 +170,7 @@ export default class useragentParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, useragentParser.RULE_comment);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 32;
+	        this.state = 34;
 	        this.match(useragentParser.COMMENT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -217,6 +215,10 @@ class ProgContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = useragentParser.RULE_prog;
     }
+
+	EOF() {
+	    return this.getToken(useragentParser.EOF, 0);
+	};
 
 	product = function(i) {
 	    if(i===undefined) {
@@ -415,3 +417,12 @@ useragentParser.ProductContext = ProductContext;
 useragentParser.NameContext = NameContext; 
 useragentParser.VersionContext = VersionContext; 
 useragentParser.CommentContext = CommentContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

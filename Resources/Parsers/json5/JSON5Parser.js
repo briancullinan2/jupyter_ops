@@ -1,4 +1,4 @@
-// Generated from ./json5/JSON5.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/json5/JSON5.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import JSON5Listener from './JSON5Listener.js';
@@ -51,22 +51,18 @@ export default class JSON5Parser extends antlr4.Parser {
         this.symbolicNames = JSON5Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	json5() {
 	    let localctx = new Json5Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, JSON5Parser.RULE_json5);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 15;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JSON5Parser.T__0) | (1 << JSON5Parser.T__4) | (1 << JSON5Parser.LITERAL) | (1 << JSON5Parser.STRING) | (1 << JSON5Parser.NUMBER) | (1 << JSON5Parser.NUMERIC_LITERAL) | (1 << JSON5Parser.SYMBOL))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 15906) !== 0)) {
 	            this.state = 14;
 	            this.value();
 	        }
@@ -92,7 +88,7 @@ export default class JSON5Parser extends antlr4.Parser {
 	obj() {
 	    let localctx = new ObjContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, JSON5Parser.RULE_obj);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 35;
 	        this._errHandler.sync(this);
@@ -122,7 +118,7 @@ export default class JSON5Parser extends antlr4.Parser {
 	            this.state = 29;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===JSON5Parser.T__1) {
+	            if(_la===2) {
 	                this.state = 28;
 	                this.match(JSON5Parser.T__1);
 	            }
@@ -186,12 +182,12 @@ export default class JSON5Parser extends antlr4.Parser {
 	key() {
 	    let localctx = new KeyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, JSON5Parser.RULE_key);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 41;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JSON5Parser.LITERAL) | (1 << JSON5Parser.STRING) | (1 << JSON5Parser.NUMERIC_LITERAL) | (1 << JSON5Parser.IDENTIFIER))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 22016) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -221,29 +217,29 @@ export default class JSON5Parser extends antlr4.Parser {
 	        this.state = 48;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case JSON5Parser.STRING:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 43;
 	            this.match(JSON5Parser.STRING);
 	            break;
-	        case JSON5Parser.NUMBER:
-	        case JSON5Parser.NUMERIC_LITERAL:
-	        case JSON5Parser.SYMBOL:
+	        case 11:
+	        case 12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 44;
 	            this.number();
 	            break;
-	        case JSON5Parser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 45;
 	            this.obj();
 	            break;
-	        case JSON5Parser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 46;
 	            this.arr();
 	            break;
-	        case JSON5Parser.LITERAL:
+	        case 9:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 47;
 	            this.match(JSON5Parser.LITERAL);
@@ -270,7 +266,7 @@ export default class JSON5Parser extends antlr4.Parser {
 	arr() {
 	    let localctx = new ArrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, JSON5Parser.RULE_arr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 66;
 	        this._errHandler.sync(this);
@@ -300,7 +296,7 @@ export default class JSON5Parser extends antlr4.Parser {
 	            this.state = 60;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===JSON5Parser.T__1) {
+	            if(_la===2) {
 	                this.state = 59;
 	                this.match(JSON5Parser.T__1);
 	            }
@@ -337,20 +333,20 @@ export default class JSON5Parser extends antlr4.Parser {
 	number() {
 	    let localctx = new NumberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, JSON5Parser.RULE_number);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 69;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===JSON5Parser.SYMBOL) {
+	        if(_la===13) {
 	            this.state = 68;
 	            this.match(JSON5Parser.SYMBOL);
 	        }
 
 	        this.state = 71;
 	        _la = this._input.LA(1);
-	        if(!(_la===JSON5Parser.NUMBER || _la===JSON5Parser.NUMERIC_LITERAL)) {
+	        if(!(_la===11 || _la===12)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -710,3 +706,12 @@ JSON5Parser.KeyContext = KeyContext;
 JSON5Parser.ValueContext = ValueContext; 
 JSON5Parser.ArrContext = ArrContext; 
 JSON5Parser.NumberContext = NumberContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

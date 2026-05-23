@@ -1,4 +1,4 @@
-// Generated from ./pike/pike.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/pike/pike.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -173,6 +173,15 @@ export default class pikeListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by pikeParser#while_stmt.
 	exitWhile_stmt(ctx) {
+	}
+
+
+	// Enter a parse tree produced by pikeParser#return_stmt.
+	enterReturn_stmt(ctx) {
+	}
+
+	// Exit a parse tree produced by pikeParser#return_stmt.
+	exitReturn_stmt(ctx) {
 	}
 
 
@@ -455,12 +464,30 @@ export default class pikeListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by pikeParser#type__.
+	enterType__(ctx) {
+	}
+
+	// Exit a parse tree produced by pikeParser#type__.
+	exitType__(ctx) {
+	}
+
+
 	// Enter a parse tree produced by pikeParser#function_type.
 	enterFunction_type(ctx) {
 	}
 
 	// Exit a parse tree produced by pikeParser#function_type.
 	exitFunction_type(ctx) {
+	}
+
+
+	// Enter a parse tree produced by pikeParser#identifier.
+	enterIdentifier(ctx) {
+	}
+
+	// Exit a parse tree produced by pikeParser#identifier.
+	exitIdentifier(ctx) {
 	}
 
 

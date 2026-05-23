@@ -1,4 +1,4 @@
-// Generated from ./arithmetic/arithmetic.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/arithmetic/arithmetic.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import arithmeticListener from './arithmeticListener.js';
@@ -47,10 +47,6 @@ export default class arithmeticParser extends antlr4.Parser {
         this.symbolicNames = arithmeticParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 2:
@@ -79,13 +75,13 @@ export default class arithmeticParser extends antlr4.Parser {
 	file_() {
 	    let localctx = new File_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, arithmeticParser.RULE_file_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 17;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << arithmeticParser.VARIABLE) | (1 << arithmeticParser.SCIENTIFIC_NUMBER) | (1 << arithmeticParser.LPAREN) | (1 << arithmeticParser.PLUS) | (1 << arithmeticParser.MINUS))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 110) !== 0)) {
 	            this.state = 14;
 	            this.equation();
 	            this.state = 19;
@@ -146,13 +142,13 @@ export default class arithmeticParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 4;
 	    this.enterRecursionRule(localctx, 4, arithmeticParser.RULE_expression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 38;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case arithmeticParser.LPAREN:
+	        case 3:
 	            this.state = 27;
 	            this.match(arithmeticParser.LPAREN);
 	            this.state = 28;
@@ -160,17 +156,17 @@ export default class arithmeticParser extends antlr4.Parser {
 	            this.state = 29;
 	            this.match(arithmeticParser.RPAREN);
 	            break;
-	        case arithmeticParser.VARIABLE:
-	        case arithmeticParser.SCIENTIFIC_NUMBER:
-	        case arithmeticParser.PLUS:
-	        case arithmeticParser.MINUS:
+	        case 1:
+	        case 2:
+	        case 5:
+	        case 6:
 	            this.state = 34;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===arithmeticParser.PLUS || _la===arithmeticParser.MINUS) {
+	            while(_la===5 || _la===6) {
 	                this.state = 31;
 	                _la = this._input.LA(1);
-	                if(!(_la===arithmeticParser.PLUS || _la===arithmeticParser.MINUS)) {
+	                if(!(_la===5 || _la===6)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -223,7 +219,7 @@ export default class arithmeticParser extends antlr4.Parser {
 	                    }
 	                    this.state = 44;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===arithmeticParser.TIMES || _la===arithmeticParser.DIV)) {
+	                    if(!(_la===7 || _la===8)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -243,7 +239,7 @@ export default class arithmeticParser extends antlr4.Parser {
 	                    }
 	                    this.state = 47;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===arithmeticParser.PLUS || _la===arithmeticParser.MINUS)) {
+	                    if(!(_la===5 || _la===6)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -284,12 +280,12 @@ export default class arithmeticParser extends antlr4.Parser {
 	        this.state = 56;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case arithmeticParser.SCIENTIFIC_NUMBER:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 54;
 	            this.scientific();
 	            break;
-	        case arithmeticParser.VARIABLE:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 55;
 	            this.variable();
@@ -362,12 +358,12 @@ export default class arithmeticParser extends antlr4.Parser {
 	relop() {
 	    let localctx = new RelopContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, arithmeticParser.RULE_relop);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 62;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << arithmeticParser.GT) | (1 << arithmeticParser.LT) | (1 << arithmeticParser.EQ))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 3584) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -757,3 +753,12 @@ arithmeticParser.AtomContext = AtomContext;
 arithmeticParser.ScientificContext = ScientificContext; 
 arithmeticParser.VariableContext = VariableContext; 
 arithmeticParser.RelopContext = RelopContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

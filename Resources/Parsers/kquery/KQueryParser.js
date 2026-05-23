@@ -1,4 +1,4 @@
-// Generated from ./kquery/KQuery.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/kquery/KQuery.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import KQueryListener from './KQueryListener.js';
@@ -156,10 +156,6 @@ export default class KQueryParser extends antlr4.Parser {
         this.symbolicNames = KQueryParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	kqueryExpression() {
@@ -190,13 +186,13 @@ export default class KQueryParser extends antlr4.Parser {
 	queryStatements() {
 	    let localctx = new QueryStatementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, KQueryParser.RULE_queryStatements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 80;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===KQueryParser.Array || _la===KQueryParser.LeftParen) {
+	        while(_la===17 || _la===66) {
 	            this.state = 77;
 	            this.ktranslationUnit();
 	            this.state = 82;
@@ -226,12 +222,12 @@ export default class KQueryParser extends antlr4.Parser {
 	        this.state = 85;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case KQueryParser.Array:
+	        case 17:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 83;
 	            this.arrayDeclaration();
 	            break;
-	        case KQueryParser.LeftParen:
+	        case 66:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 84;
 	            this.queryCommand();
@@ -289,7 +285,7 @@ export default class KQueryParser extends antlr4.Parser {
 	queryExpr() {
 	    let localctx = new QueryExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, KQueryParser.RULE_queryExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 93;
@@ -297,13 +293,13 @@ export default class KQueryParser extends antlr4.Parser {
 	        this.state = 98;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===KQueryParser.LeftBracket) {
+	        if(_la===68) {
 	            this.state = 94;
 	            this.evalExprList();
 	            this.state = 96;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===KQueryParser.LeftBracket) {
+	            if(_la===68) {
 	                this.state = 95;
 	                this.evalArrayList();
 	            }
@@ -383,13 +379,13 @@ export default class KQueryParser extends antlr4.Parser {
 	expressionList() {
 	    let localctx = new ExpressionListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, KQueryParser.RULE_expressionList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << KQueryParser.Boolean) | (1 << KQueryParser.SignedConstant) | (1 << KQueryParser.Constant))) !== 0) || ((((_la - 59)) & ~0x1f) == 0 && ((1 << (_la - 59)) & ((1 << (KQueryParser.Identifier - 59)) | (1 << (KQueryParser.LeftParen - 59)) | (1 << (KQueryParser.LeftBracket - 59)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 14) !== 0) || ((((_la - 59)) & ~0x1f) === 0 && ((1 << (_la - 59)) & 641) !== 0)) {
 	            this.state = 108;
 	            this.expression();
 	            this.state = 113;
@@ -415,13 +411,13 @@ export default class KQueryParser extends antlr4.Parser {
 	identifierList() {
 	    let localctx = new IdentifierListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, KQueryParser.RULE_identifierList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 117;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===KQueryParser.Identifier) {
+	        while(_la===59) {
 	            this.state = 114;
 	            this.match(KQueryParser.Identifier);
 	            this.state = 119;
@@ -517,12 +513,12 @@ export default class KQueryParser extends antlr4.Parser {
 	        this.state = 139;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case KQueryParser.Symbolic:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 134;
 	            this.match(KQueryParser.Symbolic);
 	            break;
-	        case KQueryParser.LeftBracket:
+	        case 68:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 135;
 	            this.match(KQueryParser.LeftBracket);
@@ -553,7 +549,7 @@ export default class KQueryParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, KQueryParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 231;
 	        this._errHandler.sync(this);
@@ -653,7 +649,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            this.state = 176;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===KQueryParser.WidthType) {
+	            if(_la===9) {
 	                this.state = 175;
 	                this.widthOrSizeExpr();
 	            }
@@ -676,7 +672,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            this.state = 185;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===KQueryParser.WidthType) {
+	            if(_la===9) {
 	                this.state = 184;
 	                this.widthOrSizeExpr();
 	            }
@@ -735,7 +731,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            this.state = 209;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===KQueryParser.Identifier || _la===KQueryParser.LeftBracket) {
+	            if(_la===59 || _la===68) {
 	                this.state = 208;
 	                this.version();
 	            }
@@ -773,7 +769,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            this.state = 224;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===KQueryParser.WidthType) {
+	            if(_la===9) {
 	                this.state = 223;
 	                this.widthOrSizeExpr();
 	            }
@@ -818,12 +814,12 @@ export default class KQueryParser extends antlr4.Parser {
 	genericBitRead() {
 	    let localctx = new GenericBitReadContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, KQueryParser.RULE_genericBitRead);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 233;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (KQueryParser.READ - 31)) | (1 << (KQueryParser.READLSB - 31)) | (1 << (KQueryParser.READMSB - 31)))) !== 0))) {
+	        if(!(((((_la - 31)) & ~0x1f) === 0 && ((1 << (_la - 31)) & 25) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -849,12 +845,12 @@ export default class KQueryParser extends antlr4.Parser {
 	bitExtractExpr() {
 	    let localctx = new BitExtractExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, KQueryParser.RULE_bitExtractExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 235;
 	        _la = this._input.LA(1);
-	        if(!(_la===KQueryParser.ZEXT || _la===KQueryParser.SEXT)) {
+	        if(!(_la===29 || _la===30)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -880,12 +876,12 @@ export default class KQueryParser extends antlr4.Parser {
 	version() {
 	    let localctx = new VersionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, KQueryParser.RULE_version);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 249;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case KQueryParser.Identifier:
+	        case 59:
 	            localctx = new VersionVariableNameContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 237;
@@ -893,7 +889,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            this.state = 240;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===KQueryParser.Colon) {
+	            if(_la===19) {
 	                this.state = 238;
 	                this.match(KQueryParser.Colon);
 	                this.state = 239;
@@ -901,7 +897,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case KQueryParser.LeftBracket:
+	        case 68:
 	            localctx = new UpdationListContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 242;
@@ -909,7 +905,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            this.state = 244;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << KQueryParser.Boolean) | (1 << KQueryParser.SignedConstant) | (1 << KQueryParser.Constant))) !== 0) || ((((_la - 59)) & ~0x1f) == 0 && ((1 << (_la - 59)) & ((1 << (KQueryParser.Identifier - 59)) | (1 << (KQueryParser.LeftParen - 59)) | (1 << (KQueryParser.LeftBracket - 59)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 14) !== 0) || ((((_la - 59)) & ~0x1f) === 0 && ((1 << (_la - 59)) & 641) !== 0)) {
 	                this.state = 243;
 	                this.updateList();
 	            }
@@ -1127,7 +1123,7 @@ export default class KQueryParser extends antlr4.Parser {
 	updateList() {
 	    let localctx = new UpdateListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, KQueryParser.RULE_updateList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 267;
@@ -1139,7 +1135,7 @@ export default class KQueryParser extends antlr4.Parser {
 	        this.state = 277;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===KQueryParser.COMMA) {
+	        while(_la===22) {
 	            this.state = 270;
 	            this.match(KQueryParser.COMMA);
 	            this.state = 271;
@@ -1171,12 +1167,12 @@ export default class KQueryParser extends antlr4.Parser {
 	bitwiseExpr() {
 	    let localctx = new BitwiseExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, KQueryParser.RULE_bitwiseExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 280;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 24)) & ~0x1f) == 0 && ((1 << (_la - 24)) & ((1 << (KQueryParser.SHL - 24)) | (1 << (KQueryParser.LSHR - 24)) | (1 << (KQueryParser.ASHR - 24)) | (1 << (KQueryParser.BITWISEAND - 24)) | (1 << (KQueryParser.BITWISEOR - 24)) | (1 << (KQueryParser.BITWISEXOR - 24)))) !== 0))) {
+	        if(!(((((_la - 24)) & ~0x1f) === 0 && ((1 << (_la - 24)) & 229383) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1202,12 +1198,12 @@ export default class KQueryParser extends antlr4.Parser {
 	comparisonExpr() {
 	    let localctx = new ComparisonExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, KQueryParser.RULE_comparisonExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 282;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (KQueryParser.EQ - 42)) | (1 << (KQueryParser.NEQ - 42)) | (1 << (KQueryParser.ULT - 42)) | (1 << (KQueryParser.ULE - 42)) | (1 << (KQueryParser.UGT - 42)) | (1 << (KQueryParser.UGE - 42)) | (1 << (KQueryParser.SLT - 42)) | (1 << (KQueryParser.SLE - 42)) | (1 << (KQueryParser.SGT - 42)) | (1 << (KQueryParser.SGE - 42)))) !== 0))) {
+	        if(!(((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 1023) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1233,12 +1229,12 @@ export default class KQueryParser extends antlr4.Parser {
 	arithmeticExpr() {
 	    let localctx = new ArithmeticExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, KQueryParser.RULE_arithmeticExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 284;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 52)) & ~0x1f) == 0 && ((1 << (_la - 52)) & ((1 << (KQueryParser.ADD - 52)) | (1 << (KQueryParser.SUB - 52)) | (1 << (KQueryParser.MUL - 52)) | (1 << (KQueryParser.UDIV - 52)) | (1 << (KQueryParser.UREM - 52)) | (1 << (KQueryParser.SDIV - 52)) | (1 << (KQueryParser.SREM - 52)))) !== 0))) {
+	        if(!(((((_la - 52)) & ~0x1f) === 0 && ((1 << (_la - 52)) & 127) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1333,7 +1329,7 @@ export default class KQueryParser extends antlr4.Parser {
 	numberList() {
 	    let localctx = new NumberListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, KQueryParser.RULE_numberList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 293; 
@@ -1345,7 +1341,7 @@ export default class KQueryParser extends antlr4.Parser {
 	            this.state = 295; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << KQueryParser.Boolean) | (1 << KQueryParser.SignedConstant) | (1 << KQueryParser.Constant))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 14) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1369,17 +1365,17 @@ export default class KQueryParser extends antlr4.Parser {
 	        this.state = 300;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case KQueryParser.Boolean:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 297;
 	            this.boolnum();
 	            break;
-	        case KQueryParser.SignedConstant:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 298;
 	            this.signedConstant();
 	            break;
-	        case KQueryParser.Constant:
+	        case 3:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 299;
 	            this.constant();
@@ -3896,3 +3892,12 @@ KQueryParser.ConstantContext = ConstantContext;
 KQueryParser.BoolnumContext = BoolnumContext; 
 KQueryParser.SignedConstantContext = SignedConstantContext; 
 KQueryParser.WidthOrSizeExprContext = WidthOrSizeExprContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

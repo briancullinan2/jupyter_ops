@@ -1,4 +1,4 @@
-// Generated from ./edn/edn.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/edn/edn.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ednListener from './ednListener.js';
@@ -58,22 +58,18 @@ export default class ednParser extends antlr4.Parser {
         this.symbolicNames = ednParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, ednParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 19;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ednParser.NilLiteral) | (1 << ednParser.BooleanLiteral) | (1 << ednParser.StringLiteral) | (1 << ednParser.IntegerLiteral) | (1 << ednParser.FloatingPointLiteral) | (1 << ednParser.CharacterLiteral) | (1 << ednParser.LeftParenthesis) | (1 << ednParser.LeftBracket) | (1 << ednParser.LeftBrace) | (1 << ednParser.HashedLeftBrace) | (1 << ednParser.Hash) | (1 << ednParser.Colon) | (1 << ednParser.Symbol))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 322302) !== 0)) {
 	            this.state = 16;
 	            this.value();
 	            this.state = 21;
@@ -105,67 +101,67 @@ export default class ednParser extends antlr4.Parser {
 	        this.state = 37;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ednParser.NilLiteral:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 24;
 	            this.match(ednParser.NilLiteral);
 	            break;
-	        case ednParser.BooleanLiteral:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 25;
 	            this.match(ednParser.BooleanLiteral);
 	            break;
-	        case ednParser.StringLiteral:
+	        case 3:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 26;
 	            this.match(ednParser.StringLiteral);
 	            break;
-	        case ednParser.IntegerLiteral:
+	        case 4:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 27;
 	            this.match(ednParser.IntegerLiteral);
 	            break;
-	        case ednParser.FloatingPointLiteral:
+	        case 5:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 28;
 	            this.match(ednParser.FloatingPointLiteral);
 	            break;
-	        case ednParser.CharacterLiteral:
+	        case 6:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 29;
 	            this.match(ednParser.CharacterLiteral);
 	            break;
-	        case ednParser.Colon:
+	        case 15:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 30;
 	            this.keyword();
 	            break;
-	        case ednParser.Symbol:
+	        case 18:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 31;
 	            this.match(ednParser.Symbol);
 	            break;
-	        case ednParser.Hash:
+	        case 14:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 32;
 	            this.tag();
 	            break;
-	        case ednParser.LeftParenthesis:
+	        case 7:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 33;
 	            this.list_();
 	            break;
-	        case ednParser.LeftBracket:
+	        case 9:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 34;
 	            this.vector();
 	            break;
-	        case ednParser.LeftBrace:
+	        case 11:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 35;
 	            this.map_();
 	            break;
-	        case ednParser.HashedLeftBrace:
+	        case 13:
 	            this.enterOuterAlt(localctx, 13);
 	            this.state = 36;
 	            this.set_();
@@ -217,14 +213,14 @@ export default class ednParser extends antlr4.Parser {
 	keyword() {
 	    let localctx = new KeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, ednParser.RULE_keyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 42;
 	        this.match(ednParser.Colon);
 	        this.state = 43;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ednParser.NilLiteral) | (1 << ednParser.BooleanLiteral) | (1 << ednParser.IntegerLiteral) | (1 << ednParser.FloatingPointLiteral) | (1 << ednParser.Symbol))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 262198) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -250,7 +246,7 @@ export default class ednParser extends antlr4.Parser {
 	list_() {
 	    let localctx = new List_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, ednParser.RULE_list_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 45;
@@ -258,7 +254,7 @@ export default class ednParser extends antlr4.Parser {
 	        this.state = 49;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ednParser.NilLiteral) | (1 << ednParser.BooleanLiteral) | (1 << ednParser.StringLiteral) | (1 << ednParser.IntegerLiteral) | (1 << ednParser.FloatingPointLiteral) | (1 << ednParser.CharacterLiteral) | (1 << ednParser.LeftParenthesis) | (1 << ednParser.LeftBracket) | (1 << ednParser.LeftBrace) | (1 << ednParser.HashedLeftBrace) | (1 << ednParser.Hash) | (1 << ednParser.Colon) | (1 << ednParser.Symbol))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 322302) !== 0)) {
 	            this.state = 46;
 	            this.value();
 	            this.state = 51;
@@ -286,7 +282,7 @@ export default class ednParser extends antlr4.Parser {
 	vector() {
 	    let localctx = new VectorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, ednParser.RULE_vector);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 54;
@@ -294,7 +290,7 @@ export default class ednParser extends antlr4.Parser {
 	        this.state = 58;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ednParser.NilLiteral) | (1 << ednParser.BooleanLiteral) | (1 << ednParser.StringLiteral) | (1 << ednParser.IntegerLiteral) | (1 << ednParser.FloatingPointLiteral) | (1 << ednParser.CharacterLiteral) | (1 << ednParser.LeftParenthesis) | (1 << ednParser.LeftBracket) | (1 << ednParser.LeftBrace) | (1 << ednParser.HashedLeftBrace) | (1 << ednParser.Hash) | (1 << ednParser.Colon) | (1 << ednParser.Symbol))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 322302) !== 0)) {
 	            this.state = 55;
 	            this.value();
 	            this.state = 60;
@@ -322,7 +318,7 @@ export default class ednParser extends antlr4.Parser {
 	map_() {
 	    let localctx = new Map_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, ednParser.RULE_map_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 63;
@@ -330,7 +326,7 @@ export default class ednParser extends antlr4.Parser {
 	        this.state = 69;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ednParser.NilLiteral) | (1 << ednParser.BooleanLiteral) | (1 << ednParser.StringLiteral) | (1 << ednParser.IntegerLiteral) | (1 << ednParser.FloatingPointLiteral) | (1 << ednParser.CharacterLiteral) | (1 << ednParser.LeftParenthesis) | (1 << ednParser.LeftBracket) | (1 << ednParser.LeftBrace) | (1 << ednParser.HashedLeftBrace) | (1 << ednParser.Hash) | (1 << ednParser.Colon) | (1 << ednParser.Symbol))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 322302) !== 0)) {
 	            this.state = 64;
 	            this.value();
 	            this.state = 65;
@@ -360,7 +356,7 @@ export default class ednParser extends antlr4.Parser {
 	set_() {
 	    let localctx = new Set_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, ednParser.RULE_set_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 74;
@@ -368,7 +364,7 @@ export default class ednParser extends antlr4.Parser {
 	        this.state = 78;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ednParser.NilLiteral) | (1 << ednParser.BooleanLiteral) | (1 << ednParser.StringLiteral) | (1 << ednParser.IntegerLiteral) | (1 << ednParser.FloatingPointLiteral) | (1 << ednParser.CharacterLiteral) | (1 << ednParser.LeftParenthesis) | (1 << ednParser.LeftBracket) | (1 << ednParser.LeftBrace) | (1 << ednParser.HashedLeftBrace) | (1 << ednParser.Hash) | (1 << ednParser.Colon) | (1 << ednParser.Symbol))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 322302) !== 0)) {
 	            this.state = 75;
 	            this.value();
 	            this.state = 80;
@@ -858,3 +854,12 @@ ednParser.List_Context = List_Context;
 ednParser.VectorContext = VectorContext; 
 ednParser.Map_Context = Map_Context; 
 ednParser.Set_Context = Set_Context; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

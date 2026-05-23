@@ -1,4 +1,4 @@
-// Generated from ./sici/sici.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/sici/sici.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import siciListener from './siciListener.js';
@@ -58,16 +58,12 @@ export default class siciParser extends antlr4.Parser {
         this.symbolicNames = siciParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	sici() {
 	    let localctx = new SiciContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, siciParser.RULE_sici);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 28;
@@ -77,7 +73,7 @@ export default class siciParser extends antlr4.Parser {
 	        this.state = 33;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===siciParser.DIGIT) {
+	        while(_la===11) {
 	            this.state = 30;
 	            this.control();
 	            this.state = 35;
@@ -171,7 +167,7 @@ export default class siciParser extends antlr4.Parser {
 	chronology() {
 	    let localctx = new ChronologyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, siciParser.RULE_chronology);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 52;
@@ -182,7 +178,7 @@ export default class siciParser extends antlr4.Parser {
 	        do {
 	            this.state = 53;
 	            _la = this._input.LA(1);
-	            if(!(_la===siciParser.T__2 || _la===siciParser.DIGIT)) {
+	            if(!(_la===3 || _la===11)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -192,7 +188,7 @@ export default class siciParser extends antlr4.Parser {
 	            this.state = 56; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===siciParser.T__2 || _la===siciParser.DIGIT);
+	        } while(_la===3 || _la===11);
 	        this.state = 58;
 	        this.match(siciParser.T__3);
 	    } catch (re) {
@@ -214,7 +210,7 @@ export default class siciParser extends antlr4.Parser {
 	enumeration() {
 	    let localctx = new EnumerationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, siciParser.RULE_enumeration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 61; 
@@ -226,7 +222,7 @@ export default class siciParser extends antlr4.Parser {
 	            this.state = 63; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===siciParser.DIGIT);
+	        } while(_la===11);
 	        this.state = 65;
 	        this.match(siciParser.T__4);
 	        this.state = 67; 
@@ -238,7 +234,7 @@ export default class siciParser extends antlr4.Parser {
 	            this.state = 69; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===siciParser.DIGIT);
+	        } while(_la===11);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -289,7 +285,7 @@ export default class siciParser extends antlr4.Parser {
 	location() {
 	    let localctx = new LocationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, siciParser.RULE_location);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 78; 
@@ -301,7 +297,7 @@ export default class siciParser extends antlr4.Parser {
 	            this.state = 80; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===siciParser.DIGIT);
+	        } while(_la===11);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -321,7 +317,7 @@ export default class siciParser extends antlr4.Parser {
 	title() {
 	    let localctx = new TitleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, siciParser.RULE_title);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 83; 
@@ -333,7 +329,7 @@ export default class siciParser extends antlr4.Parser {
 	            this.state = 85; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===siciParser.LETTER);
+	        } while(_la===10);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -461,14 +457,14 @@ export default class siciParser extends antlr4.Parser {
 	version() {
 	    let localctx = new VersionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, siciParser.RULE_version);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 103;
 	        this.match(siciParser.DIGIT);
 	        this.state = 104;
 	        _la = this._input.LA(1);
-	        if(!(_la===siciParser.T__0 || _la===siciParser.DIGIT)) {
+	        if(!(_la===1 || _la===11)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1152,3 +1148,12 @@ siciParser.DpiContext = DpiContext;
 siciParser.MfiContext = MfiContext; 
 siciParser.VersionContext = VersionContext; 
 siciParser.CheckContext = CheckContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,19 +1,20 @@
-// Generated from ./metric/metric.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/metric/metric.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import metricListener from './metricListener.js';
-const serializedATN = [4,1,48,43,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,2,6,7,6,1,0,1,0,1,0,5,0,18,8,0,10,0,12,0,21,9,0,1,1,3,1,24,8,1,1,
-1,1,1,3,1,28,8,1,1,2,1,2,1,2,1,3,1,3,1,4,1,4,3,4,37,8,4,1,5,1,5,1,6,1,6,
-1,6,0,0,7,0,2,4,6,8,10,12,0,4,1,0,1,2,1,0,4,19,2,0,14,14,20,25,2,0,6,6,26,
-46,39,0,14,1,0,0,0,2,23,1,0,0,0,4,29,1,0,0,0,6,32,1,0,0,0,8,36,1,0,0,0,10,
-38,1,0,0,0,12,40,1,0,0,0,14,19,3,2,1,0,15,16,7,0,0,0,16,18,3,2,1,0,17,15,
-1,0,0,0,18,21,1,0,0,0,19,17,1,0,0,0,19,20,1,0,0,0,20,1,1,0,0,0,21,19,1,0,
-0,0,22,24,3,6,3,0,23,22,1,0,0,0,23,24,1,0,0,0,24,25,1,0,0,0,25,27,3,8,4,
-0,26,28,3,4,2,0,27,26,1,0,0,0,27,28,1,0,0,0,28,3,1,0,0,0,29,30,5,3,0,0,30,
-31,5,47,0,0,31,5,1,0,0,0,32,33,7,1,0,0,33,7,1,0,0,0,34,37,3,10,5,0,35,37,
-3,12,6,0,36,34,1,0,0,0,36,35,1,0,0,0,37,9,1,0,0,0,38,39,7,2,0,0,39,11,1,
-0,0,0,40,41,7,3,0,0,41,13,1,0,0,0,4,19,23,27,36];
+const serializedATN = [4,1,48,48,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,2,6,7,6,2,7,7,7,1,0,1,0,1,0,1,1,1,1,1,1,5,1,23,8,1,10,1,12,1,26,
+9,1,1,2,3,2,29,8,2,1,2,1,2,3,2,33,8,2,1,3,1,3,1,3,1,4,1,4,1,5,1,5,3,5,42,
+8,5,1,6,1,6,1,7,1,7,1,7,0,0,8,0,2,4,6,8,10,12,14,0,4,1,0,1,2,1,0,4,19,2,
+0,14,14,20,25,2,0,6,6,26,46,43,0,16,1,0,0,0,2,19,1,0,0,0,4,28,1,0,0,0,6,
+34,1,0,0,0,8,37,1,0,0,0,10,41,1,0,0,0,12,43,1,0,0,0,14,45,1,0,0,0,16,17,
+3,2,1,0,17,18,5,0,0,1,18,1,1,0,0,0,19,24,3,4,2,0,20,21,7,0,0,0,21,23,3,4,
+2,0,22,20,1,0,0,0,23,26,1,0,0,0,24,22,1,0,0,0,24,25,1,0,0,0,25,3,1,0,0,0,
+26,24,1,0,0,0,27,29,3,8,4,0,28,27,1,0,0,0,28,29,1,0,0,0,29,30,1,0,0,0,30,
+32,3,10,5,0,31,33,3,6,3,0,32,31,1,0,0,0,32,33,1,0,0,0,33,5,1,0,0,0,34,35,
+5,3,0,0,35,36,5,47,0,0,36,7,1,0,0,0,37,38,7,1,0,0,38,9,1,0,0,0,39,42,3,12,
+6,0,40,42,3,14,7,0,41,39,1,0,0,0,41,40,1,0,0,0,42,11,1,0,0,0,43,44,7,2,0,
+0,44,13,1,0,0,0,45,46,7,3,0,0,46,15,1,0,0,0,4,24,28,32,41];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -40,8 +41,8 @@ export default class metricParser extends antlr4.Parser {
                              null, null, null, null, null, null, null, null, 
                              null, null, null, null, null, null, null, "INTE", 
                              "WS" ];
-    static ruleNames = [ "uom", "measure", "exponent", "prefix_", "unit", 
-                         "baseunit", "derivedunit" ];
+    static ruleNames = [ "file_", "uom", "measure", "exponent", "prefix_", 
+                         "unit", "baseunit", "derivedunit" ];
 
     constructor(input) {
         super(input);
@@ -51,36 +52,57 @@ export default class metricParser extends antlr4.Parser {
         this.symbolicNames = metricParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
+
+
+	file_() {
+	    let localctx = new File_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, metricParser.RULE_file_);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 16;
+	        this.uom();
+	        this.state = 17;
+	        this.match(metricParser.EOF);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
 
 
 
 	uom() {
 	    let localctx = new UomContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 0, metricParser.RULE_uom);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 2, metricParser.RULE_uom);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 14;
-	        this.measure();
 	        this.state = 19;
+	        this.measure();
+	        this.state = 24;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===metricParser.T__0 || _la===metricParser.T__1) {
-	            this.state = 15;
+	        while(_la===1 || _la===2) {
+	            this.state = 20;
 	            _la = this._input.LA(1);
-	            if(!(_la===metricParser.T__0 || _la===metricParser.T__1)) {
+	            if(!(_la===1 || _la===2)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 16;
-	            this.measure();
 	            this.state = 21;
+	            this.measure();
+	            this.state = 26;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -102,25 +124,25 @@ export default class metricParser extends antlr4.Parser {
 
 	measure() {
 	    let localctx = new MeasureContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 2, metricParser.RULE_measure);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 4, metricParser.RULE_measure);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 23;
+	        this.state = 28;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        if(la_===1) {
-	            this.state = 22;
+	            this.state = 27;
 	            this.prefix_();
 
 	        }
-	        this.state = 25;
+	        this.state = 30;
 	        this.unit();
-	        this.state = 27;
+	        this.state = 32;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===metricParser.T__2) {
-	            this.state = 26;
+	        if(_la===3) {
+	            this.state = 31;
 	            this.exponent();
 	        }
 
@@ -142,12 +164,12 @@ export default class metricParser extends antlr4.Parser {
 
 	exponent() {
 	    let localctx = new ExponentContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 4, metricParser.RULE_exponent);
+	    this.enterRule(localctx, 6, metricParser.RULE_exponent);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 29;
+	        this.state = 34;
 	        this.match(metricParser.T__2);
-	        this.state = 30;
+	        this.state = 35;
 	        this.match(metricParser.INTE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -167,13 +189,13 @@ export default class metricParser extends antlr4.Parser {
 
 	prefix_() {
 	    let localctx = new Prefix_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 6, metricParser.RULE_prefix_);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 8, metricParser.RULE_prefix_);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 32;
+	        this.state = 37;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << metricParser.T__3) | (1 << metricParser.T__4) | (1 << metricParser.T__5) | (1 << metricParser.T__6) | (1 << metricParser.T__7) | (1 << metricParser.T__8) | (1 << metricParser.T__9) | (1 << metricParser.T__10) | (1 << metricParser.T__11) | (1 << metricParser.T__12) | (1 << metricParser.T__13) | (1 << metricParser.T__14) | (1 << metricParser.T__15) | (1 << metricParser.T__16) | (1 << metricParser.T__17) | (1 << metricParser.T__18))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1048560) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -198,46 +220,46 @@ export default class metricParser extends antlr4.Parser {
 
 	unit() {
 	    let localctx = new UnitContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 8, metricParser.RULE_unit);
+	    this.enterRule(localctx, 10, metricParser.RULE_unit);
 	    try {
-	        this.state = 36;
+	        this.state = 41;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case metricParser.T__13:
-	        case metricParser.T__19:
-	        case metricParser.T__20:
-	        case metricParser.T__21:
-	        case metricParser.T__22:
-	        case metricParser.T__23:
-	        case metricParser.T__24:
+	        case 14:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 34;
+	            this.state = 39;
 	            this.baseunit();
 	            break;
-	        case metricParser.T__5:
-	        case metricParser.T__25:
-	        case metricParser.T__26:
-	        case metricParser.T__27:
-	        case metricParser.T__28:
-	        case metricParser.T__29:
-	        case metricParser.T__30:
-	        case metricParser.T__31:
-	        case metricParser.T__32:
-	        case metricParser.T__33:
-	        case metricParser.T__34:
-	        case metricParser.T__35:
-	        case metricParser.T__36:
-	        case metricParser.T__37:
-	        case metricParser.T__38:
-	        case metricParser.T__39:
-	        case metricParser.T__40:
-	        case metricParser.T__41:
-	        case metricParser.T__42:
-	        case metricParser.T__43:
-	        case metricParser.T__44:
-	        case metricParser.T__45:
+	        case 6:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 35;
+	            this.state = 40;
 	            this.derivedunit();
 	            break;
 	        default:
@@ -261,13 +283,13 @@ export default class metricParser extends antlr4.Parser {
 
 	baseunit() {
 	    let localctx = new BaseunitContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 10, metricParser.RULE_baseunit);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 12, metricParser.RULE_baseunit);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 38;
+	        this.state = 43;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << metricParser.T__13) | (1 << metricParser.T__19) | (1 << metricParser.T__20) | (1 << metricParser.T__21) | (1 << metricParser.T__22) | (1 << metricParser.T__23) | (1 << metricParser.T__24))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 66076672) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -292,13 +314,13 @@ export default class metricParser extends antlr4.Parser {
 
 	derivedunit() {
 	    let localctx = new DerivedunitContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 12, metricParser.RULE_derivedunit);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 14, metricParser.RULE_derivedunit);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 40;
+	        this.state = 45;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << metricParser.T__5) | (1 << metricParser.T__25) | (1 << metricParser.T__26) | (1 << metricParser.T__27) | (1 << metricParser.T__28) | (1 << metricParser.T__29) | (1 << metricParser.T__30))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (metricParser.T__31 - 32)) | (1 << (metricParser.T__32 - 32)) | (1 << (metricParser.T__33 - 32)) | (1 << (metricParser.T__34 - 32)) | (1 << (metricParser.T__35 - 32)) | (1 << (metricParser.T__36 - 32)) | (1 << (metricParser.T__37 - 32)) | (1 << (metricParser.T__38 - 32)) | (1 << (metricParser.T__39 - 32)) | (1 << (metricParser.T__40 - 32)) | (1 << (metricParser.T__41 - 32)) | (1 << (metricParser.T__42 - 32)) | (1 << (metricParser.T__43 - 32)) | (1 << (metricParser.T__44 - 32)) | (1 << (metricParser.T__45 - 32)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4227858496) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 32767) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -372,13 +394,53 @@ metricParser.T__45 = 46;
 metricParser.INTE = 47;
 metricParser.WS = 48;
 
-metricParser.RULE_uom = 0;
-metricParser.RULE_measure = 1;
-metricParser.RULE_exponent = 2;
-metricParser.RULE_prefix_ = 3;
-metricParser.RULE_unit = 4;
-metricParser.RULE_baseunit = 5;
-metricParser.RULE_derivedunit = 6;
+metricParser.RULE_file_ = 0;
+metricParser.RULE_uom = 1;
+metricParser.RULE_measure = 2;
+metricParser.RULE_exponent = 3;
+metricParser.RULE_prefix_ = 4;
+metricParser.RULE_unit = 5;
+metricParser.RULE_baseunit = 6;
+metricParser.RULE_derivedunit = 7;
+
+class File_Context extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = metricParser.RULE_file_;
+    }
+
+	uom() {
+	    return this.getTypedRuleContext(UomContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(metricParser.EOF, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof metricListener ) {
+	        listener.enterFile_(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof metricListener ) {
+	        listener.exitFile_(this);
+		}
+	}
+
+
+}
+
+
 
 class UomContext extends antlr4.ParserRuleContext {
 
@@ -636,6 +698,7 @@ class DerivedunitContext extends antlr4.ParserRuleContext {
 
 
 
+metricParser.File_Context = File_Context; 
 metricParser.UomContext = UomContext; 
 metricParser.MeasureContext = MeasureContext; 
 metricParser.ExponentContext = ExponentContext; 
@@ -643,3 +706,12 @@ metricParser.Prefix_Context = Prefix_Context;
 metricParser.UnitContext = UnitContext; 
 metricParser.BaseunitContext = BaseunitContext; 
 metricParser.DerivedunitContext = DerivedunitContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

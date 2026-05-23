@@ -1,4 +1,4 @@
-// Generated from ./wat/WatParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/wat/WatParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import WatParserListener from './WatParserListener.js';
@@ -410,21 +410,17 @@ export default class WatParser extends antlr4.Parser {
         this.symbolicNames = WatParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	value() {
 	    let localctx = new ValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, WatParser.RULE_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 134;
 	        _la = this._input.LA(1);
-	        if(!(_la===WatParser.INT || _la===WatParser.FLOAT)) {
+	        if(!(_la===4 || _la===5)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -523,12 +519,12 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 148;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WatParser.VALUE_TYPE:
+	        case 7:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 142;
 	            this.value_type();
 	            break;
-	        case WatParser.LPAR:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 143;
 	            this.match(WatParser.LPAR);
@@ -590,13 +586,13 @@ export default class WatParser extends antlr4.Parser {
 	func_type() {
 	    let localctx = new Func_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, WatParser.RULE_func_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 179;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.LPAR) {
+	        while(_la===1) {
 	            this.state = 155;
 	            this.match(WatParser.LPAR);
 	            this.state = 174;
@@ -609,7 +605,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 160;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 157;
 	                    this.value_type();
 	                    this.state = 162;
@@ -624,7 +620,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 167;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 164;
 	                    this.value_type();
 	                    this.state = 169;
@@ -668,7 +664,7 @@ export default class WatParser extends antlr4.Parser {
 	table_type() {
 	    let localctx = new Table_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, WatParser.RULE_table_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 182;
@@ -676,7 +672,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 184;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.NAT) {
+	        if(_la===3) {
 	            this.state = 183;
 	            this.match(WatParser.NAT);
 	        }
@@ -702,7 +698,7 @@ export default class WatParser extends antlr4.Parser {
 	memory_type() {
 	    let localctx = new Memory_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, WatParser.RULE_memory_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 188;
@@ -710,7 +706,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 190;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.NAT) {
+	        if(_la===3) {
 	            this.state = 189;
 	            this.match(WatParser.NAT);
 	        }
@@ -763,12 +759,12 @@ export default class WatParser extends antlr4.Parser {
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, WatParser.RULE_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 197;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << WatParser.NAT) | (1 << WatParser.INT) | (1 << WatParser.FLOAT))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 56) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -794,12 +790,12 @@ export default class WatParser extends antlr4.Parser {
 	var_() {
 	    let localctx = new Var_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, WatParser.RULE_var_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 199;
 	        _la = this._input.LA(1);
-	        if(!(_la===WatParser.NAT || _la===WatParser.VAR)) {
+	        if(!(_la===3 || _la===74)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -852,47 +848,47 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 207;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WatParser.CONST:
-	        case WatParser.NOP:
-	        case WatParser.UNREACHABLE:
-	        case WatParser.DROP:
-	        case WatParser.BR:
-	        case WatParser.BR_IF:
-	        case WatParser.BR_TABLE:
-	        case WatParser.RETURN:
-	        case WatParser.SELECT:
-	        case WatParser.CALL:
-	        case WatParser.LOCAL_GET:
-	        case WatParser.LOCAL_SET:
-	        case WatParser.LOCAL_TEE:
-	        case WatParser.GLOBAL_GET:
-	        case WatParser.GLOBAL_SET:
-	        case WatParser.LOAD:
-	        case WatParser.STORE:
-	        case WatParser.UNARY:
-	        case WatParser.BINARY:
-	        case WatParser.TEST:
-	        case WatParser.COMPARE:
-	        case WatParser.CONVERT:
-	        case WatParser.MEMORY_SIZE:
-	        case WatParser.MEMORY_GROW:
+	        case 8:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 24:
+	        case 25:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 203;
 	            this.plain_instr();
 	            break;
-	        case WatParser.CALL_INDIRECT:
+	        case 26:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 204;
 	            this.call_instr_instr();
 	            break;
-	        case WatParser.BLOCK:
-	        case WatParser.LOOP:
-	        case WatParser.IF:
+	        case 14:
+	        case 15:
+	        case 21:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 205;
 	            this.block_instr();
 	            break;
-	        case WatParser.LPAR:
+	        case 1:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 206;
 	            this.expr();
@@ -919,46 +915,46 @@ export default class WatParser extends antlr4.Parser {
 	plain_instr() {
 	    let localctx = new Plain_instrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, WatParser.RULE_plain_instr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 259;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WatParser.UNREACHABLE:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 209;
 	            this.match(WatParser.UNREACHABLE);
 	            break;
-	        case WatParser.NOP:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 210;
 	            this.match(WatParser.NOP);
 	            break;
-	        case WatParser.DROP:
+	        case 13:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 211;
 	            this.match(WatParser.DROP);
 	            break;
-	        case WatParser.SELECT:
+	        case 24:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 212;
 	            this.match(WatParser.SELECT);
 	            break;
-	        case WatParser.BR:
+	        case 17:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 213;
 	            this.match(WatParser.BR);
 	            this.state = 214;
 	            this.var_();
 	            break;
-	        case WatParser.BR_IF:
+	        case 18:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 215;
 	            this.match(WatParser.BR_IF);
 	            this.state = 216;
 	            this.var_();
 	            break;
-	        case WatParser.BR_TABLE:
+	        case 19:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 217;
 	            this.match(WatParser.BR_TABLE);
@@ -971,63 +967,63 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 221; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===WatParser.NAT || _la===WatParser.VAR);
+	            } while(_la===3 || _la===74);
 	            break;
-	        case WatParser.RETURN:
+	        case 20:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 223;
 	            this.match(WatParser.RETURN);
 	            break;
-	        case WatParser.CALL:
+	        case 25:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 224;
 	            this.match(WatParser.CALL);
 	            this.state = 225;
 	            this.var_();
 	            break;
-	        case WatParser.LOCAL_GET:
+	        case 27:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 226;
 	            this.match(WatParser.LOCAL_GET);
 	            this.state = 227;
 	            this.var_();
 	            break;
-	        case WatParser.LOCAL_SET:
+	        case 28:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 228;
 	            this.match(WatParser.LOCAL_SET);
 	            this.state = 229;
 	            this.var_();
 	            break;
-	        case WatParser.LOCAL_TEE:
+	        case 29:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 230;
 	            this.match(WatParser.LOCAL_TEE);
 	            this.state = 231;
 	            this.var_();
 	            break;
-	        case WatParser.GLOBAL_GET:
+	        case 30:
 	            this.enterOuterAlt(localctx, 13);
 	            this.state = 232;
 	            this.match(WatParser.GLOBAL_GET);
 	            this.state = 233;
 	            this.var_();
 	            break;
-	        case WatParser.GLOBAL_SET:
+	        case 31:
 	            this.enterOuterAlt(localctx, 14);
 	            this.state = 234;
 	            this.match(WatParser.GLOBAL_SET);
 	            this.state = 235;
 	            this.var_();
 	            break;
-	        case WatParser.LOAD:
+	        case 32:
 	            this.enterOuterAlt(localctx, 15);
 	            this.state = 236;
 	            this.match(WatParser.LOAD);
 	            this.state = 238;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.OFFSET_EQ_NAT) {
+	            if(_la===34) {
 	                this.state = 237;
 	                this.match(WatParser.OFFSET_EQ_NAT);
 	            }
@@ -1035,20 +1031,20 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 241;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.ALIGN_EQ_NAT) {
+	            if(_la===35) {
 	                this.state = 240;
 	                this.match(WatParser.ALIGN_EQ_NAT);
 	            }
 
 	            break;
-	        case WatParser.STORE:
+	        case 33:
 	            this.enterOuterAlt(localctx, 16);
 	            this.state = 243;
 	            this.match(WatParser.STORE);
 	            this.state = 245;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.OFFSET_EQ_NAT) {
+	            if(_la===34) {
 	                this.state = 244;
 	                this.match(WatParser.OFFSET_EQ_NAT);
 	            }
@@ -1056,50 +1052,50 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 248;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.ALIGN_EQ_NAT) {
+	            if(_la===35) {
 	                this.state = 247;
 	                this.match(WatParser.ALIGN_EQ_NAT);
 	            }
 
 	            break;
-	        case WatParser.MEMORY_SIZE:
+	        case 41:
 	            this.enterOuterAlt(localctx, 17);
 	            this.state = 250;
 	            this.match(WatParser.MEMORY_SIZE);
 	            break;
-	        case WatParser.MEMORY_GROW:
+	        case 42:
 	            this.enterOuterAlt(localctx, 18);
 	            this.state = 251;
 	            this.match(WatParser.MEMORY_GROW);
 	            break;
-	        case WatParser.CONST:
+	        case 8:
 	            this.enterOuterAlt(localctx, 19);
 	            this.state = 252;
 	            this.match(WatParser.CONST);
 	            this.state = 253;
 	            this.literal();
 	            break;
-	        case WatParser.TEST:
+	        case 38:
 	            this.enterOuterAlt(localctx, 20);
 	            this.state = 254;
 	            this.match(WatParser.TEST);
 	            break;
-	        case WatParser.COMPARE:
+	        case 39:
 	            this.enterOuterAlt(localctx, 21);
 	            this.state = 255;
 	            this.match(WatParser.COMPARE);
 	            break;
-	        case WatParser.UNARY:
+	        case 36:
 	            this.enterOuterAlt(localctx, 22);
 	            this.state = 256;
 	            this.match(WatParser.UNARY);
 	            break;
-	        case WatParser.BINARY:
+	        case 37:
 	            this.enterOuterAlt(localctx, 23);
 	            this.state = 257;
 	            this.match(WatParser.BINARY);
 	            break;
-	        case WatParser.CONVERT:
+	        case 40:
 	            this.enterOuterAlt(localctx, 24);
 	            this.state = 258;
 	            this.match(WatParser.CONVERT);
@@ -1159,7 +1155,7 @@ export default class WatParser extends antlr4.Parser {
 	call_instr_params() {
 	    let localctx = new Call_instr_paramsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, WatParser.RULE_call_instr_params);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 278;
@@ -1174,7 +1170,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 272;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 269;
 	                    this.value_type();
 	                    this.state = 274;
@@ -1192,7 +1188,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 292;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.LPAR) {
+	        while(_la===1) {
 	            this.state = 281;
 	            this.match(WatParser.LPAR);
 	            this.state = 282;
@@ -1200,7 +1196,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 286;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.VALUE_TYPE) {
+	            while(_la===7) {
 	                this.state = 283;
 	                this.value_type();
 	                this.state = 288;
@@ -1265,7 +1261,7 @@ export default class WatParser extends antlr4.Parser {
 	call_instr_params_instr() {
 	    let localctx = new Call_instr_params_instrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, WatParser.RULE_call_instr_params_instr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 312;
@@ -1280,7 +1276,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 306;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 303;
 	                    this.value_type();
 	                    this.state = 308;
@@ -1316,7 +1312,7 @@ export default class WatParser extends antlr4.Parser {
 	call_instr_results_instr() {
 	    let localctx = new Call_instr_results_instrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, WatParser.RULE_call_instr_results_instr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 328;
@@ -1331,7 +1327,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 322;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 319;
 	                    this.value_type();
 	                    this.state = 324;
@@ -1367,17 +1363,17 @@ export default class WatParser extends antlr4.Parser {
 	block_instr() {
 	    let localctx = new Block_instrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, WatParser.RULE_block_instr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 358;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WatParser.BLOCK:
-	        case WatParser.LOOP:
+	        case 14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 333;
 	            _la = this._input.LA(1);
-	            if(!(_la===WatParser.BLOCK || _la===WatParser.LOOP)) {
+	            if(!(_la===14 || _la===15)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1387,7 +1383,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 335;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 334;
 	                this.bind_var();
 	            }
@@ -1399,20 +1395,20 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 340;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 339;
 	                this.bind_var();
 	            }
 
 	            break;
-	        case WatParser.IF:
+	        case 21:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 342;
 	            this.match(WatParser.IF);
 	            this.state = 344;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 343;
 	                this.bind_var();
 	            }
@@ -1422,13 +1418,13 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 352;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.ELSE) {
+	            if(_la===23) {
 	                this.state = 347;
 	                this.match(WatParser.ELSE);
 	                this.state = 349;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===WatParser.VAR) {
+	                if(_la===74) {
 	                    this.state = 348;
 	                    this.bind_var();
 	                }
@@ -1442,7 +1438,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 356;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 355;
 	                this.bind_var();
 	            }
@@ -1557,42 +1553,42 @@ export default class WatParser extends antlr4.Parser {
 	expr1() {
 	    let localctx = new Expr1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, WatParser.RULE_expr1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 398;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case WatParser.CONST:
-	        case WatParser.NOP:
-	        case WatParser.UNREACHABLE:
-	        case WatParser.DROP:
-	        case WatParser.BR:
-	        case WatParser.BR_IF:
-	        case WatParser.BR_TABLE:
-	        case WatParser.RETURN:
-	        case WatParser.SELECT:
-	        case WatParser.CALL:
-	        case WatParser.LOCAL_GET:
-	        case WatParser.LOCAL_SET:
-	        case WatParser.LOCAL_TEE:
-	        case WatParser.GLOBAL_GET:
-	        case WatParser.GLOBAL_SET:
-	        case WatParser.LOAD:
-	        case WatParser.STORE:
-	        case WatParser.UNARY:
-	        case WatParser.BINARY:
-	        case WatParser.TEST:
-	        case WatParser.COMPARE:
-	        case WatParser.CONVERT:
-	        case WatParser.MEMORY_SIZE:
-	        case WatParser.MEMORY_GROW:
+	        case 8:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 24:
+	        case 25:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 374;
 	            this.plain_instr();
 	            this.state = 378;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.LPAR) {
+	            while(_la===1) {
 	                this.state = 375;
 	                this.expr();
 	                this.state = 380;
@@ -1600,21 +1596,21 @@ export default class WatParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case WatParser.CALL_INDIRECT:
+	        case 26:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 381;
 	            this.match(WatParser.CALL_INDIRECT);
 	            this.state = 382;
 	            this.call_expr_type();
 	            break;
-	        case WatParser.BLOCK:
+	        case 14:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 383;
 	            this.match(WatParser.BLOCK);
 	            this.state = 385;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 384;
 	                this.bind_var();
 	            }
@@ -1622,14 +1618,14 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 387;
 	            this.block();
 	            break;
-	        case WatParser.LOOP:
+	        case 15:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 388;
 	            this.match(WatParser.LOOP);
 	            this.state = 390;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 389;
 	                this.bind_var();
 	            }
@@ -1637,14 +1633,14 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 392;
 	            this.block();
 	            break;
-	        case WatParser.IF:
+	        case 21:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 393;
 	            this.match(WatParser.IF);
 	            this.state = 395;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 394;
 	                this.bind_var();
 	            }
@@ -1705,7 +1701,7 @@ export default class WatParser extends antlr4.Parser {
 	call_expr_params() {
 	    let localctx = new Call_expr_paramsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, WatParser.RULE_call_expr_params);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 416;
@@ -1720,7 +1716,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 410;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 407;
 	                    this.value_type();
 	                    this.state = 412;
@@ -1756,7 +1752,7 @@ export default class WatParser extends antlr4.Parser {
 	call_expr_results() {
 	    let localctx = new Call_expr_resultsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, WatParser.RULE_call_expr_results);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 432;
@@ -1771,7 +1767,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 426;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 423;
 	                    this.value_type();
 	                    this.state = 428;
@@ -1789,7 +1785,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 438;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.LPAR) {
+	        while(_la===1) {
 	            this.state = 435;
 	            this.expr();
 	            this.state = 440;
@@ -1815,7 +1811,7 @@ export default class WatParser extends antlr4.Parser {
 	if_block() {
 	    let localctx = new If_blockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, WatParser.RULE_if_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 461;
 	        this._errHandler.sync(this);
@@ -1855,7 +1851,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 459;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.LPAR) {
+	            if(_la===1) {
 	                this.state = 454;
 	                this.match(WatParser.LPAR);
 	                this.state = 455;
@@ -1888,7 +1884,7 @@ export default class WatParser extends antlr4.Parser {
 	instr_list() {
 	    let localctx = new Instr_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, WatParser.RULE_instr_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 466;
@@ -1907,7 +1903,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 470;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.CALL_INDIRECT) {
+	        if(_la===26) {
 	            this.state = 469;
 	            this.call_instr();
 	        }
@@ -1954,7 +1950,7 @@ export default class WatParser extends antlr4.Parser {
 	func_() {
 	    let localctx = new Func_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, WatParser.RULE_func_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 474;
@@ -1964,7 +1960,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 477;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.VAR) {
+	        if(_la===74) {
 	            this.state = 476;
 	            this.bind_var();
 	        }
@@ -2055,7 +2051,7 @@ export default class WatParser extends antlr4.Parser {
 	func_fields_import() {
 	    let localctx = new Func_fields_importContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, WatParser.RULE_func_fields_import);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 512;
@@ -2070,7 +2066,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 502;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.VALUE_TYPE) {
+	            while(_la===7) {
 	                this.state = 499;
 	                this.value_type();
 	                this.state = 504;
@@ -2116,13 +2112,13 @@ export default class WatParser extends antlr4.Parser {
 	func_fields_import_result() {
 	    let localctx = new Func_fields_import_resultContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, WatParser.RULE_func_fields_import_result);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 527;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.LPAR) {
+	        while(_la===1) {
 	            this.state = 516;
 	            this.match(WatParser.LPAR);
 	            this.state = 517;
@@ -2130,7 +2126,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 521;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.VALUE_TYPE) {
+	            while(_la===7) {
 	                this.state = 518;
 	                this.value_type();
 	                this.state = 523;
@@ -2162,7 +2158,7 @@ export default class WatParser extends antlr4.Parser {
 	func_fields_body() {
 	    let localctx = new Func_fields_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, WatParser.RULE_func_fields_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 547;
@@ -2182,7 +2178,7 @@ export default class WatParser extends antlr4.Parser {
 	                    this.state = 535;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===WatParser.VALUE_TYPE) {
+	                    while(_la===7) {
 	                        this.state = 532;
 	                        this.value_type();
 	                        this.state = 537;
@@ -2234,7 +2230,7 @@ export default class WatParser extends antlr4.Parser {
 	func_result_body() {
 	    let localctx = new Func_result_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, WatParser.RULE_func_result_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 563;
@@ -2249,7 +2245,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 557;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===WatParser.VALUE_TYPE) {
+	                while(_la===7) {
 	                    this.state = 554;
 	                    this.value_type();
 	                    this.state = 559;
@@ -2285,7 +2281,7 @@ export default class WatParser extends antlr4.Parser {
 	func_body() {
 	    let localctx = new Func_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, WatParser.RULE_func_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 585;
@@ -2305,7 +2301,7 @@ export default class WatParser extends antlr4.Parser {
 	                    this.state = 573;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===WatParser.VALUE_TYPE) {
+	                    while(_la===7) {
 	                        this.state = 570;
 	                        this.value_type();
 	                        this.state = 575;
@@ -2400,7 +2396,7 @@ export default class WatParser extends antlr4.Parser {
 	elem() {
 	    let localctx = new ElemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, WatParser.RULE_elem);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 598;
@@ -2410,7 +2406,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 601;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.NAT || _la===WatParser.VAR) {
+	        if(_la===3 || _la===74) {
 	            this.state = 600;
 	            this.var_();
 	        }
@@ -2420,7 +2416,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 607;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.NAT || _la===WatParser.VAR) {
+	        while(_la===3 || _la===74) {
 	            this.state = 604;
 	            this.var_();
 	            this.state = 609;
@@ -2448,7 +2444,7 @@ export default class WatParser extends antlr4.Parser {
 	table() {
 	    let localctx = new TableContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, WatParser.RULE_table);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 612;
@@ -2458,7 +2454,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 615;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.VAR) {
+	        if(_la===74) {
 	            this.state = 614;
 	            this.bind_var();
 	        }
@@ -2486,7 +2482,7 @@ export default class WatParser extends antlr4.Parser {
 	table_fields() {
 	    let localctx = new Table_fieldsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, WatParser.RULE_table_fields);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 638;
 	        this._errHandler.sync(this);
@@ -2525,7 +2521,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 633;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.NAT || _la===WatParser.VAR) {
+	            while(_la===3 || _la===74) {
 	                this.state = 630;
 	                this.var_();
 	                this.state = 635;
@@ -2556,7 +2552,7 @@ export default class WatParser extends antlr4.Parser {
 	data() {
 	    let localctx = new DataContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, WatParser.RULE_data);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 640;
@@ -2566,7 +2562,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 643;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.NAT || _la===WatParser.VAR) {
+	        if(_la===3 || _la===74) {
 	            this.state = 642;
 	            this.var_();
 	        }
@@ -2576,7 +2572,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 649;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.STRING_) {
+	        while(_la===6) {
 	            this.state = 646;
 	            this.match(WatParser.STRING_);
 	            this.state = 651;
@@ -2604,7 +2600,7 @@ export default class WatParser extends antlr4.Parser {
 	memory() {
 	    let localctx = new MemoryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, WatParser.RULE_memory);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 654;
@@ -2614,7 +2610,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 657;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.VAR) {
+	        if(_la===74) {
 	            this.state = 656;
 	            this.bind_var();
 	        }
@@ -2642,7 +2638,7 @@ export default class WatParser extends antlr4.Parser {
 	memory_fields() {
 	    let localctx = new Memory_fieldsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, WatParser.RULE_memory_fields);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 678;
 	        this._errHandler.sync(this);
@@ -2679,7 +2675,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 674;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.STRING_) {
+	            while(_la===6) {
 	                this.state = 671;
 	                this.match(WatParser.STRING_);
 	                this.state = 676;
@@ -2710,7 +2706,7 @@ export default class WatParser extends antlr4.Parser {
 	sglobal() {
 	    let localctx = new SglobalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, WatParser.RULE_sglobal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 680;
@@ -2720,7 +2716,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 683;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.VAR) {
+	        if(_la===74) {
 	            this.state = 682;
 	            this.bind_var();
 	        }
@@ -2797,7 +2793,7 @@ export default class WatParser extends antlr4.Parser {
 	import_desc() {
 	    let localctx = new Import_descContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, WatParser.RULE_import_desc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 739;
 	        this._errHandler.sync(this);
@@ -2812,7 +2808,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 702;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 701;
 	                this.bind_var();
 	            }
@@ -2832,7 +2828,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 710;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 709;
 	                this.bind_var();
 	            }
@@ -2852,7 +2848,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 718;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 717;
 	                this.bind_var();
 	            }
@@ -2872,7 +2868,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 726;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 725;
 	                this.bind_var();
 	            }
@@ -2892,7 +2888,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 734;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 733;
 	                this.bind_var();
 	            }
@@ -3143,7 +3139,7 @@ export default class WatParser extends antlr4.Parser {
 	type_def() {
 	    let localctx = new Type_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, WatParser.RULE_type_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 789;
@@ -3153,7 +3149,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 792;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.VAR) {
+	        if(_la===74) {
 	            this.state = 791;
 	            this.bind_var();
 	        }
@@ -3295,7 +3291,7 @@ export default class WatParser extends antlr4.Parser {
 	module_() {
 	    let localctx = new Module_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, WatParser.RULE_module_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 814;
@@ -3305,7 +3301,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 817;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===WatParser.VAR) {
+	        if(_la===74) {
 	            this.state = 816;
 	            this.match(WatParser.VAR);
 	        }
@@ -3313,7 +3309,7 @@ export default class WatParser extends antlr4.Parser {
 	        this.state = 822;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.LPAR) {
+	        while(_la===1) {
 	            this.state = 819;
 	            this.module_field();
 	            this.state = 824;
@@ -3341,7 +3337,7 @@ export default class WatParser extends antlr4.Parser {
 	script_module() {
 	    let localctx = new Script_moduleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 116, WatParser.RULE_script_module);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 841;
 	        this._errHandler.sync(this);
@@ -3362,14 +3358,14 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 831;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 830;
 	                this.match(WatParser.VAR);
 	            }
 
 	            this.state = 833;
 	            _la = this._input.LA(1);
-	            if(!(_la===WatParser.BIN || _la===WatParser.QUOTE)) {
+	            if(!(_la===58 || _la===59)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3379,7 +3375,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 837;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.STRING_) {
+	            while(_la===6) {
 	                this.state = 834;
 	                this.match(WatParser.STRING_);
 	                this.state = 839;
@@ -3410,7 +3406,7 @@ export default class WatParser extends antlr4.Parser {
 	action_() {
 	    let localctx = new Action_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, WatParser.RULE_action_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 860;
 	        this._errHandler.sync(this);
@@ -3425,7 +3421,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 846;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 845;
 	                this.match(WatParser.VAR);
 	            }
@@ -3447,7 +3443,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 855;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 854;
 	                this.match(WatParser.VAR);
 	            }
@@ -3625,7 +3621,7 @@ export default class WatParser extends antlr4.Parser {
 	cmd() {
 	    let localctx = new CmdContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 122, WatParser.RULE_cmd);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 928;
 	        this._errHandler.sync(this);
@@ -3660,7 +3656,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 923;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 922;
 	                this.match(WatParser.VAR);
 	            }
@@ -3695,7 +3691,7 @@ export default class WatParser extends antlr4.Parser {
 	meta() {
 	    let localctx = new MetaContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, WatParser.RULE_meta);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 962;
 	        this._errHandler.sync(this);
@@ -3710,7 +3706,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 933;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 932;
 	                this.match(WatParser.VAR);
 	            }
@@ -3718,7 +3714,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 938;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.LPAR) {
+	            while(_la===1) {
 	                this.state = 935;
 	                this.cmd();
 	                this.state = 940;
@@ -3738,7 +3734,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 945;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 944;
 	                this.match(WatParser.VAR);
 	            }
@@ -3758,7 +3754,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 952;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 951;
 	                this.match(WatParser.VAR);
 	            }
@@ -3778,7 +3774,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 959;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===WatParser.VAR) {
+	            if(_la===74) {
 	                this.state = 958;
 	                this.match(WatParser.VAR);
 	            }
@@ -3836,13 +3832,13 @@ export default class WatParser extends antlr4.Parser {
 	const_list() {
 	    let localctx = new Const_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 128, WatParser.RULE_const_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 972;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===WatParser.LPAR) {
+	        while(_la===1) {
 	            this.state = 969;
 	            this.wconst();
 	            this.state = 974;
@@ -3868,7 +3864,7 @@ export default class WatParser extends antlr4.Parser {
 	script() {
 	    let localctx = new ScriptContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 130, WatParser.RULE_script);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 989;
 	        this._errHandler.sync(this);
@@ -3879,7 +3875,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 978;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.LPAR) {
+	            while(_la===1) {
 	                this.state = 975;
 	                this.cmd();
 	                this.state = 980;
@@ -3901,7 +3897,7 @@ export default class WatParser extends antlr4.Parser {
 	                this.state = 985; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===WatParser.LPAR);
+	            } while(_la===1);
 	            this.state = 987;
 	            this.match(WatParser.EOF);
 	            break;
@@ -3926,7 +3922,7 @@ export default class WatParser extends antlr4.Parser {
 	module() {
 	    let localctx = new ModuleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 132, WatParser.RULE_module);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1001;
 	        this._errHandler.sync(this);
@@ -3945,7 +3941,7 @@ export default class WatParser extends antlr4.Parser {
 	            this.state = 997;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===WatParser.LPAR) {
+	            while(_la===1) {
 	                this.state = 994;
 	                this.module_field();
 	                this.state = 999;
@@ -8174,3 +8170,12 @@ WatParser.WconstContext = WconstContext;
 WatParser.Const_listContext = Const_listContext; 
 WatParser.ScriptContext = ScriptContext; 
 WatParser.ModuleContext = ModuleContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

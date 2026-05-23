@@ -1,4 +1,4 @@
-// Generated from ./lpc/LPC.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/lpc/LPC.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import LPCListener from './LPCListener.js';
@@ -379,10 +379,6 @@ export default class LPCParser extends antlr4.Parser {
         this.ruleNames = LPCParser.ruleNames;
         this.literalNames = LPCParser.literalNames;
         this.symbolicNames = LPCParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
     sempred(localctx, ruleIndex, predIndex) {
@@ -848,17 +844,17 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 193;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.T__7:
-	        case LPCParser.BasicType:
-	        case LPCParser.Class:
-	        case LPCParser.Colon:
-	        case LPCParser.DefinedName:
-	        case LPCParser.Inherit:
-	        case LPCParser.Identifier:
+	        case 8:
+	        case 36:
+	        case 39:
+	        case 40:
+	        case 43:
+	        case 48:
+	        case 73:
 	            this.enterOuterAlt(localctx, 1);
 
 	            break;
-	        case LPCParser.TypeModifier:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 191;
 	            this.match(LPCParser.TypeModifier);
@@ -1133,7 +1129,7 @@ export default class LPCParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 26;
 	    this.enterRecursionRule(localctx, 26, LPCParser.RULE_expr0, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 270;
@@ -1419,7 +1415,7 @@ export default class LPCParser extends antlr4.Parser {
 	                    }
 	                    this.state = 312;
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << LPCParser.T__7) | (1 << LPCParser.T__8) | (1 << LPCParser.T__9))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1792) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1439,7 +1435,7 @@ export default class LPCParser extends antlr4.Parser {
 	                    }
 	                    this.state = 315;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===LPCParser.T__10 || _la===LPCParser.T__11)) {
+	                    if(!(_la===11 || _la===12)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1505,12 +1501,12 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 330;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 325;
 	            this.block();
 	            break;
-	        case LPCParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 326;
 	            this.match(LPCParser.T__1);
@@ -1674,11 +1670,11 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 366;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
 
 	            break;
-	        case LPCParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 362;
 	            this.match(LPCParser.T__5);
@@ -1765,12 +1761,12 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 378;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.BasicType:
+	        case 36:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 375;
 	            this.match(LPCParser.BasicType);
 	            break;
-	        case LPCParser.Class:
+	        case 39:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 376;
 	            this.match(LPCParser.Class);
@@ -2505,11 +2501,11 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 553;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.String:
+	        case 74:
 	            this.state = 548;
 	            this.string_con2(0);
 	            break;
-	        case LPCParser.T__1:
+	        case 2:
 	            this.state = 549;
 	            this.match(LPCParser.T__1);
 	            this.state = 550;
@@ -2920,12 +2916,12 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 643;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 641;
 	            this.block();
 	            break;
-	        case LPCParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 642;
 	            this.match(LPCParser.T__0);
@@ -3138,12 +3134,12 @@ export default class LPCParser extends antlr4.Parser {
 	new_local_name() {
 	    let localctx = new New_local_nameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, LPCParser.RULE_new_local_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 679;
 	        _la = this._input.LA(1);
-	        if(!(_la===LPCParser.DefinedName || _la===LPCParser.Identifier)) {
+	        if(!(_la===43 || _la===73)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3173,91 +3169,91 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 697;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.T__1:
-	        case LPCParser.T__11:
-	        case LPCParser.T__12:
-	        case LPCParser.T__13:
-	        case LPCParser.PlusPlus:
-	        case LPCParser.MinusMinus:
-	        case LPCParser.Not:
-	        case LPCParser.Arrow:
-	        case LPCParser.BasicType:
-	        case LPCParser.Catch:
-	        case LPCParser.ColonColon:
-	        case LPCParser.DefinedName:
-	        case LPCParser.Efun:
-	        case LPCParser.New:
-	        case LPCParser.ParseCommand:
-	        case LPCParser.SScanf:
-	        case LPCParser.MappingOpen:
-	        case LPCParser.ArrayOpen:
-	        case LPCParser.FunctionOpen:
-	        case LPCParser.Number:
-	        case LPCParser.Parameter:
-	        case LPCParser.Real:
-	        case LPCParser.Identifier:
-	        case LPCParser.String:
-	        case LPCParser.CharacterConstant:
-	        case LPCParser.TimeExpression:
+	        case 2:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 19:
+	        case 20:
+	        case 29:
+	        case 35:
+	        case 36:
+	        case 38:
+	        case 41:
+	        case 43:
+	        case 44:
+	        case 58:
+	        case 59:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 71:
+	        case 73:
+	        case 74:
+	        case 76:
+	        case 77:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 681;
 	            this.comma_expr(0);
 	            this.state = 682;
 	            this.match(LPCParser.T__0);
 	            break;
-	        case LPCParser.If:
+	        case 47:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 684;
 	            this.cond();
 	            break;
-	        case LPCParser.While:
+	        case 55:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 685;
 	            this.while_statement();
 	            break;
-	        case LPCParser.Do:
+	        case 56:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 686;
 	            this.do_statement();
 	            break;
-	        case LPCParser.Switch:
+	        case 53:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 687;
 	            this.switch_statement();
 	            break;
-	        case LPCParser.Return:
+	        case 49:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 688;
 	            this.returnStatement();
 	            break;
-	        case LPCParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 689;
 	            this.block();
 	            break;
-	        case LPCParser.For:
+	        case 50:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 690;
 	            this.for_loop();
 	            break;
-	        case LPCParser.Foreach:
+	        case 51:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 691;
 	            this.foreach_loop();
 	            break;
-	        case LPCParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 692;
 	            this.match(LPCParser.T__0);
 	            break;
-	        case LPCParser.Break:
+	        case 37:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 693;
 	            this.match(LPCParser.Break);
 	            this.state = 694;
 	            this.match(LPCParser.T__0);
 	            break;
-	        case LPCParser.Continue:
+	        case 42:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 695;
 	            this.match(LPCParser.Continue);
@@ -3507,58 +3503,58 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 755;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.Case:
-	        case LPCParser.Default:
+	        case 54:
+	        case 57:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 748;
 	            this.case_statement();
 	            this.state = 749;
 	            this.switch_block();
 	            break;
-	        case LPCParser.T__0:
-	        case LPCParser.T__1:
-	        case LPCParser.T__3:
-	        case LPCParser.T__11:
-	        case LPCParser.T__12:
-	        case LPCParser.T__13:
-	        case LPCParser.PlusPlus:
-	        case LPCParser.MinusMinus:
-	        case LPCParser.Not:
-	        case LPCParser.Arrow:
-	        case LPCParser.BasicType:
-	        case LPCParser.Break:
-	        case LPCParser.Catch:
-	        case LPCParser.ColonColon:
-	        case LPCParser.Continue:
-	        case LPCParser.DefinedName:
-	        case LPCParser.Efun:
-	        case LPCParser.If:
-	        case LPCParser.Return:
-	        case LPCParser.For:
-	        case LPCParser.Foreach:
-	        case LPCParser.Switch:
-	        case LPCParser.While:
-	        case LPCParser.Do:
-	        case LPCParser.New:
-	        case LPCParser.ParseCommand:
-	        case LPCParser.SScanf:
-	        case LPCParser.MappingOpen:
-	        case LPCParser.ArrayOpen:
-	        case LPCParser.FunctionOpen:
-	        case LPCParser.Number:
-	        case LPCParser.Parameter:
-	        case LPCParser.Real:
-	        case LPCParser.Identifier:
-	        case LPCParser.String:
-	        case LPCParser.CharacterConstant:
-	        case LPCParser.TimeExpression:
+	        case 1:
+	        case 2:
+	        case 4:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 19:
+	        case 20:
+	        case 29:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 47:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 53:
+	        case 55:
+	        case 56:
+	        case 58:
+	        case 59:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 71:
+	        case 73:
+	        case 74:
+	        case 76:
+	        case 77:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 751;
 	            this.statement();
 	            this.state = 752;
 	            this.switch_block();
 	            break;
-	        case LPCParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 3);
 
 	            break;
@@ -3638,7 +3634,7 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 774;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.T__1:
+	        case 2:
 	            this.state = 763;
 	            this.match(LPCParser.T__1);
 	            this.state = 764;
@@ -3646,23 +3642,23 @@ export default class LPCParser extends antlr4.Parser {
 	            this.state = 765;
 	            this.match(LPCParser.T__2);
 	            break;
-	        case LPCParser.Number:
+	        case 66:
 	            this.state = 767;
 	            this.match(LPCParser.Number);
 	            break;
-	        case LPCParser.T__11:
+	        case 12:
 	            this.state = 768;
 	            this.match(LPCParser.T__11);
 	            this.state = 769;
 	            this.match(LPCParser.Number);
 	            break;
-	        case LPCParser.Not:
+	        case 29:
 	            this.state = 770;
 	            this.match(LPCParser.Not);
 	            this.state = 771;
 	            this.match(LPCParser.Number);
 	            break;
-	        case LPCParser.T__12:
+	        case 13:
 	            this.state = 772;
 	            this.match(LPCParser.T__12);
 	            this.state = 773;
@@ -4012,18 +4008,18 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 851;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.DefinedName:
+	        case 43:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 848;
 	            this.match(LPCParser.DefinedName);
 	            break;
-	        case LPCParser.BasicType:
-	        case LPCParser.Class:
+	        case 36:
+	        case 39:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 849;
 	            this.single_new_local_def();
 	            break;
-	        case LPCParser.Identifier:
+	        case 73:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 850;
 	            this.match(LPCParser.Identifier);
@@ -4145,37 +4141,37 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 867;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.T__0:
-	        case LPCParser.T__2:
+	        case 1:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
 
 	            break;
-	        case LPCParser.T__1:
-	        case LPCParser.T__11:
-	        case LPCParser.T__12:
-	        case LPCParser.T__13:
-	        case LPCParser.PlusPlus:
-	        case LPCParser.MinusMinus:
-	        case LPCParser.Not:
-	        case LPCParser.Arrow:
-	        case LPCParser.BasicType:
-	        case LPCParser.Catch:
-	        case LPCParser.ColonColon:
-	        case LPCParser.DefinedName:
-	        case LPCParser.Efun:
-	        case LPCParser.New:
-	        case LPCParser.ParseCommand:
-	        case LPCParser.SScanf:
-	        case LPCParser.MappingOpen:
-	        case LPCParser.ArrayOpen:
-	        case LPCParser.FunctionOpen:
-	        case LPCParser.Number:
-	        case LPCParser.Parameter:
-	        case LPCParser.Real:
-	        case LPCParser.Identifier:
-	        case LPCParser.String:
-	        case LPCParser.CharacterConstant:
-	        case LPCParser.TimeExpression:
+	        case 2:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 19:
+	        case 20:
+	        case 29:
+	        case 35:
+	        case 36:
+	        case 38:
+	        case 41:
+	        case 43:
+	        case 44:
+	        case 58:
+	        case 59:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 71:
+	        case 73:
+	        case 74:
+	        case 76:
+	        case 77:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 866;
 	            this.comma_expr(0);
@@ -4522,15 +4518,15 @@ export default class LPCParser extends antlr4.Parser {
 	        this.state = 927;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case LPCParser.BasicType:
-	        case LPCParser.Class:
+	        case 36:
+	        case 39:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 925;
 	            this.basic_type();
 	            break;
-	        case LPCParser.T__7:
-	        case LPCParser.DefinedName:
-	        case LPCParser.Identifier:
+	        case 8:
+	        case 43:
+	        case 73:
 	            this.enterOuterAlt(localctx, 2);
 
 	            break;
@@ -4592,12 +4588,12 @@ export default class LPCParser extends antlr4.Parser {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 150, LPCParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 933;
 	        _la = this._input.LA(1);
-	        if(!(_la===LPCParser.DefinedName || _la===LPCParser.Identifier)) {
+	        if(!(_la===43 || _la===73)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8313,3 +8309,12 @@ LPCParser.Data_typeContext = Data_typeContext;
 LPCParser.Opt_basic_typeContext = Opt_basic_typeContext; 
 LPCParser.Optional_starContext = Optional_starContext; 
 LPCParser.IdentifierContext = IdentifierContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

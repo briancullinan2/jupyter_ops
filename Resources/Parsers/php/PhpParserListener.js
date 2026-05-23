@@ -1,4 +1,4 @@
-// Generated from ./php/PhpParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/php/PhpParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -509,6 +509,15 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by PhpParser#directive.
+	enterDirective(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#directive.
+	exitDirective(ctx) {
+	}
+
+
 	// Enter a parse tree produced by PhpParser#formalParameterList.
 	enterFormalParameterList(ctx) {
 	}
@@ -635,6 +644,15 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by PhpParser#returnTypeDecl.
+	enterReturnTypeDecl(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#returnTypeDecl.
+	exitReturnTypeDecl(ctx) {
+	}
+
+
 	// Enter a parse tree produced by PhpParser#methodBody.
 	enterMethodBody(ctx) {
 	}
@@ -689,6 +707,24 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by PhpParser#enumDeclaration.
+	enterEnumDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#enumDeclaration.
+	exitEnumDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#enumItem.
+	enterEnumItem(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#enumItem.
+	exitEnumItem(ctx) {
+	}
+
+
 	// Enter a parse tree produced by PhpParser#expressionList.
 	enterExpressionList(ctx) {
 	}
@@ -716,12 +752,30 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by PhpParser#LogicalAndExpression.
+	enterLogicalAndExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#LogicalAndExpression.
+	exitLogicalAndExpression(ctx) {
+	}
+
+
 	// Enter a parse tree produced by PhpParser#SpecialWordExpression.
 	enterSpecialWordExpression(ctx) {
 	}
 
 	// Exit a parse tree produced by PhpParser#SpecialWordExpression.
 	exitSpecialWordExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#ExponentiationExpression.
+	enterExponentiationExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#ExponentiationExpression.
+	exitExponentiationExpression(ctx) {
 	}
 
 
@@ -752,15 +806,6 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by PhpParser#LogicalExpression.
-	enterLogicalExpression(ctx) {
-	}
-
-	// Exit a parse tree produced by PhpParser#LogicalExpression.
-	exitLogicalExpression(ctx) {
-	}
-
-
 	// Enter a parse tree produced by PhpParser#PrintExpression.
 	enterPrintExpression(ctx) {
 	}
@@ -788,12 +833,66 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by PhpParser#IncludeExpression.
+	enterIncludeExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#IncludeExpression.
+	exitIncludeExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#BitwiseExcOrExpression.
+	enterBitwiseExcOrExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#BitwiseExcOrExpression.
+	exitBitwiseExcOrExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#EqualityExpression.
+	enterEqualityExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#EqualityExpression.
+	exitEqualityExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#MultiplicativeExpression.
+	enterMultiplicativeExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#MultiplicativeExpression.
+	exitMultiplicativeExpression(ctx) {
+	}
+
+
 	// Enter a parse tree produced by PhpParser#CloneExpression.
 	enterCloneExpression(ctx) {
 	}
 
 	// Exit a parse tree produced by PhpParser#CloneExpression.
 	exitCloneExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#AdditiveExpression.
+	enterAdditiveExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#AdditiveExpression.
+	exitAdditiveExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#RelationalExpression.
+	enterRelationalExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#RelationalExpression.
+	exitRelationalExpression(ctx) {
 	}
 
 
@@ -824,6 +923,15 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by PhpParser#LogicalIncOrExpression.
+	enterLogicalIncOrExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#LogicalIncOrExpression.
+	exitLogicalIncOrExpression(ctx) {
+	}
+
+
 	// Enter a parse tree produced by PhpParser#SpaceshipExpression.
 	enterSpaceshipExpression(ctx) {
 	}
@@ -842,21 +950,12 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by PhpParser#NullCoalescingExpression.
-	enterNullCoalescingExpression(ctx) {
+	// Enter a parse tree produced by PhpParser#ShiftExpression.
+	enterShiftExpression(ctx) {
 	}
 
-	// Exit a parse tree produced by PhpParser#NullCoalescingExpression.
-	exitNullCoalescingExpression(ctx) {
-	}
-
-
-	// Enter a parse tree produced by PhpParser#ArithmeticExpression.
-	enterArithmeticExpression(ctx) {
-	}
-
-	// Exit a parse tree produced by PhpParser#ArithmeticExpression.
-	exitArithmeticExpression(ctx) {
+	// Exit a parse tree produced by PhpParser#ShiftExpression.
+	exitShiftExpression(ctx) {
 	}
 
 
@@ -887,12 +986,39 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by PhpParser#ComparisonExpression.
-	enterComparisonExpression(ctx) {
+	// Enter a parse tree produced by PhpParser#RequireExpression.
+	enterRequireExpression(ctx) {
 	}
 
-	// Exit a parse tree produced by PhpParser#ComparisonExpression.
-	exitComparisonExpression(ctx) {
+	// Exit a parse tree produced by PhpParser#RequireExpression.
+	exitRequireExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#BitwiseAndExpression.
+	enterBitwiseAndExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#BitwiseAndExpression.
+	exitBitwiseAndExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#LogicalExcOrExpression.
+	enterLogicalExcOrExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#LogicalExcOrExpression.
+	exitLogicalExcOrExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#BitwiseIncOrExpression.
+	enterBitwiseIncOrExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#BitwiseIncOrExpression.
+	exitBitwiseIncOrExpression(ctx) {
 	}
 
 
@@ -914,6 +1040,15 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by PhpParser#ArrayDestructExpression.
+	enterArrayDestructExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#ArrayDestructExpression.
+	exitArrayDestructExpression(ctx) {
+	}
+
+
 	// Enter a parse tree produced by PhpParser#LambdaFunctionExpression.
 	enterLambdaFunctionExpression(ctx) {
 	}
@@ -923,12 +1058,12 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by PhpParser#BitwiseExpression.
-	enterBitwiseExpression(ctx) {
+	// Enter a parse tree produced by PhpParser#CoalesceExpression.
+	enterCoalesceExpression(ctx) {
 	}
 
-	// Exit a parse tree produced by PhpParser#BitwiseExpression.
-	exitBitwiseExpression(ctx) {
+	// Exit a parse tree produced by PhpParser#CoalesceExpression.
+	exitCoalesceExpression(ctx) {
 	}
 
 
@@ -947,6 +1082,33 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by PhpParser#arrayCreation.
 	exitArrayCreation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#arrayDestructuring.
+	enterArrayDestructuring(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#arrayDestructuring.
+	exitArrayDestructuring(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#indexedDestructItem.
+	enterIndexedDestructItem(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#indexedDestructItem.
+	exitIndexedDestructItem(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PhpParser#keyedDestructItem.
+	enterKeyedDestructItem(ctx) {
+	}
+
+	// Exit a parse tree produced by PhpParser#keyedDestructItem.
+	exitKeyedDestructItem(ctx) {
 	}
 
 
@@ -1370,15 +1532,6 @@ export default class PhpParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by PhpParser#magicConstant.
 	exitMagicConstant(ctx) {
-	}
-
-
-	// Enter a parse tree produced by PhpParser#magicMethod.
-	enterMagicMethod(ctx) {
-	}
-
-	// Exit a parse tree produced by PhpParser#magicMethod.
-	exitMagicMethod(ctx) {
 	}
 
 

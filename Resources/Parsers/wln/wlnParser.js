@@ -1,4 +1,4 @@
-// Generated from ./wln/wln.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/wln/wln.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import wlnListener from './wlnListener.js';
@@ -41,16 +41,12 @@ export default class wlnParser extends antlr4.Parser {
         this.symbolicNames = wlnParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	wln() {
 	    let localctx = new WlnContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, wlnParser.RULE_wln);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 6;
@@ -58,7 +54,7 @@ export default class wlnParser extends antlr4.Parser {
 	        this.state = 11;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===wlnParser.SPACE) {
+	        while(_la===25) {
 	            this.state = 7;
 	            this.match(wlnParser.SPACE);
 	            this.state = 8;
@@ -88,7 +84,7 @@ export default class wlnParser extends antlr4.Parser {
 	group() {
 	    let localctx = new GroupContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, wlnParser.RULE_group);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 17; 
@@ -100,7 +96,7 @@ export default class wlnParser extends antlr4.Parser {
 	            this.state = 19; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << wlnParser.BROMINE) | (1 << wlnParser.CHLORINE) | (1 << wlnParser.IODINE) | (1 << wlnParser.BENZENE) | (1 << wlnParser.DOUBLEBOND) | (1 << wlnParser.CARBONYL) | (1 << wlnParser.CARBONNON) | (1 << wlnParser.NITROGEN3PLUS) | (1 << wlnParser.CARBOSYCLIC) | (1 << wlnParser.IMINO) | (1 << wlnParser.NITROGEN4LESS) | (1 << wlnParser.OXYGEN) | (1 << wlnParser.HETEROCYCLIC) | (1 << wlnParser.DIOXO) | (1 << wlnParser.CARBON4) | (1 << wlnParser.CARBON3) | (1 << wlnParser.AMINO) | (1 << wlnParser.FLOURINE) | (1 << wlnParser.HYDROGEN) | (1 << wlnParser.HYDROXYL) | (1 << wlnParser.SULFER) | (1 << wlnParser.TRIPLE) | (1 << wlnParser.DIGIT))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 25165822) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -120,12 +116,12 @@ export default class wlnParser extends antlr4.Parser {
 	symbol() {
 	    let localctx = new SymbolContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, wlnParser.RULE_symbol);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 21;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << wlnParser.BROMINE) | (1 << wlnParser.CHLORINE) | (1 << wlnParser.IODINE) | (1 << wlnParser.BENZENE) | (1 << wlnParser.DOUBLEBOND) | (1 << wlnParser.CARBONYL) | (1 << wlnParser.CARBONNON) | (1 << wlnParser.NITROGEN3PLUS) | (1 << wlnParser.CARBOSYCLIC) | (1 << wlnParser.IMINO) | (1 << wlnParser.NITROGEN4LESS) | (1 << wlnParser.OXYGEN) | (1 << wlnParser.HETEROCYCLIC) | (1 << wlnParser.DIOXO) | (1 << wlnParser.CARBON4) | (1 << wlnParser.CARBON3) | (1 << wlnParser.AMINO) | (1 << wlnParser.FLOURINE) | (1 << wlnParser.HYDROGEN) | (1 << wlnParser.HYDROXYL) | (1 << wlnParser.SULFER) | (1 << wlnParser.TRIPLE) | (1 << wlnParser.DIGIT))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 25165822) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -408,3 +404,12 @@ class SymbolContext extends antlr4.ParserRuleContext {
 wlnParser.WlnContext = WlnContext; 
 wlnParser.GroupContext = GroupContext; 
 wlnParser.SymbolContext = SymbolContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

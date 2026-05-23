@@ -1,10 +1,10 @@
-// Generated from ./postalcode/postalcode.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/postalcode/postalcode.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import postalcodeListener from './postalcodeListener.js';
-const serializedATN = [4,1,3,10,2,0,7,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,
-0,0,1,0,0,0,8,0,2,1,0,0,0,2,3,5,2,0,0,3,4,5,1,0,0,4,5,5,2,0,0,5,6,5,1,0,
-0,6,7,5,2,0,0,7,8,5,1,0,0,8,1,1,0,0,0,0];
+const serializedATN = [4,1,3,11,2,0,7,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,
+1,0,0,0,1,0,0,0,9,0,2,1,0,0,0,2,3,5,2,0,0,3,4,5,1,0,0,4,5,5,2,0,0,5,6,5,
+1,0,0,6,7,5,2,0,0,7,8,5,1,0,0,8,9,5,0,0,1,9,1,1,0,0,0,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -28,10 +28,6 @@ export default class postalcodeParser extends antlr4.Parser {
         this.symbolicNames = postalcodeParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	postalcode() {
@@ -51,6 +47,8 @@ export default class postalcodeParser extends antlr4.Parser {
 	        this.match(postalcodeParser.LETTER);
 	        this.state = 7;
 	        this.match(postalcodeParser.DIGIT);
+	        this.state = 8;
+	        this.match(postalcodeParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -113,6 +111,10 @@ class PostalcodeContext extends antlr4.ParserRuleContext {
 	};
 
 
+	EOF() {
+	    return this.getToken(postalcodeParser.EOF, 0);
+	};
+
 	enterRule(listener) {
 	    if(listener instanceof postalcodeListener ) {
 	        listener.enterPostalcode(this);
@@ -132,3 +134,12 @@ class PostalcodeContext extends antlr4.ParserRuleContext {
 
 
 postalcodeParser.PostalcodeContext = PostalcodeContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

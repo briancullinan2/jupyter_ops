@@ -1,15 +1,16 @@
-// Generated from ./tl/tl.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/tl/tl.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import tlListener from './tlListener.js';
-const serializedATN = [4,1,9,24,2,0,7,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,
-1,0,1,0,1,0,3,0,14,8,0,1,0,1,0,1,0,5,0,19,8,0,10,0,12,0,22,9,0,1,0,0,1,0,
-1,0,0,1,1,0,4,5,28,0,13,1,0,0,0,2,14,6,0,-1,0,3,14,5,7,0,0,4,14,5,3,0,0,
-5,6,5,8,0,0,6,14,3,0,0,4,7,8,7,0,0,0,8,14,3,0,0,2,9,10,5,1,0,0,10,11,3,0,
-0,0,11,12,5,2,0,0,12,14,1,0,0,0,13,2,1,0,0,0,13,3,1,0,0,0,13,4,1,0,0,0,13,
-5,1,0,0,0,13,7,1,0,0,0,13,9,1,0,0,0,14,20,1,0,0,0,15,16,10,3,0,0,16,17,5,
-6,0,0,17,19,3,0,0,4,18,15,1,0,0,0,19,22,1,0,0,0,20,18,1,0,0,0,20,21,1,0,
-0,0,21,1,1,0,0,0,22,20,1,0,0,0,2,13,20];
+const serializedATN = [4,1,9,29,2,0,7,0,2,1,7,1,1,0,1,0,1,0,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,19,8,1,1,1,1,1,1,1,5,1,24,8,1,10,1,12,
+1,27,9,1,1,1,0,1,2,2,0,2,0,1,1,0,4,5,32,0,4,1,0,0,0,2,18,1,0,0,0,4,5,3,2,
+1,0,5,6,5,0,0,1,6,1,1,0,0,0,7,19,6,1,-1,0,8,19,5,7,0,0,9,19,5,3,0,0,10,11,
+5,8,0,0,11,19,3,2,1,4,12,13,7,0,0,0,13,19,3,2,1,2,14,15,5,1,0,0,15,16,3,
+2,1,0,16,17,5,2,0,0,17,19,1,0,0,0,18,7,1,0,0,0,18,8,1,0,0,0,18,9,1,0,0,0,
+18,10,1,0,0,0,18,12,1,0,0,0,18,14,1,0,0,0,19,25,1,0,0,0,20,21,10,3,0,0,21,
+22,5,6,0,0,22,24,3,2,1,4,23,20,1,0,0,0,24,27,1,0,0,0,25,23,1,0,0,0,25,26,
+1,0,0,0,26,3,1,0,0,0,27,25,1,0,0,0,2,18,25];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -25,7 +26,7 @@ export default class tlParser extends antlr4.Parser {
                             "'\\u22A5'", "'\\u2310'" ];
     static symbolicNames = [ null, null, null, "ATOMIC", "TL_ALWAYS", "TL_WAS", 
                              "TL_OR", "TL_UPTACK", "TL_NOT", "WS" ];
-    static ruleNames = [ "proposition" ];
+    static ruleNames = [ "file_", "proposition" ];
 
     constructor(input) {
         super(input);
@@ -35,13 +36,9 @@ export default class tlParser extends antlr4.Parser {
         this.symbolicNames = tlParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
-    	case 0:
+    	case 1:
     	    		return this.proposition_sempred(localctx, predIndex);
         default:
             throw "No predicate with index:" + ruleIndex;
@@ -59,6 +56,31 @@ export default class tlParser extends antlr4.Parser {
 
 
 
+
+	file_() {
+	    let localctx = new File_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, tlParser.RULE_file_);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 4;
+	        this.proposition(0);
+	        this.state = 5;
+	        this.match(tlParser.EOF);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
 	proposition(_p) {
 		if(_p===undefined) {
 		    _p = 0;
@@ -67,12 +89,12 @@ export default class tlParser extends antlr4.Parser {
 	    const _parentState = this.state;
 	    let localctx = new PropositionContext(this, this._ctx, _parentState);
 	    let _prevctx = localctx;
-	    const _startState = 0;
-	    this.enterRecursionRule(localctx, 0, tlParser.RULE_proposition, _p);
-	    var _la = 0; // Token type
+	    const _startState = 2;
+	    this.enterRecursionRule(localctx, 2, tlParser.RULE_proposition, _p);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 13;
+	        this.state = 18;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
 	        switch(la_) {
@@ -80,48 +102,48 @@ export default class tlParser extends antlr4.Parser {
 	            break;
 
 	        case 2:
-	            this.state = 3;
+	            this.state = 8;
 	            this.match(tlParser.TL_UPTACK);
 	            break;
 
 	        case 3:
-	            this.state = 4;
+	            this.state = 9;
 	            this.match(tlParser.ATOMIC);
 	            break;
 
 	        case 4:
-	            this.state = 5;
+	            this.state = 10;
 	            this.match(tlParser.TL_NOT);
-	            this.state = 6;
+	            this.state = 11;
 	            this.proposition(4);
 	            break;
 
 	        case 5:
-	            this.state = 7;
+	            this.state = 12;
 	            _la = this._input.LA(1);
-	            if(!(_la===tlParser.TL_ALWAYS || _la===tlParser.TL_WAS)) {
+	            if(!(_la===4 || _la===5)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 8;
+	            this.state = 13;
 	            this.proposition(2);
 	            break;
 
 	        case 6:
-	            this.state = 9;
+	            this.state = 14;
 	            this.match(tlParser.T__0);
-	            this.state = 10;
+	            this.state = 15;
 	            this.proposition(0);
-	            this.state = 11;
+	            this.state = 16;
 	            this.match(tlParser.T__1);
 	            break;
 
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 20;
+	        this.state = 25;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,1,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -132,16 +154,16 @@ export default class tlParser extends antlr4.Parser {
 	                _prevctx = localctx;
 	                localctx = new PropositionContext(this, _parentctx, _parentState);
 	                this.pushNewRecursionContext(localctx, _startState, tlParser.RULE_proposition);
-	                this.state = 15;
+	                this.state = 20;
 	                if (!( this.precpred(this._ctx, 3))) {
 	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
 	                }
-	                this.state = 16;
+	                this.state = 21;
 	                this.match(tlParser.TL_OR);
-	                this.state = 17;
+	                this.state = 22;
 	                this.proposition(4); 
 	            }
-	            this.state = 22;
+	            this.state = 27;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        }
@@ -174,7 +196,47 @@ tlParser.TL_UPTACK = 7;
 tlParser.TL_NOT = 8;
 tlParser.WS = 9;
 
-tlParser.RULE_proposition = 0;
+tlParser.RULE_file_ = 0;
+tlParser.RULE_proposition = 1;
+
+class File_Context extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = tlParser.RULE_file_;
+    }
+
+	proposition() {
+	    return this.getTypedRuleContext(PropositionContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(tlParser.EOF, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof tlListener ) {
+	        listener.enterFile_(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof tlListener ) {
+	        listener.exitFile_(this);
+		}
+	}
+
+
+}
+
+
 
 class PropositionContext extends antlr4.ParserRuleContext {
 
@@ -243,4 +305,14 @@ class PropositionContext extends antlr4.ParserRuleContext {
 
 
 
+tlParser.File_Context = File_Context; 
 tlParser.PropositionContext = PropositionContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

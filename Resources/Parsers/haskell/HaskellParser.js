@@ -1,4 +1,4 @@
-// Generated from ./haskell/HaskellParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/haskell/HaskellParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import HaskellParserListener from './HaskellParserListener.js';
@@ -1246,22 +1246,18 @@ export default class HaskellParser extends antlr4.Parser {
         this.symbolicNames = HaskellParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	module() {
 	    let localctx = new ModuleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, HaskellParser.RULE_module);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 513;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.OCURLY) {
+	        if(_la===132) {
 	            this.state = 512;
 	            this.match(HaskellParser.OCURLY);
 	        }
@@ -1303,70 +1299,70 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 532;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.MODULE:
+	        case 21:
 	            this.state = 530;
 	            this.module_content();
 	            break;
-	        case HaskellParser.NEWLINE:
-	        case HaskellParser.AS:
-	        case HaskellParser.CASE:
-	        case HaskellParser.CLASS:
-	        case HaskellParser.DATA:
-	        case HaskellParser.DEFAULT:
-	        case HaskellParser.DERIVING:
-	        case HaskellParser.DO:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.IF:
-	        case HaskellParser.IMPORT:
-	        case HaskellParser.INFIX:
-	        case HaskellParser.INFIXL:
-	        case HaskellParser.INFIXR:
-	        case HaskellParser.INSTANCE:
-	        case HaskellParser.LET:
-	        case HaskellParser.NEWTYPE:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.TYPE:
-	        case HaskellParser.WILDCARD:
-	        case HaskellParser.FOREIGN:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.MDO:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.PATTERN:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.LCASE:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.DDollar:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Semi:
-	        case HaskellParser.Quote:
-	        case HaskellParser.DoubleQuote:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.AopenParen:
-	        case HaskellParser.TopenTexpQuote:
-	        case HaskellParser.TopenExpQuote:
-	        case HaskellParser.TopenPatQuote:
-	        case HaskellParser.TopenTypQoute:
-	        case HaskellParser.TopenDecQoute:
-	        case HaskellParser.OpenBoxParen:
-	        case HaskellParser.OpenRoundBracket:
-	        case HaskellParser.OpenSquareBracket:
-	        case HaskellParser.CHAR:
-	        case HaskellParser.STRING:
-	        case HaskellParser.VARID:
-	        case HaskellParser.CONID:
-	        case HaskellParser.OpenPragmaBracket:
-	        case HaskellParser.SEMI:
-	        case HaskellParser.DECIMAL:
-	        case HaskellParser.OCTAL:
-	        case HaskellParser.HEXADECIMAL:
-	        case HaskellParser.FLOAT:
+	        case 1:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 22:
+	        case 24:
+	        case 26:
+	        case 28:
+	        case 30:
+	        case 31:
+	        case 35:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 73:
+	        case 87:
+	        case 90:
+	        case 94:
+	        case 96:
+	        case 97:
+	        case 100:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 109:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 118:
+	        case 120:
+	        case 122:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
 	            this.state = 531;
 	            this.body();
 	            break;
@@ -1376,7 +1372,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 535;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.CCURLY) {
+	        if(_la===133) {
 	            this.state = 534;
 	            this.match(HaskellParser.CCURLY);
 	        }
@@ -1384,7 +1380,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 538;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        if(_la===100 || _la===136) {
 	            this.state = 537;
 	            this.semi();
 	        }
@@ -1410,7 +1406,7 @@ export default class HaskellParser extends antlr4.Parser {
 	module_content() {
 	    let localctx = new Module_contentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, HaskellParser.RULE_module_content);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 542;
@@ -1420,7 +1416,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 545;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.OpenRoundBracket) {
+	        if(_la===120) {
 	            this.state = 544;
 	            this.exports();
 	        }
@@ -1591,7 +1587,7 @@ export default class HaskellParser extends antlr4.Parser {
 	language_pragma() {
 	    let localctx = new Language_pragmaContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, HaskellParser.RULE_language_pragma);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 571;
@@ -1603,7 +1599,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 578;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 574;
 	            this.match(HaskellParser.Comma);
 	            this.state = 575;
@@ -1641,7 +1637,7 @@ export default class HaskellParser extends antlr4.Parser {
 	options_ghc() {
 	    let localctx = new Options_ghcContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, HaskellParser.RULE_options_ghc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 585;
@@ -1651,28 +1647,28 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 594;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Minus) {
+	        while(_la===90) {
 	            this.state = 587;
 	            this.match(HaskellParser.Minus);
 	            this.state = 590;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case HaskellParser.AS:
-	            case HaskellParser.HIDING:
-	            case HaskellParser.QUALIFIED:
-	            case HaskellParser.EXPORT:
-	            case HaskellParser.STDCALL:
-	            case HaskellParser.CCALL:
-	            case HaskellParser.CAPI:
-	            case HaskellParser.JSCALL:
-	            case HaskellParser.STOCK:
-	            case HaskellParser.ANYCLASS:
-	            case HaskellParser.VIA:
-	            case HaskellParser.VARID:
+	            case 4:
+	            case 12:
+	            case 24:
+	            case 31:
+	            case 38:
+	            case 39:
+	            case 40:
+	            case 42:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 126:
 	                this.state = 588;
 	                this.varid();
 	                break;
-	            case HaskellParser.CONID:
+	            case 127:
 	                this.state = 589;
 	                this.conid();
 	                break;
@@ -1712,7 +1708,7 @@ export default class HaskellParser extends antlr4.Parser {
 	simple_options() {
 	    let localctx = new Simple_optionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, HaskellParser.RULE_simple_options);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 601;
@@ -1722,28 +1718,28 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 610;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Minus) {
+	        while(_la===90) {
 	            this.state = 603;
 	            this.match(HaskellParser.Minus);
 	            this.state = 606;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case HaskellParser.AS:
-	            case HaskellParser.HIDING:
-	            case HaskellParser.QUALIFIED:
-	            case HaskellParser.EXPORT:
-	            case HaskellParser.STDCALL:
-	            case HaskellParser.CCALL:
-	            case HaskellParser.CAPI:
-	            case HaskellParser.JSCALL:
-	            case HaskellParser.STOCK:
-	            case HaskellParser.ANYCLASS:
-	            case HaskellParser.VIA:
-	            case HaskellParser.VARID:
+	            case 4:
+	            case 12:
+	            case 24:
+	            case 31:
+	            case 38:
+	            case 39:
+	            case 40:
+	            case 42:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 126:
 	                this.state = 604;
 	                this.varid();
 	                break;
-	            case HaskellParser.CONID:
+	            case 127:
 	                this.state = 605;
 	                this.conid();
 	                break;
@@ -1862,16 +1858,16 @@ export default class HaskellParser extends antlr4.Parser {
 	        		this.state = 629;
 	        		this._errHandler.sync(this);
 	        		switch(this._input.LA(1)) {
-	        		case HaskellParser.IMPORT:
+	        		case 14:
 	        		    this.state = 626;
 	        		    this.impdecl();
 	        		    break;
-	        		case HaskellParser.NEWLINE:
+	        		case 1:
 	        		    this.state = 627;
 	        		    this.match(HaskellParser.NEWLINE);
 	        		    break;
-	        		case HaskellParser.Semi:
-	        		case HaskellParser.SEMI:
+	        		case 100:
+	        		case 136:
 	        		    this.state = 628;
 	        		    this.semi();
 	        		    break;
@@ -1905,7 +1901,7 @@ export default class HaskellParser extends antlr4.Parser {
 	exports() {
 	    let localctx = new ExportsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, HaskellParser.RULE_exports);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 633;
@@ -1913,7 +1909,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 642;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.MODULE) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.CONID - 120)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2166362128) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 193) !== 0)) {
 	            this.state = 634;
 	            this.exprt();
 	            this.state = 639;
@@ -1936,7 +1932,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 645;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.Comma) {
+	        if(_la===102) {
 	            this.state = 644;
 	            this.match(HaskellParser.Comma);
 	        }
@@ -1962,7 +1958,7 @@ export default class HaskellParser extends antlr4.Parser {
 	exprt() {
 	    let localctx = new ExprtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, HaskellParser.RULE_exprt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 688;
 	        this._errHandler.sync(this);
@@ -1995,13 +1991,13 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 663;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 789) !== 0)) {
 	                    this.state = 655;
 	                    this.cname();
 	                    this.state = 660;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===HaskellParser.Comma) {
+	                    while(_la===102) {
 	                        this.state = 656;
 	                        this.match(HaskellParser.Comma);
 	                        this.state = 657;
@@ -2039,13 +2035,13 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 681;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.CONID - 120)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 193) !== 0)) {
 	                    this.state = 673;
 	                    this.qvar();
 	                    this.state = 678;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===HaskellParser.Comma) {
+	                    while(_la===102) {
 	                        this.state = 674;
 	                        this.match(HaskellParser.Comma);
 	                        this.state = 675;
@@ -2090,7 +2086,7 @@ export default class HaskellParser extends antlr4.Parser {
 	impdecl() {
 	    let localctx = new ImpdeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, HaskellParser.RULE_impdecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 690;
@@ -2098,7 +2094,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 692;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.QUALIFIED) {
+	        if(_la===24) {
 	            this.state = 691;
 	            this.match(HaskellParser.QUALIFIED);
 	        }
@@ -2108,7 +2104,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 697;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.AS) {
+	        if(_la===4) {
 	            this.state = 695;
 	            this.match(HaskellParser.AS);
 	            this.state = 696;
@@ -2118,7 +2114,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 700;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.HIDING || _la===HaskellParser.OpenRoundBracket) {
+	        if(_la===12 || _la===120) {
 	            this.state = 699;
 	            this.impspec();
 	        }
@@ -2158,19 +2154,19 @@ export default class HaskellParser extends antlr4.Parser {
 	impspec() {
 	    let localctx = new ImpspecContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, HaskellParser.RULE_impspec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 738;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.OpenRoundBracket:
+	        case 120:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 707;
 	            this.match(HaskellParser.OpenRoundBracket);
 	            this.state = 719;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.CONID - 120)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 193) !== 0)) {
 	                this.state = 708;
 	                this.himport();
 	                this.state = 713;
@@ -2191,7 +2187,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 717;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===HaskellParser.Comma) {
+	                if(_la===102) {
 	                    this.state = 716;
 	                    this.match(HaskellParser.Comma);
 	                }
@@ -2201,7 +2197,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 721;
 	            this.match(HaskellParser.CloseRoundBracket);
 	            break;
-	        case HaskellParser.HIDING:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 722;
 	            this.match(HaskellParser.HIDING);
@@ -2210,7 +2206,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 735;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.CONID - 120)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 193) !== 0)) {
 	                this.state = 724;
 	                this.himport();
 	                this.state = 729;
@@ -2231,7 +2227,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 733;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===HaskellParser.Comma) {
+	                if(_la===102) {
 	                    this.state = 732;
 	                    this.match(HaskellParser.Comma);
 	                }
@@ -2263,7 +2259,7 @@ export default class HaskellParser extends antlr4.Parser {
 	himport() {
 	    let localctx = new HimportContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, HaskellParser.RULE_himport);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 770;
 	        this._errHandler.sync(this);
@@ -2296,13 +2292,13 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 754;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 789) !== 0)) {
 	                    this.state = 746;
 	                    this.cname();
 	                    this.state = 751;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===HaskellParser.Comma) {
+	                    while(_la===102) {
 	                        this.state = 747;
 	                        this.match(HaskellParser.Comma);
 	                        this.state = 748;
@@ -2340,7 +2336,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 765;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.OpenRoundBracket || _la===HaskellParser.VARID) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===120 || _la===126) {
 	                    this.state = 764;
 	                    this.sig_vars();
 	                }
@@ -2408,12 +2404,12 @@ export default class HaskellParser extends antlr4.Parser {
 	fixity() {
 	    let localctx = new FixityContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, HaskellParser.RULE_fixity);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 776;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.INFIX) | (1 << HaskellParser.INFIXL) | (1 << HaskellParser.INFIXR))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 458752) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2439,7 +2435,7 @@ export default class HaskellParser extends antlr4.Parser {
 	ops() {
 	    let localctx = new OpsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, HaskellParser.RULE_ops);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 778;
@@ -2447,7 +2443,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 783;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 779;
 	            this.match(HaskellParser.Comma);
 	            this.state = 780;
@@ -2546,7 +2542,7 @@ export default class HaskellParser extends antlr4.Parser {
 	topdecl() {
 	    let localctx = new TopdeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, HaskellParser.RULE_topdecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 833;
 	        this._errHandler.sync(this);
@@ -2597,7 +2593,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 807;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.FORALL) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 82)) & ~0x1f) == 0 && ((1 << (_la - 82)) & ((1 << (HaskellParser.Hash - 82)) | (1 << (HaskellParser.Less - 82)) | (1 << (HaskellParser.Greater - 82)) | (1 << (HaskellParser.Ampersand - 82)) | (1 << (HaskellParser.Pipe - 82)) | (1 << (HaskellParser.Bang - 82)) | (1 << (HaskellParser.Caret - 82)) | (1 << (HaskellParser.Plus - 82)) | (1 << (HaskellParser.Minus - 82)) | (1 << (HaskellParser.Asterisk - 82)) | (1 << (HaskellParser.Percent - 82)) | (1 << (HaskellParser.Divide - 82)) | (1 << (HaskellParser.Tilde - 82)) | (1 << (HaskellParser.Atsign - 82)) | (1 << (HaskellParser.Dollar - 82)) | (1 << (HaskellParser.Dot - 82)) | (1 << (HaskellParser.QuestionMark - 82)) | (1 << (HaskellParser.Colon - 82)) | (1 << (HaskellParser.Eq - 82)) | (1 << (HaskellParser.Quote - 82)) | (1 << (HaskellParser.ReverseSlash - 82)) | (1 << (HaskellParser.BackQuote - 82)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.STRING - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)) | (1 << (HaskellParser.OpenPragmaBracket - 118)) | (1 << (HaskellParser.OCURLY - 118)) | (1 << (HaskellParser.DECIMAL - 118)) | (1 << (HaskellParser.OCTAL - 118)) | (1 << (HaskellParser.HEXADECIMAL - 118)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2969571344) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 82)) & ~0x1f) === 0 && ((1 << (_la - 82)) & 116047871) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 3688341) !== 0)) {
 	                this.state = 806;
 	                this.comma_types();
 	            }
@@ -2623,7 +2619,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 815;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 789) !== 0)) {
 	                this.state = 814;
 	                this.deprecations();
 	            }
@@ -2641,7 +2637,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 821;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 789) !== 0)) {
 	                this.state = 820;
 	                this.warnings();
 	            }
@@ -2659,7 +2655,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 827;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.STRING) {
+	            if(_la===125) {
 	                this.state = 826;
 	                this.rules();
 	            }
@@ -2706,7 +2702,7 @@ export default class HaskellParser extends antlr4.Parser {
 	cl_decl() {
 	    let localctx = new Cl_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, HaskellParser.RULE_cl_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 835;
@@ -2716,7 +2712,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 838;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.Pipe) {
+	        if(_la===86) {
 	            this.state = 837;
 	            this.fds();
 	        }
@@ -2724,7 +2720,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 841;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.WHERE) {
+	        if(_la===27) {
 	            this.state = 840;
 	            this.where_cls();
 	        }
@@ -2748,7 +2744,7 @@ export default class HaskellParser extends antlr4.Parser {
 	ty_decl() {
 	    let localctx = new Ty_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, HaskellParser.RULE_ty_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 912;
 	        this._errHandler.sync(this);
@@ -2777,7 +2773,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 852;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon || _la===HaskellParser.Eq) {
+	            if(_la===75 || _la===104) {
 	                this.state = 851;
 	                this.opt_tyfam_kind_sig();
 	            }
@@ -2785,7 +2781,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 855;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.Pipe) {
+	            if(_la===86) {
 	                this.state = 854;
 	                this.opt_injective_info();
 	            }
@@ -2793,7 +2789,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 858;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 857;
 	                this.where_type_family();
 	            }
@@ -2819,7 +2815,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 867;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 866;
 	                this.derivings();
 	            }
@@ -2845,7 +2841,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 876;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 875;
 	                this.derivings();
 	            }
@@ -2869,7 +2865,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 884;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 883;
 	                this.opt_kind_sig();
 	            }
@@ -2877,7 +2873,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 887;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 886;
 	                this.gadt_constrlist();
 	            }
@@ -2885,7 +2881,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 890;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 889;
 	                this.derivings();
 	            }
@@ -2909,7 +2905,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 898;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 897;
 	                this.opt_kind_sig();
 	            }
@@ -2917,7 +2913,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 901;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 900;
 	                this.gadt_constrlist();
 	            }
@@ -2925,7 +2921,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 904;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 903;
 	                this.derivings();
 	            }
@@ -2943,7 +2939,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 910;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 909;
 	                this.opt_datafam_kind_sig();
 	            }
@@ -2999,7 +2995,7 @@ export default class HaskellParser extends antlr4.Parser {
 	sks_vars() {
 	    let localctx = new Sks_varsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, HaskellParser.RULE_sks_vars);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 919;
@@ -3007,7 +3003,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 924;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 920;
 	            this.match(HaskellParser.Comma);
 	            this.state = 921;
@@ -3035,7 +3031,7 @@ export default class HaskellParser extends antlr4.Parser {
 	inst_decl() {
 	    let localctx = new Inst_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, HaskellParser.RULE_inst_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 986;
 	        this._errHandler.sync(this);
@@ -3058,7 +3054,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 933;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 932;
 	                this.where_inst();
 	            }
@@ -3094,7 +3090,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 945;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 944;
 	                this.derivings();
 	            }
@@ -3120,7 +3116,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 954;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 953;
 	                this.derivings();
 	            }
@@ -3146,7 +3142,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 963;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 962;
 	                this.opt_kind_sig();
 	            }
@@ -3154,7 +3150,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 966;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 965;
 	                this.gadt_constrlist();
 	            }
@@ -3162,7 +3158,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 969;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 968;
 	                this.derivings();
 	            }
@@ -3188,7 +3184,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 978;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 977;
 	                this.opt_kind_sig();
 	            }
@@ -3196,7 +3192,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 981;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 980;
 	                this.gadt_constrlist();
 	            }
@@ -3204,7 +3200,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 984;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 983;
 	                this.derivings();
 	            }
@@ -3296,12 +3292,12 @@ export default class HaskellParser extends antlr4.Parser {
 	deriv_strategy_no_via() {
 	    let localctx = new Deriv_strategy_no_viaContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, HaskellParser.RULE_deriv_strategy_no_via);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1002;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 22)) & ~0x1f) == 0 && ((1 << (_la - 22)) & ((1 << (HaskellParser.NEWTYPE - 22)) | (1 << (HaskellParser.STOCK - 22)) | (1 << (HaskellParser.ANYCLASS - 22)))) !== 0))) {
+	        if(!(((((_la - 22)) & ~0x1f) === 0 && ((1 << (_la - 22)) & 201326593) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3356,22 +3352,22 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1011;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.STOCK:
+	        case 48:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1007;
 	            this.match(HaskellParser.STOCK);
 	            break;
-	        case HaskellParser.ANYCLASS:
+	        case 49:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1008;
 	            this.match(HaskellParser.ANYCLASS);
 	            break;
-	        case HaskellParser.NEWTYPE:
+	        case 22:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1009;
 	            this.match(HaskellParser.NEWTYPE);
 	            break;
-	        case HaskellParser.VIA:
+	        case 50:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1010;
 	            this.deriv_strategy_via();
@@ -3450,7 +3446,7 @@ export default class HaskellParser extends antlr4.Parser {
 	inj_varids() {
 	    let localctx = new Inj_varidsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, HaskellParser.RULE_inj_varids);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1021; 
@@ -3462,7 +3458,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1023; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (HaskellParser.SAFE - 32)) | (1 << (HaskellParser.INTERRUPTIBLE - 32)) | (1 << (HaskellParser.UNSAFE - 32)) | (1 << (HaskellParser.STDCALL - 32)) | (1 << (HaskellParser.CCALL - 32)) | (1 << (HaskellParser.CAPI - 32)) | (1 << (HaskellParser.JSCALL - 32)) | (1 << (HaskellParser.STOCK - 32)) | (1 << (HaskellParser.ANYCLASS - 32)) | (1 << (HaskellParser.VIA - 32)))) !== 0) || _la===HaskellParser.VARID);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 460231) !== 0) || _la===126);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -3507,7 +3503,7 @@ export default class HaskellParser extends antlr4.Parser {
 	ty_fam_inst_eqn_list() {
 	    let localctx = new Ty_fam_inst_eqn_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, HaskellParser.RULE_ty_fam_inst_eqn_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1041;
 	        this._errHandler.sync(this);
@@ -3520,7 +3516,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1030;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.FORALL) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 82)) & ~0x1f) == 0 && ((1 << (_la - 82)) & ((1 << (HaskellParser.Hash - 82)) | (1 << (HaskellParser.Less - 82)) | (1 << (HaskellParser.Greater - 82)) | (1 << (HaskellParser.Ampersand - 82)) | (1 << (HaskellParser.Pipe - 82)) | (1 << (HaskellParser.Bang - 82)) | (1 << (HaskellParser.Caret - 82)) | (1 << (HaskellParser.Plus - 82)) | (1 << (HaskellParser.Minus - 82)) | (1 << (HaskellParser.Asterisk - 82)) | (1 << (HaskellParser.Percent - 82)) | (1 << (HaskellParser.Divide - 82)) | (1 << (HaskellParser.Tilde - 82)) | (1 << (HaskellParser.Atsign - 82)) | (1 << (HaskellParser.Dollar - 82)) | (1 << (HaskellParser.Dot - 82)) | (1 << (HaskellParser.QuestionMark - 82)) | (1 << (HaskellParser.Colon - 82)) | (1 << (HaskellParser.Eq - 82)) | (1 << (HaskellParser.Quote - 82)) | (1 << (HaskellParser.ReverseSlash - 82)) | (1 << (HaskellParser.BackQuote - 82)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.STRING - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)) | (1 << (HaskellParser.OpenPragmaBracket - 118)) | (1 << (HaskellParser.OCURLY - 118)) | (1 << (HaskellParser.DECIMAL - 118)) | (1 << (HaskellParser.OCTAL - 118)) | (1 << (HaskellParser.HEXADECIMAL - 118)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2969571344) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 82)) & ~0x1f) === 0 && ((1 << (_la - 82)) & 116047871) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 3688341) !== 0)) {
 	                this.state = 1029;
 	                this.ty_fam_inst_eqns();
 	            }
@@ -3569,7 +3565,7 @@ export default class HaskellParser extends antlr4.Parser {
 	ty_fam_inst_eqns() {
 	    let localctx = new Ty_fam_inst_eqnsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, HaskellParser.RULE_ty_fam_inst_eqns);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1043;
@@ -3588,7 +3584,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                    this.state = 1047; 
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                } while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI);
+	                } while(_la===100 || _la===136);
 	                this.state = 1049;
 	                this.ty_fam_inst_eqn(); 
 	            }
@@ -3600,7 +3596,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1059;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 1056;
 	            this.semi();
 	            this.state = 1061;
@@ -3626,19 +3622,19 @@ export default class HaskellParser extends antlr4.Parser {
 	ty_fam_inst_eqn() {
 	    let localctx = new Ty_fam_inst_eqnContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, HaskellParser.RULE_ty_fam_inst_eqn);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1075;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.FORALL:
+	        case 29:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1062;
 	            this.match(HaskellParser.FORALL);
 	            this.state = 1064;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.OCURLY - 120)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 4161) !== 0)) {
 	                this.state = 1063;
 	                this.tv_bndrs();
 	            }
@@ -3652,51 +3648,51 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1069;
 	            this.ktype();
 	            break;
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.WILDCARD:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.Hash:
-	        case HaskellParser.Less:
-	        case HaskellParser.Greater:
-	        case HaskellParser.Ampersand:
-	        case HaskellParser.Pipe:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Caret:
-	        case HaskellParser.Plus:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Asterisk:
-	        case HaskellParser.Percent:
-	        case HaskellParser.Divide:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.Atsign:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Dot:
-	        case HaskellParser.QuestionMark:
-	        case HaskellParser.Colon:
-	        case HaskellParser.Eq:
-	        case HaskellParser.Quote:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.BackQuote:
-	        case HaskellParser.OpenBoxParen:
-	        case HaskellParser.OpenRoundBracket:
-	        case HaskellParser.OpenSquareBracket:
-	        case HaskellParser.STRING:
-	        case HaskellParser.VARID:
-	        case HaskellParser.CONID:
-	        case HaskellParser.OpenPragmaBracket:
-	        case HaskellParser.OCURLY:
-	        case HaskellParser.DECIMAL:
-	        case HaskellParser.OCTAL:
-	        case HaskellParser.HEXADECIMAL:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 28:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 97:
+	        case 99:
+	        case 101:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 107:
+	        case 108:
+	        case 118:
+	        case 120:
+	        case 122:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 132:
+	        case 137:
+	        case 138:
+	        case 139:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1071;
 	            this.type_();
@@ -3727,7 +3723,7 @@ export default class HaskellParser extends antlr4.Parser {
 	at_decl_cls() {
 	    let localctx = new At_decl_clsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, HaskellParser.RULE_at_decl_cls);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1098;
 	        this._errHandler.sync(this);
@@ -3740,7 +3736,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1079;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.FAMILY) {
+	            if(_la===36) {
 	                this.state = 1078;
 	                this.match(HaskellParser.FAMILY);
 	            }
@@ -3750,7 +3746,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1083;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 1082;
 	                this.opt_datafam_kind_sig();
 	            }
@@ -3764,7 +3760,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1087;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.FAMILY) {
+	            if(_la===36) {
 	                this.state = 1086;
 	                this.match(HaskellParser.FAMILY);
 	            }
@@ -3774,7 +3770,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1091;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon || _la===HaskellParser.Eq) {
+	            if(_la===75 || _la===104) {
 	                this.state = 1090;
 	                this.opt_at_kind_inj_sig();
 	            }
@@ -3788,7 +3784,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1095;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.INSTANCE) {
+	            if(_la===19) {
 	                this.state = 1094;
 	                this.match(HaskellParser.INSTANCE);
 	            }
@@ -3817,7 +3813,7 @@ export default class HaskellParser extends antlr4.Parser {
 	at_decl_inst() {
 	    let localctx = new At_decl_instContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, HaskellParser.RULE_at_decl_inst);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1163;
 	        this._errHandler.sync(this);
@@ -3830,7 +3826,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1102;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.INSTANCE) {
+	            if(_la===19) {
 	                this.state = 1101;
 	                this.match(HaskellParser.INSTANCE);
 	            }
@@ -3846,7 +3842,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1107;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.INSTANCE) {
+	            if(_la===19) {
 	                this.state = 1106;
 	                this.match(HaskellParser.INSTANCE);
 	            }
@@ -3866,7 +3862,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1115;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 1114;
 	                this.derivings();
 	            }
@@ -3880,7 +3876,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1119;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.INSTANCE) {
+	            if(_la===19) {
 	                this.state = 1118;
 	                this.match(HaskellParser.INSTANCE);
 	            }
@@ -3900,7 +3896,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1127;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 1126;
 	                this.derivings();
 	            }
@@ -3914,7 +3910,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1131;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.INSTANCE) {
+	            if(_la===19) {
 	                this.state = 1130;
 	                this.match(HaskellParser.INSTANCE);
 	            }
@@ -3932,7 +3928,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1138;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 1137;
 	                this.opt_kind_sig();
 	            }
@@ -3940,7 +3936,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1141;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 1140;
 	                this.gadt_constrlist();
 	            }
@@ -3948,7 +3944,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1144;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 1143;
 	                this.derivings();
 	            }
@@ -3962,7 +3958,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1148;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.INSTANCE) {
+	            if(_la===19) {
 	                this.state = 1147;
 	                this.match(HaskellParser.INSTANCE);
 	            }
@@ -3980,7 +3976,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1155;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 1154;
 	                this.opt_kind_sig();
 	            }
@@ -3988,7 +3984,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1158;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 1157;
 	                this.gadt_constrlist();
 	            }
@@ -3996,7 +3992,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1161;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DERIVING) {
+	            if(_la===9) {
 	                this.state = 1160;
 	                this.derivings();
 	            }
@@ -4077,14 +4073,14 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1175;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.DoubleColon:
+	        case 75:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1171;
 	            this.match(HaskellParser.DoubleColon);
 	            this.state = 1172;
 	            this.kind();
 	            break;
-	        case HaskellParser.Eq:
+	        case 104:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1173;
 	            this.match(HaskellParser.Eq);
@@ -4117,14 +4113,14 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1184;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.DoubleColon:
+	        case 75:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1177;
 	            this.match(HaskellParser.DoubleColon);
 	            this.state = 1178;
 	            this.kind();
 	            break;
-	        case HaskellParser.Eq:
+	        case 104:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1179;
 	            this.match(HaskellParser.Eq);
@@ -4198,7 +4194,7 @@ export default class HaskellParser extends antlr4.Parser {
 	tycl_hdr_inst() {
 	    let localctx = new Tycl_hdr_instContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, HaskellParser.RULE_tycl_hdr_inst);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1213;
 	        this._errHandler.sync(this);
@@ -4211,7 +4207,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1195;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.OCURLY - 120)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 4161) !== 0)) {
 	                this.state = 1194;
 	                this.tv_bndrs();
 	            }
@@ -4233,7 +4229,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1204;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.OCURLY - 120)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 4161) !== 0)) {
 	                this.state = 1203;
 	                this.tv_bndrs();
 	            }
@@ -4331,7 +4327,7 @@ export default class HaskellParser extends antlr4.Parser {
 	standalone_deriving() {
 	    let localctx = new Standalone_derivingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, HaskellParser.RULE_standalone_deriving);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1226;
@@ -4339,7 +4335,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1228;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 22)) & ~0x1f) == 0 && ((1 << (_la - 22)) & ((1 << (HaskellParser.NEWTYPE - 22)) | (1 << (HaskellParser.STOCK - 22)) | (1 << (HaskellParser.ANYCLASS - 22)) | (1 << (HaskellParser.VIA - 22)))) !== 0)) {
+	        if(((((_la - 22)) & ~0x1f) === 0 && ((1 << (_la - 22)) & 469762049) !== 0)) {
 	            this.state = 1227;
 	            this.deriv_standalone_strategy();
 	        }
@@ -4375,7 +4371,7 @@ export default class HaskellParser extends antlr4.Parser {
 	role_annot() {
 	    let localctx = new Role_annotContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, HaskellParser.RULE_role_annot);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1236;
@@ -4387,7 +4383,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1240;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2432700432) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126) {
 	            this.state = 1239;
 	            this.roles();
 	        }
@@ -4411,7 +4407,7 @@ export default class HaskellParser extends antlr4.Parser {
 	roles() {
 	    let localctx = new RolesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, HaskellParser.RULE_roles);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1243; 
@@ -4423,7 +4419,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1245; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2432700432) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -4447,23 +4443,23 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1249;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.VARID:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 126:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1247;
 	            this.varid();
 	            break;
-	        case HaskellParser.WILDCARD:
+	        case 28:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1248;
 	            this.match(HaskellParser.WILDCARD);
@@ -4490,7 +4486,7 @@ export default class HaskellParser extends antlr4.Parser {
 	pattern_synonym_decl() {
 	    let localctx = new Pattern_synonym_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, HaskellParser.RULE_pattern_synonym_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1263;
 	        this._errHandler.sync(this);
@@ -4521,7 +4517,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1261;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 1260;
 	                this.where_decls();
 	            }
@@ -4548,7 +4544,7 @@ export default class HaskellParser extends antlr4.Parser {
 	pattern_synonym_lhs() {
 	    let localctx = new Pattern_synonym_lhsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, HaskellParser.RULE_pattern_synonym_lhs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1278;
 	        this._errHandler.sync(this);
@@ -4561,7 +4557,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1267;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126) {
 	                this.state = 1266;
 	                this.vars_();
 	            }
@@ -4610,7 +4606,7 @@ export default class HaskellParser extends antlr4.Parser {
 	vars_() {
 	    let localctx = new Vars_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 106, HaskellParser.RULE_vars_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1281; 
@@ -4622,7 +4618,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1283; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -4642,7 +4638,7 @@ export default class HaskellParser extends antlr4.Parser {
 	cvars() {
 	    let localctx = new CvarsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, HaskellParser.RULE_cvars);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1285;
@@ -4650,7 +4646,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1290;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1286;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1287;
@@ -4678,7 +4674,7 @@ export default class HaskellParser extends antlr4.Parser {
 	where_decls() {
 	    let localctx = new Where_declsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, HaskellParser.RULE_where_decls);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1293;
@@ -4688,7 +4684,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1296;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.INFIX) | (1 << HaskellParser.INFIXL) | (1 << HaskellParser.INFIXR) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.PATTERN - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Semi - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)) | (1 << (HaskellParser.OpenPragmaBracket - 105)) | (1 << (HaskellParser.SEMI - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2434217008) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 61625) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 161628161) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 2163912535) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	            this.state = 1295;
 	            this.decls();
 	        }
@@ -4747,67 +4743,67 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1312;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.DATA:
-	        case HaskellParser.TYPE:
+	        case 7:
+	        case 26:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1305;
 	            this.at_decl_cls();
 	            break;
-	        case HaskellParser.AS:
-	        case HaskellParser.CASE:
-	        case HaskellParser.DO:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.IF:
-	        case HaskellParser.INFIX:
-	        case HaskellParser.INFIXL:
-	        case HaskellParser.INFIXR:
-	        case HaskellParser.LET:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.WILDCARD:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.MDO:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.PATTERN:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.LCASE:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.DDollar:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Semi:
-	        case HaskellParser.Quote:
-	        case HaskellParser.DoubleQuote:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.AopenParen:
-	        case HaskellParser.TopenTexpQuote:
-	        case HaskellParser.TopenExpQuote:
-	        case HaskellParser.TopenPatQuote:
-	        case HaskellParser.TopenTypQoute:
-	        case HaskellParser.TopenDecQoute:
-	        case HaskellParser.OpenBoxParen:
-	        case HaskellParser.OpenRoundBracket:
-	        case HaskellParser.OpenSquareBracket:
-	        case HaskellParser.CHAR:
-	        case HaskellParser.STRING:
-	        case HaskellParser.VARID:
-	        case HaskellParser.CONID:
-	        case HaskellParser.OpenPragmaBracket:
-	        case HaskellParser.SEMI:
-	        case HaskellParser.DECIMAL:
-	        case HaskellParser.OCTAL:
-	        case HaskellParser.HEXADECIMAL:
-	        case HaskellParser.FLOAT:
+	        case 4:
+	        case 5:
+	        case 10:
+	        case 12:
+	        case 13:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 24:
+	        case 28:
+	        case 31:
+	        case 35:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 73:
+	        case 87:
+	        case 90:
+	        case 94:
+	        case 96:
+	        case 97:
+	        case 100:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 109:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 118:
+	        case 120:
+	        case 122:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1306;
 	            this.decl();
 	            break;
-	        case HaskellParser.DEFAULT:
+	        case 8:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1307;
 	            this.match(HaskellParser.DEFAULT);
@@ -4840,7 +4836,7 @@ export default class HaskellParser extends antlr4.Parser {
 	decls_cls() {
 	    let localctx = new Decls_clsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 116, HaskellParser.RULE_decls_cls);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1314;
@@ -4877,7 +4873,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1330;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 1327;
 	            this.semi();
 	            this.state = 1332;
@@ -4903,7 +4899,7 @@ export default class HaskellParser extends antlr4.Parser {
 	decllist_cls() {
 	    let localctx = new Decllist_clsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, HaskellParser.RULE_decllist_cls);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1333;
@@ -4911,7 +4907,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1335;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DATA) | (1 << HaskellParser.DEFAULT) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.INFIX) | (1 << HaskellParser.INFIXL) | (1 << HaskellParser.INFIXR) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.TYPE) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.PATTERN - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Semi - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)) | (1 << (HaskellParser.OpenPragmaBracket - 105)) | (1 << (HaskellParser.SEMI - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2501326256) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 61625) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 161628161) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 2163912535) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	            this.state = 1334;
 	            this.decls_cls();
 	        }
@@ -4966,63 +4962,63 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1344;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.DATA:
-	        case HaskellParser.NEWTYPE:
-	        case HaskellParser.TYPE:
+	        case 7:
+	        case 22:
+	        case 26:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1342;
 	            this.at_decl_inst();
 	            break;
-	        case HaskellParser.AS:
-	        case HaskellParser.CASE:
-	        case HaskellParser.DO:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.IF:
-	        case HaskellParser.INFIX:
-	        case HaskellParser.INFIXL:
-	        case HaskellParser.INFIXR:
-	        case HaskellParser.LET:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.WILDCARD:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.MDO:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.PATTERN:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.LCASE:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.DDollar:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Semi:
-	        case HaskellParser.Quote:
-	        case HaskellParser.DoubleQuote:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.AopenParen:
-	        case HaskellParser.TopenTexpQuote:
-	        case HaskellParser.TopenExpQuote:
-	        case HaskellParser.TopenPatQuote:
-	        case HaskellParser.TopenTypQoute:
-	        case HaskellParser.TopenDecQoute:
-	        case HaskellParser.OpenBoxParen:
-	        case HaskellParser.OpenRoundBracket:
-	        case HaskellParser.OpenSquareBracket:
-	        case HaskellParser.CHAR:
-	        case HaskellParser.STRING:
-	        case HaskellParser.VARID:
-	        case HaskellParser.CONID:
-	        case HaskellParser.OpenPragmaBracket:
-	        case HaskellParser.SEMI:
-	        case HaskellParser.DECIMAL:
-	        case HaskellParser.OCTAL:
-	        case HaskellParser.HEXADECIMAL:
-	        case HaskellParser.FLOAT:
+	        case 4:
+	        case 5:
+	        case 10:
+	        case 12:
+	        case 13:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 24:
+	        case 28:
+	        case 31:
+	        case 35:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 73:
+	        case 87:
+	        case 90:
+	        case 94:
+	        case 96:
+	        case 97:
+	        case 100:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 109:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 118:
+	        case 120:
+	        case 122:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1343;
 	            this.decl();
@@ -5049,7 +5045,7 @@ export default class HaskellParser extends antlr4.Parser {
 	decls_inst() {
 	    let localctx = new Decls_instContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, HaskellParser.RULE_decls_inst);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1346;
@@ -5086,7 +5082,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1362;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 1359;
 	            this.semi();
 	            this.state = 1364;
@@ -5112,7 +5108,7 @@ export default class HaskellParser extends antlr4.Parser {
 	decllist_inst() {
 	    let localctx = new Decllist_instContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 126, HaskellParser.RULE_decllist_inst);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1365;
@@ -5120,7 +5116,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1367;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DATA) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.INFIX) | (1 << HaskellParser.INFIXL) | (1 << HaskellParser.INFIXR) | (1 << HaskellParser.LET) | (1 << HaskellParser.NEWTYPE) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.TYPE) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.PATTERN - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Semi - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)) | (1 << (HaskellParser.OpenPragmaBracket - 105)) | (1 << (HaskellParser.SEMI - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2505520304) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 61625) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 161628161) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 2163912535) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	            this.state = 1366;
 	            this.decls_inst();
 	        }
@@ -5171,7 +5167,7 @@ export default class HaskellParser extends antlr4.Parser {
 	decls() {
 	    let localctx = new DeclsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 130, HaskellParser.RULE_decls);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1374;
@@ -5208,7 +5204,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1390;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 1387;
 	            this.semi();
 	            this.state = 1392;
@@ -5234,7 +5230,7 @@ export default class HaskellParser extends antlr4.Parser {
 	decllist() {
 	    let localctx = new DecllistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 132, HaskellParser.RULE_decllist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1393;
@@ -5242,7 +5238,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1395;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.INFIX) | (1 << HaskellParser.INFIXL) | (1 << HaskellParser.INFIXR) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.PATTERN - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Semi - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)) | (1 << (HaskellParser.OpenPragmaBracket - 105)) | (1 << (HaskellParser.SEMI - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2434217008) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 61625) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 161628161) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 2163912535) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	            this.state = 1394;
 	            this.decls();
 	        }
@@ -5268,7 +5264,7 @@ export default class HaskellParser extends antlr4.Parser {
 	binds() {
 	    let localctx = new BindsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 134, HaskellParser.RULE_binds);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1406;
 	        this._errHandler.sync(this);
@@ -5287,7 +5283,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1402;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126) {
 	                this.state = 1401;
 	                this.dbinds();
 	            }
@@ -5341,7 +5337,7 @@ export default class HaskellParser extends antlr4.Parser {
 	rules() {
 	    let localctx = new RulesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 138, HaskellParser.RULE_rules);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1411;
@@ -5364,7 +5360,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1421;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        if(_la===100 || _la===136) {
 	            this.state = 1420;
 	            this.semi();
 	        }
@@ -5388,7 +5384,7 @@ export default class HaskellParser extends antlr4.Parser {
 	pragma_rule() {
 	    let localctx = new Pragma_ruleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 140, HaskellParser.RULE_pragma_rule);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1423;
@@ -5404,7 +5400,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1428;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.FORALL) {
+	        if(_la===29) {
 	            this.state = 1427;
 	            this.rule_foralls();
 	        }
@@ -5528,7 +5524,7 @@ export default class HaskellParser extends antlr4.Parser {
 	rule_foralls() {
 	    let localctx = new Rule_forallsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, HaskellParser.RULE_rule_foralls);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1453;
@@ -5536,7 +5532,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1455;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.OpenRoundBracket || _la===HaskellParser.VARID) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===120 || _la===126) {
 	            this.state = 1454;
 	            this.rule_vars();
 	        }
@@ -5546,13 +5542,13 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1463;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.FORALL) {
+	        if(_la===29) {
 	            this.state = 1458;
 	            this.match(HaskellParser.FORALL);
 	            this.state = 1460;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.OpenRoundBracket || _la===HaskellParser.VARID) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===120 || _la===126) {
 	                this.state = 1459;
 	                this.rule_vars();
 	            }
@@ -5580,7 +5576,7 @@ export default class HaskellParser extends antlr4.Parser {
 	rule_vars() {
 	    let localctx = new Rule_varsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 148, HaskellParser.RULE_rule_vars);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1466; 
@@ -5592,7 +5588,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1468; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.OpenRoundBracket || _la===HaskellParser.VARID);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===120 || _la===126);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -5616,23 +5612,23 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1477;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.VARID:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 126:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1470;
 	            this.varid();
 	            break;
-	        case HaskellParser.OpenRoundBracket:
+	        case 120:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1471;
 	            this.match(HaskellParser.OpenRoundBracket);
@@ -5667,7 +5663,7 @@ export default class HaskellParser extends antlr4.Parser {
 	warnings() {
 	    let localctx = new WarningsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 152, HaskellParser.RULE_warnings);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1479;
@@ -5690,7 +5686,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1489;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        if(_la===100 || _la===136) {
 	            this.state = 1488;
 	            this.semi();
 	        }
@@ -5739,7 +5735,7 @@ export default class HaskellParser extends antlr4.Parser {
 	deprecations() {
 	    let localctx = new DeprecationsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 156, HaskellParser.RULE_deprecations);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1494;
@@ -5762,7 +5758,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1504;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        if(_la===100 || _la===136) {
 	            this.state = 1503;
 	            this.semi();
 	        }
@@ -5811,24 +5807,24 @@ export default class HaskellParser extends antlr4.Parser {
 	strings() {
 	    let localctx = new StringsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 160, HaskellParser.RULE_strings);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1515;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.STRING:
+	        case 125:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1509;
 	            this.pstring();
 	            break;
-	        case HaskellParser.OpenSquareBracket:
+	        case 122:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1510;
 	            this.match(HaskellParser.OpenSquareBracket);
 	            this.state = 1512;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.STRING) {
+	            if(_la===125) {
 	                this.state = 1511;
 	                this.stringlist();
 	            }
@@ -5858,7 +5854,7 @@ export default class HaskellParser extends antlr4.Parser {
 	stringlist() {
 	    let localctx = new StringlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 162, HaskellParser.RULE_stringlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1517;
@@ -5866,7 +5862,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1522;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1518;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1519;
@@ -5961,12 +5957,12 @@ export default class HaskellParser extends antlr4.Parser {
 	fdecl() {
 	    let localctx = new FdeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 166, HaskellParser.RULE_fdecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1556;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.IMPORT:
+	        case 14:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1545;
 	            this.match(HaskellParser.IMPORT);
@@ -5975,7 +5971,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1548;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (HaskellParser.SAFE - 32)) | (1 << (HaskellParser.INTERRUPTIBLE - 32)) | (1 << (HaskellParser.UNSAFE - 32)))) !== 0)) {
+	            if(((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0)) {
 	                this.state = 1547;
 	                this.safety();
 	            }
@@ -5983,7 +5979,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1550;
 	            this.fspec();
 	            break;
-	        case HaskellParser.EXPORT:
+	        case 31:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1552;
 	            this.match(HaskellParser.EXPORT);
@@ -6014,12 +6010,12 @@ export default class HaskellParser extends antlr4.Parser {
 	callconv() {
 	    let localctx = new CallconvContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 168, HaskellParser.RULE_callconv);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1558;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CPPCALL - 38)) | (1 << (HaskellParser.JSCALL - 38)))) !== 0))) {
+	        if(!(((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 27) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6045,12 +6041,12 @@ export default class HaskellParser extends antlr4.Parser {
 	safety() {
 	    let localctx = new SafetyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 170, HaskellParser.RULE_safety);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1560;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (HaskellParser.SAFE - 32)) | (1 << (HaskellParser.INTERRUPTIBLE - 32)) | (1 << (HaskellParser.UNSAFE - 32)))) !== 0))) {
+	        if(!(((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6076,13 +6072,13 @@ export default class HaskellParser extends antlr4.Parser {
 	fspec() {
 	    let localctx = new FspecContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 172, HaskellParser.RULE_fspec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1563;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.STRING) {
+	        if(_la===125) {
 	            this.state = 1562;
 	            this.pstring();
 	        }
@@ -6208,7 +6204,7 @@ export default class HaskellParser extends antlr4.Parser {
 	sig_vars() {
 	    let localctx = new Sig_varsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, HaskellParser.RULE_sig_vars);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1579;
@@ -6216,7 +6212,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1584;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1580;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1581;
@@ -6244,7 +6240,7 @@ export default class HaskellParser extends antlr4.Parser {
 	sigtypes1() {
 	    let localctx = new Sigtypes1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 184, HaskellParser.RULE_sigtypes1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1587;
@@ -6252,7 +6248,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1592;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1588;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1589;
@@ -6325,12 +6321,12 @@ export default class HaskellParser extends antlr4.Parser {
 	forall_vis_flag() {
 	    let localctx = new Forall_vis_flagContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 188, HaskellParser.RULE_forall_vis_flag);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1603;
 	        _la = this._input.LA(1);
-	        if(!(_la===HaskellParser.Arrow || _la===HaskellParser.Dot)) {
+	        if(!(_la===76 || _la===99)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6438,7 +6434,7 @@ export default class HaskellParser extends antlr4.Parser {
 	ctype() {
 	    let localctx = new CtypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 194, HaskellParser.RULE_ctype);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1635;
 	        this._errHandler.sync(this);
@@ -6451,7 +6447,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1621;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.OCURLY - 120)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 4161) !== 0)) {
 	                this.state = 1620;
 	                this.tv_bndrs();
 	            }
@@ -6508,7 +6504,7 @@ export default class HaskellParser extends antlr4.Parser {
 	ctypedoc() {
 	    let localctx = new CtypedocContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 196, HaskellParser.RULE_ctypedoc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1653;
 	        this._errHandler.sync(this);
@@ -6521,7 +6517,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1639;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.OCURLY - 120)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 4161) !== 0)) {
 	                this.state = 1638;
 	                this.tv_bndrs();
 	            }
@@ -6922,7 +6918,7 @@ export default class HaskellParser extends antlr4.Parser {
 	atype() {
 	    let localctx = new AtypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 218, HaskellParser.RULE_atype);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1767;
 	        this._errHandler.sync(this);
@@ -6969,7 +6965,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1710;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.OpenRoundBracket || _la===HaskellParser.VARID) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===120 || _la===126) {
 	                this.state = 1709;
 	                this.fielddecls();
 	            }
@@ -7093,7 +7089,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1753;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.FORALL) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 82)) & ~0x1f) == 0 && ((1 << (_la - 82)) & ((1 << (HaskellParser.Hash - 82)) | (1 << (HaskellParser.Less - 82)) | (1 << (HaskellParser.Greater - 82)) | (1 << (HaskellParser.Ampersand - 82)) | (1 << (HaskellParser.Pipe - 82)) | (1 << (HaskellParser.Bang - 82)) | (1 << (HaskellParser.Caret - 82)) | (1 << (HaskellParser.Plus - 82)) | (1 << (HaskellParser.Minus - 82)) | (1 << (HaskellParser.Asterisk - 82)) | (1 << (HaskellParser.Percent - 82)) | (1 << (HaskellParser.Divide - 82)) | (1 << (HaskellParser.Tilde - 82)) | (1 << (HaskellParser.Atsign - 82)) | (1 << (HaskellParser.Dollar - 82)) | (1 << (HaskellParser.Dot - 82)) | (1 << (HaskellParser.QuestionMark - 82)) | (1 << (HaskellParser.Colon - 82)) | (1 << (HaskellParser.Eq - 82)) | (1 << (HaskellParser.Quote - 82)) | (1 << (HaskellParser.ReverseSlash - 82)) | (1 << (HaskellParser.BackQuote - 82)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.STRING - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)) | (1 << (HaskellParser.OpenPragmaBracket - 118)) | (1 << (HaskellParser.OCURLY - 118)) | (1 << (HaskellParser.DECIMAL - 118)) | (1 << (HaskellParser.OCTAL - 118)) | (1 << (HaskellParser.HEXADECIMAL - 118)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2969571344) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 82)) & ~0x1f) === 0 && ((1 << (_la - 82)) & 116047871) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 3688341) !== 0)) {
 	                this.state = 1752;
 	                this.comma_types();
 	            }
@@ -7185,7 +7181,7 @@ export default class HaskellParser extends antlr4.Parser {
 	deriv_types() {
 	    let localctx = new Deriv_typesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 222, HaskellParser.RULE_deriv_types);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1771;
@@ -7193,7 +7189,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1776;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1772;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1773;
@@ -7221,7 +7217,7 @@ export default class HaskellParser extends antlr4.Parser {
 	comma_types() {
 	    let localctx = new Comma_typesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 224, HaskellParser.RULE_comma_types);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1779;
@@ -7229,7 +7225,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1784;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1780;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1781;
@@ -7257,7 +7253,7 @@ export default class HaskellParser extends antlr4.Parser {
 	bar_types2() {
 	    let localctx = new Bar_types2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 226, HaskellParser.RULE_bar_types2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1787;
@@ -7269,7 +7265,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1794;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Pipe) {
+	        while(_la===86) {
 	            this.state = 1790;
 	            this.match(HaskellParser.Pipe);
 	            this.state = 1791;
@@ -7297,7 +7293,7 @@ export default class HaskellParser extends antlr4.Parser {
 	tv_bndrs() {
 	    let localctx = new Tv_bndrsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 228, HaskellParser.RULE_tv_bndrs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1798; 
@@ -7309,7 +7305,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1800; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.OCURLY - 120)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 4161) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -7388,23 +7384,23 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1822;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.VARID:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 126:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1815;
 	            this.tyvar();
 	            break;
-	        case HaskellParser.OpenRoundBracket:
+	        case 120:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1816;
 	            this.match(HaskellParser.OpenRoundBracket);
@@ -7464,7 +7460,7 @@ export default class HaskellParser extends antlr4.Parser {
 	fds1() {
 	    let localctx = new Fds1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 236, HaskellParser.RULE_fds1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1827;
@@ -7472,7 +7468,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1832;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1828;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1829;
@@ -7500,13 +7496,13 @@ export default class HaskellParser extends antlr4.Parser {
 	fd() {
 	    let localctx = new FdContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 238, HaskellParser.RULE_fd);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1836;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126) {
 	            this.state = 1835;
 	            this.varids0();
 	        }
@@ -7516,7 +7512,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1840;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126) {
 	            this.state = 1839;
 	            this.varids0();
 	        }
@@ -7540,7 +7536,7 @@ export default class HaskellParser extends antlr4.Parser {
 	varids0() {
 	    let localctx = new Varids0Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 240, HaskellParser.RULE_varids0);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1843; 
@@ -7552,7 +7548,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1845; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || _la===HaskellParser.VARID);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || _la===126);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -7595,7 +7591,7 @@ export default class HaskellParser extends antlr4.Parser {
 	gadt_constrlist() {
 	    let localctx = new Gadt_constrlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 244, HaskellParser.RULE_gadt_constrlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1849;
@@ -7605,7 +7601,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1852;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.CONID - 118)))) !== 0)) {
+	        if(((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 533) !== 0)) {
 	            this.state = 1851;
 	            this.gadt_constrs();
 	        }
@@ -7613,7 +7609,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1857;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 1854;
 	            this.semi();
 	            this.state = 1859;
@@ -7754,7 +7750,7 @@ export default class HaskellParser extends antlr4.Parser {
 	constrs1() {
 	    let localctx = new Constrs1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 254, HaskellParser.RULE_constrs1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1880;
@@ -7762,7 +7758,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1885;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Pipe) {
+	        while(_la===86) {
 	            this.state = 1881;
 	            this.match(HaskellParser.Pipe);
 	            this.state = 1882;
@@ -7790,13 +7786,13 @@ export default class HaskellParser extends antlr4.Parser {
 	constr() {
 	    let localctx = new ConstrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 256, HaskellParser.RULE_constr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1889;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.FORALL) {
+	        if(_la===29) {
 	            this.state = 1888;
 	            this.forall();
 	        }
@@ -7832,7 +7828,7 @@ export default class HaskellParser extends antlr4.Parser {
 	forall() {
 	    let localctx = new ForallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 258, HaskellParser.RULE_forall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1898;
@@ -7840,7 +7836,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1900;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 120)) & ~0x1f) == 0 && ((1 << (_la - 120)) & ((1 << (HaskellParser.OpenRoundBracket - 120)) | (1 << (HaskellParser.VARID - 120)) | (1 << (HaskellParser.OCURLY - 120)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 120)) & ~0x1f) === 0 && ((1 << (_la - 120)) & 4161) !== 0)) {
 	            this.state = 1899;
 	            this.tv_bndrs();
 	        }
@@ -7889,7 +7885,7 @@ export default class HaskellParser extends antlr4.Parser {
 	fielddecls() {
 	    let localctx = new FielddeclsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 262, HaskellParser.RULE_fielddecls);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1906;
@@ -7897,7 +7893,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 1911;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 1907;
 	            this.match(HaskellParser.Comma);
 	            this.state = 1908;
@@ -7952,7 +7948,7 @@ export default class HaskellParser extends antlr4.Parser {
 	derivings() {
 	    let localctx = new DerivingsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 266, HaskellParser.RULE_derivings);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1919; 
@@ -7964,7 +7960,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1921; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===HaskellParser.DERIVING);
+	        } while(_la===9);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -8086,7 +8082,7 @@ export default class HaskellParser extends antlr4.Parser {
 	decl_no_th() {
 	    let localctx = new Decl_no_thContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 272, HaskellParser.RULE_decl_no_th);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1957;
 	        this._errHandler.sync(this);
@@ -8105,7 +8101,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1947;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 1946;
 	                this.opt_sig();
 	            }
@@ -8217,12 +8213,12 @@ export default class HaskellParser extends antlr4.Parser {
 	rhs() {
 	    let localctx = new RhsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 276, HaskellParser.RULE_rhs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1977;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Eq:
+	        case 104:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1968;
 	            this.match(HaskellParser.Eq);
@@ -8231,20 +8227,20 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1971;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 1970;
 	                this.wherebinds();
 	            }
 
 	            break;
-	        case HaskellParser.Pipe:
+	        case 86:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1973;
 	            this.gdrhs();
 	            this.state = 1975;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.WHERE) {
+	            if(_la===27) {
 	                this.state = 1974;
 	                this.wherebinds();
 	            }
@@ -8272,7 +8268,7 @@ export default class HaskellParser extends antlr4.Parser {
 	gdrhs() {
 	    let localctx = new GdrhsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 278, HaskellParser.RULE_gdrhs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1980; 
@@ -8284,7 +8280,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 1982; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===HaskellParser.Pipe);
+	        } while(_la===86);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -8333,7 +8329,7 @@ export default class HaskellParser extends antlr4.Parser {
 	sigdecl() {
 	    let localctx = new SigdeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 282, HaskellParser.RULE_sigdecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2068;
 	        this._errHandler.sync(this);
@@ -8370,7 +8366,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2001;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)))) !== 0)) {
+	            if(((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 7) !== 0)) {
 	                this.state = 2000;
 	                this.integer();
 	            }
@@ -8396,7 +8392,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2010;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.DoubleColon) {
+	            if(_la===75) {
 	                this.state = 2009;
 	                this.opt_tyconsig();
 	            }
@@ -8414,7 +8410,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2017;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.OpenSquareBracket) {
+	            if(_la===122) {
 	                this.state = 2016;
 	                this.activation();
 	            }
@@ -8436,7 +8432,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2026;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.STRING) {
+	            if(_la===125) {
 	                this.state = 2025;
 	                this.pstring();
 	            }
@@ -8454,7 +8450,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2033;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.OpenSquareBracket) {
+	            if(_la===122) {
 	                this.state = 2032;
 	                this.activation();
 	            }
@@ -8478,7 +8474,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2043;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.OpenSquareBracket) {
+	            if(_la===122) {
 	                this.state = 2042;
 	                this.activation();
 	            }
@@ -8518,7 +8514,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2060;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (HaskellParser.OpenBoxParen - 118)) | (1 << (HaskellParser.OpenRoundBracket - 118)) | (1 << (HaskellParser.OpenSquareBracket - 118)) | (1 << (HaskellParser.VARID - 118)) | (1 << (HaskellParser.CONID - 118)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 789) !== 0)) {
 	                this.state = 2059;
 	                this.name_boolformula_opt();
 	            }
@@ -8847,13 +8843,13 @@ export default class HaskellParser extends antlr4.Parser {
 	exp10() {
 	    let localctx = new Exp10Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 298, HaskellParser.RULE_exp10);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2128;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.Minus) {
+	        if(_la===90) {
 	            this.state = 2127;
 	            this.match(HaskellParser.Minus);
 	        }
@@ -8926,7 +8922,7 @@ export default class HaskellParser extends antlr4.Parser {
 	aexp() {
 	    let localctx = new AexpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 302, HaskellParser.RULE_aexp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2186;
 	        this._errHandler.sync(this);
@@ -8999,7 +8995,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2164;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	            if(_la===100 || _la===136) {
 	                this.state = 2163;
 	                this.semi();
 	            }
@@ -9011,7 +9007,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2169;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	            if(_la===100 || _la===136) {
 	                this.state = 2168;
 	                this.semi();
 	            }
@@ -9084,7 +9080,7 @@ export default class HaskellParser extends antlr4.Parser {
 	aexp1() {
 	    let localctx = new Aexp1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 304, HaskellParser.RULE_aexp1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2188;
@@ -9099,7 +9095,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 2191;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0) || ((((_la - 98)) & ~0x1f) == 0 && ((1 << (_la - 98)) & ((1 << (HaskellParser.DoubleDot - 98)) | (1 << (HaskellParser.OpenRoundBracket - 98)) | (1 << (HaskellParser.VARID - 98)) | (1 << (HaskellParser.CONID - 98)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0) || ((((_la - 98)) & ~0x1f) === 0 && ((1 << (_la - 98)) & 809500673) !== 0)) {
 	                    this.state = 2190;
 	                    this.fbinds();
 	                }
@@ -9382,12 +9378,12 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2270;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.DDollar:
+	        case 96:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2268;
 	            this.splice_typed();
 	            break;
-	        case HaskellParser.Dollar:
+	        case 97:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2269;
 	            this.splice_untyped();
@@ -9524,7 +9520,7 @@ export default class HaskellParser extends antlr4.Parser {
 	cvtopbody() {
 	    let localctx = new CvtopbodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 318, HaskellParser.RULE_cvtopbody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2285;
@@ -9532,7 +9528,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2287;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.NEWLINE) | (1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.CLASS) | (1 << HaskellParser.DATA) | (1 << HaskellParser.DEFAULT) | (1 << HaskellParser.DERIVING) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.INFIX) | (1 << HaskellParser.INFIXL) | (1 << HaskellParser.INFIXR) | (1 << HaskellParser.INSTANCE) | (1 << HaskellParser.LET) | (1 << HaskellParser.NEWTYPE) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.TYPE) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.FOREIGN) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.PATTERN - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Semi - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)) | (1 << (HaskellParser.OpenPragmaBracket - 105)) | (1 << (HaskellParser.SEMI - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3579787250) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 61625) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 161628161) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 2163912535) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	            this.state = 2286;
 	            this.cvtopdecls0();
 	        }
@@ -9558,7 +9554,7 @@ export default class HaskellParser extends antlr4.Parser {
 	cvtopdecls0() {
 	    let localctx = new Cvtopdecls0Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 320, HaskellParser.RULE_cvtopdecls0);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2291;
@@ -9566,7 +9562,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2295;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 2292;
 	            this.semi();
 	            this.state = 2297;
@@ -9649,7 +9645,7 @@ export default class HaskellParser extends antlr4.Parser {
 	tup_exprs() {
 	    let localctx = new Tup_exprsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 324, HaskellParser.RULE_tup_exprs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2326;
 	        this._errHandler.sync(this);
@@ -9678,7 +9674,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2319;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Hash - 73)) | (1 << (HaskellParser.Less - 73)) | (1 << (HaskellParser.Greater - 73)) | (1 << (HaskellParser.Ampersand - 73)) | (1 << (HaskellParser.Pipe - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Caret - 73)) | (1 << (HaskellParser.Plus - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Asterisk - 73)) | (1 << (HaskellParser.Percent - 73)) | (1 << (HaskellParser.Divide - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.Atsign - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Dot - 73)) | (1 << (HaskellParser.QuestionMark - 73)) | (1 << (HaskellParser.Colon - 73)) | (1 << (HaskellParser.Eq - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.BackQuote - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2433758256) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 57529) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 3590323713) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 8040287) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	                this.state = 2318;
 	                this.tup_tail();
 	            }
@@ -9694,7 +9690,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2324;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===HaskellParser.Pipe) {
+	            if(_la===86) {
 	                this.state = 2323;
 	                this.bars();
 	            }
@@ -9721,7 +9717,7 @@ export default class HaskellParser extends antlr4.Parser {
 	commas_tup_tail() {
 	    let localctx = new Commas_tup_tailContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 326, HaskellParser.RULE_commas_tup_tail);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2328;
@@ -9729,7 +9725,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2330;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Hash - 73)) | (1 << (HaskellParser.Less - 73)) | (1 << (HaskellParser.Greater - 73)) | (1 << (HaskellParser.Ampersand - 73)) | (1 << (HaskellParser.Pipe - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Caret - 73)) | (1 << (HaskellParser.Plus - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Asterisk - 73)) | (1 << (HaskellParser.Percent - 73)) | (1 << (HaskellParser.Divide - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.Atsign - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Dot - 73)) | (1 << (HaskellParser.QuestionMark - 73)) | (1 << (HaskellParser.Colon - 73)) | (1 << (HaskellParser.Eq - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.BackQuote - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2433758256) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 57529) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 3590323713) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 8040287) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	            this.state = 2329;
 	            this.tup_tail();
 	        }
@@ -9883,7 +9879,7 @@ export default class HaskellParser extends antlr4.Parser {
 	lexps() {
 	    let localctx = new LexpsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 332, HaskellParser.RULE_lexps);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2364;
@@ -9895,7 +9891,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2371;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 2367;
 	            this.match(HaskellParser.Comma);
 	            this.state = 2368;
@@ -9946,7 +9942,7 @@ export default class HaskellParser extends antlr4.Parser {
 	pquals() {
 	    let localctx = new PqualsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 336, HaskellParser.RULE_pquals);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2376;
@@ -9954,7 +9950,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2381;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Pipe) {
+	        while(_la===86) {
 	            this.state = 2377;
 	            this.match(HaskellParser.Pipe);
 	            this.state = 2378;
@@ -9982,7 +9978,7 @@ export default class HaskellParser extends antlr4.Parser {
 	squals() {
 	    let localctx = new SqualsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 338, HaskellParser.RULE_squals);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2416;
 	        this._errHandler.sync(this);
@@ -9995,7 +9991,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2389;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===HaskellParser.Comma) {
+	            while(_la===102) {
 	                this.state = 2385;
 	                this.match(HaskellParser.Comma);
 	                this.state = 2386;
@@ -10013,7 +10009,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2397;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===HaskellParser.Comma) {
+	            while(_la===102) {
 	                this.state = 2393;
 	                this.match(HaskellParser.Comma);
 	                this.state = 2394;
@@ -10031,7 +10027,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2405;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===HaskellParser.Comma) {
+	            while(_la===102) {
 	                this.state = 2401;
 	                this.match(HaskellParser.Comma);
 	                this.state = 2402;
@@ -10049,7 +10045,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2413;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===HaskellParser.Comma) {
+	            while(_la===102) {
 	                this.state = 2409;
 	                this.match(HaskellParser.Comma);
 	                this.state = 2410;
@@ -10153,7 +10149,7 @@ export default class HaskellParser extends antlr4.Parser {
 	guards() {
 	    let localctx = new GuardsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 342, HaskellParser.RULE_guards);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2438;
@@ -10161,7 +10157,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2443;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 2439;
 	            this.match(HaskellParser.Comma);
 	            this.state = 2440;
@@ -10238,7 +10234,7 @@ export default class HaskellParser extends antlr4.Parser {
 	alts() {
 	    let localctx = new AltsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 346, HaskellParser.RULE_alts);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2472;
 	        this._errHandler.sync(this);
@@ -10257,7 +10253,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 2460;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	                while(_la===100 || _la===136) {
 	                    this.state = 2457;
 	                    this.semi();
 	                    this.state = 2462;
@@ -10267,7 +10263,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                this.state = 2465; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0));
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2433758256) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 57529) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 27410433) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 8040279) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0));
 	            this.state = 2467;
 	            this.close();
 	            break;
@@ -10325,7 +10321,7 @@ export default class HaskellParser extends antlr4.Parser {
 	alt_rhs() {
 	    let localctx = new Alt_rhsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 350, HaskellParser.RULE_alt_rhs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2477;
@@ -10333,7 +10329,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2479;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.WHERE) {
+	        if(_la===27) {
 	            this.state = 2478;
 	            this.wherebinds();
 	        }
@@ -10361,14 +10357,14 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2484;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Arrow:
+	        case 76:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2481;
 	            this.match(HaskellParser.Arrow);
 	            this.state = 2482;
 	            this.exp();
 	            break;
-	        case HaskellParser.Pipe:
+	        case 86:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2483;
 	            this.gdpats();
@@ -10436,7 +10432,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2496;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.OCURLY:
+	        case 132:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2491;
 	            this.match(HaskellParser.OCURLY);
@@ -10445,7 +10441,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2493;
 	            this.match(HaskellParser.CCURLY);
 	            break;
-	        case HaskellParser.Pipe:
+	        case 86:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2495;
 	            this.gdpats();
@@ -10570,7 +10566,7 @@ export default class HaskellParser extends antlr4.Parser {
 	apats() {
 	    let localctx = new ApatsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 366, HaskellParser.RULE_apats);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2510; 
@@ -10582,7 +10578,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2512; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2433758256) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 57529) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 27279361) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 8040279) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -10629,7 +10625,7 @@ export default class HaskellParser extends antlr4.Parser {
 	stmtlist() {
 	    let localctx = new StmtlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 370, HaskellParser.RULE_stmtlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2518;
@@ -10637,7 +10633,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2520;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.CASE) | (1 << HaskellParser.DO) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.IF) | (1 << HaskellParser.LET) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.WILDCARD) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (HaskellParser.MDO - 35)) | (1 << (HaskellParser.STDCALL - 35)) | (1 << (HaskellParser.CCALL - 35)) | (1 << (HaskellParser.CAPI - 35)) | (1 << (HaskellParser.JSCALL - 35)) | (1 << (HaskellParser.REC - 35)) | (1 << (HaskellParser.STOCK - 35)) | (1 << (HaskellParser.ANYCLASS - 35)) | (1 << (HaskellParser.VIA - 35)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (HaskellParser.LCASE - 73)) | (1 << (HaskellParser.Bang - 73)) | (1 << (HaskellParser.Minus - 73)) | (1 << (HaskellParser.Tilde - 73)) | (1 << (HaskellParser.DDollar - 73)) | (1 << (HaskellParser.Dollar - 73)) | (1 << (HaskellParser.Semi - 73)))) !== 0) || ((((_la - 105)) & ~0x1f) == 0 && ((1 << (_la - 105)) & ((1 << (HaskellParser.Quote - 105)) | (1 << (HaskellParser.DoubleQuote - 105)) | (1 << (HaskellParser.ReverseSlash - 105)) | (1 << (HaskellParser.AopenParen - 105)) | (1 << (HaskellParser.TopenTexpQuote - 105)) | (1 << (HaskellParser.TopenExpQuote - 105)) | (1 << (HaskellParser.TopenPatQuote - 105)) | (1 << (HaskellParser.TopenTypQoute - 105)) | (1 << (HaskellParser.TopenDecQoute - 105)) | (1 << (HaskellParser.OpenBoxParen - 105)) | (1 << (HaskellParser.OpenRoundBracket - 105)) | (1 << (HaskellParser.OpenSquareBracket - 105)) | (1 << (HaskellParser.CHAR - 105)) | (1 << (HaskellParser.STRING - 105)) | (1 << (HaskellParser.VARID - 105)) | (1 << (HaskellParser.CONID - 105)) | (1 << (HaskellParser.SEMI - 105)))) !== 0) || ((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)) | (1 << (HaskellParser.FLOAT - 137)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2433758256) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 57785) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 161628161) !== 0) || ((((_la - 105)) & ~0x1f) === 0 && ((1 << (_la - 105)) & 2155523927) !== 0) || ((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 15) !== 0)) {
 	            this.state = 2519;
 	            this.stmts();
 	        }
@@ -10663,7 +10659,7 @@ export default class HaskellParser extends antlr4.Parser {
 	stmts() {
 	    let localctx = new StmtsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 372, HaskellParser.RULE_stmts);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2524;
@@ -10700,7 +10696,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2540;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 2537;
 	            this.semi();
 	            this.state = 2542;
@@ -10730,62 +10726,62 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2551;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.AS:
-	        case HaskellParser.CASE:
-	        case HaskellParser.DO:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.IF:
-	        case HaskellParser.LET:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.WILDCARD:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.MDO:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.LCASE:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.DDollar:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Quote:
-	        case HaskellParser.DoubleQuote:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.AopenParen:
-	        case HaskellParser.TopenTexpQuote:
-	        case HaskellParser.TopenExpQuote:
-	        case HaskellParser.TopenPatQuote:
-	        case HaskellParser.TopenTypQoute:
-	        case HaskellParser.TopenDecQoute:
-	        case HaskellParser.OpenBoxParen:
-	        case HaskellParser.OpenRoundBracket:
-	        case HaskellParser.OpenSquareBracket:
-	        case HaskellParser.CHAR:
-	        case HaskellParser.STRING:
-	        case HaskellParser.VARID:
-	        case HaskellParser.CONID:
-	        case HaskellParser.DECIMAL:
-	        case HaskellParser.OCTAL:
-	        case HaskellParser.HEXADECIMAL:
-	        case HaskellParser.FLOAT:
+	        case 4:
+	        case 5:
+	        case 10:
+	        case 12:
+	        case 13:
+	        case 20:
+	        case 24:
+	        case 28:
+	        case 31:
+	        case 35:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 73:
+	        case 87:
+	        case 90:
+	        case 94:
+	        case 96:
+	        case 97:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 109:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 118:
+	        case 120:
+	        case 122:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2543;
 	            this.qual();
 	            break;
-	        case HaskellParser.REC:
+	        case 43:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2544;
 	            this.match(HaskellParser.REC);
 	            this.state = 2545;
 	            this.stmtlist();
 	            break;
-	        case HaskellParser.Semi:
-	        case HaskellParser.SEMI:
+	        case 100:
+	        case 136:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2547; 
 	            this._errHandler.sync(this);
@@ -10875,32 +10871,32 @@ export default class HaskellParser extends antlr4.Parser {
 	fbinds() {
 	    let localctx = new FbindsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 378, HaskellParser.RULE_fbinds);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2571;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.OpenRoundBracket:
-	        case HaskellParser.VARID:
-	        case HaskellParser.CONID:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 120:
+	        case 126:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2562;
 	            this.fbind();
 	            this.state = 2567;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===HaskellParser.Comma) {
+	            while(_la===102) {
 	                this.state = 2563;
 	                this.match(HaskellParser.Comma);
 	                this.state = 2564;
@@ -10910,7 +10906,7 @@ export default class HaskellParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case HaskellParser.DoubleDot:
+	        case 98:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2570;
 	            this.match(HaskellParser.DoubleDot);
@@ -10978,7 +10974,7 @@ export default class HaskellParser extends antlr4.Parser {
 	dbinds() {
 	    let localctx = new DbindsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 382, HaskellParser.RULE_dbinds);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2580;
@@ -10993,13 +10989,13 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2584; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI);
+	        } while(_la===100 || _la===136);
 	        this.state = 2586;
 	        this.dbind();
 	        this.state = 2591;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Semi || _la===HaskellParser.SEMI) {
+	        while(_la===100 || _la===136) {
 	            this.state = 2588;
 	            this.semi();
 	            this.state = 2593;
@@ -11052,7 +11048,7 @@ export default class HaskellParser extends antlr4.Parser {
 	name_boolformula_opt() {
 	    let localctx = new Name_boolformula_optContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 386, HaskellParser.RULE_name_boolformula_opt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2598;
@@ -11060,7 +11056,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2603;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Pipe) {
+	        while(_la===86) {
 	            this.state = 2599;
 	            this.match(HaskellParser.Pipe);
 	            this.state = 2600;
@@ -11111,7 +11107,7 @@ export default class HaskellParser extends antlr4.Parser {
 	name_boolformula_and_list() {
 	    let localctx = new Name_boolformula_and_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 390, HaskellParser.RULE_name_boolformula_and_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2608;
@@ -11119,7 +11115,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2613;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 2609;
 	            this.match(HaskellParser.Comma);
 	            this.state = 2610;
@@ -11188,7 +11184,7 @@ export default class HaskellParser extends antlr4.Parser {
 	namelist() {
 	    let localctx = new NamelistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 394, HaskellParser.RULE_namelist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2623;
@@ -11196,7 +11192,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2628;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 2624;
 	            this.match(HaskellParser.Comma);
 	            this.state = 2625;
@@ -11339,12 +11335,12 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2648;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.CONID:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2643;
 	            this.qconid();
 	            break;
-	        case HaskellParser.OpenRoundBracket:
+	        case 120:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2644;
 	            this.match(HaskellParser.OpenRoundBracket);
@@ -11422,7 +11418,7 @@ export default class HaskellParser extends antlr4.Parser {
 	con_list() {
 	    let localctx = new Con_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 406, HaskellParser.RULE_con_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2658;
@@ -11430,7 +11426,7 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2663;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===HaskellParser.Comma) {
+	        while(_la===102) {
 	            this.state = 2659;
 	            this.match(HaskellParser.Comma);
 	            this.state = 2660;
@@ -11523,13 +11519,13 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2683;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.OpenBoxParen:
-	        case HaskellParser.OpenRoundBracket:
+	        case 118:
+	        case 120:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2680;
 	            this.sysdcon_nolist();
 	            break;
-	        case HaskellParser.OpenSquareBracket:
+	        case 122:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2681;
 	            this.match(HaskellParser.OpenSquareBracket);
@@ -11562,12 +11558,12 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2690;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Colon:
+	        case 103:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2685;
 	            this.consym();
 	            break;
-	        case HaskellParser.BackQuote:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2686;
 	            this.match(HaskellParser.BackQuote);
@@ -11602,13 +11598,13 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2697;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Colon:
-	        case HaskellParser.CONID:
+	        case 103:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2692;
 	            this.gconsym();
 	            break;
-	        case HaskellParser.BackQuote:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2693;
 	            this.match(HaskellParser.BackQuote);
@@ -11796,12 +11792,12 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2731;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.CONID:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2726;
 	            this.qtycon();
 	            break;
-	        case HaskellParser.OpenRoundBracket:
+	        case 120:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2727;
 	            this.match(HaskellParser.OpenRoundBracket);
@@ -11836,32 +11832,32 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2738;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Hash:
-	        case HaskellParser.Less:
-	        case HaskellParser.Greater:
-	        case HaskellParser.Ampersand:
-	        case HaskellParser.Pipe:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Caret:
-	        case HaskellParser.Plus:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Asterisk:
-	        case HaskellParser.Percent:
-	        case HaskellParser.Divide:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.Atsign:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Dot:
-	        case HaskellParser.QuestionMark:
-	        case HaskellParser.Colon:
-	        case HaskellParser.Eq:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.CONID:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 97:
+	        case 99:
+	        case 101:
+	        case 103:
+	        case 104:
+	        case 107:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2733;
 	            this.qtyconsym();
 	            break;
-	        case HaskellParser.BackQuote:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2734;
 	            this.match(HaskellParser.BackQuote);
@@ -12087,31 +12083,31 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2770;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Hash:
-	        case HaskellParser.Less:
-	        case HaskellParser.Greater:
-	        case HaskellParser.Ampersand:
-	        case HaskellParser.Pipe:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Caret:
-	        case HaskellParser.Plus:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Asterisk:
-	        case HaskellParser.Percent:
-	        case HaskellParser.Divide:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.Atsign:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Dot:
-	        case HaskellParser.QuestionMark:
-	        case HaskellParser.Colon:
-	        case HaskellParser.Eq:
-	        case HaskellParser.ReverseSlash:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 97:
+	        case 99:
+	        case 101:
+	        case 103:
+	        case 104:
+	        case 107:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2765;
 	            this.varsym();
 	            break;
-	        case HaskellParser.BackQuote:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2766;
 	            this.match(HaskellParser.BackQuote);
@@ -12253,32 +12249,32 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2790;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Hash:
-	        case HaskellParser.Less:
-	        case HaskellParser.Greater:
-	        case HaskellParser.Ampersand:
-	        case HaskellParser.Pipe:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Caret:
-	        case HaskellParser.Plus:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Asterisk:
-	        case HaskellParser.Percent:
-	        case HaskellParser.Divide:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.Atsign:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Dot:
-	        case HaskellParser.QuestionMark:
-	        case HaskellParser.Colon:
-	        case HaskellParser.Eq:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.CONID:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 97:
+	        case 99:
+	        case 101:
+	        case 103:
+	        case 104:
+	        case 107:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2785;
 	            this.qvarsym();
 	            break;
-	        case HaskellParser.BackQuote:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2786;
 	            this.match(HaskellParser.BackQuote);
@@ -12313,32 +12309,32 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2797;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Hash:
-	        case HaskellParser.Less:
-	        case HaskellParser.Greater:
-	        case HaskellParser.Ampersand:
-	        case HaskellParser.Pipe:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Caret:
-	        case HaskellParser.Plus:
-	        case HaskellParser.Minus:
-	        case HaskellParser.Asterisk:
-	        case HaskellParser.Percent:
-	        case HaskellParser.Divide:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.Atsign:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Dot:
-	        case HaskellParser.QuestionMark:
-	        case HaskellParser.Colon:
-	        case HaskellParser.Eq:
-	        case HaskellParser.ReverseSlash:
-	        case HaskellParser.CONID:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 97:
+	        case 99:
+	        case 101:
+	        case 103:
+	        case 104:
+	        case 107:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2792;
 	            this.qvarsym_no_minus();
 	            break;
-	        case HaskellParser.BackQuote:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2793;
 	            this.match(HaskellParser.BackQuote);
@@ -12534,23 +12530,23 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2826;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.VARID:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 126:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2821;
 	            this.varid();
 	            break;
-	        case HaskellParser.OpenRoundBracket:
+	        case 120:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2822;
 	            this.match(HaskellParser.OpenRoundBracket);
@@ -12585,24 +12581,24 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2833;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
-	        case HaskellParser.VARID:
-	        case HaskellParser.CONID:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 126:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2828;
 	            this.qvarid();
 	            break;
-	        case HaskellParser.OpenRoundBracket:
+	        case 120:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2829;
 	            this.match(HaskellParser.OpenRoundBracket);
@@ -12633,13 +12629,13 @@ export default class HaskellParser extends antlr4.Parser {
 	qvarid() {
 	    let localctx = new QvaridContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 462, HaskellParser.RULE_qvarid);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2838;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.CONID) {
+	        if(_la===127) {
 	            this.state = 2835;
 	            this.modid();
 	            this.state = 2836;
@@ -12672,21 +12668,21 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2844;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.VARID:
+	        case 126:
 	            this.state = 2842;
 	            this.match(HaskellParser.VARID);
 	            break;
-	        case HaskellParser.AS:
-	        case HaskellParser.HIDING:
-	        case HaskellParser.QUALIFIED:
-	        case HaskellParser.EXPORT:
-	        case HaskellParser.STDCALL:
-	        case HaskellParser.CCALL:
-	        case HaskellParser.CAPI:
-	        case HaskellParser.JSCALL:
-	        case HaskellParser.STOCK:
-	        case HaskellParser.ANYCLASS:
-	        case HaskellParser.VIA:
+	        case 4:
+	        case 12:
+	        case 24:
+	        case 31:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 48:
+	        case 49:
+	        case 50:
 	            this.state = 2843;
 	            this.special_id();
 	            break;
@@ -12725,13 +12721,13 @@ export default class HaskellParser extends antlr4.Parser {
 	qvarsym() {
 	    let localctx = new QvarsymContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 466, HaskellParser.RULE_qvarsym);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2855;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.CONID) {
+	        if(_la===127) {
 	            this.state = 2852;
 	            this.modid();
 	            this.state = 2853;
@@ -12800,30 +12796,30 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2865;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.Hash:
-	        case HaskellParser.Less:
-	        case HaskellParser.Greater:
-	        case HaskellParser.Ampersand:
-	        case HaskellParser.Pipe:
-	        case HaskellParser.Bang:
-	        case HaskellParser.Caret:
-	        case HaskellParser.Plus:
-	        case HaskellParser.Asterisk:
-	        case HaskellParser.Percent:
-	        case HaskellParser.Divide:
-	        case HaskellParser.Tilde:
-	        case HaskellParser.Atsign:
-	        case HaskellParser.Dollar:
-	        case HaskellParser.Dot:
-	        case HaskellParser.QuestionMark:
-	        case HaskellParser.Colon:
-	        case HaskellParser.Eq:
-	        case HaskellParser.ReverseSlash:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 97:
+	        case 99:
+	        case 101:
+	        case 103:
+	        case 104:
+	        case 107:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2863;
 	            this.varsym_no_minus();
 	            break;
-	        case HaskellParser.Minus:
+	        case 90:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2864;
 	            this.match(HaskellParser.Minus);
@@ -12887,12 +12883,12 @@ export default class HaskellParser extends antlr4.Parser {
 	special_id() {
 	    let localctx = new Special_idContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 474, HaskellParser.RULE_special_id);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2872;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HaskellParser.AS) | (1 << HaskellParser.HIDING) | (1 << HaskellParser.QUALIFIED) | (1 << HaskellParser.EXPORT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (HaskellParser.STDCALL - 38)) | (1 << (HaskellParser.CCALL - 38)) | (1 << (HaskellParser.CAPI - 38)) | (1 << (HaskellParser.JSCALL - 38)) | (1 << (HaskellParser.STOCK - 38)) | (1 << (HaskellParser.ANYCLASS - 38)) | (1 << (HaskellParser.VIA - 38)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2164264976) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 7191) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -12987,13 +12983,13 @@ export default class HaskellParser extends antlr4.Parser {
 	qconsym() {
 	    let localctx = new QconsymContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 480, HaskellParser.RULE_qconsym);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2891;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HaskellParser.CONID) {
+	        if(_la===127) {
 	            this.state = 2888;
 	            this.modid();
 	            this.state = 2889;
@@ -13061,24 +13057,24 @@ export default class HaskellParser extends antlr4.Parser {
 	        this.state = 2906;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HaskellParser.DECIMAL:
-	        case HaskellParser.OCTAL:
-	        case HaskellParser.HEXADECIMAL:
+	        case 137:
+	        case 138:
+	        case 139:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2902;
 	            this.integer();
 	            break;
-	        case HaskellParser.FLOAT:
+	        case 140:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2903;
 	            this.pfloat();
 	            break;
-	        case HaskellParser.CHAR:
+	        case 124:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2904;
 	            this.pchar();
 	            break;
-	        case HaskellParser.STRING:
+	        case 125:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2905;
 	            this.pstring();
@@ -13105,12 +13101,12 @@ export default class HaskellParser extends antlr4.Parser {
 	open_() {
 	    let localctx = new Open_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 486, HaskellParser.RULE_open_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2908;
 	        _la = this._input.LA(1);
-	        if(!(_la===HaskellParser.OCURLY || _la===HaskellParser.VOCURLY)) {
+	        if(!(_la===132 || _la===134)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -13136,12 +13132,12 @@ export default class HaskellParser extends antlr4.Parser {
 	close() {
 	    let localctx = new CloseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 488, HaskellParser.RULE_close);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2910;
 	        _la = this._input.LA(1);
-	        if(!(_la===HaskellParser.CCURLY || _la===HaskellParser.VCCURLY)) {
+	        if(!(_la===133 || _la===135)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -13167,12 +13163,12 @@ export default class HaskellParser extends antlr4.Parser {
 	semi() {
 	    let localctx = new SemiContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 490, HaskellParser.RULE_semi);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2912;
 	        _la = this._input.LA(1);
-	        if(!(_la===HaskellParser.Semi || _la===HaskellParser.SEMI)) {
+	        if(!(_la===100 || _la===136)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -13236,7 +13232,7 @@ export default class HaskellParser extends antlr4.Parser {
 	commas() {
 	    let localctx = new CommasContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 494, HaskellParser.RULE_commas);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2925; 
@@ -13248,7 +13244,7 @@ export default class HaskellParser extends antlr4.Parser {
 	            this.state = 2927; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===HaskellParser.Comma);
+	        } while(_la===102);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -13305,12 +13301,12 @@ export default class HaskellParser extends antlr4.Parser {
 	special() {
 	    let localctx = new SpecialContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 498, HaskellParser.RULE_special);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2934;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (HaskellParser.Semi - 100)) | (1 << (HaskellParser.Comma - 100)) | (1 << (HaskellParser.BackQuote - 100)) | (1 << (HaskellParser.OpenRoundBracket - 100)) | (1 << (HaskellParser.CloseRoundBracket - 100)) | (1 << (HaskellParser.OpenSquareBracket - 100)) | (1 << (HaskellParser.CloseSquareBracket - 100)))) !== 0) || _la===HaskellParser.OCURLY || _la===HaskellParser.CCURLY)) {
+	        if(!(((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 15728901) !== 0) || _la===132 || _la===133)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -13359,12 +13355,12 @@ export default class HaskellParser extends antlr4.Parser {
 	ascSymbol() {
 	    let localctx = new AscSymbolContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 502, HaskellParser.RULE_ascSymbol);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2938;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 82)) & ~0x1f) == 0 && ((1 << (_la - 82)) & ((1 << (HaskellParser.Hash - 82)) | (1 << (HaskellParser.Less - 82)) | (1 << (HaskellParser.Greater - 82)) | (1 << (HaskellParser.Ampersand - 82)) | (1 << (HaskellParser.Pipe - 82)) | (1 << (HaskellParser.Bang - 82)) | (1 << (HaskellParser.Caret - 82)) | (1 << (HaskellParser.Plus - 82)) | (1 << (HaskellParser.Asterisk - 82)) | (1 << (HaskellParser.Percent - 82)) | (1 << (HaskellParser.Divide - 82)) | (1 << (HaskellParser.Tilde - 82)) | (1 << (HaskellParser.Atsign - 82)) | (1 << (HaskellParser.Dollar - 82)) | (1 << (HaskellParser.Dot - 82)) | (1 << (HaskellParser.QuestionMark - 82)) | (1 << (HaskellParser.Colon - 82)) | (1 << (HaskellParser.Eq - 82)) | (1 << (HaskellParser.ReverseSlash - 82)))) !== 0))) {
+	        if(!(((((_la - 82)) & ~0x1f) === 0 && ((1 << (_la - 82)) & 40550143) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -13390,12 +13386,12 @@ export default class HaskellParser extends antlr4.Parser {
 	integer() {
 	    let localctx = new IntegerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 504, HaskellParser.RULE_integer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2940;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (HaskellParser.DECIMAL - 137)) | (1 << (HaskellParser.OCTAL - 137)) | (1 << (HaskellParser.HEXADECIMAL - 137)))) !== 0))) {
+	        if(!(((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -27024,3 +27020,12 @@ HaskellParser.IntegerContext = IntegerContext;
 HaskellParser.PfloatContext = PfloatContext; 
 HaskellParser.PcharContext = PcharContext; 
 HaskellParser.PstringContext = PstringContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,32 +1,33 @@
-// Generated from ./calculator/calculator.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/calculator/calculator.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import calculatorListener from './calculatorListener.js';
-const serializedATN = [4,1,27,92,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+const serializedATN = [4,1,27,93,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
 2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,1,0,1,0,1,0,
-1,0,1,1,1,1,1,1,5,1,32,8,1,10,1,12,1,35,9,1,1,2,1,2,1,2,5,2,40,8,2,10,2,
-12,2,43,9,2,1,3,1,3,1,3,5,3,48,8,3,10,3,12,3,51,9,3,1,4,1,4,1,4,1,4,1,4,
-1,4,3,4,59,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,68,8,5,1,6,1,6,1,7,1,7,1,
-8,1,8,1,9,1,9,1,9,1,9,1,9,5,9,81,8,9,10,9,12,9,84,9,9,1,9,1,9,1,10,1,10,
+1,0,1,0,1,1,1,1,1,1,5,1,33,8,1,10,1,12,1,36,9,1,1,2,1,2,1,2,5,2,41,8,2,10,
+2,12,2,44,9,2,1,3,1,3,1,3,5,3,49,8,3,10,3,12,3,52,9,3,1,4,1,4,1,4,1,4,1,
+4,1,4,3,4,60,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,69,8,5,1,6,1,6,1,7,1,7,
+1,8,1,8,1,9,1,9,1,9,1,9,1,9,5,9,82,8,9,10,9,12,9,85,9,9,1,9,1,9,1,10,1,10,
 1,11,1,11,1,11,0,0,12,0,2,4,6,8,10,12,14,16,18,20,22,0,5,1,0,12,13,1,0,14,
-15,1,0,22,24,1,0,1,9,1,0,16,18,89,0,24,1,0,0,0,2,28,1,0,0,0,4,36,1,0,0,0,
-6,44,1,0,0,0,8,58,1,0,0,0,10,67,1,0,0,0,12,69,1,0,0,0,14,71,1,0,0,0,16,73,
-1,0,0,0,18,75,1,0,0,0,20,87,1,0,0,0,22,89,1,0,0,0,24,25,3,2,1,0,25,26,3,
-22,11,0,26,27,3,2,1,0,27,1,1,0,0,0,28,33,3,4,2,0,29,30,7,0,0,0,30,32,3,4,
-2,0,31,29,1,0,0,0,32,35,1,0,0,0,33,31,1,0,0,0,33,34,1,0,0,0,34,3,1,0,0,0,
-35,33,1,0,0,0,36,41,3,6,3,0,37,38,7,1,0,0,38,40,3,6,3,0,39,37,1,0,0,0,40,
-43,1,0,0,0,41,39,1,0,0,0,41,42,1,0,0,0,42,5,1,0,0,0,43,41,1,0,0,0,44,49,
-3,8,4,0,45,46,5,21,0,0,46,48,3,8,4,0,47,45,1,0,0,0,48,51,1,0,0,0,49,47,1,
-0,0,0,49,50,1,0,0,0,50,7,1,0,0,0,51,49,1,0,0,0,52,53,5,12,0,0,53,59,3,8,
-4,0,54,55,5,13,0,0,55,59,3,8,4,0,56,59,3,18,9,0,57,59,3,10,5,0,58,52,1,0,
-0,0,58,54,1,0,0,0,58,56,1,0,0,0,58,57,1,0,0,0,59,9,1,0,0,0,60,68,3,12,6,
-0,61,68,3,16,8,0,62,68,3,14,7,0,63,64,5,10,0,0,64,65,3,2,1,0,65,66,5,11,
-0,0,66,68,1,0,0,0,67,60,1,0,0,0,67,61,1,0,0,0,67,62,1,0,0,0,67,63,1,0,0,
-0,68,11,1,0,0,0,69,70,5,26,0,0,70,13,1,0,0,0,71,72,7,2,0,0,72,15,1,0,0,0,
-73,74,5,25,0,0,74,17,1,0,0,0,75,76,3,20,10,0,76,77,5,10,0,0,77,82,3,2,1,
-0,78,79,5,19,0,0,79,81,3,2,1,0,80,78,1,0,0,0,81,84,1,0,0,0,82,80,1,0,0,0,
-82,83,1,0,0,0,83,85,1,0,0,0,84,82,1,0,0,0,85,86,5,11,0,0,86,19,1,0,0,0,87,
-88,7,3,0,0,88,21,1,0,0,0,89,90,7,4,0,0,90,23,1,0,0,0,6,33,41,49,58,67,82];
+15,1,0,22,24,1,0,1,9,1,0,16,18,90,0,24,1,0,0,0,2,29,1,0,0,0,4,37,1,0,0,0,
+6,45,1,0,0,0,8,59,1,0,0,0,10,68,1,0,0,0,12,70,1,0,0,0,14,72,1,0,0,0,16,74,
+1,0,0,0,18,76,1,0,0,0,20,88,1,0,0,0,22,90,1,0,0,0,24,25,3,2,1,0,25,26,3,
+22,11,0,26,27,3,2,1,0,27,28,5,0,0,1,28,1,1,0,0,0,29,34,3,4,2,0,30,31,7,0,
+0,0,31,33,3,4,2,0,32,30,1,0,0,0,33,36,1,0,0,0,34,32,1,0,0,0,34,35,1,0,0,
+0,35,3,1,0,0,0,36,34,1,0,0,0,37,42,3,6,3,0,38,39,7,1,0,0,39,41,3,6,3,0,40,
+38,1,0,0,0,41,44,1,0,0,0,42,40,1,0,0,0,42,43,1,0,0,0,43,5,1,0,0,0,44,42,
+1,0,0,0,45,50,3,8,4,0,46,47,5,21,0,0,47,49,3,8,4,0,48,46,1,0,0,0,49,52,1,
+0,0,0,50,48,1,0,0,0,50,51,1,0,0,0,51,7,1,0,0,0,52,50,1,0,0,0,53,54,5,12,
+0,0,54,60,3,8,4,0,55,56,5,13,0,0,56,60,3,8,4,0,57,60,3,18,9,0,58,60,3,10,
+5,0,59,53,1,0,0,0,59,55,1,0,0,0,59,57,1,0,0,0,59,58,1,0,0,0,60,9,1,0,0,0,
+61,69,3,12,6,0,62,69,3,16,8,0,63,69,3,14,7,0,64,65,5,10,0,0,65,66,3,2,1,
+0,66,67,5,11,0,0,67,69,1,0,0,0,68,61,1,0,0,0,68,62,1,0,0,0,68,63,1,0,0,0,
+68,64,1,0,0,0,69,11,1,0,0,0,70,71,5,26,0,0,71,13,1,0,0,0,72,73,7,2,0,0,73,
+15,1,0,0,0,74,75,5,25,0,0,75,17,1,0,0,0,76,77,3,20,10,0,77,78,5,10,0,0,78,
+83,3,2,1,0,79,80,5,19,0,0,80,82,3,2,1,0,81,79,1,0,0,0,82,85,1,0,0,0,83,81,
+1,0,0,0,83,84,1,0,0,0,84,86,1,0,0,0,85,83,1,0,0,0,86,87,5,11,0,0,87,19,1,
+0,0,0,88,89,7,3,0,0,89,21,1,0,0,0,90,91,7,4,0,0,91,23,1,0,0,0,6,34,42,50,
+59,68,83];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -59,10 +60,6 @@ export default class calculatorParser extends antlr4.Parser {
         this.symbolicNames = calculatorParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	equation() {
@@ -76,6 +73,8 @@ export default class calculatorParser extends antlr4.Parser {
 	        this.relop();
 	        this.state = 26;
 	        this.expression();
+	        this.state = 27;
+	        this.match(calculatorParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -95,27 +94,27 @@ export default class calculatorParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, calculatorParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 28;
+	        this.state = 29;
 	        this.multiplyingExpression();
-	        this.state = 33;
+	        this.state = 34;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===calculatorParser.PLUS || _la===calculatorParser.MINUS) {
-	            this.state = 29;
+	        while(_la===12 || _la===13) {
+	            this.state = 30;
 	            _la = this._input.LA(1);
-	            if(!(_la===calculatorParser.PLUS || _la===calculatorParser.MINUS)) {
+	            if(!(_la===12 || _la===13)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 30;
+	            this.state = 31;
 	            this.multiplyingExpression();
-	            this.state = 35;
+	            this.state = 36;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -138,27 +137,27 @@ export default class calculatorParser extends antlr4.Parser {
 	multiplyingExpression() {
 	    let localctx = new MultiplyingExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, calculatorParser.RULE_multiplyingExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 36;
+	        this.state = 37;
 	        this.powExpression();
-	        this.state = 41;
+	        this.state = 42;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===calculatorParser.TIMES || _la===calculatorParser.DIV) {
-	            this.state = 37;
+	        while(_la===14 || _la===15) {
+	            this.state = 38;
 	            _la = this._input.LA(1);
-	            if(!(_la===calculatorParser.TIMES || _la===calculatorParser.DIV)) {
+	            if(!(_la===14 || _la===15)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 38;
+	            this.state = 39;
 	            this.powExpression();
-	            this.state = 43;
+	            this.state = 44;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -181,20 +180,20 @@ export default class calculatorParser extends antlr4.Parser {
 	powExpression() {
 	    let localctx = new PowExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, calculatorParser.RULE_powExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 44;
+	        this.state = 45;
 	        this.signedAtom();
-	        this.state = 49;
+	        this.state = 50;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===calculatorParser.POW) {
-	            this.state = 45;
-	            this.match(calculatorParser.POW);
+	        while(_la===21) {
 	            this.state = 46;
+	            this.match(calculatorParser.POW);
+	            this.state = 47;
 	            this.signedAtom();
-	            this.state = 51;
+	            this.state = 52;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -218,44 +217,44 @@ export default class calculatorParser extends antlr4.Parser {
 	    let localctx = new SignedAtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, calculatorParser.RULE_signedAtom);
 	    try {
-	        this.state = 58;
+	        this.state = 59;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case calculatorParser.PLUS:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 52;
-	            this.match(calculatorParser.PLUS);
 	            this.state = 53;
-	            this.signedAtom();
-	            break;
-	        case calculatorParser.MINUS:
-	            this.enterOuterAlt(localctx, 2);
+	            this.match(calculatorParser.PLUS);
 	            this.state = 54;
-	            this.match(calculatorParser.MINUS);
-	            this.state = 55;
 	            this.signedAtom();
 	            break;
-	        case calculatorParser.COS:
-	        case calculatorParser.SIN:
-	        case calculatorParser.TAN:
-	        case calculatorParser.ACOS:
-	        case calculatorParser.ASIN:
-	        case calculatorParser.ATAN:
-	        case calculatorParser.LN:
-	        case calculatorParser.LOG:
-	        case calculatorParser.SQRT:
-	            this.enterOuterAlt(localctx, 3);
+	        case 13:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 55;
+	            this.match(calculatorParser.MINUS);
 	            this.state = 56;
+	            this.signedAtom();
+	            break;
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 57;
 	            this.func_();
 	            break;
-	        case calculatorParser.LPAREN:
-	        case calculatorParser.PI:
-	        case calculatorParser.EULER:
-	        case calculatorParser.I:
-	        case calculatorParser.VARIABLE:
-	        case calculatorParser.SCIENTIFIC_NUMBER:
+	        case 10:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 57;
+	            this.state = 58;
 	            this.atom();
 	            break;
 	        default:
@@ -281,33 +280,33 @@ export default class calculatorParser extends antlr4.Parser {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, calculatorParser.RULE_atom);
 	    try {
-	        this.state = 67;
+	        this.state = 68;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case calculatorParser.SCIENTIFIC_NUMBER:
+	        case 26:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 60;
+	            this.state = 61;
 	            this.scientific();
 	            break;
-	        case calculatorParser.VARIABLE:
+	        case 25:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 61;
+	            this.state = 62;
 	            this.variable();
 	            break;
-	        case calculatorParser.PI:
-	        case calculatorParser.EULER:
-	        case calculatorParser.I:
+	        case 22:
+	        case 23:
+	        case 24:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 62;
+	            this.state = 63;
 	            this.constant();
 	            break;
-	        case calculatorParser.LPAREN:
+	        case 10:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 63;
-	            this.match(calculatorParser.LPAREN);
 	            this.state = 64;
-	            this.expression();
+	            this.match(calculatorParser.LPAREN);
 	            this.state = 65;
+	            this.expression();
+	            this.state = 66;
 	            this.match(calculatorParser.RPAREN);
 	            break;
 	        default:
@@ -334,7 +333,7 @@ export default class calculatorParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, calculatorParser.RULE_scientific);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 69;
+	        this.state = 70;
 	        this.match(calculatorParser.SCIENTIFIC_NUMBER);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -355,12 +354,12 @@ export default class calculatorParser extends antlr4.Parser {
 	constant() {
 	    let localctx = new ConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, calculatorParser.RULE_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 71;
+	        this.state = 72;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << calculatorParser.PI) | (1 << calculatorParser.EULER) | (1 << calculatorParser.I))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -388,7 +387,7 @@ export default class calculatorParser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, calculatorParser.RULE_variable);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 73;
+	        this.state = 74;
 	        this.match(calculatorParser.VARIABLE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -409,28 +408,28 @@ export default class calculatorParser extends antlr4.Parser {
 	func_() {
 	    let localctx = new Func_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, calculatorParser.RULE_func_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 75;
-	        this.funcname();
 	        this.state = 76;
-	        this.match(calculatorParser.LPAREN);
+	        this.funcname();
 	        this.state = 77;
+	        this.match(calculatorParser.LPAREN);
+	        this.state = 78;
 	        this.expression();
-	        this.state = 82;
+	        this.state = 83;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===calculatorParser.COMMA) {
-	            this.state = 78;
-	            this.match(calculatorParser.COMMA);
+	        while(_la===19) {
 	            this.state = 79;
+	            this.match(calculatorParser.COMMA);
+	            this.state = 80;
 	            this.expression();
-	            this.state = 84;
+	            this.state = 85;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 85;
+	        this.state = 86;
 	        this.match(calculatorParser.RPAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -451,12 +450,12 @@ export default class calculatorParser extends antlr4.Parser {
 	funcname() {
 	    let localctx = new FuncnameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, calculatorParser.RULE_funcname);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 87;
+	        this.state = 88;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << calculatorParser.COS) | (1 << calculatorParser.SIN) | (1 << calculatorParser.TAN) | (1 << calculatorParser.ACOS) | (1 << calculatorParser.ASIN) | (1 << calculatorParser.ATAN) | (1 << calculatorParser.LN) | (1 << calculatorParser.LOG) | (1 << calculatorParser.SQRT))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1022) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -482,12 +481,12 @@ export default class calculatorParser extends antlr4.Parser {
 	relop() {
 	    let localctx = new RelopContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, calculatorParser.RULE_relop);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 89;
+	        this.state = 90;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << calculatorParser.GT) | (1 << calculatorParser.LT) | (1 << calculatorParser.EQ))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 458752) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -580,6 +579,10 @@ class EquationContext extends antlr4.ParserRuleContext {
 
 	relop() {
 	    return this.getTypedRuleContext(RelopContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(calculatorParser.EOF, 0);
 	};
 
 	enterRule(listener) {
@@ -1193,3 +1196,12 @@ calculatorParser.VariableContext = VariableContext;
 calculatorParser.Func_Context = Func_Context; 
 calculatorParser.FuncnameContext = FuncnameContext; 
 calculatorParser.RelopContext = RelopContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

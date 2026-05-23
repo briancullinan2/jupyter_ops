@@ -1,95 +1,95 @@
-// Generated from ./oncrpc/oncrpcv2.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/oncrpc/oncrpcv2.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import oncrpcv2Listener from './oncrpcv2Listener.js';
-const serializedATN = [4,1,39,284,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,39,286,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,1,0,1,0,1,0,1,0,1,0,5,0,48,8,0,10,0,12,0,51,9,0,1,0,1,0,1,0,1,0,
 1,0,1,1,1,1,1,1,1,1,1,1,5,1,63,8,1,10,1,12,1,66,9,1,1,1,1,1,1,1,1,1,1,1,
 1,2,1,2,1,2,1,2,1,2,1,2,5,2,79,8,2,10,2,12,2,82,9,2,1,2,1,2,1,2,1,2,1,2,
 1,3,1,3,3,3,91,8,3,1,4,1,4,3,4,95,8,4,1,5,1,5,5,5,99,8,5,10,5,12,5,102,9,
-5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,3,6,117,8,6,1,6,1,
-6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,3,6,131,8,6,1,6,1,6,1,6,1,6,1,
-6,3,6,138,8,6,1,6,1,6,1,6,1,6,1,6,1,6,3,6,146,8,6,1,7,1,7,3,7,150,8,7,1,
-8,1,8,1,9,3,9,155,8,9,1,9,1,9,3,9,159,8,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,
-9,1,9,3,9,170,8,9,1,10,1,10,1,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,
-1,11,5,11,184,8,11,10,11,12,11,187,9,11,1,11,1,11,1,12,1,12,1,12,1,13,1,
-13,1,13,1,13,1,13,1,13,1,13,5,13,201,8,13,10,13,12,13,204,9,13,1,13,1,13,
-1,14,1,14,1,14,1,15,1,15,1,15,1,15,1,15,1,15,1,15,5,15,218,8,15,10,15,12,
-15,221,9,15,1,15,1,15,1,15,1,15,1,15,3,15,228,8,15,1,15,1,15,1,16,1,16,1,
-16,1,16,1,16,1,16,1,16,1,16,5,16,240,8,16,10,16,12,16,243,9,16,1,16,1,16,
-1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,
-18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,3,18,273,8,18,
-1,19,1,19,3,19,277,8,19,1,20,4,20,280,8,20,11,20,12,20,281,1,20,0,0,21,0,
-2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,0,1,1,0,35,37,301,
-0,42,1,0,0,0,2,57,1,0,0,0,4,72,1,0,0,0,6,90,1,0,0,0,8,94,1,0,0,0,10,100,
-1,0,0,0,12,145,1,0,0,0,14,149,1,0,0,0,16,151,1,0,0,0,18,169,1,0,0,0,20,171,
-1,0,0,0,22,174,1,0,0,0,24,190,1,0,0,0,26,193,1,0,0,0,28,207,1,0,0,0,30,210,
-1,0,0,0,32,231,1,0,0,0,34,247,1,0,0,0,36,272,1,0,0,0,38,276,1,0,0,0,40,279,
-1,0,0,0,42,43,5,1,0,0,43,44,5,38,0,0,44,45,5,2,0,0,45,49,3,2,1,0,46,48,3,
-2,1,0,47,46,1,0,0,0,48,51,1,0,0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,52,1,0,
-0,0,51,49,1,0,0,0,52,53,5,3,0,0,53,54,5,4,0,0,54,55,3,16,8,0,55,56,5,5,0,
-0,56,1,1,0,0,0,57,58,5,6,0,0,58,59,5,38,0,0,59,60,5,2,0,0,60,64,3,4,2,0,
-61,63,3,4,2,0,62,61,1,0,0,0,63,66,1,0,0,0,64,62,1,0,0,0,64,65,1,0,0,0,65,
-67,1,0,0,0,66,64,1,0,0,0,67,68,5,3,0,0,68,69,5,4,0,0,69,70,3,16,8,0,70,71,
-5,5,0,0,71,3,1,0,0,0,72,73,3,6,3,0,73,74,5,38,0,0,74,75,5,7,0,0,75,80,3,
-8,4,0,76,77,5,8,0,0,77,79,3,18,9,0,78,76,1,0,0,0,79,82,1,0,0,0,80,78,1,0,
-0,0,80,81,1,0,0,0,81,83,1,0,0,0,82,80,1,0,0,0,83,84,5,9,0,0,84,85,5,4,0,
-0,85,86,3,16,8,0,86,87,5,5,0,0,87,5,1,0,0,0,88,91,5,10,0,0,89,91,3,18,9,
-0,90,88,1,0,0,0,90,89,1,0,0,0,91,7,1,0,0,0,92,95,5,10,0,0,93,95,3,18,9,0,
-94,92,1,0,0,0,94,93,1,0,0,0,95,9,1,0,0,0,96,99,3,40,20,0,97,99,3,0,0,0,98,
-96,1,0,0,0,98,97,1,0,0,0,99,102,1,0,0,0,100,98,1,0,0,0,100,101,1,0,0,0,101,
-11,1,0,0,0,102,100,1,0,0,0,103,104,3,18,9,0,104,105,5,38,0,0,105,146,1,0,
-0,0,106,107,3,18,9,0,107,108,5,38,0,0,108,109,5,11,0,0,109,110,3,14,7,0,
-110,111,5,12,0,0,111,146,1,0,0,0,112,113,3,18,9,0,113,114,5,38,0,0,114,116,
-5,13,0,0,115,117,3,14,7,0,116,115,1,0,0,0,116,117,1,0,0,0,117,118,1,0,0,
-0,118,119,5,14,0,0,119,146,1,0,0,0,120,121,5,15,0,0,121,122,5,38,0,0,122,
-123,5,11,0,0,123,124,3,14,7,0,124,125,5,12,0,0,125,146,1,0,0,0,126,127,5,
-15,0,0,127,128,5,38,0,0,128,130,5,13,0,0,129,131,3,14,7,0,130,129,1,0,0,
-0,130,131,1,0,0,0,131,132,1,0,0,0,132,146,5,14,0,0,133,134,5,16,0,0,134,
-135,5,38,0,0,135,137,5,13,0,0,136,138,3,14,7,0,137,136,1,0,0,0,137,138,1,
-0,0,0,138,139,1,0,0,0,139,146,5,14,0,0,140,141,3,18,9,0,141,142,5,17,0,0,
-142,143,5,38,0,0,143,146,1,0,0,0,144,146,5,10,0,0,145,103,1,0,0,0,145,106,
-1,0,0,0,145,112,1,0,0,0,145,120,1,0,0,0,145,126,1,0,0,0,145,133,1,0,0,0,
-145,140,1,0,0,0,145,144,1,0,0,0,146,13,1,0,0,0,147,150,3,16,8,0,148,150,
-5,38,0,0,149,147,1,0,0,0,149,148,1,0,0,0,150,15,1,0,0,0,151,152,7,0,0,0,
-152,17,1,0,0,0,153,155,5,18,0,0,154,153,1,0,0,0,154,155,1,0,0,0,155,156,
-1,0,0,0,156,170,5,19,0,0,157,159,5,18,0,0,158,157,1,0,0,0,158,159,1,0,0,
-0,159,160,1,0,0,0,160,170,5,20,0,0,161,170,5,21,0,0,162,170,5,22,0,0,163,
-170,5,23,0,0,164,170,5,24,0,0,165,170,3,20,10,0,166,170,3,24,12,0,167,170,
-3,28,14,0,168,170,5,38,0,0,169,154,1,0,0,0,169,158,1,0,0,0,169,161,1,0,0,
-0,169,162,1,0,0,0,169,163,1,0,0,0,169,164,1,0,0,0,169,165,1,0,0,0,169,166,
-1,0,0,0,169,167,1,0,0,0,169,168,1,0,0,0,170,19,1,0,0,0,171,172,5,25,0,0,
-172,173,3,22,11,0,173,21,1,0,0,0,174,175,5,2,0,0,175,176,5,38,0,0,176,177,
-5,4,0,0,177,178,3,14,7,0,178,185,1,0,0,0,179,180,5,8,0,0,180,181,5,38,0,
-0,181,182,5,4,0,0,182,184,3,14,7,0,183,179,1,0,0,0,184,187,1,0,0,0,185,183,
-1,0,0,0,185,186,1,0,0,0,186,188,1,0,0,0,187,185,1,0,0,0,188,189,5,3,0,0,
-189,23,1,0,0,0,190,191,5,26,0,0,191,192,3,26,13,0,192,25,1,0,0,0,193,194,
-5,2,0,0,194,195,3,12,6,0,195,196,5,5,0,0,196,202,1,0,0,0,197,198,3,12,6,
-0,198,199,5,5,0,0,199,201,1,0,0,0,200,197,1,0,0,0,201,204,1,0,0,0,202,200,
-1,0,0,0,202,203,1,0,0,0,203,205,1,0,0,0,204,202,1,0,0,0,205,206,5,3,0,0,
-206,27,1,0,0,0,207,208,5,27,0,0,208,209,3,30,15,0,209,29,1,0,0,0,210,211,
-5,28,0,0,211,212,5,7,0,0,212,213,3,12,6,0,213,214,5,9,0,0,214,215,5,2,0,
-0,215,219,3,32,16,0,216,218,3,32,16,0,217,216,1,0,0,0,218,221,1,0,0,0,219,
-217,1,0,0,0,219,220,1,0,0,0,220,227,1,0,0,0,221,219,1,0,0,0,222,223,5,29,
-0,0,223,224,5,30,0,0,224,225,3,12,6,0,225,226,5,5,0,0,226,228,1,0,0,0,227,
-222,1,0,0,0,227,228,1,0,0,0,228,229,1,0,0,0,229,230,5,3,0,0,230,31,1,0,0,
-0,231,232,5,31,0,0,232,233,3,14,7,0,233,234,5,30,0,0,234,241,1,0,0,0,235,
-236,5,31,0,0,236,237,3,14,7,0,237,238,5,30,0,0,238,240,1,0,0,0,239,235,1,
-0,0,0,240,243,1,0,0,0,241,239,1,0,0,0,241,242,1,0,0,0,242,244,1,0,0,0,243,
-241,1,0,0,0,244,245,3,12,6,0,245,246,5,5,0,0,246,33,1,0,0,0,247,248,5,32,
-0,0,248,249,5,38,0,0,249,250,5,4,0,0,250,251,3,16,8,0,251,252,5,5,0,0,252,
-35,1,0,0,0,253,254,5,33,0,0,254,255,3,12,6,0,255,256,5,5,0,0,256,273,1,0,
-0,0,257,258,5,25,0,0,258,259,5,38,0,0,259,260,3,22,11,0,260,261,5,5,0,0,
-261,273,1,0,0,0,262,263,5,26,0,0,263,264,5,38,0,0,264,265,3,26,13,0,265,
-266,5,5,0,0,266,273,1,0,0,0,267,268,5,27,0,0,268,269,5,38,0,0,269,270,3,
-30,15,0,270,271,5,5,0,0,271,273,1,0,0,0,272,253,1,0,0,0,272,257,1,0,0,0,
-272,262,1,0,0,0,272,267,1,0,0,0,273,37,1,0,0,0,274,277,3,36,18,0,275,277,
-3,34,17,0,276,274,1,0,0,0,276,275,1,0,0,0,277,39,1,0,0,0,278,280,3,38,19,
-0,279,278,1,0,0,0,280,281,1,0,0,0,281,279,1,0,0,0,281,282,1,0,0,0,282,41,
-1,0,0,0,23,49,64,80,90,94,98,100,116,130,137,145,149,154,158,169,185,202,
-219,227,241,272,276,281];
+5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,3,6,119,8,
+6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,3,6,133,8,6,1,6,1,6,1,
+6,1,6,1,6,3,6,140,8,6,1,6,1,6,1,6,1,6,1,6,1,6,3,6,148,8,6,1,7,1,7,3,7,152,
+8,7,1,8,1,8,1,9,3,9,157,8,9,1,9,1,9,3,9,161,8,9,1,9,1,9,1,9,1,9,1,9,1,9,
+1,9,1,9,1,9,3,9,172,8,9,1,10,1,10,1,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,
+1,11,1,11,5,11,186,8,11,10,11,12,11,189,9,11,1,11,1,11,1,12,1,12,1,12,1,
+13,1,13,1,13,1,13,1,13,1,13,1,13,5,13,203,8,13,10,13,12,13,206,9,13,1,13,
+1,13,1,14,1,14,1,14,1,15,1,15,1,15,1,15,1,15,1,15,1,15,5,15,220,8,15,10,
+15,12,15,223,9,15,1,15,1,15,1,15,1,15,1,15,3,15,230,8,15,1,15,1,15,1,16,
+1,16,1,16,1,16,1,16,1,16,1,16,1,16,5,16,242,8,16,10,16,12,16,245,9,16,1,
+16,1,16,1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,1,18,
+1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,3,18,275,
+8,18,1,19,1,19,3,19,279,8,19,1,20,4,20,282,8,20,11,20,12,20,283,1,20,0,0,
+21,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,0,1,1,0,35,
+37,303,0,42,1,0,0,0,2,57,1,0,0,0,4,72,1,0,0,0,6,90,1,0,0,0,8,94,1,0,0,0,
+10,100,1,0,0,0,12,147,1,0,0,0,14,151,1,0,0,0,16,153,1,0,0,0,18,171,1,0,0,
+0,20,173,1,0,0,0,22,176,1,0,0,0,24,192,1,0,0,0,26,195,1,0,0,0,28,209,1,0,
+0,0,30,212,1,0,0,0,32,233,1,0,0,0,34,249,1,0,0,0,36,274,1,0,0,0,38,278,1,
+0,0,0,40,281,1,0,0,0,42,43,5,1,0,0,43,44,5,38,0,0,44,45,5,2,0,0,45,49,3,
+2,1,0,46,48,3,2,1,0,47,46,1,0,0,0,48,51,1,0,0,0,49,47,1,0,0,0,49,50,1,0,
+0,0,50,52,1,0,0,0,51,49,1,0,0,0,52,53,5,3,0,0,53,54,5,4,0,0,54,55,3,16,8,
+0,55,56,5,5,0,0,56,1,1,0,0,0,57,58,5,6,0,0,58,59,5,38,0,0,59,60,5,2,0,0,
+60,64,3,4,2,0,61,63,3,4,2,0,62,61,1,0,0,0,63,66,1,0,0,0,64,62,1,0,0,0,64,
+65,1,0,0,0,65,67,1,0,0,0,66,64,1,0,0,0,67,68,5,3,0,0,68,69,5,4,0,0,69,70,
+3,16,8,0,70,71,5,5,0,0,71,3,1,0,0,0,72,73,3,6,3,0,73,74,5,38,0,0,74,75,5,
+7,0,0,75,80,3,8,4,0,76,77,5,8,0,0,77,79,3,18,9,0,78,76,1,0,0,0,79,82,1,0,
+0,0,80,78,1,0,0,0,80,81,1,0,0,0,81,83,1,0,0,0,82,80,1,0,0,0,83,84,5,9,0,
+0,84,85,5,4,0,0,85,86,3,16,8,0,86,87,5,5,0,0,87,5,1,0,0,0,88,91,5,10,0,0,
+89,91,3,18,9,0,90,88,1,0,0,0,90,89,1,0,0,0,91,7,1,0,0,0,92,95,5,10,0,0,93,
+95,3,18,9,0,94,92,1,0,0,0,94,93,1,0,0,0,95,9,1,0,0,0,96,99,3,40,20,0,97,
+99,3,0,0,0,98,96,1,0,0,0,98,97,1,0,0,0,99,102,1,0,0,0,100,98,1,0,0,0,100,
+101,1,0,0,0,101,103,1,0,0,0,102,100,1,0,0,0,103,104,5,0,0,1,104,11,1,0,0,
+0,105,106,3,18,9,0,106,107,5,38,0,0,107,148,1,0,0,0,108,109,3,18,9,0,109,
+110,5,38,0,0,110,111,5,11,0,0,111,112,3,14,7,0,112,113,5,12,0,0,113,148,
+1,0,0,0,114,115,3,18,9,0,115,116,5,38,0,0,116,118,5,13,0,0,117,119,3,14,
+7,0,118,117,1,0,0,0,118,119,1,0,0,0,119,120,1,0,0,0,120,121,5,14,0,0,121,
+148,1,0,0,0,122,123,5,15,0,0,123,124,5,38,0,0,124,125,5,11,0,0,125,126,3,
+14,7,0,126,127,5,12,0,0,127,148,1,0,0,0,128,129,5,15,0,0,129,130,5,38,0,
+0,130,132,5,13,0,0,131,133,3,14,7,0,132,131,1,0,0,0,132,133,1,0,0,0,133,
+134,1,0,0,0,134,148,5,14,0,0,135,136,5,16,0,0,136,137,5,38,0,0,137,139,5,
+13,0,0,138,140,3,14,7,0,139,138,1,0,0,0,139,140,1,0,0,0,140,141,1,0,0,0,
+141,148,5,14,0,0,142,143,3,18,9,0,143,144,5,17,0,0,144,145,5,38,0,0,145,
+148,1,0,0,0,146,148,5,10,0,0,147,105,1,0,0,0,147,108,1,0,0,0,147,114,1,0,
+0,0,147,122,1,0,0,0,147,128,1,0,0,0,147,135,1,0,0,0,147,142,1,0,0,0,147,
+146,1,0,0,0,148,13,1,0,0,0,149,152,3,16,8,0,150,152,5,38,0,0,151,149,1,0,
+0,0,151,150,1,0,0,0,152,15,1,0,0,0,153,154,7,0,0,0,154,17,1,0,0,0,155,157,
+5,18,0,0,156,155,1,0,0,0,156,157,1,0,0,0,157,158,1,0,0,0,158,172,5,19,0,
+0,159,161,5,18,0,0,160,159,1,0,0,0,160,161,1,0,0,0,161,162,1,0,0,0,162,172,
+5,20,0,0,163,172,5,21,0,0,164,172,5,22,0,0,165,172,5,23,0,0,166,172,5,24,
+0,0,167,172,3,20,10,0,168,172,3,24,12,0,169,172,3,28,14,0,170,172,5,38,0,
+0,171,156,1,0,0,0,171,160,1,0,0,0,171,163,1,0,0,0,171,164,1,0,0,0,171,165,
+1,0,0,0,171,166,1,0,0,0,171,167,1,0,0,0,171,168,1,0,0,0,171,169,1,0,0,0,
+171,170,1,0,0,0,172,19,1,0,0,0,173,174,5,25,0,0,174,175,3,22,11,0,175,21,
+1,0,0,0,176,177,5,2,0,0,177,178,5,38,0,0,178,179,5,4,0,0,179,180,3,14,7,
+0,180,187,1,0,0,0,181,182,5,8,0,0,182,183,5,38,0,0,183,184,5,4,0,0,184,186,
+3,14,7,0,185,181,1,0,0,0,186,189,1,0,0,0,187,185,1,0,0,0,187,188,1,0,0,0,
+188,190,1,0,0,0,189,187,1,0,0,0,190,191,5,3,0,0,191,23,1,0,0,0,192,193,5,
+26,0,0,193,194,3,26,13,0,194,25,1,0,0,0,195,196,5,2,0,0,196,197,3,12,6,0,
+197,198,5,5,0,0,198,204,1,0,0,0,199,200,3,12,6,0,200,201,5,5,0,0,201,203,
+1,0,0,0,202,199,1,0,0,0,203,206,1,0,0,0,204,202,1,0,0,0,204,205,1,0,0,0,
+205,207,1,0,0,0,206,204,1,0,0,0,207,208,5,3,0,0,208,27,1,0,0,0,209,210,5,
+27,0,0,210,211,3,30,15,0,211,29,1,0,0,0,212,213,5,28,0,0,213,214,5,7,0,0,
+214,215,3,12,6,0,215,216,5,9,0,0,216,217,5,2,0,0,217,221,3,32,16,0,218,220,
+3,32,16,0,219,218,1,0,0,0,220,223,1,0,0,0,221,219,1,0,0,0,221,222,1,0,0,
+0,222,229,1,0,0,0,223,221,1,0,0,0,224,225,5,29,0,0,225,226,5,30,0,0,226,
+227,3,12,6,0,227,228,5,5,0,0,228,230,1,0,0,0,229,224,1,0,0,0,229,230,1,0,
+0,0,230,231,1,0,0,0,231,232,5,3,0,0,232,31,1,0,0,0,233,234,5,31,0,0,234,
+235,3,14,7,0,235,236,5,30,0,0,236,243,1,0,0,0,237,238,5,31,0,0,238,239,3,
+14,7,0,239,240,5,30,0,0,240,242,1,0,0,0,241,237,1,0,0,0,242,245,1,0,0,0,
+243,241,1,0,0,0,243,244,1,0,0,0,244,246,1,0,0,0,245,243,1,0,0,0,246,247,
+3,12,6,0,247,248,5,5,0,0,248,33,1,0,0,0,249,250,5,32,0,0,250,251,5,38,0,
+0,251,252,5,4,0,0,252,253,3,16,8,0,253,254,5,5,0,0,254,35,1,0,0,0,255,256,
+5,33,0,0,256,257,3,12,6,0,257,258,5,5,0,0,258,275,1,0,0,0,259,260,5,25,0,
+0,260,261,5,38,0,0,261,262,3,22,11,0,262,263,5,5,0,0,263,275,1,0,0,0,264,
+265,5,26,0,0,265,266,5,38,0,0,266,267,3,26,13,0,267,268,5,5,0,0,268,275,
+1,0,0,0,269,270,5,27,0,0,270,271,5,38,0,0,271,272,3,30,15,0,272,273,5,5,
+0,0,273,275,1,0,0,0,274,255,1,0,0,0,274,259,1,0,0,0,274,264,1,0,0,0,274,
+269,1,0,0,0,275,37,1,0,0,0,276,279,3,36,18,0,277,279,3,34,17,0,278,276,1,
+0,0,0,278,277,1,0,0,0,279,39,1,0,0,0,280,282,3,38,19,0,281,280,1,0,0,0,282,
+283,1,0,0,0,283,281,1,0,0,0,283,284,1,0,0,0,284,41,1,0,0,0,23,49,64,80,90,
+94,98,100,118,132,139,147,151,156,160,171,187,204,221,229,243,274,278,283];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -129,16 +129,12 @@ export default class oncrpcv2Parser extends antlr4.Parser {
         this.symbolicNames = oncrpcv2Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	programDef() {
 	    let localctx = new ProgramDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, oncrpcv2Parser.RULE_programDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 42;
@@ -152,7 +148,7 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	        this.state = 49;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oncrpcv2Parser.T__5) {
+	        while(_la===6) {
 	            this.state = 46;
 	            this.versionDef();
 	            this.state = 51;
@@ -186,7 +182,7 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	versionDef() {
 	    let localctx = new VersionDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, oncrpcv2Parser.RULE_versionDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 57;
@@ -200,7 +196,7 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	        this.state = 64;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (oncrpcv2Parser.T__9 - 10)) | (1 << (oncrpcv2Parser.T__17 - 10)) | (1 << (oncrpcv2Parser.T__18 - 10)) | (1 << (oncrpcv2Parser.T__19 - 10)) | (1 << (oncrpcv2Parser.T__20 - 10)) | (1 << (oncrpcv2Parser.T__21 - 10)) | (1 << (oncrpcv2Parser.T__22 - 10)) | (1 << (oncrpcv2Parser.T__23 - 10)) | (1 << (oncrpcv2Parser.T__24 - 10)) | (1 << (oncrpcv2Parser.T__25 - 10)) | (1 << (oncrpcv2Parser.T__26 - 10)) | (1 << (oncrpcv2Parser.IDENTIFIER - 10)))) !== 0)) {
+	        while(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 268697345) !== 0)) {
 	            this.state = 61;
 	            this.procedureDef();
 	            this.state = 66;
@@ -234,7 +230,7 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	procedureDef() {
 	    let localctx = new ProcedureDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, oncrpcv2Parser.RULE_procedureDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 72;
@@ -248,7 +244,7 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	        this.state = 80;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oncrpcv2Parser.T__7) {
+	        while(_la===8) {
 	            this.state = 76;
 	            this.match(oncrpcv2Parser.T__7);
 	            this.state = 77;
@@ -288,22 +284,22 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	        this.state = 90;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oncrpcv2Parser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 88;
 	            this.match(oncrpcv2Parser.T__9);
 	            break;
-	        case oncrpcv2Parser.T__17:
-	        case oncrpcv2Parser.T__18:
-	        case oncrpcv2Parser.T__19:
-	        case oncrpcv2Parser.T__20:
-	        case oncrpcv2Parser.T__21:
-	        case oncrpcv2Parser.T__22:
-	        case oncrpcv2Parser.T__23:
-	        case oncrpcv2Parser.T__24:
-	        case oncrpcv2Parser.T__25:
-	        case oncrpcv2Parser.T__26:
-	        case oncrpcv2Parser.IDENTIFIER:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 38:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 89;
 	            this.typeSpecifier();
@@ -334,22 +330,22 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	        this.state = 94;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oncrpcv2Parser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 92;
 	            this.match(oncrpcv2Parser.T__9);
 	            break;
-	        case oncrpcv2Parser.T__17:
-	        case oncrpcv2Parser.T__18:
-	        case oncrpcv2Parser.T__19:
-	        case oncrpcv2Parser.T__20:
-	        case oncrpcv2Parser.T__21:
-	        case oncrpcv2Parser.T__22:
-	        case oncrpcv2Parser.T__23:
-	        case oncrpcv2Parser.T__24:
-	        case oncrpcv2Parser.T__25:
-	        case oncrpcv2Parser.T__26:
-	        case oncrpcv2Parser.IDENTIFIER:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 38:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 93;
 	            this.typeSpecifier();
@@ -376,25 +372,25 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	oncrpcv2Specification() {
 	    let localctx = new Oncrpcv2SpecificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, oncrpcv2Parser.RULE_oncrpcv2Specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 100;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << oncrpcv2Parser.T__0) | (1 << oncrpcv2Parser.T__24) | (1 << oncrpcv2Parser.T__25) | (1 << oncrpcv2Parser.T__26))) !== 0) || _la===oncrpcv2Parser.T__31 || _la===oncrpcv2Parser.T__32) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 234881026) !== 0) || _la===32 || _la===33) {
 	            this.state = 98;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case oncrpcv2Parser.T__24:
-	            case oncrpcv2Parser.T__25:
-	            case oncrpcv2Parser.T__26:
-	            case oncrpcv2Parser.T__31:
-	            case oncrpcv2Parser.T__32:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 32:
+	            case 33:
 	                this.state = 96;
 	                this.xdrSpecification();
 	                break;
-	            case oncrpcv2Parser.T__0:
+	            case 1:
 	                this.state = 97;
 	                this.programDef();
 	                break;
@@ -405,6 +401,8 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 103;
+	        this.match(oncrpcv2Parser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -424,121 +422,121 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	declaration() {
 	    let localctx = new DeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, oncrpcv2Parser.RULE_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 145;
+	        this.state = 147;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 103;
+	            this.state = 105;
 	            this.typeSpecifier();
-	            this.state = 104;
+	            this.state = 106;
 	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 106;
-	            this.typeSpecifier();
-	            this.state = 107;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 108;
-	            this.match(oncrpcv2Parser.T__10);
+	            this.typeSpecifier();
 	            this.state = 109;
-	            this.value();
+	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 110;
+	            this.match(oncrpcv2Parser.T__10);
+	            this.state = 111;
+	            this.value();
+	            this.state = 112;
 	            this.match(oncrpcv2Parser.T__11);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 112;
-	            this.typeSpecifier();
-	            this.state = 113;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 114;
-	            this.match(oncrpcv2Parser.T__12);
+	            this.typeSpecifier();
+	            this.state = 115;
+	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 116;
+	            this.match(oncrpcv2Parser.T__12);
+	            this.state = 118;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (oncrpcv2Parser.OCTAL - 35)) | (1 << (oncrpcv2Parser.DECIMAL - 35)) | (1 << (oncrpcv2Parser.HEXADECIMAL - 35)) | (1 << (oncrpcv2Parser.IDENTIFIER - 35)))) !== 0)) {
-	                this.state = 115;
+	            if(((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 15) !== 0)) {
+	                this.state = 117;
 	                this.value();
 	            }
 
-	            this.state = 118;
+	            this.state = 120;
 	            this.match(oncrpcv2Parser.T__13);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 120;
-	            this.match(oncrpcv2Parser.T__14);
-	            this.state = 121;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 122;
-	            this.match(oncrpcv2Parser.T__10);
+	            this.match(oncrpcv2Parser.T__14);
 	            this.state = 123;
-	            this.value();
+	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 124;
+	            this.match(oncrpcv2Parser.T__10);
+	            this.state = 125;
+	            this.value();
+	            this.state = 126;
 	            this.match(oncrpcv2Parser.T__11);
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 126;
-	            this.match(oncrpcv2Parser.T__14);
-	            this.state = 127;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 128;
-	            this.match(oncrpcv2Parser.T__12);
+	            this.match(oncrpcv2Parser.T__14);
+	            this.state = 129;
+	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 130;
+	            this.match(oncrpcv2Parser.T__12);
+	            this.state = 132;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (oncrpcv2Parser.OCTAL - 35)) | (1 << (oncrpcv2Parser.DECIMAL - 35)) | (1 << (oncrpcv2Parser.HEXADECIMAL - 35)) | (1 << (oncrpcv2Parser.IDENTIFIER - 35)))) !== 0)) {
-	                this.state = 129;
+	            if(((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 15) !== 0)) {
+	                this.state = 131;
 	                this.value();
 	            }
 
-	            this.state = 132;
+	            this.state = 134;
 	            this.match(oncrpcv2Parser.T__13);
 	            break;
 
 	        case 6:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 133;
-	            this.match(oncrpcv2Parser.T__15);
-	            this.state = 134;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 135;
-	            this.match(oncrpcv2Parser.T__12);
+	            this.match(oncrpcv2Parser.T__15);
+	            this.state = 136;
+	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            this.state = 137;
+	            this.match(oncrpcv2Parser.T__12);
+	            this.state = 139;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (oncrpcv2Parser.OCTAL - 35)) | (1 << (oncrpcv2Parser.DECIMAL - 35)) | (1 << (oncrpcv2Parser.HEXADECIMAL - 35)) | (1 << (oncrpcv2Parser.IDENTIFIER - 35)))) !== 0)) {
-	                this.state = 136;
+	            if(((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 15) !== 0)) {
+	                this.state = 138;
 	                this.value();
 	            }
 
-	            this.state = 139;
+	            this.state = 141;
 	            this.match(oncrpcv2Parser.T__13);
 	            break;
 
 	        case 7:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 140;
-	            this.typeSpecifier();
-	            this.state = 141;
-	            this.match(oncrpcv2Parser.T__16);
 	            this.state = 142;
+	            this.typeSpecifier();
+	            this.state = 143;
+	            this.match(oncrpcv2Parser.T__16);
+	            this.state = 144;
 	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            break;
 
 	        case 8:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 144;
+	            this.state = 146;
 	            this.match(oncrpcv2Parser.T__9);
 	            break;
 
@@ -563,19 +561,19 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    let localctx = new ValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, oncrpcv2Parser.RULE_value);
 	    try {
-	        this.state = 149;
+	        this.state = 151;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oncrpcv2Parser.OCTAL:
-	        case oncrpcv2Parser.DECIMAL:
-	        case oncrpcv2Parser.HEXADECIMAL:
+	        case 35:
+	        case 36:
+	        case 37:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 147;
+	            this.state = 149;
 	            this.constant();
 	            break;
-	        case oncrpcv2Parser.IDENTIFIER:
+	        case 38:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 148;
+	            this.state = 150;
 	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            break;
 	        default:
@@ -600,12 +598,12 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	constant() {
 	    let localctx = new ConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, oncrpcv2Parser.RULE_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 151;
+	        this.state = 153;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (oncrpcv2Parser.OCTAL - 35)) | (1 << (oncrpcv2Parser.DECIMAL - 35)) | (1 << (oncrpcv2Parser.HEXADECIMAL - 35)))) !== 0))) {
+	        if(!(((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -631,85 +629,85 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	typeSpecifier() {
 	    let localctx = new TypeSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, oncrpcv2Parser.RULE_typeSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 169;
+	        this.state = 171;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,14,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 154;
+	            this.state = 156;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===oncrpcv2Parser.T__17) {
-	                this.state = 153;
+	            if(_la===18) {
+	                this.state = 155;
 	                this.match(oncrpcv2Parser.T__17);
 	            }
 
-	            this.state = 156;
+	            this.state = 158;
 	            this.match(oncrpcv2Parser.T__18);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 158;
+	            this.state = 160;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===oncrpcv2Parser.T__17) {
-	                this.state = 157;
+	            if(_la===18) {
+	                this.state = 159;
 	                this.match(oncrpcv2Parser.T__17);
 	            }
 
-	            this.state = 160;
+	            this.state = 162;
 	            this.match(oncrpcv2Parser.T__19);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 161;
+	            this.state = 163;
 	            this.match(oncrpcv2Parser.T__20);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 162;
+	            this.state = 164;
 	            this.match(oncrpcv2Parser.T__21);
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 163;
+	            this.state = 165;
 	            this.match(oncrpcv2Parser.T__22);
 	            break;
 
 	        case 6:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 164;
+	            this.state = 166;
 	            this.match(oncrpcv2Parser.T__23);
 	            break;
 
 	        case 7:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 165;
+	            this.state = 167;
 	            this.enumTypeSpec();
 	            break;
 
 	        case 8:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 166;
+	            this.state = 168;
 	            this.structTypeSpec();
 	            break;
 
 	        case 9:
 	            this.enterOuterAlt(localctx, 9);
-	            this.state = 167;
+	            this.state = 169;
 	            this.unionTypeSpec();
 	            break;
 
 	        case 10:
 	            this.enterOuterAlt(localctx, 10);
-	            this.state = 168;
+	            this.state = 170;
 	            this.match(oncrpcv2Parser.IDENTIFIER);
 	            break;
 
@@ -735,9 +733,9 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, oncrpcv2Parser.RULE_enumTypeSpec);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 171;
+	        this.state = 173;
 	        this.match(oncrpcv2Parser.T__24);
-	        this.state = 172;
+	        this.state = 174;
 	        this.enumBody();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -758,35 +756,35 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	enumBody() {
 	    let localctx = new EnumBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, oncrpcv2Parser.RULE_enumBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 174;
+	        this.state = 176;
 	        this.match(oncrpcv2Parser.T__1);
 
-	        this.state = 175;
-	        this.match(oncrpcv2Parser.IDENTIFIER);
-	        this.state = 176;
-	        this.match(oncrpcv2Parser.T__3);
 	        this.state = 177;
+	        this.match(oncrpcv2Parser.IDENTIFIER);
+	        this.state = 178;
+	        this.match(oncrpcv2Parser.T__3);
+	        this.state = 179;
 	        this.value();
-	        this.state = 185;
+	        this.state = 187;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oncrpcv2Parser.T__7) {
-	            this.state = 179;
-	            this.match(oncrpcv2Parser.T__7);
-	            this.state = 180;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
+	        while(_la===8) {
 	            this.state = 181;
-	            this.match(oncrpcv2Parser.T__3);
+	            this.match(oncrpcv2Parser.T__7);
 	            this.state = 182;
+	            this.match(oncrpcv2Parser.IDENTIFIER);
+	            this.state = 183;
+	            this.match(oncrpcv2Parser.T__3);
+	            this.state = 184;
 	            this.value();
-	            this.state = 187;
+	            this.state = 189;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 188;
+	        this.state = 190;
 	        this.match(oncrpcv2Parser.T__2);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -809,9 +807,9 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, oncrpcv2Parser.RULE_structTypeSpec);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 190;
+	        this.state = 192;
 	        this.match(oncrpcv2Parser.T__25);
-	        this.state = 191;
+	        this.state = 193;
 	        this.structBody();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -832,29 +830,29 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	structBody() {
 	    let localctx = new StructBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, oncrpcv2Parser.RULE_structBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 193;
+	        this.state = 195;
 	        this.match(oncrpcv2Parser.T__1);
 
-	        this.state = 194;
+	        this.state = 196;
 	        this.declaration();
-	        this.state = 195;
+	        this.state = 197;
 	        this.match(oncrpcv2Parser.T__4);
-	        this.state = 202;
+	        this.state = 204;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (oncrpcv2Parser.T__9 - 10)) | (1 << (oncrpcv2Parser.T__14 - 10)) | (1 << (oncrpcv2Parser.T__15 - 10)) | (1 << (oncrpcv2Parser.T__17 - 10)) | (1 << (oncrpcv2Parser.T__18 - 10)) | (1 << (oncrpcv2Parser.T__19 - 10)) | (1 << (oncrpcv2Parser.T__20 - 10)) | (1 << (oncrpcv2Parser.T__21 - 10)) | (1 << (oncrpcv2Parser.T__22 - 10)) | (1 << (oncrpcv2Parser.T__23 - 10)) | (1 << (oncrpcv2Parser.T__24 - 10)) | (1 << (oncrpcv2Parser.T__25 - 10)) | (1 << (oncrpcv2Parser.T__26 - 10)) | (1 << (oncrpcv2Parser.IDENTIFIER - 10)))) !== 0)) {
-	            this.state = 197;
+	        while(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 268697441) !== 0)) {
+	            this.state = 199;
 	            this.declaration();
-	            this.state = 198;
+	            this.state = 200;
 	            this.match(oncrpcv2Parser.T__4);
-	            this.state = 204;
+	            this.state = 206;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 205;
+	        this.state = 207;
 	        this.match(oncrpcv2Parser.T__2);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -877,9 +875,9 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 28, oncrpcv2Parser.RULE_unionTypeSpec);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 207;
+	        this.state = 209;
 	        this.match(oncrpcv2Parser.T__26);
-	        this.state = 208;
+	        this.state = 210;
 	        this.unionBody();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -900,46 +898,46 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	unionBody() {
 	    let localctx = new UnionBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, oncrpcv2Parser.RULE_unionBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 210;
-	        this.match(oncrpcv2Parser.T__27);
-	        this.state = 211;
-	        this.match(oncrpcv2Parser.T__6);
 	        this.state = 212;
-	        this.declaration();
+	        this.match(oncrpcv2Parser.T__27);
 	        this.state = 213;
-	        this.match(oncrpcv2Parser.T__8);
+	        this.match(oncrpcv2Parser.T__6);
 	        this.state = 214;
-	        this.match(oncrpcv2Parser.T__1);
+	        this.declaration();
 	        this.state = 215;
+	        this.match(oncrpcv2Parser.T__8);
+	        this.state = 216;
+	        this.match(oncrpcv2Parser.T__1);
+	        this.state = 217;
 	        this.caseSpec();
-	        this.state = 219;
+	        this.state = 221;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oncrpcv2Parser.T__30) {
-	            this.state = 216;
+	        while(_la===31) {
+	            this.state = 218;
 	            this.caseSpec();
-	            this.state = 221;
+	            this.state = 223;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 227;
+	        this.state = 229;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oncrpcv2Parser.T__28) {
-	            this.state = 222;
-	            this.match(oncrpcv2Parser.T__28);
-	            this.state = 223;
-	            this.match(oncrpcv2Parser.T__29);
+	        if(_la===29) {
 	            this.state = 224;
-	            this.declaration();
+	            this.match(oncrpcv2Parser.T__28);
 	            this.state = 225;
+	            this.match(oncrpcv2Parser.T__29);
+	            this.state = 226;
+	            this.declaration();
+	            this.state = 227;
 	            this.match(oncrpcv2Parser.T__4);
 	        }
 
-	        this.state = 229;
+	        this.state = 231;
 	        this.match(oncrpcv2Parser.T__2);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -960,32 +958,32 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	caseSpec() {
 	    let localctx = new CaseSpecContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, oncrpcv2Parser.RULE_caseSpec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 231;
-	        this.match(oncrpcv2Parser.T__30);
-	        this.state = 232;
-	        this.value();
 	        this.state = 233;
+	        this.match(oncrpcv2Parser.T__30);
+	        this.state = 234;
+	        this.value();
+	        this.state = 235;
 	        this.match(oncrpcv2Parser.T__29);
-	        this.state = 241;
+	        this.state = 243;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oncrpcv2Parser.T__30) {
-	            this.state = 235;
-	            this.match(oncrpcv2Parser.T__30);
-	            this.state = 236;
-	            this.value();
+	        while(_la===31) {
 	            this.state = 237;
+	            this.match(oncrpcv2Parser.T__30);
+	            this.state = 238;
+	            this.value();
+	            this.state = 239;
 	            this.match(oncrpcv2Parser.T__29);
-	            this.state = 243;
+	            this.state = 245;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 244;
+	        this.state = 246;
 	        this.declaration();
-	        this.state = 245;
+	        this.state = 247;
 	        this.match(oncrpcv2Parser.T__4);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1008,15 +1006,15 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 34, oncrpcv2Parser.RULE_constantDef);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 247;
-	        this.match(oncrpcv2Parser.T__31);
-	        this.state = 248;
-	        this.match(oncrpcv2Parser.IDENTIFIER);
 	        this.state = 249;
-	        this.match(oncrpcv2Parser.T__3);
+	        this.match(oncrpcv2Parser.T__31);
 	        this.state = 250;
-	        this.constant();
+	        this.match(oncrpcv2Parser.IDENTIFIER);
 	        this.state = 251;
+	        this.match(oncrpcv2Parser.T__3);
+	        this.state = 252;
+	        this.constant();
+	        this.state = 253;
 	        this.match(oncrpcv2Parser.T__4);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1038,49 +1036,49 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    let localctx = new TypeDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, oncrpcv2Parser.RULE_typeDef);
 	    try {
-	        this.state = 272;
+	        this.state = 274;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oncrpcv2Parser.T__32:
+	        case 33:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 253;
-	            this.match(oncrpcv2Parser.T__32);
-	            this.state = 254;
-	            this.declaration();
 	            this.state = 255;
-	            this.match(oncrpcv2Parser.T__4);
-	            break;
-	        case oncrpcv2Parser.T__24:
-	            this.enterOuterAlt(localctx, 2);
+	            this.match(oncrpcv2Parser.T__32);
+	            this.state = 256;
+	            this.declaration();
 	            this.state = 257;
-	            this.match(oncrpcv2Parser.T__24);
-	            this.state = 258;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
+	            this.match(oncrpcv2Parser.T__4);
+	            break;
+	        case 25:
+	            this.enterOuterAlt(localctx, 2);
 	            this.state = 259;
-	            this.enumBody();
+	            this.match(oncrpcv2Parser.T__24);
 	            this.state = 260;
-	            this.match(oncrpcv2Parser.T__4);
-	            break;
-	        case oncrpcv2Parser.T__25:
-	            this.enterOuterAlt(localctx, 3);
+	            this.match(oncrpcv2Parser.IDENTIFIER);
+	            this.state = 261;
+	            this.enumBody();
 	            this.state = 262;
-	            this.match(oncrpcv2Parser.T__25);
-	            this.state = 263;
-	            this.match(oncrpcv2Parser.IDENTIFIER);
-	            this.state = 264;
-	            this.structBody();
-	            this.state = 265;
 	            this.match(oncrpcv2Parser.T__4);
 	            break;
-	        case oncrpcv2Parser.T__26:
-	            this.enterOuterAlt(localctx, 4);
-	            this.state = 267;
-	            this.match(oncrpcv2Parser.T__26);
-	            this.state = 268;
+	        case 26:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 264;
+	            this.match(oncrpcv2Parser.T__25);
+	            this.state = 265;
 	            this.match(oncrpcv2Parser.IDENTIFIER);
+	            this.state = 266;
+	            this.structBody();
+	            this.state = 267;
+	            this.match(oncrpcv2Parser.T__4);
+	            break;
+	        case 27:
+	            this.enterOuterAlt(localctx, 4);
 	            this.state = 269;
-	            this.unionBody();
+	            this.match(oncrpcv2Parser.T__26);
 	            this.state = 270;
+	            this.match(oncrpcv2Parser.IDENTIFIER);
+	            this.state = 271;
+	            this.unionBody();
+	            this.state = 272;
 	            this.match(oncrpcv2Parser.T__4);
 	            break;
 	        default:
@@ -1106,20 +1104,20 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    let localctx = new DefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, oncrpcv2Parser.RULE_definition);
 	    try {
-	        this.state = 276;
+	        this.state = 278;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oncrpcv2Parser.T__24:
-	        case oncrpcv2Parser.T__25:
-	        case oncrpcv2Parser.T__26:
-	        case oncrpcv2Parser.T__32:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 33:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 274;
+	            this.state = 276;
 	            this.typeDef();
 	            break;
-	        case oncrpcv2Parser.T__31:
+	        case 32:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 275;
+	            this.state = 277;
 	            this.constantDef();
 	            break;
 	        default:
@@ -1146,19 +1144,19 @@ export default class oncrpcv2Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 40, oncrpcv2Parser.RULE_xdrSpecification);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 279; 
+	        this.state = 281; 
 	        this._errHandler.sync(this);
 	        var _alt = 1;
 	        do {
 	        	switch (_alt) {
 	        	case 1:
-	        		this.state = 278;
+	        		this.state = 280;
 	        		this.definition();
 	        		break;
 	        	default:
 	        		throw new antlr4.error.NoViableAltException(this);
 	        	}
-	        	this.state = 281; 
+	        	this.state = 283; 
 	        	this._errHandler.sync(this);
 	        	_alt = this._interp.adaptivePredict(this._input,22, this._ctx);
 	        } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
@@ -1483,6 +1481,10 @@ class Oncrpcv2SpecificationContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = oncrpcv2Parser.RULE_oncrpcv2Specification;
     }
+
+	EOF() {
+	    return this.getToken(oncrpcv2Parser.EOF, 0);
+	};
 
 	xdrSpecification = function(i) {
 	    if(i===undefined) {
@@ -2188,3 +2190,12 @@ oncrpcv2Parser.ConstantDefContext = ConstantDefContext;
 oncrpcv2Parser.TypeDefContext = TypeDefContext; 
 oncrpcv2Parser.DefinitionContext = DefinitionContext; 
 oncrpcv2Parser.XdrSpecificationContext = XdrSpecificationContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

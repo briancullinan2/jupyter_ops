@@ -1,0 +1,35 @@
+ls
+ls -a| a= b=2 ls |var=hello |foo=bar| $USER me
+echo HEAD'squote \\ str  $NOTVAR'$TAIL | cat HEAD"dquote \\ str \" $VAR"$TAIL
+ls "hi $(echo "date") wc" | $(readlink -f $(dirname "$0"))
+echo ">(ls -a )" | b="`ls -a`"
+a=` <(ls -l )` | c=3 wc `yes >(date)` | `v=val$USER echo "-l"` | `$(echo date)`
+$USER=roy me | =1 hello | a<(bc d )=23
+tr -s ' ' <file | cut -d' ' -f4
+head -c 100 < /dev/zero | tr '\0' '='
+comm -12 <(sort< a) <(sort < b)
+head -$((${RANDOM} % `wc -l < file` + 1)) file | tail -1
+read sh_lock_lastPID < $sh_lock_file
+read -t 3 variable < <( tail -f logfile.log | grep "something" )
+ssh -T tunneluser@111.222.333.444 <<'EOI'
+ssh tunneluser@111.222.333.444 <<\EOI
+read -a arr <<< "1 4 6 9 11 17 22"
+sleep $($(date -f - +%s- <<< $'tomorrow 21:30\nnow')0)
+zcat number.txt.gz | zcat xxx.txt.gz | comm -12 /dev/fd/3 - 3<&0
+time find / &>/dev/null 2>&1 | grep real
+find ./ -type f -name '*.c*' -print0 | xargs -0 rm -rf &>> log_del.txt
+find ./ -type f -name '*.r*' -print0 | xargs -0 rm -rf &> log_del.txt
+time find / &>/dev/null 2>&1 | grep real
+time find / 2>/dev/null 2>time.txt
+find ./subdirectory -type f 2>>error.log
+find . -name ‘*.mp4’ >> /tmp/$$
+{ time find / &>/dev/null; } 2>&1 | grep real
+{ time find / &>/dev/null; } 2>&1 | grep real
+{ time find / 2>/dev/null; } 2>time.txt
+zcat number.txt.gz | { zcat xxx.txt.gz | comm -12 /dev/fd/3 - ; } 3<&0
+a=<4  wc
+a=<4 2&>1 b=  wc
+<files.txt  xargs stat -c %s | paste -sd+ - | bc
+find /the/path -depth -name "*.abc" -exec sh -c 'mv "$1" "${1%.abc}.edefg"' _ {} \;
+cp "${FILE}" "COLLECT/$(mktemp job_XXXXXXXXX)"
+TMPPS_PREFIX=$(mktemp "${TMPDIR:-/tmp/}${tempname}.XXXXXX")

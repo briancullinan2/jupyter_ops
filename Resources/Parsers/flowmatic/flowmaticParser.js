@@ -1,4 +1,4 @@
-// Generated from ./flowmatic/flowmatic.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/flowmatic/flowmatic.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import flowmaticListener from './flowmaticListener.js';
@@ -101,22 +101,18 @@ export default class flowmaticParser extends antlr4.Parser {
         this.symbolicNames = flowmaticParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	flowmatic() {
 	    let localctx = new FlowmaticContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, flowmaticParser.RULE_flowmatic);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 55;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===flowmaticParser.T__2) {
+	        while(_la===3) {
 	            this.state = 52;
 	            this.line();
 	            this.state = 57;
@@ -146,7 +142,7 @@ export default class flowmaticParser extends antlr4.Parser {
 	line() {
 	    let localctx = new LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, flowmaticParser.RULE_line);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 61;
@@ -156,7 +152,7 @@ export default class flowmaticParser extends antlr4.Parser {
 	        this.state = 67;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===flowmaticParser.T__0) {
+	        while(_la===1) {
 	            this.state = 63;
 	            this.match(flowmaticParser.T__0);
 	            this.state = 64;
@@ -213,77 +209,77 @@ export default class flowmaticParser extends antlr4.Parser {
 	statement() {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, flowmaticParser.RULE_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 94;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << flowmaticParser.T__4) | (1 << flowmaticParser.T__5) | (1 << flowmaticParser.T__6) | (1 << flowmaticParser.T__7) | (1 << flowmaticParser.T__9) | (1 << flowmaticParser.T__10) | (1 << flowmaticParser.T__11) | (1 << flowmaticParser.T__12) | (1 << flowmaticParser.T__13) | (1 << flowmaticParser.T__14) | (1 << flowmaticParser.T__15) | (1 << flowmaticParser.T__16) | (1 << flowmaticParser.T__18) | (1 << flowmaticParser.T__19) | (1 << flowmaticParser.T__20) | (1 << flowmaticParser.T__22))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 12320224) !== 0)) {
 	            this.state = 92;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case flowmaticParser.T__22:
+	            case 23:
 	                this.state = 76;
 	                this.closeout_statement();
 	                break;
-	            case flowmaticParser.T__20:
+	            case 21:
 	                this.state = 77;
 	                this.test_statement();
 	                break;
-	            case flowmaticParser.T__19:
+	            case 20:
 	                this.state = 78;
 	                this.set_statement();
 	                break;
-	            case flowmaticParser.T__18:
+	            case 19:
 	                this.state = 79;
 	                this.move_statement();
 	                break;
-	            case flowmaticParser.T__16:
+	            case 17:
 	                this.state = 80;
 	                this.compare_statement();
 	                break;
-	            case flowmaticParser.T__13:
+	            case 14:
 	                this.state = 81;
 	                this.otherwise_statement();
 	                break;
-	            case flowmaticParser.T__15:
+	            case 16:
 	                this.state = 82;
 	                this.stop_statement();
 	                break;
-	            case flowmaticParser.T__14:
+	            case 15:
 	                this.state = 83;
 	                this.rewind_statement();
 	                break;
-	            case flowmaticParser.T__11:
+	            case 12:
 	                this.state = 84;
 	                this.transfer_statement();
 	                break;
-	            case flowmaticParser.T__10:
+	            case 11:
 	                this.state = 85;
 	                this.writeitem_statement();
 	                break;
-	            case flowmaticParser.T__7:
+	            case 8:
 	                this.state = 86;
 	                this.jumpto_statement();
 	                break;
-	            case flowmaticParser.T__9:
+	            case 10:
 	                this.state = 87;
 	                this.readitem_statement();
 	                break;
-	            case flowmaticParser.T__6:
+	            case 7:
 	                this.state = 88;
 	                this.input_statement();
 	                break;
-	            case flowmaticParser.T__4:
+	            case 5:
 	                this.state = 89;
 	                this.hsp_statement();
 	                break;
-	            case flowmaticParser.T__5:
+	            case 6:
 	                this.state = 90;
 	                this.output_statement();
 	                break;
-	            case flowmaticParser.T__12:
+	            case 13:
 	                this.state = 91;
 	                this.if_statement();
 	                break;
@@ -338,7 +334,7 @@ export default class flowmaticParser extends antlr4.Parser {
 	output_statement() {
 	    let localctx = new Output_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, flowmaticParser.RULE_output_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 100;
@@ -354,7 +350,7 @@ export default class flowmaticParser extends antlr4.Parser {
 	            this.state = 106; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===flowmaticParser.ID);
+	        } while(_la===32);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -374,7 +370,7 @@ export default class flowmaticParser extends antlr4.Parser {
 	input_statement() {
 	    let localctx = new Input_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, flowmaticParser.RULE_input_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 108;
@@ -390,7 +386,7 @@ export default class flowmaticParser extends antlr4.Parser {
 	            this.state = 114; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===flowmaticParser.ID);
+	        } while(_la===32);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -810,12 +806,12 @@ export default class flowmaticParser extends antlr4.Parser {
 	num() {
 	    let localctx = new NumContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, flowmaticParser.RULE_num);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 191;
 	        _la = this._input.LA(1);
-	        if(!(_la===flowmaticParser.ZERO || _la===flowmaticParser.NUM)) {
+	        if(!(_la===29 || _la===33)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -935,12 +931,12 @@ export default class flowmaticParser extends antlr4.Parser {
 	op() {
 	    let localctx = new OpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, flowmaticParser.RULE_op);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 202;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << flowmaticParser.T__25) | (1 << flowmaticParser.T__26) | (1 << flowmaticParser.EOD))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2348810240) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2280,3 +2276,12 @@ flowmaticParser.FileletterContext = FileletterContext;
 flowmaticParser.FieldnameContext = FieldnameContext; 
 flowmaticParser.OperationContext = OperationContext; 
 flowmaticParser.OpContext = OpContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

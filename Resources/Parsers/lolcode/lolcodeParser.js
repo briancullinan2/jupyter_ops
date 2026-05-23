@@ -1,4 +1,4 @@
-// Generated from ./lolcode/lolcode.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/lolcode/lolcode.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import lolcodeListener from './lolcodeListener.js';
@@ -128,16 +128,12 @@ export default class lolcodeParser extends antlr4.Parser {
         this.symbolicNames = lolcodeParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, lolcodeParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 58;
@@ -147,7 +143,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	        this.state = 61;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===lolcodeParser.T__1) {
+	        if(_la===2) {
 	            this.state = 60;
 	            this.match(lolcodeParser.T__1);
 	        }
@@ -171,7 +167,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	code_block() {
 	    let localctx = new Code_blockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, lolcodeParser.RULE_code_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 64; 
@@ -183,7 +179,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	            this.state = 66; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << lolcodeParser.T__2) | (1 << lolcodeParser.T__5) | (1 << lolcodeParser.T__7) | (1 << lolcodeParser.T__8) | (1 << lolcodeParser.T__10) | (1 << lolcodeParser.T__12) | (1 << lolcodeParser.T__17) | (1 << lolcodeParser.T__18) | (1 << lolcodeParser.T__23) | (1 << lolcodeParser.T__25) | (1 << lolcodeParser.T__26) | (1 << lolcodeParser.T__27) | (1 << lolcodeParser.T__28) | (1 << lolcodeParser.T__29) | (1 << lolcodeParser.T__30))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (lolcodeParser.T__31 - 32)) | (1 << (lolcodeParser.T__32 - 32)) | (1 << (lolcodeParser.T__33 - 32)) | (1 << (lolcodeParser.T__34 - 32)) | (1 << (lolcodeParser.T__35 - 32)) | (1 << (lolcodeParser.T__37 - 32)) | (1 << (lolcodeParser.T__38 - 32)) | (1 << (lolcodeParser.T__39 - 32)) | (1 << (lolcodeParser.LABEL - 32)) | (1 << (lolcodeParser.ATOM - 32)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4245433160) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2015) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -364,14 +360,14 @@ export default class lolcodeParser extends antlr4.Parser {
 	        this.state = 99;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case lolcodeParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 94;
 	            this.match(lolcodeParser.T__7);
 	            this.state = 95;
 	            this.match(lolcodeParser.STRING);
 	            break;
-	        case lolcodeParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 96;
 	            this.match(lolcodeParser.T__8);
@@ -402,7 +398,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	print_block() {
 	    let localctx = new Print_blockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, lolcodeParser.RULE_print_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 101;
@@ -423,7 +419,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	        this.state = 109;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===lolcodeParser.T__11) {
+	        if(_la===12) {
 	            this.state = 108;
 	            this.match(lolcodeParser.T__11);
 	        }
@@ -578,7 +574,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	func_decl() {
 	    let localctx = new Func_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, lolcodeParser.RULE_func_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 140;
@@ -588,7 +584,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	        this.state = 152;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===lolcodeParser.T__19) {
+	        if(_la===20) {
 	            this.state = 142;
 	            this.match(lolcodeParser.T__19);
 	            this.state = 143;
@@ -596,7 +592,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	            this.state = 149;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===lolcodeParser.T__20) {
+	            while(_la===21) {
 	                this.state = 145;
 	                this.match(lolcodeParser.T__20);
 	                this.state = 146;
@@ -1136,7 +1132,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	all_() {
 	    let localctx = new All_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, lolcodeParser.RULE_all_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 240;
@@ -1146,7 +1142,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	        this.state = 246;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===lolcodeParser.T__24) {
+	        while(_la===25) {
 	            this.state = 242;
 	            this.match(lolcodeParser.T__24);
 	            this.state = 243;
@@ -1176,7 +1172,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	any_() {
 	    let localctx = new Any_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, lolcodeParser.RULE_any_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 251;
@@ -1186,7 +1182,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	        this.state = 257;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===lolcodeParser.T__24) {
+	        while(_la===25) {
 	            this.state = 253;
 	            this.match(lolcodeParser.T__24);
 	            this.state = 254;
@@ -1241,7 +1237,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	func_() {
 	    let localctx = new Func_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, lolcodeParser.RULE_func_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 265;
@@ -1255,7 +1251,7 @@ export default class lolcodeParser extends antlr4.Parser {
 	            this.state = 269; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 24)) & ~0x1f) == 0 && ((1 << (_la - 24)) & ((1 << (lolcodeParser.T__23 - 24)) | (1 << (lolcodeParser.T__25 - 24)) | (1 << (lolcodeParser.T__26 - 24)) | (1 << (lolcodeParser.T__27 - 24)) | (1 << (lolcodeParser.T__28 - 24)) | (1 << (lolcodeParser.T__29 - 24)) | (1 << (lolcodeParser.T__30 - 24)) | (1 << (lolcodeParser.T__31 - 24)) | (1 << (lolcodeParser.T__32 - 24)) | (1 << (lolcodeParser.T__33 - 24)) | (1 << (lolcodeParser.T__34 - 24)) | (1 << (lolcodeParser.T__35 - 24)) | (1 << (lolcodeParser.T__37 - 24)) | (1 << (lolcodeParser.T__38 - 24)) | (1 << (lolcodeParser.T__39 - 24)) | (1 << (lolcodeParser.LABEL - 24)) | (1 << (lolcodeParser.ATOM - 24)))) !== 0));
+	        } while(((((_la - 24)) & ~0x1f) === 0 && ((1 << (_la - 24)) & 516093) !== 0));
 	        this.state = 271;
 	        this.match(lolcodeParser.T__11);
 	    } catch (re) {

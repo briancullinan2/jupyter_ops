@@ -1,4 +1,4 @@
-// Generated from ./cool/COOL.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cool/COOL.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import COOLListener from './COOLListener.js';
@@ -110,10 +110,6 @@ export default class COOLParser extends antlr4.Parser {
         this.symbolicNames = COOLParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 5:
@@ -179,7 +175,7 @@ export default class COOLParser extends antlr4.Parser {
 	        this.state = 19;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case COOLParser.CLASS:
+	        case 10:
 	            localctx = new ClassesContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 14;
@@ -189,7 +185,7 @@ export default class COOLParser extends antlr4.Parser {
 	            this.state = 16;
 	            this.programBlocks();
 	            break;
-	        case COOLParser.EOF:
+	        case -1:
 	            localctx = new EofContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 18;
@@ -217,7 +213,7 @@ export default class COOLParser extends antlr4.Parser {
 	classDefine() {
 	    let localctx = new ClassDefineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, COOLParser.RULE_classDefine);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 21;
@@ -227,7 +223,7 @@ export default class COOLParser extends antlr4.Parser {
 	        this.state = 25;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===COOLParser.INHERITS) {
+	        if(_la===16) {
 	            this.state = 23;
 	            this.match(COOLParser.INHERITS);
 	            this.state = 24;
@@ -239,7 +235,7 @@ export default class COOLParser extends antlr4.Parser {
 	        this.state = 33;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===COOLParser.OBJECTID) {
+	        while(_la===32) {
 	            this.state = 28;
 	            this.feature();
 	            this.state = 29;
@@ -269,7 +265,7 @@ export default class COOLParser extends antlr4.Parser {
 	feature() {
 	    let localctx = new FeatureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, COOLParser.RULE_feature);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 64;
 	        this._errHandler.sync(this);
@@ -285,13 +281,13 @@ export default class COOLParser extends antlr4.Parser {
 	            this.state = 48;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===COOLParser.OBJECTID) {
+	            if(_la===32) {
 	                this.state = 40;
 	                this.formal();
 	                this.state = 45;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===COOLParser.T__4) {
+	                while(_la===5) {
 	                    this.state = 41;
 	                    this.match(COOLParser.T__4);
 	                    this.state = 42;
@@ -328,7 +324,7 @@ export default class COOLParser extends antlr4.Parser {
 	            this.state = 62;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===COOLParser.ASSIGNMENT) {
+	            if(_la===33) {
 	                this.state = 60;
 	                this.match(COOLParser.ASSIGNMENT);
 	                this.state = 61;
@@ -390,7 +386,7 @@ export default class COOLParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 10;
 	    this.enterRecursionRule(localctx, 10, COOLParser.RULE_expression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 167;
@@ -409,13 +405,13 @@ export default class COOLParser extends antlr4.Parser {
 	            this.state = 81;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << COOLParser.T__1) | (1 << COOLParser.T__3) | (1 << COOLParser.FALSE) | (1 << COOLParser.IF) | (1 << COOLParser.ISVOID) | (1 << COOLParser.LET) | (1 << COOLParser.WHILE) | (1 << COOLParser.CASE) | (1 << COOLParser.NEW) | (1 << COOLParser.NOT) | (1 << COOLParser.TRUE) | (1 << COOLParser.STRING) | (1 << COOLParser.INT))) !== 0) || _la===COOLParser.OBJECTID || _la===COOLParser.INTEGER_NEGATIVE) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2059816980) !== 0) || _la===32 || _la===42) {
 	                this.state = 73;
 	                this.expression(0);
 	                this.state = 78;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===COOLParser.T__4) {
+	                while(_la===5) {
 	                    this.state = 74;
 	                    this.match(COOLParser.T__4);
 	                    this.state = 75;
@@ -483,7 +479,7 @@ export default class COOLParser extends antlr4.Parser {
 	                this.state = 104; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << COOLParser.T__1) | (1 << COOLParser.T__3) | (1 << COOLParser.FALSE) | (1 << COOLParser.IF) | (1 << COOLParser.ISVOID) | (1 << COOLParser.LET) | (1 << COOLParser.WHILE) | (1 << COOLParser.CASE) | (1 << COOLParser.NEW) | (1 << COOLParser.NOT) | (1 << COOLParser.TRUE) | (1 << COOLParser.STRING) | (1 << COOLParser.INT))) !== 0) || _la===COOLParser.OBJECTID || _la===COOLParser.INTEGER_NEGATIVE);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2059816980) !== 0) || _la===32 || _la===42);
 	            this.state = 106;
 	            this.match(COOLParser.T__2);
 	            break;
@@ -503,7 +499,7 @@ export default class COOLParser extends antlr4.Parser {
 	            this.state = 114;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===COOLParser.ASSIGNMENT) {
+	            if(_la===33) {
 	                this.state = 112;
 	                this.match(COOLParser.ASSIGNMENT);
 	                this.state = 113;
@@ -513,7 +509,7 @@ export default class COOLParser extends antlr4.Parser {
 	            this.state = 126;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===COOLParser.T__4) {
+	            while(_la===5) {
 	                this.state = 116;
 	                this.match(COOLParser.T__4);
 	                this.state = 117;
@@ -525,7 +521,7 @@ export default class COOLParser extends antlr4.Parser {
 	                this.state = 122;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===COOLParser.ASSIGNMENT) {
+	                if(_la===33) {
 	                    this.state = 120;
 	                    this.match(COOLParser.ASSIGNMENT);
 	                    this.state = 121;
@@ -571,7 +567,7 @@ export default class COOLParser extends antlr4.Parser {
 	                this.state = 143; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===COOLParser.OBJECTID);
+	            } while(_la===32);
 	            this.state = 145;
 	            this.match(COOLParser.ESAC);
 	            break;
@@ -796,7 +792,7 @@ export default class COOLParser extends antlr4.Parser {
 	                    this.state = 193;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===COOLParser.T__7) {
+	                    if(_la===8) {
 	                        this.state = 191;
 	                        this.match(COOLParser.T__7);
 	                        this.state = 192;
@@ -812,13 +808,13 @@ export default class COOLParser extends antlr4.Parser {
 	                    this.state = 206;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << COOLParser.T__1) | (1 << COOLParser.T__3) | (1 << COOLParser.FALSE) | (1 << COOLParser.IF) | (1 << COOLParser.ISVOID) | (1 << COOLParser.LET) | (1 << COOLParser.WHILE) | (1 << COOLParser.CASE) | (1 << COOLParser.NEW) | (1 << COOLParser.NOT) | (1 << COOLParser.TRUE) | (1 << COOLParser.STRING) | (1 << COOLParser.INT))) !== 0) || _la===COOLParser.OBJECTID || _la===COOLParser.INTEGER_NEGATIVE) {
+	                    if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2059816980) !== 0) || _la===32 || _la===42) {
 	                        this.state = 198;
 	                        this.expression(0);
 	                        this.state = 203;
 	                        this._errHandler.sync(this);
 	                        _la = this._input.LA(1);
-	                        while(_la===COOLParser.T__4) {
+	                        while(_la===5) {
 	                            this.state = 199;
 	                            this.match(COOLParser.T__4);
 	                            this.state = 200;

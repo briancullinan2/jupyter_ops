@@ -1,4 +1,4 @@
-// Generated from ./erlang/Erlang.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/erlang/Erlang.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ErlangListener from './ErlangListener.js';
@@ -468,10 +468,6 @@ export default class ErlangParser extends antlr4.Parser {
         this.symbolicNames = ErlangParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 23:
@@ -562,7 +558,7 @@ export default class ErlangParser extends antlr4.Parser {
 	forms() {
 	    let localctx = new FormsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, ErlangParser.RULE_forms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 245; 
@@ -574,7 +570,7 @@ export default class ErlangParser extends antlr4.Parser {
 	            this.state = 247; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ErlangParser.T__1 || _la===ErlangParser.TokAtom || _la===ErlangParser.AttrName);
+	        } while(_la===2 || _la===65 || _la===71);
 	        this.state = 249;
 	        this.match(ErlangParser.EOF);
 	    } catch (re) {
@@ -601,12 +597,12 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 253;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__1:
-	        case ErlangParser.AttrName:
+	        case 2:
+	        case 71:
 	            this.state = 251;
 	            this.attribute();
 	            break;
-	        case ErlangParser.TokAtom:
+	        case 65:
 	            this.state = 252;
 	            this.function_();
 	            break;
@@ -843,14 +839,14 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 295;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.TokAtom:
+	        case 65:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 287;
 	            this.specFun();
 	            this.state = 288;
 	            this.typeSigs();
 	            break;
-	        case ErlangParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 290;
 	            this.match(ErlangParser.T__2);
@@ -1084,7 +1080,7 @@ export default class ErlangParser extends antlr4.Parser {
 	typeSigs() {
 	    let localctx = new TypeSigsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, ErlangParser.RULE_typeSigs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 337;
@@ -1092,7 +1088,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 342;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__9) {
+	        while(_la===10) {
 	            this.state = 338;
 	            this.match(ErlangParser.T__9);
 	            this.state = 339;
@@ -1120,7 +1116,7 @@ export default class ErlangParser extends antlr4.Parser {
 	typeSig() {
 	    let localctx = new TypeSigContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, ErlangParser.RULE_typeSig);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 345;
@@ -1128,7 +1124,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 348;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__10) {
+	        if(_la===11) {
 	            this.state = 346;
 	            this.match(ErlangParser.T__10);
 	            this.state = 347;
@@ -1154,7 +1150,7 @@ export default class ErlangParser extends antlr4.Parser {
 	typeGuards() {
 	    let localctx = new TypeGuardsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, ErlangParser.RULE_typeGuards);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 350;
@@ -1162,7 +1158,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 355;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 351;
 	            this.match(ErlangParser.T__5);
 	            this.state = 352;
@@ -1194,7 +1190,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 367;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.TokAtom:
+	        case 65:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 358;
 	            this.tokAtom();
@@ -1205,7 +1201,7 @@ export default class ErlangParser extends antlr4.Parser {
 	            this.state = 361;
 	            this.match(ErlangParser.T__3);
 	            break;
-	        case ErlangParser.TokVar:
+	        case 66:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 363;
 	            this.tokVar();
@@ -1236,7 +1232,7 @@ export default class ErlangParser extends antlr4.Parser {
 	topTypes() {
 	    let localctx = new TopTypesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, ErlangParser.RULE_topTypes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 369;
@@ -1244,7 +1240,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 374;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 370;
 	            this.match(ErlangParser.T__5);
 	            this.state = 371;
@@ -1305,7 +1301,7 @@ export default class ErlangParser extends antlr4.Parser {
 	topType100() {
 	    let localctx = new TopType100Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, ErlangParser.RULE_topType100);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 384;
@@ -1313,7 +1309,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 387;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__11) {
+	        if(_la===12) {
 	            this.state = 385;
 	            this.match(ErlangParser.T__11);
 	            this.state = 386;
@@ -1339,7 +1335,7 @@ export default class ErlangParser extends antlr4.Parser {
 	type200() {
 	    let localctx = new Type200Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, ErlangParser.RULE_type200);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 389;
@@ -1347,7 +1343,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 392;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__12) {
+	        if(_la===13) {
 	            this.state = 390;
 	            this.match(ErlangParser.T__12);
 	            this.state = 391;
@@ -1483,13 +1479,13 @@ export default class ErlangParser extends antlr4.Parser {
 	type500() {
 	    let localctx = new Type500Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, ErlangParser.RULE_type500);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 419;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__1 || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (ErlangParser.T__41 - 42)) | (1 << (ErlangParser.T__42 - 42)) | (1 << (ErlangParser.T__43 - 42)))) !== 0)) {
+	        if(_la===2 || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 7) !== 0)) {
 	            this.state = 418;
 	            this.prefixOp();
 	        }
@@ -1797,7 +1793,7 @@ export default class ErlangParser extends antlr4.Parser {
 	funType() {
 	    let localctx = new FunTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, ErlangParser.RULE_funType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 509;
@@ -1805,7 +1801,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 511;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__1) | (1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__16) | (1 << ErlangParser.T__17) | (1 << ErlangParser.T__21))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (ErlangParser.T__41 - 42)) | (1 << (ErlangParser.T__42 - 42)) | (1 << (ErlangParser.T__43 - 42)) | (1 << (ErlangParser.TokAtom - 42)) | (1 << (ErlangParser.TokVar - 42)) | (1 << (ErlangParser.TokInteger - 42)) | (1 << (ErlangParser.TokChar - 42)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4604172) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 226492423) !== 0)) {
 	            this.state = 510;
 	            this.topTypes();
 	        }
@@ -1835,7 +1831,7 @@ export default class ErlangParser extends antlr4.Parser {
 	mapPairTypes() {
 	    let localctx = new MapPairTypesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, ErlangParser.RULE_mapPairTypes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 517;
@@ -1843,7 +1839,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 522;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 518;
 	            this.match(ErlangParser.T__5);
 	            this.state = 519;
@@ -1871,14 +1867,14 @@ export default class ErlangParser extends antlr4.Parser {
 	mapPairType() {
 	    let localctx = new MapPairTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, ErlangParser.RULE_mapPairType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 525;
 	        this.topType();
 	        this.state = 526;
 	        _la = this._input.LA(1);
-	        if(!(_la===ErlangParser.T__19 || _la===ErlangParser.T__20)) {
+	        if(!(_la===20 || _la===21)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1906,7 +1902,7 @@ export default class ErlangParser extends antlr4.Parser {
 	fieldTypes() {
 	    let localctx = new FieldTypesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, ErlangParser.RULE_fieldTypes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 529;
@@ -1914,7 +1910,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 534;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 530;
 	            this.match(ErlangParser.T__5);
 	            this.state = 531;
@@ -2159,7 +2155,7 @@ export default class ErlangParser extends antlr4.Parser {
 	function_() {
 	    let localctx = new Function_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, ErlangParser.RULE_function_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 586;
@@ -2167,7 +2163,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 591;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__9) {
+	        while(_la===10) {
 	            this.state = 587;
 	            this.match(ErlangParser.T__9);
 	            this.state = 588;
@@ -2247,13 +2243,13 @@ export default class ErlangParser extends antlr4.Parser {
 	clauseGuard() {
 	    let localctx = new ClauseGuardContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, ErlangParser.RULE_clauseGuard);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 603;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__10) {
+	        if(_la===11) {
 	            this.state = 601;
 	            this.match(ErlangParser.T__10);
 	            this.state = 602;
@@ -2308,34 +2304,34 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 611;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 608;
 	            this.match(ErlangParser.T__24);
 	            this.state = 609;
 	            this.expr();
 	            break;
-	        case ErlangParser.T__1:
-	        case ErlangParser.T__2:
-	        case ErlangParser.T__7:
-	        case ErlangParser.T__13:
-	        case ErlangParser.T__16:
-	        case ErlangParser.T__17:
-	        case ErlangParser.T__21:
-	        case ErlangParser.T__29:
-	        case ErlangParser.T__35:
-	        case ErlangParser.T__36:
-	        case ErlangParser.T__38:
-	        case ErlangParser.T__40:
-	        case ErlangParser.T__41:
-	        case ErlangParser.T__42:
-	        case ErlangParser.T__43:
-	        case ErlangParser.TokAtom:
-	        case ErlangParser.TokVar:
-	        case ErlangParser.TokFloat:
-	        case ErlangParser.TokInteger:
-	        case ErlangParser.TokChar:
-	        case ErlangParser.TokString:
+	        case 2:
+	        case 3:
+	        case 8:
+	        case 14:
+	        case 17:
+	        case 18:
+	        case 22:
+	        case 30:
+	        case 36:
+	        case 37:
+	        case 39:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 610;
 	            this.expr100();
@@ -2362,7 +2358,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr100() {
 	    let localctx = new Expr100Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, ErlangParser.RULE_expr100);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 613;
@@ -2370,10 +2366,10 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 618;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__25 || _la===ErlangParser.T__26) {
+	        while(_la===26 || _la===27) {
 	            this.state = 614;
 	            _la = this._input.LA(1);
-	            if(!(_la===ErlangParser.T__25 || _la===ErlangParser.T__26)) {
+	            if(!(_la===26 || _la===27)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2405,7 +2401,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr150() {
 	    let localctx = new Expr150Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, ErlangParser.RULE_expr150);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 621;
@@ -2413,7 +2409,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 626;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__27) {
+	        while(_la===28) {
 	            this.state = 622;
 	            this.match(ErlangParser.T__27);
 	            this.state = 623;
@@ -2441,7 +2437,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr160() {
 	    let localctx = new Expr160Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, ErlangParser.RULE_expr160);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 629;
@@ -2449,7 +2445,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 634;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__28) {
+	        while(_la===29) {
 	            this.state = 630;
 	            this.match(ErlangParser.T__28);
 	            this.state = 631;
@@ -2477,7 +2473,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr200() {
 	    let localctx = new Expr200Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, ErlangParser.RULE_expr200);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 637;
@@ -2485,7 +2481,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 641;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (ErlangParser.T__56 - 57)) | (1 << (ErlangParser.T__57 - 57)) | (1 << (ErlangParser.T__58 - 57)) | (1 << (ErlangParser.T__59 - 57)) | (1 << (ErlangParser.T__60 - 57)) | (1 << (ErlangParser.T__61 - 57)) | (1 << (ErlangParser.T__62 - 57)) | (1 << (ErlangParser.T__63 - 57)))) !== 0)) {
+	        if(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 255) !== 0)) {
 	            this.state = 638;
 	            this.compOp();
 	            this.state = 639;
@@ -2511,7 +2507,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr300() {
 	    let localctx = new Expr300Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, ErlangParser.RULE_expr300);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 643;
@@ -2519,7 +2515,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 649;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__54 || _la===ErlangParser.T__55) {
+	        while(_la===55 || _la===56) {
 	            this.state = 644;
 	            this.listOp();
 	            this.state = 645;
@@ -2547,7 +2543,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr400() {
 	    let localctx = new Expr400Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, ErlangParser.RULE_expr400);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 652;
@@ -2555,7 +2551,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 658;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__1 || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (ErlangParser.T__41 - 42)) | (1 << (ErlangParser.T__48 - 42)) | (1 << (ErlangParser.T__49 - 42)) | (1 << (ErlangParser.T__50 - 42)) | (1 << (ErlangParser.T__51 - 42)) | (1 << (ErlangParser.T__52 - 42)) | (1 << (ErlangParser.T__53 - 42)))) !== 0)) {
+	        while(_la===2 || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 8065) !== 0)) {
 	            this.state = 653;
 	            this.addOp();
 	            this.state = 654;
@@ -2583,7 +2579,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr500() {
 	    let localctx = new Expr500Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, ErlangParser.RULE_expr500);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 661;
@@ -2591,7 +2587,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 667;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 24)) & ~0x1f) == 0 && ((1 << (_la - 24)) & ((1 << (ErlangParser.T__23 - 24)) | (1 << (ErlangParser.T__31 - 24)) | (1 << (ErlangParser.T__44 - 24)) | (1 << (ErlangParser.T__45 - 24)) | (1 << (ErlangParser.T__46 - 24)) | (1 << (ErlangParser.T__47 - 24)))) !== 0)) {
+	        while(((((_la - 24)) & ~0x1f) === 0 && ((1 << (_la - 24)) & 31457537) !== 0)) {
 	            this.state = 662;
 	            this.multOp();
 	            this.state = 663;
@@ -2623,33 +2619,33 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 674;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__1:
-	        case ErlangParser.T__41:
-	        case ErlangParser.T__42:
-	        case ErlangParser.T__43:
+	        case 2:
+	        case 42:
+	        case 43:
+	        case 44:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 670;
 	            this.prefixOp();
 	            this.state = 671;
 	            this.expr600();
 	            break;
-	        case ErlangParser.T__2:
-	        case ErlangParser.T__7:
-	        case ErlangParser.T__13:
-	        case ErlangParser.T__16:
-	        case ErlangParser.T__17:
-	        case ErlangParser.T__21:
-	        case ErlangParser.T__29:
-	        case ErlangParser.T__35:
-	        case ErlangParser.T__36:
-	        case ErlangParser.T__38:
-	        case ErlangParser.T__40:
-	        case ErlangParser.TokAtom:
-	        case ErlangParser.TokVar:
-	        case ErlangParser.TokFloat:
-	        case ErlangParser.TokInteger:
-	        case ErlangParser.TokChar:
-	        case ErlangParser.TokString:
+	        case 3:
+	        case 8:
+	        case 14:
+	        case 17:
+	        case 18:
+	        case 22:
+	        case 30:
+	        case 36:
+	        case 37:
+	        case 39:
+	        case 41:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 673;
 	            this.expr650();
@@ -2756,7 +2752,7 @@ export default class ErlangParser extends antlr4.Parser {
 	expr800() {
 	    let localctx = new Expr800Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 106, ErlangParser.RULE_expr800);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 685;
@@ -2764,7 +2760,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 688;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__4) {
+	        if(_la===5) {
 	            this.state = 686;
 	            this.match(ErlangParser.T__4);
 	            this.state = 687;
@@ -2907,7 +2903,7 @@ export default class ErlangParser extends antlr4.Parser {
 	patExpr() {
 	    let localctx = new PatExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, ErlangParser.RULE_patExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 712;
@@ -2915,7 +2911,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 715;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__25) {
+	        if(_la===26) {
 	            this.state = 713;
 	            this.match(ErlangParser.T__25);
 	            this.state = 714;
@@ -2941,7 +2937,7 @@ export default class ErlangParser extends antlr4.Parser {
 	patExpr200() {
 	    let localctx = new PatExpr200Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, ErlangParser.RULE_patExpr200);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 717;
@@ -2949,7 +2945,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 721;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (ErlangParser.T__56 - 57)) | (1 << (ErlangParser.T__57 - 57)) | (1 << (ErlangParser.T__58 - 57)) | (1 << (ErlangParser.T__59 - 57)) | (1 << (ErlangParser.T__60 - 57)) | (1 << (ErlangParser.T__61 - 57)) | (1 << (ErlangParser.T__62 - 57)) | (1 << (ErlangParser.T__63 - 57)))) !== 0)) {
+	        if(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 255) !== 0)) {
 	            this.state = 718;
 	            this.compOp();
 	            this.state = 719;
@@ -2975,7 +2971,7 @@ export default class ErlangParser extends antlr4.Parser {
 	patExpr300() {
 	    let localctx = new PatExpr300Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, ErlangParser.RULE_patExpr300);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 723;
@@ -2983,7 +2979,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 727;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__54 || _la===ErlangParser.T__55) {
+	        if(_la===55 || _la===56) {
 	            this.state = 724;
 	            this.listOp();
 	            this.state = 725;
@@ -3123,27 +3119,27 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 757;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__1:
-	        case ErlangParser.T__41:
-	        case ErlangParser.T__42:
-	        case ErlangParser.T__43:
+	        case 2:
+	        case 42:
+	        case 43:
+	        case 44:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 753;
 	            this.prefixOp();
 	            this.state = 754;
 	            this.patExpr600();
 	            break;
-	        case ErlangParser.T__2:
-	        case ErlangParser.T__7:
-	        case ErlangParser.T__13:
-	        case ErlangParser.T__16:
-	        case ErlangParser.T__21:
-	        case ErlangParser.TokAtom:
-	        case ErlangParser.TokVar:
-	        case ErlangParser.TokFloat:
-	        case ErlangParser.TokInteger:
-	        case ErlangParser.TokChar:
-	        case ErlangParser.TokString:
+	        case 3:
+	        case 8:
+	        case 14:
+	        case 17:
+	        case 22:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 756;
 	            this.patExpr650();
@@ -3211,21 +3207,21 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 765;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 763;
 	            this.recordPatExpr();
 	            break;
-	        case ErlangParser.T__2:
-	        case ErlangParser.T__7:
-	        case ErlangParser.T__13:
-	        case ErlangParser.T__21:
-	        case ErlangParser.TokAtom:
-	        case ErlangParser.TokVar:
-	        case ErlangParser.TokFloat:
-	        case ErlangParser.TokInteger:
-	        case ErlangParser.TokChar:
-	        case ErlangParser.TokString:
+	        case 3:
+	        case 8:
+	        case 14:
+	        case 22:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 764;
 	            this.patExpr800();
@@ -3279,36 +3275,36 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 778;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.TokVar:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 769;
 	            this.tokVar();
 	            break;
-	        case ErlangParser.TokAtom:
-	        case ErlangParser.TokFloat:
-	        case ErlangParser.TokInteger:
-	        case ErlangParser.TokChar:
-	        case ErlangParser.TokString:
+	        case 65:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 770;
 	            this.atomic();
 	            break;
-	        case ErlangParser.T__13:
+	        case 14:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 771;
 	            this.list_();
 	            break;
-	        case ErlangParser.T__21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 772;
 	            this.binary();
 	            break;
-	        case ErlangParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 773;
 	            this.tuple_();
 	            break;
-	        case ErlangParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 774;
 	            this.match(ErlangParser.T__2);
@@ -3345,13 +3341,13 @@ export default class ErlangParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 130;
 	    this.enterRecursionRule(localctx, 130, ErlangParser.RULE_mapPatExpr, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 782;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__21))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (ErlangParser.TokAtom - 65)) | (1 << (ErlangParser.TokVar - 65)) | (1 << (ErlangParser.TokFloat - 65)) | (1 << (ErlangParser.TokInteger - 65)) | (1 << (ErlangParser.TokChar - 65)) | (1 << (ErlangParser.TokString - 65)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4210952) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 63) !== 0)) {
 	            this.state = 781;
 	            this.patExprMax();
 	        }
@@ -3414,13 +3410,13 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 800;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__0:
+	        case 1:
 	            this.state = 797;
 	            this.match(ErlangParser.T__0);
 	            this.state = 798;
 	            this.tokAtom();
 	            break;
-	        case ErlangParser.T__7:
+	        case 8:
 	            this.state = 799;
 	            this.recordTuple();
 	            break;
@@ -3493,12 +3489,12 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 819;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 810;
 	            this.match(ErlangParser.T__14);
 	            break;
-	        case ErlangParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 811;
 	            this.match(ErlangParser.T__11);
@@ -3507,7 +3503,7 @@ export default class ErlangParser extends antlr4.Parser {
 	            this.state = 813;
 	            this.match(ErlangParser.T__14);
 	            break;
-	        case ErlangParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 815;
 	            this.match(ErlangParser.T__5);
@@ -3581,7 +3577,7 @@ export default class ErlangParser extends antlr4.Parser {
 	binElements() {
 	    let localctx = new BinElementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 140, ErlangParser.RULE_binElements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 829;
@@ -3589,7 +3585,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 834;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 830;
 	            this.match(ErlangParser.T__5);
 	            this.state = 831;
@@ -3644,13 +3640,13 @@ export default class ErlangParser extends antlr4.Parser {
 	bitExpr() {
 	    let localctx = new BitExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 144, ErlangParser.RULE_bitExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 842;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__1 || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (ErlangParser.T__41 - 42)) | (1 << (ErlangParser.T__42 - 42)) | (1 << (ErlangParser.T__43 - 42)))) !== 0)) {
+	        if(_la===2 || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 7) !== 0)) {
 	            this.state = 841;
 	            this.prefixOp();
 	        }
@@ -3676,13 +3672,13 @@ export default class ErlangParser extends antlr4.Parser {
 	optBitSizeExpr() {
 	    let localctx = new OptBitSizeExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, ErlangParser.RULE_optBitSizeExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 848;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__4) {
+	        if(_la===5) {
 	            this.state = 846;
 	            this.match(ErlangParser.T__4);
 	            this.state = 847;
@@ -3708,13 +3704,13 @@ export default class ErlangParser extends antlr4.Parser {
 	optBitTypeList() {
 	    let localctx = new OptBitTypeListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 148, ErlangParser.RULE_optBitTypeList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 852;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__31) {
+	        if(_la===32) {
 	            this.state = 850;
 	            this.match(ErlangParser.T__31);
 	            this.state = 851;
@@ -3740,7 +3736,7 @@ export default class ErlangParser extends antlr4.Parser {
 	bitTypeList() {
 	    let localctx = new BitTypeListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 150, ErlangParser.RULE_bitTypeList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 854;
@@ -3748,7 +3744,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 859;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__1) {
+	        while(_la===2) {
 	            this.state = 855;
 	            this.match(ErlangParser.T__1);
 	            this.state = 856;
@@ -3776,7 +3772,7 @@ export default class ErlangParser extends antlr4.Parser {
 	bitType() {
 	    let localctx = new BitTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 152, ErlangParser.RULE_bitType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 862;
@@ -3784,7 +3780,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 865;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__4) {
+	        if(_la===5) {
 	            this.state = 863;
 	            this.match(ErlangParser.T__4);
 	            this.state = 864;
@@ -3895,7 +3891,7 @@ export default class ErlangParser extends antlr4.Parser {
 	lcExprs() {
 	    let localctx = new LcExprsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 160, ErlangParser.RULE_lcExprs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 881;
@@ -3903,7 +3899,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 886;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 882;
 	            this.match(ErlangParser.T__5);
 	            this.state = 883;
@@ -3982,7 +3978,7 @@ export default class ErlangParser extends antlr4.Parser {
 	tuple_() {
 	    let localctx = new Tuple_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 164, ErlangParser.RULE_tuple_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 900;
@@ -3990,7 +3986,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 902;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__1) | (1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__16) | (1 << ErlangParser.T__17) | (1 << ErlangParser.T__21) | (1 << ErlangParser.T__24) | (1 << ErlangParser.T__29))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (ErlangParser.T__35 - 36)) | (1 << (ErlangParser.T__36 - 36)) | (1 << (ErlangParser.T__38 - 36)) | (1 << (ErlangParser.T__40 - 36)) | (1 << (ErlangParser.T__41 - 36)) | (1 << (ErlangParser.T__42 - 36)) | (1 << (ErlangParser.T__43 - 36)) | (1 << (ErlangParser.TokAtom - 36)) | (1 << (ErlangParser.TokVar - 36)) | (1 << (ErlangParser.TokFloat - 36)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (ErlangParser.TokInteger - 68)) | (1 << (ErlangParser.TokChar - 68)) | (1 << (ErlangParser.TokString - 68)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1111900428) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3758096875) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 7) !== 0)) {
 	            this.state = 901;
 	            this.exprs();
 	        }
@@ -4022,13 +4018,13 @@ export default class ErlangParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 166;
 	    this.enterRecursionRule(localctx, 166, ErlangParser.RULE_mapExpr, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 908;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__17) | (1 << ErlangParser.T__21) | (1 << ErlangParser.T__29))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (ErlangParser.T__35 - 36)) | (1 << (ErlangParser.T__36 - 36)) | (1 << (ErlangParser.T__38 - 36)) | (1 << (ErlangParser.T__40 - 36)) | (1 << (ErlangParser.TokAtom - 36)) | (1 << (ErlangParser.TokVar - 36)) | (1 << (ErlangParser.TokFloat - 36)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (ErlangParser.TokInteger - 68)) | (1 << (ErlangParser.TokChar - 68)) | (1 << (ErlangParser.TokString - 68)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1078214920) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3758096427) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 7) !== 0)) {
 	            this.state = 907;
 	            this.exprMax();
 	        }
@@ -4082,7 +4078,7 @@ export default class ErlangParser extends antlr4.Parser {
 	mapTuple() {
 	    let localctx = new MapTupleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 168, ErlangParser.RULE_mapTuple);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 921;
@@ -4090,13 +4086,13 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 930;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__1) | (1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__16) | (1 << ErlangParser.T__17) | (1 << ErlangParser.T__21) | (1 << ErlangParser.T__24) | (1 << ErlangParser.T__29))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (ErlangParser.T__35 - 36)) | (1 << (ErlangParser.T__36 - 36)) | (1 << (ErlangParser.T__38 - 36)) | (1 << (ErlangParser.T__40 - 36)) | (1 << (ErlangParser.T__41 - 36)) | (1 << (ErlangParser.T__42 - 36)) | (1 << (ErlangParser.T__43 - 36)) | (1 << (ErlangParser.TokAtom - 36)) | (1 << (ErlangParser.TokVar - 36)) | (1 << (ErlangParser.TokFloat - 36)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (ErlangParser.TokInteger - 68)) | (1 << (ErlangParser.TokChar - 68)) | (1 << (ErlangParser.TokString - 68)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1111900428) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3758096875) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 7) !== 0)) {
 	            this.state = 922;
 	            this.mapField();
 	            this.state = 927;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ErlangParser.T__5) {
+	            while(_la===6) {
 	                this.state = 923;
 	                this.match(ErlangParser.T__5);
 	                this.state = 924;
@@ -4248,13 +4244,13 @@ export default class ErlangParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 178;
 	    this.enterRecursionRule(localctx, 178, ErlangParser.RULE_recordExpr, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 950;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__17) | (1 << ErlangParser.T__21) | (1 << ErlangParser.T__29))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (ErlangParser.T__35 - 36)) | (1 << (ErlangParser.T__36 - 36)) | (1 << (ErlangParser.T__38 - 36)) | (1 << (ErlangParser.T__40 - 36)) | (1 << (ErlangParser.TokAtom - 36)) | (1 << (ErlangParser.TokVar - 36)) | (1 << (ErlangParser.TokFloat - 36)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (ErlangParser.TokInteger - 68)) | (1 << (ErlangParser.TokChar - 68)) | (1 << (ErlangParser.TokString - 68)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1078214920) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3758096427) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 7) !== 0)) {
 	            this.state = 949;
 	            this.exprMax();
 	        }
@@ -4266,13 +4262,13 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 957;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__0:
+	        case 1:
 	            this.state = 954;
 	            this.match(ErlangParser.T__0);
 	            this.state = 955;
 	            this.tokAtom();
 	            break;
-	        case ErlangParser.T__7:
+	        case 8:
 	            this.state = 956;
 	            this.recordTuple();
 	            break;
@@ -4302,13 +4298,13 @@ export default class ErlangParser extends antlr4.Parser {
 	                this.state = 965;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case ErlangParser.T__0:
+	                case 1:
 	                    this.state = 962;
 	                    this.match(ErlangParser.T__0);
 	                    this.state = 963;
 	                    this.tokAtom();
 	                    break;
-	                case ErlangParser.T__7:
+	                case 8:
 	                    this.state = 964;
 	                    this.recordTuple();
 	                    break;
@@ -4340,7 +4336,7 @@ export default class ErlangParser extends antlr4.Parser {
 	recordTuple() {
 	    let localctx = new RecordTupleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 180, ErlangParser.RULE_recordTuple);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 972;
@@ -4348,7 +4344,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 974;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.TokAtom || _la===ErlangParser.TokVar) {
+	        if(_la===65 || _la===66) {
 	            this.state = 973;
 	            this.recordFields();
 	        }
@@ -4374,7 +4370,7 @@ export default class ErlangParser extends antlr4.Parser {
 	recordFields() {
 	    let localctx = new RecordFieldsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, ErlangParser.RULE_recordFields);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 978;
@@ -4382,7 +4378,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 983;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 979;
 	            this.match(ErlangParser.T__5);
 	            this.state = 980;
@@ -4415,11 +4411,11 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 988;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.TokVar:
+	        case 66:
 	            this.state = 986;
 	            this.tokVar();
 	            break;
-	        case ErlangParser.TokAtom:
+	        case 65:
 	            this.state = 987;
 	            this.tokAtom();
 	            break;
@@ -4501,7 +4497,7 @@ export default class ErlangParser extends antlr4.Parser {
 	ifClauses() {
 	    let localctx = new IfClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 190, ErlangParser.RULE_ifClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1000;
@@ -4509,7 +4505,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1005;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__9) {
+	        while(_la===10) {
 	            this.state = 1001;
 	            this.match(ErlangParser.T__9);
 	            this.state = 1002;
@@ -4593,7 +4589,7 @@ export default class ErlangParser extends antlr4.Parser {
 	crClauses() {
 	    let localctx = new CrClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 196, ErlangParser.RULE_crClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1017;
@@ -4601,7 +4597,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1022;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__9) {
+	        while(_la===10) {
 	            this.state = 1018;
 	            this.match(ErlangParser.T__9);
 	            this.state = 1019;
@@ -4788,12 +4784,12 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1068;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.TokAtom:
+	        case 65:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1066;
 	            this.tokAtom();
 	            break;
-	        case ErlangParser.TokVar:
+	        case 66:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1067;
 	            this.tokVar();
@@ -4824,12 +4820,12 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1072;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.TokInteger:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1070;
 	            this.tokInteger();
 	            break;
-	        case ErlangParser.TokVar:
+	        case 66:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1071;
 	            this.tokVar();
@@ -4856,7 +4852,7 @@ export default class ErlangParser extends antlr4.Parser {
 	funClauses() {
 	    let localctx = new FunClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 208, ErlangParser.RULE_funClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1074;
@@ -4864,7 +4860,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1079;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__9) {
+	        while(_la===10) {
 	            this.state = 1075;
 	            this.match(ErlangParser.T__9);
 	            this.state = 1076;
@@ -4896,7 +4892,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1091;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1082;
 	            this.patArgumentList();
@@ -4905,7 +4901,7 @@ export default class ErlangParser extends antlr4.Parser {
 	            this.state = 1084;
 	            this.clauseBody();
 	            break;
-	        case ErlangParser.TokVar:
+	        case 66:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1086;
 	            this.tokVar();
@@ -4938,7 +4934,7 @@ export default class ErlangParser extends antlr4.Parser {
 	tryExpr() {
 	    let localctx = new TryExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 212, ErlangParser.RULE_tryExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1093;
@@ -4948,7 +4944,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1097;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__37) {
+	        if(_la===38) {
 	            this.state = 1095;
 	            this.match(ErlangParser.T__37);
 	            this.state = 1096;
@@ -5035,7 +5031,7 @@ export default class ErlangParser extends antlr4.Parser {
 	tryClauses() {
 	    let localctx = new TryClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 216, ErlangParser.RULE_tryClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1117;
@@ -5043,7 +5039,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1122;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__9) {
+	        while(_la===10) {
 	            this.state = 1118;
 	            this.match(ErlangParser.T__9);
 	            this.state = 1119;
@@ -5128,13 +5124,13 @@ export default class ErlangParser extends antlr4.Parser {
 	tryOptStackTrace() {
 	    let localctx = new TryOptStackTraceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 220, ErlangParser.RULE_tryOptStackTrace);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1143;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ErlangParser.T__4) {
+	        if(_la===5) {
 	            this.state = 1141;
 	            this.match(ErlangParser.T__4);
 	            this.state = 1142;
@@ -5160,7 +5156,7 @@ export default class ErlangParser extends antlr4.Parser {
 	argumentList() {
 	    let localctx = new ArgumentListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 222, ErlangParser.RULE_argumentList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1145;
@@ -5168,7 +5164,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1147;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__1) | (1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__16) | (1 << ErlangParser.T__17) | (1 << ErlangParser.T__21) | (1 << ErlangParser.T__24) | (1 << ErlangParser.T__29))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (ErlangParser.T__35 - 36)) | (1 << (ErlangParser.T__36 - 36)) | (1 << (ErlangParser.T__38 - 36)) | (1 << (ErlangParser.T__40 - 36)) | (1 << (ErlangParser.T__41 - 36)) | (1 << (ErlangParser.T__42 - 36)) | (1 << (ErlangParser.T__43 - 36)) | (1 << (ErlangParser.TokAtom - 36)) | (1 << (ErlangParser.TokVar - 36)) | (1 << (ErlangParser.TokFloat - 36)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (ErlangParser.TokInteger - 68)) | (1 << (ErlangParser.TokChar - 68)) | (1 << (ErlangParser.TokString - 68)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1111900428) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3758096875) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 7) !== 0)) {
 	            this.state = 1146;
 	            this.exprs();
 	        }
@@ -5194,7 +5190,7 @@ export default class ErlangParser extends antlr4.Parser {
 	patArgumentList() {
 	    let localctx = new PatArgumentListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 224, ErlangParser.RULE_patArgumentList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1151;
@@ -5202,7 +5198,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1153;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ErlangParser.T__1) | (1 << ErlangParser.T__2) | (1 << ErlangParser.T__7) | (1 << ErlangParser.T__13) | (1 << ErlangParser.T__16) | (1 << ErlangParser.T__21))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (ErlangParser.T__41 - 42)) | (1 << (ErlangParser.T__42 - 42)) | (1 << (ErlangParser.T__43 - 42)) | (1 << (ErlangParser.TokAtom - 42)) | (1 << (ErlangParser.TokVar - 42)) | (1 << (ErlangParser.TokFloat - 42)) | (1 << (ErlangParser.TokInteger - 42)) | (1 << (ErlangParser.TokChar - 42)) | (1 << (ErlangParser.TokString - 42)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4342028) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 528482311) !== 0)) {
 	            this.state = 1152;
 	            this.patExprs();
 	        }
@@ -5228,7 +5224,7 @@ export default class ErlangParser extends antlr4.Parser {
 	exprs() {
 	    let localctx = new ExprsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 226, ErlangParser.RULE_exprs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1157;
@@ -5236,7 +5232,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1162;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 1158;
 	            this.match(ErlangParser.T__5);
 	            this.state = 1159;
@@ -5264,7 +5260,7 @@ export default class ErlangParser extends antlr4.Parser {
 	patExprs() {
 	    let localctx = new PatExprsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 228, ErlangParser.RULE_patExprs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1165;
@@ -5272,7 +5268,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1170;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__5) {
+	        while(_la===6) {
 	            this.state = 1166;
 	            this.match(ErlangParser.T__5);
 	            this.state = 1167;
@@ -5300,7 +5296,7 @@ export default class ErlangParser extends antlr4.Parser {
 	guard_() {
 	    let localctx = new Guard_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 230, ErlangParser.RULE_guard_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1173;
@@ -5308,7 +5304,7 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1178;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ErlangParser.T__9) {
+	        while(_la===10) {
 	            this.state = 1174;
 	            this.match(ErlangParser.T__9);
 	            this.state = 1175;
@@ -5340,27 +5336,27 @@ export default class ErlangParser extends antlr4.Parser {
 	        this.state = 1190;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ErlangParser.TokChar:
+	        case 69:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1181;
 	            this.tokChar();
 	            break;
-	        case ErlangParser.TokInteger:
+	        case 68:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1182;
 	            this.tokInteger();
 	            break;
-	        case ErlangParser.TokFloat:
+	        case 67:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1183;
 	            this.tokFloat();
 	            break;
-	        case ErlangParser.TokAtom:
+	        case 65:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1184;
 	            this.tokAtom();
 	            break;
-	        case ErlangParser.TokString:
+	        case 70:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1186; 
 	            this._errHandler.sync(this);
@@ -5401,12 +5397,12 @@ export default class ErlangParser extends antlr4.Parser {
 	prefixOp() {
 	    let localctx = new PrefixOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 234, ErlangParser.RULE_prefixOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1192;
 	        _la = this._input.LA(1);
-	        if(!(_la===ErlangParser.T__1 || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (ErlangParser.T__41 - 42)) | (1 << (ErlangParser.T__42 - 42)) | (1 << (ErlangParser.T__43 - 42)))) !== 0))) {
+	        if(!(_la===2 || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5432,12 +5428,12 @@ export default class ErlangParser extends antlr4.Parser {
 	multOp() {
 	    let localctx = new MultOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 236, ErlangParser.RULE_multOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1194;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 24)) & ~0x1f) == 0 && ((1 << (_la - 24)) & ((1 << (ErlangParser.T__23 - 24)) | (1 << (ErlangParser.T__31 - 24)) | (1 << (ErlangParser.T__44 - 24)) | (1 << (ErlangParser.T__45 - 24)) | (1 << (ErlangParser.T__46 - 24)) | (1 << (ErlangParser.T__47 - 24)))) !== 0))) {
+	        if(!(((((_la - 24)) & ~0x1f) === 0 && ((1 << (_la - 24)) & 31457537) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5463,12 +5459,12 @@ export default class ErlangParser extends antlr4.Parser {
 	addOp() {
 	    let localctx = new AddOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 238, ErlangParser.RULE_addOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1196;
 	        _la = this._input.LA(1);
-	        if(!(_la===ErlangParser.T__1 || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (ErlangParser.T__41 - 42)) | (1 << (ErlangParser.T__48 - 42)) | (1 << (ErlangParser.T__49 - 42)) | (1 << (ErlangParser.T__50 - 42)) | (1 << (ErlangParser.T__51 - 42)) | (1 << (ErlangParser.T__52 - 42)) | (1 << (ErlangParser.T__53 - 42)))) !== 0))) {
+	        if(!(_la===2 || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 8065) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5494,12 +5490,12 @@ export default class ErlangParser extends antlr4.Parser {
 	listOp() {
 	    let localctx = new ListOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 240, ErlangParser.RULE_listOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1198;
 	        _la = this._input.LA(1);
-	        if(!(_la===ErlangParser.T__54 || _la===ErlangParser.T__55)) {
+	        if(!(_la===55 || _la===56)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5525,12 +5521,12 @@ export default class ErlangParser extends antlr4.Parser {
 	compOp() {
 	    let localctx = new CompOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 242, ErlangParser.RULE_compOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1200;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (ErlangParser.T__56 - 57)) | (1 << (ErlangParser.T__57 - 57)) | (1 << (ErlangParser.T__58 - 57)) | (1 << (ErlangParser.T__59 - 57)) | (1 << (ErlangParser.T__60 - 57)) | (1 << (ErlangParser.T__61 - 57)) | (1 << (ErlangParser.T__62 - 57)) | (1 << (ErlangParser.T__63 - 57)))) !== 0))) {
+	        if(!(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 255) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -10949,3 +10945,12 @@ ErlangParser.MultOpContext = MultOpContext;
 ErlangParser.AddOpContext = AddOpContext; 
 ErlangParser.ListOpContext = ListOpContext; 
 ErlangParser.CompOpContext = CompOpContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

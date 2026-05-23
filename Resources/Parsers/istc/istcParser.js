@@ -1,4 +1,4 @@
-// Generated from ./istc/istc.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/istc/istc.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import istcListener from './istcListener.js';
@@ -33,10 +33,6 @@ export default class istcParser extends antlr4.Parser {
         this.ruleNames = istcParser.ruleNames;
         this.literalNames = istcParser.literalNames;
         this.symbolicNames = istcParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
 
@@ -445,3 +441,12 @@ istcParser.RegistrationContext = RegistrationContext;
 istcParser.YearContext = YearContext; 
 istcParser.WorkContext = WorkContext; 
 istcParser.CheckContext = CheckContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

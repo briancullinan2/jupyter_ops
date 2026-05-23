@@ -1,21 +1,22 @@
-// Generated from ./inf/inf.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/inf/inf.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import infListener from './infListener.js';
-const serializedATN = [4,1,9,51,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,1,0,1,0,5,0,15,8,0,10,0,12,0,18,9,0,1,1,1,1,5,1,22,8,1,10,1,12,1,
-25,9,1,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,4,1,4,1,4,3,4,37,8,4,1,4,1,4,1,5,1,
-5,1,5,3,5,44,8,5,5,5,46,8,5,10,5,12,5,49,9,5,1,5,0,0,6,0,2,4,6,8,10,0,1,
-1,0,5,6,50,0,16,1,0,0,0,2,19,1,0,0,0,4,26,1,0,0,0,6,31,1,0,0,0,8,33,1,0,
-0,0,10,40,1,0,0,0,12,15,3,2,1,0,13,15,5,8,0,0,14,12,1,0,0,0,14,13,1,0,0,
-0,15,18,1,0,0,0,16,14,1,0,0,0,16,17,1,0,0,0,17,1,1,0,0,0,18,16,1,0,0,0,19,
-23,3,4,2,0,20,22,3,8,4,0,21,20,1,0,0,0,22,25,1,0,0,0,23,21,1,0,0,0,23,24,
-1,0,0,0,24,3,1,0,0,0,25,23,1,0,0,0,26,27,5,1,0,0,27,28,3,6,3,0,28,29,5,2,
-0,0,29,30,5,8,0,0,30,5,1,0,0,0,31,32,7,0,0,0,32,7,1,0,0,0,33,36,3,10,5,0,
-34,35,5,3,0,0,35,37,3,10,5,0,36,34,1,0,0,0,36,37,1,0,0,0,37,38,1,0,0,0,38,
-39,5,8,0,0,39,9,1,0,0,0,40,47,3,6,3,0,41,43,5,4,0,0,42,44,3,6,3,0,43,42,
-1,0,0,0,43,44,1,0,0,0,44,46,1,0,0,0,45,41,1,0,0,0,46,49,1,0,0,0,47,45,1,
-0,0,0,47,48,1,0,0,0,48,11,1,0,0,0,49,47,1,0,0,0,6,14,16,23,36,43,47];
+const serializedATN = [4,1,9,53,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,1,0,1,0,5,0,15,8,0,10,0,12,0,18,9,0,1,0,1,0,1,1,1,1,5,1,24,8,1,10,
+1,12,1,27,9,1,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,4,1,4,1,4,3,4,39,8,4,1,4,1,4,
+1,5,1,5,1,5,3,5,46,8,5,5,5,48,8,5,10,5,12,5,51,9,5,1,5,0,0,6,0,2,4,6,8,10,
+0,1,1,0,5,6,52,0,16,1,0,0,0,2,21,1,0,0,0,4,28,1,0,0,0,6,33,1,0,0,0,8,35,
+1,0,0,0,10,42,1,0,0,0,12,15,3,2,1,0,13,15,5,8,0,0,14,12,1,0,0,0,14,13,1,
+0,0,0,15,18,1,0,0,0,16,14,1,0,0,0,16,17,1,0,0,0,17,19,1,0,0,0,18,16,1,0,
+0,0,19,20,5,0,0,1,20,1,1,0,0,0,21,25,3,4,2,0,22,24,3,8,4,0,23,22,1,0,0,0,
+24,27,1,0,0,0,25,23,1,0,0,0,25,26,1,0,0,0,26,3,1,0,0,0,27,25,1,0,0,0,28,
+29,5,1,0,0,29,30,3,6,3,0,30,31,5,2,0,0,31,32,5,8,0,0,32,5,1,0,0,0,33,34,
+7,0,0,0,34,7,1,0,0,0,35,38,3,10,5,0,36,37,5,3,0,0,37,39,3,10,5,0,38,36,1,
+0,0,0,38,39,1,0,0,0,39,40,1,0,0,0,40,41,5,8,0,0,41,9,1,0,0,0,42,49,3,6,3,
+0,43,45,5,4,0,0,44,46,3,6,3,0,45,44,1,0,0,0,45,46,1,0,0,0,46,48,1,0,0,0,
+47,43,1,0,0,0,48,51,1,0,0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,11,1,0,0,0,51,
+49,1,0,0,0,6,14,16,25,38,45,49];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -41,30 +42,26 @@ export default class infParser extends antlr4.Parser {
         this.symbolicNames = infParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	inf() {
 	    let localctx = new InfContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, infParser.RULE_inf);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 16;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===infParser.T__0 || _la===infParser.EOL) {
+	        while(_la===1 || _la===8) {
 	            this.state = 14;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case infParser.T__0:
+	            case 1:
 	                this.state = 12;
 	                this.section();
 	                break;
-	            case infParser.EOL:
+	            case 8:
 	                this.state = 13;
 	                this.match(infParser.EOL);
 	                break;
@@ -75,6 +72,8 @@ export default class infParser extends antlr4.Parser {
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 19;
+	        this.match(infParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -94,18 +93,18 @@ export default class infParser extends antlr4.Parser {
 	section() {
 	    let localctx = new SectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, infParser.RULE_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 19;
+	        this.state = 21;
 	        this.sectionheader();
-	        this.state = 23;
+	        this.state = 25;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===infParser.CHARS || _la===infParser.STRING) {
-	            this.state = 20;
+	        while(_la===5 || _la===6) {
+	            this.state = 22;
 	            this.line();
-	            this.state = 25;
+	            this.state = 27;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -130,13 +129,13 @@ export default class infParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, infParser.RULE_sectionheader);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 26;
-	        this.match(infParser.T__0);
-	        this.state = 27;
-	        this.string();
 	        this.state = 28;
-	        this.match(infParser.T__1);
+	        this.match(infParser.T__0);
 	        this.state = 29;
+	        this.string();
+	        this.state = 30;
+	        this.match(infParser.T__1);
+	        this.state = 31;
 	        this.match(infParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -157,12 +156,12 @@ export default class infParser extends antlr4.Parser {
 	string() {
 	    let localctx = new StringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, infParser.RULE_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 31;
+	        this.state = 33;
 	        _la = this._input.LA(1);
-	        if(!(_la===infParser.CHARS || _la===infParser.STRING)) {
+	        if(!(_la===5 || _la===6)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -188,22 +187,22 @@ export default class infParser extends antlr4.Parser {
 	line() {
 	    let localctx = new LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, infParser.RULE_line);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 33;
+	        this.state = 35;
 	        this.stringlist();
-	        this.state = 36;
+	        this.state = 38;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===infParser.T__2) {
-	            this.state = 34;
+	        if(_la===3) {
+	            this.state = 36;
 	            this.match(infParser.T__2);
-	            this.state = 35;
+	            this.state = 37;
 	            this.stringlist();
 	        }
 
-	        this.state = 38;
+	        this.state = 40;
 	        this.match(infParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -224,26 +223,26 @@ export default class infParser extends antlr4.Parser {
 	stringlist() {
 	    let localctx = new StringlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, infParser.RULE_stringlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 40;
+	        this.state = 42;
 	        this.string();
-	        this.state = 47;
+	        this.state = 49;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===infParser.T__3) {
-	            this.state = 41;
-	            this.match(infParser.T__3);
+	        while(_la===4) {
 	            this.state = 43;
+	            this.match(infParser.T__3);
+	            this.state = 45;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===infParser.CHARS || _la===infParser.STRING) {
-	                this.state = 42;
+	            if(_la===5 || _la===6) {
+	                this.state = 44;
 	                this.string();
 	            }
 
-	            this.state = 49;
+	            this.state = 51;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -295,6 +294,10 @@ class InfContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = infParser.RULE_inf;
     }
+
+	EOF() {
+	    return this.getToken(infParser.EOF, 0);
+	};
 
 	section = function(i) {
 	    if(i===undefined) {
@@ -555,3 +558,12 @@ infParser.SectionheaderContext = SectionheaderContext;
 infParser.StringContext = StringContext; 
 infParser.LineContext = LineContext; 
 infParser.StringlistContext = StringlistContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

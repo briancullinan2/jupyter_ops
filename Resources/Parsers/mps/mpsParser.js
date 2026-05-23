@@ -1,4 +1,4 @@
-// Generated from ./mps/mps.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/mps/mps.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import mpsListener from './mpsListener.js';
@@ -79,16 +79,12 @@ export default class mpsParser extends antlr4.Parser {
         this.symbolicNames = mpsParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	modell() {
 	    let localctx = new ModellContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, mpsParser.RULE_modell);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 40;
@@ -102,7 +98,7 @@ export default class mpsParser extends antlr4.Parser {
 	        this.state = 45;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mpsParser.RANGESINDICATORCARD) {
+	        if(_la===5) {
 	            this.state = 44;
 	            this.ranges();
 	        }
@@ -110,7 +106,7 @@ export default class mpsParser extends antlr4.Parser {
 	        this.state = 48;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mpsParser.BOUNDSINDICATORCARD) {
+	        if(_la===6) {
 	            this.state = 47;
 	            this.bounds();
 	        }
@@ -138,7 +134,7 @@ export default class mpsParser extends antlr4.Parser {
 	firstrow() {
 	    let localctx = new FirstrowContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, mpsParser.RULE_firstrow);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 53;
@@ -146,7 +142,7 @@ export default class mpsParser extends antlr4.Parser {
 	        this.state = 55;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mpsParser.IDENTIFIER) {
+	        if(_la===14) {
 	            this.state = 54;
 	            this.match(mpsParser.IDENTIFIER);
 	        }
@@ -154,7 +150,7 @@ export default class mpsParser extends antlr4.Parser {
 	        this.state = 58;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mpsParser.KEYWORDFREE) {
+	        if(_la===11) {
 	            this.state = 57;
 	            this.match(mpsParser.KEYWORDFREE);
 	        }
@@ -178,7 +174,7 @@ export default class mpsParser extends antlr4.Parser {
 	rows() {
 	    let localctx = new RowsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, mpsParser.RULE_rows);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 60;
@@ -192,7 +188,7 @@ export default class mpsParser extends antlr4.Parser {
 	            this.state = 64; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mpsParser.ROWTYPE);
+	        } while(_la===13);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -360,7 +356,7 @@ export default class mpsParser extends antlr4.Parser {
 	columndatacards() {
 	    let localctx = new ColumndatacardsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, mpsParser.RULE_columndatacards);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 85; 
@@ -385,7 +381,7 @@ export default class mpsParser extends antlr4.Parser {
 	            this.state = 87; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mpsParser.IDENTIFIER);
+	        } while(_la===14);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -405,7 +401,7 @@ export default class mpsParser extends antlr4.Parser {
 	rhsdatacards() {
 	    let localctx = new RhsdatacardsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, mpsParser.RULE_rhsdatacards);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 90; 
@@ -417,7 +413,7 @@ export default class mpsParser extends antlr4.Parser {
 	            this.state = 92; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mpsParser.RHSINDICATORCARD || _la===mpsParser.IDENTIFIER);
+	        } while(_la===4 || _la===14);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -437,7 +433,7 @@ export default class mpsParser extends antlr4.Parser {
 	rangesdatacards() {
 	    let localctx = new RangesdatacardsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, mpsParser.RULE_rangesdatacards);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 95; 
@@ -449,7 +445,7 @@ export default class mpsParser extends antlr4.Parser {
 	            this.state = 97; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mpsParser.RANGESINDICATORCARD || _la===mpsParser.IDENTIFIER);
+	        } while(_la===5 || _la===14);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -469,7 +465,7 @@ export default class mpsParser extends antlr4.Parser {
 	boundsdatacards() {
 	    let localctx = new BoundsdatacardsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, mpsParser.RULE_boundsdatacards);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 100; 
@@ -481,7 +477,7 @@ export default class mpsParser extends antlr4.Parser {
 	            this.state = 102; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mpsParser.BOUNDKEY);
+	        } while(_la===12);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -538,12 +534,12 @@ export default class mpsParser extends antlr4.Parser {
 	rhsdatacard() {
 	    let localctx = new RhsdatacardContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, mpsParser.RULE_rhsdatacard);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 111;
 	        _la = this._input.LA(1);
-	        if(!(_la===mpsParser.RHSINDICATORCARD || _la===mpsParser.IDENTIFIER)) {
+	        if(!(_la===4 || _la===14)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -583,12 +579,12 @@ export default class mpsParser extends antlr4.Parser {
 	rangesdatacard() {
 	    let localctx = new RangesdatacardContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, mpsParser.RULE_rangesdatacard);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 118;
 	        _la = this._input.LA(1);
-	        if(!(_la===mpsParser.RANGESINDICATORCARD || _la===mpsParser.IDENTIFIER)) {
+	        if(!(_la===5 || _la===14)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -628,14 +624,14 @@ export default class mpsParser extends antlr4.Parser {
 	boundsdatacard() {
 	    let localctx = new BoundsdatacardContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, mpsParser.RULE_boundsdatacard);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 125;
 	        this.match(mpsParser.BOUNDKEY);
 	        this.state = 126;
 	        _la = this._input.LA(1);
-	        if(!(_la===mpsParser.BOUNDSINDICATORCARD || _la===mpsParser.IDENTIFIER)) {
+	        if(!(_la===6 || _la===14)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -647,7 +643,7 @@ export default class mpsParser extends antlr4.Parser {
 	        this.state = 129;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mpsParser.NUMERICALVALUE) {
+	        if(_la===15) {
 	            this.state = 128;
 	            this.match(mpsParser.NUMERICALVALUE);
 	        }
@@ -1750,3 +1746,12 @@ mpsParser.BoundsdatacardContext = BoundsdatacardContext;
 mpsParser.IntblockContext = IntblockContext; 
 mpsParser.StartmarkerContext = StartmarkerContext; 
 mpsParser.EndmarkerContext = EndmarkerContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

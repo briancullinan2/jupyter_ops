@@ -1,17 +1,18 @@
-// Generated from ./csv/CSV.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/csv/CSV.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CSVListener from './CSVListener.js';
-const serializedATN = [4,1,5,35,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,
-4,0,11,8,0,11,0,12,0,12,1,1,1,1,1,2,1,2,1,2,5,2,20,8,2,10,2,12,2,23,9,2,
-1,2,3,2,26,8,2,1,2,1,2,1,3,1,3,1,3,3,3,33,8,3,1,3,0,0,4,0,2,4,6,0,0,35,0,
-8,1,0,0,0,2,14,1,0,0,0,4,16,1,0,0,0,6,32,1,0,0,0,8,10,3,2,1,0,9,11,3,4,2,
-0,10,9,1,0,0,0,11,12,1,0,0,0,12,10,1,0,0,0,12,13,1,0,0,0,13,1,1,0,0,0,14,
-15,3,4,2,0,15,3,1,0,0,0,16,21,3,6,3,0,17,18,5,1,0,0,18,20,3,6,3,0,19,17,
-1,0,0,0,20,23,1,0,0,0,21,19,1,0,0,0,21,22,1,0,0,0,22,25,1,0,0,0,23,21,1,
-0,0,0,24,26,5,2,0,0,25,24,1,0,0,0,25,26,1,0,0,0,26,27,1,0,0,0,27,28,5,3,
-0,0,28,5,1,0,0,0,29,33,5,4,0,0,30,33,5,5,0,0,31,33,1,0,0,0,32,29,1,0,0,0,
-32,30,1,0,0,0,32,31,1,0,0,0,33,7,1,0,0,0,4,12,21,25,32];
+const serializedATN = [4,1,5,37,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,
+4,0,11,8,0,11,0,12,0,12,1,0,1,0,1,1,1,1,1,2,1,2,1,2,5,2,22,8,2,10,2,12,2,
+25,9,2,1,2,3,2,28,8,2,1,2,1,2,1,3,1,3,1,3,3,3,35,8,3,1,3,0,0,4,0,2,4,6,0,
+0,37,0,8,1,0,0,0,2,16,1,0,0,0,4,18,1,0,0,0,6,34,1,0,0,0,8,10,3,2,1,0,9,11,
+3,4,2,0,10,9,1,0,0,0,11,12,1,0,0,0,12,10,1,0,0,0,12,13,1,0,0,0,13,14,1,0,
+0,0,14,15,5,0,0,1,15,1,1,0,0,0,16,17,3,4,2,0,17,3,1,0,0,0,18,23,3,6,3,0,
+19,20,5,1,0,0,20,22,3,6,3,0,21,19,1,0,0,0,22,25,1,0,0,0,23,21,1,0,0,0,23,
+24,1,0,0,0,24,27,1,0,0,0,25,23,1,0,0,0,26,28,5,2,0,0,27,26,1,0,0,0,27,28,
+1,0,0,0,28,29,1,0,0,0,29,30,5,3,0,0,30,5,1,0,0,0,31,35,5,4,0,0,32,35,5,5,
+0,0,33,35,1,0,0,0,34,31,1,0,0,0,34,32,1,0,0,0,34,33,1,0,0,0,35,7,1,0,0,0,
+4,12,23,27,34];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -35,16 +36,12 @@ export default class CSVParser extends antlr4.Parser {
         this.symbolicNames = CSVParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	csvFile() {
 	    let localctx = new CsvFileContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, CSVParser.RULE_csvFile);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 8;
@@ -58,7 +55,9 @@ export default class CSVParser extends antlr4.Parser {
 	            this.state = 12; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSVParser.T__0) | (1 << CSVParser.T__1) | (1 << CSVParser.T__2) | (1 << CSVParser.TEXT) | (1 << CSVParser.STRING))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 62) !== 0));
+	        this.state = 14;
+	        this.match(CSVParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -80,7 +79,7 @@ export default class CSVParser extends antlr4.Parser {
 	    this.enterRule(localctx, 2, CSVParser.RULE_hdr);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 14;
+	        this.state = 16;
 	        this.row();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -101,32 +100,32 @@ export default class CSVParser extends antlr4.Parser {
 	row() {
 	    let localctx = new RowContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, CSVParser.RULE_row);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 16;
+	        this.state = 18;
 	        this.field();
-	        this.state = 21;
+	        this.state = 23;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSVParser.T__0) {
-	            this.state = 17;
+	        while(_la===1) {
+	            this.state = 19;
 	            this.match(CSVParser.T__0);
-	            this.state = 18;
+	            this.state = 20;
 	            this.field();
-	            this.state = 23;
+	            this.state = 25;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 25;
+	        this.state = 27;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSVParser.T__1) {
-	            this.state = 24;
+	        if(_la===2) {
+	            this.state = 26;
 	            this.match(CSVParser.T__1);
 	        }
 
-	        this.state = 27;
+	        this.state = 29;
 	        this.match(CSVParser.T__2);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -148,22 +147,22 @@ export default class CSVParser extends antlr4.Parser {
 	    let localctx = new FieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, CSVParser.RULE_field);
 	    try {
-	        this.state = 32;
+	        this.state = 34;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSVParser.TEXT:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 29;
+	            this.state = 31;
 	            this.match(CSVParser.TEXT);
 	            break;
-	        case CSVParser.STRING:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 30;
+	            this.state = 32;
 	            this.match(CSVParser.STRING);
 	            break;
-	        case CSVParser.T__0:
-	        case CSVParser.T__1:
-	        case CSVParser.T__2:
+	        case 1:
+	        case 2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 3);
 
 	            break;
@@ -215,6 +214,10 @@ class CsvFileContext extends antlr4.ParserRuleContext {
 
 	hdr() {
 	    return this.getTypedRuleContext(HdrContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(CSVParser.EOF, 0);
 	};
 
 	row = function(i) {
@@ -366,3 +369,12 @@ CSVParser.CsvFileContext = CsvFileContext;
 CSVParser.HdrContext = HdrContext; 
 CSVParser.RowContext = RowContext; 
 CSVParser.FieldContext = FieldContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

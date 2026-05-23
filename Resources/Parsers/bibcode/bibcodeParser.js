@@ -1,4 +1,4 @@
-// Generated from ./bibcode/bibcode.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/bibcode/bibcode.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import bibcodeListener from './bibcodeListener.js';
@@ -54,10 +54,6 @@ export default class bibcodeParser extends antlr4.Parser {
         this.ruleNames = bibcodeParser.ruleNames;
         this.literalNames = bibcodeParser.literalNames;
         this.symbolicNames = bibcodeParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
 
@@ -132,16 +128,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 35;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 32;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 33;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 34;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -151,16 +147,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 40;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 37;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 38;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 39;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -170,16 +166,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 45;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 42;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 43;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 44;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -189,16 +185,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 50;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 47;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 48;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 49;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -208,16 +204,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 55;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 52;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 53;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 54;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -248,16 +244,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 60;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 57;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 58;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 59;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -267,16 +263,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 65;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 62;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 63;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 64;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -286,16 +282,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 70;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 67;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 68;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 69;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -305,16 +301,16 @@ export default class bibcodeParser extends antlr4.Parser {
 	        this.state = 75;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case bibcodeParser.UPPERLETTER:
-	        case bibcodeParser.LOWERLETTER:
+	        case 2:
+	        case 3:
 	            this.state = 72;
 	            this.letter();
 	            break;
-	        case bibcodeParser.DIGIT:
+	        case 4:
 	            this.state = 73;
 	            this.digit();
 	            break;
-	        case bibcodeParser.DOT:
+	        case 1:
 	            this.state = 74;
 	            this.match(bibcodeParser.DOT);
 	            break;
@@ -340,13 +336,13 @@ export default class bibcodeParser extends antlr4.Parser {
 	pagesection() {
 	    let localctx = new PagesectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, bibcodeParser.RULE_pagesection);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 78;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===bibcodeParser.UPPERLETTER || _la===bibcodeParser.LOWERLETTER) {
+	        if(_la===2 || _la===3) {
 	            this.state = 77;
 	            this.section();
 	        }
@@ -395,7 +391,7 @@ export default class bibcodeParser extends antlr4.Parser {
 	page() {
 	    let localctx = new PageContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, bibcodeParser.RULE_page);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 86; 
@@ -405,11 +401,11 @@ export default class bibcodeParser extends antlr4.Parser {
 	            this.state = 86;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case bibcodeParser.DIGIT:
+	            case 4:
 	                this.state = 84;
 	                this.digit();
 	                break;
-	            case bibcodeParser.DOT:
+	            case 1:
 	                this.state = 85;
 	                this.match(bibcodeParser.DOT);
 	                break;
@@ -419,7 +415,7 @@ export default class bibcodeParser extends antlr4.Parser {
 	            this.state = 88; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===bibcodeParser.DOT || _la===bibcodeParser.DIGIT);
+	        } while(_la===1 || _la===4);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -462,12 +458,12 @@ export default class bibcodeParser extends antlr4.Parser {
 	letter() {
 	    let localctx = new LetterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, bibcodeParser.RULE_letter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 92;
 	        _la = this._input.LA(1);
-	        if(!(_la===bibcodeParser.UPPERLETTER || _la===bibcodeParser.LOWERLETTER)) {
+	        if(!(_la===2 || _la===3)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1008,3 +1004,12 @@ bibcodeParser.PageContext = PageContext;
 bibcodeParser.AuthorContext = AuthorContext; 
 bibcodeParser.LetterContext = LetterContext; 
 bibcodeParser.DigitContext = DigitContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

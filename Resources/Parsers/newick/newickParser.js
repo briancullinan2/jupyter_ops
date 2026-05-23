@@ -1,27 +1,27 @@
-// Generated from ./newick/newick.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/newick/newick.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import newickListener from './newickListener.js';
-const serializedATN = [4,1,8,75,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+const serializedATN = [4,1,8,77,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
 2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,
-1,0,3,0,30,8,0,1,1,1,1,1,1,1,1,1,1,1,1,3,1,38,8,1,1,2,1,2,1,2,1,2,1,2,1,
-2,1,2,1,3,1,3,3,3,49,8,3,1,4,1,4,1,5,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,
-3,6,63,8,6,1,7,1,7,1,7,1,8,3,8,69,8,8,1,9,1,9,3,9,73,8,9,1,9,0,0,10,0,2,
-4,6,8,10,12,14,16,18,0,0,71,0,29,1,0,0,0,2,37,1,0,0,0,4,39,1,0,0,0,6,48,
-1,0,0,0,8,50,1,0,0,0,10,52,1,0,0,0,12,62,1,0,0,0,14,64,1,0,0,0,16,68,1,0,
-0,0,18,72,1,0,0,0,20,21,3,2,1,0,21,22,5,1,0,0,22,30,1,0,0,0,23,24,3,4,2,
-0,24,25,5,1,0,0,25,30,1,0,0,0,26,27,3,14,7,0,27,28,5,1,0,0,28,30,1,0,0,0,
-29,20,1,0,0,0,29,23,1,0,0,0,29,26,1,0,0,0,30,1,1,0,0,0,31,38,3,16,8,0,32,
-33,5,2,0,0,33,34,3,14,7,0,34,35,5,3,0,0,35,36,3,16,8,0,36,38,1,0,0,0,37,
-31,1,0,0,0,37,32,1,0,0,0,38,3,1,0,0,0,39,40,5,2,0,0,40,41,3,14,7,0,41,42,
-5,4,0,0,42,43,3,12,6,0,43,44,5,3,0,0,44,45,3,16,8,0,45,5,1,0,0,0,46,49,3,
-8,4,0,47,49,3,10,5,0,48,46,1,0,0,0,48,47,1,0,0,0,49,7,1,0,0,0,50,51,3,16,
-8,0,51,9,1,0,0,0,52,53,5,2,0,0,53,54,3,12,6,0,54,55,5,3,0,0,55,56,3,16,8,
-0,56,11,1,0,0,0,57,63,3,14,7,0,58,59,3,14,7,0,59,60,5,4,0,0,60,61,3,12,6,
-0,61,63,1,0,0,0,62,57,1,0,0,0,62,58,1,0,0,0,63,13,1,0,0,0,64,65,3,6,3,0,
-65,66,3,18,9,0,66,15,1,0,0,0,67,69,5,7,0,0,68,67,1,0,0,0,68,69,1,0,0,0,69,
-17,1,0,0,0,70,71,5,5,0,0,71,73,5,6,0,0,72,70,1,0,0,0,72,73,1,0,0,0,73,19,
-1,0,0,0,6,29,37,48,62,68,72];
+1,0,3,0,30,8,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,3,1,40,8,1,1,2,1,2,1,2,1,
+2,1,2,1,2,1,2,1,3,1,3,3,3,51,8,3,1,4,1,4,1,5,1,5,1,5,1,5,1,5,1,6,1,6,1,6,
+1,6,1,6,3,6,65,8,6,1,7,1,7,1,7,1,8,3,8,71,8,8,1,9,1,9,3,9,75,8,9,1,9,0,0,
+10,0,2,4,6,8,10,12,14,16,18,0,0,73,0,29,1,0,0,0,2,39,1,0,0,0,4,41,1,0,0,
+0,6,50,1,0,0,0,8,52,1,0,0,0,10,54,1,0,0,0,12,64,1,0,0,0,14,66,1,0,0,0,16,
+70,1,0,0,0,18,74,1,0,0,0,20,21,3,2,1,0,21,22,5,1,0,0,22,30,1,0,0,0,23,24,
+3,4,2,0,24,25,5,1,0,0,25,30,1,0,0,0,26,27,3,14,7,0,27,28,5,1,0,0,28,30,1,
+0,0,0,29,20,1,0,0,0,29,23,1,0,0,0,29,26,1,0,0,0,30,31,1,0,0,0,31,32,5,0,
+0,1,32,1,1,0,0,0,33,40,3,16,8,0,34,35,5,2,0,0,35,36,3,14,7,0,36,37,5,3,0,
+0,37,38,3,16,8,0,38,40,1,0,0,0,39,33,1,0,0,0,39,34,1,0,0,0,40,3,1,0,0,0,
+41,42,5,2,0,0,42,43,3,14,7,0,43,44,5,4,0,0,44,45,3,12,6,0,45,46,5,3,0,0,
+46,47,3,16,8,0,47,5,1,0,0,0,48,51,3,8,4,0,49,51,3,10,5,0,50,48,1,0,0,0,50,
+49,1,0,0,0,51,7,1,0,0,0,52,53,3,16,8,0,53,9,1,0,0,0,54,55,5,2,0,0,55,56,
+3,12,6,0,56,57,5,3,0,0,57,58,3,16,8,0,58,11,1,0,0,0,59,65,3,14,7,0,60,61,
+3,14,7,0,61,62,5,4,0,0,62,63,3,12,6,0,63,65,1,0,0,0,64,59,1,0,0,0,64,60,
+1,0,0,0,65,13,1,0,0,0,66,67,3,6,3,0,67,68,3,18,9,0,68,15,1,0,0,0,69,71,5,
+7,0,0,70,69,1,0,0,0,70,71,1,0,0,0,71,17,1,0,0,0,72,73,5,5,0,0,73,75,5,6,
+0,0,74,72,1,0,0,0,74,75,1,0,0,0,75,19,1,0,0,0,6,29,39,50,64,70,74];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -48,22 +48,18 @@ export default class newickParser extends antlr4.Parser {
         this.symbolicNames = newickParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	tree_() {
 	    let localctx = new Tree_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, newickParser.RULE_tree_);
 	    try {
+	        this.enterOuterAlt(localctx, 1);
 	        this.state = 29;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
 	        switch(la_) {
 	        case 1:
-	            this.enterOuterAlt(localctx, 1);
 	            this.state = 20;
 	            this.rootLeaf();
 	            this.state = 21;
@@ -71,7 +67,6 @@ export default class newickParser extends antlr4.Parser {
 	            break;
 
 	        case 2:
-	            this.enterOuterAlt(localctx, 2);
 	            this.state = 23;
 	            this.rootInternal();
 	            this.state = 24;
@@ -79,7 +74,6 @@ export default class newickParser extends antlr4.Parser {
 	            break;
 
 	        case 3:
-	            this.enterOuterAlt(localctx, 3);
 	            this.state = 26;
 	            this.branch();
 	            this.state = 27;
@@ -87,6 +81,8 @@ export default class newickParser extends antlr4.Parser {
 	            break;
 
 	        }
+	        this.state = 31;
+	        this.match(newickParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -107,24 +103,24 @@ export default class newickParser extends antlr4.Parser {
 	    let localctx = new RootLeafContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, newickParser.RULE_rootLeaf);
 	    try {
-	        this.state = 37;
+	        this.state = 39;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case newickParser.T__0:
-	        case newickParser.STRING:
+	        case 1:
+	        case 7:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 31;
+	            this.state = 33;
 	            this.name();
 	            break;
-	        case newickParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 32;
-	            this.match(newickParser.T__1);
-	            this.state = 33;
-	            this.branch();
 	            this.state = 34;
-	            this.match(newickParser.T__2);
+	            this.match(newickParser.T__1);
 	            this.state = 35;
+	            this.branch();
+	            this.state = 36;
+	            this.match(newickParser.T__2);
+	            this.state = 37;
 	            this.name();
 	            break;
 	        default:
@@ -151,17 +147,17 @@ export default class newickParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, newickParser.RULE_rootInternal);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 39;
-	        this.match(newickParser.T__1);
-	        this.state = 40;
-	        this.branch();
 	        this.state = 41;
-	        this.match(newickParser.T__3);
+	        this.match(newickParser.T__1);
 	        this.state = 42;
-	        this.branchSet();
+	        this.branch();
 	        this.state = 43;
-	        this.match(newickParser.T__2);
+	        this.match(newickParser.T__3);
 	        this.state = 44;
+	        this.branchSet();
+	        this.state = 45;
+	        this.match(newickParser.T__2);
+	        this.state = 46;
 	        this.name();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -183,21 +179,21 @@ export default class newickParser extends antlr4.Parser {
 	    let localctx = new SubtreeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, newickParser.RULE_subtree);
 	    try {
-	        this.state = 48;
+	        this.state = 50;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case newickParser.T__0:
-	        case newickParser.T__2:
-	        case newickParser.T__3:
-	        case newickParser.T__4:
-	        case newickParser.STRING:
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 7:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 46;
+	            this.state = 48;
 	            this.leaf();
 	            break;
-	        case newickParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 47;
+	            this.state = 49;
 	            this.internal_();
 	            break;
 	        default:
@@ -224,7 +220,7 @@ export default class newickParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, newickParser.RULE_leaf);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 50;
+	        this.state = 52;
 	        this.name();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -247,13 +243,13 @@ export default class newickParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, newickParser.RULE_internal_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 52;
-	        this.match(newickParser.T__1);
-	        this.state = 53;
-	        this.branchSet();
 	        this.state = 54;
-	        this.match(newickParser.T__2);
+	        this.match(newickParser.T__1);
 	        this.state = 55;
+	        this.branchSet();
+	        this.state = 56;
+	        this.match(newickParser.T__2);
+	        this.state = 57;
 	        this.name();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -275,23 +271,23 @@ export default class newickParser extends antlr4.Parser {
 	    let localctx = new BranchSetContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, newickParser.RULE_branchSet);
 	    try {
-	        this.state = 62;
+	        this.state = 64;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 57;
+	            this.state = 59;
 	            this.branch();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 58;
-	            this.branch();
-	            this.state = 59;
-	            this.match(newickParser.T__3);
 	            this.state = 60;
+	            this.branch();
+	            this.state = 61;
+	            this.match(newickParser.T__3);
+	            this.state = 62;
 	            this.branchSet();
 	            break;
 
@@ -317,9 +313,9 @@ export default class newickParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, newickParser.RULE_branch);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 64;
+	        this.state = 66;
 	        this.subtree();
-	        this.state = 65;
+	        this.state = 67;
 	        this.length();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -340,14 +336,14 @@ export default class newickParser extends antlr4.Parser {
 	name() {
 	    let localctx = new NameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, newickParser.RULE_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 68;
+	        this.state = 70;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===newickParser.STRING) {
-	            this.state = 67;
+	        if(_la===7) {
+	            this.state = 69;
 	            this.match(newickParser.STRING);
 	        }
 
@@ -370,16 +366,16 @@ export default class newickParser extends antlr4.Parser {
 	length() {
 	    let localctx = new LengthContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, newickParser.RULE_length);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 72;
+	        this.state = 74;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===newickParser.T__4) {
-	            this.state = 70;
+	        if(_la===5) {
+	            this.state = 72;
 	            this.match(newickParser.T__4);
-	            this.state = 71;
+	            this.state = 73;
 	            this.match(newickParser.NUMBER);
 	        }
 
@@ -434,6 +430,10 @@ class Tree_Context extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = newickParser.RULE_tree_;
     }
+
+	EOF() {
+	    return this.getToken(newickParser.EOF, 0);
+	};
 
 	rootLeaf() {
 	    return this.getTypedRuleContext(RootLeafContext,0);
@@ -818,3 +818,12 @@ newickParser.BranchSetContext = BranchSetContext;
 newickParser.BranchContext = BranchContext; 
 newickParser.NameContext = NameContext; 
 newickParser.LengthContext = LengthContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

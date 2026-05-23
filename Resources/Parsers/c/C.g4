@@ -26,9 +26,12 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/** C 2011 grammar built from the C11 Spec */
+/** C 2011/2023 grammar built from the C Spec rulesets */
 grammar C;
 
+// =====================================================================
+// PARSER RULES
+// =====================================================================
 
 primaryExpression
     :   Identifier
@@ -39,6 +42,9 @@ primaryExpression
     |   '__extension__'? '(' compoundStatement ')' // Blocks (GCC extension)
     |   '__builtin_va_arg' '(' unaryExpression ',' typeName ')'
     |   '__builtin_offsetof' '(' typeName ',' unaryExpression ')'
+    |   TrueLiteral   // C23 Native True
+    |   FalseLiteral  // C23 Native False
+    |   NullptrLiteral // C23 Strongly Typed Null
     ;
 
 genericSelection
@@ -58,10 +64,10 @@ postfixExpression
     (   primaryExpression
     |   '__extension__'? '(' typeName ')' '{' initializerList ','? '}'
     )
-    ('[' expression ']'
-    | '(' argumentExpressionList? ')'
-    | ('.' | '->') Identifier
-    | ('++' | '--')
+    (   '[' expression ']'
+    |   '(' argumentExpressionList? ')'
+    |   ('.' | '->') Identifier
+    |   ('++' | '--')
     )*
     ;
 
@@ -71,8 +77,8 @@ argumentExpressionList
 
 unaryExpression
     :
-    ('++' |  '--' |  'sizeof')*
-    (postfixExpression
+    (   '++' |  '--' |  'sizeof' | '_Alignof' )*
+    (   postfixExpression
     |   unaryOperator castExpression
     |   ('sizeof' | '_Alignof') '(' typeName ')'
     |   '&&' Identifier // GCC extension address of label
@@ -86,7 +92,7 @@ unaryOperator
 castExpression
     :   '__extension__'? '(' typeName ')' castExpression
     |   unaryExpression
-    |   DigitSequence // for
+    |   DigitSequence 
     ;
 
 multiplicativeExpression
@@ -136,7 +142,7 @@ conditionalExpression
 assignmentExpression
     :   conditionalExpression
     |   unaryExpression assignmentOperator assignmentExpression
-    |   DigitSequence // for
+    |   DigitSequence 
     ;
 
 assignmentOperator
@@ -190,26 +196,28 @@ storageClassSpecifier
     ;
 
 typeSpecifier
-    :   ('void'
-    |   'char'
-    |   'short'
-    |   'int'
-    |   'long'
-    |   'float'
-    |   'double'
-    |   'signed'
-    |   'unsigned'
-    |   '_Bool'
-    |   '_Complex'
-    |   '__m128'
-    |   '__m128d'
-    |   '__m128i')
+    :   (   'void'
+        |   'char'
+        |   'short'
+        |   'int'
+        |   'long'
+        |   'float'
+        |   'double'
+        |   'signed'
+        |   'unsigned'
+        |   '_Bool'
+        |   'bool' // C23 standard layout alias
+        |   '_Complex'
+        |   '__m128'
+        |   '__m128d'
+        |   '__m128i'
+        )
     |   '__extension__' '(' ('__m128' | '__m128d' | '__m128i') ')'
     |   atomicTypeSpecifier
     |   structOrUnionSpecifier
     |   enumSpecifier
     |   typedefName
-    |   '__typeof__' '(' constantExpression ')' // GCC extension
+    |   '__typeof__' '(' constantExpression ')' 
     |   typeSpecifier pointer
     ;
 
@@ -274,10 +282,11 @@ typeQualifier
     ;
 
 functionSpecifier
-    :   ('inline'
-    |   '_Noreturn'
-    |   '__inline__' // GCC extension
-    |   '__stdcall')
+    :   (   'inline'
+        |   '_Noreturn'
+        |   '__inline__' 
+        |   '__stdcall'
+        )
     |   gccAttributeSpecifier
     |   '__declspec' '(' Identifier ')'
     ;
@@ -299,8 +308,8 @@ directDeclarator
     |   directDeclarator '[' typeQualifierList? '*' ']'
     |   directDeclarator '(' parameterTypeList ')'
     |   directDeclarator '(' identifierList? ')'
-    |   Identifier ':' DigitSequence  // bit field
-    |   '(' typeSpecifier? pointer directDeclarator ')' // function pointer like: (__cdecl *f)
+    |   Identifier ':' DigitSequence  
+    |   '(' typeSpecifier? pointer directDeclarator ')' 
     ;
 
 gccDeclaratorExtension
@@ -317,7 +326,7 @@ gccAttributeList
     ;
 
 gccAttribute
-    :   ~(',' | '(' | ')') // relaxed def for "identifier or reserved word"
+    :   ~(',' | '(' | ')') 
         ('(' argumentExpressionList? ')')?
     ;
 
@@ -328,7 +337,7 @@ nestedParenthesesBlock
     ;
 
 pointer
-    :  (('*'|'^') typeQualifierList?)+ // ^ - Blocks language extension
+    :   (('*'|'^') typeQualifierList?)+ 
     ;
 
 typeQualifierList
@@ -449,12 +458,9 @@ iterationStatement
     |   For '(' forCondition ')' statement
     ;
 
-//    |   'for' '(' expression? ';' expression?  ';' forUpdate? ')' statement
-//    |   For '(' declaration  expression? ';' expression? ')' statement
-
 forCondition
-	:   (forDeclaration | expression?) ';' forExpression? ';' forExpression?
-	;
+    :   (forDeclaration | expression?) ';' forExpression? ';' forExpression?
+    ;
 
 forDeclaration
     :   declarationSpecifiers initDeclaratorList?
@@ -465,12 +471,12 @@ forExpression
     ;
 
 jumpStatement
-    :   ('goto' Identifier
-    |   ('continue'| 'break')
-    |   'return' expression?
-    |   'goto' unaryExpression // GCC extension
-    )
-    ';'
+    :   (   'goto' Identifier
+        |   ('continue'| 'break')
+        |   'return' expression?
+        |   'goto' unaryExpression 
+        )
+        ';'
     ;
 
 compilationUnit
@@ -484,7 +490,7 @@ translationUnit
 externalDeclaration
     :   functionDefinition
     |   declaration
-    |   ';' // stray ;
+    |   ';' 
     ;
 
 functionDefinition
@@ -494,6 +500,10 @@ functionDefinition
 declarationList
     :   declaration+
     ;
+
+// =====================================================================
+// LEXER KEYWORDS
+// =====================================================================
 
 Auto : 'auto';
 Break : 'break';
@@ -541,6 +551,11 @@ Noreturn : '_Noreturn';
 StaticAssert : '_Static_assert';
 ThreadLocal : '_Thread_local';
 
+// Modern C23 Native Core Literals
+TrueLiteral    : 'true';
+FalseLiteral   : 'false';
+NullptrLiteral : 'nullptr';
+
 LeftParen : '(';
 RightParen : ')';
 LeftBracket : '[';
@@ -577,7 +592,6 @@ Semi : ';';
 Comma : ',';
 
 Assign : '=';
-// '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
 StarAssign : '*=';
 DivAssign : '/=';
 ModAssign : '%=';
@@ -596,6 +610,10 @@ Arrow : '->';
 Dot : '.';
 Ellipsis : '...';
 
+// =====================================================================
+// COMPLEX TOKENS & FRAGMENTS
+// =====================================================================
+
 Identifier
     :   IdentifierNondigit
         (   IdentifierNondigit
@@ -607,7 +625,6 @@ fragment
 IdentifierNondigit
     :   Nondigit
     |   UniversalCharacterName
-    //|   // other implementation-defined characters...
     ;
 
 fragment
@@ -634,8 +651,8 @@ HexQuad
 Constant
     :   IntegerConstant
     |   FloatingConstant
-    //|   EnumerationConstant
     |   CharacterConstant
+    |   BitPreciseIntegerConstant
     ;
 
 fragment
@@ -643,27 +660,34 @@ IntegerConstant
     :   DecimalConstant IntegerSuffix?
     |   OctalConstant IntegerSuffix?
     |   HexadecimalConstant IntegerSuffix?
-    |	BinaryConstant
+    |   BinaryConstant IntegerSuffix?
+    ;
+
+// Modern C23 Bit-Precise Suffix support (e.g. 42wb, 100uwb)
+fragment
+BitPreciseIntegerConstant
+    :   (DecimalConstant | HexadecimalConstant | BinaryConstant | OctalConstant) [uU]? 'wb'
+    |   (DecimalConstant | HexadecimalConstant | BinaryConstant | OctalConstant) 'wb' [uU]?
     ;
 
 fragment
 BinaryConstant
-	:	'0' [bB] [0-1]+
-	;
+    :   '0' [bB] [0-1] ( '\''? [0-1] )*
+    ;
 
 fragment
 DecimalConstant
-    :   NonzeroDigit Digit*
+    :   NonzeroDigit ( '\''? Digit )*
     ;
 
 fragment
 OctalConstant
-    :   '0' OctalDigit*
+    :   '0' ( '\''? OctalDigit )*
     ;
 
 fragment
 HexadecimalConstant
-    :   HexadecimalPrefix HexadecimalDigit+
+    :   HexadecimalPrefix HexadecimalDigitSequence
     ;
 
 fragment
@@ -743,7 +767,7 @@ Sign
     ;
 
 DigitSequence
-    :   Digit+
+    :   Digit+ ( '\''? Digit+ )*
     ;
 
 fragment
@@ -759,7 +783,7 @@ BinaryExponentPart
 
 fragment
 HexadecimalDigitSequence
-    :   HexadecimalDigit+
+    :   HexadecimalDigit+ ( '\''? HexadecimalDigit+ )*
     ;
 
 fragment
@@ -773,6 +797,7 @@ CharacterConstant
     |   'L\'' CCharSequence '\''
     |   'u\'' CCharSequence '\''
     |   'U\'' CCharSequence '\''
+    |   'u8\'' CCharSequence '\'' // Modern C23 UTF-8 single-character constant
     ;
 
 fragment
@@ -819,6 +844,7 @@ EncodingPrefix
     |   'u'
     |   'U'
     |   'L'
+    |   'R' // Raw String Literals prefix stub
     ;
 
 fragment
@@ -830,34 +856,29 @@ fragment
 SChar
     :   ~["\\\r\n]
     |   EscapeSequence
-    |   '\\\n'   // Added line
-    |   '\\\r\n' // Added line
+    |   '\\\n'   
+    |   '\\\r\n' 
     ;
+    
+// =====================================================================
+// PREPROCESSOR DIRECTIVES & CHANNELS (RESCUED FROM SKIP VANISHMENT)
+// =====================================================================
 
 ComplexDefine
     :   '#' Whitespace? 'define'  ~[#\r\n]*
-        -> skip
+        -> channel(HIDDEN)
     ;
 
 IncludeDirective
     :   '#' Whitespace? 'include' Whitespace? (('"' ~[\r\n]* '"') | ('<' ~[\r\n]* '>' )) Whitespace? Newline
+        -> channel(HIDDEN)
+    ;
+
+AsmBlock
+    :   'asm' ~'{'* '{' ~'}'* '}'
         -> skip
     ;
 
-// ignore the following asm blocks:
-/*
-    asm
-    {
-        mfspr x, 286;
-    }
- */
-AsmBlock
-    :   'asm' ~'{'* '{' ~'}'* '}'
-	-> skip
-    ;
-
-// ignore the lines generated by c preprocessor
-// sample line : '#line 1 "/home/dm/files/dk1.h" 1'
 LineAfterPreprocessing
     :   '#line' Whitespace* ~[\r\n]*
         -> skip
@@ -887,10 +908,16 @@ Newline
 
 BlockComment
     :   '/*' .*? '*/'
-        -> skip
+        -> channel(HIDDEN)
     ;
 
 LineComment
     :   '//' ~[\r\n]*
-        -> skip
+        -> channel(HIDDEN)
     ;
+
+PREPROCESSOR_DIRECTIVE
+    :   '#' [ \t]* [a-zA-O]+ .*? 
+        -> channel(HIDDEN)
+    ;
+    

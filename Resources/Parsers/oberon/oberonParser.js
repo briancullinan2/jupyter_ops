@@ -1,8 +1,8 @@
-// Generated from ./oberon/oberon.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/oberon/oberon.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import oberonListener from './oberonListener.js';
-const serializedATN = [4,1,68,600,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,68,601,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
@@ -46,23 +46,23 @@ const serializedATN = [4,1,68,600,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 51,3,51,539,8,51,1,51,1,51,1,51,3,51,544,8,51,1,52,3,52,547,8,52,1,52,1,
 52,1,52,5,52,552,8,52,10,52,12,52,555,9,52,1,52,1,52,1,52,1,53,1,53,5,53,
 562,8,53,10,53,12,53,565,9,53,1,53,1,53,1,54,1,54,1,54,1,54,3,54,573,8,54,
-1,54,1,54,1,54,3,54,578,8,54,1,54,1,54,1,54,1,54,1,55,1,55,1,55,1,55,5,55,
-588,8,55,10,55,12,55,591,9,55,1,55,1,55,1,56,1,56,1,56,3,56,598,8,56,1,56,
-0,0,57,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,
-48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,
-96,98,100,102,104,106,108,110,112,0,4,1,0,5,6,3,0,7,7,13,17,36,37,2,0,5,
-6,38,38,3,0,2,2,18,19,39,40,624,0,114,1,0,0,0,2,119,1,0,0,0,4,123,1,0,0,
-0,6,140,1,0,0,0,8,143,1,0,0,0,10,157,1,0,0,0,12,168,1,0,0,0,14,170,1,0,0,
-0,16,174,1,0,0,0,18,176,1,0,0,0,20,185,1,0,0,0,22,187,1,0,0,0,24,199,1,0,
-0,0,26,201,1,0,0,0,28,213,1,0,0,0,30,215,1,0,0,0,32,223,1,0,0,0,34,227,1,
-0,0,0,36,235,1,0,0,0,38,239,1,0,0,0,40,243,1,0,0,0,42,247,1,0,0,0,44,253,
+1,54,1,54,1,54,3,54,578,8,54,1,54,1,54,1,54,1,54,1,54,1,55,1,55,1,55,1,55,
+5,55,589,8,55,10,55,12,55,592,9,55,1,55,1,55,1,56,1,56,1,56,3,56,599,8,56,
+1,56,0,0,57,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,
+44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,
+92,94,96,98,100,102,104,106,108,110,112,0,4,1,0,5,6,3,0,7,7,13,17,36,37,
+2,0,5,6,38,38,3,0,2,2,18,19,39,40,625,0,114,1,0,0,0,2,119,1,0,0,0,4,123,
+1,0,0,0,6,140,1,0,0,0,8,143,1,0,0,0,10,157,1,0,0,0,12,168,1,0,0,0,14,170,
+1,0,0,0,16,174,1,0,0,0,18,176,1,0,0,0,20,185,1,0,0,0,22,187,1,0,0,0,24,199,
+1,0,0,0,26,201,1,0,0,0,28,213,1,0,0,0,30,215,1,0,0,0,32,223,1,0,0,0,34,227,
+1,0,0,0,36,235,1,0,0,0,38,239,1,0,0,0,40,243,1,0,0,0,42,247,1,0,0,0,44,253,
 1,0,0,0,46,256,1,0,0,0,48,267,1,0,0,0,50,269,1,0,0,0,52,278,1,0,0,0,54,296,
 1,0,0,0,56,298,1,0,0,0,58,316,1,0,0,0,60,318,1,0,0,0,62,331,1,0,0,0,64,336,
 1,0,0,0,66,344,1,0,0,0,68,357,1,0,0,0,70,359,1,0,0,0,72,363,1,0,0,0,74,367,
 1,0,0,0,76,375,1,0,0,0,78,395,1,0,0,0,80,412,1,0,0,0,82,414,1,0,0,0,84,422,
 1,0,0,0,86,430,1,0,0,0,88,432,1,0,0,0,90,448,1,0,0,0,92,453,1,0,0,0,94,467,
 1,0,0,0,96,472,1,0,0,0,98,477,1,0,0,0,100,497,1,0,0,0,102,529,1,0,0,0,104,
-546,1,0,0,0,106,563,1,0,0,0,108,568,1,0,0,0,110,583,1,0,0,0,112,594,1,0,
+546,1,0,0,0,106,563,1,0,0,0,108,568,1,0,0,0,110,584,1,0,0,0,112,595,1,0,
 0,0,114,115,5,64,0,0,115,1,1,0,0,0,116,117,3,0,0,0,117,118,5,1,0,0,118,120,
 1,0,0,0,119,116,1,0,0,0,119,120,1,0,0,0,120,121,1,0,0,0,121,122,3,0,0,0,
 122,3,1,0,0,0,123,125,3,0,0,0,124,126,5,2,0,0,125,124,1,0,0,0,125,126,1,
@@ -186,15 +186,15 @@ const serializedATN = [4,1,68,600,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 570,3,0,0,0,570,572,5,11,0,0,571,573,3,110,55,0,572,571,1,0,0,0,572,573,
 1,0,0,0,573,574,1,0,0,0,574,577,3,100,50,0,575,576,5,55,0,0,576,578,3,74,
 37,0,577,575,1,0,0,0,577,578,1,0,0,0,578,579,1,0,0,0,579,580,5,31,0,0,580,
-581,3,0,0,0,581,582,5,1,0,0,582,109,1,0,0,0,583,584,5,61,0,0,584,589,3,112,
-56,0,585,586,5,8,0,0,586,588,3,112,56,0,587,585,1,0,0,0,588,591,1,0,0,0,
-589,587,1,0,0,0,589,590,1,0,0,0,590,592,1,0,0,0,591,589,1,0,0,0,592,593,
-5,11,0,0,593,111,1,0,0,0,594,597,3,0,0,0,595,596,5,27,0,0,596,598,3,0,0,
-0,597,595,1,0,0,0,597,598,1,0,0,0,598,113,1,0,0,0,63,119,125,130,136,140,
-145,151,155,159,164,168,185,193,206,209,220,232,241,251,256,264,275,288,
-296,302,316,324,327,334,341,346,357,365,372,386,391,403,412,419,425,430,
-443,461,475,480,484,494,497,505,508,516,519,526,535,538,543,546,553,563,
-572,577,589,597];
+581,3,0,0,0,581,582,5,1,0,0,582,583,5,0,0,1,583,109,1,0,0,0,584,585,5,61,
+0,0,585,590,3,112,56,0,586,587,5,8,0,0,587,589,3,112,56,0,588,586,1,0,0,
+0,589,592,1,0,0,0,590,588,1,0,0,0,590,591,1,0,0,0,591,593,1,0,0,0,592,590,
+1,0,0,0,593,594,5,11,0,0,594,111,1,0,0,0,595,598,3,0,0,0,596,597,5,27,0,
+0,597,599,3,0,0,0,598,596,1,0,0,0,598,599,1,0,0,0,599,113,1,0,0,0,63,119,
+125,130,136,140,145,151,155,159,164,168,185,193,206,209,220,232,241,251,
+256,264,275,288,296,302,316,324,327,334,341,346,357,365,372,386,391,403,
+412,419,425,430,443,461,475,480,484,494,497,505,508,516,519,526,535,538,
+543,546,553,563,572,577,590,598];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -250,10 +250,6 @@ export default class oberonParser extends antlr4.Parser {
         this.ruleNames = oberonParser.ruleNames;
         this.literalNames = oberonParser.literalNames;
         this.symbolicNames = oberonParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
 
@@ -317,7 +313,7 @@ export default class oberonParser extends antlr4.Parser {
 	identdef() {
 	    let localctx = new IdentdefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, oberonParser.RULE_identdef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 123;
@@ -325,7 +321,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 125;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__1) {
+	        if(_la===2) {
 	            this.state = 124;
 	            this.match(oberonParser.T__1);
 	        }
@@ -349,7 +345,7 @@ export default class oberonParser extends antlr4.Parser {
 	integer() {
 	    let localctx = new IntegerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, oberonParser.RULE_integer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 140;
 	        this._errHandler.sync(this);
@@ -366,7 +362,7 @@ export default class oberonParser extends antlr4.Parser {
 	                this.state = 130; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===oberonParser.DIGIT);
+	            } while(_la===66);
 	            break;
 
 	        case 2:
@@ -376,7 +372,7 @@ export default class oberonParser extends antlr4.Parser {
 	            this.state = 136;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===oberonParser.HEXDIGIT) {
+	            while(_la===63) {
 	                this.state = 133;
 	                this.match(oberonParser.HEXDIGIT);
 	                this.state = 138;
@@ -407,7 +403,7 @@ export default class oberonParser extends antlr4.Parser {
 	real() {
 	    let localctx = new RealContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, oberonParser.RULE_real);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 143; 
@@ -419,13 +415,13 @@ export default class oberonParser extends antlr4.Parser {
 	            this.state = 145; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===oberonParser.DIGIT);
+	        } while(_la===66);
 	        this.state = 147;
 	        this.match(oberonParser.T__0);
 	        this.state = 151;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.DIGIT) {
+	        while(_la===66) {
 	            this.state = 148;
 	            this.match(oberonParser.DIGIT);
 	            this.state = 153;
@@ -435,7 +431,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 155;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__3) {
+	        if(_la===4) {
 	            this.state = 154;
 	            this.scaleFactor();
 	        }
@@ -459,7 +455,7 @@ export default class oberonParser extends antlr4.Parser {
 	scaleFactor() {
 	    let localctx = new ScaleFactorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, oberonParser.RULE_scaleFactor);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 157;
@@ -467,10 +463,10 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 159;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__4 || _la===oberonParser.T__5) {
+	        if(_la===5 || _la===6) {
 	            this.state = 158;
 	            _la = this._input.LA(1);
-	            if(!(_la===oberonParser.T__4 || _la===oberonParser.T__5)) {
+	            if(!(_la===5 || _la===6)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -488,7 +484,7 @@ export default class oberonParser extends antlr4.Parser {
 	            this.state = 164; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===oberonParser.DIGIT);
+	        } while(_la===66);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -626,27 +622,27 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 185;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oberonParser.IDENT:
+	        case 64:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 180;
 	            this.qualident();
 	            break;
-	        case oberonParser.ARRAY:
+	        case 29:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 181;
 	            this.arrayType();
 	            break;
-	        case oberonParser.RECORD:
+	        case 34:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 182;
 	            this.recordType();
 	            break;
-	        case oberonParser.POINTER:
+	        case 32:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 183;
 	            this.pointerType();
 	            break;
-	        case oberonParser.PROCEDURE:
+	        case 35:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 184;
 	            this.procedureType();
@@ -673,7 +669,7 @@ export default class oberonParser extends antlr4.Parser {
 	arrayType() {
 	    let localctx = new ArrayTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, oberonParser.RULE_arrayType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 187;
@@ -683,7 +679,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 193;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__7) {
+	        while(_la===8) {
 	            this.state = 189;
 	            this.match(oberonParser.T__7);
 	            this.state = 190;
@@ -738,7 +734,7 @@ export default class oberonParser extends antlr4.Parser {
 	recordType() {
 	    let localctx = new RecordTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, oberonParser.RULE_recordType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 201;
@@ -746,7 +742,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 206;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__8) {
+	        if(_la===9) {
 	            this.state = 202;
 	            this.match(oberonParser.T__8);
 	            this.state = 203;
@@ -758,7 +754,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 209;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.IDENT) {
+	        if(_la===64) {
 	            this.state = 208;
 	            this.fieldListSequence();
 	        }
@@ -807,7 +803,7 @@ export default class oberonParser extends antlr4.Parser {
 	fieldListSequence() {
 	    let localctx = new FieldListSequenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, oberonParser.RULE_fieldListSequence);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 215;
@@ -815,7 +811,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 220;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__10) {
+	        while(_la===11) {
 	            this.state = 216;
 	            this.match(oberonParser.T__10);
 	            this.state = 217;
@@ -870,7 +866,7 @@ export default class oberonParser extends antlr4.Parser {
 	identList() {
 	    let localctx = new IdentListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, oberonParser.RULE_identList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 227;
@@ -878,7 +874,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__7) {
+	        while(_la===8) {
 	            this.state = 228;
 	            this.match(oberonParser.T__7);
 	            this.state = 229;
@@ -933,7 +929,7 @@ export default class oberonParser extends antlr4.Parser {
 	procedureType() {
 	    let localctx = new ProcedureTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, oberonParser.RULE_procedureType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 239;
@@ -941,7 +937,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 241;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__8) {
+	        if(_la===9) {
 	            this.state = 240;
 	            this.formalParameters();
 	        }
@@ -992,7 +988,7 @@ export default class oberonParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, oberonParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 247;
@@ -1000,7 +996,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 251;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 7)) & ~0x1f) == 0 && ((1 << (_la - 7)) & ((1 << (oberonParser.T__6 - 7)) | (1 << (oberonParser.T__12 - 7)) | (1 << (oberonParser.T__13 - 7)) | (1 << (oberonParser.T__14 - 7)) | (1 << (oberonParser.T__15 - 7)) | (1 << (oberonParser.T__16 - 7)) | (1 << (oberonParser.IN - 7)) | (1 << (oberonParser.IS - 7)))) !== 0)) {
+	        if(((((_la - 7)) & ~0x1f) === 0 && ((1 << (_la - 7)) & 1610614721) !== 0)) {
 	            this.state = 248;
 	            this.relation();
 	            this.state = 249;
@@ -1026,12 +1022,12 @@ export default class oberonParser extends antlr4.Parser {
 	relation() {
 	    let localctx = new RelationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, oberonParser.RULE_relation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 253;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 7)) & ~0x1f) == 0 && ((1 << (_la - 7)) & ((1 << (oberonParser.T__6 - 7)) | (1 << (oberonParser.T__12 - 7)) | (1 << (oberonParser.T__13 - 7)) | (1 << (oberonParser.T__14 - 7)) | (1 << (oberonParser.T__15 - 7)) | (1 << (oberonParser.T__16 - 7)) | (1 << (oberonParser.IN - 7)) | (1 << (oberonParser.IS - 7)))) !== 0))) {
+	        if(!(((((_la - 7)) & ~0x1f) === 0 && ((1 << (_la - 7)) & 1610614721) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1057,16 +1053,16 @@ export default class oberonParser extends antlr4.Parser {
 	simpleExpression() {
 	    let localctx = new SimpleExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, oberonParser.RULE_simpleExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 256;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__4 || _la===oberonParser.T__5) {
+	        if(_la===5 || _la===6) {
 	            this.state = 255;
 	            _la = this._input.LA(1);
-	            if(!(_la===oberonParser.T__4 || _la===oberonParser.T__5)) {
+	            if(!(_la===5 || _la===6)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1080,7 +1076,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 264;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__4 || _la===oberonParser.T__5 || _la===oberonParser.OR) {
+	        while(_la===5 || _la===6 || _la===38) {
 	            this.state = 259;
 	            this.addOperator();
 	            this.state = 260;
@@ -1108,12 +1104,12 @@ export default class oberonParser extends antlr4.Parser {
 	addOperator() {
 	    let localctx = new AddOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, oberonParser.RULE_addOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 267;
 	        _la = this._input.LA(1);
-	        if(!(_la===oberonParser.T__4 || _la===oberonParser.T__5 || _la===oberonParser.OR)) {
+	        if(!(_la===5 || _la===6 || _la===38)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1139,7 +1135,7 @@ export default class oberonParser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, oberonParser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 269;
@@ -1147,7 +1143,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 275;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << oberonParser.T__1) | (1 << oberonParser.T__17) | (1 << oberonParser.T__18))) !== 0) || _la===oberonParser.DIV || _la===oberonParser.MOD) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 786436) !== 0) || _la===39 || _la===40) {
 	            this.state = 270;
 	            this.mulOperator();
 	            this.state = 271;
@@ -1175,12 +1171,12 @@ export default class oberonParser extends antlr4.Parser {
 	mulOperator() {
 	    let localctx = new MulOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, oberonParser.RULE_mulOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 278;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << oberonParser.T__1) | (1 << oberonParser.T__17) | (1 << oberonParser.T__18))) !== 0) || _la===oberonParser.DIV || _la===oberonParser.MOD)) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 786436) !== 0) || _la===39 || _la===40)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1206,55 +1202,55 @@ export default class oberonParser extends antlr4.Parser {
 	factor() {
 	    let localctx = new FactorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, oberonParser.RULE_factor);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 296;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oberonParser.DIGIT:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 280;
 	            this.number();
 	            break;
-	        case oberonParser.STRING:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 281;
 	            this.match(oberonParser.STRING);
 	            break;
-	        case oberonParser.NIL:
+	        case 41:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 282;
 	            this.match(oberonParser.NIL);
 	            break;
-	        case oberonParser.TRUE:
+	        case 42:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 283;
 	            this.match(oberonParser.TRUE);
 	            break;
-	        case oberonParser.FALSE:
+	        case 43:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 284;
 	            this.match(oberonParser.FALSE);
 	            break;
-	        case oberonParser.T__23:
+	        case 24:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 285;
 	            this.set_();
 	            break;
-	        case oberonParser.IDENT:
+	        case 64:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 286;
 	            this.designator();
 	            this.state = 288;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===oberonParser.T__8) {
+	            if(_la===9) {
 	                this.state = 287;
 	                this.actualParameters();
 	            }
 
 	            break;
-	        case oberonParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 290;
 	            this.match(oberonParser.T__8);
@@ -1263,7 +1259,7 @@ export default class oberonParser extends antlr4.Parser {
 	            this.state = 292;
 	            this.match(oberonParser.T__9);
 	            break;
-	        case oberonParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 294;
 	            this.match(oberonParser.T__19);
@@ -1332,14 +1328,14 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 316;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oberonParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 305;
 	            this.match(oberonParser.T__0);
 	            this.state = 306;
 	            this.ident();
 	            break;
-	        case oberonParser.T__20:
+	        case 21:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 307;
 	            this.match(oberonParser.T__20);
@@ -1348,12 +1344,12 @@ export default class oberonParser extends antlr4.Parser {
 	            this.state = 309;
 	            this.match(oberonParser.T__21);
 	            break;
-	        case oberonParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 311;
 	            this.match(oberonParser.T__22);
 	            break;
-	        case oberonParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 312;
 	            this.match(oberonParser.T__8);
@@ -1384,7 +1380,7 @@ export default class oberonParser extends antlr4.Parser {
 	set_() {
 	    let localctx = new Set_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, oberonParser.RULE_set_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 318;
@@ -1392,13 +1388,13 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 327;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << oberonParser.T__4) | (1 << oberonParser.T__5) | (1 << oberonParser.T__8) | (1 << oberonParser.T__19) | (1 << oberonParser.T__23))) !== 0) || ((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (oberonParser.NIL - 41)) | (1 << (oberonParser.TRUE - 41)) | (1 << (oberonParser.FALSE - 41)) | (1 << (oberonParser.STRING - 41)) | (1 << (oberonParser.IDENT - 41)) | (1 << (oberonParser.DIGIT - 41)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 17826400) !== 0) || ((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 44040199) !== 0)) {
 	            this.state = 319;
 	            this.element();
 	            this.state = 324;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===oberonParser.T__7) {
+	            while(_la===8) {
 	                this.state = 320;
 	                this.match(oberonParser.T__7);
 	                this.state = 321;
@@ -1430,7 +1426,7 @@ export default class oberonParser extends antlr4.Parser {
 	element() {
 	    let localctx = new ElementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, oberonParser.RULE_element);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 331;
@@ -1438,7 +1434,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 334;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__25) {
+	        if(_la===26) {
 	            this.state = 332;
 	            this.match(oberonParser.T__25);
 	            this.state = 333;
@@ -1464,7 +1460,7 @@ export default class oberonParser extends antlr4.Parser {
 	expList() {
 	    let localctx = new ExpListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, oberonParser.RULE_expList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 336;
@@ -1472,7 +1468,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 341;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__7) {
+	        while(_la===8) {
 	            this.state = 337;
 	            this.match(oberonParser.T__7);
 	            this.state = 338;
@@ -1500,7 +1496,7 @@ export default class oberonParser extends antlr4.Parser {
 	actualParameters() {
 	    let localctx = new ActualParametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, oberonParser.RULE_actualParameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 344;
@@ -1508,7 +1504,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 346;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << oberonParser.T__4) | (1 << oberonParser.T__5) | (1 << oberonParser.T__8) | (1 << oberonParser.T__19) | (1 << oberonParser.T__23))) !== 0) || ((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (oberonParser.NIL - 41)) | (1 << (oberonParser.TRUE - 41)) | (1 << (oberonParser.FALSE - 41)) | (1 << (oberonParser.STRING - 41)) | (1 << (oberonParser.IDENT - 41)) | (1 << (oberonParser.DIGIT - 41)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 17826400) !== 0) || ((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 44040199) !== 0)) {
 	            this.state = 345;
 	            this.expList();
 	        }
@@ -1614,7 +1610,7 @@ export default class oberonParser extends antlr4.Parser {
 	procedureCall() {
 	    let localctx = new ProcedureCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, oberonParser.RULE_procedureCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 363;
@@ -1622,7 +1618,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 365;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__8) {
+	        if(_la===9) {
 	            this.state = 364;
 	            this.actualParameters();
 	        }
@@ -1646,7 +1642,7 @@ export default class oberonParser extends antlr4.Parser {
 	statementSequence() {
 	    let localctx = new StatementSequenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, oberonParser.RULE_statementSequence);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 367;
@@ -1654,7 +1650,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 372;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__10) {
+	        while(_la===11) {
 	            this.state = 368;
 	            this.match(oberonParser.T__10);
 	            this.state = 369;
@@ -1682,7 +1678,7 @@ export default class oberonParser extends antlr4.Parser {
 	ifStatement() {
 	    let localctx = new IfStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, oberonParser.RULE_ifStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 375;
@@ -1696,7 +1692,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 386;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.ELSIF) {
+	        while(_la===46) {
 	            this.state = 379;
 	            this.match(oberonParser.ELSIF);
 	            this.state = 380;
@@ -1712,7 +1708,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 391;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.ELSE) {
+	        if(_la===47) {
 	            this.state = 389;
 	            this.match(oberonParser.ELSE);
 	            this.state = 390;
@@ -1740,7 +1736,7 @@ export default class oberonParser extends antlr4.Parser {
 	caseStatement() {
 	    let localctx = new CaseStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, oberonParser.RULE_caseStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 395;
@@ -1754,7 +1750,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 403;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__27) {
+	        while(_la===28) {
 	            this.state = 399;
 	            this.match(oberonParser.T__27);
 	            this.state = 400;
@@ -1784,13 +1780,13 @@ export default class oberonParser extends antlr4.Parser {
 	case_() {
 	    let localctx = new Case_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, oberonParser.RULE_case_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 412;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 62)) & ~0x1f) == 0 && ((1 << (_la - 62)) & ((1 << (oberonParser.STRING - 62)) | (1 << (oberonParser.IDENT - 62)) | (1 << (oberonParser.DIGIT - 62)))) !== 0)) {
+	        if(((((_la - 62)) & ~0x1f) === 0 && ((1 << (_la - 62)) & 21) !== 0)) {
 	            this.state = 408;
 	            this.caseLabelList();
 	            this.state = 409;
@@ -1818,7 +1814,7 @@ export default class oberonParser extends antlr4.Parser {
 	caseLabelList() {
 	    let localctx = new CaseLabelListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, oberonParser.RULE_caseLabelList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 414;
@@ -1826,7 +1822,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 419;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__7) {
+	        while(_la===8) {
 	            this.state = 415;
 	            this.match(oberonParser.T__7);
 	            this.state = 416;
@@ -1854,7 +1850,7 @@ export default class oberonParser extends antlr4.Parser {
 	labelRange() {
 	    let localctx = new LabelRangeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, oberonParser.RULE_labelRange);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 422;
@@ -1862,7 +1858,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 425;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__25) {
+	        if(_la===26) {
 	            this.state = 423;
 	            this.match(oberonParser.T__25);
 	            this.state = 424;
@@ -1892,17 +1888,17 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 430;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case oberonParser.DIGIT:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 427;
 	            this.integer();
 	            break;
-	        case oberonParser.STRING:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 428;
 	            this.match(oberonParser.STRING);
 	            break;
-	        case oberonParser.IDENT:
+	        case 64:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 429;
 	            this.qualident();
@@ -1929,7 +1925,7 @@ export default class oberonParser extends antlr4.Parser {
 	whileStatement() {
 	    let localctx = new WhileStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, oberonParser.RULE_whileStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 432;
@@ -1943,7 +1939,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 443;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.ELSIF) {
+	        while(_la===46) {
 	            this.state = 436;
 	            this.match(oberonParser.ELSIF);
 	            this.state = 437;
@@ -2006,7 +2002,7 @@ export default class oberonParser extends antlr4.Parser {
 	forStatement() {
 	    let localctx = new ForStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, oberonParser.RULE_forStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 453;
@@ -2024,7 +2020,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 461;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.BY) {
+	        if(_la===54) {
 	            this.state = 459;
 	            this.match(oberonParser.BY);
 	            this.state = 460;
@@ -2085,7 +2081,7 @@ export default class oberonParser extends antlr4.Parser {
 	procedureHeading() {
 	    let localctx = new ProcedureHeadingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, oberonParser.RULE_procedureHeading);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 472;
@@ -2095,7 +2091,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 475;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__8) {
+	        if(_la===9) {
 	            this.state = 474;
 	            this.formalParameters();
 	        }
@@ -2119,7 +2115,7 @@ export default class oberonParser extends antlr4.Parser {
 	procedureBody() {
 	    let localctx = new ProcedureBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, oberonParser.RULE_procedureBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 477;
@@ -2127,7 +2123,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 480;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.BEGIN) {
+	        if(_la===55) {
 	            this.state = 478;
 	            this.match(oberonParser.BEGIN);
 	            this.state = 479;
@@ -2137,7 +2133,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 484;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.RETURN) {
+	        if(_la===56) {
 	            this.state = 482;
 	            this.match(oberonParser.RETURN);
 	            this.state = 483;
@@ -2165,19 +2161,19 @@ export default class oberonParser extends antlr4.Parser {
 	declarationSequence() {
 	    let localctx = new DeclarationSequenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, oberonParser.RULE_declarationSequence);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 497;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.CONST) {
+	        if(_la===57) {
 	            this.state = 488;
 	            this.match(oberonParser.CONST);
 	            this.state = 494;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===oberonParser.IDENT) {
+	            while(_la===64) {
 	                this.state = 489;
 	                this.constDeclaration();
 	                this.state = 490;
@@ -2191,13 +2187,13 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 508;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.TYPE) {
+	        if(_la===58) {
 	            this.state = 499;
 	            this.match(oberonParser.TYPE);
 	            this.state = 505;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===oberonParser.IDENT) {
+	            while(_la===64) {
 	                this.state = 500;
 	                this.typeDeclaration();
 	                this.state = 501;
@@ -2211,13 +2207,13 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 519;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.VAR) {
+	        if(_la===59) {
 	            this.state = 510;
 	            this.match(oberonParser.VAR);
 	            this.state = 516;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===oberonParser.IDENT) {
+	            while(_la===64) {
 	                this.state = 511;
 	                this.variableDeclaration();
 	                this.state = 512;
@@ -2231,7 +2227,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 526;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.PROCEDURE) {
+	        while(_la===35) {
 	            this.state = 521;
 	            this.procedureDeclaration();
 	            this.state = 522;
@@ -2259,7 +2255,7 @@ export default class oberonParser extends antlr4.Parser {
 	formalParameters() {
 	    let localctx = new FormalParametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, oberonParser.RULE_formalParameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 529;
@@ -2267,13 +2263,13 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 538;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.VAR || _la===oberonParser.IDENT) {
+	        if(_la===59 || _la===64) {
 	            this.state = 530;
 	            this.fPSection();
 	            this.state = 535;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===oberonParser.T__10) {
+	            while(_la===11) {
 	                this.state = 531;
 	                this.match(oberonParser.T__10);
 	                this.state = 532;
@@ -2289,7 +2285,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 543;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__11) {
+	        if(_la===12) {
 	            this.state = 541;
 	            this.match(oberonParser.T__11);
 	            this.state = 542;
@@ -2315,13 +2311,13 @@ export default class oberonParser extends antlr4.Parser {
 	fPSection() {
 	    let localctx = new FPSectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, oberonParser.RULE_fPSection);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 546;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.VAR) {
+	        if(_la===59) {
 	            this.state = 545;
 	            this.match(oberonParser.VAR);
 	        }
@@ -2331,7 +2327,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 553;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__7) {
+	        while(_la===8) {
 	            this.state = 549;
 	            this.match(oberonParser.T__7);
 	            this.state = 550;
@@ -2363,13 +2359,13 @@ export default class oberonParser extends antlr4.Parser {
 	formalType() {
 	    let localctx = new FormalTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 106, oberonParser.RULE_formalType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 563;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.ARRAY) {
+	        while(_la===29) {
 	            this.state = 559;
 	            this.match(oberonParser.ARRAY);
 	            this.state = 560;
@@ -2399,7 +2395,7 @@ export default class oberonParser extends antlr4.Parser {
 	module() {
 	    let localctx = new ModuleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, oberonParser.RULE_module);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 568;
@@ -2411,7 +2407,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 572;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.IMPORT) {
+	        if(_la===61) {
 	            this.state = 571;
 	            this.importList();
 	        }
@@ -2421,7 +2417,7 @@ export default class oberonParser extends antlr4.Parser {
 	        this.state = 577;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.BEGIN) {
+	        if(_la===55) {
 	            this.state = 575;
 	            this.match(oberonParser.BEGIN);
 	            this.state = 576;
@@ -2434,6 +2430,8 @@ export default class oberonParser extends antlr4.Parser {
 	        this.ident();
 	        this.state = 581;
 	        this.match(oberonParser.T__0);
+	        this.state = 582;
+	        this.match(oberonParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -2453,26 +2451,26 @@ export default class oberonParser extends antlr4.Parser {
 	importList() {
 	    let localctx = new ImportListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, oberonParser.RULE_importList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 583;
-	        this.match(oberonParser.IMPORT);
 	        this.state = 584;
+	        this.match(oberonParser.IMPORT);
+	        this.state = 585;
 	        this.import_();
-	        this.state = 589;
+	        this.state = 590;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===oberonParser.T__7) {
-	            this.state = 585;
-	            this.match(oberonParser.T__7);
+	        while(_la===8) {
 	            this.state = 586;
+	            this.match(oberonParser.T__7);
+	            this.state = 587;
 	            this.import_();
-	            this.state = 591;
+	            this.state = 592;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 592;
+	        this.state = 593;
 	        this.match(oberonParser.T__10);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -2493,18 +2491,18 @@ export default class oberonParser extends antlr4.Parser {
 	import_() {
 	    let localctx = new Import_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, oberonParser.RULE_import_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 594;
+	        this.state = 595;
 	        this.ident();
-	        this.state = 597;
+	        this.state = 598;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===oberonParser.T__26) {
-	            this.state = 595;
-	            this.match(oberonParser.T__26);
+	        if(_la===27) {
 	            this.state = 596;
+	            this.match(oberonParser.T__26);
+	            this.state = 597;
 	            this.ident();
 	        }
 
@@ -5232,6 +5230,10 @@ class ModuleContext extends antlr4.ParserRuleContext {
 	    return this.getToken(oberonParser.END, 0);
 	};
 
+	EOF() {
+	    return this.getToken(oberonParser.EOF, 0);
+	};
+
 	importList() {
 	    return this.getTypedRuleContext(ImportListContext,0);
 	};
@@ -5407,3 +5409,12 @@ oberonParser.FormalTypeContext = FormalTypeContext;
 oberonParser.ModuleContext = ModuleContext; 
 oberonParser.ImportListContext = ImportListContext; 
 oberonParser.Import_Context = Import_Context; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

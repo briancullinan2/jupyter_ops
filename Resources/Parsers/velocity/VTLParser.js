@@ -1,4 +1,4 @@
-// Generated from ./velocity/VTLParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/velocity/VTLParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import VTLParserListener from './VTLParserListener.js';
@@ -176,10 +176,6 @@ export default class VTLParser extends antlr4.Parser {
         this.symbolicNames = VTLParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 25:
@@ -241,13 +237,13 @@ export default class VTLParser extends antlr4.Parser {
 	block() {
 	    let localctx = new BlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, VTLParser.RULE_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 68;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===VTLParser.ID || _la===VTLParser.REFERENCE || ((((_la - 44)) & ~0x1f) == 0 && ((1 << (_la - 44)) & ((1 << (VTLParser.IF - 44)) | (1 << (VTLParser.FOREACH - 44)) | (1 << (VTLParser.SET - 44)) | (1 << (VTLParser.BREAK - 44)) | (1 << (VTLParser.MACRO_ID - 44)) | (1 << (VTLParser.MACRO - 44)) | (1 << (VTLParser.STOP - 44)) | (1 << (VTLParser.INCLUDE - 44)) | (1 << (VTLParser.EVALUATE - 44)) | (1 << (VTLParser.PARSE - 44)) | (1 << (VTLParser.DEFINE - 44)) | (1 << (VTLParser.ESCAPED_CHAR - 44)) | (1 << (VTLParser.DOLLAR_EXCL_OBRACE - 44)) | (1 << (VTLParser.DOLLAR_OBRACE - 44)) | (1 << (VTLParser.DOLLAR_EXCL - 44)) | (1 << (VTLParser.DOLLAR - 44)) | (1 << (VTLParser.TEXT - 44)) | (1 << (VTLParser.ESCAPED_BLOCK - 44)))) !== 0)) {
+	        while(_la===9 || _la===10 || ((((_la - 44)) & ~0x1f) === 0 && ((1 << (_la - 44)) & 4161497) !== 0)) {
 	            this.state = 65;
 	            this.atom();
 	            this.state = 70;
@@ -409,7 +405,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 112;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case VTLParser.DOLLAR:
+	        case 63:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 98;
 	            this.match(VTLParser.DOLLAR);
@@ -424,7 +420,7 @@ export default class VTLParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case VTLParser.DOLLAR_EXCL:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 103;
 	            this.match(VTLParser.DOLLAR_EXCL);
@@ -439,7 +435,7 @@ export default class VTLParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case VTLParser.REFERENCE:
+	        case 10:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 108;
 	            this.match(VTLParser.REFERENCE);
@@ -513,7 +509,7 @@ export default class VTLParser extends antlr4.Parser {
 	formal_property_or_method() {
 	    let localctx = new Formal_property_or_methodContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, VTLParser.RULE_formal_property_or_method);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 120;
@@ -527,7 +523,7 @@ export default class VTLParser extends antlr4.Parser {
 	            this.state = 124; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.OPAR) | (1 << VTLParser.OBRACK) | (1 << VTLParser.DOT))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2058) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -551,62 +547,62 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 138;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case VTLParser.SET:
+	        case 48:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 126;
 	            this.set_directive();
 	            break;
-	        case VTLParser.IF:
+	        case 44:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 127;
 	            this.if_directive();
 	            break;
-	        case VTLParser.FOREACH:
+	        case 47:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 128;
 	            this.foreach_directive();
 	            break;
-	        case VTLParser.BREAK:
+	        case 50:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 129;
 	            this.break_directive();
 	            break;
-	        case VTLParser.STOP:
+	        case 53:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 130;
 	            this.stop_directive();
 	            break;
-	        case VTLParser.MACRO:
+	        case 52:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 131;
 	            this.macro_directive();
 	            break;
-	        case VTLParser.PARSE:
+	        case 56:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 132;
 	            this.parse_directive();
 	            break;
-	        case VTLParser.DEFINE:
+	        case 57:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 133;
 	            this.define_directive();
 	            break;
-	        case VTLParser.INCLUDE:
+	        case 54:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 134;
 	            this.include_directive();
 	            break;
-	        case VTLParser.EVALUATE:
+	        case 55:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 135;
 	            this.evaluate_directive();
 	            break;
-	        case VTLParser.MACRO_ID:
+	        case 51:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 136;
 	            this.macro_call_directive();
 	            break;
-	        case VTLParser.ID:
+	        case 9:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 137;
 	            this.custom_directive();
@@ -633,19 +629,19 @@ export default class VTLParser extends antlr4.Parser {
 	property_end() {
 	    let localctx = new Property_endContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, VTLParser.RULE_property_end);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 151;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case VTLParser.DOT:
+	        case 11:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 140;
 	            this.match(VTLParser.DOT);
 	            this.state = 141;
 	            this.match(VTLParser.ID);
 	            break;
-	        case VTLParser.OBRACK:
+	        case 3:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 142;
 	            this.match(VTLParser.OBRACK);
@@ -654,14 +650,14 @@ export default class VTLParser extends antlr4.Parser {
 	            this.state = 144;
 	            this.match(VTLParser.CBRACK);
 	            break;
-	        case VTLParser.OPAR:
+	        case 1:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 146;
 	            this.match(VTLParser.OPAR);
 	            this.state = 148;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.OBRACK) | (1 << VTLParser.OBRACE) | (1 << VTLParser.STRING) | (1 << VTLParser.INTEGER) | (1 << VTLParser.ID) | (1 << VTLParser.REFERENCE) | (1 << VTLParser.K_NULL) | (1 << VTLParser.SUB) | (1 << VTLParser.FLOAT) | (1 << VTLParser.EXCL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (VTLParser.K_LT - 32)) | (1 << (VTLParser.K_LE - 32)) | (1 << (VTLParser.K_GT - 32)) | (1 << (VTLParser.K_GE - 32)) | (1 << (VTLParser.K_EQ - 32)) | (1 << (VTLParser.K_NE - 32)) | (1 << (VTLParser.K_TRUE - 32)) | (1 << (VTLParser.K_FALSE - 32)) | (1 << (VTLParser.K_AND - 32)) | (1 << (VTLParser.K_OR - 32)) | (1 << (VTLParser.K_NOT - 32)) | (1 << (VTLParser.K_IN - 32)) | (1 << (VTLParser.DOLLAR_EXCL - 32)) | (1 << (VTLParser.DOLLAR - 32)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2182350760) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221229567) !== 0)) {
 	                this.state = 147;
 	                this.expressions();
 	            }
@@ -691,7 +687,7 @@ export default class VTLParser extends antlr4.Parser {
 	expressions() {
 	    let localctx = new ExpressionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, VTLParser.RULE_expressions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 153;
@@ -699,7 +695,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 158;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===VTLParser.COMMA) {
+	        while(_la===12) {
 	            this.state = 154;
 	            this.match(VTLParser.COMMA);
 	            this.state = 155;
@@ -758,7 +754,7 @@ export default class VTLParser extends antlr4.Parser {
 	if_directive() {
 	    let localctx = new If_directiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, VTLParser.RULE_if_directive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 167;
@@ -772,7 +768,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 174;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===VTLParser.ELSEIF) {
+	        while(_la===45) {
 	            this.state = 171;
 	            this.elseif_directive();
 	            this.state = 176;
@@ -782,7 +778,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 178;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===VTLParser.ELSE) {
+	        if(_la===46) {
 	            this.state = 177;
 	            this.else_directive();
 	        }
@@ -943,7 +939,7 @@ export default class VTLParser extends antlr4.Parser {
 	custom_directive() {
 	    let localctx = new Custom_directiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, VTLParser.RULE_custom_directive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 202;
@@ -955,7 +951,7 @@ export default class VTLParser extends antlr4.Parser {
 	            this.state = 206;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.OBRACK) | (1 << VTLParser.OBRACE) | (1 << VTLParser.STRING) | (1 << VTLParser.INTEGER) | (1 << VTLParser.ID) | (1 << VTLParser.REFERENCE) | (1 << VTLParser.K_NULL) | (1 << VTLParser.SUB) | (1 << VTLParser.FLOAT) | (1 << VTLParser.EXCL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (VTLParser.K_LT - 32)) | (1 << (VTLParser.K_LE - 32)) | (1 << (VTLParser.K_GT - 32)) | (1 << (VTLParser.K_GE - 32)) | (1 << (VTLParser.K_EQ - 32)) | (1 << (VTLParser.K_NE - 32)) | (1 << (VTLParser.K_TRUE - 32)) | (1 << (VTLParser.K_FALSE - 32)) | (1 << (VTLParser.K_AND - 32)) | (1 << (VTLParser.K_OR - 32)) | (1 << (VTLParser.K_NOT - 32)) | (1 << (VTLParser.K_IN - 32)) | (1 << (VTLParser.DOLLAR_EXCL - 32)) | (1 << (VTLParser.DOLLAR - 32)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2182350760) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221229567) !== 0)) {
 	                this.state = 203;
 	                this.expression(0);
 	                this.state = 208;
@@ -995,7 +991,7 @@ export default class VTLParser extends antlr4.Parser {
 	macro_directive() {
 	    let localctx = new Macro_directiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, VTLParser.RULE_macro_directive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 217;
@@ -1003,7 +999,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 221;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.OBRACK) | (1 << VTLParser.OBRACE) | (1 << VTLParser.STRING) | (1 << VTLParser.INTEGER) | (1 << VTLParser.ID) | (1 << VTLParser.REFERENCE) | (1 << VTLParser.K_NULL) | (1 << VTLParser.SUB) | (1 << VTLParser.FLOAT) | (1 << VTLParser.EXCL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (VTLParser.K_LT - 32)) | (1 << (VTLParser.K_LE - 32)) | (1 << (VTLParser.K_GT - 32)) | (1 << (VTLParser.K_GE - 32)) | (1 << (VTLParser.K_EQ - 32)) | (1 << (VTLParser.K_NE - 32)) | (1 << (VTLParser.K_TRUE - 32)) | (1 << (VTLParser.K_FALSE - 32)) | (1 << (VTLParser.K_AND - 32)) | (1 << (VTLParser.K_OR - 32)) | (1 << (VTLParser.K_NOT - 32)) | (1 << (VTLParser.K_IN - 32)) | (1 << (VTLParser.DOLLAR_EXCL - 32)) | (1 << (VTLParser.DOLLAR - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2182350760) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221229567) !== 0)) {
 	            this.state = 218;
 	            this.expression(0);
 	            this.state = 223;
@@ -1147,7 +1143,7 @@ export default class VTLParser extends antlr4.Parser {
 	macro_call_directive() {
 	    let localctx = new Macro_call_directiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, VTLParser.RULE_macro_call_directive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 246;
@@ -1155,7 +1151,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 250;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.OBRACK) | (1 << VTLParser.OBRACE) | (1 << VTLParser.STRING) | (1 << VTLParser.INTEGER) | (1 << VTLParser.ID) | (1 << VTLParser.REFERENCE) | (1 << VTLParser.K_NULL) | (1 << VTLParser.SUB) | (1 << VTLParser.FLOAT) | (1 << VTLParser.EXCL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (VTLParser.K_LT - 32)) | (1 << (VTLParser.K_LE - 32)) | (1 << (VTLParser.K_GT - 32)) | (1 << (VTLParser.K_GE - 32)) | (1 << (VTLParser.K_EQ - 32)) | (1 << (VTLParser.K_NE - 32)) | (1 << (VTLParser.K_TRUE - 32)) | (1 << (VTLParser.K_FALSE - 32)) | (1 << (VTLParser.K_AND - 32)) | (1 << (VTLParser.K_OR - 32)) | (1 << (VTLParser.K_NOT - 32)) | (1 << (VTLParser.K_IN - 32)) | (1 << (VTLParser.DOLLAR_EXCL - 32)) | (1 << (VTLParser.DOLLAR - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2182350760) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221229567) !== 0)) {
 	            this.state = 247;
 	            this.expression(0);
 	            this.state = 252;
@@ -1216,7 +1212,7 @@ export default class VTLParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 50;
 	    this.enterRecursionRule(localctx, 50, VTLParser.RULE_expression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 273;
@@ -1226,7 +1222,7 @@ export default class VTLParser extends antlr4.Parser {
 	        case 1:
 	            this.state = 260;
 	            _la = this._input.LA(1);
-	            if(!(_la===VTLParser.EXCL || _la===VTLParser.K_NOT)) {
+	            if(!(_la===31 || _la===42)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1313,7 +1309,7 @@ export default class VTLParser extends antlr4.Parser {
 	                    }
 	                    this.state = 276;
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.MUL) | (1 << VTLParser.DIV) | (1 << VTLParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 14680064) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1333,7 +1329,7 @@ export default class VTLParser extends antlr4.Parser {
 	                    }
 	                    this.state = 279;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===VTLParser.ADD || _la===VTLParser.SUB)) {
+	                    if(!(_la===19 || _la===20)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1353,7 +1349,7 @@ export default class VTLParser extends antlr4.Parser {
 	                    }
 	                    this.state = 282;
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 14)) & ~0x1f) == 0 && ((1 << (_la - 14)) & ((1 << (VTLParser.EQ - 14)) | (1 << (VTLParser.NE - 14)) | (1 << (VTLParser.K_EQ - 14)) | (1 << (VTLParser.K_NE - 14)))) !== 0))) {
+	                    if(!(((((_la - 14)) & ~0x1f) === 0 && ((1 << (_la - 14)) & 12582915) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1373,7 +1369,7 @@ export default class VTLParser extends antlr4.Parser {
 	                    }
 	                    this.state = 285;
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 27)) & ~0x1f) == 0 && ((1 << (_la - 27)) & ((1 << (VTLParser.LT - 27)) | (1 << (VTLParser.LE - 27)) | (1 << (VTLParser.GT - 27)) | (1 << (VTLParser.GE - 27)) | (1 << (VTLParser.K_LT - 27)) | (1 << (VTLParser.K_LE - 27)) | (1 << (VTLParser.K_GT - 27)) | (1 << (VTLParser.K_GE - 27)))) !== 0))) {
+	                    if(!(((((_la - 27)) & ~0x1f) === 0 && ((1 << (_la - 27)) & 495) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1393,7 +1389,7 @@ export default class VTLParser extends antlr4.Parser {
 	                    }
 	                    this.state = 288;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===VTLParser.AND || _la===VTLParser.K_AND)) {
+	                    if(!(_la===16 || _la===40)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1413,7 +1409,7 @@ export default class VTLParser extends antlr4.Parser {
 	                    }
 	                    this.state = 291;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===VTLParser.OR || _la===VTLParser.K_OR)) {
+	                    if(!(_la===17 || _la===41)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1463,7 +1459,7 @@ export default class VTLParser extends antlr4.Parser {
 	list() {
 	    let localctx = new ListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, VTLParser.RULE_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 301;
@@ -1471,7 +1467,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 303;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.OBRACK) | (1 << VTLParser.OBRACE) | (1 << VTLParser.STRING) | (1 << VTLParser.INTEGER) | (1 << VTLParser.ID) | (1 << VTLParser.REFERENCE) | (1 << VTLParser.K_NULL) | (1 << VTLParser.SUB) | (1 << VTLParser.FLOAT) | (1 << VTLParser.EXCL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (VTLParser.K_LT - 32)) | (1 << (VTLParser.K_LE - 32)) | (1 << (VTLParser.K_GT - 32)) | (1 << (VTLParser.K_GE - 32)) | (1 << (VTLParser.K_EQ - 32)) | (1 << (VTLParser.K_NE - 32)) | (1 << (VTLParser.K_TRUE - 32)) | (1 << (VTLParser.K_FALSE - 32)) | (1 << (VTLParser.K_AND - 32)) | (1 << (VTLParser.K_OR - 32)) | (1 << (VTLParser.K_NOT - 32)) | (1 << (VTLParser.K_IN - 32)) | (1 << (VTLParser.DOLLAR_EXCL - 32)) | (1 << (VTLParser.DOLLAR - 32)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2182350760) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221229567) !== 0)) {
 	            this.state = 302;
 	            this.expressions();
 	        }
@@ -1497,7 +1493,7 @@ export default class VTLParser extends antlr4.Parser {
 	map() {
 	    let localctx = new MapContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, VTLParser.RULE_map);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 307;
@@ -1505,7 +1501,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 309;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << VTLParser.OBRACK) | (1 << VTLParser.OBRACE) | (1 << VTLParser.STRING) | (1 << VTLParser.INTEGER) | (1 << VTLParser.ID) | (1 << VTLParser.REFERENCE) | (1 << VTLParser.K_NULL) | (1 << VTLParser.SUB) | (1 << VTLParser.FLOAT) | (1 << VTLParser.EXCL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (VTLParser.K_LT - 32)) | (1 << (VTLParser.K_LE - 32)) | (1 << (VTLParser.K_GT - 32)) | (1 << (VTLParser.K_GE - 32)) | (1 << (VTLParser.K_EQ - 32)) | (1 << (VTLParser.K_NE - 32)) | (1 << (VTLParser.K_TRUE - 32)) | (1 << (VTLParser.K_FALSE - 32)) | (1 << (VTLParser.K_AND - 32)) | (1 << (VTLParser.K_OR - 32)) | (1 << (VTLParser.K_NOT - 32)) | (1 << (VTLParser.K_IN - 32)) | (1 << (VTLParser.DOLLAR_EXCL - 32)) | (1 << (VTLParser.DOLLAR - 32)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2182350760) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221229567) !== 0)) {
 	            this.state = 308;
 	            this.map_entries();
 	        }
@@ -1531,7 +1527,7 @@ export default class VTLParser extends antlr4.Parser {
 	map_entries() {
 	    let localctx = new Map_entriesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, VTLParser.RULE_map_entries);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 313;
@@ -1539,7 +1535,7 @@ export default class VTLParser extends antlr4.Parser {
 	        this.state = 318;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===VTLParser.COMMA) {
+	        while(_la===12) {
 	            this.state = 314;
 	            this.match(VTLParser.COMMA);
 	            this.state = 315;
@@ -1594,12 +1590,12 @@ export default class VTLParser extends antlr4.Parser {
 	id() {
 	    let localctx = new IdContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, VTLParser.RULE_id);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 325;
 	        _la = this._input.LA(1);
-	        if(!(_la===VTLParser.ID || _la===VTLParser.K_NULL || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (VTLParser.K_LT - 32)) | (1 << (VTLParser.K_LE - 32)) | (1 << (VTLParser.K_GT - 32)) | (1 << (VTLParser.K_GE - 32)) | (1 << (VTLParser.K_EQ - 32)) | (1 << (VTLParser.K_NE - 32)) | (1 << (VTLParser.K_TRUE - 32)) | (1 << (VTLParser.K_FALSE - 32)) | (1 << (VTLParser.K_AND - 32)) | (1 << (VTLParser.K_OR - 32)) | (1 << (VTLParser.K_NOT - 32)) | (1 << (VTLParser.K_IN - 32)))) !== 0))) {
+	        if(!(_la===9 || _la===18 || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4095) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3497,3 +3493,12 @@ VTLParser.MapContext = MapContext;
 VTLParser.Map_entriesContext = Map_entriesContext; 
 VTLParser.Map_entryContext = Map_entryContext; 
 VTLParser.IdContext = IdContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

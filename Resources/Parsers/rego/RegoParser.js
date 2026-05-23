@@ -1,4 +1,4 @@
-// Generated from ./rego/RegoParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/rego/RegoParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import RegoParserListener from './RegoParserListener.js';
@@ -163,22 +163,18 @@ export default class RegoParser extends antlr4.Parser {
         this.symbolicNames = RegoParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	root() {
 	    let localctx = new RootContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, RegoParser.RULE_root);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 85;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (RegoParser.String - 2)) | (1 << (RegoParser.Bool - 2)) | (1 << (RegoParser.Null - 2)) | (1 << (RegoParser.Default - 2)) | (1 << (RegoParser.Import - 2)) | (1 << (RegoParser.Package - 2)) | (1 << (RegoParser.Not - 2)) | (1 << (RegoParser.Set - 2)) | (1 << (RegoParser.LSBrace - 2)) | (1 << (RegoParser.LCBrace - 2)) | (1 << (RegoParser.LParan - 2)) | (1 << (RegoParser.ArithOperator - 2)) | (1 << (RegoParser.UnsignedNumber - 2)) | (1 << (RegoParser.Name - 2)))) !== 0)) {
+	        while(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 3221765591) !== 0)) {
 	            this.state = 82;
 	            this.stmt();
 	            this.state = 87;
@@ -280,7 +276,7 @@ export default class RegoParser extends antlr4.Parser {
 	importDirective() {
 	    let localctx = new ImportDirectiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, RegoParser.RULE_importDirective);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 99;
@@ -290,7 +286,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 103;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RegoParser.As) {
+	        if(_la===5) {
 	            this.state = 101;
 	            this.match(RegoParser.As);
 	            this.state = 102;
@@ -320,7 +316,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 116;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case RegoParser.Default:
+	        case 6:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 105;
 	            this.match(RegoParser.Default);
@@ -331,7 +327,7 @@ export default class RegoParser extends antlr4.Parser {
 	            this.state = 108;
 	            this.term();
 	            break;
-	        case RegoParser.Name:
+	        case 33:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 109;
 	            this.ruleHead();
@@ -371,7 +367,7 @@ export default class RegoParser extends antlr4.Parser {
 	ruleHead() {
 	    let localctx = new RuleHeadContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, RegoParser.RULE_ruleHead);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 118;
@@ -385,7 +381,7 @@ export default class RegoParser extends antlr4.Parser {
 	            this.state = 121;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (RegoParser.String - 2)) | (1 << (RegoParser.Bool - 2)) | (1 << (RegoParser.Null - 2)) | (1 << (RegoParser.Not - 2)) | (1 << (RegoParser.Set - 2)) | (1 << (RegoParser.LSBrace - 2)) | (1 << (RegoParser.LCBrace - 2)) | (1 << (RegoParser.LParan - 2)) | (1 << (RegoParser.ArithOperator - 2)) | (1 << (RegoParser.UnsignedNumber - 2)) | (1 << (RegoParser.Name - 2)))) !== 0)) {
+	            if(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 3221765383) !== 0)) {
 	                this.state = 120;
 	                this.exprTermList();
 	            }
@@ -409,7 +405,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 134;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RegoParser.EqOper) {
+	        if(_la===23) {
 	            this.state = 132;
 	            this.match(RegoParser.EqOper);
 	            this.state = 133;
@@ -435,19 +431,19 @@ export default class RegoParser extends antlr4.Parser {
 	ruleBody() {
 	    let localctx = new RuleBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, RegoParser.RULE_ruleBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 141;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===RegoParser.Else) {
+	        if(_la===7) {
 	            this.state = 136;
 	            this.match(RegoParser.Else);
 	            this.state = 139;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RegoParser.EqOper) {
+	            if(_la===23) {
 	                this.state = 137;
 	                this.match(RegoParser.EqOper);
 	                this.state = 138;
@@ -481,12 +477,12 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 147;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case RegoParser.Else:
+	        case 7:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 145;
 	            this.regoElse();
 	            break;
-	        case RegoParser.LCBrace:
+	        case 14:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 146;
 	            this.nonEmptyBraceEnclosedBody();
@@ -622,7 +618,7 @@ export default class RegoParser extends antlr4.Parser {
 	query() {
 	    let localctx = new QueryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, RegoParser.RULE_query);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 166;
@@ -635,7 +631,7 @@ export default class RegoParser extends antlr4.Parser {
 	                this.state = 168;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===RegoParser.Semicolon) {
+	                if(_la===25) {
 	                    this.state = 167;
 	                    this.match(RegoParser.Semicolon);
 	                }
@@ -667,7 +663,7 @@ export default class RegoParser extends antlr4.Parser {
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, RegoParser.RULE_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 177;
@@ -683,7 +679,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 183;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.With) {
+	        while(_la===11) {
 	            this.state = 180;
 	            this.withKeyword();
 	            this.state = 185;
@@ -709,7 +705,7 @@ export default class RegoParser extends antlr4.Parser {
 	literalExpr() {
 	    let localctx = new LiteralExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, RegoParser.RULE_literalExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 186;
@@ -717,7 +713,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 191;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.EqOper) {
+	        while(_la===23) {
 	            this.state = 187;
 	            this.match(RegoParser.EqOper);
 	            this.state = 188;
@@ -774,7 +770,7 @@ export default class RegoParser extends antlr4.Parser {
 	functionCall() {
 	    let localctx = new FunctionCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, RegoParser.RULE_functionCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 199;
@@ -784,7 +780,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 202;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (RegoParser.String - 2)) | (1 << (RegoParser.Bool - 2)) | (1 << (RegoParser.Null - 2)) | (1 << (RegoParser.Not - 2)) | (1 << (RegoParser.Set - 2)) | (1 << (RegoParser.LSBrace - 2)) | (1 << (RegoParser.LCBrace - 2)) | (1 << (RegoParser.LParan - 2)) | (1 << (RegoParser.ArithOperator - 2)) | (1 << (RegoParser.UnsignedNumber - 2)) | (1 << (RegoParser.Name - 2)))) !== 0)) {
+	        if(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 3221765383) !== 0)) {
 	            this.state = 201;
 	            this.exprTermList();
 	        }
@@ -864,7 +860,7 @@ export default class RegoParser extends antlr4.Parser {
 	exprTermPairList() {
 	    let localctx = new ExprTermPairListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, RegoParser.RULE_exprTermPairList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 214;
@@ -872,7 +868,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 219;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.Comma) {
+	        while(_la===24) {
 	            this.state = 215;
 	            this.match(RegoParser.Comma);
 	            this.state = 216;
@@ -900,7 +896,7 @@ export default class RegoParser extends antlr4.Parser {
 	exprTerm() {
 	    let localctx = new ExprTermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, RegoParser.RULE_exprTerm);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 222;
@@ -908,7 +904,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 227;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.RelationOperator) {
+	        while(_la===22) {
 	            this.state = 223;
 	            this.match(RegoParser.RelationOperator);
 	            this.state = 224;
@@ -936,7 +932,7 @@ export default class RegoParser extends antlr4.Parser {
 	exprTermList() {
 	    let localctx = new ExprTermListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, RegoParser.RULE_exprTermList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 230;
@@ -944,7 +940,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 235;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.Comma) {
+	        while(_la===24) {
 	            this.state = 231;
 	            this.match(RegoParser.Comma);
 	            this.state = 232;
@@ -972,7 +968,7 @@ export default class RegoParser extends antlr4.Parser {
 	relationExpr() {
 	    let localctx = new RelationExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, RegoParser.RULE_relationExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 238;
@@ -980,7 +976,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 243;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.Mid) {
+	        while(_la===19) {
 	            this.state = 239;
 	            this.match(RegoParser.Mid);
 	            this.state = 240;
@@ -1008,7 +1004,7 @@ export default class RegoParser extends antlr4.Parser {
 	bitwiseOrExpr() {
 	    let localctx = new BitwiseOrExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, RegoParser.RULE_bitwiseOrExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 246;
@@ -1016,7 +1012,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 251;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.Ampersand) {
+	        while(_la===27) {
 	            this.state = 247;
 	            this.match(RegoParser.Ampersand);
 	            this.state = 248;
@@ -1082,7 +1078,7 @@ export default class RegoParser extends antlr4.Parser {
 	arithExpr() {
 	    let localctx = new ArithExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, RegoParser.RULE_arithExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 262;
@@ -1090,7 +1086,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 267;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===RegoParser.FactorOperator) {
+	        while(_la===20) {
 	            this.state = 263;
 	            this.match(RegoParser.FactorOperator);
 	            this.state = 264;
@@ -1122,7 +1118,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 275;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case RegoParser.LParan:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 270;
 	            this.match(RegoParser.LParan);
@@ -1131,16 +1127,16 @@ export default class RegoParser extends antlr4.Parser {
 	            this.state = 272;
 	            this.match(RegoParser.RParan);
 	            break;
-	        case RegoParser.String:
-	        case RegoParser.Bool:
-	        case RegoParser.Null:
-	        case RegoParser.Not:
-	        case RegoParser.Set:
-	        case RegoParser.LSBrace:
-	        case RegoParser.LCBrace:
-	        case RegoParser.ArithOperator:
-	        case RegoParser.UnsignedNumber:
-	        case RegoParser.Name:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 10:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 21:
+	        case 32:
+	        case 33:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 274;
 	            this.term();
@@ -1167,7 +1163,7 @@ export default class RegoParser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, RegoParser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 292;
 	        this._errHandler.sync(this);
@@ -1214,7 +1210,7 @@ export default class RegoParser extends antlr4.Parser {
 	            this.state = 284;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RegoParser.ArithOperator) {
+	            if(_la===21) {
 	                this.state = 283;
 	                this.match(RegoParser.ArithOperator);
 	            }
@@ -1234,7 +1230,7 @@ export default class RegoParser extends antlr4.Parser {
 	            this.state = 289;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RegoParser.Not) {
+	            if(_la===10) {
 	                this.state = 288;
 	                this.match(RegoParser.Not);
 	            }
@@ -1356,7 +1352,7 @@ export default class RegoParser extends antlr4.Parser {
 	object_() {
 	    let localctx = new Object_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, RegoParser.RULE_object_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 312;
@@ -1364,7 +1360,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 324;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (RegoParser.String - 2)) | (1 << (RegoParser.Bool - 2)) | (1 << (RegoParser.Null - 2)) | (1 << (RegoParser.UnsignedNumber - 2)) | (1 << (RegoParser.Name - 2)))) !== 0)) {
+	        if(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 3221225479) !== 0)) {
 	            this.state = 313;
 	            this.objectItem();
 	            this.state = 318;
@@ -1385,7 +1381,7 @@ export default class RegoParser extends antlr4.Parser {
 	            this.state = 322;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RegoParser.Comma) {
+	            if(_la===24) {
 	                this.state = 321;
 	                this.match(RegoParser.Comma);
 	            }
@@ -1418,14 +1414,14 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 330;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case RegoParser.String:
-	        case RegoParser.Bool:
-	        case RegoParser.Null:
-	        case RegoParser.UnsignedNumber:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 32:
 	            this.state = 328;
 	            this.scalar();
 	            break;
-	        case RegoParser.Name:
+	        case 33:
 	            this.state = 329;
 	            this.ref();
 	            break;
@@ -1455,7 +1451,7 @@ export default class RegoParser extends antlr4.Parser {
 	array_() {
 	    let localctx = new Array_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, RegoParser.RULE_array_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 335;
@@ -1463,7 +1459,7 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 337;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (RegoParser.String - 2)) | (1 << (RegoParser.Bool - 2)) | (1 << (RegoParser.Null - 2)) | (1 << (RegoParser.Not - 2)) | (1 << (RegoParser.Set - 2)) | (1 << (RegoParser.LSBrace - 2)) | (1 << (RegoParser.LCBrace - 2)) | (1 << (RegoParser.LParan - 2)) | (1 << (RegoParser.ArithOperator - 2)) | (1 << (RegoParser.UnsignedNumber - 2)) | (1 << (RegoParser.Name - 2)))) !== 0)) {
+	        if(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 3221765383) !== 0)) {
 	            this.state = 336;
 	            this.exprTermList();
 	        }
@@ -1493,12 +1489,12 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 343;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case RegoParser.Set:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 341;
 	            this.emptySet();
 	            break;
-	        case RegoParser.LCBrace:
+	        case 14:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 342;
 	            this.nonEmptySet();
@@ -1617,12 +1613,12 @@ export default class RegoParser extends antlr4.Parser {
 	        this.state = 361;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case RegoParser.Dot:
+	        case 28:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 359;
 	            this.refOperandDot();
 	            break;
-	        case RegoParser.LSBrace:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 360;
 	            this.refOperandCanonical();
@@ -1701,12 +1697,12 @@ export default class RegoParser extends antlr4.Parser {
 	scalar() {
 	    let localctx = new ScalarContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, RegoParser.RULE_scalar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 370;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (RegoParser.String - 2)) | (1 << (RegoParser.Bool - 2)) | (1 << (RegoParser.Null - 2)) | (1 << (RegoParser.UnsignedNumber - 2)))) !== 0))) {
+	        if(!(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 1073741831) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1951,8 +1947,8 @@ class ImportDirectiveContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = RegoParser.RULE_importDirective;
-        this.import_target = null; // RefContext
-        this.import_target_rename_as = null; // RefContext
+        this.import_target = null;
+        this.import_target_rename_as = null;
     }
 
 	Import() {
@@ -3867,3 +3863,12 @@ RegoParser.RefOperandContext = RefOperandContext;
 RegoParser.RefOperandDotContext = RefOperandDotContext; 
 RegoParser.RefOperandCanonicalContext = RefOperandCanonicalContext; 
 RegoParser.ScalarContext = ScalarContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

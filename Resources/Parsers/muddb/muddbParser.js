@@ -1,37 +1,39 @@
-// Generated from ./muddb/muddb.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/muddb/muddb.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import muddbListener from './muddbListener.js';
-const serializedATN = [4,1,4,116,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+const serializedATN = [4,1,4,123,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
 2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,
 13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
-7,20,1,0,5,0,44,8,0,10,0,12,0,47,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,4,1,4,1,5,
-1,5,1,6,1,6,1,7,1,7,1,8,1,8,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,13,1,
-13,1,14,1,14,1,15,1,15,1,16,1,16,1,17,1,17,1,18,3,18,102,8,18,1,18,1,18,
-1,19,3,19,107,8,19,1,19,1,19,1,20,3,20,112,8,20,1,20,1,20,1,20,0,0,21,0,
-2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,0,0,98,0,45,1,0,
-0,0,2,50,1,0,0,0,4,67,1,0,0,0,6,70,1,0,0,0,8,72,1,0,0,0,10,74,1,0,0,0,12,
-76,1,0,0,0,14,78,1,0,0,0,16,80,1,0,0,0,18,82,1,0,0,0,20,84,1,0,0,0,22,86,
-1,0,0,0,24,88,1,0,0,0,26,90,1,0,0,0,28,92,1,0,0,0,30,94,1,0,0,0,32,96,1,
-0,0,0,34,98,1,0,0,0,36,101,1,0,0,0,38,106,1,0,0,0,40,111,1,0,0,0,42,44,3,
-2,1,0,43,42,1,0,0,0,44,47,1,0,0,0,45,43,1,0,0,0,45,46,1,0,0,0,46,48,1,0,
-0,0,47,45,1,0,0,0,48,49,5,1,0,0,49,1,1,0,0,0,50,51,3,4,2,0,51,52,3,6,3,0,
-52,53,3,8,4,0,53,54,3,10,5,0,54,55,3,12,6,0,55,56,3,14,7,0,56,57,3,16,8,
-0,57,58,3,18,9,0,58,59,3,20,10,0,59,60,3,22,11,0,60,61,3,24,12,0,61,62,3,
-26,13,0,62,63,3,28,14,0,63,64,3,30,15,0,64,65,3,32,16,0,65,66,3,34,17,0,
-66,3,1,0,0,0,67,68,5,3,0,0,68,69,5,4,0,0,69,5,1,0,0,0,70,71,3,36,18,0,71,
-7,1,0,0,0,72,73,3,36,18,0,73,9,1,0,0,0,74,75,3,38,19,0,75,11,1,0,0,0,76,
-77,3,38,19,0,77,13,1,0,0,0,78,79,3,38,19,0,79,15,1,0,0,0,80,81,3,38,19,0,
-81,17,1,0,0,0,82,83,3,40,20,0,83,19,1,0,0,0,84,85,3,36,18,0,85,21,1,0,0,
-0,86,87,3,36,18,0,87,23,1,0,0,0,88,89,3,36,18,0,89,25,1,0,0,0,90,91,3,36,
-18,0,91,27,1,0,0,0,92,93,3,38,19,0,93,29,1,0,0,0,94,95,3,38,19,0,95,31,1,
-0,0,0,96,97,3,38,19,0,97,33,1,0,0,0,98,99,3,36,18,0,99,35,1,0,0,0,100,102,
-5,3,0,0,101,100,1,0,0,0,101,102,1,0,0,0,102,103,1,0,0,0,103,104,5,4,0,0,
-104,37,1,0,0,0,105,107,5,2,0,0,106,105,1,0,0,0,106,107,1,0,0,0,107,108,1,
-0,0,0,108,109,5,4,0,0,109,39,1,0,0,0,110,112,5,2,0,0,111,110,1,0,0,0,111,
-112,1,0,0,0,112,113,1,0,0,0,113,114,5,4,0,0,114,41,1,0,0,0,4,45,101,106,
-111];
+7,20,1,0,5,0,44,8,0,10,0,12,0,47,9,0,1,0,1,0,5,0,51,8,0,10,0,12,0,54,9,0,
+1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,2,1,2,1,2,1,3,1,3,1,4,1,4,1,5,1,5,1,6,1,6,1,7,1,7,1,8,1,8,1,9,1,9,
+1,10,1,10,1,11,1,11,1,12,1,12,1,13,1,13,1,14,1,14,1,15,1,15,1,16,1,16,1,
+17,1,17,1,18,3,18,109,8,18,1,18,1,18,1,19,3,19,114,8,19,1,19,1,19,1,20,3,
+20,119,8,20,1,20,1,20,1,20,0,0,21,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
+30,32,34,36,38,40,0,0,106,0,45,1,0,0,0,2,57,1,0,0,0,4,74,1,0,0,0,6,77,1,
+0,0,0,8,79,1,0,0,0,10,81,1,0,0,0,12,83,1,0,0,0,14,85,1,0,0,0,16,87,1,0,0,
+0,18,89,1,0,0,0,20,91,1,0,0,0,22,93,1,0,0,0,24,95,1,0,0,0,26,97,1,0,0,0,
+28,99,1,0,0,0,30,101,1,0,0,0,32,103,1,0,0,0,34,105,1,0,0,0,36,108,1,0,0,
+0,38,113,1,0,0,0,40,118,1,0,0,0,42,44,3,2,1,0,43,42,1,0,0,0,44,47,1,0,0,
+0,45,43,1,0,0,0,45,46,1,0,0,0,46,48,1,0,0,0,47,45,1,0,0,0,48,52,5,1,0,0,
+49,51,5,4,0,0,50,49,1,0,0,0,51,54,1,0,0,0,52,50,1,0,0,0,52,53,1,0,0,0,53,
+55,1,0,0,0,54,52,1,0,0,0,55,56,5,0,0,1,56,1,1,0,0,0,57,58,3,4,2,0,58,59,
+3,6,3,0,59,60,3,8,4,0,60,61,3,10,5,0,61,62,3,12,6,0,62,63,3,14,7,0,63,64,
+3,16,8,0,64,65,3,18,9,0,65,66,3,20,10,0,66,67,3,22,11,0,67,68,3,24,12,0,
+68,69,3,26,13,0,69,70,3,28,14,0,70,71,3,30,15,0,71,72,3,32,16,0,72,73,3,
+34,17,0,73,3,1,0,0,0,74,75,5,3,0,0,75,76,5,4,0,0,76,5,1,0,0,0,77,78,3,36,
+18,0,78,7,1,0,0,0,79,80,3,36,18,0,80,9,1,0,0,0,81,82,3,38,19,0,82,11,1,0,
+0,0,83,84,3,38,19,0,84,13,1,0,0,0,85,86,3,38,19,0,86,15,1,0,0,0,87,88,3,
+38,19,0,88,17,1,0,0,0,89,90,3,40,20,0,90,19,1,0,0,0,91,92,3,36,18,0,92,21,
+1,0,0,0,93,94,3,36,18,0,94,23,1,0,0,0,95,96,3,36,18,0,96,25,1,0,0,0,97,98,
+3,36,18,0,98,27,1,0,0,0,99,100,3,38,19,0,100,29,1,0,0,0,101,102,3,38,19,
+0,102,31,1,0,0,0,103,104,3,38,19,0,104,33,1,0,0,0,105,106,3,36,18,0,106,
+35,1,0,0,0,107,109,5,3,0,0,108,107,1,0,0,0,108,109,1,0,0,0,109,110,1,0,0,
+0,110,111,5,4,0,0,111,37,1,0,0,0,112,114,5,2,0,0,113,112,1,0,0,0,113,114,
+1,0,0,0,114,115,1,0,0,0,115,116,5,4,0,0,116,39,1,0,0,0,117,119,5,2,0,0,118,
+117,1,0,0,0,118,119,1,0,0,0,119,120,1,0,0,0,120,121,5,4,0,0,121,41,1,0,0,
+0,5,45,52,108,113,118];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -59,22 +61,18 @@ export default class muddbParser extends antlr4.Parser {
         this.symbolicNames = muddbParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	db() {
 	    let localctx = new DbContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, muddbParser.RULE_db);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 45;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===muddbParser.STRING) {
+	        while(_la===3) {
 	            this.state = 42;
 	            this.room();
 	            this.state = 47;
@@ -83,6 +81,18 @@ export default class muddbParser extends antlr4.Parser {
 	        }
 	        this.state = 48;
 	        this.match(muddbParser.END);
+	        this.state = 52;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        while(_la===4) {
+	            this.state = 49;
+	            this.match(muddbParser.EOL);
+	            this.state = 54;
+	            this._errHandler.sync(this);
+	            _la = this._input.LA(1);
+	        }
+	        this.state = 55;
+	        this.match(muddbParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -104,37 +114,37 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 2, muddbParser.RULE_room);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 50;
-	        this.roomno();
-	        this.state = 51;
-	        this.name();
-	        this.state = 52;
-	        this.description();
-	        this.state = 53;
-	        this.location();
-	        this.state = 54;
-	        this.contents();
-	        this.state = 55;
-	        this.exits();
-	        this.state = 56;
-	        this.next_();
 	        this.state = 57;
-	        this.key();
+	        this.roomno();
 	        this.state = 58;
-	        this.fail_message();
+	        this.name();
 	        this.state = 59;
-	        this.succ_message();
+	        this.description();
 	        this.state = 60;
-	        this.ofail();
+	        this.location();
 	        this.state = 61;
-	        this.osuccess();
+	        this.contents();
 	        this.state = 62;
-	        this.owner();
+	        this.exits();
 	        this.state = 63;
-	        this.pennies();
+	        this.next_();
 	        this.state = 64;
-	        this.flags();
+	        this.key();
 	        this.state = 65;
+	        this.fail_message();
+	        this.state = 66;
+	        this.succ_message();
+	        this.state = 67;
+	        this.ofail();
+	        this.state = 68;
+	        this.osuccess();
+	        this.state = 69;
+	        this.owner();
+	        this.state = 70;
+	        this.pennies();
+	        this.state = 71;
+	        this.flags();
+	        this.state = 72;
 	        this.password();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -157,9 +167,9 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, muddbParser.RULE_roomno);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 67;
+	        this.state = 74;
 	        this.match(muddbParser.STRING);
-	        this.state = 68;
+	        this.state = 75;
 	        this.match(muddbParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -182,7 +192,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, muddbParser.RULE_name);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 70;
+	        this.state = 77;
 	        this.string();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -205,7 +215,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, muddbParser.RULE_description);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 72;
+	        this.state = 79;
 	        this.string();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -228,7 +238,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, muddbParser.RULE_location);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 74;
+	        this.state = 81;
 	        this.ref();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -251,7 +261,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, muddbParser.RULE_contents);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 76;
+	        this.state = 83;
 	        this.ref();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -274,7 +284,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, muddbParser.RULE_exits);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 78;
+	        this.state = 85;
 	        this.ref();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -297,7 +307,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, muddbParser.RULE_next_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 80;
+	        this.state = 87;
 	        this.ref();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -320,7 +330,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 18, muddbParser.RULE_key);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 82;
+	        this.state = 89;
 	        this.bool_();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -343,7 +353,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, muddbParser.RULE_fail_message);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 84;
+	        this.state = 91;
 	        this.string();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -366,7 +376,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 22, muddbParser.RULE_succ_message);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 86;
+	        this.state = 93;
 	        this.string();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -389,7 +399,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, muddbParser.RULE_ofail);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 88;
+	        this.state = 95;
 	        this.string();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -412,7 +422,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 26, muddbParser.RULE_osuccess);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 90;
+	        this.state = 97;
 	        this.string();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -435,7 +445,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 28, muddbParser.RULE_owner);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 92;
+	        this.state = 99;
 	        this.ref();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -458,7 +468,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, muddbParser.RULE_pennies);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 94;
+	        this.state = 101;
 	        this.ref();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -481,7 +491,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 32, muddbParser.RULE_flags);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 96;
+	        this.state = 103;
 	        this.ref();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -504,7 +514,7 @@ export default class muddbParser extends antlr4.Parser {
 	    this.enterRule(localctx, 34, muddbParser.RULE_password);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 98;
+	        this.state = 105;
 	        this.string();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -525,18 +535,18 @@ export default class muddbParser extends antlr4.Parser {
 	string() {
 	    let localctx = new StringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, muddbParser.RULE_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 101;
+	        this.state = 108;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===muddbParser.STRING) {
-	            this.state = 100;
+	        if(_la===3) {
+	            this.state = 107;
 	            this.match(muddbParser.STRING);
 	        }
 
-	        this.state = 103;
+	        this.state = 110;
 	        this.match(muddbParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -557,18 +567,18 @@ export default class muddbParser extends antlr4.Parser {
 	ref() {
 	    let localctx = new RefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, muddbParser.RULE_ref);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 106;
+	        this.state = 113;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===muddbParser.NUM) {
-	            this.state = 105;
+	        if(_la===2) {
+	            this.state = 112;
 	            this.match(muddbParser.NUM);
 	        }
 
-	        this.state = 108;
+	        this.state = 115;
 	        this.match(muddbParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -589,18 +599,18 @@ export default class muddbParser extends antlr4.Parser {
 	bool_() {
 	    let localctx = new Bool_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, muddbParser.RULE_bool_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 111;
+	        this.state = 118;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===muddbParser.NUM) {
-	            this.state = 110;
+	        if(_la===2) {
+	            this.state = 117;
 	            this.match(muddbParser.NUM);
 	        }
 
-	        this.state = 113;
+	        this.state = 120;
 	        this.match(muddbParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -665,6 +675,10 @@ class DbContext extends antlr4.ParserRuleContext {
 	    return this.getToken(muddbParser.END, 0);
 	};
 
+	EOF() {
+	    return this.getToken(muddbParser.EOF, 0);
+	};
+
 	room = function(i) {
 	    if(i===undefined) {
 	        i = null;
@@ -675,6 +689,18 @@ class DbContext extends antlr4.ParserRuleContext {
 	        return this.getTypedRuleContext(RoomContext,i);
 	    }
 	};
+
+	EOL = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(muddbParser.EOL);
+	    } else {
+	        return this.getToken(muddbParser.EOL, i);
+	    }
+	};
+
 
 	enterRule(listener) {
 	    if(listener instanceof muddbListener ) {
@@ -1491,3 +1517,12 @@ muddbParser.PasswordContext = PasswordContext;
 muddbParser.StringContext = StringContext; 
 muddbParser.RefContext = RefContext; 
 muddbParser.Bool_Context = Bool_Context; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,55 +1,56 @@
-// Generated from ./turtle-doc/turtle.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/turtle-doc/turtle.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import turtleListener from './turtleListener.js';
-const serializedATN = [4,1,41,162,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,41,164,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
-20,7,20,2,21,7,21,2,22,7,22,1,0,5,0,48,8,0,10,0,12,0,51,9,0,1,1,1,1,1,1,
-1,1,3,1,57,8,1,1,2,1,2,1,2,1,2,3,2,63,8,2,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,
-4,1,4,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,86,8,7,3,7,88,
-8,7,1,8,1,8,1,8,3,8,93,8,8,5,8,95,8,8,10,8,12,8,98,9,8,1,9,1,9,1,9,5,9,103,
-8,9,10,9,12,9,106,9,9,1,10,1,10,3,10,110,8,10,1,10,1,10,1,11,1,11,1,11,3,
-11,117,8,11,1,12,1,12,1,13,1,13,1,13,1,13,1,13,3,13,126,8,13,1,14,1,14,1,
-14,3,14,131,8,14,1,15,1,15,1,15,1,15,1,16,1,16,5,16,139,8,16,10,16,12,16,
-142,9,16,1,16,1,16,1,17,1,17,1,18,1,18,1,18,1,18,3,18,152,8,18,1,19,1,19,
-1,20,1,20,1,21,1,21,1,22,1,22,1,22,0,0,23,0,2,4,6,8,10,12,14,16,18,20,22,
-24,26,28,30,32,34,36,38,40,42,44,0,5,1,0,13,15,1,0,35,36,1,0,17,20,2,0,2,
-2,10,11,2,0,12,12,24,24,160,0,49,1,0,0,0,2,56,1,0,0,0,4,62,1,0,0,0,6,64,
-1,0,0,0,8,69,1,0,0,0,10,73,1,0,0,0,12,76,1,0,0,0,14,87,1,0,0,0,16,89,1,0,
-0,0,18,99,1,0,0,0,20,109,1,0,0,0,22,116,1,0,0,0,24,118,1,0,0,0,26,125,1,
-0,0,0,28,130,1,0,0,0,30,132,1,0,0,0,32,136,1,0,0,0,34,145,1,0,0,0,36,147,
-1,0,0,0,38,153,1,0,0,0,40,155,1,0,0,0,42,157,1,0,0,0,44,159,1,0,0,0,46,48,
-3,2,1,0,47,46,1,0,0,0,48,51,1,0,0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,1,1,0,
-0,0,51,49,1,0,0,0,52,57,3,4,2,0,53,54,3,14,7,0,54,55,5,4,0,0,55,57,1,0,0,
-0,56,52,1,0,0,0,56,53,1,0,0,0,57,3,1,0,0,0,58,63,3,6,3,0,59,63,3,8,4,0,60,
-63,3,12,6,0,61,63,3,10,5,0,62,58,1,0,0,0,62,59,1,0,0,0,62,60,1,0,0,0,62,
-61,1,0,0,0,63,5,1,0,0,0,64,65,5,39,0,0,65,66,5,11,0,0,66,67,5,10,0,0,67,
-68,5,4,0,0,68,7,1,0,0,0,69,70,5,40,0,0,70,71,5,10,0,0,71,72,5,4,0,0,72,9,
-1,0,0,0,73,74,5,38,0,0,74,75,5,10,0,0,75,11,1,0,0,0,76,77,5,37,0,0,77,78,
-5,11,0,0,78,79,5,10,0,0,79,13,1,0,0,0,80,81,3,22,11,0,81,82,3,16,8,0,82,
-88,1,0,0,0,83,85,3,30,15,0,84,86,3,16,8,0,85,84,1,0,0,0,85,86,1,0,0,0,86,
-88,1,0,0,0,87,80,1,0,0,0,87,83,1,0,0,0,88,15,1,0,0,0,89,96,3,20,10,0,90,
-92,5,34,0,0,91,93,3,20,10,0,92,91,1,0,0,0,92,93,1,0,0,0,93,95,1,0,0,0,94,
-90,1,0,0,0,95,98,1,0,0,0,96,94,1,0,0,0,96,97,1,0,0,0,97,17,1,0,0,0,98,96,
-1,0,0,0,99,104,3,26,13,0,100,101,5,5,0,0,101,103,3,26,13,0,102,100,1,0,0,
-0,103,106,1,0,0,0,104,102,1,0,0,0,104,105,1,0,0,0,105,19,1,0,0,0,106,104,
-1,0,0,0,107,110,3,24,12,0,108,110,5,3,0,0,109,107,1,0,0,0,109,108,1,0,0,
-0,110,111,1,0,0,0,111,112,3,18,9,0,112,21,1,0,0,0,113,117,3,42,21,0,114,
-117,3,44,22,0,115,117,3,32,16,0,116,113,1,0,0,0,116,114,1,0,0,0,116,115,
-1,0,0,0,117,23,1,0,0,0,118,119,3,42,21,0,119,25,1,0,0,0,120,126,3,42,21,
-0,121,126,3,44,22,0,122,126,3,32,16,0,123,126,3,30,15,0,124,126,3,28,14,
-0,125,120,1,0,0,0,125,121,1,0,0,0,125,122,1,0,0,0,125,123,1,0,0,0,125,124,
-1,0,0,0,126,27,1,0,0,0,127,131,3,36,18,0,128,131,3,34,17,0,129,131,3,38,
-19,0,130,127,1,0,0,0,130,128,1,0,0,0,130,129,1,0,0,0,131,29,1,0,0,0,132,
-133,5,8,0,0,133,134,3,16,8,0,134,135,5,9,0,0,135,31,1,0,0,0,136,140,5,6,
-0,0,137,139,3,26,13,0,138,137,1,0,0,0,139,142,1,0,0,0,140,138,1,0,0,0,140,
-141,1,0,0,0,141,143,1,0,0,0,142,140,1,0,0,0,143,144,5,7,0,0,144,33,1,0,0,
-0,145,146,7,0,0,0,146,35,1,0,0,0,147,151,3,40,20,0,148,152,5,41,0,0,149,
-150,5,1,0,0,150,152,3,42,21,0,151,148,1,0,0,0,151,149,1,0,0,0,151,152,1,
-0,0,0,152,37,1,0,0,0,153,154,7,1,0,0,154,39,1,0,0,0,155,156,7,2,0,0,156,
-41,1,0,0,0,157,158,7,3,0,0,158,43,1,0,0,0,159,160,7,4,0,0,160,45,1,0,0,0,
-14,49,56,62,85,87,92,96,104,109,116,125,130,140,151];
+20,7,20,2,21,7,21,2,22,7,22,1,0,5,0,48,8,0,10,0,12,0,51,9,0,1,0,1,0,1,1,
+1,1,1,1,1,1,3,1,59,8,1,1,2,1,2,1,2,1,2,3,2,65,8,2,1,3,1,3,1,3,1,3,1,3,1,
+4,1,4,1,4,1,4,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,88,8,7,
+3,7,90,8,7,1,8,1,8,1,8,3,8,95,8,8,5,8,97,8,8,10,8,12,8,100,9,8,1,9,1,9,1,
+9,5,9,105,8,9,10,9,12,9,108,9,9,1,10,1,10,3,10,112,8,10,1,10,1,10,1,11,1,
+11,1,11,3,11,119,8,11,1,12,1,12,1,13,1,13,1,13,1,13,1,13,3,13,128,8,13,1,
+14,1,14,1,14,3,14,133,8,14,1,15,1,15,1,15,1,15,1,16,1,16,5,16,141,8,16,10,
+16,12,16,144,9,16,1,16,1,16,1,17,1,17,1,18,1,18,1,18,1,18,3,18,154,8,18,
+1,19,1,19,1,20,1,20,1,21,1,21,1,22,1,22,1,22,0,0,23,0,2,4,6,8,10,12,14,16,
+18,20,22,24,26,28,30,32,34,36,38,40,42,44,0,5,1,0,13,15,1,0,35,36,1,0,17,
+20,2,0,2,2,10,11,2,0,12,12,24,24,162,0,49,1,0,0,0,2,58,1,0,0,0,4,64,1,0,
+0,0,6,66,1,0,0,0,8,71,1,0,0,0,10,75,1,0,0,0,12,78,1,0,0,0,14,89,1,0,0,0,
+16,91,1,0,0,0,18,101,1,0,0,0,20,111,1,0,0,0,22,118,1,0,0,0,24,120,1,0,0,
+0,26,127,1,0,0,0,28,132,1,0,0,0,30,134,1,0,0,0,32,138,1,0,0,0,34,147,1,0,
+0,0,36,149,1,0,0,0,38,155,1,0,0,0,40,157,1,0,0,0,42,159,1,0,0,0,44,161,1,
+0,0,0,46,48,3,2,1,0,47,46,1,0,0,0,48,51,1,0,0,0,49,47,1,0,0,0,49,50,1,0,
+0,0,50,52,1,0,0,0,51,49,1,0,0,0,52,53,5,0,0,1,53,1,1,0,0,0,54,59,3,4,2,0,
+55,56,3,14,7,0,56,57,5,4,0,0,57,59,1,0,0,0,58,54,1,0,0,0,58,55,1,0,0,0,59,
+3,1,0,0,0,60,65,3,6,3,0,61,65,3,8,4,0,62,65,3,12,6,0,63,65,3,10,5,0,64,60,
+1,0,0,0,64,61,1,0,0,0,64,62,1,0,0,0,64,63,1,0,0,0,65,5,1,0,0,0,66,67,5,39,
+0,0,67,68,5,11,0,0,68,69,5,10,0,0,69,70,5,4,0,0,70,7,1,0,0,0,71,72,5,40,
+0,0,72,73,5,10,0,0,73,74,5,4,0,0,74,9,1,0,0,0,75,76,5,38,0,0,76,77,5,10,
+0,0,77,11,1,0,0,0,78,79,5,37,0,0,79,80,5,11,0,0,80,81,5,10,0,0,81,13,1,0,
+0,0,82,83,3,22,11,0,83,84,3,16,8,0,84,90,1,0,0,0,85,87,3,30,15,0,86,88,3,
+16,8,0,87,86,1,0,0,0,87,88,1,0,0,0,88,90,1,0,0,0,89,82,1,0,0,0,89,85,1,0,
+0,0,90,15,1,0,0,0,91,98,3,20,10,0,92,94,5,34,0,0,93,95,3,20,10,0,94,93,1,
+0,0,0,94,95,1,0,0,0,95,97,1,0,0,0,96,92,1,0,0,0,97,100,1,0,0,0,98,96,1,0,
+0,0,98,99,1,0,0,0,99,17,1,0,0,0,100,98,1,0,0,0,101,106,3,26,13,0,102,103,
+5,5,0,0,103,105,3,26,13,0,104,102,1,0,0,0,105,108,1,0,0,0,106,104,1,0,0,
+0,106,107,1,0,0,0,107,19,1,0,0,0,108,106,1,0,0,0,109,112,3,24,12,0,110,112,
+5,3,0,0,111,109,1,0,0,0,111,110,1,0,0,0,112,113,1,0,0,0,113,114,3,18,9,0,
+114,21,1,0,0,0,115,119,3,42,21,0,116,119,3,44,22,0,117,119,3,32,16,0,118,
+115,1,0,0,0,118,116,1,0,0,0,118,117,1,0,0,0,119,23,1,0,0,0,120,121,3,42,
+21,0,121,25,1,0,0,0,122,128,3,42,21,0,123,128,3,44,22,0,124,128,3,32,16,
+0,125,128,3,30,15,0,126,128,3,28,14,0,127,122,1,0,0,0,127,123,1,0,0,0,127,
+124,1,0,0,0,127,125,1,0,0,0,127,126,1,0,0,0,128,27,1,0,0,0,129,133,3,36,
+18,0,130,133,3,34,17,0,131,133,3,38,19,0,132,129,1,0,0,0,132,130,1,0,0,0,
+132,131,1,0,0,0,133,29,1,0,0,0,134,135,5,8,0,0,135,136,3,16,8,0,136,137,
+5,9,0,0,137,31,1,0,0,0,138,142,5,6,0,0,139,141,3,26,13,0,140,139,1,0,0,0,
+141,144,1,0,0,0,142,140,1,0,0,0,142,143,1,0,0,0,143,145,1,0,0,0,144,142,
+1,0,0,0,145,146,5,7,0,0,146,33,1,0,0,0,147,148,7,0,0,0,148,35,1,0,0,0,149,
+153,3,40,20,0,150,154,5,41,0,0,151,152,5,1,0,0,152,154,3,42,21,0,153,150,
+1,0,0,0,153,151,1,0,0,0,153,154,1,0,0,0,154,37,1,0,0,0,155,156,7,1,0,0,156,
+39,1,0,0,0,157,158,7,2,0,0,158,41,1,0,0,0,159,160,7,3,0,0,160,43,1,0,0,0,
+161,162,7,4,0,0,162,45,1,0,0,0,14,49,58,64,87,89,94,98,106,111,118,127,132,
+142,153];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -92,28 +93,26 @@ export default class turtleParser extends antlr4.Parser {
         this.symbolicNames = turtleParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	turtleDoc() {
 	    let localctx = new TurtleDocContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, turtleParser.RULE_turtleDoc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 49;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << turtleParser.PNameLn) | (1 << turtleParser.LParen) | (1 << turtleParser.LEnd) | (1 << turtleParser.IriRef) | (1 << turtleParser.PNameNs) | (1 << turtleParser.BlankNodeLabel) | (1 << turtleParser.ANON))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (turtleParser.PrefixKeyword - 37)) | (1 << (turtleParser.BaseKeyword - 37)) | (1 << (turtleParser.AtPrefixKeyword - 37)) | (1 << (turtleParser.AtBaseKeyword - 37)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 16784708) !== 0) || ((((_la - 37)) & ~0x1f) === 0 && ((1 << (_la - 37)) & 15) !== 0)) {
 	            this.state = 46;
 	            this.statement();
 	            this.state = 51;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 52;
+	        this.match(turtleParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -134,28 +133,28 @@ export default class turtleParser extends antlr4.Parser {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, turtleParser.RULE_statement);
 	    try {
-	        this.state = 56;
+	        this.state = 58;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case turtleParser.PrefixKeyword:
-	        case turtleParser.BaseKeyword:
-	        case turtleParser.AtPrefixKeyword:
-	        case turtleParser.AtBaseKeyword:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 52;
+	            this.state = 54;
 	            this.directive();
 	            break;
-	        case turtleParser.PNameLn:
-	        case turtleParser.LParen:
-	        case turtleParser.LEnd:
-	        case turtleParser.IriRef:
-	        case turtleParser.PNameNs:
-	        case turtleParser.BlankNodeLabel:
-	        case turtleParser.ANON:
+	        case 2:
+	        case 6:
+	        case 8:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 24:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 53;
+	            this.state = 55;
 	            this.triples();
-	            this.state = 54;
+	            this.state = 56;
 	            this.match(turtleParser.Dot);
 	            break;
 	        default:
@@ -181,27 +180,27 @@ export default class turtleParser extends antlr4.Parser {
 	    let localctx = new DirectiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, turtleParser.RULE_directive);
 	    try {
-	        this.state = 62;
+	        this.state = 64;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case turtleParser.AtPrefixKeyword:
+	        case 39:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 58;
+	            this.state = 60;
 	            this.prefixID();
 	            break;
-	        case turtleParser.AtBaseKeyword:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 59;
+	            this.state = 61;
 	            this.base();
 	            break;
-	        case turtleParser.PrefixKeyword:
+	        case 37:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 60;
+	            this.state = 62;
 	            this.sparqlPrefix();
 	            break;
-	        case turtleParser.BaseKeyword:
+	        case 38:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 61;
+	            this.state = 63;
 	            this.sparqlBase();
 	            break;
 	        default:
@@ -228,13 +227,13 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, turtleParser.RULE_prefixID);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 64;
-	        this.match(turtleParser.AtPrefixKeyword);
-	        this.state = 65;
-	        this.match(turtleParser.PNameNs);
 	        this.state = 66;
-	        this.match(turtleParser.IriRef);
+	        this.match(turtleParser.AtPrefixKeyword);
 	        this.state = 67;
+	        this.match(turtleParser.PNameNs);
+	        this.state = 68;
+	        this.match(turtleParser.IriRef);
+	        this.state = 69;
 	        this.match(turtleParser.Dot);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -257,11 +256,11 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, turtleParser.RULE_base);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 69;
-	        this.match(turtleParser.AtBaseKeyword);
-	        this.state = 70;
-	        this.match(turtleParser.IriRef);
 	        this.state = 71;
+	        this.match(turtleParser.AtBaseKeyword);
+	        this.state = 72;
+	        this.match(turtleParser.IriRef);
+	        this.state = 73;
 	        this.match(turtleParser.Dot);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -284,9 +283,9 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, turtleParser.RULE_sparqlBase);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 73;
+	        this.state = 75;
 	        this.match(turtleParser.BaseKeyword);
-	        this.state = 74;
+	        this.state = 76;
 	        this.match(turtleParser.IriRef);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -309,11 +308,11 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, turtleParser.RULE_sparqlPrefix);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 76;
-	        this.match(turtleParser.PrefixKeyword);
-	        this.state = 77;
-	        this.match(turtleParser.PNameNs);
 	        this.state = 78;
+	        this.match(turtleParser.PrefixKeyword);
+	        this.state = 79;
+	        this.match(turtleParser.PNameNs);
+	        this.state = 80;
 	        this.match(turtleParser.IriRef);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -334,32 +333,32 @@ export default class turtleParser extends antlr4.Parser {
 	triples() {
 	    let localctx = new TriplesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, turtleParser.RULE_triples);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 87;
+	        this.state = 89;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case turtleParser.PNameLn:
-	        case turtleParser.LParen:
-	        case turtleParser.IriRef:
-	        case turtleParser.PNameNs:
-	        case turtleParser.BlankNodeLabel:
-	        case turtleParser.ANON:
+	        case 2:
+	        case 6:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 24:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 80;
+	            this.state = 82;
 	            this.subject();
-	            this.state = 81;
+	            this.state = 83;
 	            this.predicateObjectList();
 	            break;
-	        case turtleParser.LEnd:
+	        case 8:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 83;
-	            this.blankNodePropertyList();
 	            this.state = 85;
+	            this.blankNodePropertyList();
+	            this.state = 87;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << turtleParser.PNameLn) | (1 << turtleParser.LetterA) | (1 << turtleParser.IriRef) | (1 << turtleParser.PNameNs))) !== 0)) {
-	                this.state = 84;
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3084) !== 0)) {
+	                this.state = 86;
 	                this.predicateObjectList();
 	            }
 
@@ -386,26 +385,26 @@ export default class turtleParser extends antlr4.Parser {
 	predicateObjectList() {
 	    let localctx = new PredicateObjectListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, turtleParser.RULE_predicateObjectList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 89;
+	        this.state = 91;
 	        this.predicateObject();
-	        this.state = 96;
+	        this.state = 98;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===turtleParser.Semi) {
-	            this.state = 90;
-	            this.match(turtleParser.Semi);
+	        while(_la===34) {
 	            this.state = 92;
+	            this.match(turtleParser.Semi);
+	            this.state = 94;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << turtleParser.PNameLn) | (1 << turtleParser.LetterA) | (1 << turtleParser.IriRef) | (1 << turtleParser.PNameNs))) !== 0)) {
-	                this.state = 91;
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3084) !== 0)) {
+	                this.state = 93;
 	                this.predicateObject();
 	            }
 
-	            this.state = 98;
+	            this.state = 100;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -428,20 +427,20 @@ export default class turtleParser extends antlr4.Parser {
 	objectList() {
 	    let localctx = new ObjectListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, turtleParser.RULE_objectList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 99;
+	        this.state = 101;
 	        this.object_();
-	        this.state = 104;
+	        this.state = 106;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===turtleParser.Coma) {
-	            this.state = 100;
+	        while(_la===5) {
+	            this.state = 102;
 	            this.match(turtleParser.Coma);
-	            this.state = 101;
+	            this.state = 103;
 	            this.object_();
-	            this.state = 106;
+	            this.state = 108;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -466,23 +465,23 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, turtleParser.RULE_predicateObject);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 109;
+	        this.state = 111;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case turtleParser.PNameLn:
-	        case turtleParser.IriRef:
-	        case turtleParser.PNameNs:
-	            this.state = 107;
+	        case 2:
+	        case 10:
+	        case 11:
+	            this.state = 109;
 	            this.predicate();
 	            break;
-	        case turtleParser.LetterA:
-	            this.state = 108;
+	        case 3:
+	            this.state = 110;
 	            this.match(turtleParser.LetterA);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
-	        this.state = 111;
+	        this.state = 113;
 	        this.objectList();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -504,25 +503,25 @@ export default class turtleParser extends antlr4.Parser {
 	    let localctx = new SubjectContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, turtleParser.RULE_subject);
 	    try {
-	        this.state = 116;
+	        this.state = 118;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case turtleParser.PNameLn:
-	        case turtleParser.IriRef:
-	        case turtleParser.PNameNs:
+	        case 2:
+	        case 10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 113;
+	            this.state = 115;
 	            this.iri();
 	            break;
-	        case turtleParser.BlankNodeLabel:
-	        case turtleParser.ANON:
+	        case 12:
+	        case 24:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 114;
+	            this.state = 116;
 	            this.blankNode();
 	            break;
-	        case turtleParser.LParen:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 115;
+	            this.state = 117;
 	            this.collection();
 	            break;
 	        default:
@@ -549,7 +548,7 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, turtleParser.RULE_predicate);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 118;
+	        this.state = 120;
 	        this.iri();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -571,43 +570,43 @@ export default class turtleParser extends antlr4.Parser {
 	    let localctx = new Object_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, turtleParser.RULE_object_);
 	    try {
-	        this.state = 125;
+	        this.state = 127;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case turtleParser.PNameLn:
-	        case turtleParser.IriRef:
-	        case turtleParser.PNameNs:
+	        case 2:
+	        case 10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 120;
+	            this.state = 122;
 	            this.iri();
 	            break;
-	        case turtleParser.BlankNodeLabel:
-	        case turtleParser.ANON:
+	        case 12:
+	        case 24:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 121;
+	            this.state = 123;
 	            this.blankNode();
 	            break;
-	        case turtleParser.LParen:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 122;
+	            this.state = 124;
 	            this.collection();
 	            break;
-	        case turtleParser.LEnd:
+	        case 8:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 123;
+	            this.state = 125;
 	            this.blankNodePropertyList();
 	            break;
-	        case turtleParser.Integer:
-	        case turtleParser.Decimal:
-	        case turtleParser.Double:
-	        case turtleParser.StringLiteralQuote:
-	        case turtleParser.StringLiteralSingleQuote:
-	        case turtleParser.StringLiteralLongSingleQuote:
-	        case turtleParser.StringLiteralLongQuote:
-	        case turtleParser.TrueKeyword:
-	        case turtleParser.FalseKeyword:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 35:
+	        case 36:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 124;
+	            this.state = 126;
 	            this.literal();
 	            break;
 	        default:
@@ -633,28 +632,28 @@ export default class turtleParser extends antlr4.Parser {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, turtleParser.RULE_literal);
 	    try {
-	        this.state = 130;
+	        this.state = 132;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case turtleParser.StringLiteralQuote:
-	        case turtleParser.StringLiteralSingleQuote:
-	        case turtleParser.StringLiteralLongSingleQuote:
-	        case turtleParser.StringLiteralLongQuote:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 127;
+	            this.state = 129;
 	            this.rDFLiteral();
 	            break;
-	        case turtleParser.Integer:
-	        case turtleParser.Decimal:
-	        case turtleParser.Double:
+	        case 13:
+	        case 14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 128;
+	            this.state = 130;
 	            this.numericLiteral();
 	            break;
-	        case turtleParser.TrueKeyword:
-	        case turtleParser.FalseKeyword:
+	        case 35:
+	        case 36:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 129;
+	            this.state = 131;
 	            this.bool_();
 	            break;
 	        default:
@@ -681,11 +680,11 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, turtleParser.RULE_blankNodePropertyList);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 132;
-	        this.match(turtleParser.LEnd);
-	        this.state = 133;
-	        this.predicateObjectList();
 	        this.state = 134;
+	        this.match(turtleParser.LEnd);
+	        this.state = 135;
+	        this.predicateObjectList();
+	        this.state = 136;
 	        this.match(turtleParser.REnd);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -706,22 +705,22 @@ export default class turtleParser extends antlr4.Parser {
 	collection() {
 	    let localctx = new CollectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, turtleParser.RULE_collection);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 136;
+	        this.state = 138;
 	        this.match(turtleParser.LParen);
-	        this.state = 140;
+	        this.state = 142;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << turtleParser.PNameLn) | (1 << turtleParser.LParen) | (1 << turtleParser.LEnd) | (1 << turtleParser.IriRef) | (1 << turtleParser.PNameNs) | (1 << turtleParser.BlankNodeLabel) | (1 << turtleParser.Integer) | (1 << turtleParser.Decimal) | (1 << turtleParser.Double) | (1 << turtleParser.StringLiteralQuote) | (1 << turtleParser.StringLiteralSingleQuote) | (1 << turtleParser.StringLiteralLongSingleQuote) | (1 << turtleParser.StringLiteralLongQuote) | (1 << turtleParser.ANON))) !== 0) || _la===turtleParser.TrueKeyword || _la===turtleParser.FalseKeyword) {
-	            this.state = 137;
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 18808132) !== 0) || _la===35 || _la===36) {
+	            this.state = 139;
 	            this.object_();
-	            this.state = 142;
+	            this.state = 144;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 143;
+	        this.state = 145;
 	        this.match(turtleParser.RParen);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -742,12 +741,12 @@ export default class turtleParser extends antlr4.Parser {
 	numericLiteral() {
 	    let localctx = new NumericLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, turtleParser.RULE_numericLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 145;
+	        this.state = 147;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << turtleParser.Integer) | (1 << turtleParser.Decimal) | (1 << turtleParser.Double))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 57344) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -775,42 +774,42 @@ export default class turtleParser extends antlr4.Parser {
 	    this.enterRule(localctx, 36, turtleParser.RULE_rDFLiteral);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 147;
+	        this.state = 149;
 	        this.string();
-	        this.state = 151;
+	        this.state = 153;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case turtleParser.LangTag:
-	        	this.state = 148;
+	        case 41:
+	        	this.state = 150;
 	        	this.match(turtleParser.LangTag);
 	        	break;
-	        case turtleParser.T__0:
-	        	this.state = 149;
+	        case 1:
+	        	this.state = 151;
 	        	this.match(turtleParser.T__0);
-	        	this.state = 150;
+	        	this.state = 152;
 	        	this.iri();
 	        	break;
-	        case turtleParser.PNameLn:
-	        case turtleParser.Dot:
-	        case turtleParser.Coma:
-	        case turtleParser.LParen:
-	        case turtleParser.RParen:
-	        case turtleParser.LEnd:
-	        case turtleParser.REnd:
-	        case turtleParser.IriRef:
-	        case turtleParser.PNameNs:
-	        case turtleParser.BlankNodeLabel:
-	        case turtleParser.Integer:
-	        case turtleParser.Decimal:
-	        case turtleParser.Double:
-	        case turtleParser.StringLiteralQuote:
-	        case turtleParser.StringLiteralSingleQuote:
-	        case turtleParser.StringLiteralLongSingleQuote:
-	        case turtleParser.StringLiteralLongQuote:
-	        case turtleParser.ANON:
-	        case turtleParser.Semi:
-	        case turtleParser.TrueKeyword:
-	        case turtleParser.FalseKeyword:
+	        case 2:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 24:
+	        case 34:
+	        case 35:
+	        case 36:
 	        	break;
 	        default:
 	        	break;
@@ -834,12 +833,12 @@ export default class turtleParser extends antlr4.Parser {
 	bool_() {
 	    let localctx = new Bool_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, turtleParser.RULE_bool_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 153;
+	        this.state = 155;
 	        _la = this._input.LA(1);
-	        if(!(_la===turtleParser.TrueKeyword || _la===turtleParser.FalseKeyword)) {
+	        if(!(_la===35 || _la===36)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -865,12 +864,12 @@ export default class turtleParser extends antlr4.Parser {
 	string() {
 	    let localctx = new StringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, turtleParser.RULE_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 155;
+	        this.state = 157;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << turtleParser.StringLiteralQuote) | (1 << turtleParser.StringLiteralSingleQuote) | (1 << turtleParser.StringLiteralLongSingleQuote) | (1 << turtleParser.StringLiteralLongQuote))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1966080) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -896,12 +895,12 @@ export default class turtleParser extends antlr4.Parser {
 	iri() {
 	    let localctx = new IriContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, turtleParser.RULE_iri);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 157;
+	        this.state = 159;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << turtleParser.PNameLn) | (1 << turtleParser.IriRef) | (1 << turtleParser.PNameNs))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 3076) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -927,12 +926,12 @@ export default class turtleParser extends antlr4.Parser {
 	blankNode() {
 	    let localctx = new BlankNodeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, turtleParser.RULE_blankNode);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 159;
+	        this.state = 161;
 	        _la = this._input.LA(1);
-	        if(!(_la===turtleParser.BlankNodeLabel || _la===turtleParser.ANON)) {
+	        if(!(_la===12 || _la===24)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1036,6 +1035,10 @@ class TurtleDocContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = turtleParser.RULE_turtleDoc;
     }
+
+	EOF() {
+	    return this.getToken(turtleParser.EOF, 0);
+	};
 
 	statement = function(i) {
 	    if(i===undefined) {
@@ -2064,3 +2067,12 @@ turtleParser.Bool_Context = Bool_Context;
 turtleParser.StringContext = StringContext; 
 turtleParser.IriContext = IriContext; 
 turtleParser.BlankNodeContext = BlankNodeContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

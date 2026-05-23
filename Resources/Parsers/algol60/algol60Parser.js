@@ -1,4 +1,4 @@
-// Generated from ./algol60/algol60.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/algol60/algol60.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import algol60Listener from './algol60Listener.js';
@@ -256,14 +256,16 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class algol60Parser extends antlr4.Parser {
 
     static grammarFileName = "algol60.g4";
-    static literalNames = [ null, null, null, null, null, null, null, null, 
-                            null, null, null, null, null, null, null, null, 
-                            null, null, null, null, null, null, null, null, 
-                            null, null, "':='", "':'", "','", "'.'", null, 
-                            "'^='", "'='", "'\\u2261'", null, "'>'", null, 
-                            "'\\u2283'", "'['", null, "'('", "'<'", null, 
-                            null, null, null, null, "'+'", "']'", "')'", 
-                            "';'", "'_'" ];
+    static literalNames = [ null, "'array'", "'begin'", "'boolean'", "'comment'", 
+                            "'do'", "'else'", "'end'", "'false'", "'for'", 
+                            null, "'if'", "'integer'", "'label'", "'own'", 
+                            "'procedure'", "'real'", "'step'", "'string'", 
+                            "'switch'", "'then'", "'true'", "'until'", "'value'", 
+                            "'while'", null, "':='", "':'", "','", "'.'", 
+                            null, "'^='", "'='", "'\\u2261'", null, "'>'", 
+                            null, "'\\u2283'", "'['", null, "'('", "'<'", 
+                            null, null, null, null, null, "'+'", "']'", 
+                            "')'", "';'", "'_'" ];
     static symbolicNames = [ null, "Array_", "Begin_", "Boolean_", "Comment_", 
                              "Do_", "Else_", "End_", "False_", "For_", "Goto_", 
                              "If_", "Integer_", "Label_", "Own_", "Procedure_", 
@@ -313,10 +315,6 @@ export default class algol60Parser extends antlr4.Parser {
         this.ruleNames = algol60Parser.ruleNames;
         this.literalNames = algol60Parser.literalNames;
         this.symbolicNames = algol60Parser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
     sempred(localctx, ruleIndex, predIndex) {
@@ -556,19 +554,19 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 183;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Unsigned_integer:
+	        case 58:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 178;
 	            this.match(algol60Parser.Unsigned_integer);
 	            break;
-	        case algol60Parser.Plus_:
+	        case 47:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 179;
 	            this.match(algol60Parser.Plus_);
 	            this.state = 180;
 	            this.match(algol60Parser.Unsigned_integer);
 	            break;
-	        case algol60Parser.Minus_:
+	        case 42:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 181;
 	            this.match(algol60Parser.Minus_);
@@ -601,19 +599,19 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 190;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Unsigned_number:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 185;
 	            this.match(algol60Parser.Unsigned_number);
 	            break;
-	        case algol60Parser.Plus_:
+	        case 47:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 186;
 	            this.match(algol60Parser.Plus_);
 	            this.state = 187;
 	            this.match(algol60Parser.Unsigned_number);
 	            break;
-	        case algol60Parser.Minus_:
+	        case 42:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 188;
 	            this.match(algol60Parser.Minus_);
@@ -925,12 +923,12 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Comma_:
+	        case 28:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 227;
 	            this.match(algol60Parser.Comma_);
 	            break;
-	        case algol60Parser.Rp_:
+	        case 49:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 228;
 	            this.match(algol60Parser.Rp_);
@@ -1098,12 +1096,12 @@ export default class algol60Parser extends antlr4.Parser {
 	adding_operator() {
 	    let localctx = new Adding_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, algol60Parser.RULE_adding_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 256;
 	        _la = this._input.LA(1);
-	        if(!(_la===algol60Parser.Minus_ || _la===algol60Parser.Plus_)) {
+	        if(!(_la===42 || _la===47)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1129,12 +1127,12 @@ export default class algol60Parser extends antlr4.Parser {
 	multiplying_operator() {
 	    let localctx = new Multiplying_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, algol60Parser.RULE_multiplying_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 258;
 	        _la = this._input.LA(1);
-	        if(!(_la===algol60Parser.Divide_ || _la===algol60Parser.Mult_)) {
+	        if(!(_la===30 || _la===43)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1334,14 +1332,14 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 297;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.LP_:
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_number:
+	        case 40:
+	        case 57:
+	        case 62:
 	            this.state = 293;
 	            this.term(0);
 	            break;
-	        case algol60Parser.Minus_:
-	        case algol60Parser.Plus_:
+	        case 42:
+	        case 47:
 	            this.state = 294;
 	            this.adding_operator();
 	            this.state = 295;
@@ -1426,16 +1424,16 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 318;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.LP_:
-	        case algol60Parser.Minus_:
-	        case algol60Parser.Plus_:
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_number:
+	        case 40:
+	        case 42:
+	        case 47:
+	        case 57:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 312;
 	            this.simple_arithmetic_expression(0);
 	            break;
-	        case algol60Parser.If_:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 313;
 	            this.if_clause();
@@ -1558,17 +1556,17 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 337;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.LP_:
-	        case algol60Parser.Minus_:
-	        case algol60Parser.Plus_:
-	        case algol60Parser.Logical_value:
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_number:
+	        case 40:
+	        case 42:
+	        case 47:
+	        case 54:
+	        case 57:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 334;
 	            this.boolean_primary();
 	            break;
-	        case algol60Parser.Not_:
+	        case 45:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 335;
 	            this.match(algol60Parser.Not_);
@@ -1821,18 +1819,18 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 389;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.LP_:
-	        case algol60Parser.Minus_:
-	        case algol60Parser.Not_:
-	        case algol60Parser.Plus_:
-	        case algol60Parser.Logical_value:
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_number:
+	        case 40:
+	        case 42:
+	        case 45:
+	        case 47:
+	        case 54:
+	        case 57:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 383;
 	            this.simple_boolean(0);
 	            break;
-	        case algol60Parser.If_:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 384;
 	            this.if_clause();
@@ -1865,12 +1863,12 @@ export default class algol60Parser extends antlr4.Parser {
 	label() {
 	    let localctx = new LabelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, algol60Parser.RULE_label);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 391;
 	        _la = this._input.LA(1);
-	        if(!(_la===algol60Parser.Identifier || _la===algol60Parser.Unsigned_integer)) {
+	        if(!(_la===57 || _la===58)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1999,14 +1997,14 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 414;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.LP_:
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_integer:
+	        case 40:
+	        case 57:
+	        case 58:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 408;
 	            this.simple_designational_expression();
 	            break;
-	        case algol60Parser.If_:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 409;
 	            this.if_clause();
@@ -2371,13 +2369,13 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 472;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Begin_:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 467;
 	            this.unlabelled_compound();
 	            break;
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_integer:
+	        case 57:
+	        case 58:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 468;
 	            this.label();
@@ -2412,13 +2410,13 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 479;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Begin_:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 474;
 	            this.unlabelled_block();
 	            break;
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_integer:
+	        case 57:
+	        case 58:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 475;
 	            this.label();
@@ -2936,15 +2934,15 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 576;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.For_:
+	        case 9:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 569;
 	            this.for_clause();
 	            this.state = 570;
 	            this.statement();
 	            break;
-	        case algol60Parser.Identifier:
-	        case algol60Parser.Unsigned_integer:
+	        case 57:
+	        case 58:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 572;
 	            this.label();
@@ -3165,12 +3163,12 @@ export default class algol60Parser extends antlr4.Parser {
 	type_() {
 	    let localctx = new Type_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 130, algol60Parser.RULE_type_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 607;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << algol60Parser.Boolean_) | (1 << algol60Parser.Integer_) | (1 << algol60Parser.Real_))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 69640) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3200,15 +3198,15 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 611;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Array_:
-	        case algol60Parser.Boolean_:
-	        case algol60Parser.Integer_:
-	        case algol60Parser.Real_:
+	        case 1:
+	        case 3:
+	        case 12:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 609;
 	            this.empty_();
 	            break;
-	        case algol60Parser.Own_:
+	        case 14:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 610;
 	            this.match(algol60Parser.Own_);
@@ -3496,16 +3494,16 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 662;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Boolean_:
-	        case algol60Parser.Integer_:
-	        case algol60Parser.Real_:
+	        case 3:
+	        case 12:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 658;
 	            this.type_();
 	            this.state = 659;
 	            this.match(algol60Parser.Array_);
 	            break;
-	        case algol60Parser.Array_:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 661;
 	            this.match(algol60Parser.Array_);
@@ -3725,12 +3723,12 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 703;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Semi_:
+	        case 50:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 698;
 	            this.empty_();
 	            break;
-	        case algol60Parser.LP_:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 699;
 	            this.match(algol60Parser.LP_);
@@ -4078,7 +4076,7 @@ export default class algol60Parser extends antlr4.Parser {
 	        this.state = 773;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case algol60Parser.Procedure_:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 764;
 	            this.match(algol60Parser.Procedure_);
@@ -4087,9 +4085,9 @@ export default class algol60Parser extends antlr4.Parser {
 	            this.state = 766;
 	            this.procedure_body();
 	            break;
-	        case algol60Parser.Boolean_:
-	        case algol60Parser.Integer_:
-	        case algol60Parser.Real_:
+	        case 3:
+	        case 12:
+	        case 16:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 768;
 	            this.type_();
@@ -8200,3 +8198,12 @@ algol60Parser.Specification_partContext = Specification_partContext;
 algol60Parser.Procedure_headingContext = Procedure_headingContext; 
 algol60Parser.Procedure_bodyContext = Procedure_bodyContext; 
 algol60Parser.Procedure_declarationContext = Procedure_declarationContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,30 +1,30 @@
-// Generated from ./gff3/gff3.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/gff3/gff3.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import gff3Listener from './gff3Listener.js';
-const serializedATN = [4,1,7,90,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+const serializedATN = [4,1,7,92,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
 2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,
-13,7,13,1,0,1,0,4,0,31,8,0,11,0,12,0,32,1,1,1,1,3,1,37,8,1,1,2,1,2,1,2,1,
-2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,56,8,2,1,2,1,2,
-1,3,1,3,1,3,5,3,63,8,3,10,3,12,3,66,9,3,1,4,1,4,1,4,1,4,1,5,1,5,1,6,1,6,
-1,7,1,7,1,8,1,8,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,13,1,13,1,13,0,0,
-14,0,2,4,6,8,10,12,14,16,18,20,22,24,26,0,0,79,0,28,1,0,0,0,2,36,1,0,0,0,
-4,38,1,0,0,0,6,59,1,0,0,0,8,67,1,0,0,0,10,71,1,0,0,0,12,73,1,0,0,0,14,75,
-1,0,0,0,16,77,1,0,0,0,18,79,1,0,0,0,20,81,1,0,0,0,22,83,1,0,0,0,24,85,1,
-0,0,0,26,87,1,0,0,0,28,30,5,4,0,0,29,31,3,2,1,0,30,29,1,0,0,0,31,32,1,0,
-0,0,32,30,1,0,0,0,32,33,1,0,0,0,33,1,1,0,0,0,34,37,3,26,13,0,35,37,3,4,2,
-0,36,34,1,0,0,0,36,35,1,0,0,0,37,3,1,0,0,0,38,39,3,10,5,0,39,40,5,1,0,0,
-40,41,3,12,6,0,41,42,5,1,0,0,42,43,3,14,7,0,43,44,5,1,0,0,44,45,3,16,8,0,
-45,46,5,1,0,0,46,47,3,18,9,0,47,48,5,1,0,0,48,49,3,22,11,0,49,50,5,1,0,0,
-50,51,3,20,10,0,51,52,5,1,0,0,52,53,3,24,12,0,53,55,5,1,0,0,54,56,3,6,3,
-0,55,54,1,0,0,0,55,56,1,0,0,0,56,57,1,0,0,0,57,58,5,6,0,0,58,5,1,0,0,0,59,
-64,3,8,4,0,60,61,5,2,0,0,61,63,3,8,4,0,62,60,1,0,0,0,63,66,1,0,0,0,64,62,
-1,0,0,0,64,65,1,0,0,0,65,7,1,0,0,0,66,64,1,0,0,0,67,68,5,7,0,0,68,69,5,3,
-0,0,69,70,5,7,0,0,70,9,1,0,0,0,71,72,5,7,0,0,72,11,1,0,0,0,73,74,5,7,0,0,
-74,13,1,0,0,0,75,76,5,7,0,0,76,15,1,0,0,0,77,78,5,7,0,0,78,17,1,0,0,0,79,
-80,5,7,0,0,80,19,1,0,0,0,81,82,5,7,0,0,82,21,1,0,0,0,83,84,5,7,0,0,84,23,
-1,0,0,0,85,86,5,7,0,0,86,25,1,0,0,0,87,88,5,5,0,0,88,27,1,0,0,0,4,32,36,
-55,64];
+13,7,13,1,0,1,0,4,0,31,8,0,11,0,12,0,32,1,0,1,0,1,1,1,1,3,1,39,8,1,1,2,1,
+2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,58,8,2,
+1,2,1,2,1,3,1,3,1,3,5,3,65,8,3,10,3,12,3,68,9,3,1,4,1,4,1,4,1,4,1,5,1,5,
+1,6,1,6,1,7,1,7,1,8,1,8,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,13,1,13,
+1,13,0,0,14,0,2,4,6,8,10,12,14,16,18,20,22,24,26,0,0,81,0,28,1,0,0,0,2,38,
+1,0,0,0,4,40,1,0,0,0,6,61,1,0,0,0,8,69,1,0,0,0,10,73,1,0,0,0,12,75,1,0,0,
+0,14,77,1,0,0,0,16,79,1,0,0,0,18,81,1,0,0,0,20,83,1,0,0,0,22,85,1,0,0,0,
+24,87,1,0,0,0,26,89,1,0,0,0,28,30,5,4,0,0,29,31,3,2,1,0,30,29,1,0,0,0,31,
+32,1,0,0,0,32,30,1,0,0,0,32,33,1,0,0,0,33,34,1,0,0,0,34,35,5,0,0,1,35,1,
+1,0,0,0,36,39,3,26,13,0,37,39,3,4,2,0,38,36,1,0,0,0,38,37,1,0,0,0,39,3,1,
+0,0,0,40,41,3,10,5,0,41,42,5,1,0,0,42,43,3,12,6,0,43,44,5,1,0,0,44,45,3,
+14,7,0,45,46,5,1,0,0,46,47,3,16,8,0,47,48,5,1,0,0,48,49,3,18,9,0,49,50,5,
+1,0,0,50,51,3,22,11,0,51,52,5,1,0,0,52,53,3,20,10,0,53,54,5,1,0,0,54,55,
+3,24,12,0,55,57,5,1,0,0,56,58,3,6,3,0,57,56,1,0,0,0,57,58,1,0,0,0,58,59,
+1,0,0,0,59,60,5,6,0,0,60,5,1,0,0,0,61,66,3,8,4,0,62,63,5,2,0,0,63,65,3,8,
+4,0,64,62,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,0,66,67,1,0,0,0,67,7,1,0,0,0,
+68,66,1,0,0,0,69,70,5,7,0,0,70,71,5,3,0,0,71,72,5,7,0,0,72,9,1,0,0,0,73,
+74,5,7,0,0,74,11,1,0,0,0,75,76,5,7,0,0,76,13,1,0,0,0,77,78,5,7,0,0,78,15,
+1,0,0,0,79,80,5,7,0,0,80,17,1,0,0,0,81,82,5,7,0,0,82,19,1,0,0,0,83,84,5,
+7,0,0,84,21,1,0,0,0,85,86,5,7,0,0,86,23,1,0,0,0,87,88,5,7,0,0,88,25,1,0,
+0,0,89,90,5,5,0,0,90,27,1,0,0,0,4,32,38,57,66];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -51,16 +51,12 @@ export default class gff3Parser extends antlr4.Parser {
         this.symbolicNames = gff3Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	document() {
 	    let localctx = new DocumentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, gff3Parser.RULE_document);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 28;
@@ -74,7 +70,9 @@ export default class gff3Parser extends antlr4.Parser {
 	            this.state = 32; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===gff3Parser.COMMENTLINE || _la===gff3Parser.TEXT);
+	        } while(_la===5 || _la===7);
+	        this.state = 34;
+	        this.match(gff3Parser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -95,17 +93,17 @@ export default class gff3Parser extends antlr4.Parser {
 	    let localctx = new LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, gff3Parser.RULE_line);
 	    try {
-	        this.state = 36;
+	        this.state = 38;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case gff3Parser.COMMENTLINE:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 34;
+	            this.state = 36;
 	            this.commentline();
 	            break;
-	        case gff3Parser.TEXT:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 35;
+	            this.state = 37;
 	            this.dataline();
 	            break;
 	        default:
@@ -130,50 +128,50 @@ export default class gff3Parser extends antlr4.Parser {
 	dataline() {
 	    let localctx = new DatalineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, gff3Parser.RULE_dataline);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 38;
-	        this.seqid();
-	        this.state = 39;
-	        this.match(gff3Parser.T__0);
 	        this.state = 40;
-	        this.source();
+	        this.seqid();
 	        this.state = 41;
 	        this.match(gff3Parser.T__0);
 	        this.state = 42;
-	        this.type_();
+	        this.source();
 	        this.state = 43;
 	        this.match(gff3Parser.T__0);
 	        this.state = 44;
-	        this.start();
+	        this.type_();
 	        this.state = 45;
 	        this.match(gff3Parser.T__0);
 	        this.state = 46;
-	        this.end();
+	        this.start();
 	        this.state = 47;
 	        this.match(gff3Parser.T__0);
 	        this.state = 48;
-	        this.score();
+	        this.end();
 	        this.state = 49;
 	        this.match(gff3Parser.T__0);
 	        this.state = 50;
-	        this.strand();
+	        this.score();
 	        this.state = 51;
 	        this.match(gff3Parser.T__0);
 	        this.state = 52;
-	        this.phase();
+	        this.strand();
 	        this.state = 53;
 	        this.match(gff3Parser.T__0);
+	        this.state = 54;
+	        this.phase();
 	        this.state = 55;
+	        this.match(gff3Parser.T__0);
+	        this.state = 57;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===gff3Parser.TEXT) {
-	            this.state = 54;
+	        if(_la===7) {
+	            this.state = 56;
 	            this.attributes();
 	        }
 
-	        this.state = 57;
+	        this.state = 59;
 	        this.match(gff3Parser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -194,20 +192,20 @@ export default class gff3Parser extends antlr4.Parser {
 	attributes() {
 	    let localctx = new AttributesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, gff3Parser.RULE_attributes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 59;
+	        this.state = 61;
 	        this.attribute();
-	        this.state = 64;
+	        this.state = 66;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===gff3Parser.T__1) {
-	            this.state = 60;
+	        while(_la===2) {
+	            this.state = 62;
 	            this.match(gff3Parser.T__1);
-	            this.state = 61;
+	            this.state = 63;
 	            this.attribute();
-	            this.state = 66;
+	            this.state = 68;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -232,11 +230,11 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, gff3Parser.RULE_attribute);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 67;
-	        this.match(gff3Parser.TEXT);
-	        this.state = 68;
-	        this.match(gff3Parser.T__2);
 	        this.state = 69;
+	        this.match(gff3Parser.TEXT);
+	        this.state = 70;
+	        this.match(gff3Parser.T__2);
+	        this.state = 71;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -259,7 +257,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, gff3Parser.RULE_seqid);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 71;
+	        this.state = 73;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -282,7 +280,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, gff3Parser.RULE_source);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 73;
+	        this.state = 75;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -305,7 +303,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, gff3Parser.RULE_type_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 75;
+	        this.state = 77;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -328,7 +326,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, gff3Parser.RULE_start);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 77;
+	        this.state = 79;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -351,7 +349,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 18, gff3Parser.RULE_end);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 79;
+	        this.state = 81;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -374,7 +372,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, gff3Parser.RULE_strand);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 81;
+	        this.state = 83;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -397,7 +395,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 22, gff3Parser.RULE_score);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 83;
+	        this.state = 85;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -420,7 +418,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, gff3Parser.RULE_phase);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 85;
+	        this.state = 87;
 	        this.match(gff3Parser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -443,7 +441,7 @@ export default class gff3Parser extends antlr4.Parser {
 	    this.enterRule(localctx, 26, gff3Parser.RULE_commentline);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 87;
+	        this.state = 89;
 	        this.match(gff3Parser.COMMENTLINE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -502,6 +500,10 @@ class DocumentContext extends antlr4.ParserRuleContext {
 
 	HEADER() {
 	    return this.getToken(gff3Parser.HEADER, 0);
+	};
+
+	EOF() {
+	    return this.getToken(gff3Parser.EOF, 0);
 	};
 
 	line = function(i) {
@@ -1057,3 +1059,12 @@ gff3Parser.StrandContext = StrandContext;
 gff3Parser.ScoreContext = ScoreContext; 
 gff3Parser.PhaseContext = PhaseContext; 
 gff3Parser.CommentlineContext = CommentlineContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

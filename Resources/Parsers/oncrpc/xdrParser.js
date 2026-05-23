@@ -1,4 +1,4 @@
-// Generated from ./oncrpc/xdr.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/oncrpc/xdr.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import xdrListener from './xdrListener.js';
@@ -103,16 +103,12 @@ export default class xdrParser extends antlr4.Parser {
         this.symbolicNames = xdrParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	declaration() {
 	    let localctx = new DeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, xdrParser.RULE_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 72;
 	        this._errHandler.sync(this);
@@ -151,7 +147,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 43;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (xdrParser.OCTAL - 33)) | (1 << (xdrParser.DECIMAL - 33)) | (1 << (xdrParser.HEXADECIMAL - 33)) | (1 << (xdrParser.IDENTIFIER - 33)))) !== 0)) {
+	            if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 15) !== 0)) {
 	                this.state = 42;
 	                this.value();
 	            }
@@ -185,7 +181,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 57;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (xdrParser.OCTAL - 33)) | (1 << (xdrParser.DECIMAL - 33)) | (1 << (xdrParser.HEXADECIMAL - 33)) | (1 << (xdrParser.IDENTIFIER - 33)))) !== 0)) {
+	            if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 15) !== 0)) {
 	                this.state = 56;
 	                this.value();
 	            }
@@ -205,7 +201,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 64;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (xdrParser.OCTAL - 33)) | (1 << (xdrParser.DECIMAL - 33)) | (1 << (xdrParser.HEXADECIMAL - 33)) | (1 << (xdrParser.IDENTIFIER - 33)))) !== 0)) {
+	            if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 15) !== 0)) {
 	                this.state = 63;
 	                this.value();
 	            }
@@ -254,14 +250,14 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 76;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case xdrParser.OCTAL:
-	        case xdrParser.DECIMAL:
-	        case xdrParser.HEXADECIMAL:
+	        case 33:
+	        case 34:
+	        case 35:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 74;
 	            this.constant();
 	            break;
-	        case xdrParser.IDENTIFIER:
+	        case 36:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 75;
 	            this.match(xdrParser.IDENTIFIER);
@@ -288,12 +284,12 @@ export default class xdrParser extends antlr4.Parser {
 	constant() {
 	    let localctx = new ConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, xdrParser.RULE_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 78;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (xdrParser.OCTAL - 33)) | (1 << (xdrParser.DECIMAL - 33)) | (1 << (xdrParser.HEXADECIMAL - 33)))) !== 0))) {
+	        if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -319,7 +315,7 @@ export default class xdrParser extends antlr4.Parser {
 	typeSpecifier() {
 	    let localctx = new TypeSpecifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, xdrParser.RULE_typeSpecifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 96;
 	        this._errHandler.sync(this);
@@ -330,7 +326,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 81;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===xdrParser.T__8) {
+	            if(_la===9) {
 	                this.state = 80;
 	                this.match(xdrParser.T__8);
 	            }
@@ -344,7 +340,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 85;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===xdrParser.T__8) {
+	            if(_la===9) {
 	                this.state = 84;
 	                this.match(xdrParser.T__8);
 	            }
@@ -446,7 +442,7 @@ export default class xdrParser extends antlr4.Parser {
 	enumBody() {
 	    let localctx = new EnumBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, xdrParser.RULE_enumBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 101;
@@ -461,7 +457,7 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 112;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===xdrParser.T__18) {
+	        while(_la===19) {
 	            this.state = 106;
 	            this.match(xdrParser.T__18);
 	            this.state = 107;
@@ -520,7 +516,7 @@ export default class xdrParser extends antlr4.Parser {
 	structBody() {
 	    let localctx = new StructBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, xdrParser.RULE_structBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 120;
@@ -533,7 +529,7 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 129;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 5)) & ~0x1f) == 0 && ((1 << (_la - 5)) & ((1 << (xdrParser.T__4 - 5)) | (1 << (xdrParser.T__5 - 5)) | (1 << (xdrParser.T__7 - 5)) | (1 << (xdrParser.T__8 - 5)) | (1 << (xdrParser.T__9 - 5)) | (1 << (xdrParser.T__10 - 5)) | (1 << (xdrParser.T__11 - 5)) | (1 << (xdrParser.T__12 - 5)) | (1 << (xdrParser.T__13 - 5)) | (1 << (xdrParser.T__14 - 5)) | (1 << (xdrParser.T__15 - 5)) | (1 << (xdrParser.T__20 - 5)) | (1 << (xdrParser.T__22 - 5)) | (1 << (xdrParser.IDENTIFIER - 5)))) !== 0)) {
+	        while(((((_la - 5)) & ~0x1f) === 0 && ((1 << (_la - 5)) & 2147815419) !== 0)) {
 	            this.state = 124;
 	            this.declaration();
 	            this.state = 125;
@@ -588,7 +584,7 @@ export default class xdrParser extends antlr4.Parser {
 	unionBody() {
 	    let localctx = new UnionBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, xdrParser.RULE_unionBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 137;
@@ -606,7 +602,7 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 146;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===xdrParser.T__28) {
+	        while(_la===29) {
 	            this.state = 143;
 	            this.caseSpec();
 	            this.state = 148;
@@ -616,7 +612,7 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 154;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===xdrParser.T__26) {
+	        if(_la===27) {
 	            this.state = 149;
 	            this.match(xdrParser.T__26);
 	            this.state = 150;
@@ -648,7 +644,7 @@ export default class xdrParser extends antlr4.Parser {
 	caseSpec() {
 	    let localctx = new CaseSpecContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, xdrParser.RULE_caseSpec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 158;
@@ -660,7 +656,7 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 168;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===xdrParser.T__28) {
+	        while(_la===29) {
 	            this.state = 162;
 	            this.match(xdrParser.T__28);
 	            this.state = 163;
@@ -729,7 +725,7 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 199;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case xdrParser.T__30:
+	        case 31:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 180;
 	            this.match(xdrParser.T__30);
@@ -738,7 +734,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 182;
 	            this.match(xdrParser.T__21);
 	            break;
-	        case xdrParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 184;
 	            this.match(xdrParser.T__15);
@@ -749,7 +745,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 187;
 	            this.match(xdrParser.T__21);
 	            break;
-	        case xdrParser.T__20:
+	        case 21:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 189;
 	            this.match(xdrParser.T__20);
@@ -760,7 +756,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 192;
 	            this.match(xdrParser.T__21);
 	            break;
-	        case xdrParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 194;
 	            this.match(xdrParser.T__22);
@@ -797,15 +793,15 @@ export default class xdrParser extends antlr4.Parser {
 	        this.state = 203;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case xdrParser.T__15:
-	        case xdrParser.T__20:
-	        case xdrParser.T__22:
-	        case xdrParser.T__30:
+	        case 16:
+	        case 21:
+	        case 23:
+	        case 31:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 201;
 	            this.typeDef();
 	            break;
-	        case xdrParser.T__29:
+	        case 30:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 202;
 	            this.constantDef();
@@ -832,7 +828,7 @@ export default class xdrParser extends antlr4.Parser {
 	xdrSpecification() {
 	    let localctx = new XdrSpecificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, xdrParser.RULE_xdrSpecification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 206; 
@@ -844,7 +840,7 @@ export default class xdrParser extends antlr4.Parser {
 	            this.state = 208; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << xdrParser.T__15) | (1 << xdrParser.T__20) | (1 << xdrParser.T__22) | (1 << xdrParser.T__29) | (1 << xdrParser.T__30))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3231776768) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1576,3 +1572,12 @@ xdrParser.ConstantDefContext = ConstantDefContext;
 xdrParser.TypeDefContext = TypeDefContext; 
 xdrParser.DefinitionContext = DefinitionContext; 
 xdrParser.XdrSpecificationContext = XdrSpecificationContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

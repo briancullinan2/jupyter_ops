@@ -23,3 +23,9 @@ indexdir
 movies.sqlite.db
 .logs
 .automations/**download_reorganize_bash.sh
+Resources/Parsers/*/examples*/
+Resources/Parsers/*/*examples*
+Resources/Parsers/**/examples*/
+Resources/Parsers/**/*examples*
+**/desc.xml
+Resources/Parsers/*/examples

@@ -1,4 +1,4 @@
-// Generated from ./bdf/bdf.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/bdf/bdf.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import bdfListener from './bdfListener.js';
@@ -153,10 +153,6 @@ export default class bdfParser extends antlr4.Parser {
         this.symbolicNames = bdfParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	font() {
@@ -187,7 +183,7 @@ export default class bdfParser extends antlr4.Parser {
 	startfont() {
 	    let localctx = new StartfontContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, bdfParser.RULE_startfont);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 97;
@@ -201,27 +197,27 @@ export default class bdfParser extends antlr4.Parser {
 	            this.state = 105;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case bdfParser.T__2:
+	            case 3:
 	                this.state = 99;
 	                this.fontdecl();
 	                break;
-	            case bdfParser.T__3:
+	            case 4:
 	                this.state = 100;
 	                this.sizedecl();
 	                break;
-	            case bdfParser.T__4:
+	            case 5:
 	                this.state = 101;
 	                this.fontboundingboxdecl();
 	                break;
-	            case bdfParser.T__5:
+	            case 6:
 	                this.state = 102;
 	                this.propertiesdecl();
 	                break;
-	            case bdfParser.T__41:
+	            case 42:
 	                this.state = 103;
 	                this.charsdecl();
 	                break;
-	            case bdfParser.T__42:
+	            case 43:
 	                this.state = 104;
 	                this.chardecl();
 	                break;
@@ -231,7 +227,7 @@ export default class bdfParser extends antlr4.Parser {
 	            this.state = 107; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << bdfParser.T__2) | (1 << bdfParser.T__3) | (1 << bdfParser.T__4) | (1 << bdfParser.T__5))) !== 0) || _la===bdfParser.T__41 || _la===bdfParser.T__42);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 120) !== 0) || _la===42 || _la===43);
 	        this.state = 109;
 	        this.match(bdfParser.T__1);
 	    } catch (re) {
@@ -338,7 +334,7 @@ export default class bdfParser extends antlr4.Parser {
 	propertiesdecl() {
 	    let localctx = new PropertiesdeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, bdfParser.RULE_propertiesdecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 125;
@@ -348,143 +344,143 @@ export default class bdfParser extends antlr4.Parser {
 	        this.state = 163;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << bdfParser.T__7) | (1 << bdfParser.T__8) | (1 << bdfParser.T__9) | (1 << bdfParser.T__10) | (1 << bdfParser.T__11) | (1 << bdfParser.T__12) | (1 << bdfParser.T__13) | (1 << bdfParser.T__14) | (1 << bdfParser.T__15) | (1 << bdfParser.T__16) | (1 << bdfParser.T__17) | (1 << bdfParser.T__18) | (1 << bdfParser.T__19) | (1 << bdfParser.T__20) | (1 << bdfParser.T__21) | (1 << bdfParser.T__22) | (1 << bdfParser.T__23) | (1 << bdfParser.T__24) | (1 << bdfParser.T__25) | (1 << bdfParser.T__26) | (1 << bdfParser.T__27) | (1 << bdfParser.T__28) | (1 << bdfParser.T__29) | (1 << bdfParser.T__30))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (bdfParser.T__31 - 32)) | (1 << (bdfParser.T__32 - 32)) | (1 << (bdfParser.T__33 - 32)) | (1 << (bdfParser.T__34 - 32)) | (1 << (bdfParser.T__35 - 32)) | (1 << (bdfParser.T__36 - 32)) | (1 << (bdfParser.T__37 - 32)) | (1 << (bdfParser.T__38 - 32)) | (1 << (bdfParser.T__39 - 32)) | (1 << (bdfParser.T__40 - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967040) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 1023) !== 0)) {
 	            this.state = 161;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case bdfParser.T__22:
+	            case 23:
 	                this.state = 127;
 	                this.fontascentdecl();
 	                break;
-	            case bdfParser.T__27:
+	            case 28:
 	                this.state = 128;
 	                this.fontdecentdecl();
 	                break;
-	            case bdfParser.T__7:
+	            case 8:
 	                this.state = 129;
 	                this.foundrydecl();
 	                break;
-	            case bdfParser.T__8:
+	            case 9:
 	                this.state = 130;
 	                this.familynanmedecl();
 	                break;
-	            case bdfParser.T__9:
+	            case 10:
 	                this.state = 131;
 	                this.weightnamedecl();
 	                break;
-	            case bdfParser.T__10:
+	            case 11:
 	                this.state = 132;
 	                this.slantdecl();
 	                break;
-	            case bdfParser.T__11:
+	            case 12:
 	                this.state = 133;
 	                this.setwidthnamedecl();
 	                break;
-	            case bdfParser.T__12:
+	            case 13:
 	                this.state = 134;
 	                this.addstylenamedecl();
 	                break;
-	            case bdfParser.T__13:
+	            case 14:
 	                this.state = 135;
 	                this.pixelsizedecl();
 	                break;
-	            case bdfParser.T__14:
+	            case 15:
 	                this.state = 136;
 	                this.pointsizedecl();
 	                break;
-	            case bdfParser.T__15:
+	            case 16:
 	                this.state = 137;
 	                this.resolutionxdecl();
 	                break;
-	            case bdfParser.T__16:
+	            case 17:
 	                this.state = 138;
 	                this.resolutionydecl();
 	                break;
-	            case bdfParser.T__17:
+	            case 18:
 	                this.state = 139;
 	                this.spacingdecl();
 	                break;
-	            case bdfParser.T__18:
+	            case 19:
 	                this.state = 140;
 	                this.averagewidthdecl();
 	                break;
-	            case bdfParser.T__19:
+	            case 20:
 	                this.state = 141;
 	                this.charsetregistrydecl();
 	                break;
-	            case bdfParser.T__20:
+	            case 21:
 	                this.state = 142;
 	                this.charsetencoding();
 	                break;
-	            case bdfParser.T__21:
+	            case 22:
 	                this.state = 143;
 	                this.fontnameregistry();
 	                break;
-	            case bdfParser.T__23:
+	            case 24:
 	                this.state = 144;
 	                this.charsetcollectionsdecl();
 	                break;
-	            case bdfParser.T__24:
+	            case 25:
 	                this.state = 145;
 	                this.fontnamedecl();
 	                break;
-	            case bdfParser.T__25:
+	            case 26:
 	                this.state = 146;
 	                this.facenamedecl();
 	                break;
-	            case bdfParser.T__26:
+	            case 27:
 	                this.state = 147;
 	                this.copyrightdecl();
 	                break;
-	            case bdfParser.T__28:
+	            case 29:
 	                this.state = 148;
 	                this.fontversiondecl();
 	                break;
-	            case bdfParser.T__29:
+	            case 30:
 	                this.state = 149;
 	                this.underlinepositiondecl();
 	                break;
-	            case bdfParser.T__30:
+	            case 31:
 	                this.state = 150;
 	                this.underlinethicknessdecl();
 	                break;
-	            case bdfParser.T__31:
+	            case 32:
 	                this.state = 151;
 	                this.xheightdecl();
 	                break;
-	            case bdfParser.T__32:
+	            case 33:
 	                this.state = 152;
 	                this.capheighdecl();
 	                break;
-	            case bdfParser.T__33:
+	            case 34:
 	                this.state = 153;
 	                this.rawascentdecl();
 	                break;
-	            case bdfParser.T__34:
+	            case 35:
 	                this.state = 154;
 	                this.rawdescentdecl();
 	                break;
-	            case bdfParser.T__35:
+	            case 36:
 	                this.state = 155;
 	                this.normspacedecl();
 	                break;
-	            case bdfParser.T__36:
+	            case 37:
 	                this.state = 156;
 	                this.relativeweightdecl();
 	                break;
-	            case bdfParser.T__37:
+	            case 38:
 	                this.state = 157;
 	                this.relaticesetwidthdecl();
 	                break;
-	            case bdfParser.T__38:
+	            case 39:
 	                this.state = 158;
 	                this.figurewidthdecl();
 	                break;
-	            case bdfParser.T__39:
+	            case 40:
 	                this.state = 159;
 	                this.avglowercasewidthdecl();
 	                break;
-	            case bdfParser.T__40:
+	            case 41:
 	                this.state = 160;
 	                this.avguppercasewidthdecl();
 	                break;
@@ -1391,7 +1387,7 @@ export default class bdfParser extends antlr4.Parser {
 	chardecl() {
 	    let localctx = new ChardeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, bdfParser.RULE_chardecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 273;
@@ -1401,27 +1397,27 @@ export default class bdfParser extends antlr4.Parser {
 	        this.state = 282;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (bdfParser.T__44 - 45)) | (1 << (bdfParser.T__45 - 45)) | (1 << (bdfParser.T__46 - 45)) | (1 << (bdfParser.T__47 - 45)) | (1 << (bdfParser.T__48 - 45)))) !== 0)) {
+	        while(((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 31) !== 0)) {
 	            this.state = 280;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case bdfParser.T__44:
+	            case 45:
 	                this.state = 275;
 	                this.encodingdecl();
 	                break;
-	            case bdfParser.T__45:
+	            case 46:
 	                this.state = 276;
 	                this.swidthdecl();
 	                break;
-	            case bdfParser.T__46:
+	            case 47:
 	                this.state = 277;
 	                this.dwidthdecl();
 	                break;
-	            case bdfParser.T__47:
+	            case 48:
 	                this.state = 278;
 	                this.bbxdecl();
 	                break;
-	            case bdfParser.T__48:
+	            case 49:
 	                this.state = 279;
 	                this.bitmapdecl();
 	                break;
@@ -1563,7 +1559,7 @@ export default class bdfParser extends antlr4.Parser {
 	bitmapdecl() {
 	    let localctx = new BitmapdeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, bdfParser.RULE_bitmapdecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 304;
@@ -1571,7 +1567,7 @@ export default class bdfParser extends antlr4.Parser {
 	        this.state = 308;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===bdfParser.ARG) {
+	        while(_la===50) {
 	            this.state = 305;
 	            this.match(bdfParser.ARG);
 	            this.state = 310;
@@ -3937,3 +3933,12 @@ bdfParser.SwidthdeclContext = SwidthdeclContext;
 bdfParser.DwidthdeclContext = DwidthdeclContext; 
 bdfParser.BbxdeclContext = BbxdeclContext; 
 bdfParser.BitmapdeclContext = BitmapdeclContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

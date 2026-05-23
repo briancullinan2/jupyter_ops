@@ -1,25 +1,25 @@
-// Generated from ./propcalc/propcalc.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/propcalc/propcalc.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import propcalcListener from './propcalcListener.js';
-const serializedATN = [4,1,12,65,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,2,6,7,6,2,7,7,7,1,0,1,0,1,0,1,0,1,1,1,1,1,1,5,1,24,8,1,10,1,12,1,
-27,9,1,1,2,1,2,1,2,3,2,32,8,2,1,3,1,3,1,3,5,3,37,8,3,10,3,12,3,40,9,3,1,
-4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,49,8,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,
-5,7,60,8,7,10,7,12,7,63,9,7,1,7,0,0,8,0,2,4,6,8,10,12,14,0,1,1,0,2,3,63,
-0,16,1,0,0,0,2,20,1,0,0,0,4,31,1,0,0,0,6,33,1,0,0,0,8,48,1,0,0,0,10,50,1,
-0,0,0,12,54,1,0,0,0,14,61,1,0,0,0,16,17,3,2,1,0,17,18,5,7,0,0,18,19,3,2,
-1,0,19,1,1,0,0,0,20,25,3,4,2,0,21,22,7,0,0,0,22,24,3,4,2,0,23,21,1,0,0,0,
-24,27,1,0,0,0,25,23,1,0,0,0,25,26,1,0,0,0,26,3,1,0,0,0,27,25,1,0,0,0,28,
-32,3,8,4,0,29,32,3,10,5,0,30,32,3,12,6,0,31,28,1,0,0,0,31,29,1,0,0,0,31,
-30,1,0,0,0,32,5,1,0,0,0,33,38,3,8,4,0,34,35,5,1,0,0,35,37,3,8,4,0,36,34,
-1,0,0,0,37,40,1,0,0,0,38,36,1,0,0,0,38,39,1,0,0,0,39,7,1,0,0,0,40,38,1,0,
-0,0,41,49,3,14,7,0,42,43,5,4,0,0,43,49,3,8,4,0,44,45,5,9,0,0,45,46,3,2,1,
-0,46,47,5,10,0,0,47,49,1,0,0,0,48,41,1,0,0,0,48,42,1,0,0,0,48,44,1,0,0,0,
-49,9,1,0,0,0,50,51,3,8,4,0,51,52,5,8,0,0,52,53,3,8,4,0,53,11,1,0,0,0,54,
-55,3,8,4,0,55,56,5,6,0,0,56,57,3,8,4,0,57,13,1,0,0,0,58,60,5,11,0,0,59,58,
-1,0,0,0,60,63,1,0,0,0,61,59,1,0,0,0,61,62,1,0,0,0,62,15,1,0,0,0,63,61,1,
-0,0,0,5,25,31,38,48,61];
+const serializedATN = [4,1,12,66,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,2,6,7,6,2,7,7,7,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,1,5,1,25,8,1,10,1,
+12,1,28,9,1,1,2,1,2,1,2,3,2,33,8,2,1,3,1,3,1,3,5,3,38,8,3,10,3,12,3,41,9,
+3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,50,8,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,
+1,7,5,7,61,8,7,10,7,12,7,64,9,7,1,7,0,0,8,0,2,4,6,8,10,12,14,0,1,1,0,2,3,
+64,0,16,1,0,0,0,2,21,1,0,0,0,4,32,1,0,0,0,6,34,1,0,0,0,8,49,1,0,0,0,10,51,
+1,0,0,0,12,55,1,0,0,0,14,62,1,0,0,0,16,17,3,2,1,0,17,18,5,7,0,0,18,19,3,
+2,1,0,19,20,5,0,0,1,20,1,1,0,0,0,21,26,3,4,2,0,22,23,7,0,0,0,23,25,3,4,2,
+0,24,22,1,0,0,0,25,28,1,0,0,0,26,24,1,0,0,0,26,27,1,0,0,0,27,3,1,0,0,0,28,
+26,1,0,0,0,29,33,3,8,4,0,30,33,3,10,5,0,31,33,3,12,6,0,32,29,1,0,0,0,32,
+30,1,0,0,0,32,31,1,0,0,0,33,5,1,0,0,0,34,39,3,8,4,0,35,36,5,1,0,0,36,38,
+3,8,4,0,37,35,1,0,0,0,38,41,1,0,0,0,39,37,1,0,0,0,39,40,1,0,0,0,40,7,1,0,
+0,0,41,39,1,0,0,0,42,50,3,14,7,0,43,44,5,4,0,0,44,50,3,8,4,0,45,46,5,9,0,
+0,46,47,3,2,1,0,47,48,5,10,0,0,48,50,1,0,0,0,49,42,1,0,0,0,49,43,1,0,0,0,
+49,45,1,0,0,0,50,9,1,0,0,0,51,52,3,8,4,0,52,53,5,8,0,0,53,54,3,8,4,0,54,
+11,1,0,0,0,55,56,3,8,4,0,56,57,5,6,0,0,57,58,3,8,4,0,58,13,1,0,0,0,59,61,
+5,11,0,0,60,59,1,0,0,0,61,64,1,0,0,0,62,60,1,0,0,0,62,63,1,0,0,0,63,15,1,
+0,0,0,64,62,1,0,0,0,5,26,32,39,49,62];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -47,10 +47,6 @@ export default class propcalcParser extends antlr4.Parser {
         this.symbolicNames = propcalcParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	proposition() {
@@ -64,6 +60,8 @@ export default class propcalcParser extends antlr4.Parser {
 	        this.match(propcalcParser.THEREFORE);
 	        this.state = 18;
 	        this.expression();
+	        this.state = 19;
+	        this.match(propcalcParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -83,27 +81,27 @@ export default class propcalcParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, propcalcParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 20;
+	        this.state = 21;
 	        this.relExpression();
-	        this.state = 25;
+	        this.state = 26;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===propcalcParser.AND || _la===propcalcParser.OR) {
-	            this.state = 21;
+	        while(_la===2 || _la===3) {
+	            this.state = 22;
 	            _la = this._input.LA(1);
-	            if(!(_la===propcalcParser.AND || _la===propcalcParser.OR)) {
+	            if(!(_la===2 || _la===3)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 22;
+	            this.state = 23;
 	            this.relExpression();
-	            this.state = 27;
+	            this.state = 28;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -127,25 +125,25 @@ export default class propcalcParser extends antlr4.Parser {
 	    let localctx = new RelExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, propcalcParser.RULE_relExpression);
 	    try {
-	        this.state = 31;
+	        this.state = 32;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 28;
+	            this.state = 29;
 	            this.atom();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 29;
+	            this.state = 30;
 	            this.equiv();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 30;
+	            this.state = 31;
 	            this.implies();
 	            break;
 
@@ -169,20 +167,20 @@ export default class propcalcParser extends antlr4.Parser {
 	atoms() {
 	    let localctx = new AtomsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, propcalcParser.RULE_atoms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 33;
+	        this.state = 34;
 	        this.atom();
-	        this.state = 38;
+	        this.state = 39;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===propcalcParser.T__0) {
-	            this.state = 34;
-	            this.match(propcalcParser.T__0);
+	        while(_la===1) {
 	            this.state = 35;
+	            this.match(propcalcParser.T__0);
+	            this.state = 36;
 	            this.atom();
-	            this.state = 40;
+	            this.state = 41;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -206,36 +204,36 @@ export default class propcalcParser extends antlr4.Parser {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, propcalcParser.RULE_atom);
 	    try {
-	        this.state = 48;
+	        this.state = 49;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case propcalcParser.EOF:
-	        case propcalcParser.T__0:
-	        case propcalcParser.AND:
-	        case propcalcParser.OR:
-	        case propcalcParser.IMPLIES:
-	        case propcalcParser.THEREFORE:
-	        case propcalcParser.EQUIV:
-	        case propcalcParser.RPAREN:
-	        case propcalcParser.LETTER:
+	        case -1:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 41;
+	            this.state = 42;
 	            this.variable();
 	            break;
-	        case propcalcParser.NOT:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 42;
-	            this.match(propcalcParser.NOT);
 	            this.state = 43;
+	            this.match(propcalcParser.NOT);
+	            this.state = 44;
 	            this.atom();
 	            break;
-	        case propcalcParser.LPAREN:
+	        case 9:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 44;
-	            this.match(propcalcParser.LPAREN);
 	            this.state = 45;
-	            this.expression();
+	            this.match(propcalcParser.LPAREN);
 	            this.state = 46;
+	            this.expression();
+	            this.state = 47;
 	            this.match(propcalcParser.RPAREN);
 	            break;
 	        default:
@@ -262,11 +260,11 @@ export default class propcalcParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, propcalcParser.RULE_equiv);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 50;
-	        this.atom();
 	        this.state = 51;
-	        this.match(propcalcParser.EQUIV);
+	        this.atom();
 	        this.state = 52;
+	        this.match(propcalcParser.EQUIV);
+	        this.state = 53;
 	        this.atom();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -289,11 +287,11 @@ export default class propcalcParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, propcalcParser.RULE_implies);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 54;
-	        this.atom();
 	        this.state = 55;
-	        this.match(propcalcParser.IMPLIES);
+	        this.atom();
 	        this.state = 56;
+	        this.match(propcalcParser.IMPLIES);
+	        this.state = 57;
 	        this.atom();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -314,16 +312,16 @@ export default class propcalcParser extends antlr4.Parser {
 	variable() {
 	    let localctx = new VariableContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, propcalcParser.RULE_variable);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 61;
+	        this.state = 62;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===propcalcParser.LETTER) {
-	            this.state = 58;
+	        while(_la===11) {
+	            this.state = 59;
 	            this.match(propcalcParser.LETTER);
-	            this.state = 63;
+	            this.state = 64;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -394,6 +392,10 @@ class PropositionContext extends antlr4.ParserRuleContext {
 
 	THEREFORE() {
 	    return this.getToken(propcalcParser.THEREFORE, 0);
+	};
+
+	EOF() {
+	    return this.getToken(propcalcParser.EOF, 0);
 	};
 
 	enterRule(listener) {
@@ -763,3 +765,12 @@ propcalcParser.AtomContext = AtomContext;
 propcalcParser.EquivContext = EquivContext; 
 propcalcParser.ImpliesContext = ImpliesContext; 
 propcalcParser.VariableContext = VariableContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

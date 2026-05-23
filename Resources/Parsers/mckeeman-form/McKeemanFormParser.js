@@ -1,4 +1,4 @@
-// Generated from ./mckeeman-form/McKeemanForm.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/mckeeman-form/McKeemanForm.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import McKeemanFormListener from './McKeemanFormListener.js';
@@ -49,16 +49,12 @@ export default class McKeemanFormParser extends antlr4.Parser {
         this.symbolicNames = McKeemanFormParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	grammar_() {
 	    let localctx = new Grammar_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, McKeemanFormParser.RULE_grammar_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 14;
@@ -66,7 +62,7 @@ export default class McKeemanFormParser extends antlr4.Parser {
 	        this.state = 19;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===McKeemanFormParser.Newline) {
+	        while(_la===5) {
 	            this.state = 15;
 	            this.match(McKeemanFormParser.Newline);
 	            this.state = 16;
@@ -96,7 +92,7 @@ export default class McKeemanFormParser extends antlr4.Parser {
 	rule_() {
 	    let localctx = new Rule_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, McKeemanFormParser.RULE_rule_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 24;
@@ -120,7 +116,7 @@ export default class McKeemanFormParser extends antlr4.Parser {
 	            this.state = 32; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===McKeemanFormParser.Indentation);
+	        } while(_la===7);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -169,7 +165,7 @@ export default class McKeemanFormParser extends antlr4.Parser {
 	alternative() {
 	    let localctx = new AlternativeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, McKeemanFormParser.RULE_alternative);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 39;
@@ -179,7 +175,7 @@ export default class McKeemanFormParser extends antlr4.Parser {
 	        this.state = 45;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===McKeemanFormParser.Space) {
+	        while(_la===4) {
 	            this.state = 41;
 	            this.match(McKeemanFormParser.Space);
 	            this.state = 42;
@@ -746,3 +742,12 @@ McKeemanFormParser.AlternativeContext = AlternativeContext;
 McKeemanFormParser.ItemContext = ItemContext; 
 McKeemanFormParser.Range_Context = Range_Context; 
 McKeemanFormParser.ExcludeContext = ExcludeContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

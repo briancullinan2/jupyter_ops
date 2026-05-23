@@ -1,4 +1,4 @@
-// Generated from ./r/RFilter.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/r/RFilter.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import RFilterListener from './RFilterListener.js';
@@ -95,87 +95,83 @@ export default class RFilter extends antlr4.Parser {
 
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	stream() {
 	    let localctx = new StreamContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, RFilter.RULE_stream);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 15;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__0) | (1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048182) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	            this.state = 13;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case RFilter.T__1:
-	            case RFilter.T__3:
-	            case RFilter.T__4:
-	            case RFilter.T__5:
-	            case RFilter.T__6:
-	            case RFilter.T__7:
-	            case RFilter.T__8:
-	            case RFilter.T__9:
-	            case RFilter.T__10:
-	            case RFilter.T__11:
-	            case RFilter.T__12:
-	            case RFilter.T__13:
-	            case RFilter.T__14:
-	            case RFilter.T__15:
-	            case RFilter.T__16:
-	            case RFilter.T__17:
-	            case RFilter.T__18:
-	            case RFilter.T__19:
-	            case RFilter.T__20:
-	            case RFilter.T__21:
-	            case RFilter.T__22:
-	            case RFilter.T__23:
-	            case RFilter.T__24:
-	            case RFilter.T__25:
-	            case RFilter.T__26:
-	            case RFilter.T__28:
-	            case RFilter.T__29:
-	            case RFilter.T__32:
-	            case RFilter.T__33:
-	            case RFilter.T__35:
-	            case RFilter.T__37:
-	            case RFilter.T__38:
-	            case RFilter.T__39:
-	            case RFilter.T__40:
-	            case RFilter.T__41:
-	            case RFilter.T__42:
-	            case RFilter.T__43:
-	            case RFilter.T__44:
-	            case RFilter.T__45:
-	            case RFilter.T__46:
-	            case RFilter.T__47:
-	            case RFilter.T__48:
-	            case RFilter.T__49:
-	            case RFilter.T__50:
-	            case RFilter.T__51:
-	            case RFilter.T__52:
-	            case RFilter.T__53:
-	            case RFilter.HEX:
-	            case RFilter.INT:
-	            case RFilter.FLOAT:
-	            case RFilter.COMPLEX:
-	            case RFilter.STRING:
-	            case RFilter.ID:
-	            case RFilter.USER_OP:
+	            case 2:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 29:
+	            case 30:
+	            case 33:
+	            case 34:
+	            case 36:
+	            case 38:
+	            case 39:
+	            case 40:
+	            case 41:
+	            case 42:
+	            case 43:
+	            case 44:
+	            case 45:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 52:
+	            case 53:
+	            case 54:
+	            case 56:
+	            case 57:
+	            case 58:
+	            case 59:
+	            case 60:
+	            case 61:
+	            case 62:
 	                this.state = 10;
 	                this.elem();
 	                break;
-	            case RFilter.NL:
+	            case 63:
 	                this.state = 11;
 	                this.match(RFilter.NL);
 	                break;
-	            case RFilter.T__0:
+	            case 1:
 	                this.state = 12;
 	                this.match(RFilter.T__0);
 	                break;
@@ -245,42 +241,42 @@ export default class RFilter extends antlr4.Parser {
 	elem() {
 	    let localctx = new ElemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, RFilter.RULE_elem);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 140;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case RFilter.T__4:
-	        case RFilter.T__5:
-	        case RFilter.T__6:
-	        case RFilter.T__7:
-	        case RFilter.T__8:
-	        case RFilter.T__9:
-	        case RFilter.T__10:
-	        case RFilter.T__11:
-	        case RFilter.T__12:
-	        case RFilter.T__13:
-	        case RFilter.T__14:
-	        case RFilter.T__15:
-	        case RFilter.T__16:
-	        case RFilter.T__17:
-	        case RFilter.T__18:
-	        case RFilter.T__19:
-	        case RFilter.T__20:
-	        case RFilter.T__21:
-	        case RFilter.T__22:
-	        case RFilter.T__23:
-	        case RFilter.T__24:
-	        case RFilter.T__25:
-	        case RFilter.T__26:
-	        case RFilter.T__28:
-	        case RFilter.T__29:
-	        case RFilter.T__40:
-	        case RFilter.T__42:
-	        case RFilter.T__43:
-	        case RFilter.T__52:
-	        case RFilter.T__53:
-	        case RFilter.USER_OP:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 29:
+	        case 30:
+	        case 41:
+	        case 43:
+	        case 44:
+	        case 53:
+	        case 54:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 26;
 	            this.op();
@@ -293,25 +289,25 @@ export default class RFilter extends antlr4.Parser {
 
 	            }
 	            break;
-	        case RFilter.T__44:
-	        case RFilter.T__45:
-	        case RFilter.T__46:
-	        case RFilter.T__47:
-	        case RFilter.T__48:
-	        case RFilter.T__49:
-	        case RFilter.T__50:
-	        case RFilter.T__51:
-	        case RFilter.HEX:
-	        case RFilter.INT:
-	        case RFilter.FLOAT:
-	        case RFilter.COMPLEX:
-	        case RFilter.STRING:
-	        case RFilter.ID:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 30;
 	            this.atom();
 	            break;
-	        case RFilter.T__35:
+	        case 36:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 31;
 	            this.match(RFilter.T__35);
@@ -327,72 +323,72 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 41;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__0) | (1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048182) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 39;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 36;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 37;
 	                    this.match(RFilter.NL);
 	                    break;
-	                case RFilter.T__0:
+	                case 1:
 	                    this.state = 38;
 	                    this.match(RFilter.T__0);
 	                    break;
@@ -407,75 +403,75 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 45;
 	            this.match(RFilter.T__36);
 	            break;
-	        case RFilter.T__33:
+	        case 34:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 46;
 	            this.match(RFilter.T__33);
 	            this.state = 51;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048180) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 49;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 47;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 48;
 	                    this.eat();
 	                    break;
@@ -489,75 +485,75 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 54;
 	            this.match(RFilter.T__34);
 	            break;
-	        case RFilter.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 55;
 	            this.match(RFilter.T__3);
 	            this.state = 60;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048180) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 58;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 56;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 57;
 	                    this.eat();
 	                    break;
@@ -571,75 +567,75 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 63;
 	            this.match(RFilter.T__2);
 	            break;
-	        case RFilter.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 64;
 	            this.match(RFilter.T__1);
 	            this.state = 69;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048180) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 67;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 65;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 66;
 	                    this.eat();
 	                    break;
@@ -655,14 +651,14 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 73;
 	            this.match(RFilter.T__2);
 	            break;
-	        case RFilter.T__32:
+	        case 33:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 74;
 	            this.match(RFilter.T__32);
 	            this.state = 76;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RFilter.NL) {
+	            if(_la===63) {
 	                this.state = 75;
 	                this.eat();
 	            }
@@ -672,68 +668,68 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 83;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048180) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 81;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 79;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 80;
 	                    this.eat();
 	                    break;
@@ -755,14 +751,14 @@ export default class RFilter extends antlr4.Parser {
 
 	            }
 	            break;
-	        case RFilter.T__39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 90;
 	            this.match(RFilter.T__39);
 	            this.state = 92;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RFilter.NL) {
+	            if(_la===63) {
 	                this.state = 91;
 	                this.eat();
 	            }
@@ -772,68 +768,68 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 99;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048180) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 97;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 95;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 96;
 	                    this.eat();
 	                    break;
@@ -855,14 +851,14 @@ export default class RFilter extends antlr4.Parser {
 
 	            }
 	            break;
-	        case RFilter.T__41:
+	        case 42:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 106;
 	            this.match(RFilter.T__41);
 	            this.state = 108;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RFilter.NL) {
+	            if(_la===63) {
 	                this.state = 107;
 	                this.eat();
 	            }
@@ -872,68 +868,68 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 115;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048180) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 113;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 111;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 112;
 	                    this.eat();
 	                    break;
@@ -955,14 +951,14 @@ export default class RFilter extends antlr4.Parser {
 
 	            }
 	            break;
-	        case RFilter.T__37:
+	        case 38:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 122;
 	            this.match(RFilter.T__37);
 	            this.state = 124;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===RFilter.NL) {
+	            if(_la===63) {
 	                this.state = 123;
 	                this.eat();
 	            }
@@ -972,68 +968,68 @@ export default class RFilter extends antlr4.Parser {
 	            this.state = 131;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__1) | (1 << RFilter.T__3) | (1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (RFilter.T__32 - 33)) | (1 << (RFilter.T__33 - 33)) | (1 << (RFilter.T__35 - 33)) | (1 << (RFilter.T__37 - 33)) | (1 << (RFilter.T__38 - 33)) | (1 << (RFilter.T__39 - 33)) | (1 << (RFilter.T__40 - 33)) | (1 << (RFilter.T__41 - 33)) | (1 << (RFilter.T__42 - 33)) | (1 << (RFilter.T__43 - 33)) | (1 << (RFilter.T__44 - 33)) | (1 << (RFilter.T__45 - 33)) | (1 << (RFilter.T__46 - 33)) | (1 << (RFilter.T__47 - 33)) | (1 << (RFilter.T__48 - 33)) | (1 << (RFilter.T__49 - 33)) | (1 << (RFilter.T__50 - 33)) | (1 << (RFilter.T__51 - 33)) | (1 << (RFilter.T__52 - 33)) | (1 << (RFilter.T__53 - 33)) | (1 << (RFilter.HEX - 33)) | (1 << (RFilter.INT - 33)) | (1 << (RFilter.FLOAT - 33)) | (1 << (RFilter.COMPLEX - 33)) | (1 << (RFilter.STRING - 33)) | (1 << (RFilter.ID - 33)) | (1 << (RFilter.USER_OP - 33)) | (1 << (RFilter.NL - 33)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048180) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 2143289323) !== 0)) {
 	                this.state = 129;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case RFilter.T__1:
-	                case RFilter.T__3:
-	                case RFilter.T__4:
-	                case RFilter.T__5:
-	                case RFilter.T__6:
-	                case RFilter.T__7:
-	                case RFilter.T__8:
-	                case RFilter.T__9:
-	                case RFilter.T__10:
-	                case RFilter.T__11:
-	                case RFilter.T__12:
-	                case RFilter.T__13:
-	                case RFilter.T__14:
-	                case RFilter.T__15:
-	                case RFilter.T__16:
-	                case RFilter.T__17:
-	                case RFilter.T__18:
-	                case RFilter.T__19:
-	                case RFilter.T__20:
-	                case RFilter.T__21:
-	                case RFilter.T__22:
-	                case RFilter.T__23:
-	                case RFilter.T__24:
-	                case RFilter.T__25:
-	                case RFilter.T__26:
-	                case RFilter.T__28:
-	                case RFilter.T__29:
-	                case RFilter.T__32:
-	                case RFilter.T__33:
-	                case RFilter.T__35:
-	                case RFilter.T__37:
-	                case RFilter.T__38:
-	                case RFilter.T__39:
-	                case RFilter.T__40:
-	                case RFilter.T__41:
-	                case RFilter.T__42:
-	                case RFilter.T__43:
-	                case RFilter.T__44:
-	                case RFilter.T__45:
-	                case RFilter.T__46:
-	                case RFilter.T__47:
-	                case RFilter.T__48:
-	                case RFilter.T__49:
-	                case RFilter.T__50:
-	                case RFilter.T__51:
-	                case RFilter.T__52:
-	                case RFilter.T__53:
-	                case RFilter.HEX:
-	                case RFilter.INT:
-	                case RFilter.FLOAT:
-	                case RFilter.COMPLEX:
-	                case RFilter.STRING:
-	                case RFilter.ID:
-	                case RFilter.USER_OP:
+	                case 2:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 29:
+	                case 30:
+	                case 33:
+	                case 34:
+	                case 36:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 52:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 61:
+	                case 62:
 	                    this.state = 127;
 	                    this.elem();
 	                    break;
-	                case RFilter.NL:
+	                case 63:
 	                    this.state = 128;
 	                    this.eat();
 	                    break;
@@ -1055,7 +1051,7 @@ export default class RFilter extends antlr4.Parser {
 
 	            }
 	            break;
-	        case RFilter.T__38:
+	        case 39:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 138;
 	            this.match(RFilter.T__38);
@@ -1105,12 +1101,12 @@ export default class RFilter extends antlr4.Parser {
 	atom() {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, RFilter.RULE_atom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 142;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (RFilter.T__44 - 45)) | (1 << (RFilter.T__45 - 45)) | (1 << (RFilter.T__46 - 45)) | (1 << (RFilter.T__47 - 45)) | (1 << (RFilter.T__48 - 45)) | (1 << (RFilter.T__49 - 45)) | (1 << (RFilter.T__50 - 45)) | (1 << (RFilter.T__51 - 45)) | (1 << (RFilter.HEX - 45)) | (1 << (RFilter.INT - 45)) | (1 << (RFilter.FLOAT - 45)) | (1 << (RFilter.COMPLEX - 45)) | (1 << (RFilter.STRING - 45)) | (1 << (RFilter.ID - 45)))) !== 0))) {
+	        if(!(((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 129279) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1136,12 +1132,12 @@ export default class RFilter extends antlr4.Parser {
 	op() {
 	    let localctx = new OpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, RFilter.RULE_op);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 144;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << RFilter.T__4) | (1 << RFilter.T__5) | (1 << RFilter.T__6) | (1 << RFilter.T__7) | (1 << RFilter.T__8) | (1 << RFilter.T__9) | (1 << RFilter.T__10) | (1 << RFilter.T__11) | (1 << RFilter.T__12) | (1 << RFilter.T__13) | (1 << RFilter.T__14) | (1 << RFilter.T__15) | (1 << RFilter.T__16) | (1 << RFilter.T__17) | (1 << RFilter.T__18) | (1 << RFilter.T__19) | (1 << RFilter.T__20) | (1 << RFilter.T__21) | (1 << RFilter.T__22) | (1 << RFilter.T__23) | (1 << RFilter.T__24) | (1 << RFilter.T__25) | (1 << RFilter.T__26) | (1 << RFilter.T__28) | (1 << RFilter.T__29))) !== 0) || ((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (RFilter.T__40 - 41)) | (1 << (RFilter.T__42 - 41)) | (1 << (RFilter.T__43 - 41)) | (1 << (RFilter.T__52 - 41)) | (1 << (RFilter.T__53 - 41)) | (1 << (RFilter.USER_OP - 41)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048160) !== 0) || ((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 2109453) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1307,7 +1303,7 @@ class EatContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = RFilter.RULE_eat;
-        this._NL = null; // Token
+        this._NL = null;
     }
 
 	NL = function(i) {

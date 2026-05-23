@@ -1,4 +1,4 @@
-// Generated from ./z/ZParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/z/ZParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ZParserListener from './ZParserListener.js';
@@ -504,10 +504,6 @@ export default class ZParser extends antlr4.Parser {
         this.symbolicNames = ZParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 6:
@@ -604,13 +600,13 @@ export default class ZParser extends antlr4.Parser {
 	specification() {
 	    let localctx = new SpecificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, ZParser.RULE_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 95;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.ZED) | (1 << ZParser.SCH) | (1 << ZParser.AX) | (1 << ZParser.TEXT))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 30) !== 0)) {
 	            this.state = 93;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
@@ -656,7 +652,7 @@ export default class ZParser extends antlr4.Parser {
 	section() {
 	    let localctx = new SectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, ZParser.RULE_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 124;
 	        this._errHandler.sync(this);
@@ -676,7 +672,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 105;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ZParser.NAME) {
+	            if(_la===68) {
 	                this.state = 104;
 	                this.formals();
 	            }
@@ -744,7 +740,7 @@ export default class ZParser extends antlr4.Parser {
 	paragraph() {
 	    let localctx = new ParagraphContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, ZParser.RULE_paragraph);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 220;
 	        this._errHandler.sync(this);
@@ -764,7 +760,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 131;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ZParser.NL) {
+	            if(_la===20) {
 	                this.state = 130;
 	                this.match(ZParser.NL);
 	            }
@@ -869,7 +865,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 172;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ZParser.NL) {
+	            if(_la===20) {
 	                this.state = 171;
 	                this.match(ZParser.NL);
 	            }
@@ -926,7 +922,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 198;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ZParser.AMPERSAND) {
+	            while(_la===42) {
 	                this.state = 194;
 	                this.match(ZParser.AMPERSAND);
 	                this.state = 195;
@@ -1002,7 +998,7 @@ export default class ZParser extends antlr4.Parser {
 	freetype() {
 	    let localctx = new FreetypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, ZParser.RULE_freetype);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 222;
@@ -1014,7 +1010,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 229;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ZParser.VERTICAL_LINE) {
+	        while(_la===41) {
 	            this.state = 225;
 	            this.match(ZParser.VERTICAL_LINE);
 	            this.state = 226;
@@ -1042,7 +1038,7 @@ export default class ZParser extends antlr4.Parser {
 	branch() {
 	    let localctx = new BranchContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, ZParser.RULE_branch);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 232;
@@ -1050,7 +1046,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 237;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ZParser.LEFT_DOUBLE_ANGLE_BRACKET) {
+	        if(_la===15) {
 	            this.state = 233;
 	            this.match(ZParser.LEFT_DOUBLE_ANGLE_BRACKET);
 	            this.state = 234;
@@ -1078,7 +1074,7 @@ export default class ZParser extends antlr4.Parser {
 	formals() {
 	    let localctx = new FormalsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, ZParser.RULE_formals);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 239;
@@ -1086,7 +1082,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 244;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ZParser.COMMA) {
+	        while(_la===39) {
 	            this.state = 240;
 	            this.match(ZParser.COMMA);
 	            this.state = 241;
@@ -1348,7 +1344,7 @@ export default class ZParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 14;
 	    this.enterRecursionRule(localctx, 14, ZParser.RULE_expression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 445;
@@ -1437,7 +1433,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 330;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ZParser.SEMICOLON) {
+	            while(_la===46) {
 	                this.state = 326;
 	                this.match(ZParser.SEMICOLON);
 	                this.state = 327;
@@ -1539,7 +1535,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 359;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 358;
 	                    this.expressionList();
 	                }
@@ -1582,7 +1578,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 373;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 372;
 	                    this.expressionList();
 	                }
@@ -1636,7 +1632,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 390;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                this.state = 389;
 	                this.expressionList();
 	            }
@@ -1662,7 +1658,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 397;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                this.state = 396;
 	                this.expressionList();
 	            }
@@ -1720,13 +1716,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 423;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ZParser.ARGUMENT || _la===ZParser.NAME || ((((_la - 133)) & ~0x1f) == 0 && ((1 << (_la - 133)) & ((1 << (ZParser.PREP - 133)) | (1 << (ZParser.PRE - 133)) | (1 << (ZParser.LP - 133)) | (1 << (ZParser.L - 133)))) !== 0)) {
+	            if(_la===47 || _la===68 || ((((_la - 133)) & ~0x1f) === 0 && ((1 << (_la - 133)) & 195) !== 0)) {
 	                this.state = 415;
 	                this.declNameExpression();
 	                this.state = 420;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===ZParser.COMMA) {
+	                while(_la===39) {
 	                    this.state = 416;
 	                    this.match(ZParser.COMMA);
 	                    this.state = 417;
@@ -1760,7 +1756,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 432; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===ZParser.COMMA);
+	            } while(_la===39);
 	            this.state = 434;
 	            this.match(ZParser.RIGHT_PARENTHESIS);
 	            break;
@@ -1959,7 +1955,7 @@ export default class ZParser extends antlr4.Parser {
 	                        this.state = 484;
 	                        this._errHandler.sync(this);
 	                        _la = this._input.LA(1);
-	                        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                            this.state = 483;
 	                            this.expressionList();
 	                        }
@@ -2000,7 +1996,7 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 500;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===ZParser.COMMA) {
+	                    while(_la===39) {
 	                        this.state = 496;
 	                        this.match(ZParser.COMMA);
 	                        this.state = 497;
@@ -2083,7 +2079,7 @@ export default class ZParser extends antlr4.Parser {
 	                        this.state = 523;
 	                        this._errHandler.sync(this);
 	                        _la = this._input.LA(1);
-	                        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                            this.state = 522;
 	                            this.expressionList();
 	                        }
@@ -2124,7 +2120,7 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 542;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    while(_la===ZParser.COMMA) {
+	                    while(_la===39) {
 	                        this.state = 535;
 	                        this.match(ZParser.COMMA);
 	                        this.state = 536;
@@ -2193,7 +2189,7 @@ export default class ZParser extends antlr4.Parser {
 	schemaText() {
 	    let localctx = new SchemaTextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, ZParser.RULE_schemaText);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 559;
@@ -2207,7 +2203,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 562;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 47)) & ~0x1f) == 0 && ((1 << (_la - 47)) & ((1 << (ZParser.ARGUMENT - 47)) | (1 << (ZParser.FOR_ALL - 47)) | (1 << (ZParser.THERE_EXISTS - 47)) | (1 << (ZParser.UNIQUE_EXISTS - 47)) | (1 << (ZParser.NOT_SIGN - 47)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 47)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 47)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 47)) | (1 << (ZParser.NAME - 47)))) !== 0) || ((((_la - 133)) & ~0x1f) == 0 && ((1 << (_la - 133)) & ((1 << (ZParser.PREP - 133)) | (1 << (ZParser.PRE - 133)) | (1 << (ZParser.LP - 133)) | (1 << (ZParser.L - 133)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 47)) & ~0x1f) === 0 && ((1 << (_la - 47)) & 2560209) !== 0) || ((((_la - 133)) & ~0x1f) === 0 && ((1 << (_la - 133)) & 195) !== 0)) {
 	            this.state = 561;
 	            this.declPart();
 	        }
@@ -2223,13 +2219,13 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 575;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ZParser.VERTICAL_LINE) {
+	        if(_la===41) {
 	            this.state = 567;
 	            this.match(ZParser.VERTICAL_LINE);
 	            this.state = 569;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ZParser.NL) {
+	            if(_la===20) {
 	                this.state = 568;
 	                this.match(ZParser.NL);
 	            }
@@ -2249,7 +2245,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 578;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ZParser.NL) {
+	        if(_la===20) {
 	            this.state = 577;
 	            this.match(ZParser.NL);
 	        }
@@ -2273,7 +2269,7 @@ export default class ZParser extends antlr4.Parser {
 	declPart() {
 	    let localctx = new DeclPartContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, ZParser.RULE_declPart);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 580;
@@ -2285,7 +2281,7 @@ export default class ZParser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 581;
 	                _la = this._input.LA(1);
-	                if(!(_la===ZParser.NL || _la===ZParser.SEMICOLON)) {
+	                if(!(_la===20 || _la===46)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2354,7 +2350,7 @@ export default class ZParser extends antlr4.Parser {
 	declaration() {
 	    let localctx = new DeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, ZParser.RULE_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 607;
 	        this._errHandler.sync(this);
@@ -2367,7 +2363,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 599;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ZParser.COMMA) {
+	            while(_la===39) {
 	                this.state = 595;
 	                this.match(ZParser.COMMA);
 	                this.state = 596;
@@ -2418,21 +2414,21 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 615;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.RELATION:
+	        case 32:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 609;
 	            this.match(ZParser.RELATION);
 	            this.state = 610;
 	            this.template_();
 	            break;
-	        case ZParser.FUNCTION:
+	        case 24:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 611;
 	            this.match(ZParser.FUNCTION);
 	            this.state = 612;
 	            this.categoryTemplate();
 	            break;
-	        case ZParser.GENERIC:
+	        case 25:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 613;
 	            this.match(ZParser.GENERIC);
@@ -2537,12 +2533,12 @@ export default class ZParser extends antlr4.Parser {
 	assoc() {
 	    let localctx = new AssocContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, ZParser.RULE_assoc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 628;
 	        _la = this._input.LA(1);
-	        if(!(_la===ZParser.LEFTASSOC || _la===ZParser.RIGHTASSOC)) {
+	        if(!(_la===27 || _la===33)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2624,14 +2620,14 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 640;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.PREP:
-	        case ZParser.PRE:
-	        case ZParser.LP:
-	        case ZParser.L:
+	        case 133:
+	        case 134:
+	        case 139:
+	        case 140:
 	            this.state = 637;
 	            this.prefixName();
 	            break;
-	        case ZParser.POWERSET:
+	        case 29:
 	            this.state = 638;
 	            this.match(ZParser.POWERSET);
 	            this.state = 639;
@@ -2746,16 +2742,16 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 658;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.NAME:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 656;
 	            this.match(ZParser.NAME);
 	            break;
-	        case ZParser.ARGUMENT:
-	        case ZParser.PREP:
-	        case ZParser.PRE:
-	        case ZParser.LP:
-	        case ZParser.L:
+	        case 47:
+	        case 133:
+	        case 134:
+	        case 139:
+	        case 140:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 657;
 	            this.opName();
@@ -2786,12 +2782,12 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 665;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.NAME:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 660;
 	            this.match(ZParser.NAME);
 	            break;
-	        case ZParser.LEFT_PARENTHESIS:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 661;
 	            this.match(ZParser.LEFT_PARENTHESIS);
@@ -2875,21 +2871,21 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 711;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.PRE:
+	        case 134:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 673;
 	            this.match(ZParser.PRE);
 	            this.state = 674;
 	            this.match(ZParser.ARGUMENT);
 	            break;
-	        case ZParser.PREP:
+	        case 133:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 675;
 	            this.match(ZParser.PREP);
 	            this.state = 676;
 	            this.match(ZParser.ARGUMENT);
 	            break;
-	        case ZParser.L:
+	        case 140:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 677;
 	            this.match(ZParser.L);
@@ -2901,13 +2897,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 682;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 678;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 679;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 680;
 	                        this.match(ZParser.LIST);
 	                        this.state = 681;
@@ -2925,13 +2921,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 691;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 687;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 688;
 	                this.match(ZParser.ERE);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 689;
 	                this.match(ZParser.LIST);
 	                this.state = 690;
@@ -2943,7 +2939,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 693;
 	            this.match(ZParser.ARGUMENT);
 	            break;
-	        case ZParser.LP:
+	        case 139:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 694;
 	            this.match(ZParser.LP);
@@ -2955,13 +2951,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 699;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 695;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 696;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 697;
 	                        this.match(ZParser.LIST);
 	                        this.state = 698;
@@ -2979,13 +2975,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 708;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 704;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 705;
 	                this.match(ZParser.EREP);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 706;
 	                this.match(ZParser.LIST);
 	                this.state = 707;
@@ -3054,13 +3050,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 723;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 719;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 720;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 721;
 	                        this.match(ZParser.LIST);
 	                        this.state = 722;
@@ -3078,13 +3074,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 732;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 728;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 729;
 	                this.match(ZParser.ER);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 730;
 	                this.match(ZParser.LIST);
 	                this.state = 731;
@@ -3109,13 +3105,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 740;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 736;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 737;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 738;
 	                        this.match(ZParser.LIST);
 	                        this.state = 739;
@@ -3133,13 +3129,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 749;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 745;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 746;
 	                this.match(ZParser.ERP);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 747;
 	                this.match(ZParser.LIST);
 	                this.state = 748;
@@ -3209,13 +3205,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 765;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 761;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 762;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 763;
 	                        this.match(ZParser.LIST);
 	                        this.state = 764;
@@ -3233,13 +3229,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 774;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 770;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 771;
 	                this.match(ZParser.ERE);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 772;
 	                this.match(ZParser.LIST);
 	                this.state = 773;
@@ -3266,13 +3262,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 783;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 779;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 780;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 781;
 	                        this.match(ZParser.LIST);
 	                        this.state = 782;
@@ -3290,13 +3286,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 792;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 788;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 789;
 	                this.match(ZParser.EREP);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 790;
 	                this.match(ZParser.LIST);
 	                this.state = 791;
@@ -3333,7 +3329,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 829;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.L:
+	        case 140:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 797;
 	            this.match(ZParser.L);
@@ -3345,13 +3341,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 802;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 798;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 799;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 800;
 	                        this.match(ZParser.LIST);
 	                        this.state = 801;
@@ -3369,13 +3365,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 811;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 807;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 808;
 	                this.match(ZParser.ER);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 809;
 	                this.match(ZParser.LIST);
 	                this.state = 810;
@@ -3385,7 +3381,7 @@ export default class ZParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case ZParser.LP:
+	        case 139:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 813;
 	            this.match(ZParser.LP);
@@ -3397,13 +3393,13 @@ export default class ZParser extends antlr4.Parser {
 	                    this.state = 818;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 814;
 	                        this.match(ZParser.ARGUMENT);
 	                        this.state = 815;
 	                        this.match(ZParser.ES);
 	                        break;
-	                    case ZParser.LIST:
+	                    case 48:
 	                        this.state = 816;
 	                        this.match(ZParser.LIST);
 	                        this.state = 817;
@@ -3421,13 +3417,13 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 827;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZParser.ARGUMENT:
+	            case 47:
 	                this.state = 823;
 	                this.match(ZParser.ARGUMENT);
 	                this.state = 824;
 	                this.match(ZParser.ERP);
 	                break;
-	            case ZParser.LIST:
+	            case 48:
 	                this.state = 825;
 	                this.match(ZParser.LIST);
 	                this.state = 826;
@@ -3508,19 +3504,19 @@ export default class ZParser extends antlr4.Parser {
 	prefixGenName() {
 	    let localctx = new PrefixGenNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, ZParser.RULE_prefixGenName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 850;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.PRE:
+	        case 134:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 837;
 	            this.match(ZParser.PRE);
 	            this.state = 838;
 	            this.match(ZParser.NAME);
 	            break;
-	        case ZParser.L:
+	        case 140:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 839;
 	            this.match(ZParser.L);
@@ -3533,7 +3529,7 @@ export default class ZParser extends antlr4.Parser {
 	                    this.match(ZParser.NAME);
 	                    this.state = 841;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===ZParser.ES || _la===ZParser.SS)) {
+	                    if(!(_la===151 || _la===152)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3550,7 +3546,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.match(ZParser.NAME);
 	            this.state = 848;
 	            _la = this._input.LA(1);
-	            if(!(_la===ZParser.ERE || _la===ZParser.SRE)) {
+	            if(!(_la===148 || _la===150)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3582,7 +3578,7 @@ export default class ZParser extends antlr4.Parser {
 	postfixGenName() {
 	    let localctx = new PostfixGenNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, ZParser.RULE_postfixGenName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 865;
 	        this._errHandler.sync(this);
@@ -3611,7 +3607,7 @@ export default class ZParser extends antlr4.Parser {
 	                    this.match(ZParser.NAME);
 	                    this.state = 857;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===ZParser.ES || _la===ZParser.SS)) {
+	                    if(!(_la===151 || _la===152)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3628,7 +3624,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.match(ZParser.NAME);
 	            this.state = 864;
 	            _la = this._input.LA(1);
-	            if(!(_la===ZParser.ER || _la===ZParser.SR)) {
+	            if(!(_la===144 || _la===146)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3657,7 +3653,7 @@ export default class ZParser extends antlr4.Parser {
 	infixGenName() {
 	    let localctx = new InfixGenNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, ZParser.RULE_infixGenName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 882;
 	        this._errHandler.sync(this);
@@ -3688,7 +3684,7 @@ export default class ZParser extends antlr4.Parser {
 	                    this.match(ZParser.NAME);
 	                    this.state = 873;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===ZParser.ES || _la===ZParser.SS)) {
+	                    if(!(_la===151 || _la===152)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3705,7 +3701,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.match(ZParser.NAME);
 	            this.state = 880;
 	            _la = this._input.LA(1);
-	            if(!(_la===ZParser.ERE || _la===ZParser.SRE)) {
+	            if(!(_la===148 || _la===150)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3736,7 +3732,7 @@ export default class ZParser extends antlr4.Parser {
 	nofixGenName() {
 	    let localctx = new NofixGenNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, ZParser.RULE_nofixGenName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 884;
@@ -3750,7 +3746,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.match(ZParser.NAME);
 	                this.state = 886;
 	                _la = this._input.LA(1);
-	                if(!(_la===ZParser.ES || _la===ZParser.SS)) {
+	                if(!(_la===151 || _la===152)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -3767,7 +3763,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.match(ZParser.NAME);
 	        this.state = 893;
 	        _la = this._input.LA(1);
-	        if(!(_la===ZParser.ER || _la===ZParser.SR)) {
+	        if(!(_la===144 || _la===146)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3842,19 +3838,19 @@ export default class ZParser extends antlr4.Parser {
 	prefixRel() {
 	    let localctx = new PrefixRelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, ZParser.RULE_prefixRel);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 917;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.PREP:
+	        case 133:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 901;
 	            this.match(ZParser.PREP);
 	            this.state = 902;
 	            this.expression(0);
 	            break;
-	        case ZParser.LP:
+	        case 139:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 903;
 	            this.match(ZParser.LP);
@@ -3881,7 +3877,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 911;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 910;
 	                    this.expressionList();
 	                }
@@ -3916,7 +3912,7 @@ export default class ZParser extends antlr4.Parser {
 	postfixRel() {
 	    let localctx = new PostfixRelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, ZParser.RULE_postfixRel);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 936;
 	        this._errHandler.sync(this);
@@ -3959,7 +3955,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 931;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 930;
 	                    this.expressionList();
 	                }
@@ -3991,7 +3987,7 @@ export default class ZParser extends antlr4.Parser {
 	infixRel() {
 	    let localctx = new InfixRelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, ZParser.RULE_infixRel);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 986;
 	        this._errHandler.sync(this);
@@ -4013,7 +4009,7 @@ export default class ZParser extends antlr4.Parser {
 	            	case 1:
 	            		this.state = 940;
 	            		_la = this._input.LA(1);
-	            		if(!(_la===ZParser.EQUALS_SIGN || _la===ZParser.ELEMENT_OF || _la===ZParser.IP)) {
+	            		if(!(_la===49 || _la===60 || _la===137)) {
 	            		this._errHandler.recoverInline(this);
 	            		}
 	            		else {
@@ -4044,7 +4040,7 @@ export default class ZParser extends antlr4.Parser {
 	            	case 1:
 	            		this.state = 947;
 	            		_la = this._input.LA(1);
-	            		if(!(_la===ZParser.EQUALS_SIGN || _la===ZParser.ELEMENT_OF || _la===ZParser.IP)) {
+	            		if(!(_la===49 || _la===60 || _la===137)) {
 	            		this._errHandler.recoverInline(this);
 	            		}
 	            		else {
@@ -4096,7 +4092,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 963;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 962;
 	                    this.expressionList();
 	                }
@@ -4139,7 +4135,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 979;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 978;
 	                    this.expressionList();
 	                }
@@ -4173,7 +4169,7 @@ export default class ZParser extends antlr4.Parser {
 	nofixRel() {
 	    let localctx = new NofixRelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, ZParser.RULE_nofixRel);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 988;
@@ -4201,7 +4197,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 996;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                this.state = 995;
 	                this.expressionList();
 	            }
@@ -4279,19 +4275,19 @@ export default class ZParser extends antlr4.Parser {
 	prefixApp() {
 	    let localctx = new PrefixAppContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, ZParser.RULE_prefixApp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1023;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZParser.PRE:
+	        case 134:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1007;
 	            this.match(ZParser.PRE);
 	            this.state = 1008;
 	            this.expression(0);
 	            break;
-	        case ZParser.L:
+	        case 140:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1009;
 	            this.match(ZParser.L);
@@ -4318,7 +4314,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 1017;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 1016;
 	                    this.expressionList();
 	                }
@@ -4353,7 +4349,7 @@ export default class ZParser extends antlr4.Parser {
 	postfixApp() {
 	    let localctx = new PostfixAppContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, ZParser.RULE_postfixApp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1042;
 	        this._errHandler.sync(this);
@@ -4396,7 +4392,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 1037;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 1036;
 	                    this.expressionList();
 	                }
@@ -4428,7 +4424,7 @@ export default class ZParser extends antlr4.Parser {
 	infixApp() {
 	    let localctx = new InfixAppContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, ZParser.RULE_infixApp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1064;
 	        this._errHandler.sync(this);
@@ -4473,7 +4469,7 @@ export default class ZParser extends antlr4.Parser {
 	                this.state = 1057;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                    this.state = 1056;
 	                    this.expressionList();
 	                }
@@ -4507,7 +4503,7 @@ export default class ZParser extends antlr4.Parser {
 	nofixApp() {
 	    let localctx = new NofixAppContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, ZParser.RULE_nofixApp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1066;
@@ -4535,7 +4531,7 @@ export default class ZParser extends antlr4.Parser {
 	            this.state = 1074;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	                this.state = 1073;
 	                this.expressionList();
 	            }
@@ -4564,7 +4560,7 @@ export default class ZParser extends antlr4.Parser {
 	expSep() {
 	    let localctx = new ExpSepContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, ZParser.RULE_expSep);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1086; 
@@ -4588,7 +4584,7 @@ export default class ZParser extends antlr4.Parser {
 	        		    this.state = 1083;
 	        		    this._errHandler.sync(this);
 	        		    _la = this._input.LA(1);
-	        		    if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZParser.NUMERAL) | (1 << ZParser.LEFT_PARENTHESIS) | (1 << ZParser.LEFT_SQUARE_BRACKET) | (1 << ZParser.LEFT_CURLY_BRACKET) | (1 << ZParser.LEFT_BINDING_BRACKET) | (1 << ZParser.IF) | (1 << ZParser.LET) | (1 << ZParser.POWERSET) | (1 << ZParser.PRE_KEY))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ZParser.FOR_ALL - 51)) | (1 << (ZParser.THERE_EXISTS - 51)) | (1 << (ZParser.UNIQUE_EXISTS - 51)) | (1 << (ZParser.NOT_SIGN - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_THETA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_LAMBDA - 51)) | (1 << (ZParser.GREEK_SMALL_LETTER_MU - 51)) | (1 << (ZParser.NAME - 51)))) !== 0) || _la===ZParser.PRE || _la===ZParser.L) {
+	        		    if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3019909792) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 160013) !== 0) || _la===134 || _la===140) {
 	        		        this.state = 1082;
 	        		        this.expressionList();
 	        		    }
@@ -4625,7 +4621,7 @@ export default class ZParser extends antlr4.Parser {
 	expressionList() {
 	    let localctx = new ExpressionListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, ZParser.RULE_expressionList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1090;
@@ -4633,7 +4629,7 @@ export default class ZParser extends antlr4.Parser {
 	        this.state = 1095;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ZParser.COMMA) {
+	        while(_la===39) {
 	            this.state = 1091;
 	            this.match(ZParser.COMMA);
 	            this.state = 1092;
@@ -10623,3 +10619,12 @@ ZParser.InfixAppContext = InfixAppContext;
 ZParser.NofixAppContext = NofixAppContext; 
 ZParser.ExpSepContext = ExpSepContext; 
 ZParser.ExpressionListContext = ExpressionListContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

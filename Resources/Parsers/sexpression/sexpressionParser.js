@@ -1,4 +1,4 @@
-// Generated from ./sexpression/sexpression.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/sexpression/sexpression.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import sexpressionListener from './sexpressionListener.js';
@@ -38,22 +38,18 @@ export default class sexpressionParser extends antlr4.Parser {
         this.symbolicNames = sexpressionParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	sexpr() {
 	    let localctx = new SexprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, sexpressionParser.RULE_sexpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 11;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << sexpressionParser.STRING) | (1 << sexpressionParser.NUMBER) | (1 << sexpressionParser.SYMBOL) | (1 << sexpressionParser.LPAREN) | (1 << sexpressionParser.DOT))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 186) !== 0)) {
 	            this.state = 8;
 	            this.item();
 	            this.state = 13;
@@ -132,7 +128,7 @@ export default class sexpressionParser extends antlr4.Parser {
 	list_() {
 	    let localctx = new List_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, sexpressionParser.RULE_list_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 26;
@@ -140,7 +136,7 @@ export default class sexpressionParser extends antlr4.Parser {
 	        this.state = 30;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << sexpressionParser.STRING) | (1 << sexpressionParser.NUMBER) | (1 << sexpressionParser.SYMBOL) | (1 << sexpressionParser.LPAREN) | (1 << sexpressionParser.DOT))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 186) !== 0)) {
 	            this.state = 27;
 	            this.item();
 	            this.state = 32;
@@ -168,12 +164,12 @@ export default class sexpressionParser extends antlr4.Parser {
 	atom() {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, sexpressionParser.RULE_atom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 35;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << sexpressionParser.STRING) | (1 << sexpressionParser.NUMBER) | (1 << sexpressionParser.SYMBOL) | (1 << sexpressionParser.DOT))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 154) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -421,3 +417,12 @@ sexpressionParser.SexprContext = SexprContext;
 sexpressionParser.ItemContext = ItemContext; 
 sexpressionParser.List_Context = List_Context; 
 sexpressionParser.AtomContext = AtomContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

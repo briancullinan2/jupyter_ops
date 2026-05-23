@@ -1,4 +1,4 @@
-// Generated from ./stringtemplate/STParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/stringtemplate/STParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import STParserListener from './STParserListener.js';
@@ -149,10 +149,6 @@ export default class STParser extends antlr4.Parser {
         this.symbolicNames = STParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	template_() {
@@ -258,12 +254,12 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 69;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case STParser.LDELIM:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 63;
 	            this.exprTag();
 	            break;
-	        case STParser.TEXT:
+	        case 10:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 65; 
 	            this._errHandler.sync(this);
@@ -341,7 +337,7 @@ export default class STParser extends antlr4.Parser {
 	exprTag() {
 	    let localctx = new ExprTagContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, STParser.RULE_exprTag);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 75;
@@ -351,7 +347,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 79;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STParser.SEMI) {
+	        if(_la===27) {
 	            this.state = 77;
 	            this.match(STParser.SEMI);
 	            this.state = 78;
@@ -416,7 +412,7 @@ export default class STParser extends antlr4.Parser {
 	subtemplate() {
 	    let localctx = new SubtemplateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, STParser.RULE_subtemplate);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 92;
@@ -424,13 +420,13 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 102;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STParser.ID) {
+	        if(_la===37) {
 	            this.state = 93;
 	            this.match(STParser.ID);
 	            this.state = 98;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===STParser.COMMA) {
+	            while(_la===25) {
 	                this.state = 94;
 	                this.match(STParser.COMMA);
 	                this.state = 95;
@@ -546,7 +542,7 @@ export default class STParser extends antlr4.Parser {
 	conditional() {
 	    let localctx = new ConditionalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, STParser.RULE_conditional);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 137;
@@ -554,7 +550,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 142;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STParser.OR) {
+	        while(_la===29) {
 	            this.state = 138;
 	            this.match(STParser.OR);
 	            this.state = 139;
@@ -582,7 +578,7 @@ export default class STParser extends antlr4.Parser {
 	andConditional() {
 	    let localctx = new AndConditionalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, STParser.RULE_andConditional);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 145;
@@ -590,7 +586,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 150;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STParser.AND) {
+	        while(_la===28) {
 	            this.state = 146;
 	            this.match(STParser.AND);
 	            this.state = 147;
@@ -622,22 +618,22 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 156;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case STParser.BANG:
+	        case 35:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 153;
 	            this.match(STParser.BANG);
 	            this.state = 154;
 	            this.notConditional();
 	            break;
-	        case STParser.LBRACE:
-	        case STParser.STRING:
-	        case STParser.SUPER:
-	        case STParser.TRUE:
-	        case STParser.FALSE:
-	        case STParser.AT:
-	        case STParser.LPAREN:
-	        case STParser.LBRACK:
-	        case STParser.ID:
+	        case 11:
+	        case 13:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 30:
+	        case 32:
+	        case 37:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 155;
 	            this.memberExpr();
@@ -664,7 +660,7 @@ export default class STParser extends antlr4.Parser {
 	notConditionalExpr() {
 	    let localctx = new NotConditionalExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, STParser.RULE_notConditionalExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 158;
@@ -672,7 +668,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 168;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STParser.DOT) {
+	        while(_la===24) {
 	            this.state = 166;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,13,this._ctx);
@@ -719,7 +715,7 @@ export default class STParser extends antlr4.Parser {
 	exprOptions() {
 	    let localctx = new ExprOptionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, STParser.RULE_exprOptions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 171;
@@ -727,7 +723,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 176;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STParser.COMMA) {
+	        while(_la===25) {
 	            this.state = 172;
 	            this.match(STParser.COMMA);
 	            this.state = 173;
@@ -755,7 +751,7 @@ export default class STParser extends antlr4.Parser {
 	option() {
 	    let localctx = new OptionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, STParser.RULE_option);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 179;
@@ -763,7 +759,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 182;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STParser.EQUALS) {
+	        if(_la===34) {
 	            this.state = 180;
 	            this.match(STParser.EQUALS);
 	            this.state = 181;
@@ -789,7 +785,7 @@ export default class STParser extends antlr4.Parser {
 	expr() {
 	    let localctx = new ExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, STParser.RULE_expr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 184;
@@ -797,7 +793,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 187;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STParser.COLON) {
+	        if(_la===26) {
 	            this.state = 185;
 	            this.match(STParser.COLON);
 	            this.state = 186;
@@ -823,7 +819,7 @@ export default class STParser extends antlr4.Parser {
 	mapExpr() {
 	    let localctx = new MapExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, STParser.RULE_mapExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 189;
@@ -831,7 +827,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 199;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STParser.COMMA) {
+	        if(_la===25) {
 	            this.state = 192; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -843,7 +839,7 @@ export default class STParser extends antlr4.Parser {
 	                this.state = 194; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===STParser.COMMA);
+	            } while(_la===25);
 	            this.state = 196;
 	            this.match(STParser.COLON);
 	            this.state = 197;
@@ -853,7 +849,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 212;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STParser.COLON) {
+	        while(_la===26) {
 	            this.state = 201;
 	            this.match(STParser.COLON);
 	            this.state = 202;
@@ -861,7 +857,7 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 207;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===STParser.COMMA) {
+	            while(_la===25) {
 	                this.state = 203;
 	                this.match(STParser.COMMA);
 	                this.state = 204;
@@ -893,7 +889,7 @@ export default class STParser extends antlr4.Parser {
 	memberExpr() {
 	    let localctx = new MemberExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, STParser.RULE_memberExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 215;
@@ -901,7 +897,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 225;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STParser.DOT) {
+	        while(_la===24) {
 	            this.state = 223;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,22,this._ctx);
@@ -948,12 +944,12 @@ export default class STParser extends antlr4.Parser {
 	mapTemplateRef() {
 	    let localctx = new MapTemplateRefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, STParser.RULE_mapTemplateRef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 244;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case STParser.ID:
+	        case 37:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 228;
 	            this.match(STParser.ID);
@@ -962,7 +958,7 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 231;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (STParser.LBRACE - 11)) | (1 << (STParser.STRING - 11)) | (1 << (STParser.SUPER - 11)) | (1 << (STParser.TRUE - 11)) | (1 << (STParser.FALSE - 11)) | (1 << (STParser.AT - 11)) | (1 << (STParser.ELLIPSIS - 11)) | (1 << (STParser.LPAREN - 11)) | (1 << (STParser.LBRACK - 11)) | (1 << (STParser.ID - 11)))) !== 0)) {
+	            if(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 69738117) !== 0)) {
 	                this.state = 230;
 	                this.args();
 	            }
@@ -970,12 +966,12 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 233;
 	            this.match(STParser.RPAREN);
 	            break;
-	        case STParser.LBRACE:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 234;
 	            this.subtemplate();
 	            break;
-	        case STParser.LPAREN:
+	        case 30:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 235;
 	            this.match(STParser.LPAREN);
@@ -988,7 +984,7 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 240;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (STParser.LBRACE - 11)) | (1 << (STParser.STRING - 11)) | (1 << (STParser.SUPER - 11)) | (1 << (STParser.TRUE - 11)) | (1 << (STParser.FALSE - 11)) | (1 << (STParser.AT - 11)) | (1 << (STParser.LPAREN - 11)) | (1 << (STParser.LBRACK - 11)) | (1 << (STParser.ID - 11)))) !== 0)) {
+	            if(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 69734021) !== 0)) {
 	                this.state = 239;
 	                this.argExprList();
 	            }
@@ -1018,7 +1014,7 @@ export default class STParser extends antlr4.Parser {
 	includeExpr() {
 	    let localctx = new IncludeExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, STParser.RULE_includeExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 277;
 	        this._errHandler.sync(this);
@@ -1033,7 +1029,7 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 249;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (STParser.LBRACE - 11)) | (1 << (STParser.STRING - 11)) | (1 << (STParser.SUPER - 11)) | (1 << (STParser.TRUE - 11)) | (1 << (STParser.FALSE - 11)) | (1 << (STParser.AT - 11)) | (1 << (STParser.LPAREN - 11)) | (1 << (STParser.LBRACK - 11)) | (1 << (STParser.ID - 11)))) !== 0)) {
+	            if(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 69734021) !== 0)) {
 	                this.state = 248;
 	                this.mapExpr();
 	            }
@@ -1055,7 +1051,7 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 257;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (STParser.LBRACE - 11)) | (1 << (STParser.STRING - 11)) | (1 << (STParser.SUPER - 11)) | (1 << (STParser.TRUE - 11)) | (1 << (STParser.FALSE - 11)) | (1 << (STParser.AT - 11)) | (1 << (STParser.ELLIPSIS - 11)) | (1 << (STParser.LPAREN - 11)) | (1 << (STParser.LBRACK - 11)) | (1 << (STParser.ID - 11)))) !== 0)) {
+	            if(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 69738117) !== 0)) {
 	                this.state = 256;
 	                this.args();
 	            }
@@ -1073,7 +1069,7 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 263;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (STParser.LBRACE - 11)) | (1 << (STParser.STRING - 11)) | (1 << (STParser.SUPER - 11)) | (1 << (STParser.TRUE - 11)) | (1 << (STParser.FALSE - 11)) | (1 << (STParser.AT - 11)) | (1 << (STParser.ELLIPSIS - 11)) | (1 << (STParser.LPAREN - 11)) | (1 << (STParser.LBRACK - 11)) | (1 << (STParser.ID - 11)))) !== 0)) {
+	            if(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 69738117) !== 0)) {
 	                this.state = 262;
 	                this.args();
 	            }
@@ -1136,7 +1132,7 @@ export default class STParser extends antlr4.Parser {
 	primary() {
 	    let localctx = new PrimaryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, STParser.RULE_primary);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 299;
 	        this._errHandler.sync(this);
@@ -1199,13 +1195,13 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 297;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===STParser.LPAREN) {
+	            if(_la===30) {
 	                this.state = 292;
 	                this.match(STParser.LPAREN);
 	                this.state = 294;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (STParser.LBRACE - 11)) | (1 << (STParser.STRING - 11)) | (1 << (STParser.SUPER - 11)) | (1 << (STParser.TRUE - 11)) | (1 << (STParser.FALSE - 11)) | (1 << (STParser.AT - 11)) | (1 << (STParser.LPAREN - 11)) | (1 << (STParser.LBRACK - 11)) | (1 << (STParser.ID - 11)))) !== 0)) {
+	                if(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 69734021) !== 0)) {
 	                    this.state = 293;
 	                    this.argExprList();
 	                }
@@ -1236,7 +1232,7 @@ export default class STParser extends antlr4.Parser {
 	list_() {
 	    let localctx = new List_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, STParser.RULE_list_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 301;
@@ -1244,7 +1240,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 303;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (STParser.LBRACE - 11)) | (1 << (STParser.STRING - 11)) | (1 << (STParser.SUPER - 11)) | (1 << (STParser.TRUE - 11)) | (1 << (STParser.FALSE - 11)) | (1 << (STParser.AT - 11)) | (1 << (STParser.LPAREN - 11)) | (1 << (STParser.LBRACK - 11)) | (1 << (STParser.ID - 11)))) !== 0)) {
+	        if(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 69734021) !== 0)) {
 	            this.state = 302;
 	            this.argExprList();
 	        }
@@ -1270,7 +1266,7 @@ export default class STParser extends antlr4.Parser {
 	args() {
 	    let localctx = new ArgsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, STParser.RULE_args);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 321;
 	        this._errHandler.sync(this);
@@ -1304,7 +1300,7 @@ export default class STParser extends antlr4.Parser {
 	            this.state = 318;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===STParser.COMMA) {
+	            if(_la===25) {
 	                this.state = 316;
 	                this.match(STParser.COMMA);
 	                this.state = 317;
@@ -1339,7 +1335,7 @@ export default class STParser extends antlr4.Parser {
 	argExprList() {
 	    let localctx = new ArgExprListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, STParser.RULE_argExprList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 323;
@@ -1347,7 +1343,7 @@ export default class STParser extends antlr4.Parser {
 	        this.state = 328;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STParser.COMMA) {
+	        while(_la===25) {
 	            this.state = 324;
 	            this.match(STParser.COMMA);
 	            this.state = 325;
@@ -3003,3 +2999,12 @@ STParser.List_Context = List_Context;
 STParser.ArgsContext = ArgsContext; 
 STParser.ArgExprListContext = ArgExprListContext; 
 STParser.NamedArgContext = NamedArgContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

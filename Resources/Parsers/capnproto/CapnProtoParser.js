@@ -1,4 +1,4 @@
-// Generated from ./capnproto/CapnProto.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/capnproto/CapnProto.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CapnProtoListener from './CapnProtoListener.js';
@@ -186,16 +186,12 @@ export default class CapnProtoParser extends antlr4.Parser {
         this.symbolicNames = CapnProtoParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	document() {
 	    let localctx = new DocumentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, CapnProtoParser.RULE_document);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 64;
@@ -203,7 +199,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 68;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__1) {
+	        while(_la===2) {
 	            this.state = 65;
 	            this.using_import();
 	            this.state = 70;
@@ -213,7 +209,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 72;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__5) {
+	        if(_la===6) {
 	            this.state = 71;
 	            this.namespace_();
 	        }
@@ -221,7 +217,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 77;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CapnProtoParser.T__9 - 10)) | (1 << (CapnProtoParser.T__12 - 10)) | (1 << (CapnProtoParser.T__16 - 10)) | (1 << (CapnProtoParser.T__24 - 10)) | (1 << (CapnProtoParser.T__25 - 10)) | (1 << (CapnProtoParser.NAME - 10)))) !== 0)) {
+	        while(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 134316169) !== 0)) {
 	            this.state = 74;
 	            this.document_content();
 	            this.state = 79;
@@ -274,7 +270,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	using_import() {
 	    let localctx = new Using_importContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, CapnProtoParser.RULE_using_import);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 85;
@@ -282,7 +278,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 88;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.NAME) {
+	        if(_la===37) {
 	            this.state = 86;
 	            this.match(CapnProtoParser.NAME);
 	            this.state = 87;
@@ -296,7 +292,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 94;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__4) {
+	        if(_la===5) {
 	            this.state = 92;
 	            this.match(CapnProtoParser.T__4);
 	            this.state = 93;
@@ -363,32 +359,32 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 112;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CapnProtoParser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 106;
 	            this.struct_def();
 	            break;
-	        case CapnProtoParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 107;
 	            this.interface_def();
 	            break;
-	        case CapnProtoParser.NAME:
+	        case 37:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 108;
 	            this.function_def();
 	            break;
-	        case CapnProtoParser.T__24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 109;
 	            this.annotation_def();
 	            break;
-	        case CapnProtoParser.T__25:
+	        case 26:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 110;
 	            this.const_def();
 	            break;
-	        case CapnProtoParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 111;
 	            this.enum_def();
@@ -415,7 +411,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	struct_def() {
 	    let localctx = new Struct_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, CapnProtoParser.RULE_struct_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 114;
@@ -425,7 +421,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 117;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__5) {
+	        if(_la===6) {
 	            this.state = 116;
 	            this.annotation_reference();
 	        }
@@ -435,7 +431,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 123;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CapnProtoParser.T__1) | (1 << CapnProtoParser.T__9) | (1 << CapnProtoParser.T__12) | (1 << CapnProtoParser.T__16) | (1 << CapnProtoParser.T__19) | (1 << CapnProtoParser.T__24) | (1 << CapnProtoParser.T__25))) !== 0) || _la===CapnProtoParser.NAME) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 101852164) !== 0) || _la===37) {
 	            this.state = 120;
 	            this.struct_content();
 	            this.state = 125;
@@ -548,7 +544,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	interface_def() {
 	    let localctx = new Interface_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, CapnProtoParser.RULE_interface_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 140;
@@ -558,7 +554,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 147;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__13) {
+	        if(_la===14) {
 	            this.state = 142;
 	            this.match(CapnProtoParser.T__13);
 	            this.state = 143;
@@ -574,7 +570,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 153;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CapnProtoParser.T__9 - 10)) | (1 << (CapnProtoParser.T__12 - 10)) | (1 << (CapnProtoParser.T__16 - 10)) | (1 << (CapnProtoParser.T__19 - 10)) | (1 << (CapnProtoParser.NAME - 10)))) !== 0)) {
+	        while(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 134218889) !== 0)) {
 	            this.state = 150;
 	            this.interface_content();
 	            this.state = 155;
@@ -669,7 +665,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	field_def() {
 	    let localctx = new Field_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, CapnProtoParser.RULE_field_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 167;
@@ -683,7 +679,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 173;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__2) {
+	        if(_la===3) {
 	            this.state = 171;
 	            this.match(CapnProtoParser.T__2);
 	            this.state = 172;
@@ -711,7 +707,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	type_() {
 	    let localctx = new Type_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, CapnProtoParser.RULE_type_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 177;
@@ -727,7 +723,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 183;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__4) {
+	        if(_la===5) {
 	            this.state = 181;
 	            this.match(CapnProtoParser.T__4);
 	            this.state = 182;
@@ -753,7 +749,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	inner_type() {
 	    let localctx = new Inner_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, CapnProtoParser.RULE_inner_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 185;
@@ -763,7 +759,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 188;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__7) {
+	        if(_la===8) {
 	            this.state = 187;
 	            this.inner_type();
 	        }
@@ -771,7 +767,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 197;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__15) {
+	        while(_la===16) {
 	            this.state = 190;
 	            this.match(CapnProtoParser.T__15);
 	            this.state = 191;
@@ -779,7 +775,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	            this.state = 193;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CapnProtoParser.T__7) {
+	            if(_la===8) {
 	                this.state = 192;
 	                this.inner_type();
 	            }
@@ -809,7 +805,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	enum_def() {
 	    let localctx = new Enum_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, CapnProtoParser.RULE_enum_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 202;
@@ -819,7 +815,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 205;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__5) {
+	        if(_la===6) {
 	            this.state = 204;
 	            this.annotation_reference();
 	        }
@@ -829,7 +825,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 211;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.NAME) {
+	        while(_la===37) {
 	            this.state = 208;
 	            this.enum_content();
 	            this.state = 213;
@@ -857,7 +853,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	annotation_reference() {
 	    let localctx = new Annotation_referenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, CapnProtoParser.RULE_annotation_reference);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 216;
@@ -867,7 +863,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 219;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__17) {
+	        if(_la===18) {
 	            this.state = 218;
 	            this.match(CapnProtoParser.T__17);
 	        }
@@ -897,7 +893,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	enum_content() {
 	    let localctx = new Enum_contentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, CapnProtoParser.RULE_enum_content);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 225;
@@ -907,7 +903,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 228;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__5) {
+	        if(_la===6) {
 	            this.state = 227;
 	            this.annotation_reference();
 	        }
@@ -933,7 +929,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	named_union_def() {
 	    let localctx = new Named_union_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, CapnProtoParser.RULE_named_union_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 232;
@@ -941,7 +937,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 234;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.LOCATOR) {
+	        if(_la===29) {
 	            this.state = 233;
 	            this.match(CapnProtoParser.LOCATOR);
 	        }
@@ -953,7 +949,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 241;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__19 || _la===CapnProtoParser.NAME) {
+	        while(_la===20 || _la===37) {
 	            this.state = 238;
 	            this.union_content();
 	            this.state = 243;
@@ -981,7 +977,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	unnamed_union_def() {
 	    let localctx = new Unnamed_union_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, CapnProtoParser.RULE_unnamed_union_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 246;
@@ -991,7 +987,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 251;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__19 || _la===CapnProtoParser.NAME) {
+	        while(_la===20 || _la===37) {
 	            this.state = 248;
 	            this.union_content();
 	            this.state = 253;
@@ -1068,7 +1064,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	group_def() {
 	    let localctx = new Group_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, CapnProtoParser.RULE_group_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 262;
@@ -1080,7 +1076,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 268;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__19 || _la===CapnProtoParser.NAME) {
+	        while(_la===20 || _la===37) {
 	            this.state = 265;
 	            this.group_content();
 	            this.state = 270;
@@ -1151,7 +1147,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	function_def() {
 	    let localctx = new Function_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, CapnProtoParser.RULE_function_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 278;
@@ -1159,7 +1155,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 280;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.LOCATOR) {
+	        if(_la===29) {
 	            this.state = 279;
 	            this.match(CapnProtoParser.LOCATOR);
 	        }
@@ -1167,7 +1163,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 283;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__22) {
+	        if(_la===23) {
 	            this.state = 282;
 	            this.generic_type_parameters();
 	        }
@@ -1175,11 +1171,11 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 287;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CapnProtoParser.T__7:
+	        case 8:
 	            this.state = 285;
 	            this.function_parameters();
 	            break;
-	        case CapnProtoParser.NAME:
+	        case 37:
 	            this.state = 286;
 	            this.type_();
 	            break;
@@ -1189,17 +1185,17 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 294;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__21) {
+	        if(_la===22) {
 	            this.state = 289;
 	            this.match(CapnProtoParser.T__21);
 	            this.state = 292;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CapnProtoParser.T__7:
+	            case 8:
 	                this.state = 290;
 	                this.function_parameters();
 	                break;
-	            case CapnProtoParser.NAME:
+	            case 37:
 	                this.state = 291;
 	                this.type_();
 	                break;
@@ -1229,7 +1225,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	generic_type_parameters() {
 	    let localctx = new Generic_type_parametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, CapnProtoParser.RULE_generic_type_parameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 298;
@@ -1239,7 +1235,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 304;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__15) {
+	        while(_la===16) {
 	            this.state = 300;
 	            this.match(CapnProtoParser.T__15);
 	            this.state = 301;
@@ -1269,7 +1265,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	function_parameters() {
 	    let localctx = new Function_parametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, CapnProtoParser.RULE_function_parameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 309;
@@ -1277,7 +1273,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 330;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.NAME) {
+	        if(_la===37) {
 	            this.state = 310;
 	            this.match(CapnProtoParser.NAME);
 	            this.state = 311;
@@ -1287,7 +1283,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	            this.state = 315;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CapnProtoParser.T__2) {
+	            if(_la===3) {
 	                this.state = 313;
 	                this.match(CapnProtoParser.T__2);
 	                this.state = 314;
@@ -1297,7 +1293,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	            this.state = 327;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===CapnProtoParser.T__15) {
+	            while(_la===16) {
 	                this.state = 317;
 	                this.match(CapnProtoParser.T__15);
 	                this.state = 318;
@@ -1309,7 +1305,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	                this.state = 323;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CapnProtoParser.T__2) {
+	                if(_la===3) {
 	                    this.state = 321;
 	                    this.match(CapnProtoParser.T__2);
 	                    this.state = 322;
@@ -1343,7 +1339,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	annotation_def() {
 	    let localctx = new Annotation_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, CapnProtoParser.RULE_annotation_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 334;
@@ -1353,7 +1349,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 337;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__7) {
+	        if(_la===8) {
 	            this.state = 336;
 	            this.annotation_parameters();
 	        }
@@ -1445,19 +1441,19 @@ export default class CapnProtoParser extends antlr4.Parser {
 	const_value() {
 	    let localctx = new Const_valueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, CapnProtoParser.RULE_const_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 375;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CapnProtoParser.T__4:
-	        case CapnProtoParser.T__26:
-	        case CapnProtoParser.NAME:
+	        case 5:
+	        case 27:
+	        case 37:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 356;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CapnProtoParser.T__26) {
+	            if(_la===27) {
 	                this.state = 355;
 	                this.match(CapnProtoParser.T__26);
 	            }
@@ -1465,7 +1461,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	            this.state = 359;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CapnProtoParser.T__4) {
+	            if(_la===5) {
 	                this.state = 358;
 	                this.match(CapnProtoParser.T__4);
 	            }
@@ -1475,7 +1471,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	            this.state = 364;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CapnProtoParser.T__4) {
+	            if(_la===5) {
 	                this.state = 362;
 	                this.match(CapnProtoParser.T__4);
 	                this.state = 363;
@@ -1483,47 +1479,47 @@ export default class CapnProtoParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case CapnProtoParser.INTEGER:
+	        case 31:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 366;
 	            this.match(CapnProtoParser.INTEGER);
 	            break;
-	        case CapnProtoParser.FLOAT:
+	        case 32:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 367;
 	            this.match(CapnProtoParser.FLOAT);
 	            break;
-	        case CapnProtoParser.TEXT:
+	        case 30:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 368;
 	            this.match(CapnProtoParser.TEXT);
 	            break;
-	        case CapnProtoParser.BOOLEAN:
+	        case 35:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 369;
 	            this.match(CapnProtoParser.BOOLEAN);
 	            break;
-	        case CapnProtoParser.HEXADECIMAL:
+	        case 33:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 370;
 	            this.match(CapnProtoParser.HEXADECIMAL);
 	            break;
-	        case CapnProtoParser.VOID:
+	        case 36:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 371;
 	            this.match(CapnProtoParser.VOID);
 	            break;
-	        case CapnProtoParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 372;
 	            this.literal_list();
 	            break;
-	        case CapnProtoParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 373;
 	            this.literal_union();
 	            break;
-	        case CapnProtoParser.T__27:
+	        case 28:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 374;
 	            this.literal_bytes();
@@ -1550,7 +1546,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	literal_union() {
 	    let localctx = new Literal_unionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, CapnProtoParser.RULE_literal_union);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 377;
@@ -1564,7 +1560,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 387;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__15) {
+	        while(_la===16) {
 	            this.state = 381;
 	            this.match(CapnProtoParser.T__15);
 	            this.state = 382;
@@ -1598,7 +1594,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	literal_list() {
 	    let localctx = new Literal_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, CapnProtoParser.RULE_literal_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 392;
@@ -1608,7 +1604,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 398;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__15) {
+	        while(_la===16) {
 	            this.state = 394;
 	            this.match(CapnProtoParser.T__15);
 	            this.state = 395;
@@ -1708,7 +1704,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	inner_using() {
 	    let localctx = new Inner_usingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, CapnProtoParser.RULE_inner_using);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 415;
@@ -1718,7 +1714,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 421;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CapnProtoParser.T__4) {
+	        while(_la===5) {
 	            this.state = 417;
 	            this.match(CapnProtoParser.T__4);
 	            this.state = 418;
@@ -1730,7 +1726,7 @@ export default class CapnProtoParser extends antlr4.Parser {
 	        this.state = 426;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CapnProtoParser.T__2) {
+	        if(_la===3) {
 	            this.state = 424;
 	            this.match(CapnProtoParser.T__2);
 	            this.state = 425;
@@ -3430,3 +3426,12 @@ CapnProtoParser.Literal_listContext = Literal_listContext;
 CapnProtoParser.Literal_bytesContext = Literal_bytesContext; 
 CapnProtoParser.Union_mappingContext = Union_mappingContext; 
 CapnProtoParser.Inner_usingContext = Inner_usingContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

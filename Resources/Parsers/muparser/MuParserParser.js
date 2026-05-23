@@ -1,34 +1,33 @@
-// Generated from ./muparser/MuParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/muparser/MuParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import MuParserListener from './MuParserListener.js';
-const serializedATN = [4,1,35,83,2,0,7,0,2,1,7,1,2,2,7,2,1,0,1,0,1,0,5,0,
-10,8,0,10,0,12,0,13,9,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,5,1,28,8,1,10,1,12,1,31,9,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,39,8,1,1,1,1,
+const serializedATN = [4,1,34,82,2,0,7,0,2,1,7,1,2,2,7,2,1,0,4,0,8,8,0,11,
+0,12,0,9,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,
+27,8,1,10,1,12,1,30,9,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,38,8,1,1,1,1,1,1,1,1,
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,68,8,1,10,1,12,1,71,9,1,1,2,1,2,1,2,1,
-2,1,2,1,2,1,2,1,2,3,2,81,8,2,1,2,0,1,2,3,0,2,4,0,8,1,0,5,9,1,0,20,21,1,0,
-18,19,2,0,12,13,16,17,1,0,14,15,1,0,28,29,1,0,30,31,1,0,32,33,97,0,6,1,0,
-0,0,2,38,1,0,0,0,4,80,1,0,0,0,6,11,3,2,1,0,7,8,5,1,0,0,8,10,3,2,1,0,9,7,
-1,0,0,0,10,13,1,0,0,0,11,9,1,0,0,0,11,12,1,0,0,0,12,1,1,0,0,0,13,11,1,0,
-0,0,14,15,6,1,-1,0,15,16,5,19,0,0,16,39,3,2,1,12,17,18,5,3,0,0,18,19,5,26,
-0,0,19,20,3,2,1,0,20,21,5,27,0,0,21,39,1,0,0,0,22,23,5,4,0,0,23,24,5,26,
-0,0,24,29,3,2,1,0,25,26,5,2,0,0,26,28,3,2,1,0,27,25,1,0,0,0,28,31,1,0,0,
-0,29,27,1,0,0,0,29,30,1,0,0,0,30,32,1,0,0,0,31,29,1,0,0,0,32,33,5,27,0,0,
-33,39,1,0,0,0,34,39,3,4,2,0,35,36,5,34,0,0,36,37,7,0,0,0,37,39,3,2,1,1,38,
-14,1,0,0,0,38,17,1,0,0,0,38,22,1,0,0,0,38,34,1,0,0,0,38,35,1,0,0,0,39,69,
-1,0,0,0,40,41,10,13,0,0,41,42,5,22,0,0,42,68,3,2,1,13,43,44,10,11,0,0,44,
-45,7,1,0,0,45,68,3,2,1,12,46,47,10,10,0,0,47,48,7,2,0,0,48,68,3,2,1,11,49,
-50,10,9,0,0,50,51,7,3,0,0,51,68,3,2,1,10,52,53,10,8,0,0,53,54,7,4,0,0,54,
-68,3,2,1,9,55,56,10,7,0,0,56,57,5,10,0,0,57,68,3,2,1,8,58,59,10,6,0,0,59,
-60,5,11,0,0,60,68,3,2,1,7,61,62,10,5,0,0,62,63,5,24,0,0,63,64,3,2,1,0,64,
-65,5,25,0,0,65,66,3,2,1,6,66,68,1,0,0,0,67,40,1,0,0,0,67,43,1,0,0,0,67,46,
-1,0,0,0,67,49,1,0,0,0,67,52,1,0,0,0,67,55,1,0,0,0,67,58,1,0,0,0,67,61,1,
-0,0,0,68,71,1,0,0,0,69,67,1,0,0,0,69,70,1,0,0,0,70,3,1,0,0,0,71,69,1,0,0,
-0,72,73,5,26,0,0,73,74,3,2,1,0,74,75,5,27,0,0,75,81,1,0,0,0,76,81,7,5,0,
-0,77,81,7,6,0,0,78,81,7,7,0,0,79,81,5,34,0,0,80,72,1,0,0,0,80,76,1,0,0,0,
-80,77,1,0,0,0,80,78,1,0,0,0,80,79,1,0,0,0,81,5,1,0,0,0,6,11,29,38,67,69,
-80];
+1,1,1,1,1,1,1,1,1,1,1,5,1,67,8,1,10,1,12,1,70,9,1,1,2,1,2,1,2,1,2,1,2,1,
+2,1,2,1,2,3,2,80,8,2,1,2,0,1,2,3,0,2,4,0,8,1,0,4,8,1,0,19,20,1,0,17,18,2,
+0,11,12,15,16,1,0,13,14,1,0,27,28,1,0,29,30,1,0,31,32,96,0,7,1,0,0,0,2,37,
+1,0,0,0,4,79,1,0,0,0,6,8,3,2,1,0,7,6,1,0,0,0,8,9,1,0,0,0,9,7,1,0,0,0,9,10,
+1,0,0,0,10,11,1,0,0,0,11,12,5,0,0,1,12,1,1,0,0,0,13,14,6,1,-1,0,14,15,5,
+18,0,0,15,38,3,2,1,12,16,17,5,2,0,0,17,18,5,25,0,0,18,19,3,2,1,0,19,20,5,
+26,0,0,20,38,1,0,0,0,21,22,5,3,0,0,22,23,5,25,0,0,23,28,3,2,1,0,24,25,5,
+1,0,0,25,27,3,2,1,0,26,24,1,0,0,0,27,30,1,0,0,0,28,26,1,0,0,0,28,29,1,0,
+0,0,29,31,1,0,0,0,30,28,1,0,0,0,31,32,5,26,0,0,32,38,1,0,0,0,33,38,3,4,2,
+0,34,35,5,33,0,0,35,36,7,0,0,0,36,38,3,2,1,1,37,13,1,0,0,0,37,16,1,0,0,0,
+37,21,1,0,0,0,37,33,1,0,0,0,37,34,1,0,0,0,38,68,1,0,0,0,39,40,10,13,0,0,
+40,41,5,21,0,0,41,67,3,2,1,13,42,43,10,11,0,0,43,44,7,1,0,0,44,67,3,2,1,
+12,45,46,10,10,0,0,46,47,7,2,0,0,47,67,3,2,1,11,48,49,10,9,0,0,49,50,7,3,
+0,0,50,67,3,2,1,10,51,52,10,8,0,0,52,53,7,4,0,0,53,67,3,2,1,9,54,55,10,7,
+0,0,55,56,5,9,0,0,56,67,3,2,1,8,57,58,10,6,0,0,58,59,5,10,0,0,59,67,3,2,
+1,7,60,61,10,5,0,0,61,62,5,23,0,0,62,63,3,2,1,0,63,64,5,24,0,0,64,65,3,2,
+1,6,65,67,1,0,0,0,66,39,1,0,0,0,66,42,1,0,0,0,66,45,1,0,0,0,66,48,1,0,0,
+0,66,51,1,0,0,0,66,54,1,0,0,0,66,57,1,0,0,0,66,60,1,0,0,0,67,70,1,0,0,0,
+68,66,1,0,0,0,68,69,1,0,0,0,69,3,1,0,0,0,70,68,1,0,0,0,71,72,5,25,0,0,72,
+73,3,2,1,0,73,74,5,26,0,0,74,80,1,0,0,0,75,80,7,5,0,0,76,80,7,6,0,0,77,80,
+7,7,0,0,78,80,5,33,0,0,79,71,1,0,0,0,79,75,1,0,0,0,79,76,1,0,0,0,79,77,1,
+0,0,0,79,78,1,0,0,0,80,5,1,0,0,0,6,9,28,37,66,68,79];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -40,19 +39,19 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class MuParserParser extends antlr4.Parser {
 
     static grammarFileName = "MuParser.g4";
-    static literalNames = [ null, "'\\n'", "','", null, null, "'='", "'+='", 
-                            "'-='", "'*='", "'/='", "'&&'", "'||'", "'<='", 
-                            "'>='", "'!='", "'=='", "'<'", "'>'", "'+'", 
-                            "'-'", "'*'", "'/'", "'^'", "'!'", "'?'", "':'", 
-                            "'('", "')'", null, null, "'true'", "'false'", 
-                            "'_e'", "'_pi'" ];
-    static symbolicNames = [ null, null, null, "FUNCTION", "FUNCTIONMULTI", 
-                             "ASSIGN", "ASSIGNADD", "ASSIGNSUB", "ASSIGNMUL", 
-                             "ASSIGNDIV", "AND", "OR", "LTEQ", "GTEQ", "NEQ", 
-                             "EQ", "LT", "GT", "ADD", "SUB", "MUL", "DIV", 
-                             "POW", "NOT", "QUESTION", "COLON", "OPAR", 
-                             "CPAR", "INT", "FLOAT", "TRUE", "FALSE", "E", 
-                             "PI", "ID", "SPACE" ];
+    static literalNames = [ null, "','", null, null, "'='", "'+='", "'-='", 
+                            "'*='", "'/='", "'&&'", "'||'", "'<='", "'>='", 
+                            "'!='", "'=='", "'<'", "'>'", "'+'", "'-'", 
+                            "'*'", "'/'", "'^'", "'!'", "'?'", "':'", "'('", 
+                            "')'", null, null, "'true'", "'false'", "'_e'", 
+                            "'_pi'" ];
+    static symbolicNames = [ null, null, "FUNCTION", "FUNCTIONMULTI", "ASSIGN", 
+                             "ASSIGNADD", "ASSIGNSUB", "ASSIGNMUL", "ASSIGNDIV", 
+                             "AND", "OR", "LTEQ", "GTEQ", "NEQ", "EQ", "LT", 
+                             "GT", "ADD", "SUB", "MUL", "DIV", "POW", "NOT", 
+                             "QUESTION", "COLON", "OPAR", "CPAR", "INT", 
+                             "FLOAT", "TRUE", "FALSE", "E", "PI", "ID", 
+                             "SPACE" ];
     static ruleNames = [ "prog", "expr", "atom" ];
 
     constructor(input) {
@@ -61,10 +60,6 @@ export default class MuParserParser extends antlr4.Parser {
         this.ruleNames = MuParserParser.ruleNames;
         this.literalNames = MuParserParser.literalNames;
         this.symbolicNames = MuParserParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
     sempred(localctx, ruleIndex, predIndex) {
@@ -105,24 +100,22 @@ export default class MuParserParser extends antlr4.Parser {
 	prog() {
 	    let localctx = new ProgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, MuParserParser.RULE_prog);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        localctx = new ProgExprContext(this, localctx);
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 6;
-	        this.expr(0);
-	        this.state = 11;
+	        this.state = 7; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===MuParserParser.T__0) {
-	            this.state = 7;
-	            this.match(MuParserParser.T__0);
-	            this.state = 8;
+	        do {
+	            this.state = 6;
 	            this.expr(0);
-	            this.state = 13;
+	            this.state = 9; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        }
+	        } while(((((_la - 2)) & ~0x1f) === 0 && ((1 << (_la - 2)) & 4269867011) !== 0));
+	        this.state = 11;
+	        this.match(MuParserParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -148,10 +141,10 @@ export default class MuParserParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 2;
 	    this.enterRecursionRule(localctx, 2, MuParserParser.RULE_expr, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 38;
+	        this.state = 37;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
 	        switch(la_) {
@@ -160,9 +153,9 @@ export default class MuParserParser extends antlr4.Parser {
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 
-	            this.state = 15;
+	            this.state = 14;
 	            this.match(MuParserParser.SUB);
-	            this.state = 16;
+	            this.state = 15;
 	            this.expr(12);
 	            break;
 
@@ -170,13 +163,13 @@ export default class MuParserParser extends antlr4.Parser {
 	            localctx = new FunctionExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 17;
+	            this.state = 16;
 	            localctx.op = this.match(MuParserParser.FUNCTION);
-	            this.state = 18;
+	            this.state = 17;
 	            this.match(MuParserParser.OPAR);
-	            this.state = 19;
+	            this.state = 18;
 	            this.expr(0);
-	            this.state = 20;
+	            this.state = 19;
 	            this.match(MuParserParser.CPAR);
 	            break;
 
@@ -184,25 +177,25 @@ export default class MuParserParser extends antlr4.Parser {
 	            localctx = new FunctionMultiExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 22;
+	            this.state = 21;
 	            localctx.op = this.match(MuParserParser.FUNCTIONMULTI);
-	            this.state = 23;
+	            this.state = 22;
 	            this.match(MuParserParser.OPAR);
-	            this.state = 24;
+	            this.state = 23;
 	            this.expr(0);
-	            this.state = 29;
+	            this.state = 28;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===MuParserParser.T__1) {
+	            while(_la===1) {
+	                this.state = 24;
+	                this.match(MuParserParser.T__0);
 	                this.state = 25;
-	                this.match(MuParserParser.T__1);
-	                this.state = 26;
 	                this.expr(0);
-	                this.state = 31;
+	                this.state = 30;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 32;
+	            this.state = 31;
 	            this.match(MuParserParser.CPAR);
 	            break;
 
@@ -210,7 +203,7 @@ export default class MuParserParser extends antlr4.Parser {
 	            localctx = new AtomExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 34;
+	            this.state = 33;
 	            this.atom();
 	            break;
 
@@ -218,25 +211,25 @@ export default class MuParserParser extends antlr4.Parser {
 	            localctx = new AssignExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 35;
+	            this.state = 34;
 	            this.match(MuParserParser.ID);
-	            this.state = 36;
+	            this.state = 35;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << MuParserParser.ASSIGN) | (1 << MuParserParser.ASSIGNADD) | (1 << MuParserParser.ASSIGNSUB) | (1 << MuParserParser.ASSIGNMUL) | (1 << MuParserParser.ASSIGNDIV))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 496) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 37;
+	            this.state = 36;
 	            this.expr(1);
 	            break;
 
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 69;
+	        this.state = 68;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,4,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -245,153 +238,153 @@ export default class MuParserParser extends antlr4.Parser {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 67;
+	                this.state = 66;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new PowExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 40;
+	                    this.state = 39;
 	                    if (!( this.precpred(this._ctx, 13))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 13)");
 	                    }
-	                    this.state = 41;
+	                    this.state = 40;
 	                    this.match(MuParserParser.POW);
-	                    this.state = 42;
+	                    this.state = 41;
 	                    this.expr(13);
 	                    break;
 
 	                case 2:
 	                    localctx = new MulDivExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 43;
+	                    this.state = 42;
 	                    if (!( this.precpred(this._ctx, 11))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 11)");
 	                    }
-	                    this.state = 44;
+	                    this.state = 43;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===MuParserParser.MUL || _la===MuParserParser.DIV)) {
+	                    if(!(_la===19 || _la===20)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 45;
+	                    this.state = 44;
 	                    this.expr(12);
 	                    break;
 
 	                case 3:
 	                    localctx = new AddSubExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 46;
+	                    this.state = 45;
 	                    if (!( this.precpred(this._ctx, 10))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 10)");
 	                    }
-	                    this.state = 47;
+	                    this.state = 46;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===MuParserParser.ADD || _la===MuParserParser.SUB)) {
+	                    if(!(_la===17 || _la===18)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 48;
+	                    this.state = 47;
 	                    this.expr(11);
 	                    break;
 
 	                case 4:
 	                    localctx = new RelationalExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 49;
+	                    this.state = 48;
 	                    if (!( this.precpred(this._ctx, 9))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
 	                    }
-	                    this.state = 50;
+	                    this.state = 49;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << MuParserParser.LTEQ) | (1 << MuParserParser.GTEQ) | (1 << MuParserParser.LT) | (1 << MuParserParser.GT))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 104448) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 51;
+	                    this.state = 50;
 	                    this.expr(10);
 	                    break;
 
 	                case 5:
 	                    localctx = new EqualityExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 52;
+	                    this.state = 51;
 	                    if (!( this.precpred(this._ctx, 8))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
 	                    }
-	                    this.state = 53;
+	                    this.state = 52;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===MuParserParser.NEQ || _la===MuParserParser.EQ)) {
+	                    if(!(_la===13 || _la===14)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 54;
+	                    this.state = 53;
 	                    this.expr(9);
 	                    break;
 
 	                case 6:
 	                    localctx = new AndExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 55;
+	                    this.state = 54;
 	                    if (!( this.precpred(this._ctx, 7))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
 	                    }
-	                    this.state = 56;
+	                    this.state = 55;
 	                    this.match(MuParserParser.AND);
-	                    this.state = 57;
+	                    this.state = 56;
 	                    this.expr(8);
 	                    break;
 
 	                case 7:
 	                    localctx = new OrExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 58;
+	                    this.state = 57;
 	                    if (!( this.precpred(this._ctx, 6))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
 	                    }
-	                    this.state = 59;
+	                    this.state = 58;
 	                    this.match(MuParserParser.OR);
-	                    this.state = 60;
+	                    this.state = 59;
 	                    this.expr(7);
 	                    break;
 
 	                case 8:
 	                    localctx = new IteExprContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MuParserParser.RULE_expr);
-	                    this.state = 61;
+	                    this.state = 60;
 	                    if (!( this.precpred(this._ctx, 5))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
 	                    }
-	                    this.state = 62;
+	                    this.state = 61;
 	                    this.match(MuParserParser.QUESTION);
-	                    this.state = 63;
+	                    this.state = 62;
 	                    this.expr(0);
-	                    this.state = 64;
+	                    this.state = 63;
 	                    this.match(MuParserParser.COLON);
-	                    this.state = 65;
+	                    this.state = 64;
 	                    this.expr(6);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 71;
+	            this.state = 70;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,4,this._ctx);
 	        }
@@ -415,28 +408,28 @@ export default class MuParserParser extends antlr4.Parser {
 	atom() {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, MuParserParser.RULE_atom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 80;
+	        this.state = 79;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case MuParserParser.OPAR:
+	        case 25:
 	            localctx = new ParExprContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 72;
+	            this.state = 71;
 	            this.match(MuParserParser.OPAR);
-	            this.state = 73;
+	            this.state = 72;
 	            this.expr(0);
-	            this.state = 74;
+	            this.state = 73;
 	            this.match(MuParserParser.CPAR);
 	            break;
-	        case MuParserParser.INT:
-	        case MuParserParser.FLOAT:
+	        case 27:
+	        case 28:
 	            localctx = new NumberAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 76;
+	            this.state = 75;
 	            _la = this._input.LA(1);
-	            if(!(_la===MuParserParser.INT || _la===MuParserParser.FLOAT)) {
+	            if(!(_la===27 || _la===28)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -444,13 +437,13 @@ export default class MuParserParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case MuParserParser.TRUE:
-	        case MuParserParser.FALSE:
+	        case 29:
+	        case 30:
 	            localctx = new BooleanAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 77;
+	            this.state = 76;
 	            _la = this._input.LA(1);
-	            if(!(_la===MuParserParser.TRUE || _la===MuParserParser.FALSE)) {
+	            if(!(_la===29 || _la===30)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -458,13 +451,13 @@ export default class MuParserParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case MuParserParser.E:
-	        case MuParserParser.PI:
+	        case 31:
+	        case 32:
 	            localctx = new PredefinedConstantAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 78;
+	            this.state = 77;
 	            _la = this._input.LA(1);
-	            if(!(_la===MuParserParser.E || _la===MuParserParser.PI)) {
+	            if(!(_la===31 || _la===32)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -472,10 +465,10 @@ export default class MuParserParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case MuParserParser.ID:
+	        case 33:
 	            localctx = new IdAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 79;
+	            this.state = 78;
 	            this.match(MuParserParser.ID);
 	            break;
 	        default:
@@ -500,40 +493,39 @@ export default class MuParserParser extends antlr4.Parser {
 
 MuParserParser.EOF = antlr4.Token.EOF;
 MuParserParser.T__0 = 1;
-MuParserParser.T__1 = 2;
-MuParserParser.FUNCTION = 3;
-MuParserParser.FUNCTIONMULTI = 4;
-MuParserParser.ASSIGN = 5;
-MuParserParser.ASSIGNADD = 6;
-MuParserParser.ASSIGNSUB = 7;
-MuParserParser.ASSIGNMUL = 8;
-MuParserParser.ASSIGNDIV = 9;
-MuParserParser.AND = 10;
-MuParserParser.OR = 11;
-MuParserParser.LTEQ = 12;
-MuParserParser.GTEQ = 13;
-MuParserParser.NEQ = 14;
-MuParserParser.EQ = 15;
-MuParserParser.LT = 16;
-MuParserParser.GT = 17;
-MuParserParser.ADD = 18;
-MuParserParser.SUB = 19;
-MuParserParser.MUL = 20;
-MuParserParser.DIV = 21;
-MuParserParser.POW = 22;
-MuParserParser.NOT = 23;
-MuParserParser.QUESTION = 24;
-MuParserParser.COLON = 25;
-MuParserParser.OPAR = 26;
-MuParserParser.CPAR = 27;
-MuParserParser.INT = 28;
-MuParserParser.FLOAT = 29;
-MuParserParser.TRUE = 30;
-MuParserParser.FALSE = 31;
-MuParserParser.E = 32;
-MuParserParser.PI = 33;
-MuParserParser.ID = 34;
-MuParserParser.SPACE = 35;
+MuParserParser.FUNCTION = 2;
+MuParserParser.FUNCTIONMULTI = 3;
+MuParserParser.ASSIGN = 4;
+MuParserParser.ASSIGNADD = 5;
+MuParserParser.ASSIGNSUB = 6;
+MuParserParser.ASSIGNMUL = 7;
+MuParserParser.ASSIGNDIV = 8;
+MuParserParser.AND = 9;
+MuParserParser.OR = 10;
+MuParserParser.LTEQ = 11;
+MuParserParser.GTEQ = 12;
+MuParserParser.NEQ = 13;
+MuParserParser.EQ = 14;
+MuParserParser.LT = 15;
+MuParserParser.GT = 16;
+MuParserParser.ADD = 17;
+MuParserParser.SUB = 18;
+MuParserParser.MUL = 19;
+MuParserParser.DIV = 20;
+MuParserParser.POW = 21;
+MuParserParser.NOT = 22;
+MuParserParser.QUESTION = 23;
+MuParserParser.COLON = 24;
+MuParserParser.OPAR = 25;
+MuParserParser.CPAR = 26;
+MuParserParser.INT = 27;
+MuParserParser.FLOAT = 28;
+MuParserParser.TRUE = 29;
+MuParserParser.FALSE = 30;
+MuParserParser.E = 31;
+MuParserParser.PI = 32;
+MuParserParser.ID = 33;
+MuParserParser.SPACE = 34;
 
 MuParserParser.RULE_prog = 0;
 MuParserParser.RULE_expr = 1;
@@ -568,6 +560,10 @@ class ProgExprContext extends ProgContext {
         super(parser);
         super.copyFrom(ctx);
     }
+
+	EOF() {
+	    return this.getToken(MuParserParser.EOF, 0);
+	};
 
 	expr = function(i) {
 	    if(i===undefined) {
@@ -624,7 +620,7 @@ class FunctionMultiExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -672,7 +668,7 @@ class AddSubExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -783,7 +779,7 @@ class RelationalExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -835,7 +831,7 @@ class FunctionExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -947,7 +943,7 @@ class AssignExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -1000,7 +996,7 @@ class MulDivExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -1044,7 +1040,7 @@ class EqualityExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -1353,3 +1349,12 @@ MuParserParser.NumberAtomContext = NumberAtomContext;
 MuParserParser.ProgContext = ProgContext; 
 MuParserParser.ExprContext = ExprContext; 
 MuParserParser.AtomContext = AtomContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

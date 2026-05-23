@@ -1,4 +1,4 @@
-// Generated from ./xsd-regex/regexParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/xsd-regex/regexParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import regexParserListener from './regexParserListener.js';
@@ -90,10 +90,6 @@ export default class regexParser extends antlr4.Parser {
         this.symbolicNames = regexParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	root() {
@@ -124,7 +120,7 @@ export default class regexParser extends antlr4.Parser {
 	regExp() {
 	    let localctx = new RegExpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, regexParser.RULE_regExp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 43;
@@ -132,7 +128,7 @@ export default class regexParser extends antlr4.Parser {
 	        this.state = 48;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===regexParser.PIPE) {
+	        while(_la===3) {
 	            this.state = 44;
 	            this.match(regexParser.PIPE);
 	            this.state = 45;
@@ -160,13 +156,13 @@ export default class regexParser extends antlr4.Parser {
 	branch() {
 	    let localctx = new BranchContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, regexParser.RULE_branch);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 54;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << regexParser.LPAREN) | (1 << regexParser.WildcardEsc) | (1 << regexParser.Char) | (1 << regexParser.SingleCharEsc) | (1 << regexParser.MultiCharEsc) | (1 << regexParser.CatEsc) | (1 << regexParser.ComplEsc) | (1 << regexParser.NegCharGroup) | (1 << regexParser.PosCharGroup) | (1 << regexParser.NestedSingleCharEsc) | (1 << regexParser.NestedMultiCharEsc) | (1 << regexParser.NestedCatEsc))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (regexParser.NestedComplEsc - 32)) | (1 << (regexParser.NestedNegCharGroup - 32)) | (1 << (regexParser.NestedPosCharGroup - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3758161282) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0)) {
 	            this.state = 51;
 	            this.piece();
 	            this.state = 56;
@@ -192,7 +188,7 @@ export default class regexParser extends antlr4.Parser {
 	piece() {
 	    let localctx = new PieceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, regexParser.RULE_piece);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 57;
@@ -200,7 +196,7 @@ export default class regexParser extends antlr4.Parser {
 	        this.state = 59;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << regexParser.PLUS) | (1 << regexParser.QUESTION) | (1 << regexParser.STAR) | (1 << regexParser.StartQuantity))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 624) !== 0)) {
 	            this.state = 58;
 	            this.quantifier();
 	        }
@@ -228,22 +224,22 @@ export default class regexParser extends antlr4.Parser {
 	        this.state = 68;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case regexParser.QUESTION:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 61;
 	            this.match(regexParser.QUESTION);
 	            break;
-	        case regexParser.STAR:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 62;
 	            this.match(regexParser.STAR);
 	            break;
-	        case regexParser.PLUS:
+	        case 4:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 63;
 	            this.match(regexParser.PLUS);
 	            break;
-	        case regexParser.StartQuantity:
+	        case 9:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 64;
 	            this.match(regexParser.StartQuantity);
@@ -373,29 +369,29 @@ export default class regexParser extends antlr4.Parser {
 	        this.state = 88;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case regexParser.Char:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 82;
 	            this.match(regexParser.Char);
 	            break;
-	        case regexParser.WildcardEsc:
-	        case regexParser.SingleCharEsc:
-	        case regexParser.MultiCharEsc:
-	        case regexParser.CatEsc:
-	        case regexParser.ComplEsc:
-	        case regexParser.NegCharGroup:
-	        case regexParser.PosCharGroup:
-	        case regexParser.NestedSingleCharEsc:
-	        case regexParser.NestedMultiCharEsc:
-	        case regexParser.NestedCatEsc:
-	        case regexParser.NestedComplEsc:
-	        case regexParser.NestedNegCharGroup:
-	        case regexParser.NestedPosCharGroup:
+	        case 7:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 83;
 	            this.charClass();
 	            break;
-	        case regexParser.LPAREN:
+	        case 1:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 84;
 	            this.match(regexParser.LPAREN);
@@ -430,27 +426,27 @@ export default class regexParser extends antlr4.Parser {
 	        this.state = 93;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case regexParser.SingleCharEsc:
-	        case regexParser.MultiCharEsc:
-	        case regexParser.CatEsc:
-	        case regexParser.ComplEsc:
-	        case regexParser.NestedSingleCharEsc:
-	        case regexParser.NestedMultiCharEsc:
-	        case regexParser.NestedCatEsc:
-	        case regexParser.NestedComplEsc:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 90;
 	            this.charClassEsc();
 	            break;
-	        case regexParser.NegCharGroup:
-	        case regexParser.PosCharGroup:
-	        case regexParser.NestedNegCharGroup:
-	        case regexParser.NestedPosCharGroup:
+	        case 14:
+	        case 15:
+	        case 33:
+	        case 34:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 91;
 	            this.charClassExpr();
 	            break;
-	        case regexParser.WildcardEsc:
+	        case 7:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 92;
 	            this.match(regexParser.WildcardEsc);
@@ -477,12 +473,12 @@ export default class regexParser extends antlr4.Parser {
 	charClassExpr() {
 	    let localctx = new CharClassExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, regexParser.RULE_charClassExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 95;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 14)) & ~0x1f) == 0 && ((1 << (_la - 14)) & ((1 << (regexParser.NegCharGroup - 14)) | (1 << (regexParser.PosCharGroup - 14)) | (1 << (regexParser.NestedNegCharGroup - 14)) | (1 << (regexParser.NestedPosCharGroup - 14)))) !== 0))) {
+	        if(!(((((_la - 14)) & ~0x1f) === 0 && ((1 << (_la - 14)) & 1572867) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -512,7 +508,7 @@ export default class regexParser extends antlr4.Parser {
 	charGroup() {
 	    let localctx = new CharGroupContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, regexParser.RULE_charGroup);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 114;
 	        this._errHandler.sync(this);
@@ -553,7 +549,7 @@ export default class regexParser extends antlr4.Parser {
 	            this.state = 111;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===regexParser.DASH) {
+	            if(_la===36) {
 	                this.state = 110;
 	                this.match(regexParser.DASH);
 	            }
@@ -586,13 +582,13 @@ export default class regexParser extends antlr4.Parser {
 	posCharGroup() {
 	    let localctx = new PosCharGroupContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, regexParser.RULE_posCharGroup);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 117;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===regexParser.DASH) {
+	        if(_la===36) {
 	            this.state = 116;
 	            this.match(regexParser.DASH);
 	        }
@@ -619,7 +615,7 @@ export default class regexParser extends antlr4.Parser {
 	            this.state = 123; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (regexParser.SingleCharEsc - 10)) | (1 << (regexParser.MultiCharEsc - 10)) | (1 << (regexParser.CatEsc - 10)) | (1 << (regexParser.ComplEsc - 10)) | (1 << (regexParser.NestedSingleCharEsc - 10)) | (1 << (regexParser.NestedMultiCharEsc - 10)) | (1 << (regexParser.NestedCatEsc - 10)) | (1 << (regexParser.NestedComplEsc - 10)) | (1 << (regexParser.XmlChar - 10)))) !== 0));
+	        } while(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 142082063) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -703,12 +699,12 @@ export default class regexParser extends antlr4.Parser {
 	charOrEsc() {
 	    let localctx = new CharOrEscContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, regexParser.RULE_charOrEsc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 133;
 	        _la = this._input.LA(1);
-	        if(!(_la===regexParser.SingleCharEsc || _la===regexParser.XmlChar)) {
+	        if(!(_la===10 || _la===37)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -738,34 +734,34 @@ export default class regexParser extends antlr4.Parser {
 	        this.state = 141;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case regexParser.SingleCharEsc:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 135;
 	            this.match(regexParser.SingleCharEsc);
 	            break;
-	        case regexParser.NestedSingleCharEsc:
+	        case 29:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 136;
 	            this.match(regexParser.NestedSingleCharEsc);
 	            break;
-	        case regexParser.MultiCharEsc:
+	        case 11:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 137;
 	            this.match(regexParser.MultiCharEsc);
 	            break;
-	        case regexParser.NestedMultiCharEsc:
+	        case 30:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 138;
 	            this.match(regexParser.NestedMultiCharEsc);
 	            break;
-	        case regexParser.CatEsc:
-	        case regexParser.NestedCatEsc:
+	        case 12:
+	        case 31:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 139;
 	            this.catEsc();
 	            break;
-	        case regexParser.ComplEsc:
-	        case regexParser.NestedComplEsc:
+	        case 13:
+	        case 32:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 140;
 	            this.complEsc();
@@ -792,12 +788,12 @@ export default class regexParser extends antlr4.Parser {
 	catEsc() {
 	    let localctx = new CatEscContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, regexParser.RULE_catEsc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 143;
 	        _la = this._input.LA(1);
-	        if(!(_la===regexParser.CatEsc || _la===regexParser.NestedCatEsc)) {
+	        if(!(_la===12 || _la===31)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -827,12 +823,12 @@ export default class regexParser extends antlr4.Parser {
 	complEsc() {
 	    let localctx = new ComplEscContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, regexParser.RULE_complEsc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 147;
 	        _la = this._input.LA(1);
-	        if(!(_la===regexParser.ComplEsc || _la===regexParser.NestedComplEsc)) {
+	        if(!(_la===13 || _la===32)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -862,12 +858,12 @@ export default class regexParser extends antlr4.Parser {
 	charProp() {
 	    let localctx = new CharPropContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, regexParser.RULE_charProp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 151;
 	        _la = this._input.LA(1);
-	        if(!(_la===regexParser.IsCategory || _la===regexParser.IsBlock)) {
+	        if(!(_la===20 || _la===28)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1899,3 +1895,12 @@ regexParser.CharClassEscContext = CharClassEscContext;
 regexParser.CatEscContext = CatEscContext; 
 regexParser.ComplEscContext = ComplEscContext; 
 regexParser.CharPropContext = CharPropContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./vhdl/vhdl.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/vhdl/vhdl.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import vhdlListener from './vhdlListener.js';
@@ -1146,21 +1146,17 @@ export default class vhdlParser extends antlr4.Parser {
         this.symbolicNames = vhdlParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	abstract_literal() {
 	    let localctx = new Abstract_literalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, vhdlParser.RULE_abstract_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 510;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.BASE_LITERAL || _la===vhdlParser.REAL_LITERAL || _la===vhdlParser.INTEGER)) {
+	        if(!(_la===112 || _la===117 || _la===158)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1211,7 +1207,7 @@ export default class vhdlParser extends antlr4.Parser {
 	across_aspect() {
 	    let localctx = new Across_aspectContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, vhdlParser.RULE_across_aspect);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 515;
@@ -1219,7 +1215,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 517;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.TOLERANCE) {
+	        if(_la===98) {
 	            this.state = 516;
 	            this.tolerance_aspect();
 	        }
@@ -1227,7 +1223,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 521;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 519;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 520;
@@ -1259,26 +1255,26 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 527;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.ABS:
-	        case vhdlParser.NEW:
-	        case vhdlParser.NOT:
-	        case vhdlParser.NULL_:
-	        case vhdlParser.BASE_LITERAL:
-	        case vhdlParser.BIT_STRING_LITERAL:
-	        case vhdlParser.REAL_LITERAL:
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.CHARACTER_LITERAL:
-	        case vhdlParser.STRING_LITERAL:
-	        case vhdlParser.LPAREN:
-	        case vhdlParser.PLUS:
-	        case vhdlParser.MINUS:
-	        case vhdlParser.INTEGER:
+	        case 1:
+	        case 52:
+	        case 56:
+	        case 57:
+	        case 112:
+	        case 113:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 126:
+	        case 127:
+	        case 141:
+	        case 148:
+	        case 149:
+	        case 158:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 525;
 	            this.expression();
 	            break;
-	        case vhdlParser.OPEN:
+	        case 60:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 526;
 	            this.match(vhdlParser.OPEN);
@@ -1371,12 +1367,12 @@ export default class vhdlParser extends antlr4.Parser {
 	adding_operator() {
 	    let localctx = new Adding_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, vhdlParser.RULE_adding_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 539;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 140)) & ~0x1f) == 0 && ((1 << (_la - 140)) & ((1 << (vhdlParser.AMPERSAND - 140)) | (1 << (vhdlParser.PLUS - 140)) | (1 << (vhdlParser.MINUS - 140)))) !== 0))) {
+	        if(!(((((_la - 140)) & ~0x1f) === 0 && ((1 << (_la - 140)) & 769) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1402,7 +1398,7 @@ export default class vhdlParser extends antlr4.Parser {
 	aggregate() {
 	    let localctx = new AggregateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, vhdlParser.RULE_aggregate);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 541;
@@ -1412,7 +1408,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 547;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 543;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 544;
@@ -1442,7 +1438,7 @@ export default class vhdlParser extends antlr4.Parser {
 	alias_declaration() {
 	    let localctx = new Alias_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, vhdlParser.RULE_alias_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 552;
@@ -1452,7 +1448,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 556;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.COLON) {
+	        if(_la===145) {
 	            this.state = 554;
 	            this.match(vhdlParser.COLON);
 	            this.state = 555;
@@ -1466,7 +1462,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 561;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LBRACKET) {
+	        if(_la===143) {
 	            this.state = 560;
 	            this.signature();
 	        }
@@ -1496,18 +1492,18 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 568;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 565;
 	            this.identifier();
 	            break;
-	        case vhdlParser.CHARACTER_LITERAL:
+	        case 126:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 566;
 	            this.match(vhdlParser.CHARACTER_LITERAL);
 	            break;
-	        case vhdlParser.STRING_LITERAL:
+	        case 127:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 567;
 	            this.match(vhdlParser.STRING_LITERAL);
@@ -1609,7 +1605,7 @@ export default class vhdlParser extends antlr4.Parser {
 	architecture_body() {
 	    let localctx = new Architecture_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, vhdlParser.RULE_architecture_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 579;
@@ -1633,7 +1629,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 589;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.ARCHITECTURE) {
+	        if(_la===8) {
 	            this.state = 588;
 	            this.match(vhdlParser.ARCHITECTURE);
 	        }
@@ -1641,7 +1637,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 592;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 591;
 	            this.identifier();
 	        }
@@ -1667,13 +1663,13 @@ export default class vhdlParser extends antlr4.Parser {
 	architecture_declarative_part() {
 	    let localctx = new Architecture_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, vhdlParser.RULE_architecture_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 599;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.COMPONENT) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.DISCONNECT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FOR) | (1 << vhdlParser.FUNCTION))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (vhdlParser.GROUP - 34)) | (1 << (vhdlParser.IMPURE - 34)) | (1 << (vhdlParser.LIMIT - 34)) | (1 << (vhdlParser.NATURE - 34)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.QUANTITY - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SIGNAL - 68)) | (1 << (vhdlParser.SUBNATURE - 68)) | (1 << (vhdlParser.SUBTYPE - 68)) | (1 << (vhdlParser.TERMINAL - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3764914208) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 132105) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 117833741) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 596;
 	            this.block_declarative_item();
 	            this.state = 601;
@@ -1810,13 +1806,13 @@ export default class vhdlParser extends antlr4.Parser {
 	architecture_statement_part() {
 	    let localctx = new Architecture_statement_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, vhdlParser.RULE_architecture_statement_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 628;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ABS) | (1 << vhdlParser.ASSERT) | (1 << vhdlParser.BREAK) | (1 << vhdlParser.CASE))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.NEW - 36)) | (1 << (vhdlParser.NOT - 36)) | (1 << (vhdlParser.NULL_ - 36)) | (1 << (vhdlParser.POSTPONED - 36)) | (1 << (vhdlParser.PROCESS - 36)))) !== 0) || _la===vhdlParser.PROCEDURAL || ((((_la - 107)) & ~0x1f) == 0 && ((1 << (_la - 107)) & ((1 << (vhdlParser.WITH - 107)) | (1 << (vhdlParser.BASE_LITERAL - 107)) | (1 << (vhdlParser.BIT_STRING_LITERAL - 107)) | (1 << (vhdlParser.REAL_LITERAL - 107)) | (1 << (vhdlParser.BASIC_IDENTIFIER - 107)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 107)) | (1 << (vhdlParser.CHARACTER_LITERAL - 107)) | (1 << (vhdlParser.STRING_LITERAL - 107)))) !== 0) || ((((_la - 141)) & ~0x1f) == 0 && ((1 << (_la - 141)) & ((1 << (vhdlParser.LPAREN - 141)) | (1 << (vhdlParser.PLUS - 141)) | (1 << (vhdlParser.MINUS - 141)) | (1 << (vhdlParser.INTEGER - 141)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 295938) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3224436737) !== 0) || _la===69 || ((((_la - 107)) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1580129) !== 0) || ((((_la - 141)) & ~0x1f) === 0 && ((1 << (_la - 141)) & 131457) !== 0)) {
 	            this.state = 625;
 	            this.architecture_statement();
 	            this.state = 630;
@@ -1916,7 +1912,7 @@ export default class vhdlParser extends antlr4.Parser {
 	assertion() {
 	    let localctx = new AssertionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, vhdlParser.RULE_assertion);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 639;
@@ -1926,7 +1922,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 643;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.REPORT) {
+	        if(_la===79) {
 	            this.state = 641;
 	            this.match(vhdlParser.REPORT);
 	            this.state = 642;
@@ -1936,7 +1932,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 647;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.SEVERITY) {
+	        if(_la===84) {
 	            this.state = 645;
 	            this.match(vhdlParser.SEVERITY);
 	            this.state = 646;
@@ -1962,13 +1958,13 @@ export default class vhdlParser extends antlr4.Parser {
 	assertion_statement() {
 	    let localctx = new Assertion_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, vhdlParser.RULE_assertion_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 650;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 649;
 	            this.label_colon();
 	        }
@@ -2029,7 +2025,7 @@ export default class vhdlParser extends antlr4.Parser {
 	association_list() {
 	    let localctx = new Association_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, vhdlParser.RULE_association_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 662;
@@ -2037,7 +2033,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 667;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 663;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 664;
@@ -2098,38 +2094,38 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 682;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 675;
 	            this.identifier();
 	            break;
-	        case vhdlParser.RANGE:
+	        case 72:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 676;
 	            this.match(vhdlParser.RANGE);
 	            break;
-	        case vhdlParser.REVERSE_RANGE:
+	        case 73:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 677;
 	            this.match(vhdlParser.REVERSE_RANGE);
 	            break;
-	        case vhdlParser.ACROSS:
+	        case 3:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 678;
 	            this.match(vhdlParser.ACROSS);
 	            break;
-	        case vhdlParser.THROUGH:
+	        case 96:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 679;
 	            this.match(vhdlParser.THROUGH);
 	            break;
-	        case vhdlParser.REFERENCE:
+	        case 77:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 680;
 	            this.match(vhdlParser.REFERENCE);
 	            break;
-	        case vhdlParser.TOLERANCE:
+	        case 98:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 681;
 	            this.match(vhdlParser.TOLERANCE);
@@ -2216,13 +2212,13 @@ export default class vhdlParser extends antlr4.Parser {
 	binding_indication() {
 	    let localctx = new Binding_indicationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, vhdlParser.RULE_binding_indication);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 697;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.USE) {
+	        if(_la===104) {
 	            this.state = 695;
 	            this.match(vhdlParser.USE);
 	            this.state = 696;
@@ -2232,7 +2228,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 700;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.GENERIC) {
+	        if(_la===33) {
 	            this.state = 699;
 	            this.generic_map_aspect();
 	        }
@@ -2240,7 +2236,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 703;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PORT) {
+	        if(_la===65) {
 	            this.state = 702;
 	            this.port_map_aspect();
 	        }
@@ -2264,7 +2260,7 @@ export default class vhdlParser extends antlr4.Parser {
 	block_configuration() {
 	    let localctx = new Block_configurationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, vhdlParser.RULE_block_configuration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 705;
@@ -2274,7 +2270,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 710;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.USE) {
+	        while(_la===104) {
 	            this.state = 707;
 	            this.use_clause();
 	            this.state = 712;
@@ -2284,7 +2280,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 716;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.FOR) {
+	        while(_la===30) {
 	            this.state = 713;
 	            this.configuration_item();
 	            this.state = 718;
@@ -2473,13 +2469,13 @@ export default class vhdlParser extends antlr4.Parser {
 	block_declarative_part() {
 	    let localctx = new Block_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, vhdlParser.RULE_block_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 750;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.COMPONENT) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.DISCONNECT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FOR) | (1 << vhdlParser.FUNCTION))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (vhdlParser.GROUP - 34)) | (1 << (vhdlParser.IMPURE - 34)) | (1 << (vhdlParser.LIMIT - 34)) | (1 << (vhdlParser.NATURE - 34)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.QUANTITY - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SIGNAL - 68)) | (1 << (vhdlParser.SUBNATURE - 68)) | (1 << (vhdlParser.SUBTYPE - 68)) | (1 << (vhdlParser.TERMINAL - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3764914208) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 132105) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 117833741) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 747;
 	            this.block_declarative_item();
 	            this.state = 752;
@@ -2505,19 +2501,19 @@ export default class vhdlParser extends antlr4.Parser {
 	block_header() {
 	    let localctx = new Block_headerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, vhdlParser.RULE_block_header);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 759;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.GENERIC) {
+	        if(_la===33) {
 	            this.state = 753;
 	            this.generic_clause();
 	            this.state = 757;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.GENERIC) {
+	            if(_la===33) {
 	                this.state = 754;
 	                this.generic_map_aspect();
 	                this.state = 755;
@@ -2529,13 +2525,13 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 767;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PORT) {
+	        if(_la===65) {
 	            this.state = 761;
 	            this.port_clause();
 	            this.state = 765;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.PORT) {
+	            if(_la===65) {
 	                this.state = 762;
 	                this.port_map_aspect();
 	                this.state = 763;
@@ -2563,7 +2559,7 @@ export default class vhdlParser extends antlr4.Parser {
 	block_specification() {
 	    let localctx = new Block_specificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, vhdlParser.RULE_block_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 777;
 	        this._errHandler.sync(this);
@@ -2576,7 +2572,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 774;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.LPAREN) {
+	            if(_la===141) {
 	                this.state = 770;
 	                this.match(vhdlParser.LPAREN);
 	                this.state = 771;
@@ -2613,7 +2609,7 @@ export default class vhdlParser extends antlr4.Parser {
 	block_statement() {
 	    let localctx = new Block_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, vhdlParser.RULE_block_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 779;
@@ -2623,7 +2619,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 785;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LPAREN) {
+	        if(_la===141) {
 	            this.state = 781;
 	            this.match(vhdlParser.LPAREN);
 	            this.state = 782;
@@ -2635,7 +2631,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 788;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IS) {
+	        if(_la===41) {
 	            this.state = 787;
 	            this.match(vhdlParser.IS);
 	        }
@@ -2655,7 +2651,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 797;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 796;
 	            this.identifier();
 	        }
@@ -2681,13 +2677,13 @@ export default class vhdlParser extends antlr4.Parser {
 	block_statement_part() {
 	    let localctx = new Block_statement_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, vhdlParser.RULE_block_statement_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 804;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ABS) | (1 << vhdlParser.ASSERT) | (1 << vhdlParser.BREAK) | (1 << vhdlParser.CASE))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.NEW - 36)) | (1 << (vhdlParser.NOT - 36)) | (1 << (vhdlParser.NULL_ - 36)) | (1 << (vhdlParser.POSTPONED - 36)) | (1 << (vhdlParser.PROCESS - 36)))) !== 0) || _la===vhdlParser.PROCEDURAL || ((((_la - 107)) & ~0x1f) == 0 && ((1 << (_la - 107)) & ((1 << (vhdlParser.WITH - 107)) | (1 << (vhdlParser.BASE_LITERAL - 107)) | (1 << (vhdlParser.BIT_STRING_LITERAL - 107)) | (1 << (vhdlParser.REAL_LITERAL - 107)) | (1 << (vhdlParser.BASIC_IDENTIFIER - 107)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 107)) | (1 << (vhdlParser.CHARACTER_LITERAL - 107)) | (1 << (vhdlParser.STRING_LITERAL - 107)))) !== 0) || ((((_la - 141)) & ~0x1f) == 0 && ((1 << (_la - 141)) & ((1 << (vhdlParser.LPAREN - 141)) | (1 << (vhdlParser.PLUS - 141)) | (1 << (vhdlParser.MINUS - 141)) | (1 << (vhdlParser.INTEGER - 141)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 295938) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3224436737) !== 0) || _la===69 || ((((_la - 107)) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1580129) !== 0) || ((((_la - 141)) & ~0x1f) === 0 && ((1 << (_la - 141)) & 131457) !== 0)) {
 	            this.state = 801;
 	            this.architecture_statement();
 	            this.state = 806;
@@ -2756,13 +2752,13 @@ export default class vhdlParser extends antlr4.Parser {
 	break_element() {
 	    let localctx = new Break_elementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, vhdlParser.RULE_break_element);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 818;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.FOR) {
+	        if(_la===30) {
 	            this.state = 817;
 	            this.break_selector_clause();
 	        }
@@ -2792,7 +2788,7 @@ export default class vhdlParser extends antlr4.Parser {
 	break_list() {
 	    let localctx = new Break_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, vhdlParser.RULE_break_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 824;
@@ -2800,7 +2796,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 829;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 825;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 826;
@@ -2855,13 +2851,13 @@ export default class vhdlParser extends antlr4.Parser {
 	break_statement() {
 	    let localctx = new Break_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, vhdlParser.RULE_break_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 837;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 836;
 	            this.label_colon();
 	        }
@@ -2871,7 +2867,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 841;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.FOR || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)))) !== 0)) {
+	        if(_la===30 || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 515) !== 0)) {
 	            this.state = 840;
 	            this.break_list();
 	        }
@@ -2879,7 +2875,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 845;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.WHEN) {
+	        if(_la===108) {
 	            this.state = 843;
 	            this.match(vhdlParser.WHEN);
 	            this.state = 844;
@@ -2907,13 +2903,13 @@ export default class vhdlParser extends antlr4.Parser {
 	case_statement() {
 	    let localctx = new Case_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, vhdlParser.RULE_case_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 850;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 849;
 	            this.label_colon();
 	        }
@@ -2933,7 +2929,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 858; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===vhdlParser.WHEN);
+	        } while(_la===108);
 	        this.state = 860;
 	        this.match(vhdlParser.END);
 	        this.state = 861;
@@ -2941,7 +2937,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 863;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 862;
 	            this.identifier();
 	        }
@@ -3045,7 +3041,7 @@ export default class vhdlParser extends antlr4.Parser {
 	choices() {
 	    let localctx = new ChoicesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, vhdlParser.RULE_choices);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 878;
@@ -3053,7 +3049,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 883;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.BAR) {
+	        while(_la===153) {
 	            this.state = 879;
 	            this.match(vhdlParser.BAR);
 	            this.state = 880;
@@ -3081,7 +3077,7 @@ export default class vhdlParser extends antlr4.Parser {
 	component_configuration() {
 	    let localctx = new Component_configurationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, vhdlParser.RULE_component_configuration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 886;
@@ -3091,7 +3087,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 891;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.GENERIC || _la===vhdlParser.PORT || _la===vhdlParser.USE || _la===vhdlParser.SEMI) {
+	        if(_la===33 || _la===65 || _la===104 || _la===138) {
 	            this.state = 888;
 	            this.binding_indication();
 	            this.state = 889;
@@ -3101,7 +3097,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 894;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.FOR) {
+	        if(_la===30) {
 	            this.state = 893;
 	            this.block_configuration();
 	        }
@@ -3131,7 +3127,7 @@ export default class vhdlParser extends antlr4.Parser {
 	component_declaration() {
 	    let localctx = new Component_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, vhdlParser.RULE_component_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 900;
@@ -3141,7 +3137,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 903;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IS) {
+	        if(_la===41) {
 	            this.state = 902;
 	            this.match(vhdlParser.IS);
 	        }
@@ -3149,7 +3145,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 906;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.GENERIC) {
+	        if(_la===33) {
 	            this.state = 905;
 	            this.generic_clause();
 	        }
@@ -3157,7 +3153,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 909;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PORT) {
+	        if(_la===65) {
 	            this.state = 908;
 	            this.port_clause();
 	        }
@@ -3169,7 +3165,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 914;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 913;
 	            this.identifier();
 	        }
@@ -3195,7 +3191,7 @@ export default class vhdlParser extends antlr4.Parser {
 	component_instantiation_statement() {
 	    let localctx = new Component_instantiation_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, vhdlParser.RULE_component_instantiation_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 918;
@@ -3205,7 +3201,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 921;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.GENERIC) {
+	        if(_la===33) {
 	            this.state = 920;
 	            this.generic_map_aspect();
 	        }
@@ -3213,7 +3209,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 924;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PORT) {
+	        if(_la===65) {
 	            this.state = 923;
 	            this.port_map_aspect();
 	        }
@@ -3270,12 +3266,12 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 934;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.ARRAY:
+	        case 9:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 932;
 	            this.array_nature_definition();
 	            break;
-	        case vhdlParser.RECORD:
+	        case 76:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 933;
 	            this.record_nature_definition();
@@ -3306,12 +3302,12 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 938;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.ARRAY:
+	        case 9:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 936;
 	            this.array_type_definition();
 	            break;
-	        case vhdlParser.RECORD:
+	        case 76:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 937;
 	            this.record_type_definition();
@@ -3338,13 +3334,13 @@ export default class vhdlParser extends antlr4.Parser {
 	concurrent_assertion_statement() {
 	    let localctx = new Concurrent_assertion_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, vhdlParser.RULE_concurrent_assertion_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 941;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 940;
 	            this.label_colon();
 	        }
@@ -3352,7 +3348,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 944;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.POSTPONED) {
+	        if(_la===66) {
 	            this.state = 943;
 	            this.match(vhdlParser.POSTPONED);
 	        }
@@ -3380,13 +3376,13 @@ export default class vhdlParser extends antlr4.Parser {
 	concurrent_break_statement() {
 	    let localctx = new Concurrent_break_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, vhdlParser.RULE_concurrent_break_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 950;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 949;
 	            this.label_colon();
 	        }
@@ -3396,7 +3392,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 954;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.FOR || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)))) !== 0)) {
+	        if(_la===30 || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 515) !== 0)) {
 	            this.state = 953;
 	            this.break_list();
 	        }
@@ -3404,7 +3400,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 957;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.ON) {
+	        if(_la===59) {
 	            this.state = 956;
 	            this.sensitivity_clause();
 	        }
@@ -3412,7 +3408,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 961;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.WHEN) {
+	        if(_la===108) {
 	            this.state = 959;
 	            this.match(vhdlParser.WHEN);
 	            this.state = 960;
@@ -3440,7 +3436,7 @@ export default class vhdlParser extends antlr4.Parser {
 	concurrent_procedure_call_statement() {
 	    let localctx = new Concurrent_procedure_call_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, vhdlParser.RULE_concurrent_procedure_call_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 966;
@@ -3454,7 +3450,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 969;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.POSTPONED) {
+	        if(_la===66) {
 	            this.state = 968;
 	            this.match(vhdlParser.POSTPONED);
 	        }
@@ -3482,7 +3478,7 @@ export default class vhdlParser extends antlr4.Parser {
 	concurrent_signal_assignment_statement() {
 	    let localctx = new Concurrent_signal_assignment_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, vhdlParser.RULE_concurrent_signal_assignment_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 975;
@@ -3496,7 +3492,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 978;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.POSTPONED) {
+	        if(_la===66) {
 	            this.state = 977;
 	            this.match(vhdlParser.POSTPONED);
 	        }
@@ -3504,14 +3500,14 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 982;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.STRING_LITERAL:
-	        case vhdlParser.LPAREN:
+	        case 118:
+	        case 119:
+	        case 127:
+	        case 141:
 	            this.state = 980;
 	            this.conditional_signal_assignment();
 	            break;
-	        case vhdlParser.WITH:
+	        case 107:
 	            this.state = 981;
 	            this.selected_signal_assignment();
 	            break;
@@ -3616,7 +3612,7 @@ export default class vhdlParser extends antlr4.Parser {
 	conditional_waveforms() {
 	    let localctx = new Conditional_waveformsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, vhdlParser.RULE_conditional_waveforms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 995;
@@ -3624,7 +3620,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1002;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.WHEN) {
+	        if(_la===108) {
 	            this.state = 996;
 	            this.match(vhdlParser.WHEN);
 	            this.state = 997;
@@ -3632,7 +3628,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 1000;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.ELSE) {
+	            if(_la===26) {
 	                this.state = 998;
 	                this.match(vhdlParser.ELSE);
 	                this.state = 999;
@@ -3660,7 +3656,7 @@ export default class vhdlParser extends antlr4.Parser {
 	configuration_declaration() {
 	    let localctx = new Configuration_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, vhdlParser.RULE_configuration_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1004;
@@ -3682,7 +3678,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1013;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.CONFIGURATION) {
+	        if(_la===20) {
 	            this.state = 1012;
 	            this.match(vhdlParser.CONFIGURATION);
 	        }
@@ -3690,7 +3686,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1016;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1015;
 	            this.identifier();
 	        }
@@ -3720,17 +3716,17 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1023;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.USE:
+	        case 104:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1020;
 	            this.use_clause();
 	            break;
-	        case vhdlParser.ATTRIBUTE:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1021;
 	            this.attribute_specification();
 	            break;
-	        case vhdlParser.GROUP:
+	        case 34:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1022;
 	            this.group_declaration();
@@ -3757,13 +3753,13 @@ export default class vhdlParser extends antlr4.Parser {
 	configuration_declarative_part() {
 	    let localctx = new Configuration_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, vhdlParser.RULE_configuration_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1028;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.ATTRIBUTE || _la===vhdlParser.GROUP || _la===vhdlParser.USE) {
+	        while(_la===11 || _la===34 || _la===104) {
 	            this.state = 1025;
 	            this.configuration_declarative_item();
 	            this.state = 1030;
@@ -3855,7 +3851,7 @@ export default class vhdlParser extends antlr4.Parser {
 	constant_declaration() {
 	    let localctx = new Constant_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, vhdlParser.RULE_constant_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1040;
@@ -3869,7 +3865,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1046;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 1044;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 1045;
@@ -3959,12 +3955,12 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1062;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.RANGE:
+	        case 72:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1060;
 	            this.range_constraint();
 	            break;
-	        case vhdlParser.LPAREN:
+	        case 141:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1061;
 	            this.index_constraint();
@@ -3991,13 +3987,13 @@ export default class vhdlParser extends antlr4.Parser {
 	context_clause() {
 	    let localctx = new Context_clauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 132, vhdlParser.RULE_context_clause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1067;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.LIBRARY || _la===vhdlParser.USE) {
+	        while(_la===43 || _la===104) {
 	            this.state = 1064;
 	            this.context_item();
 	            this.state = 1069;
@@ -4027,12 +4023,12 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1072;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.LIBRARY:
+	        case 43:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1070;
 	            this.library_clause();
 	            break;
-	        case vhdlParser.USE:
+	        case 104:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1071;
 	            this.use_clause();
@@ -4059,23 +4055,23 @@ export default class vhdlParser extends antlr4.Parser {
 	delay_mechanism() {
 	    let localctx = new Delay_mechanismContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 136, vhdlParser.RULE_delay_mechanism);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1080;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.TRANSPORT:
+	        case 99:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1074;
 	            this.match(vhdlParser.TRANSPORT);
 	            break;
-	        case vhdlParser.INERTIAL:
-	        case vhdlParser.REJECT:
+	        case 39:
+	        case 74:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1077;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.REJECT) {
+	            if(_la===74) {
 	                this.state = 1075;
 	                this.match(vhdlParser.REJECT);
 	                this.state = 1076;
@@ -4107,13 +4103,13 @@ export default class vhdlParser extends antlr4.Parser {
 	design_file() {
 	    let localctx = new Design_fileContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 138, vhdlParser.RULE_design_file);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1085;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ARCHITECTURE) | (1 << vhdlParser.CONFIGURATION) | (1 << vhdlParser.ENTITY))) !== 0) || _la===vhdlParser.LIBRARY || _la===vhdlParser.PACKAGE || _la===vhdlParser.USE) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 34603264) !== 0) || _la===43 || _la===64 || _la===104) {
 	            this.state = 1082;
 	            this.design_unit();
 	            this.state = 1087;
@@ -4170,13 +4166,13 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1095;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1093;
 	            this.identifier();
 	            break;
-	        case vhdlParser.STRING_LITERAL:
+	        case 127:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1094;
 	            this.match(vhdlParser.STRING_LITERAL);
@@ -4203,12 +4199,12 @@ export default class vhdlParser extends antlr4.Parser {
 	direction() {
 	    let localctx = new DirectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 144, vhdlParser.RULE_direction);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1097;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.DOWNTO || _la===vhdlParser.TO)) {
+	        if(!(_la===23 || _la===97)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4410,12 +4406,12 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_aspect() {
 	    let localctx = new Entity_aspectContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 158, vhdlParser.RULE_entity_aspect);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1136;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.ENTITY:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1125;
 	            this.match(vhdlParser.ENTITY);
@@ -4424,7 +4420,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 1131;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.LPAREN) {
+	            if(_la===141) {
 	                this.state = 1127;
 	                this.match(vhdlParser.LPAREN);
 	                this.state = 1128;
@@ -4434,14 +4430,14 @@ export default class vhdlParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case vhdlParser.CONFIGURATION:
+	        case 20:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1133;
 	            this.match(vhdlParser.CONFIGURATION);
 	            this.state = 1134;
 	            this.name();
 	            break;
-	        case vhdlParser.OPEN:
+	        case 60:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1135;
 	            this.match(vhdlParser.OPEN);
@@ -4468,12 +4464,12 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_class() {
 	    let localctx = new Entity_classContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 160, vhdlParser.RULE_entity_class);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1138;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 8)) & ~0x1f) == 0 && ((1 << (_la - 8)) & ((1 << (vhdlParser.ARCHITECTURE - 8)) | (1 << (vhdlParser.COMPONENT - 8)) | (1 << (vhdlParser.CONFIGURATION - 8)) | (1 << (vhdlParser.CONSTANT - 8)) | (1 << (vhdlParser.ENTITY - 8)) | (1 << (vhdlParser.FILE - 8)) | (1 << (vhdlParser.FUNCTION - 8)) | (1 << (vhdlParser.GROUP - 8)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (vhdlParser.LABEL - 42)) | (1 << (vhdlParser.LITERAL - 42)) | (1 << (vhdlParser.NATURE - 42)) | (1 << (vhdlParser.PACKAGE - 42)) | (1 << (vhdlParser.PROCEDURE - 42)) | (1 << (vhdlParser.QUANTITY - 42)))) !== 0) || ((((_la - 86)) & ~0x1f) == 0 && ((1 << (_la - 86)) & ((1 << (vhdlParser.SIGNAL - 86)) | (1 << (vhdlParser.SUBNATURE - 86)) | (1 << (vhdlParser.SUBTYPE - 86)) | (1 << (vhdlParser.TERMINAL - 86)) | (1 << (vhdlParser.TYPE - 86)) | (1 << (vhdlParser.UNITS - 86)) | (1 << (vhdlParser.VARIABLE - 86)))) !== 0))) {
+	        if(!(((((_la - 8)) & ~0x1f) === 0 && ((1 << (_la - 8)) & 77740033) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 608174609) !== 0) || ((((_la - 86)) & ~0x1f) === 0 && ((1 << (_la - 86)) & 606657) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4499,7 +4495,7 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_class_entry() {
 	    let localctx = new Entity_class_entryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 162, vhdlParser.RULE_entity_class_entry);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1140;
@@ -4507,7 +4503,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1142;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BOX) {
+	        if(_la===136) {
 	            this.state = 1141;
 	            this.match(vhdlParser.BOX);
 	        }
@@ -4531,7 +4527,7 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_class_entry_list() {
 	    let localctx = new Entity_class_entry_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 164, vhdlParser.RULE_entity_class_entry_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1144;
@@ -4539,7 +4535,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1149;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 1145;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 1146;
@@ -4567,7 +4563,7 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_declaration() {
 	    let localctx = new Entity_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 166, vhdlParser.RULE_entity_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1152;
@@ -4583,7 +4579,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1159;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BEGIN) {
+	        if(_la===12) {
 	            this.state = 1157;
 	            this.match(vhdlParser.BEGIN);
 	            this.state = 1158;
@@ -4595,7 +4591,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1163;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.ENTITY) {
+	        if(_la===25) {
 	            this.state = 1162;
 	            this.match(vhdlParser.ENTITY);
 	        }
@@ -4603,7 +4599,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1166;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1165;
 	            this.identifier();
 	        }
@@ -4774,13 +4770,13 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_declarative_part() {
 	    let localctx = new Entity_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 170, vhdlParser.RULE_entity_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1195;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.DISCONNECT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FUNCTION))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (vhdlParser.GROUP - 34)) | (1 << (vhdlParser.IMPURE - 34)) | (1 << (vhdlParser.LIMIT - 34)) | (1 << (vhdlParser.NATURE - 34)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.QUANTITY - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SIGNAL - 68)) | (1 << (vhdlParser.SUBNATURE - 68)) | (1 << (vhdlParser.SUBTYPE - 68)) | (1 << (vhdlParser.TERMINAL - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2690648096) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 132105) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 117833741) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 1192;
 	            this.entity_declarative_item();
 	            this.state = 1197;
@@ -4806,7 +4802,7 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_designator() {
 	    let localctx = new Entity_designatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 172, vhdlParser.RULE_entity_designator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1198;
@@ -4814,7 +4810,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1200;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LBRACKET) {
+	        if(_la===143) {
 	            this.state = 1199;
 	            this.signature();
 	        }
@@ -4838,13 +4834,13 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_header() {
 	    let localctx = new Entity_headerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 174, vhdlParser.RULE_entity_header);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1203;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.GENERIC) {
+	        if(_la===33) {
 	            this.state = 1202;
 	            this.generic_clause();
 	        }
@@ -4852,7 +4848,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1206;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PORT) {
+	        if(_la===65) {
 	            this.state = 1205;
 	            this.port_clause();
 	        }
@@ -4876,22 +4872,22 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_name_list() {
 	    let localctx = new Entity_name_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 176, vhdlParser.RULE_entity_name_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1218;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.CHARACTER_LITERAL:
-	        case vhdlParser.STRING_LITERAL:
+	        case 118:
+	        case 119:
+	        case 126:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1208;
 	            this.entity_designator();
 	            this.state = 1213;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vhdlParser.COMMA) {
+	            while(_la===139) {
 	                this.state = 1209;
 	                this.match(vhdlParser.COMMA);
 	                this.state = 1210;
@@ -4901,12 +4897,12 @@ export default class vhdlParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case vhdlParser.OTHERS:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1216;
 	            this.match(vhdlParser.OTHERS);
 	            break;
-	        case vhdlParser.ALL:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1217;
 	            this.match(vhdlParser.ALL);
@@ -5003,13 +4999,13 @@ export default class vhdlParser extends antlr4.Parser {
 	entity_statement_part() {
 	    let localctx = new Entity_statement_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, vhdlParser.RULE_entity_statement_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1232;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.ASSERT || _la===vhdlParser.POSTPONED || _la===vhdlParser.PROCESS || _la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        while(_la===10 || _la===66 || _la===67 || _la===118 || _la===119) {
 	            this.state = 1229;
 	            this.entity_statement();
 	            this.state = 1234;
@@ -5039,18 +5035,18 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1238;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1235;
 	            this.identifier();
 	            break;
-	        case vhdlParser.CHARACTER_LITERAL:
+	        case 126:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1236;
 	            this.match(vhdlParser.CHARACTER_LITERAL);
 	            break;
-	        case vhdlParser.STRING_LITERAL:
+	        case 127:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1237;
 	            this.match(vhdlParser.STRING_LITERAL);
@@ -5081,13 +5077,13 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1242;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1240;
 	            this.identifier();
 	            break;
-	        case vhdlParser.CHARACTER_LITERAL:
+	        case 126:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1241;
 	            this.match(vhdlParser.CHARACTER_LITERAL);
@@ -5114,7 +5110,7 @@ export default class vhdlParser extends antlr4.Parser {
 	enumeration_type_definition() {
 	    let localctx = new Enumeration_type_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 188, vhdlParser.RULE_enumeration_type_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1244;
@@ -5124,7 +5120,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1250;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 1246;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 1247;
@@ -5154,13 +5150,13 @@ export default class vhdlParser extends antlr4.Parser {
 	exit_statement() {
 	    let localctx = new Exit_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 190, vhdlParser.RULE_exit_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1256;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1255;
 	            this.label_colon();
 	        }
@@ -5170,7 +5166,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1260;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1259;
 	            this.identifier();
 	        }
@@ -5178,7 +5174,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1264;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.WHEN) {
+	        if(_la===108) {
 	            this.state = 1262;
 	            this.match(vhdlParser.WHEN);
 	            this.state = 1263;
@@ -5248,17 +5244,17 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1286;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.NEW:
-	        case vhdlParser.NULL_:
-	        case vhdlParser.BASE_LITERAL:
-	        case vhdlParser.BIT_STRING_LITERAL:
-	        case vhdlParser.REAL_LITERAL:
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.CHARACTER_LITERAL:
-	        case vhdlParser.STRING_LITERAL:
-	        case vhdlParser.LPAREN:
-	        case vhdlParser.INTEGER:
+	        case 52:
+	        case 57:
+	        case 112:
+	        case 113:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 126:
+	        case 127:
+	        case 141:
+	        case 158:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1277;
 	            this.primary();
@@ -5273,14 +5269,14 @@ export default class vhdlParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case vhdlParser.ABS:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1282;
 	            this.match(vhdlParser.ABS);
 	            this.state = 1283;
 	            this.primary();
 	            break;
-	        case vhdlParser.NOT:
+	        case 56:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1284;
 	            this.match(vhdlParser.NOT);
@@ -5309,7 +5305,7 @@ export default class vhdlParser extends antlr4.Parser {
 	file_declaration() {
 	    let localctx = new File_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 196, vhdlParser.RULE_file_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1288;
@@ -5323,7 +5319,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1293;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IS || _la===vhdlParser.OPEN) {
+	        if(_la===41 || _la===60) {
 	            this.state = 1292;
 	            this.file_open_information();
 	        }
@@ -5372,13 +5368,13 @@ export default class vhdlParser extends antlr4.Parser {
 	file_open_information() {
 	    let localctx = new File_open_informationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 200, vhdlParser.RULE_file_open_information);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1301;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.OPEN) {
+	        if(_la===60) {
 	            this.state = 1299;
 	            this.match(vhdlParser.OPEN);
 	            this.state = 1300;
@@ -5501,7 +5497,7 @@ export default class vhdlParser extends antlr4.Parser {
 	free_quantity_declaration() {
 	    let localctx = new Free_quantity_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 208, vhdlParser.RULE_free_quantity_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1320;
@@ -5515,7 +5511,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1326;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 1324;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 1325;
@@ -5543,7 +5539,7 @@ export default class vhdlParser extends antlr4.Parser {
 	generate_statement() {
 	    let localctx = new Generate_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 210, vhdlParser.RULE_generate_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1330;
@@ -5555,11 +5551,11 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1340;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.BEGIN) | (1 << vhdlParser.COMPONENT) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.DISCONNECT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FOR) | (1 << vhdlParser.FUNCTION))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (vhdlParser.GROUP - 34)) | (1 << (vhdlParser.IMPURE - 34)) | (1 << (vhdlParser.LIMIT - 34)) | (1 << (vhdlParser.NATURE - 34)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.QUANTITY - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SIGNAL - 68)) | (1 << (vhdlParser.SUBNATURE - 68)) | (1 << (vhdlParser.SUBTYPE - 68)) | (1 << (vhdlParser.TERMINAL - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3764918304) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 132105) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 117833741) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 1336;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.COMPONENT) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.DISCONNECT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FOR) | (1 << vhdlParser.FUNCTION))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (vhdlParser.GROUP - 34)) | (1 << (vhdlParser.IMPURE - 34)) | (1 << (vhdlParser.LIMIT - 34)) | (1 << (vhdlParser.NATURE - 34)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.QUANTITY - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SIGNAL - 68)) | (1 << (vhdlParser.SUBNATURE - 68)) | (1 << (vhdlParser.SUBTYPE - 68)) | (1 << (vhdlParser.TERMINAL - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3764914208) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 132105) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 117833741) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	                this.state = 1333;
 	                this.block_declarative_item();
 	                this.state = 1338;
@@ -5573,7 +5569,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1345;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ABS) | (1 << vhdlParser.ASSERT) | (1 << vhdlParser.BREAK) | (1 << vhdlParser.CASE))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.NEW - 36)) | (1 << (vhdlParser.NOT - 36)) | (1 << (vhdlParser.NULL_ - 36)) | (1 << (vhdlParser.POSTPONED - 36)) | (1 << (vhdlParser.PROCESS - 36)))) !== 0) || _la===vhdlParser.PROCEDURAL || ((((_la - 107)) & ~0x1f) == 0 && ((1 << (_la - 107)) & ((1 << (vhdlParser.WITH - 107)) | (1 << (vhdlParser.BASE_LITERAL - 107)) | (1 << (vhdlParser.BIT_STRING_LITERAL - 107)) | (1 << (vhdlParser.REAL_LITERAL - 107)) | (1 << (vhdlParser.BASIC_IDENTIFIER - 107)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 107)) | (1 << (vhdlParser.CHARACTER_LITERAL - 107)) | (1 << (vhdlParser.STRING_LITERAL - 107)))) !== 0) || ((((_la - 141)) & ~0x1f) == 0 && ((1 << (_la - 141)) & ((1 << (vhdlParser.LPAREN - 141)) | (1 << (vhdlParser.PLUS - 141)) | (1 << (vhdlParser.MINUS - 141)) | (1 << (vhdlParser.INTEGER - 141)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 295938) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3224436737) !== 0) || _la===69 || ((((_la - 107)) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1580129) !== 0) || ((((_la - 141)) & ~0x1f) === 0 && ((1 << (_la - 141)) & 131457) !== 0)) {
 	            this.state = 1342;
 	            this.architecture_statement();
 	            this.state = 1347;
@@ -5587,7 +5583,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1351;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1350;
 	            this.identifier();
 	        }
@@ -5617,14 +5613,14 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1359;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.FOR:
+	        case 30:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1355;
 	            this.match(vhdlParser.FOR);
 	            this.state = 1356;
 	            this.parameter_specification();
 	            break;
-	        case vhdlParser.IF:
+	        case 36:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1357;
 	            this.match(vhdlParser.IF);
@@ -5684,7 +5680,7 @@ export default class vhdlParser extends antlr4.Parser {
 	generic_list() {
 	    let localctx = new Generic_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 216, vhdlParser.RULE_generic_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1367;
@@ -5692,7 +5688,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1372;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.SEMI) {
+	        while(_la===138) {
 	            this.state = 1368;
 	            this.match(vhdlParser.SEMI);
 	            this.state = 1369;
@@ -5755,14 +5751,14 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1383;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.STRING_LITERAL:
+	        case 118:
+	        case 119:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1381;
 	            this.name();
 	            break;
-	        case vhdlParser.CHARACTER_LITERAL:
+	        case 126:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1382;
 	            this.match(vhdlParser.CHARACTER_LITERAL);
@@ -5789,7 +5785,7 @@ export default class vhdlParser extends antlr4.Parser {
 	group_constituent_list() {
 	    let localctx = new Group_constituent_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 222, vhdlParser.RULE_group_constituent_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1385;
@@ -5797,7 +5793,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1390;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 1386;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 1387;
@@ -5922,12 +5918,12 @@ export default class vhdlParser extends antlr4.Parser {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 230, vhdlParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1413;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER)) {
+	        if(!(_la===118 || _la===119)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5953,7 +5949,7 @@ export default class vhdlParser extends antlr4.Parser {
 	identifier_list() {
 	    let localctx = new Identifier_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 232, vhdlParser.RULE_identifier_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1415;
@@ -5961,7 +5957,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1420;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 1416;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 1417;
@@ -5989,13 +5985,13 @@ export default class vhdlParser extends antlr4.Parser {
 	if_statement() {
 	    let localctx = new If_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 234, vhdlParser.RULE_if_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1424;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1423;
 	            this.label_colon();
 	        }
@@ -6011,7 +6007,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1437;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.ELSIF) {
+	        while(_la===27) {
 	            this.state = 1430;
 	            this.match(vhdlParser.ELSIF);
 	            this.state = 1431;
@@ -6027,7 +6023,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1442;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.ELSE) {
+	        if(_la===26) {
 	            this.state = 1440;
 	            this.match(vhdlParser.ELSE);
 	            this.state = 1441;
@@ -6041,7 +6037,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1447;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1446;
 	            this.identifier();
 	        }
@@ -6067,7 +6063,7 @@ export default class vhdlParser extends antlr4.Parser {
 	index_constraint() {
 	    let localctx = new Index_constraintContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 236, vhdlParser.RULE_index_constraint);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1451;
@@ -6077,7 +6073,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1457;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 1453;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 1454;
@@ -6171,20 +6167,20 @@ export default class vhdlParser extends antlr4.Parser {
 	instantiated_unit() {
 	    let localctx = new Instantiated_unitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 242, vhdlParser.RULE_instantiated_unit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1484;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.COMPONENT:
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.STRING_LITERAL:
+	        case 19:
+	        case 118:
+	        case 119:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1471;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.COMPONENT) {
+	            if(_la===19) {
 	                this.state = 1470;
 	                this.match(vhdlParser.COMPONENT);
 	            }
@@ -6192,7 +6188,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 1473;
 	            this.name();
 	            break;
-	        case vhdlParser.ENTITY:
+	        case 25:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1474;
 	            this.match(vhdlParser.ENTITY);
@@ -6201,7 +6197,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 1480;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.LPAREN) {
+	            if(_la===141) {
 	                this.state = 1476;
 	                this.match(vhdlParser.LPAREN);
 	                this.state = 1477;
@@ -6211,7 +6207,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case vhdlParser.CONFIGURATION:
+	        case 20:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1482;
 	            this.match(vhdlParser.CONFIGURATION);
@@ -6240,20 +6236,20 @@ export default class vhdlParser extends antlr4.Parser {
 	instantiation_list() {
 	    let localctx = new Instantiation_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 244, vhdlParser.RULE_instantiation_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1496;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1486;
 	            this.identifier();
 	            this.state = 1491;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vhdlParser.COMMA) {
+	            while(_la===139) {
 	                this.state = 1487;
 	                this.match(vhdlParser.COMMA);
 	                this.state = 1488;
@@ -6263,12 +6259,12 @@ export default class vhdlParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case vhdlParser.OTHERS:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1494;
 	            this.match(vhdlParser.OTHERS);
 	            break;
-	        case vhdlParser.ALL:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1495;
 	            this.match(vhdlParser.ALL);
@@ -6295,13 +6291,13 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_constant_declaration() {
 	    let localctx = new Interface_constant_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 246, vhdlParser.RULE_interface_constant_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1499;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.CONSTANT) {
+	        if(_la===21) {
 	            this.state = 1498;
 	            this.match(vhdlParser.CONSTANT);
 	        }
@@ -6313,7 +6309,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1504;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IN) {
+	        if(_la===38) {
 	            this.state = 1503;
 	            this.match(vhdlParser.IN);
 	        }
@@ -6323,7 +6319,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1509;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 1507;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 1508;
@@ -6462,7 +6458,7 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_signal_list() {
 	    let localctx = new Interface_signal_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 254, vhdlParser.RULE_interface_signal_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1526;
@@ -6470,7 +6466,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1531;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.SEMI) {
+	        while(_la===138) {
 	            this.state = 1527;
 	            this.match(vhdlParser.SEMI);
 	            this.state = 1528;
@@ -6498,7 +6494,7 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_port_list() {
 	    let localctx = new Interface_port_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 256, vhdlParser.RULE_interface_port_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1534;
@@ -6506,7 +6502,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1539;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.SEMI) {
+	        while(_la===138) {
 	            this.state = 1535;
 	            this.match(vhdlParser.SEMI);
 	            this.state = 1536;
@@ -6534,7 +6530,7 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_list() {
 	    let localctx = new Interface_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 258, vhdlParser.RULE_interface_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1542;
@@ -6542,7 +6538,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1547;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.SEMI) {
+	        while(_la===138) {
 	            this.state = 1543;
 	            this.match(vhdlParser.SEMI);
 	            this.state = 1544;
@@ -6570,7 +6566,7 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_quantity_declaration() {
 	    let localctx = new Interface_quantity_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 260, vhdlParser.RULE_interface_quantity_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1550;
@@ -6582,10 +6578,10 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1554;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IN || _la===vhdlParser.OUT) {
+	        if(_la===38 || _la===63) {
 	            this.state = 1553;
 	            _la = this._input.LA(1);
-	            if(!(_la===vhdlParser.IN || _la===vhdlParser.OUT)) {
+	            if(!(_la===38 || _la===63)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -6599,7 +6595,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1559;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 1557;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 1558;
@@ -6625,7 +6621,7 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_port_declaration() {
 	    let localctx = new Interface_port_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 262, vhdlParser.RULE_interface_port_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1561;
@@ -6635,7 +6631,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1564;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BUFFER || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (vhdlParser.IN - 38)) | (1 << (vhdlParser.INOUT - 38)) | (1 << (vhdlParser.LINKAGE - 38)) | (1 << (vhdlParser.OUT - 38)))) !== 0)) {
+	        if(_la===16 || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 33554565) !== 0)) {
 	            this.state = 1563;
 	            this.signal_mode();
 	        }
@@ -6645,7 +6641,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1568;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BUS) {
+	        if(_la===17) {
 	            this.state = 1567;
 	            this.match(vhdlParser.BUS);
 	        }
@@ -6653,7 +6649,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1572;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 1570;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 1571;
@@ -6679,7 +6675,7 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_signal_declaration() {
 	    let localctx = new Interface_signal_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 264, vhdlParser.RULE_interface_signal_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1574;
@@ -6691,7 +6687,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1578;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BUFFER || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (vhdlParser.IN - 38)) | (1 << (vhdlParser.INOUT - 38)) | (1 << (vhdlParser.LINKAGE - 38)) | (1 << (vhdlParser.OUT - 38)))) !== 0)) {
+	        if(_la===16 || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 33554565) !== 0)) {
 	            this.state = 1577;
 	            this.signal_mode();
 	        }
@@ -6701,7 +6697,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1582;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BUS) {
+	        if(_la===17) {
 	            this.state = 1581;
 	            this.match(vhdlParser.BUS);
 	        }
@@ -6709,7 +6705,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1586;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 1584;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 1585;
@@ -6764,13 +6760,13 @@ export default class vhdlParser extends antlr4.Parser {
 	interface_variable_declaration() {
 	    let localctx = new Interface_variable_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 268, vhdlParser.RULE_interface_variable_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1594;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARIABLE) {
+	        if(_la===105) {
 	            this.state = 1593;
 	            this.match(vhdlParser.VARIABLE);
 	        }
@@ -6782,7 +6778,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1599;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BUFFER || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (vhdlParser.IN - 38)) | (1 << (vhdlParser.INOUT - 38)) | (1 << (vhdlParser.LINKAGE - 38)) | (1 << (vhdlParser.OUT - 38)))) !== 0)) {
+	        if(_la===16 || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 33554565) !== 0)) {
 	            this.state = 1598;
 	            this.signal_mode();
 	        }
@@ -6792,7 +6788,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1604;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 1602;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 1603;
@@ -6822,14 +6818,14 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1610;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.WHILE:
+	        case 109:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1606;
 	            this.match(vhdlParser.WHILE);
 	            this.state = 1607;
 	            this.condition();
 	            break;
-	        case vhdlParser.FOR:
+	        case 30:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1608;
 	            this.match(vhdlParser.FOR);
@@ -6951,31 +6947,31 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1628;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.NULL_:
+	        case 57:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1623;
 	            this.match(vhdlParser.NULL_);
 	            break;
-	        case vhdlParser.BIT_STRING_LITERAL:
+	        case 113:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1624;
 	            this.match(vhdlParser.BIT_STRING_LITERAL);
 	            break;
-	        case vhdlParser.STRING_LITERAL:
+	        case 127:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1625;
 	            this.match(vhdlParser.STRING_LITERAL);
 	            break;
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.CHARACTER_LITERAL:
+	        case 118:
+	        case 119:
+	        case 126:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1626;
 	            this.enumeration_literal();
 	            break;
-	        case vhdlParser.BASE_LITERAL:
-	        case vhdlParser.REAL_LITERAL:
-	        case vhdlParser.INTEGER:
+	        case 112:
+	        case 117:
+	        case 158:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1627;
 	            this.numeric_literal();
@@ -7025,7 +7021,7 @@ export default class vhdlParser extends antlr4.Parser {
 	logical_name_list() {
 	    let localctx = new Logical_name_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 282, vhdlParser.RULE_logical_name_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1632;
@@ -7033,7 +7029,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1637;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 1633;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 1634;
@@ -7061,12 +7057,12 @@ export default class vhdlParser extends antlr4.Parser {
 	logical_operator() {
 	    let localctx = new Logical_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 284, vhdlParser.RULE_logical_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1640;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.AND || ((((_la - 50)) & ~0x1f) == 0 && ((1 << (_la - 50)) & ((1 << (vhdlParser.NAND - 50)) | (1 << (vhdlParser.NOR - 50)) | (1 << (vhdlParser.OR - 50)))) !== 0) || _la===vhdlParser.XNOR || _la===vhdlParser.XOR)) {
+	        if(!(_la===7 || ((((_la - 50)) & ~0x1f) === 0 && ((1 << (_la - 50)) & 2081) !== 0) || _la===110 || _la===111)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -7092,13 +7088,13 @@ export default class vhdlParser extends antlr4.Parser {
 	loop_statement() {
 	    let localctx = new Loop_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 286, vhdlParser.RULE_loop_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1643;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1642;
 	            this.label_colon();
 	        }
@@ -7106,7 +7102,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1646;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.FOR || _la===vhdlParser.WHILE) {
+	        if(_la===30 || _la===109) {
 	            this.state = 1645;
 	            this.iteration_scheme();
 	        }
@@ -7122,7 +7118,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1653;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1652;
 	            this.identifier();
 	        }
@@ -7148,12 +7144,12 @@ export default class vhdlParser extends antlr4.Parser {
 	signal_mode() {
 	    let localctx = new Signal_modeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 288, vhdlParser.RULE_signal_mode);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1657;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.BUFFER || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (vhdlParser.IN - 38)) | (1 << (vhdlParser.INOUT - 38)) | (1 << (vhdlParser.LINKAGE - 38)) | (1 << (vhdlParser.OUT - 38)))) !== 0))) {
+	        if(!(_la===16 || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 33554565) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -7179,12 +7175,12 @@ export default class vhdlParser extends antlr4.Parser {
 	multiplying_operator() {
 	    let localctx = new Multiplying_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 290, vhdlParser.RULE_multiplying_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1659;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.MOD || _la===vhdlParser.REM || _la===vhdlParser.MUL || _la===vhdlParser.DIV)) {
+	        if(!(_la===49 || _la===75 || _la===146 || _la===147)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -7215,12 +7211,12 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1663;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.state = 1661;
 	            this.identifier();
 	            break;
-	        case vhdlParser.STRING_LITERAL:
+	        case 127:
 	            this.state = 1662;
 	            this.match(vhdlParser.STRING_LITERAL);
 	            break;
@@ -7308,7 +7304,7 @@ export default class vhdlParser extends antlr4.Parser {
 	selected_name() {
 	    let localctx = new Selected_nameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 296, vhdlParser.RULE_selected_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1677;
@@ -7316,7 +7312,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1682;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.DOT) {
+	        while(_la===154) {
 	            this.state = 1678;
 	            this.match(vhdlParser.DOT);
 	            this.state = 1679;
@@ -7437,13 +7433,13 @@ export default class vhdlParser extends antlr4.Parser {
 	attribute_name_part() {
 	    let localctx = new Attribute_name_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 304, vhdlParser.RULE_attribute_name_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1700;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LBRACKET) {
+	        if(_la===143) {
 	            this.state = 1699;
 	            this.signature();
 	        }
@@ -7518,15 +7514,15 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1718;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.STRING_LITERAL:
+	        case 118:
+	        case 119:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1716;
 	            this.scalar_nature_definition();
 	            break;
-	        case vhdlParser.ARRAY:
-	        case vhdlParser.RECORD:
+	        case 9:
+	        case 76:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1717;
 	            this.composite_nature_definition();
@@ -7580,13 +7576,13 @@ export default class vhdlParser extends antlr4.Parser {
 	next_statement() {
 	    let localctx = new Next_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 312, vhdlParser.RULE_next_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1725;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1724;
 	            this.label_colon();
 	        }
@@ -7596,7 +7592,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1729;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1728;
 	            this.identifier();
 	        }
@@ -7604,7 +7600,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1733;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.WHEN) {
+	        if(_la===108) {
 	            this.state = 1731;
 	            this.match(vhdlParser.WHEN);
 	            this.state = 1732;
@@ -7673,33 +7669,33 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1747;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.CONSTANT:
+	        case 21:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1741;
 	            this.constant_declaration();
 	            break;
-	        case vhdlParser.SIGNAL:
+	        case 86:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1742;
 	            this.signal_declaration();
 	            break;
-	        case vhdlParser.SHARED:
-	        case vhdlParser.VARIABLE:
+	        case 85:
+	        case 105:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1743;
 	            this.variable_declaration();
 	            break;
-	        case vhdlParser.FILE:
+	        case 29:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1744;
 	            this.file_declaration();
 	            break;
-	        case vhdlParser.TERMINAL:
+	        case 94:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1745;
 	            this.terminal_declaration();
 	            break;
-	        case vhdlParser.QUANTITY:
+	        case 71:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 1746;
 	            this.quantity_declaration();
@@ -7726,13 +7722,13 @@ export default class vhdlParser extends antlr4.Parser {
 	opts() {
 	    let localctx = new OptsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 318, vhdlParser.RULE_opts);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1750;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.GUARDED) {
+	        if(_la===35) {
 	            this.state = 1749;
 	            this.match(vhdlParser.GUARDED);
 	        }
@@ -7740,7 +7736,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1753;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.INERTIAL || _la===vhdlParser.REJECT || _la===vhdlParser.TRANSPORT) {
+	        if(_la===39 || _la===74 || _la===99) {
 	            this.state = 1752;
 	            this.delay_mechanism();
 	        }
@@ -7764,7 +7760,7 @@ export default class vhdlParser extends antlr4.Parser {
 	package_body() {
 	    let localctx = new Package_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 320, vhdlParser.RULE_package_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1755;
@@ -7782,7 +7778,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1763;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PACKAGE) {
+	        if(_la===64) {
 	            this.state = 1761;
 	            this.match(vhdlParser.PACKAGE);
 	            this.state = 1762;
@@ -7792,7 +7788,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1766;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1765;
 	            this.identifier();
 	        }
@@ -7909,13 +7905,13 @@ export default class vhdlParser extends antlr4.Parser {
 	package_body_declarative_part() {
 	    let localctx = new Package_body_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 324, vhdlParser.RULE_package_body_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1786;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FUNCTION))) !== 0) || _la===vhdlParser.GROUP || _la===vhdlParser.IMPURE || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SUBTYPE - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2686451744) !== 0) || _la===34 || _la===37 || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 33685509) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 1783;
 	            this.package_body_declarative_item();
 	            this.state = 1788;
@@ -7941,7 +7937,7 @@ export default class vhdlParser extends antlr4.Parser {
 	package_declaration() {
 	    let localctx = new Package_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 326, vhdlParser.RULE_package_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1789;
@@ -7957,7 +7953,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1795;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PACKAGE) {
+	        if(_la===64) {
 	            this.state = 1794;
 	            this.match(vhdlParser.PACKAGE);
 	        }
@@ -7965,7 +7961,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1798;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1797;
 	            this.identifier();
 	        }
@@ -8130,13 +8126,13 @@ export default class vhdlParser extends antlr4.Parser {
 	package_declarative_part() {
 	    let localctx = new Package_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 330, vhdlParser.RULE_package_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1826;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.COMPONENT) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.DISCONNECT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FUNCTION))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (vhdlParser.GROUP - 34)) | (1 << (vhdlParser.IMPURE - 34)) | (1 << (vhdlParser.NATURE - 34)))) !== 0) || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SIGNAL - 68)) | (1 << (vhdlParser.SUBNATURE - 68)) | (1 << (vhdlParser.SUBTYPE - 68)) | (1 << (vhdlParser.TERMINAL - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2691172384) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 131081) !== 0) || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 117833733) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 1823;
 	            this.package_declarative_item();
 	            this.state = 1828;
@@ -8215,7 +8211,7 @@ export default class vhdlParser extends antlr4.Parser {
 	physical_type_definition() {
 	    let localctx = new Physical_type_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 336, vhdlParser.RULE_physical_type_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1836;
@@ -8227,7 +8223,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1842;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        while(_la===118 || _la===119) {
 	            this.state = 1839;
 	            this.secondary_unit_declaration();
 	            this.state = 1844;
@@ -8241,7 +8237,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1848;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1847;
 	            this.identifier();
 	        }
@@ -8419,17 +8415,17 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1878;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.ENTITY:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1875;
 	            this.entity_declaration();
 	            break;
-	        case vhdlParser.CONFIGURATION:
+	        case 20:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1876;
 	            this.configuration_declaration();
 	            break;
-	        case vhdlParser.PACKAGE:
+	        case 64:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1877;
 	            this.package_declaration();
@@ -8553,13 +8549,13 @@ export default class vhdlParser extends antlr4.Parser {
 	procedural_declarative_part() {
 	    let localctx = new Procedural_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 350, vhdlParser.RULE_procedural_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1897;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.FUNCTION))) !== 0) || _la===vhdlParser.GROUP || _la===vhdlParser.IMPURE || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SUBTYPE - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2149582880) !== 0) || _la===34 || _la===37 || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 33685509) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 1894;
 	            this.procedural_declarative_item();
 	            this.state = 1899;
@@ -8585,13 +8581,13 @@ export default class vhdlParser extends antlr4.Parser {
 	procedural_statement_part() {
 	    let localctx = new Procedural_statement_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 352, vhdlParser.RULE_procedural_statement_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1903;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ASSERT) | (1 << vhdlParser.BREAK) | (1 << vhdlParser.CASE) | (1 << vhdlParser.EXIT) | (1 << vhdlParser.FOR))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.LOOP - 36)) | (1 << (vhdlParser.NEXT - 36)) | (1 << (vhdlParser.NULL_ - 36)))) !== 0) || ((((_la - 79)) & ~0x1f) == 0 && ((1 << (_la - 79)) & ((1 << (vhdlParser.REPORT - 79)) | (1 << (vhdlParser.RETURN - 79)) | (1 << (vhdlParser.WAIT - 79)) | (1 << (vhdlParser.WHILE - 79)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)) | (1 << (vhdlParser.LPAREN - 118)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1342473216) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 2230273) !== 0) || ((((_la - 79)) & ~0x1f) === 0 && ((1 << (_la - 79)) & 1207959555) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 8389123) !== 0)) {
 	            this.state = 1900;
 	            this.sequential_statement();
 	            this.state = 1905;
@@ -8617,7 +8613,7 @@ export default class vhdlParser extends antlr4.Parser {
 	procedure_call() {
 	    let localctx = new Procedure_callContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 354, vhdlParser.RULE_procedure_call);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1906;
@@ -8625,7 +8621,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1911;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LPAREN) {
+	        if(_la===141) {
 	            this.state = 1907;
 	            this.match(vhdlParser.LPAREN);
 	            this.state = 1908;
@@ -8789,13 +8785,13 @@ export default class vhdlParser extends antlr4.Parser {
 	process_declarative_part() {
 	    let localctx = new Process_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 360, vhdlParser.RULE_process_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1937;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FUNCTION))) !== 0) || _la===vhdlParser.GROUP || _la===vhdlParser.IMPURE || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SUBTYPE - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2686453792) !== 0) || _la===34 || _la===37 || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 33685509) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 1934;
 	            this.process_declarative_item();
 	            this.state = 1939;
@@ -8821,13 +8817,13 @@ export default class vhdlParser extends antlr4.Parser {
 	process_statement() {
 	    let localctx = new Process_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 362, vhdlParser.RULE_process_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1941;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1940;
 	            this.label_colon();
 	        }
@@ -8835,7 +8831,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1944;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.POSTPONED) {
+	        if(_la===66) {
 	            this.state = 1943;
 	            this.match(vhdlParser.POSTPONED);
 	        }
@@ -8845,7 +8841,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1951;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LPAREN) {
+	        if(_la===141) {
 	            this.state = 1947;
 	            this.match(vhdlParser.LPAREN);
 	            this.state = 1948;
@@ -8857,7 +8853,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1954;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IS) {
+	        if(_la===41) {
 	            this.state = 1953;
 	            this.match(vhdlParser.IS);
 	        }
@@ -8873,7 +8869,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1961;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.POSTPONED) {
+	        if(_la===66) {
 	            this.state = 1960;
 	            this.match(vhdlParser.POSTPONED);
 	        }
@@ -8883,7 +8879,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 1965;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 1964;
 	            this.identifier();
 	        }
@@ -8909,13 +8905,13 @@ export default class vhdlParser extends antlr4.Parser {
 	process_statement_part() {
 	    let localctx = new Process_statement_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 364, vhdlParser.RULE_process_statement_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1972;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ASSERT) | (1 << vhdlParser.BREAK) | (1 << vhdlParser.CASE) | (1 << vhdlParser.EXIT) | (1 << vhdlParser.FOR))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.LOOP - 36)) | (1 << (vhdlParser.NEXT - 36)) | (1 << (vhdlParser.NULL_ - 36)))) !== 0) || ((((_la - 79)) & ~0x1f) == 0 && ((1 << (_la - 79)) & ((1 << (vhdlParser.REPORT - 79)) | (1 << (vhdlParser.RETURN - 79)) | (1 << (vhdlParser.WAIT - 79)) | (1 << (vhdlParser.WHILE - 79)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)) | (1 << (vhdlParser.LPAREN - 118)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1342473216) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 2230273) !== 0) || ((((_la - 79)) & ~0x1f) === 0 && ((1 << (_la - 79)) & 1207959555) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 8389123) !== 0)) {
 	            this.state = 1969;
 	            this.sequential_statement();
 	            this.state = 1974;
@@ -9028,21 +9024,21 @@ export default class vhdlParser extends antlr4.Parser {
 	quantity_list() {
 	    let localctx = new Quantity_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 370, vhdlParser.RULE_quantity_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1999;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.STRING_LITERAL:
+	        case 118:
+	        case 119:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1989;
 	            this.name();
 	            this.state = 1994;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vhdlParser.COMMA) {
+	            while(_la===139) {
 	                this.state = 1990;
 	                this.match(vhdlParser.COMMA);
 	                this.state = 1991;
@@ -9052,12 +9048,12 @@ export default class vhdlParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case vhdlParser.OTHERS:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1997;
 	            this.match(vhdlParser.OTHERS);
 	            break;
-	        case vhdlParser.ALL:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1998;
 	            this.match(vhdlParser.ALL);
@@ -9206,7 +9202,7 @@ export default class vhdlParser extends antlr4.Parser {
 	record_nature_definition() {
 	    let localctx = new Record_nature_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 380, vhdlParser.RULE_record_nature_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2018;
@@ -9220,7 +9216,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 2022; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER);
+	        } while(_la===118 || _la===119);
 	        this.state = 2024;
 	        this.match(vhdlParser.END);
 	        this.state = 2025;
@@ -9228,7 +9224,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2027;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2026;
 	            this.identifier();
 	        }
@@ -9252,7 +9248,7 @@ export default class vhdlParser extends antlr4.Parser {
 	record_type_definition() {
 	    let localctx = new Record_type_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 382, vhdlParser.RULE_record_type_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2029;
@@ -9266,7 +9262,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 2033; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER);
+	        } while(_la===118 || _la===119);
 	        this.state = 2035;
 	        this.match(vhdlParser.END);
 	        this.state = 2036;
@@ -9274,7 +9270,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2038;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2037;
 	            this.identifier();
 	        }
@@ -9331,12 +9327,12 @@ export default class vhdlParser extends antlr4.Parser {
 	relational_operator() {
 	    let localctx = new Relational_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 386, vhdlParser.RULE_relational_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2046;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 131)) & ~0x1f) == 0 && ((1 << (_la - 131)) & ((1 << (vhdlParser.LE - 131)) | (1 << (vhdlParser.GE - 131)) | (1 << (vhdlParser.NEQ - 131)) | (1 << (vhdlParser.LOWERTHAN - 131)) | (1 << (vhdlParser.GREATERTHAN - 131)) | (1 << (vhdlParser.EQ - 131)))) !== 0))) {
+	        if(!(((((_la - 131)) & ~0x1f) === 0 && ((1 << (_la - 131)) & 3670027) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -9362,13 +9358,13 @@ export default class vhdlParser extends antlr4.Parser {
 	report_statement() {
 	    let localctx = new Report_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 388, vhdlParser.RULE_report_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2049;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2048;
 	            this.label_colon();
 	        }
@@ -9380,7 +9376,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2055;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.SEVERITY) {
+	        if(_la===84) {
 	            this.state = 2053;
 	            this.match(vhdlParser.SEVERITY);
 	            this.state = 2054;
@@ -9408,13 +9404,13 @@ export default class vhdlParser extends antlr4.Parser {
 	return_statement() {
 	    let localctx = new Return_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 390, vhdlParser.RULE_return_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2060;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2059;
 	            this.label_colon();
 	        }
@@ -9424,7 +9420,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2064;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.ABS || ((((_la - 52)) & ~0x1f) == 0 && ((1 << (_la - 52)) & ((1 << (vhdlParser.NEW - 52)) | (1 << (vhdlParser.NOT - 52)) | (1 << (vhdlParser.NULL_ - 52)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (vhdlParser.BASE_LITERAL - 112)) | (1 << (vhdlParser.BIT_STRING_LITERAL - 112)) | (1 << (vhdlParser.REAL_LITERAL - 112)) | (1 << (vhdlParser.BASIC_IDENTIFIER - 112)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 112)) | (1 << (vhdlParser.CHARACTER_LITERAL - 112)) | (1 << (vhdlParser.STRING_LITERAL - 112)) | (1 << (vhdlParser.LPAREN - 112)))) !== 0) || ((((_la - 148)) & ~0x1f) == 0 && ((1 << (_la - 148)) & ((1 << (vhdlParser.PLUS - 148)) | (1 << (vhdlParser.MINUS - 148)) | (1 << (vhdlParser.INTEGER - 148)))) !== 0)) {
+	        if(_la===1 || ((((_la - 52)) & ~0x1f) === 0 && ((1 << (_la - 52)) & 49) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 536920291) !== 0) || ((((_la - 148)) & ~0x1f) === 0 && ((1 << (_la - 148)) & 1027) !== 0)) {
 	            this.state = 2063;
 	            this.expression();
 	        }
@@ -9530,12 +9526,12 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2082;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.ARCHITECTURE:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2080;
 	            this.architecture_body();
 	            break;
-	        case vhdlParser.PACKAGE:
+	        case 64:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2081;
 	            this.package_body();
@@ -9628,7 +9624,7 @@ export default class vhdlParser extends antlr4.Parser {
 	selected_waveforms() {
 	    let localctx = new Selected_waveformsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 402, vhdlParser.RULE_selected_waveforms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2098;
@@ -9640,7 +9636,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2108;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 2101;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 2102;
@@ -9697,7 +9693,7 @@ export default class vhdlParser extends antlr4.Parser {
 	sensitivity_list() {
 	    let localctx = new Sensitivity_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 406, vhdlParser.RULE_sensitivity_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2114;
@@ -9705,7 +9701,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2119;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 2115;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 2116;
@@ -9733,13 +9729,13 @@ export default class vhdlParser extends antlr4.Parser {
 	sequence_of_statements() {
 	    let localctx = new Sequence_of_statementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 408, vhdlParser.RULE_sequence_of_statements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2125;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ASSERT) | (1 << vhdlParser.BREAK) | (1 << vhdlParser.CASE) | (1 << vhdlParser.EXIT) | (1 << vhdlParser.FOR))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.LOOP - 36)) | (1 << (vhdlParser.NEXT - 36)) | (1 << (vhdlParser.NULL_ - 36)))) !== 0) || ((((_la - 79)) & ~0x1f) == 0 && ((1 << (_la - 79)) & ((1 << (vhdlParser.REPORT - 79)) | (1 << (vhdlParser.RETURN - 79)) | (1 << (vhdlParser.WAIT - 79)) | (1 << (vhdlParser.WHILE - 79)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)) | (1 << (vhdlParser.LPAREN - 118)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1342473216) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 2230273) !== 0) || ((((_la - 79)) & ~0x1f) === 0 && ((1 << (_la - 79)) & 1207959555) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 8389123) !== 0)) {
 	            this.state = 2122;
 	            this.sequential_statement();
 	            this.state = 2127;
@@ -9765,7 +9761,7 @@ export default class vhdlParser extends antlr4.Parser {
 	sequential_statement() {
 	    let localctx = new Sequential_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 410, vhdlParser.RULE_sequential_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2146;
 	        this._errHandler.sync(this);
@@ -9842,7 +9838,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 2140;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	            if(_la===118 || _la===119) {
 	                this.state = 2139;
 	                this.label_colon();
 	            }
@@ -9918,12 +9914,12 @@ export default class vhdlParser extends antlr4.Parser {
 	shift_operator() {
 	    let localctx = new Shift_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 414, vhdlParser.RULE_shift_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2154;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 81)) & ~0x1f) == 0 && ((1 << (_la - 81)) & ((1 << (vhdlParser.ROL - 81)) | (1 << (vhdlParser.ROR - 81)) | (1 << (vhdlParser.SLA - 81)) | (1 << (vhdlParser.SLL - 81)) | (1 << (vhdlParser.SRA - 81)) | (1 << (vhdlParser.SRL - 81)))) !== 0))) {
+	        if(!(((((_la - 81)) & ~0x1f) === 0 && ((1 << (_la - 81)) & 1731) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -9949,7 +9945,7 @@ export default class vhdlParser extends antlr4.Parser {
 	signal_assignment_statement() {
 	    let localctx = new Signal_assignment_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 416, vhdlParser.RULE_signal_assignment_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2157;
@@ -9967,7 +9963,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2162;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.INERTIAL || _la===vhdlParser.REJECT || _la===vhdlParser.TRANSPORT) {
+	        if(_la===39 || _la===74 || _la===99) {
 	            this.state = 2161;
 	            this.delay_mechanism();
 	        }
@@ -9995,7 +9991,7 @@ export default class vhdlParser extends antlr4.Parser {
 	signal_declaration() {
 	    let localctx = new Signal_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 418, vhdlParser.RULE_signal_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2167;
@@ -10009,7 +10005,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2172;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BUS || _la===vhdlParser.REGISTER) {
+	        if(_la===17 || _la===78) {
 	            this.state = 2171;
 	            this.signal_kind();
 	        }
@@ -10017,7 +10013,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2176;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 2174;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 2175;
@@ -10045,12 +10041,12 @@ export default class vhdlParser extends antlr4.Parser {
 	signal_kind() {
 	    let localctx = new Signal_kindContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 420, vhdlParser.RULE_signal_kind);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2180;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.BUS || _la===vhdlParser.REGISTER)) {
+	        if(!(_la===17 || _la===78)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -10076,21 +10072,21 @@ export default class vhdlParser extends antlr4.Parser {
 	signal_list() {
 	    let localctx = new Signal_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 422, vhdlParser.RULE_signal_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2192;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.STRING_LITERAL:
+	        case 118:
+	        case 119:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2182;
 	            this.name();
 	            this.state = 2187;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vhdlParser.COMMA) {
+	            while(_la===139) {
 	                this.state = 2183;
 	                this.match(vhdlParser.COMMA);
 	                this.state = 2184;
@@ -10100,12 +10096,12 @@ export default class vhdlParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case vhdlParser.OTHERS:
+	        case 62:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2190;
 	            this.match(vhdlParser.OTHERS);
 	            break;
-	        case vhdlParser.ALL:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2191;
 	            this.match(vhdlParser.ALL);
@@ -10132,7 +10128,7 @@ export default class vhdlParser extends antlr4.Parser {
 	signature() {
 	    let localctx = new SignatureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 424, vhdlParser.RULE_signature);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2194;
@@ -10140,13 +10136,13 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2203;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)))) !== 0)) {
+	        if(((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 515) !== 0)) {
 	            this.state = 2195;
 	            this.name();
 	            this.state = 2200;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vhdlParser.COMMA) {
+	            while(_la===139) {
 	                this.state = 2196;
 	                this.match(vhdlParser.COMMA);
 	                this.state = 2197;
@@ -10160,7 +10156,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2207;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.RETURN) {
+	        if(_la===80) {
 	            this.state = 2205;
 	            this.match(vhdlParser.RETURN);
 	            this.state = 2206;
@@ -10188,16 +10184,16 @@ export default class vhdlParser extends antlr4.Parser {
 	simple_expression() {
 	    let localctx = new Simple_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 426, vhdlParser.RULE_simple_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2212;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.PLUS || _la===vhdlParser.MINUS) {
+	        if(_la===148 || _la===149) {
 	            this.state = 2211;
 	            _la = this._input.LA(1);
-	            if(!(_la===vhdlParser.PLUS || _la===vhdlParser.MINUS)) {
+	            if(!(_la===148 || _la===149)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -10242,7 +10238,7 @@ export default class vhdlParser extends antlr4.Parser {
 	simple_simultaneous_statement() {
 	    let localctx = new Simple_simultaneous_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 428, vhdlParser.RULE_simple_simultaneous_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2224;
@@ -10262,7 +10258,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2230;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.TOLERANCE) {
+	        if(_la===98) {
 	            this.state = 2229;
 	            this.tolerance_aspect();
 	        }
@@ -10317,13 +10313,13 @@ export default class vhdlParser extends antlr4.Parser {
 	simultaneous_case_statement() {
 	    let localctx = new Simultaneous_case_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 432, vhdlParser.RULE_simultaneous_case_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2240;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2239;
 	            this.label_colon();
 	        }
@@ -10343,7 +10339,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 2248; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===vhdlParser.WHEN);
+	        } while(_la===108);
 	        this.state = 2250;
 	        this.match(vhdlParser.END);
 	        this.state = 2251;
@@ -10351,7 +10347,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2253;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2252;
 	            this.identifier();
 	        }
@@ -10377,13 +10373,13 @@ export default class vhdlParser extends antlr4.Parser {
 	simultaneous_if_statement() {
 	    let localctx = new Simultaneous_if_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 434, vhdlParser.RULE_simultaneous_if_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2258;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2257;
 	            this.label_colon();
 	        }
@@ -10399,7 +10395,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2271;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.ELSIF) {
+	        while(_la===27) {
 	            this.state = 2264;
 	            this.match(vhdlParser.ELSIF);
 	            this.state = 2265;
@@ -10415,7 +10411,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2276;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.ELSE) {
+	        if(_la===26) {
 	            this.state = 2274;
 	            this.match(vhdlParser.ELSE);
 	            this.state = 2275;
@@ -10429,7 +10425,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2281;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2280;
 	            this.identifier();
 	        }
@@ -10455,13 +10451,13 @@ export default class vhdlParser extends antlr4.Parser {
 	simultaneous_procedural_statement() {
 	    let localctx = new Simultaneous_procedural_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 436, vhdlParser.RULE_simultaneous_procedural_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2286;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2285;
 	            this.label_colon();
 	        }
@@ -10471,7 +10467,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2290;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IS) {
+	        if(_la===41) {
 	            this.state = 2289;
 	            this.match(vhdlParser.IS);
 	        }
@@ -10489,7 +10485,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2298;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2297;
 	            this.identifier();
 	        }
@@ -10515,7 +10511,7 @@ export default class vhdlParser extends antlr4.Parser {
 	simultaneous_statement() {
 	    let localctx = new Simultaneous_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 438, vhdlParser.RULE_simultaneous_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2311;
 	        this._errHandler.sync(this);
@@ -10550,7 +10546,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 2307;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	            if(_la===118 || _la===119) {
 	                this.state = 2306;
 	                this.label_colon();
 	            }
@@ -10581,13 +10577,13 @@ export default class vhdlParser extends antlr4.Parser {
 	simultaneous_statement_part() {
 	    let localctx = new Simultaneous_statement_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 440, vhdlParser.RULE_simultaneous_statement_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2316;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.ABS || _la===vhdlParser.CASE || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.NEW - 36)) | (1 << (vhdlParser.NOT - 36)) | (1 << (vhdlParser.NULL_ - 36)))) !== 0) || _la===vhdlParser.PROCEDURAL || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (vhdlParser.BASE_LITERAL - 112)) | (1 << (vhdlParser.BIT_STRING_LITERAL - 112)) | (1 << (vhdlParser.REAL_LITERAL - 112)) | (1 << (vhdlParser.BASIC_IDENTIFIER - 112)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 112)) | (1 << (vhdlParser.CHARACTER_LITERAL - 112)) | (1 << (vhdlParser.STRING_LITERAL - 112)) | (1 << (vhdlParser.LPAREN - 112)))) !== 0) || ((((_la - 148)) & ~0x1f) == 0 && ((1 << (_la - 148)) & ((1 << (vhdlParser.PLUS - 148)) | (1 << (vhdlParser.MINUS - 148)) | (1 << (vhdlParser.INTEGER - 148)))) !== 0)) {
+	        while(_la===1 || _la===18 || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 3211265) !== 0) || _la===69 || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 536920291) !== 0) || ((((_la - 148)) & ~0x1f) === 0 && ((1 << (_la - 148)) & 1027) !== 0)) {
 	            this.state = 2313;
 	            this.simultaneous_statement();
 	            this.state = 2318;
@@ -10617,7 +10613,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2326;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.SPECTRUM:
+	        case 89:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2319;
 	            this.match(vhdlParser.SPECTRUM);
@@ -10628,7 +10624,7 @@ export default class vhdlParser extends antlr4.Parser {
 	            this.state = 2322;
 	            this.simple_expression();
 	            break;
-	        case vhdlParser.NOISE:
+	        case 54:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2324;
 	            this.match(vhdlParser.NOISE);
@@ -10752,7 +10748,7 @@ export default class vhdlParser extends antlr4.Parser {
 	subnature_indication() {
 	    let localctx = new Subnature_indicationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 450, vhdlParser.RULE_subnature_indication);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2347;
@@ -10760,7 +10756,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2349;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LPAREN) {
+	        if(_la===141) {
 	            this.state = 2348;
 	            this.index_constraint();
 	        }
@@ -10768,7 +10764,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2357;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.TOLERANCE) {
+	        if(_la===98) {
 	            this.state = 2351;
 	            this.match(vhdlParser.TOLERANCE);
 	            this.state = 2352;
@@ -10800,7 +10796,7 @@ export default class vhdlParser extends antlr4.Parser {
 	subprogram_body() {
 	    let localctx = new Subprogram_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 452, vhdlParser.RULE_subprogram_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2359;
@@ -10818,7 +10814,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2366;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.FUNCTION || _la===vhdlParser.PROCEDURE) {
+	        if(_la===31 || _la===68) {
 	            this.state = 2365;
 	            this.subprogram_kind();
 	        }
@@ -10826,7 +10822,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2369;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)))) !== 0)) {
+	        if(((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 515) !== 0)) {
 	            this.state = 2368;
 	            this.designator();
 	        }
@@ -10980,13 +10976,13 @@ export default class vhdlParser extends antlr4.Parser {
 	subprogram_declarative_part() {
 	    let localctx = new Subprogram_declarative_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 458, vhdlParser.RULE_subprogram_declarative_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2394;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ALIAS) | (1 << vhdlParser.ATTRIBUTE) | (1 << vhdlParser.CONSTANT) | (1 << vhdlParser.FILE) | (1 << vhdlParser.FUNCTION))) !== 0) || _la===vhdlParser.GROUP || _la===vhdlParser.IMPURE || ((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (vhdlParser.PROCEDURE - 68)) | (1 << (vhdlParser.PURE - 68)) | (1 << (vhdlParser.SHARED - 68)) | (1 << (vhdlParser.SUBTYPE - 68)))) !== 0) || ((((_la - 100)) & ~0x1f) == 0 && ((1 << (_la - 100)) & ((1 << (vhdlParser.TYPE - 100)) | (1 << (vhdlParser.USE - 100)) | (1 << (vhdlParser.VARIABLE - 100)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2686453792) !== 0) || _la===34 || _la===37 || ((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 33685509) !== 0) || ((((_la - 100)) & ~0x1f) === 0 && ((1 << (_la - 100)) & 49) !== 0)) {
 	            this.state = 2391;
 	            this.subprogram_declarative_item();
 	            this.state = 2396;
@@ -11012,12 +11008,12 @@ export default class vhdlParser extends antlr4.Parser {
 	subprogram_kind() {
 	    let localctx = new Subprogram_kindContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 460, vhdlParser.RULE_subprogram_kind);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2397;
 	        _la = this._input.LA(1);
-	        if(!(_la===vhdlParser.FUNCTION || _la===vhdlParser.PROCEDURE)) {
+	        if(!(_la===31 || _la===68)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -11047,14 +11043,14 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2401;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.PROCEDURE:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2399;
 	            this.procedure_specification();
 	            break;
-	        case vhdlParser.FUNCTION:
-	        case vhdlParser.IMPURE:
-	        case vhdlParser.PURE:
+	        case 31:
+	        case 37:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2400;
 	            this.function_specification();
@@ -11081,7 +11077,7 @@ export default class vhdlParser extends antlr4.Parser {
 	procedure_specification() {
 	    let localctx = new Procedure_specificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 464, vhdlParser.RULE_procedure_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2403;
@@ -11091,7 +11087,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2409;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LPAREN) {
+	        if(_la===141) {
 	            this.state = 2405;
 	            this.match(vhdlParser.LPAREN);
 	            this.state = 2406;
@@ -11119,16 +11115,16 @@ export default class vhdlParser extends antlr4.Parser {
 	function_specification() {
 	    let localctx = new Function_specificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 466, vhdlParser.RULE_function_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2412;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IMPURE || _la===vhdlParser.PURE) {
+	        if(_la===37 || _la===70) {
 	            this.state = 2411;
 	            _la = this._input.LA(1);
-	            if(!(_la===vhdlParser.IMPURE || _la===vhdlParser.PURE)) {
+	            if(!(_la===37 || _la===70)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -11144,7 +11140,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2420;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.LPAREN) {
+	        if(_la===141) {
 	            this.state = 2416;
 	            this.match(vhdlParser.LPAREN);
 	            this.state = 2417;
@@ -11176,13 +11172,13 @@ export default class vhdlParser extends antlr4.Parser {
 	subprogram_statement_part() {
 	    let localctx = new Subprogram_statement_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 468, vhdlParser.RULE_subprogram_statement_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2428;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << vhdlParser.ASSERT) | (1 << vhdlParser.BREAK) | (1 << vhdlParser.CASE) | (1 << vhdlParser.EXIT) | (1 << vhdlParser.FOR))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (vhdlParser.IF - 36)) | (1 << (vhdlParser.LOOP - 36)) | (1 << (vhdlParser.NEXT - 36)) | (1 << (vhdlParser.NULL_ - 36)))) !== 0) || ((((_la - 79)) & ~0x1f) == 0 && ((1 << (_la - 79)) & ((1 << (vhdlParser.REPORT - 79)) | (1 << (vhdlParser.RETURN - 79)) | (1 << (vhdlParser.WAIT - 79)) | (1 << (vhdlParser.WHILE - 79)))) !== 0) || ((((_la - 118)) & ~0x1f) == 0 && ((1 << (_la - 118)) & ((1 << (vhdlParser.BASIC_IDENTIFIER - 118)) | (1 << (vhdlParser.EXTENDED_IDENTIFIER - 118)) | (1 << (vhdlParser.STRING_LITERAL - 118)) | (1 << (vhdlParser.LPAREN - 118)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1342473216) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 2230273) !== 0) || ((((_la - 79)) & ~0x1f) === 0 && ((1 << (_la - 79)) & 1207959555) !== 0) || ((((_la - 118)) & ~0x1f) === 0 && ((1 << (_la - 118)) & 8389123) !== 0)) {
 	            this.state = 2425;
 	            this.sequential_statement();
 	            this.state = 2430;
@@ -11239,7 +11235,7 @@ export default class vhdlParser extends antlr4.Parser {
 	subtype_indication() {
 	    let localctx = new Subtype_indicationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 472, vhdlParser.RULE_subtype_indication);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2437;
@@ -11247,7 +11243,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2439;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2438;
 	            this.selected_name();
 	        }
@@ -11255,7 +11251,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2442;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.RANGE || _la===vhdlParser.LPAREN) {
+	        if(_la===72 || _la===141) {
 	            this.state = 2441;
 	            this.constraint();
 	        }
@@ -11291,23 +11287,23 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2451;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
+	        case 118:
+	        case 119:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2447;
 	            this.identifier();
 	            break;
-	        case vhdlParser.CHARACTER_LITERAL:
+	        case 126:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2448;
 	            this.match(vhdlParser.CHARACTER_LITERAL);
 	            break;
-	        case vhdlParser.STRING_LITERAL:
+	        case 127:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2449;
 	            this.match(vhdlParser.STRING_LITERAL);
 	            break;
-	        case vhdlParser.ALL:
+	        case 6:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2450;
 	            this.match(vhdlParser.ALL);
@@ -11338,14 +11334,14 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2455;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.STRING_LITERAL:
+	        case 118:
+	        case 119:
+	        case 127:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2453;
 	            this.name();
 	            break;
-	        case vhdlParser.LPAREN:
+	        case 141:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2454;
 	            this.aggregate();
@@ -11410,7 +11406,7 @@ export default class vhdlParser extends antlr4.Parser {
 	terminal_aspect() {
 	    let localctx = new Terminal_aspectContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 480, vhdlParser.RULE_terminal_aspect);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2466;
@@ -11418,7 +11414,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2469;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.TO) {
+	        if(_la===97) {
 	            this.state = 2467;
 	            this.match(vhdlParser.TO);
 	            this.state = 2468;
@@ -11475,7 +11471,7 @@ export default class vhdlParser extends antlr4.Parser {
 	through_aspect() {
 	    let localctx = new Through_aspectContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 484, vhdlParser.RULE_through_aspect);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2477;
@@ -11483,7 +11479,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2479;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.TOLERANCE) {
+	        if(_la===98) {
 	            this.state = 2478;
 	            this.tolerance_aspect();
 	        }
@@ -11491,7 +11487,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2483;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 2481;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 2482;
@@ -11569,7 +11565,7 @@ export default class vhdlParser extends antlr4.Parser {
 	type_declaration() {
 	    let localctx = new Type_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 490, vhdlParser.RULE_type_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2493;
@@ -11579,7 +11575,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2497;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.IS) {
+	        if(_la===41) {
 	            this.state = 2495;
 	            this.match(vhdlParser.IS);
 	            this.state = 2496;
@@ -11611,24 +11607,24 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2505;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.RANGE:
-	        case vhdlParser.LPAREN:
+	        case 72:
+	        case 141:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2501;
 	            this.scalar_type_definition();
 	            break;
-	        case vhdlParser.ARRAY:
-	        case vhdlParser.RECORD:
+	        case 9:
+	        case 76:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2502;
 	            this.composite_type_definition();
 	            break;
-	        case vhdlParser.ACCESS:
+	        case 2:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2503;
 	            this.access_type_definition();
 	            break;
-	        case vhdlParser.FILE:
+	        case 29:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2504;
 	            this.file_type_definition();
@@ -11655,7 +11651,7 @@ export default class vhdlParser extends antlr4.Parser {
 	unconstrained_array_definition() {
 	    let localctx = new Unconstrained_array_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 494, vhdlParser.RULE_unconstrained_array_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2507;
@@ -11667,7 +11663,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2514;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 2510;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 2511;
@@ -11701,7 +11697,7 @@ export default class vhdlParser extends antlr4.Parser {
 	unconstrained_nature_definition() {
 	    let localctx = new Unconstrained_nature_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 496, vhdlParser.RULE_unconstrained_nature_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2521;
@@ -11713,7 +11709,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2528;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 2524;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 2525;
@@ -11747,7 +11743,7 @@ export default class vhdlParser extends antlr4.Parser {
 	use_clause() {
 	    let localctx = new Use_clauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 498, vhdlParser.RULE_use_clause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2535;
@@ -11757,7 +11753,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2541;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vhdlParser.COMMA) {
+	        while(_la===139) {
 	            this.state = 2537;
 	            this.match(vhdlParser.COMMA);
 	            this.state = 2538;
@@ -11824,13 +11820,13 @@ export default class vhdlParser extends antlr4.Parser {
 	variable_declaration() {
 	    let localctx = new Variable_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 502, vhdlParser.RULE_variable_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2555;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.SHARED) {
+	        if(_la===85) {
 	            this.state = 2554;
 	            this.match(vhdlParser.SHARED);
 	        }
@@ -11846,7 +11842,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2563;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.VARASGN) {
+	        if(_la===135) {
 	            this.state = 2561;
 	            this.match(vhdlParser.VARASGN);
 	            this.state = 2562;
@@ -11874,13 +11870,13 @@ export default class vhdlParser extends antlr4.Parser {
 	wait_statement() {
 	    let localctx = new Wait_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 504, vhdlParser.RULE_wait_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2568;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.BASIC_IDENTIFIER || _la===vhdlParser.EXTENDED_IDENTIFIER) {
+	        if(_la===118 || _la===119) {
 	            this.state = 2567;
 	            this.label_colon();
 	        }
@@ -11890,7 +11886,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2572;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.ON) {
+	        if(_la===59) {
 	            this.state = 2571;
 	            this.sensitivity_clause();
 	        }
@@ -11898,7 +11894,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2575;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.UNTIL) {
+	        if(_la===103) {
 	            this.state = 2574;
 	            this.condition_clause();
 	        }
@@ -11906,7 +11902,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2578;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.FOR) {
+	        if(_la===30) {
 	            this.state = 2577;
 	            this.timeout_clause();
 	        }
@@ -11932,33 +11928,33 @@ export default class vhdlParser extends antlr4.Parser {
 	waveform() {
 	    let localctx = new WaveformContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 506, vhdlParser.RULE_waveform);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2591;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vhdlParser.ABS:
-	        case vhdlParser.NEW:
-	        case vhdlParser.NOT:
-	        case vhdlParser.NULL_:
-	        case vhdlParser.BASE_LITERAL:
-	        case vhdlParser.BIT_STRING_LITERAL:
-	        case vhdlParser.REAL_LITERAL:
-	        case vhdlParser.BASIC_IDENTIFIER:
-	        case vhdlParser.EXTENDED_IDENTIFIER:
-	        case vhdlParser.CHARACTER_LITERAL:
-	        case vhdlParser.STRING_LITERAL:
-	        case vhdlParser.LPAREN:
-	        case vhdlParser.PLUS:
-	        case vhdlParser.MINUS:
-	        case vhdlParser.INTEGER:
+	        case 1:
+	        case 52:
+	        case 56:
+	        case 57:
+	        case 112:
+	        case 113:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 126:
+	        case 127:
+	        case 141:
+	        case 148:
+	        case 149:
+	        case 158:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2582;
 	            this.waveform_element();
 	            this.state = 2587;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===vhdlParser.COMMA) {
+	            while(_la===139) {
 	                this.state = 2583;
 	                this.match(vhdlParser.COMMA);
 	                this.state = 2584;
@@ -11968,7 +11964,7 @@ export default class vhdlParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case vhdlParser.UNAFFECTED:
+	        case 101:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2590;
 	            this.match(vhdlParser.UNAFFECTED);
@@ -11995,7 +11991,7 @@ export default class vhdlParser extends antlr4.Parser {
 	waveform_element() {
 	    let localctx = new Waveform_elementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 508, vhdlParser.RULE_waveform_element);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2593;
@@ -12003,7 +11999,7 @@ export default class vhdlParser extends antlr4.Parser {
 	        this.state = 2596;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===vhdlParser.AFTER) {
+	        if(_la===4) {
 	            this.state = 2594;
 	            this.match(vhdlParser.AFTER);
 	            this.state = 2595;

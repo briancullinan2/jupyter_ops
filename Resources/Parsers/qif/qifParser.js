@@ -1,4 +1,4 @@
-// Generated from ./qif/qifParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/qif/qifParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import qifParserListener from './qifParserListener.js';
@@ -53,22 +53,18 @@ export default class qifParser extends antlr4.Parser {
         this.symbolicNames = qifParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	qif() {
 	    let localctx = new QifContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, qifParser.RULE_qif);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 29;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << qifParser.TYPE) | (1 << qifParser.T) | (1 << qifParser.C) | (1 << qifParser.N) | (1 << qifParser.M) | (1 << qifParser.P) | (1 << qifParser.L) | (1 << qifParser.D) | (1 << qifParser.EOR))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1534) !== 0)) {
 	            this.state = 26;
 	            this.record();
 	            this.state = 31;
@@ -96,45 +92,45 @@ export default class qifParser extends antlr4.Parser {
 	record() {
 	    let localctx = new RecordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, qifParser.RULE_record);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 44;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << qifParser.TYPE) | (1 << qifParser.T) | (1 << qifParser.C) | (1 << qifParser.N) | (1 << qifParser.M) | (1 << qifParser.P) | (1 << qifParser.L) | (1 << qifParser.D))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 510) !== 0)) {
 	            this.state = 42;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case qifParser.TYPE:
+	            case 1:
 	                this.state = 34;
 	                this.recordtype();
 	                break;
-	            case qifParser.D:
+	            case 8:
 	                this.state = 35;
 	                this.date();
 	                break;
-	            case qifParser.T:
+	            case 2:
 	                this.state = 36;
 	                this.total();
 	                break;
-	            case qifParser.N:
+	            case 4:
 	                this.state = 37;
 	                this.check();
 	                break;
-	            case qifParser.C:
+	            case 3:
 	                this.state = 38;
 	                this.state_();
 	                break;
-	            case qifParser.M:
+	            case 5:
 	                this.state = 39;
 	                this.memo();
 	                break;
-	            case qifParser.P:
+	            case 6:
 	                this.state = 40;
 	                this.payee();
 	                break;
-	            case qifParser.L:
+	            case 7:
 	                this.state = 41;
 	                this.accountorcategory();
 	                break;
@@ -348,11 +344,11 @@ export default class qifParser extends antlr4.Parser {
 	        this.state = 73;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case qifParser.LB:
+	        case 16:
 	            this.state = 71;
 	            this.account();
 	            break;
-	        case qifParser.ACCNTCATNAME:
+	        case 17:
 	            this.state = 72;
 	            this.category();
 	            break;
@@ -1096,3 +1092,12 @@ qifParser.AccountorcategoryContext = AccountorcategoryContext;
 qifParser.AccountContext = AccountContext; 
 qifParser.CategoryContext = CategoryContext; 
 qifParser.EorContext = EorContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

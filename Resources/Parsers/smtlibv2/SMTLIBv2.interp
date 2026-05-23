@@ -233,7 +233,7 @@ UndefinedSymbol
 WS
 
 rule names:
-start
+start_
 generalReservedWord
 simpleSymbol
 quotedSymbol

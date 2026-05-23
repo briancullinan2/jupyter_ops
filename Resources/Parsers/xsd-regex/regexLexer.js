@@ -1,4 +1,4 @@
-// Generated from ./xsd-regex/regexLexer.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/xsd-regex/regexLexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -23,7 +23,7 @@ const serializedATN = [4,0,37,230,6,-1,6,-1,6,-1,6,-1,2,0,7,0,2,1,7,1,2,
 7,18,8,20,9,22,10,24,11,26,12,28,13,30,14,32,15,34,16,36,17,38,18,40,19,
 42,20,44,21,46,22,48,23,50,24,52,25,54,26,56,27,58,28,60,29,62,30,64,31,
 66,32,68,33,70,34,72,35,74,36,76,37,78,0,80,0,82,0,84,0,4,0,1,2,3,13,5,0,
-40,43,46,46,63,63,91,93,124,124,1,0,48,57,3,0,108,109,111,111,116,117,3,
+40,43,46,46,63,63,91,93,123,125,1,0,48,57,3,0,108,109,111,111,116,117,3,
 0,99,99,101,101,110,110,3,0,100,100,108,108,111,111,4,0,99,102,105,105,111,
 111,115,115,3,0,108,108,112,112,115,115,4,0,99,99,107,107,109,109,111,111,
 3,0,99,99,102,102,110,111,4,0,45,45,48,57,65,90,97,122,3,0,45,45,91,91,93,
@@ -121,10 +121,6 @@ export default class regexLexer extends antlr4.Lexer {
         super(input)
         this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.atn.PredictionContextCache());
     }
-
-    get atn() {
-        return atn;
-    }
 }
 
 regexLexer.EOF = antlr4.Token.EOF;
@@ -173,3 +169,12 @@ regexLexer.CHARGROUP = 3;
 
 
 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

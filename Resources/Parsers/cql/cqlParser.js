@@ -1,4 +1,4 @@
-// Generated from ./cql/cql.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cql/cql.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import cqlListener from './cqlListener.js';
@@ -64,7 +64,8 @@ export default class cqlParser extends antlr4.Parser {
 
     static grammarFileName = "cql.g4";
     static literalNames = [ null, "'>'", "'='", "'('", "')'", "'<'", "'>='", 
-                            "'<='", "'<>'", "'=='", "'/'" ];
+                            "'<='", "'<>'", "'=='", "'/'", "'AND'", "'OR'", 
+                            "'NOT'", "'PROX'", "'SORTBY'" ];
     static symbolicNames = [ null, null, null, null, null, null, null, null, 
                              null, null, null, "AND", "OR", "NOT", "PROX", 
                              "SORTBY", "CHARSTRING1", "CHARSTRING2", "WS" ];
@@ -82,10 +83,6 @@ export default class cqlParser extends antlr4.Parser {
         this.ruleNames = cqlParser.ruleNames;
         this.literalNames = cqlParser.literalNames;
         this.symbolicNames = cqlParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
     sempred(localctx, ruleIndex, predIndex) {
@@ -159,33 +156,33 @@ export default class cqlParser extends antlr4.Parser {
 	sortedQuery() {
 	    let localctx = new SortedQueryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, cqlParser.RULE_sortedQuery);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 59;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case cqlParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 51;
 	            this.prefixAssignment();
 	            this.state = 52;
 	            this.sortedQuery();
 	            break;
-	        case cqlParser.T__2:
-	        case cqlParser.AND:
-	        case cqlParser.OR:
-	        case cqlParser.NOT:
-	        case cqlParser.PROX:
-	        case cqlParser.SORTBY:
-	        case cqlParser.CHARSTRING1:
-	        case cqlParser.CHARSTRING2:
+	        case 3:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 54;
 	            this.scopedClause(0);
 	            this.state = 57;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===cqlParser.SORTBY) {
+	            if(_la===15) {
 	                this.state = 55;
 	                this.match(cqlParser.SORTBY);
 	                this.state = 56;
@@ -303,21 +300,21 @@ export default class cqlParser extends antlr4.Parser {
 	        this.state = 79;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case cqlParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 75;
 	            this.prefixAssignment();
 	            this.state = 76;
 	            this.cqlQuery();
 	            break;
-	        case cqlParser.T__2:
-	        case cqlParser.AND:
-	        case cqlParser.OR:
-	        case cqlParser.NOT:
-	        case cqlParser.PROX:
-	        case cqlParser.SORTBY:
-	        case cqlParser.CHARSTRING1:
-	        case cqlParser.CHARSTRING2:
+	        case 3:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 78;
 	            this.scopedClause(0);
@@ -444,7 +441,7 @@ export default class cqlParser extends antlr4.Parser {
 	booleanGroup() {
 	    let localctx = new BooleanGroupContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, cqlParser.RULE_booleanGroup);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 102;
@@ -452,7 +449,7 @@ export default class cqlParser extends antlr4.Parser {
 	        this.state = 104;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===cqlParser.T__9) {
+	        if(_la===10) {
 	            this.state = 103;
 	            this.modifierList(0);
 	        }
@@ -476,12 +473,12 @@ export default class cqlParser extends antlr4.Parser {
 	boolean_() {
 	    let localctx = new Boolean_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, cqlParser.RULE_boolean_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 106;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << cqlParser.AND) | (1 << cqlParser.OR) | (1 << cqlParser.NOT) | (1 << cqlParser.PROX))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 30720) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -558,7 +555,7 @@ export default class cqlParser extends antlr4.Parser {
 	relation() {
 	    let localctx = new RelationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, cqlParser.RULE_relation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 119;
@@ -566,7 +563,7 @@ export default class cqlParser extends antlr4.Parser {
 	        this.state = 121;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===cqlParser.T__9) {
+	        if(_la===10) {
 	            this.state = 120;
 	            this.modifierList(0);
 	        }
@@ -594,19 +591,19 @@ export default class cqlParser extends antlr4.Parser {
 	        this.state = 125;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case cqlParser.T__0:
-	        case cqlParser.T__1:
-	        case cqlParser.T__4:
-	        case cqlParser.T__5:
-	        case cqlParser.T__6:
-	        case cqlParser.T__7:
-	        case cqlParser.T__8:
+	        case 1:
+	        case 2:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 123;
 	            this.comparitorSymbol();
 	            break;
-	        case cqlParser.CHARSTRING1:
-	        case cqlParser.CHARSTRING2:
+	        case 16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 124;
 	            this.namedComparitor();
@@ -633,12 +630,12 @@ export default class cqlParser extends antlr4.Parser {
 	comparitorSymbol() {
 	    let localctx = new ComparitorSymbolContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, cqlParser.RULE_comparitorSymbol);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 127;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << cqlParser.T__0) | (1 << cqlParser.T__1) | (1 << cqlParser.T__4) | (1 << cqlParser.T__5) | (1 << cqlParser.T__6) | (1 << cqlParser.T__7) | (1 << cqlParser.T__8))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 998) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -917,33 +914,33 @@ export default class cqlParser extends antlr4.Parser {
 	        this.state = 166;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case cqlParser.CHARSTRING1:
-	        case cqlParser.CHARSTRING2:
+	        case 16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 160;
 	            this.identifier();
 	            break;
-	        case cqlParser.AND:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 161;
 	            this.match(cqlParser.AND);
 	            break;
-	        case cqlParser.OR:
+	        case 12:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 162;
 	            this.match(cqlParser.OR);
 	            break;
-	        case cqlParser.NOT:
+	        case 13:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 163;
 	            this.match(cqlParser.NOT);
 	            break;
-	        case cqlParser.PROX:
+	        case 14:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 164;
 	            this.match(cqlParser.PROX);
 	            break;
-	        case cqlParser.SORTBY:
+	        case 15:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 165;
 	            this.match(cqlParser.SORTBY);
@@ -970,12 +967,12 @@ export default class cqlParser extends antlr4.Parser {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, cqlParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 168;
 	        _la = this._input.LA(1);
-	        if(!(_la===cqlParser.CHARSTRING1 || _la===cqlParser.CHARSTRING2)) {
+	        if(!(_la===16 || _la===17)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2026,3 +2023,12 @@ cqlParser.SearchTermContext = SearchTermContext;
 cqlParser.IndexContext = IndexContext; 
 cqlParser.TermContext = TermContext; 
 cqlParser.IdentifierContext = IdentifierContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

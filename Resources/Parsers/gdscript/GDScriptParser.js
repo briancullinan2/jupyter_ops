@@ -1,4 +1,4 @@
-// Generated from ./gdscript/GDScriptParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/gdscript/GDScriptParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import GDScriptParserListener from './GDScriptParserListener.js';
@@ -296,10 +296,6 @@ export default class GDScriptParser extends antlr4.Parser {
         this.symbolicNames = GDScriptParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 41:
@@ -356,13 +352,13 @@ export default class GDScriptParser extends antlr4.Parser {
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, GDScriptParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 91;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.EXTENDS) {
+	        if(_la===3) {
 	            this.state = 88;
 	            this.inheritance();
 	            this.state = 89;
@@ -372,7 +368,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 94;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.CLASS_NAME) {
+	        if(_la===4) {
 	            this.state = 93;
 	            this.className();
 	        }
@@ -380,7 +376,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 99;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << GDScriptParser.ONREADY) | (1 << GDScriptParser.VAR) | (1 << GDScriptParser.EXPORT) | (1 << GDScriptParser.CONST) | (1 << GDScriptParser.SIGNAL) | (1 << GDScriptParser.ENUM) | (1 << GDScriptParser.STATIC) | (1 << GDScriptParser.FUNC) | (1 << GDScriptParser.REMOTE) | (1 << GDScriptParser.MASTER) | (1 << GDScriptParser.PUPPET) | (1 << GDScriptParser.REMOTESYNC) | (1 << GDScriptParser.MASTERSYNC) | (1 << GDScriptParser.PUPPETSYNC) | (1 << GDScriptParser.CLASS))) !== 0) || _la===GDScriptParser.TOOL) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2096992) !== 0) || _la===45) {
 	            this.state = 96;
 	            this.topLevelDecl();
 	            this.state = 101;
@@ -408,14 +404,14 @@ export default class GDScriptParser extends antlr4.Parser {
 	inheritance() {
 	    let localctx = new InheritanceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, GDScriptParser.RULE_inheritance);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 104;
 	        this.match(GDScriptParser.EXTENDS);
 	        this.state = 105;
 	        _la = this._input.LA(1);
-	        if(!(_la===GDScriptParser.IDENTIFIER || _la===GDScriptParser.STRING)) {
+	        if(!(_la===47 || _la===50)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -425,7 +421,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 110;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===GDScriptParser.DOT) {
+	        while(_la===53) {
 	            this.state = 106;
 	            this.match(GDScriptParser.DOT);
 	            this.state = 107;
@@ -453,7 +449,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	className() {
 	    let localctx = new ClassNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, GDScriptParser.RULE_className);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 113;
@@ -463,7 +459,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 117;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.COMMA) {
+	        if(_la===54) {
 	            this.state = 115;
 	            this.match(GDScriptParser.COMMA);
 	            this.state = 116;
@@ -564,13 +560,13 @@ export default class GDScriptParser extends antlr4.Parser {
 	classVarDecl() {
 	    let localctx = new ClassVarDeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, GDScriptParser.RULE_classVarDecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 132;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.ONREADY) {
+	        if(_la===5) {
 	            this.state = 131;
 	            this.match(GDScriptParser.ONREADY);
 	        }
@@ -578,7 +574,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 135;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.EXPORT) {
+	        if(_la===8) {
 	            this.state = 134;
 	            this.export_();
 	        }
@@ -590,14 +586,14 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 149;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case GDScriptParser.SETGET:
-	        case GDScriptParser.NEWLINE:
-	        case GDScriptParser.COLON:
-	        case GDScriptParser.ASSIGN:
+	        case 7:
+	        case 46:
+	        case 55:
+	        case 56:
 	            this.state = 141;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===GDScriptParser.COLON) {
+	            if(_la===55) {
 	                this.state = 139;
 	                this.match(GDScriptParser.COLON);
 	                this.state = 140;
@@ -607,7 +603,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 145;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===GDScriptParser.ASSIGN) {
+	            if(_la===56) {
 	                this.state = 143;
 	                this.match(GDScriptParser.ASSIGN);
 	                this.state = 144;
@@ -615,7 +611,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case GDScriptParser.COLON_ASSIGN:
+	        case 57:
 	            this.state = 147;
 	            this.match(GDScriptParser.COLON_ASSIGN);
 	            this.state = 148;
@@ -627,7 +623,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 152;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.SETGET) {
+	        if(_la===7) {
 	            this.state = 151;
 	            this.setget();
 	        }
@@ -653,7 +649,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	setget() {
 	    let localctx = new SetgetContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, GDScriptParser.RULE_setget);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 156;
@@ -661,7 +657,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 158;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.IDENTIFIER) {
+	        if(_la===47) {
 	            this.state = 157;
 	            this.match(GDScriptParser.IDENTIFIER);
 	        }
@@ -669,7 +665,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 162;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.COMMA) {
+	        if(_la===54) {
 	            this.state = 160;
 	            this.match(GDScriptParser.COMMA);
 	            this.state = 161;
@@ -695,7 +691,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	export_() {
 	    let localctx = new ExportContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, GDScriptParser.RULE_export);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 164;
@@ -703,23 +699,23 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 178;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.OPEN_PAREN) {
+	        if(_la===66) {
 	            this.state = 165;
 	            this.match(GDScriptParser.OPEN_PAREN);
 	            this.state = 175;
 	            this._errHandler.sync(this);
 	            switch (this._input.LA(1)) {
-	            case GDScriptParser.BUILTINTYPE:
+	            case 48:
 	            	this.state = 166;
 	            	this.match(GDScriptParser.BUILTINTYPE);
 	            	break;
-	            case GDScriptParser.IDENTIFIER:
+	            case 47:
 	            	this.state = 167;
 	            	this.match(GDScriptParser.IDENTIFIER);
 	            	this.state = 172;
 	            	this._errHandler.sync(this);
 	            	_la = this._input.LA(1);
-	            	while(_la===GDScriptParser.COMMA) {
+	            	while(_la===54) {
 	            	    this.state = 168;
 	            	    this.match(GDScriptParser.COMMA);
 	            	    this.state = 169;
@@ -729,7 +725,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            	    _la = this._input.LA(1);
 	            	}
 	            	break;
-	            case GDScriptParser.CLOSE_PAREN:
+	            case 67:
 	            	break;
 	            default:
 	            	break;
@@ -757,12 +753,12 @@ export default class GDScriptParser extends antlr4.Parser {
 	typeHint() {
 	    let localctx = new TypeHintContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, GDScriptParser.RULE_typeHint);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 180;
 	        _la = this._input.LA(1);
-	        if(!(_la===GDScriptParser.IDENTIFIER || _la===GDScriptParser.BUILTINTYPE)) {
+	        if(!(_la===47 || _la===48)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -788,7 +784,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	constDecl() {
 	    let localctx = new ConstDeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, GDScriptParser.RULE_constDecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 182;
@@ -798,7 +794,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 186;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.COLON) {
+	        if(_la===55) {
 	            this.state = 184;
 	            this.match(GDScriptParser.COLON);
 	            this.state = 185;
@@ -830,7 +826,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	signalDecl() {
 	    let localctx = new SignalDeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, GDScriptParser.RULE_signalDecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 192;
@@ -840,7 +836,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 195;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.OPEN_PAREN) {
+	        if(_la===66) {
 	            this.state = 194;
 	            this.signalParList();
 	        }
@@ -866,7 +862,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	signalParList() {
 	    let localctx = new SignalParListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, GDScriptParser.RULE_signalParList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 199;
@@ -874,13 +870,13 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 208;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.IDENTIFIER) {
+	        if(_la===47) {
 	            this.state = 200;
 	            this.match(GDScriptParser.IDENTIFIER);
 	            this.state = 205;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===GDScriptParser.COMMA) {
+	            while(_la===54) {
 	                this.state = 201;
 	                this.match(GDScriptParser.COMMA);
 	                this.state = 202;
@@ -912,7 +908,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	enumDecl() {
 	    let localctx = new EnumDeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, GDScriptParser.RULE_enumDecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 212;
@@ -920,7 +916,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 214;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.IDENTIFIER) {
+	        if(_la===47) {
 	            this.state = 213;
 	            this.match(GDScriptParser.IDENTIFIER);
 	        }
@@ -933,7 +929,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 220;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.ASSIGN) {
+	        if(_la===56) {
 	            this.state = 218;
 	            this.match(GDScriptParser.ASSIGN);
 	            this.state = 219;
@@ -952,7 +948,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                this.state = 226;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===GDScriptParser.ASSIGN) {
+	                if(_la===56) {
 	                    this.state = 224;
 	                    this.match(GDScriptParser.ASSIGN);
 	                    this.state = 225;
@@ -968,7 +964,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 234;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.COMMA) {
+	        if(_la===54) {
 	            this.state = 233;
 	            this.match(GDScriptParser.COMMA);
 	        }
@@ -996,13 +992,13 @@ export default class GDScriptParser extends antlr4.Parser {
 	methodDecl() {
 	    let localctx = new MethodDeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, GDScriptParser.RULE_methodDecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 240;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << GDScriptParser.REMOTE) | (1 << GDScriptParser.MASTER) | (1 << GDScriptParser.PUPPET) | (1 << GDScriptParser.REMOTESYNC) | (1 << GDScriptParser.MASTERSYNC) | (1 << GDScriptParser.PUPPETSYNC))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1032192) !== 0)) {
 	            this.state = 239;
 	            this.rpc();
 	        }
@@ -1010,7 +1006,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 243;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.STATIC) {
+	        if(_la===12) {
 	            this.state = 242;
 	            this.match(GDScriptParser.STATIC);
 	        }
@@ -1024,7 +1020,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 249;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.VAR || _la===GDScriptParser.IDENTIFIER) {
+	        if(_la===6 || _la===47) {
 	            this.state = 248;
 	            this.parList();
 	        }
@@ -1034,7 +1030,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 254;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.ARROW) {
+	        if(_la===70) {
 	            this.state = 252;
 	            this.match(GDScriptParser.ARROW);
 	            this.state = 253;
@@ -1064,7 +1060,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	parList() {
 	    let localctx = new ParListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, GDScriptParser.RULE_parList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 259;
@@ -1072,7 +1068,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 264;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===GDScriptParser.COMMA) {
+	        while(_la===54) {
 	            this.state = 260;
 	            this.match(GDScriptParser.COMMA);
 	            this.state = 261;
@@ -1100,13 +1096,13 @@ export default class GDScriptParser extends antlr4.Parser {
 	parameter() {
 	    let localctx = new ParameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, GDScriptParser.RULE_parameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 268;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.VAR) {
+	        if(_la===6) {
 	            this.state = 267;
 	            this.match(GDScriptParser.VAR);
 	        }
@@ -1116,7 +1112,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 273;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.COLON) {
+	        if(_la===55) {
 	            this.state = 271;
 	            this.match(GDScriptParser.COLON);
 	            this.state = 272;
@@ -1126,7 +1122,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 277;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.ASSIGN) {
+	        if(_la===56) {
 	            this.state = 275;
 	            this.match(GDScriptParser.ASSIGN);
 	            this.state = 276;
@@ -1152,12 +1148,12 @@ export default class GDScriptParser extends antlr4.Parser {
 	rpc() {
 	    let localctx = new RpcContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, GDScriptParser.RULE_rpc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 279;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << GDScriptParser.REMOTE) | (1 << GDScriptParser.MASTER) | (1 << GDScriptParser.PUPPET) | (1 << GDScriptParser.REMOTESYNC) | (1 << GDScriptParser.MASTERSYNC) | (1 << GDScriptParser.PUPPETSYNC))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1032192) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1183,7 +1179,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	constructorDecl() {
 	    let localctx = new ConstructorDeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, GDScriptParser.RULE_constructorDecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 281;
@@ -1195,7 +1191,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 285;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.VAR || _la===GDScriptParser.IDENTIFIER) {
+	        if(_la===6 || _la===47) {
 	            this.state = 284;
 	            this.parList();
 	        }
@@ -1210,7 +1206,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 291;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (GDScriptParser.NOT - 39)) | (1 << (GDScriptParser.TRUE - 39)) | (1 << (GDScriptParser.FALSE - 39)) | (1 << (GDScriptParser.NULL - 39)) | (1 << (GDScriptParser.SELF - 39)) | (1 << (GDScriptParser.IDENTIFIER - 39)) | (1 << (GDScriptParser.BUILTINTYPE - 39)) | (1 << (GDScriptParser.CONSTANT - 39)) | (1 << (GDScriptParser.STRING - 39)) | (1 << (GDScriptParser.INTEGER - 39)) | (1 << (GDScriptParser.FLOAT - 39)) | (1 << (GDScriptParser.DOT - 39)) | (1 << (GDScriptParser.OPEN_PAREN - 39)) | (1 << (GDScriptParser.OPEN_BRACE - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (GDScriptParser.OPEN_BRACK - 72)) | (1 << (GDScriptParser.LOGIC_NOT - 72)) | (1 << (GDScriptParser.ADD - 72)) | (1 << (GDScriptParser.MINUS - 72)) | (1 << (GDScriptParser.NOT_OP - 72)) | (1 << (GDScriptParser.DOLLAR - 72)))) !== 0)) {
+	        if(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 671121213) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 25952321) !== 0)) {
 	            this.state = 290;
 	            this.argList();
 	        }
@@ -1240,7 +1236,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	argList() {
 	    let localctx = new ArgListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, GDScriptParser.RULE_argList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 298;
@@ -1248,7 +1244,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 303;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===GDScriptParser.COMMA) {
+	        while(_la===54) {
 	            this.state = 299;
 	            this.match(GDScriptParser.COMMA);
 	            this.state = 300;
@@ -1276,7 +1272,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	innerClass() {
 	    let localctx = new InnerClassContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, GDScriptParser.RULE_innerClass);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 306;
@@ -1286,7 +1282,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 309;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.EXTENDS) {
+	        if(_la===3) {
 	            this.state = 308;
 	            this.inheritance();
 	        }
@@ -1300,7 +1296,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 317;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.EXTENDS) {
+	        if(_la===3) {
 	            this.state = 314;
 	            this.inheritance();
 	            this.state = 315;
@@ -1316,7 +1312,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 322; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << GDScriptParser.ONREADY) | (1 << GDScriptParser.VAR) | (1 << GDScriptParser.EXPORT) | (1 << GDScriptParser.CONST) | (1 << GDScriptParser.SIGNAL) | (1 << GDScriptParser.ENUM) | (1 << GDScriptParser.STATIC) | (1 << GDScriptParser.FUNC) | (1 << GDScriptParser.REMOTE) | (1 << GDScriptParser.MASTER) | (1 << GDScriptParser.PUPPET) | (1 << GDScriptParser.REMOTESYNC) | (1 << GDScriptParser.MASTERSYNC) | (1 << GDScriptParser.PUPPETSYNC) | (1 << GDScriptParser.CLASS))) !== 0) || _la===GDScriptParser.TOOL);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2096992) !== 0) || _la===45);
 	        this.state = 324;
 	        this.match(GDScriptParser.DEDENT);
 	    } catch (re) {
@@ -1342,44 +1338,44 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 332;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case GDScriptParser.VAR:
-	        case GDScriptParser.BREAKPOINT:
-	        case GDScriptParser.PASS:
-	        case GDScriptParser.IF:
-	        case GDScriptParser.WHILE:
-	        case GDScriptParser.FOR:
-	        case GDScriptParser.MATCH:
-	        case GDScriptParser.CONTINUE:
-	        case GDScriptParser.BREAK:
-	        case GDScriptParser.RETURN:
-	        case GDScriptParser.ASSERT:
-	        case GDScriptParser.YIELD:
-	        case GDScriptParser.PRELOAD:
-	        case GDScriptParser.NOT:
-	        case GDScriptParser.TRUE:
-	        case GDScriptParser.FALSE:
-	        case GDScriptParser.NULL:
-	        case GDScriptParser.SELF:
-	        case GDScriptParser.IDENTIFIER:
-	        case GDScriptParser.BUILTINTYPE:
-	        case GDScriptParser.CONSTANT:
-	        case GDScriptParser.STRING:
-	        case GDScriptParser.INTEGER:
-	        case GDScriptParser.FLOAT:
-	        case GDScriptParser.DOT:
-	        case GDScriptParser.OPEN_PAREN:
-	        case GDScriptParser.OPEN_BRACE:
-	        case GDScriptParser.OPEN_BRACK:
-	        case GDScriptParser.LOGIC_NOT:
-	        case GDScriptParser.ADD:
-	        case GDScriptParser.MINUS:
-	        case GDScriptParser.NOT_OP:
-	        case GDScriptParser.DOLLAR:
+	        case 6:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 25:
+	        case 26:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 39:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 66:
+	        case 68:
+	        case 72:
+	        case 78:
+	        case 90:
+	        case 91:
+	        case 95:
+	        case 96:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 326;
 	            this.stmt();
 	            break;
-	        case GDScriptParser.NEWLINE:
+	        case 46:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 327;
 	            this.match(GDScriptParser.NEWLINE);
@@ -1412,7 +1408,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	suite() {
 	    let localctx = new SuiteContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, GDScriptParser.RULE_suite);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 335; 
@@ -1424,7 +1420,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 337; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << GDScriptParser.VAR) | (1 << GDScriptParser.BREAKPOINT) | (1 << GDScriptParser.PASS) | (1 << GDScriptParser.IF) | (1 << GDScriptParser.WHILE) | (1 << GDScriptParser.FOR) | (1 << GDScriptParser.MATCH) | (1 << GDScriptParser.CONTINUE) | (1 << GDScriptParser.BREAK) | (1 << GDScriptParser.RETURN))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (GDScriptParser.ASSERT - 32)) | (1 << (GDScriptParser.YIELD - 32)) | (1 << (GDScriptParser.PRELOAD - 32)) | (1 << (GDScriptParser.NOT - 32)) | (1 << (GDScriptParser.TRUE - 32)) | (1 << (GDScriptParser.FALSE - 32)) | (1 << (GDScriptParser.NULL - 32)) | (1 << (GDScriptParser.SELF - 32)) | (1 << (GDScriptParser.IDENTIFIER - 32)) | (1 << (GDScriptParser.BUILTINTYPE - 32)) | (1 << (GDScriptParser.CONSTANT - 32)) | (1 << (GDScriptParser.STRING - 32)) | (1 << (GDScriptParser.INTEGER - 32)) | (1 << (GDScriptParser.FLOAT - 32)) | (1 << (GDScriptParser.DOT - 32)))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (GDScriptParser.OPEN_PAREN - 66)) | (1 << (GDScriptParser.OPEN_BRACE - 66)) | (1 << (GDScriptParser.OPEN_BRACK - 66)) | (1 << (GDScriptParser.LOGIC_NOT - 66)) | (1 << (GDScriptParser.ADD - 66)) | (1 << (GDScriptParser.MINUS - 66)) | (1 << (GDScriptParser.NOT_OP - 66)) | (1 << (GDScriptParser.DOLLAR - 66)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4141875264) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4169351) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 1660948549) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1551,12 +1547,12 @@ export default class GDScriptParser extends antlr4.Parser {
 	stmtEnd() {
 	    let localctx = new StmtEndContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, GDScriptParser.RULE_stmtEnd);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 356;
 	        _la = this._input.LA(1);
-	        if(!(_la===GDScriptParser.NEWLINE || _la===GDScriptParser.SEMI_COLON)) {
+	        if(!(_la===46 || _la===75)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1737,7 +1733,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	matchBlock() {
 	    let localctx = new MatchBlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, GDScriptParser.RULE_matchBlock);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 400; 
@@ -1753,7 +1749,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 402; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===GDScriptParser.VAR || ((((_la - 47)) & ~0x1f) == 0 && ((1 << (_la - 47)) & ((1 << (GDScriptParser.IDENTIFIER - 47)) | (1 << (GDScriptParser.BUILTINTYPE - 47)) | (1 << (GDScriptParser.CONSTANT - 47)) | (1 << (GDScriptParser.STRING - 47)) | (1 << (GDScriptParser.INTEGER - 47)) | (1 << (GDScriptParser.FLOAT - 47)) | (1 << (GDScriptParser.OPEN_BRACE - 47)) | (1 << (GDScriptParser.UNDERSCORE - 47)) | (1 << (GDScriptParser.OPEN_BRACK - 47)))) !== 0));
+	        } while(_la===6 || ((((_la - 47)) & ~0x1f) === 0 && ((1 << (_la - 47)) & 52428863) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1773,7 +1769,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	patternList() {
 	    let localctx = new PatternListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, GDScriptParser.RULE_patternList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 404;
@@ -1781,7 +1777,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 409;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===GDScriptParser.COMMA) {
+	        while(_la===54) {
 	            this.state = 405;
 	            this.match(GDScriptParser.COMMA);
 	            this.state = 406;
@@ -1901,7 +1897,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	arrayPattern() {
 	    let localctx = new ArrayPatternContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, GDScriptParser.RULE_arrayPattern);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 424;
@@ -1909,13 +1905,13 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 436;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.VAR || ((((_la - 47)) & ~0x1f) == 0 && ((1 << (_la - 47)) & ((1 << (GDScriptParser.IDENTIFIER - 47)) | (1 << (GDScriptParser.BUILTINTYPE - 47)) | (1 << (GDScriptParser.CONSTANT - 47)) | (1 << (GDScriptParser.STRING - 47)) | (1 << (GDScriptParser.INTEGER - 47)) | (1 << (GDScriptParser.FLOAT - 47)) | (1 << (GDScriptParser.OPEN_BRACE - 47)) | (1 << (GDScriptParser.UNDERSCORE - 47)) | (1 << (GDScriptParser.OPEN_BRACK - 47)))) !== 0)) {
+	        if(_la===6 || ((((_la - 47)) & ~0x1f) === 0 && ((1 << (_la - 47)) & 52428863) !== 0)) {
 	            this.state = 425;
 	            this.pattern();
 	            this.state = 430;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===GDScriptParser.COMMA) {
+	            while(_la===54) {
 	                this.state = 426;
 	                this.match(GDScriptParser.COMMA);
 	                this.state = 427;
@@ -1927,7 +1923,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 434;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===GDScriptParser.DOTDOT) {
+	            if(_la===74) {
 	                this.state = 433;
 	                this.match(GDScriptParser.DOTDOT);
 	            }
@@ -1955,7 +1951,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	dictPattern() {
 	    let localctx = new DictPatternContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, GDScriptParser.RULE_dictPattern);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 440;
@@ -1963,7 +1959,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 442;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.STRING) {
+	        if(_la===50) {
 	            this.state = 441;
 	            this.keyValuePattern();
 	        }
@@ -1971,7 +1967,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 448;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===GDScriptParser.COMMA) {
+	        while(_la===54) {
 	            this.state = 444;
 	            this.match(GDScriptParser.COMMA);
 	            this.state = 445;
@@ -1983,7 +1979,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 452;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.DOTDOT) {
+	        if(_la===74) {
 	            this.state = 451;
 	            this.match(GDScriptParser.DOTDOT);
 	        }
@@ -2009,7 +2005,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	keyValuePattern() {
 	    let localctx = new KeyValuePatternContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, GDScriptParser.RULE_keyValuePattern);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 456;
@@ -2017,7 +2013,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 459;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.COLON) {
+	        if(_la===55) {
 	            this.state = 457;
 	            this.match(GDScriptParser.COLON);
 	            this.state = 458;
@@ -2043,33 +2039,33 @@ export default class GDScriptParser extends antlr4.Parser {
 	flowStmt() {
 	    let localctx = new FlowStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, GDScriptParser.RULE_flowStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 470;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case GDScriptParser.CONTINUE:
+	        case 29:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 461;
 	            this.match(GDScriptParser.CONTINUE);
 	            this.state = 462;
 	            this.stmtEnd();
 	            break;
-	        case GDScriptParser.BREAK:
+	        case 30:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 463;
 	            this.match(GDScriptParser.BREAK);
 	            this.state = 464;
 	            this.stmtEnd();
 	            break;
-	        case GDScriptParser.RETURN:
+	        case 31:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 465;
 	            this.match(GDScriptParser.RETURN);
 	            this.state = 467;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (GDScriptParser.NOT - 39)) | (1 << (GDScriptParser.TRUE - 39)) | (1 << (GDScriptParser.FALSE - 39)) | (1 << (GDScriptParser.NULL - 39)) | (1 << (GDScriptParser.SELF - 39)) | (1 << (GDScriptParser.IDENTIFIER - 39)) | (1 << (GDScriptParser.BUILTINTYPE - 39)) | (1 << (GDScriptParser.CONSTANT - 39)) | (1 << (GDScriptParser.STRING - 39)) | (1 << (GDScriptParser.INTEGER - 39)) | (1 << (GDScriptParser.FLOAT - 39)) | (1 << (GDScriptParser.DOT - 39)) | (1 << (GDScriptParser.OPEN_PAREN - 39)) | (1 << (GDScriptParser.OPEN_BRACE - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (GDScriptParser.OPEN_BRACK - 72)) | (1 << (GDScriptParser.LOGIC_NOT - 72)) | (1 << (GDScriptParser.ADD - 72)) | (1 << (GDScriptParser.MINUS - 72)) | (1 << (GDScriptParser.NOT_OP - 72)) | (1 << (GDScriptParser.DOLLAR - 72)))) !== 0)) {
+	            if(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 671121213) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 25952321) !== 0)) {
 	                this.state = 466;
 	                this.expression(0);
 	            }
@@ -2099,14 +2095,14 @@ export default class GDScriptParser extends antlr4.Parser {
 	assignmentStmt() {
 	    let localctx = new AssignmentStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, GDScriptParser.RULE_assignmentStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 472;
 	        this.expression(0);
 	        this.state = 473;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 56)) & ~0x1f) == 0 && ((1 << (_la - 56)) & ((1 << (GDScriptParser.ASSIGN - 56)) | (1 << (GDScriptParser.ADD_ASSIGN - 56)) | (1 << (GDScriptParser.MINUS_ASSIGN - 56)) | (1 << (GDScriptParser.MUL_ASSIGN - 56)) | (1 << (GDScriptParser.DIV_ASSIGN - 56)) | (1 << (GDScriptParser.MOD_ASSIGN - 56)) | (1 << (GDScriptParser.AND_ASSIGN - 56)) | (1 << (GDScriptParser.OR_ASSIGN - 56)) | (1 << (GDScriptParser.XOR_ASSIGN - 56)))) !== 0))) {
+	        if(!(((((_la - 56)) & ~0x1f) === 0 && ((1 << (_la - 56)) & 1021) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2136,7 +2132,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	varDeclStmt() {
 	    let localctx = new VarDeclStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, GDScriptParser.RULE_varDeclStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 477;
@@ -2146,7 +2142,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 481;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.ASSIGN) {
+	        if(_la===56) {
 	            this.state = 479;
 	            this.match(GDScriptParser.ASSIGN);
 	            this.state = 480;
@@ -2174,7 +2170,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	assertStmt() {
 	    let localctx = new AssertStmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, GDScriptParser.RULE_assertStmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 485;
@@ -2186,7 +2182,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	        this.state = 490;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===GDScriptParser.COMMA) {
+	        if(_la===54) {
 	            this.state = 488;
 	            this.match(GDScriptParser.COMMA);
 	            this.state = 489;
@@ -2310,13 +2306,13 @@ export default class GDScriptParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 82;
 	    this.enterRecursionRule(localctx, 82, GDScriptParser.RULE_expression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 576;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case GDScriptParser.TRUE:
+	        case 41:
 	            localctx = new PrimaryContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2324,40 +2320,40 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 512;
 	            this.match(GDScriptParser.TRUE);
 	            break;
-	        case GDScriptParser.FALSE:
+	        case 42:
 	            localctx = new PrimaryContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 513;
 	            this.match(GDScriptParser.FALSE);
 	            break;
-	        case GDScriptParser.NULL:
+	        case 43:
 	            localctx = new PrimaryContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 514;
 	            this.match(GDScriptParser.NULL);
 	            break;
-	        case GDScriptParser.SELF:
+	        case 44:
 	            localctx = new PrimaryContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 515;
 	            this.match(GDScriptParser.SELF);
 	            break;
-	        case GDScriptParser.IDENTIFIER:
-	        case GDScriptParser.BUILTINTYPE:
-	        case GDScriptParser.CONSTANT:
-	        case GDScriptParser.STRING:
-	        case GDScriptParser.INTEGER:
-	        case GDScriptParser.FLOAT:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
 	            localctx = new PrimaryContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 516;
 	            this.literal();
 	            break;
-	        case GDScriptParser.OPEN_BRACK:
+	        case 72:
 	            localctx = new ArrayDeclContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2366,7 +2362,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 529;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (GDScriptParser.NOT - 39)) | (1 << (GDScriptParser.TRUE - 39)) | (1 << (GDScriptParser.FALSE - 39)) | (1 << (GDScriptParser.NULL - 39)) | (1 << (GDScriptParser.SELF - 39)) | (1 << (GDScriptParser.IDENTIFIER - 39)) | (1 << (GDScriptParser.BUILTINTYPE - 39)) | (1 << (GDScriptParser.CONSTANT - 39)) | (1 << (GDScriptParser.STRING - 39)) | (1 << (GDScriptParser.INTEGER - 39)) | (1 << (GDScriptParser.FLOAT - 39)) | (1 << (GDScriptParser.DOT - 39)) | (1 << (GDScriptParser.OPEN_PAREN - 39)) | (1 << (GDScriptParser.OPEN_BRACE - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (GDScriptParser.OPEN_BRACK - 72)) | (1 << (GDScriptParser.LOGIC_NOT - 72)) | (1 << (GDScriptParser.ADD - 72)) | (1 << (GDScriptParser.MINUS - 72)) | (1 << (GDScriptParser.NOT_OP - 72)) | (1 << (GDScriptParser.DOLLAR - 72)))) !== 0)) {
+	            if(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 671121213) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 25952321) !== 0)) {
 	                this.state = 518;
 	                this.expression(0);
 	                this.state = 523;
@@ -2387,7 +2383,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                this.state = 527;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===GDScriptParser.COMMA) {
+	                if(_la===54) {
 	                    this.state = 526;
 	                    this.match(GDScriptParser.COMMA);
 	                }
@@ -2397,7 +2393,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 531;
 	            this.match(GDScriptParser.CLOSE_BRACK);
 	            break;
-	        case GDScriptParser.OPEN_BRACE:
+	        case 68:
 	            localctx = new DictDeclContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2406,7 +2402,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 544;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (GDScriptParser.NOT - 39)) | (1 << (GDScriptParser.TRUE - 39)) | (1 << (GDScriptParser.FALSE - 39)) | (1 << (GDScriptParser.NULL - 39)) | (1 << (GDScriptParser.SELF - 39)) | (1 << (GDScriptParser.IDENTIFIER - 39)) | (1 << (GDScriptParser.BUILTINTYPE - 39)) | (1 << (GDScriptParser.CONSTANT - 39)) | (1 << (GDScriptParser.STRING - 39)) | (1 << (GDScriptParser.INTEGER - 39)) | (1 << (GDScriptParser.FLOAT - 39)) | (1 << (GDScriptParser.DOT - 39)) | (1 << (GDScriptParser.OPEN_PAREN - 39)) | (1 << (GDScriptParser.OPEN_BRACE - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (GDScriptParser.OPEN_BRACK - 72)) | (1 << (GDScriptParser.LOGIC_NOT - 72)) | (1 << (GDScriptParser.ADD - 72)) | (1 << (GDScriptParser.MINUS - 72)) | (1 << (GDScriptParser.NOT_OP - 72)) | (1 << (GDScriptParser.DOLLAR - 72)))) !== 0)) {
+	            if(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 671121213) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 25952321) !== 0)) {
 	                this.state = 533;
 	                this.keyValue();
 	                this.state = 538;
@@ -2427,7 +2423,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                this.state = 542;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===GDScriptParser.COMMA) {
+	                if(_la===54) {
 	                    this.state = 541;
 	                    this.match(GDScriptParser.COMMA);
 	                }
@@ -2437,7 +2433,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 546;
 	            this.match(GDScriptParser.CLOSE_BRACE);
 	            break;
-	        case GDScriptParser.OPEN_PAREN:
+	        case 66:
 	            localctx = new PrimaryContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2448,7 +2444,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 549;
 	            this.match(GDScriptParser.CLOSE_PAREN);
 	            break;
-	        case GDScriptParser.DOT:
+	        case 53:
 	            localctx = new CallContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2461,7 +2457,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 555;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (GDScriptParser.NOT - 39)) | (1 << (GDScriptParser.TRUE - 39)) | (1 << (GDScriptParser.FALSE - 39)) | (1 << (GDScriptParser.NULL - 39)) | (1 << (GDScriptParser.SELF - 39)) | (1 << (GDScriptParser.IDENTIFIER - 39)) | (1 << (GDScriptParser.BUILTINTYPE - 39)) | (1 << (GDScriptParser.CONSTANT - 39)) | (1 << (GDScriptParser.STRING - 39)) | (1 << (GDScriptParser.INTEGER - 39)) | (1 << (GDScriptParser.FLOAT - 39)) | (1 << (GDScriptParser.DOT - 39)) | (1 << (GDScriptParser.OPEN_PAREN - 39)) | (1 << (GDScriptParser.OPEN_BRACE - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (GDScriptParser.OPEN_BRACK - 72)) | (1 << (GDScriptParser.LOGIC_NOT - 72)) | (1 << (GDScriptParser.ADD - 72)) | (1 << (GDScriptParser.MINUS - 72)) | (1 << (GDScriptParser.NOT_OP - 72)) | (1 << (GDScriptParser.DOLLAR - 72)))) !== 0)) {
+	            if(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 671121213) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 25952321) !== 0)) {
 	                this.state = 554;
 	                this.argList();
 	            }
@@ -2469,7 +2465,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 557;
 	            this.match(GDScriptParser.CLOSE_PAREN);
 	            break;
-	        case GDScriptParser.DOLLAR:
+	        case 96:
 	            localctx = new GetNodeContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2478,11 +2474,11 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 568;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case GDScriptParser.STRING:
+	            case 50:
 	                this.state = 559;
 	                this.match(GDScriptParser.STRING);
 	                break;
-	            case GDScriptParser.IDENTIFIER:
+	            case 47:
 	                this.state = 560;
 	                this.match(GDScriptParser.IDENTIFIER);
 	                this.state = 565;
@@ -2505,7 +2501,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case GDScriptParser.NOT_OP:
+	        case 95:
 	            localctx = new BitNotContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2514,14 +2510,14 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 571;
 	            this.expression(16);
 	            break;
-	        case GDScriptParser.ADD:
-	        case GDScriptParser.MINUS:
+	        case 90:
+	        case 91:
 	            localctx = new SignContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 572;
 	            _la = this._input.LA(1);
-	            if(!(_la===GDScriptParser.ADD || _la===GDScriptParser.MINUS)) {
+	            if(!(_la===90 || _la===91)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2531,14 +2527,14 @@ export default class GDScriptParser extends antlr4.Parser {
 	            this.state = 573;
 	            this.expression(15);
 	            break;
-	        case GDScriptParser.NOT:
-	        case GDScriptParser.LOGIC_NOT:
+	        case 39:
+	        case 78:
 	            localctx = new LogicNotContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 574;
 	            _la = this._input.LA(1);
-	            if(!(_la===GDScriptParser.NOT || _la===GDScriptParser.LOGIC_NOT)) {
+	            if(!(_la===39 || _la===78)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2574,7 +2570,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 579;
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 92)) & ~0x1f) == 0 && ((1 << (_la - 92)) & ((1 << (GDScriptParser.STAR - 92)) | (1 << (GDScriptParser.DIV - 92)) | (1 << (GDScriptParser.MOD - 92)))) !== 0))) {
+	                    if(!(((((_la - 92)) & ~0x1f) === 0 && ((1 << (_la - 92)) & 7) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2620,7 +2616,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 588;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===GDScriptParser.LEFT_SHIFT || _la===GDScriptParser.RIGHT_SHIFT)) {
+	                    if(!(_la===88 || _la===89)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2679,7 +2675,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 600;
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 79)) & ~0x1f) == 0 && ((1 << (_la - 79)) & ((1 << (GDScriptParser.LESS_THAN - 79)) | (1 << (GDScriptParser.GREATER_THAN - 79)) | (1 << (GDScriptParser.EQUALS - 79)) | (1 << (GDScriptParser.GT_EQ - 79)) | (1 << (GDScriptParser.LT_EQ - 79)) | (1 << (GDScriptParser.NOT_EQ - 79)))) !== 0))) {
+	                    if(!(((((_la - 79)) & ~0x1f) === 0 && ((1 << (_la - 79)) & 63) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2712,7 +2708,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 606;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===GDScriptParser.AND || _la===GDScriptParser.LOGIC_AND)) {
+	                    if(!(_la===38 || _la===77)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2732,7 +2728,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 609;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===GDScriptParser.OR || _la===GDScriptParser.LOGIC_OR)) {
+	                    if(!(_la===37 || _la===76)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2800,7 +2796,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                    this.state = 628;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (GDScriptParser.NOT - 39)) | (1 << (GDScriptParser.TRUE - 39)) | (1 << (GDScriptParser.FALSE - 39)) | (1 << (GDScriptParser.NULL - 39)) | (1 << (GDScriptParser.SELF - 39)) | (1 << (GDScriptParser.IDENTIFIER - 39)) | (1 << (GDScriptParser.BUILTINTYPE - 39)) | (1 << (GDScriptParser.CONSTANT - 39)) | (1 << (GDScriptParser.STRING - 39)) | (1 << (GDScriptParser.INTEGER - 39)) | (1 << (GDScriptParser.FLOAT - 39)) | (1 << (GDScriptParser.DOT - 39)) | (1 << (GDScriptParser.OPEN_PAREN - 39)) | (1 << (GDScriptParser.OPEN_BRACE - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (GDScriptParser.OPEN_BRACK - 72)) | (1 << (GDScriptParser.LOGIC_NOT - 72)) | (1 << (GDScriptParser.ADD - 72)) | (1 << (GDScriptParser.MINUS - 72)) | (1 << (GDScriptParser.NOT_OP - 72)) | (1 << (GDScriptParser.DOLLAR - 72)))) !== 0)) {
+	                    if(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 671121213) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 25952321) !== 0)) {
 	                        this.state = 627;
 	                        this.argList();
 	                    }
@@ -2820,7 +2816,7 @@ export default class GDScriptParser extends antlr4.Parser {
 	                    this.match(GDScriptParser.IS);
 	                    this.state = 633;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===GDScriptParser.IDENTIFIER || _la===GDScriptParser.BUILTINTYPE)) {
+	                    if(!(_la===47 || _la===48)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2868,12 +2864,12 @@ export default class GDScriptParser extends antlr4.Parser {
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, GDScriptParser.RULE_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 642;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 47)) & ~0x1f) == 0 && ((1 << (_la - 47)) & ((1 << (GDScriptParser.IDENTIFIER - 47)) | (1 << (GDScriptParser.BUILTINTYPE - 47)) | (1 << (GDScriptParser.CONSTANT - 47)) | (1 << (GDScriptParser.STRING - 47)) | (1 << (GDScriptParser.INTEGER - 47)) | (1 << (GDScriptParser.FLOAT - 47)))) !== 0))) {
+	        if(!(((((_la - 47)) & ~0x1f) === 0 && ((1 << (_la - 47)) & 63) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6742,3 +6738,12 @@ GDScriptParser.ExprStmtContext = ExprStmtContext;
 GDScriptParser.ExpressionContext = ExpressionContext; 
 GDScriptParser.LiteralContext = LiteralContext; 
 GDScriptParser.KeyValueContext = KeyValueContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

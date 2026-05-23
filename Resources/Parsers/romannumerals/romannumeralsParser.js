@@ -1,32 +1,33 @@
-// Generated from ./romannumerals/romannumerals.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/romannumerals/romannumerals.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import romannumeralsListener from './romannumeralsListener.js';
-const serializedATN = [4,1,20,86,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,1,0,1,0,1,1,1,1,1,1,1,
-1,1,1,3,1,30,8,1,1,2,1,2,1,2,1,2,1,2,5,2,37,8,2,10,2,12,2,40,9,2,1,3,1,3,
-1,3,1,3,1,3,3,3,47,8,3,1,4,1,4,1,4,1,4,1,4,1,4,3,4,55,8,4,1,5,1,5,1,6,1,
-6,1,6,1,6,1,6,3,6,64,8,6,1,7,1,7,1,7,1,7,1,7,1,7,3,7,72,8,7,1,8,1,8,1,9,
-1,9,1,9,1,9,1,9,1,9,3,9,82,8,9,1,10,1,10,1,10,0,1,4,11,0,2,4,6,8,10,12,14,
-16,18,20,0,3,1,0,5,7,1,0,11,13,1,0,17,19,93,0,22,1,0,0,0,2,29,1,0,0,0,4,
-31,1,0,0,0,6,46,1,0,0,0,8,54,1,0,0,0,10,56,1,0,0,0,12,63,1,0,0,0,14,71,1,
-0,0,0,16,73,1,0,0,0,18,81,1,0,0,0,20,83,1,0,0,0,22,23,3,2,1,0,23,1,1,0,0,
-0,24,25,3,4,2,0,25,26,3,6,3,0,26,30,1,0,0,0,27,30,3,4,2,0,28,30,3,6,3,0,
-29,24,1,0,0,0,29,27,1,0,0,0,29,28,1,0,0,0,30,3,1,0,0,0,31,32,6,2,-1,0,32,
-33,5,1,0,0,33,38,1,0,0,0,34,35,10,2,0,0,35,37,5,1,0,0,36,34,1,0,0,0,37,40,
-1,0,0,0,38,36,1,0,0,0,38,39,1,0,0,0,39,5,1,0,0,0,40,38,1,0,0,0,41,42,3,8,
-4,0,42,43,3,12,6,0,43,47,1,0,0,0,44,47,3,8,4,0,45,47,3,12,6,0,46,41,1,0,
-0,0,46,44,1,0,0,0,46,45,1,0,0,0,47,7,1,0,0,0,48,55,3,10,5,0,49,55,5,2,0,
-0,50,55,5,3,0,0,51,52,5,3,0,0,52,55,3,10,5,0,53,55,5,4,0,0,54,48,1,0,0,0,
-54,49,1,0,0,0,54,50,1,0,0,0,54,51,1,0,0,0,54,53,1,0,0,0,55,9,1,0,0,0,56,
-57,7,0,0,0,57,11,1,0,0,0,58,59,3,14,7,0,59,60,3,18,9,0,60,64,1,0,0,0,61,
-64,3,14,7,0,62,64,3,18,9,0,63,58,1,0,0,0,63,61,1,0,0,0,63,62,1,0,0,0,64,
-13,1,0,0,0,65,72,3,16,8,0,66,72,5,8,0,0,67,72,5,9,0,0,68,69,5,9,0,0,69,72,
-3,16,8,0,70,72,5,10,0,0,71,65,1,0,0,0,71,66,1,0,0,0,71,67,1,0,0,0,71,68,
-1,0,0,0,71,70,1,0,0,0,72,15,1,0,0,0,73,74,7,1,0,0,74,17,1,0,0,0,75,82,3,
-20,10,0,76,82,5,14,0,0,77,82,5,15,0,0,78,79,5,15,0,0,79,82,3,20,10,0,80,
-82,5,16,0,0,81,75,1,0,0,0,81,76,1,0,0,0,81,77,1,0,0,0,81,78,1,0,0,0,81,80,
-1,0,0,0,82,19,1,0,0,0,83,84,7,2,0,0,84,21,1,0,0,0,7,29,38,46,54,63,71,81];
+const serializedATN = [4,1,20,87,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,1,0,1,0,1,0,1,1,1,1,1,
+1,1,1,1,1,3,1,31,8,1,1,2,1,2,1,2,1,2,1,2,5,2,38,8,2,10,2,12,2,41,9,2,1,3,
+1,3,1,3,1,3,1,3,3,3,48,8,3,1,4,1,4,1,4,1,4,1,4,1,4,3,4,56,8,4,1,5,1,5,1,
+6,1,6,1,6,1,6,1,6,3,6,65,8,6,1,7,1,7,1,7,1,7,1,7,1,7,3,7,73,8,7,1,8,1,8,
+1,9,1,9,1,9,1,9,1,9,1,9,3,9,83,8,9,1,10,1,10,1,10,0,1,4,11,0,2,4,6,8,10,
+12,14,16,18,20,0,3,1,0,5,7,1,0,11,13,1,0,17,19,94,0,22,1,0,0,0,2,30,1,0,
+0,0,4,32,1,0,0,0,6,47,1,0,0,0,8,55,1,0,0,0,10,57,1,0,0,0,12,64,1,0,0,0,14,
+72,1,0,0,0,16,74,1,0,0,0,18,82,1,0,0,0,20,84,1,0,0,0,22,23,3,2,1,0,23,24,
+5,0,0,1,24,1,1,0,0,0,25,26,3,4,2,0,26,27,3,6,3,0,27,31,1,0,0,0,28,31,3,4,
+2,0,29,31,3,6,3,0,30,25,1,0,0,0,30,28,1,0,0,0,30,29,1,0,0,0,31,3,1,0,0,0,
+32,33,6,2,-1,0,33,34,5,1,0,0,34,39,1,0,0,0,35,36,10,2,0,0,36,38,5,1,0,0,
+37,35,1,0,0,0,38,41,1,0,0,0,39,37,1,0,0,0,39,40,1,0,0,0,40,5,1,0,0,0,41,
+39,1,0,0,0,42,43,3,8,4,0,43,44,3,12,6,0,44,48,1,0,0,0,45,48,3,8,4,0,46,48,
+3,12,6,0,47,42,1,0,0,0,47,45,1,0,0,0,47,46,1,0,0,0,48,7,1,0,0,0,49,56,3,
+10,5,0,50,56,5,2,0,0,51,56,5,3,0,0,52,53,5,3,0,0,53,56,3,10,5,0,54,56,5,
+4,0,0,55,49,1,0,0,0,55,50,1,0,0,0,55,51,1,0,0,0,55,52,1,0,0,0,55,54,1,0,
+0,0,56,9,1,0,0,0,57,58,7,0,0,0,58,11,1,0,0,0,59,60,3,14,7,0,60,61,3,18,9,
+0,61,65,1,0,0,0,62,65,3,14,7,0,63,65,3,18,9,0,64,59,1,0,0,0,64,62,1,0,0,
+0,64,63,1,0,0,0,65,13,1,0,0,0,66,73,3,16,8,0,67,73,5,8,0,0,68,73,5,9,0,0,
+69,70,5,9,0,0,70,73,3,16,8,0,71,73,5,10,0,0,72,66,1,0,0,0,72,67,1,0,0,0,
+72,68,1,0,0,0,72,69,1,0,0,0,72,71,1,0,0,0,73,15,1,0,0,0,74,75,7,1,0,0,75,
+17,1,0,0,0,76,83,3,20,10,0,77,83,5,14,0,0,78,83,5,15,0,0,79,80,5,15,0,0,
+80,83,3,20,10,0,81,83,5,16,0,0,82,76,1,0,0,0,82,77,1,0,0,0,82,78,1,0,0,0,
+82,79,1,0,0,0,82,81,1,0,0,0,83,19,1,0,0,0,84,85,7,2,0,0,85,21,1,0,0,0,7,
+30,39,47,55,64,72,82];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -57,10 +58,6 @@ export default class romannumeralsParser extends antlr4.Parser {
         this.symbolicNames = romannumeralsParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 2:
@@ -89,6 +86,8 @@ export default class romannumeralsParser extends antlr4.Parser {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 22;
 	        this.thousands();
+	        this.state = 23;
+	        this.match(romannumeralsParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -109,27 +108,27 @@ export default class romannumeralsParser extends antlr4.Parser {
 	    let localctx = new ThousandsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, romannumeralsParser.RULE_thousands);
 	    try {
-	        this.state = 29;
+	        this.state = 30;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 24;
-	            this.thous_part(0);
 	            this.state = 25;
+	            this.thous_part(0);
+	            this.state = 26;
 	            this.hundreds();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 27;
+	            this.state = 28;
 	            this.thous_part(0);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 28;
+	            this.state = 29;
 	            this.hundreds();
 	            break;
 
@@ -161,10 +160,10 @@ export default class romannumeralsParser extends antlr4.Parser {
 	    this.enterRecursionRule(localctx, 4, romannumeralsParser.RULE_thous_part, _p);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 32;
+	        this.state = 33;
 	        this.match(romannumeralsParser.M);
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 38;
+	        this.state = 39;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,1,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -175,14 +174,14 @@ export default class romannumeralsParser extends antlr4.Parser {
 	                _prevctx = localctx;
 	                localctx = new Thous_partContext(this, _parentctx, _parentState);
 	                this.pushNewRecursionContext(localctx, _startState, romannumeralsParser.RULE_thous_part);
-	                this.state = 34;
+	                this.state = 35;
 	                if (!( this.precpred(this._ctx, 2))) {
 	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
 	                }
-	                this.state = 35;
+	                this.state = 36;
 	                this.match(romannumeralsParser.M); 
 	            }
-	            this.state = 40;
+	            this.state = 41;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        }
@@ -207,27 +206,27 @@ export default class romannumeralsParser extends antlr4.Parser {
 	    let localctx = new HundredsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, romannumeralsParser.RULE_hundreds);
 	    try {
-	        this.state = 46;
+	        this.state = 47;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 41;
-	            this.hun_part();
 	            this.state = 42;
+	            this.hun_part();
+	            this.state = 43;
 	            this.tens();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 44;
+	            this.state = 45;
 	            this.hun_part();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 45;
+	            this.state = 46;
 	            this.tens();
 	            break;
 
@@ -252,39 +251,39 @@ export default class romannumeralsParser extends antlr4.Parser {
 	    let localctx = new Hun_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, romannumeralsParser.RULE_hun_part);
 	    try {
-	        this.state = 54;
+	        this.state = 55;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 48;
+	            this.state = 49;
 	            this.hun_rep();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 49;
+	            this.state = 50;
 	            this.match(romannumeralsParser.CD);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 50;
+	            this.state = 51;
 	            this.match(romannumeralsParser.D);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 51;
-	            this.match(romannumeralsParser.D);
 	            this.state = 52;
+	            this.match(romannumeralsParser.D);
+	            this.state = 53;
 	            this.hun_rep();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 53;
+	            this.state = 54;
 	            this.match(romannumeralsParser.CM);
 	            break;
 
@@ -308,12 +307,12 @@ export default class romannumeralsParser extends antlr4.Parser {
 	hun_rep() {
 	    let localctx = new Hun_repContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, romannumeralsParser.RULE_hun_rep);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 56;
+	        this.state = 57;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << romannumeralsParser.C) | (1 << romannumeralsParser.CC) | (1 << romannumeralsParser.CCC))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 224) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -340,27 +339,27 @@ export default class romannumeralsParser extends antlr4.Parser {
 	    let localctx = new TensContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, romannumeralsParser.RULE_tens);
 	    try {
-	        this.state = 63;
+	        this.state = 64;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 58;
-	            this.tens_part();
 	            this.state = 59;
+	            this.tens_part();
+	            this.state = 60;
 	            this.ones();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 61;
+	            this.state = 62;
 	            this.tens_part();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 62;
+	            this.state = 63;
 	            this.ones();
 	            break;
 
@@ -385,39 +384,39 @@ export default class romannumeralsParser extends antlr4.Parser {
 	    let localctx = new Tens_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, romannumeralsParser.RULE_tens_part);
 	    try {
-	        this.state = 71;
+	        this.state = 72;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 65;
+	            this.state = 66;
 	            this.tens_rep();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 66;
+	            this.state = 67;
 	            this.match(romannumeralsParser.XL);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 67;
+	            this.state = 68;
 	            this.match(romannumeralsParser.L);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 68;
-	            this.match(romannumeralsParser.L);
 	            this.state = 69;
+	            this.match(romannumeralsParser.L);
+	            this.state = 70;
 	            this.tens_rep();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 70;
+	            this.state = 71;
 	            this.match(romannumeralsParser.XC);
 	            break;
 
@@ -441,12 +440,12 @@ export default class romannumeralsParser extends antlr4.Parser {
 	tens_rep() {
 	    let localctx = new Tens_repContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, romannumeralsParser.RULE_tens_rep);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 73;
+	        this.state = 74;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << romannumeralsParser.X) | (1 << romannumeralsParser.XX) | (1 << romannumeralsParser.XXX))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 14336) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -473,39 +472,39 @@ export default class romannumeralsParser extends antlr4.Parser {
 	    let localctx = new OnesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, romannumeralsParser.RULE_ones);
 	    try {
-	        this.state = 81;
+	        this.state = 82;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 75;
+	            this.state = 76;
 	            this.ones_rep();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 76;
+	            this.state = 77;
 	            this.match(romannumeralsParser.IV);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 77;
+	            this.state = 78;
 	            this.match(romannumeralsParser.V);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 78;
-	            this.match(romannumeralsParser.V);
 	            this.state = 79;
+	            this.match(romannumeralsParser.V);
+	            this.state = 80;
 	            this.ones_rep();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 80;
+	            this.state = 81;
 	            this.match(romannumeralsParser.IX);
 	            break;
 
@@ -529,12 +528,12 @@ export default class romannumeralsParser extends antlr4.Parser {
 	ones_rep() {
 	    let localctx = new Ones_repContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, romannumeralsParser.RULE_ones_rep);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 83;
+	        this.state = 84;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << romannumeralsParser.I) | (1 << romannumeralsParser.II) | (1 << romannumeralsParser.III))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 917504) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -608,6 +607,10 @@ class ExpressionContext extends antlr4.ParserRuleContext {
 
 	thousands() {
 	    return this.getTypedRuleContext(ThousandsContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(romannumeralsParser.EOF, 0);
 	};
 
 	enterRule(listener) {
@@ -1065,3 +1068,12 @@ romannumeralsParser.Tens_partContext = Tens_partContext;
 romannumeralsParser.Tens_repContext = Tens_repContext; 
 romannumeralsParser.OnesContext = OnesContext; 
 romannumeralsParser.Ones_repContext = Ones_repContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

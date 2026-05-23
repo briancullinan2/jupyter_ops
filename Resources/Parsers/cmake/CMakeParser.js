@@ -1,4 +1,4 @@
-// Generated from ./cmake/CMake.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cmake/CMake.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CMakeListener from './CMakeListener.js';
@@ -41,22 +41,18 @@ export default class CMakeParser extends antlr4.Parser {
         this.symbolicNames = CMakeParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	file_() {
 	    let localctx = new File_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, CMakeParser.RULE_file_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 11;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CMakeParser.Identifier) {
+	        while(_la===3) {
 	            this.state = 8;
 	            this.command_invocation();
 	            this.state = 13;
@@ -84,7 +80,7 @@ export default class CMakeParser extends antlr4.Parser {
 	command_invocation() {
 	    let localctx = new Command_invocationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, CMakeParser.RULE_command_invocation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 16;
@@ -94,18 +90,18 @@ export default class CMakeParser extends antlr4.Parser {
 	        this.state = 22;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CMakeParser.T__0) | (1 << CMakeParser.Identifier) | (1 << CMakeParser.Unquoted_argument) | (1 << CMakeParser.Quoted_argument) | (1 << CMakeParser.Bracket_argument))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 218) !== 0)) {
 	            this.state = 20;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CMakeParser.Identifier:
-	            case CMakeParser.Unquoted_argument:
-	            case CMakeParser.Quoted_argument:
-	            case CMakeParser.Bracket_argument:
+	            case 3:
+	            case 4:
+	            case 6:
+	            case 7:
 	                this.state = 18;
 	                this.single_argument();
 	                break;
-	            case CMakeParser.T__0:
+	            case 1:
 	                this.state = 19;
 	                this.compound_argument();
 	                break;
@@ -137,12 +133,12 @@ export default class CMakeParser extends antlr4.Parser {
 	single_argument() {
 	    let localctx = new Single_argumentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, CMakeParser.RULE_single_argument);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 27;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CMakeParser.Identifier) | (1 << CMakeParser.Unquoted_argument) | (1 << CMakeParser.Quoted_argument) | (1 << CMakeParser.Bracket_argument))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 216) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -168,7 +164,7 @@ export default class CMakeParser extends antlr4.Parser {
 	compound_argument() {
 	    let localctx = new Compound_argumentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, CMakeParser.RULE_compound_argument);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 29;
@@ -176,18 +172,18 @@ export default class CMakeParser extends antlr4.Parser {
 	        this.state = 34;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CMakeParser.T__0) | (1 << CMakeParser.Identifier) | (1 << CMakeParser.Unquoted_argument) | (1 << CMakeParser.Quoted_argument) | (1 << CMakeParser.Bracket_argument))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 218) !== 0)) {
 	            this.state = 32;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CMakeParser.Identifier:
-	            case CMakeParser.Unquoted_argument:
-	            case CMakeParser.Quoted_argument:
-	            case CMakeParser.Bracket_argument:
+	            case 3:
+	            case 4:
+	            case 6:
+	            case 7:
 	                this.state = 30;
 	                this.single_argument();
 	                break;
-	            case CMakeParser.T__0:
+	            case 1:
 	                this.state = 31;
 	                this.compound_argument();
 	                break;
@@ -443,3 +439,12 @@ CMakeParser.File_Context = File_Context;
 CMakeParser.Command_invocationContext = Command_invocationContext; 
 CMakeParser.Single_argumentContext = Single_argumentContext; 
 CMakeParser.Compound_argumentContext = Compound_argumentContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

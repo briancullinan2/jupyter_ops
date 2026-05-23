@@ -1,4 +1,4 @@
-// Generated from ./cql3/CqlParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cql3/CqlParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -56,15 +56,6 @@ export default class CqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by CqlParser#revoke.
 	exitRevoke(ctx) {
-	}
-
-
-	// Enter a parse tree produced by CqlParser#listUsers.
-	enterListUsers(ctx) {
-	}
-
-	// Exit a parse tree produced by CqlParser#listUsers.
-	exitListUsers(ctx) {
 	}
 
 
@@ -482,6 +473,24 @@ export default class CqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by CqlParser#alterTableAlter.
+	enterAlterTableAlter(ctx) {
+	}
+
+	// Exit a parse tree produced by CqlParser#alterTableAlter.
+	exitAlterTableAlter(ctx) {
+	}
+
+
+	// Enter a parse tree produced by CqlParser#alterColumnDefinition.
+	enterAlterColumnDefinition(ctx) {
+	}
+
+	// Exit a parse tree produced by CqlParser#alterColumnDefinition.
+	exitAlterColumnDefinition(ctx) {
+	}
+
+
 	// Enter a parse tree produced by CqlParser#alterRole.
 	enterAlterRole(ctx) {
 	}
@@ -626,21 +635,21 @@ export default class CqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CqlParser#clusteringOrder.
-	enterClusteringOrder(ctx) {
-	}
-
-	// Exit a parse tree produced by CqlParser#clusteringOrder.
-	exitClusteringOrder(ctx) {
-	}
-
-
 	// Enter a parse tree produced by CqlParser#tableOptions.
 	enterTableOptions(ctx) {
 	}
 
 	// Exit a parse tree produced by CqlParser#tableOptions.
 	exitTableOptions(ctx) {
+	}
+
+
+	// Enter a parse tree produced by CqlParser#clusteringOrder.
+	enterClusteringOrder(ctx) {
+	}
+
+	// Exit a parse tree produced by CqlParser#clusteringOrder.
+	exitClusteringOrder(ctx) {
 	}
 
 
@@ -722,6 +731,24 @@ export default class CqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by CqlParser#columnDefinition.
 	exitColumnDefinition(ctx) {
+	}
+
+
+	// Enter a parse tree produced by CqlParser#column_mask.
+	enterColumn_mask(ctx) {
+	}
+
+	// Exit a parse tree produced by CqlParser#column_mask.
+	exitColumn_mask(ctx) {
+	}
+
+
+	// Enter a parse tree produced by CqlParser#function_name.
+	enterFunction_name(ctx) {
+	}
+
+	// Exit a parse tree produced by CqlParser#function_name.
+	exitFunction_name(ctx) {
 	}
 
 
@@ -2363,15 +2390,6 @@ export default class CqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CqlParser#kwUsers.
-	enterKwUsers(ctx) {
-	}
-
-	// Exit a parse tree produced by CqlParser#kwUsers.
-	exitKwUsers(ctx) {
-	}
-
-
 	// Enter a parse tree produced by CqlParser#kwUsing.
 	enterKwUsing(ctx) {
 	}
@@ -2423,15 +2441,6 @@ export default class CqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by CqlParser#kwRevoke.
 	exitKwRevoke(ctx) {
-	}
-
-
-	// Enter a parse tree produced by CqlParser#eof.
-	enterEof(ctx) {
-	}
-
-	// Exit a parse tree produced by CqlParser#eof.
-	exitEof(ctx) {
 	}
 
 

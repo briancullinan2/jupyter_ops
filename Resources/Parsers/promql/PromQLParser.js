@@ -1,99 +1,107 @@
-// Generated from ./promql/PromQLParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/promql/PromQLParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import PromQLParserListener from './PromQLParserListener.js';
-const serializedATN = [4,1,43,294,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,45,314,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
-7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,1,0,1,0,
-1,0,1,1,1,1,1,1,1,1,1,1,3,1,77,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,105,
-8,1,10,1,12,1,108,9,1,1,2,1,2,1,3,1,3,3,3,114,8,3,1,4,1,4,3,4,118,8,4,1,
-5,1,5,3,5,122,8,5,1,6,1,6,3,6,126,8,6,1,6,3,6,129,8,6,1,7,1,7,3,7,133,8,
-7,1,8,1,8,3,8,137,8,8,1,9,1,9,3,9,141,8,9,1,10,1,10,1,10,1,11,1,11,1,11,
-1,11,1,11,1,11,1,11,3,11,153,8,11,1,12,1,12,1,12,1,12,1,13,1,13,1,13,3,13,
-162,8,13,1,13,3,13,165,8,13,1,13,1,13,1,13,1,13,3,13,171,8,13,1,14,1,14,
-1,14,1,14,1,15,1,15,1,16,1,16,1,16,5,16,182,8,16,10,16,12,16,185,9,16,1,
-17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,3,18,198,8,18,1,19,
-1,19,1,19,1,19,1,19,5,19,205,8,19,10,19,12,19,208,9,19,1,19,1,19,1,20,1,
-20,3,20,214,8,20,1,21,1,21,1,21,1,21,5,21,220,8,21,10,21,12,21,223,9,21,
-3,21,225,8,21,1,21,1,21,1,22,1,22,1,22,1,22,1,22,3,22,234,8,22,1,22,1,22,
-1,22,1,22,1,22,1,22,3,22,242,8,22,3,22,244,8,22,1,23,1,23,1,23,1,24,1,24,
-1,24,1,25,1,25,3,25,254,8,25,1,25,1,25,3,25,258,8,25,1,26,1,26,1,26,1,27,
-1,27,1,27,1,28,1,28,1,28,1,29,1,29,1,29,1,30,1,30,1,30,3,30,275,8,30,1,31,
-1,31,1,31,1,31,5,31,281,8,31,10,31,12,31,284,9,31,3,31,286,8,31,1,31,1,31,
-1,32,1,32,1,33,1,33,1,33,0,1,2,34,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
-30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,0,7,1,0,3,4,1,0,
-5,7,1,0,13,18,2,0,9,9,11,11,3,0,12,12,14,14,19,20,2,0,9,11,21,30,1,0,1,2,
-301,0,68,1,0,0,0,2,76,1,0,0,0,4,109,1,0,0,0,6,111,1,0,0,0,8,115,1,0,0,0,
-10,119,1,0,0,0,12,123,1,0,0,0,14,130,1,0,0,0,16,134,1,0,0,0,18,138,1,0,0,
-0,20,142,1,0,0,0,22,152,1,0,0,0,24,154,1,0,0,0,26,170,1,0,0,0,28,172,1,0,
-0,0,30,176,1,0,0,0,32,178,1,0,0,0,34,186,1,0,0,0,36,197,1,0,0,0,38,199,1,
-0,0,0,40,213,1,0,0,0,42,215,1,0,0,0,44,243,1,0,0,0,46,245,1,0,0,0,48,248,
-1,0,0,0,50,253,1,0,0,0,52,259,1,0,0,0,54,262,1,0,0,0,56,265,1,0,0,0,58,268,
-1,0,0,0,60,274,1,0,0,0,62,276,1,0,0,0,64,289,1,0,0,0,66,291,1,0,0,0,68,69,
-3,2,1,0,69,70,5,0,0,1,70,1,1,0,0,0,71,72,6,1,-1,0,72,73,3,4,2,0,73,74,3,
-2,1,7,74,77,1,0,0,0,75,77,3,22,11,0,76,71,1,0,0,0,76,75,1,0,0,0,77,106,1,
-0,0,0,78,79,10,9,0,0,79,80,3,6,3,0,80,81,3,2,1,9,81,105,1,0,0,0,82,83,10,
-6,0,0,83,84,3,8,4,0,84,85,3,2,1,7,85,105,1,0,0,0,86,87,10,5,0,0,87,88,3,
-10,5,0,88,89,3,2,1,6,89,105,1,0,0,0,90,91,10,4,0,0,91,92,3,12,6,0,92,93,
-3,2,1,5,93,105,1,0,0,0,94,95,10,3,0,0,95,96,3,14,7,0,96,97,3,2,1,4,97,105,
-1,0,0,0,98,99,10,2,0,0,99,100,3,16,8,0,100,101,3,2,1,3,101,105,1,0,0,0,102,
-103,10,8,0,0,103,105,3,18,9,0,104,78,1,0,0,0,104,82,1,0,0,0,104,86,1,0,0,
-0,104,90,1,0,0,0,104,94,1,0,0,0,104,98,1,0,0,0,104,102,1,0,0,0,105,108,1,
-0,0,0,106,104,1,0,0,0,106,107,1,0,0,0,107,3,1,0,0,0,108,106,1,0,0,0,109,
-110,7,0,0,0,110,5,1,0,0,0,111,113,5,8,0,0,112,114,3,50,25,0,113,112,1,0,
-0,0,113,114,1,0,0,0,114,7,1,0,0,0,115,117,7,1,0,0,116,118,3,50,25,0,117,
-116,1,0,0,0,117,118,1,0,0,0,118,9,1,0,0,0,119,121,7,0,0,0,120,122,3,50,25,
-0,121,120,1,0,0,0,121,122,1,0,0,0,122,11,1,0,0,0,123,125,7,2,0,0,124,126,
-5,28,0,0,125,124,1,0,0,0,125,126,1,0,0,0,126,128,1,0,0,0,127,129,3,50,25,
-0,128,127,1,0,0,0,128,129,1,0,0,0,129,13,1,0,0,0,130,132,7,3,0,0,131,133,
-3,50,25,0,132,131,1,0,0,0,132,133,1,0,0,0,133,15,1,0,0,0,134,136,5,10,0,
-0,135,137,3,50,25,0,136,135,1,0,0,0,136,137,1,0,0,0,137,17,1,0,0,0,138,140,
-5,38,0,0,139,141,3,20,10,0,140,139,1,0,0,0,140,141,1,0,0,0,141,19,1,0,0,
-0,142,143,5,27,0,0,143,144,5,40,0,0,144,21,1,0,0,0,145,153,3,38,19,0,146,
-153,3,44,22,0,147,153,3,26,13,0,148,153,3,34,17,0,149,153,3,36,18,0,150,
-153,3,66,33,0,151,153,3,24,12,0,152,145,1,0,0,0,152,146,1,0,0,0,152,147,
-1,0,0,0,152,148,1,0,0,0,152,149,1,0,0,0,152,150,1,0,0,0,152,151,1,0,0,0,
-153,23,1,0,0,0,154,155,5,33,0,0,155,156,3,2,1,0,156,157,5,34,0,0,157,25,
-1,0,0,0,158,164,5,41,0,0,159,161,5,31,0,0,160,162,3,32,16,0,161,160,1,0,
-0,0,161,162,1,0,0,0,162,163,1,0,0,0,163,165,5,32,0,0,164,159,1,0,0,0,164,
-165,1,0,0,0,165,171,1,0,0,0,166,167,5,31,0,0,167,168,3,32,16,0,168,169,5,
-32,0,0,169,171,1,0,0,0,170,158,1,0,0,0,170,166,1,0,0,0,171,27,1,0,0,0,172,
-173,3,60,30,0,173,174,3,30,15,0,174,175,5,2,0,0,175,29,1,0,0,0,176,177,7,
-4,0,0,177,31,1,0,0,0,178,183,3,28,14,0,179,180,5,37,0,0,180,182,3,28,14,
-0,181,179,1,0,0,0,182,185,1,0,0,0,183,181,1,0,0,0,183,184,1,0,0,0,184,33,
-1,0,0,0,185,183,1,0,0,0,186,187,3,26,13,0,187,188,5,39,0,0,188,35,1,0,0,
-0,189,190,3,26,13,0,190,191,5,27,0,0,191,192,5,40,0,0,192,198,1,0,0,0,193,
-194,3,34,17,0,194,195,5,27,0,0,195,196,5,40,0,0,196,198,1,0,0,0,197,189,
-1,0,0,0,197,193,1,0,0,0,198,37,1,0,0,0,199,200,5,30,0,0,200,201,5,33,0,0,
-201,206,3,40,20,0,202,203,5,37,0,0,203,205,3,40,20,0,204,202,1,0,0,0,205,
-208,1,0,0,0,206,204,1,0,0,0,206,207,1,0,0,0,207,209,1,0,0,0,208,206,1,0,
-0,0,209,210,5,34,0,0,210,39,1,0,0,0,211,214,3,66,33,0,212,214,3,2,1,0,213,
-211,1,0,0,0,213,212,1,0,0,0,214,41,1,0,0,0,215,224,5,33,0,0,216,221,3,40,
-20,0,217,218,5,37,0,0,218,220,3,40,20,0,219,217,1,0,0,0,220,223,1,0,0,0,
-221,219,1,0,0,0,221,222,1,0,0,0,222,225,1,0,0,0,223,221,1,0,0,0,224,216,
-1,0,0,0,224,225,1,0,0,0,225,226,1,0,0,0,226,227,5,34,0,0,227,43,1,0,0,0,
-228,229,5,29,0,0,229,244,3,42,21,0,230,233,5,29,0,0,231,234,3,46,23,0,232,
-234,3,48,24,0,233,231,1,0,0,0,233,232,1,0,0,0,234,235,1,0,0,0,235,236,3,
-42,21,0,236,244,1,0,0,0,237,238,5,29,0,0,238,241,3,42,21,0,239,242,3,46,
-23,0,240,242,3,48,24,0,241,239,1,0,0,0,241,240,1,0,0,0,242,244,1,0,0,0,243,
-228,1,0,0,0,243,230,1,0,0,0,243,237,1,0,0,0,244,45,1,0,0,0,245,246,5,21,
-0,0,246,247,3,62,31,0,247,47,1,0,0,0,248,249,5,22,0,0,249,250,3,62,31,0,
-250,49,1,0,0,0,251,254,3,52,26,0,252,254,3,54,27,0,253,251,1,0,0,0,253,252,
-1,0,0,0,254,257,1,0,0,0,255,258,3,56,28,0,256,258,3,58,29,0,257,255,1,0,
-0,0,257,256,1,0,0,0,257,258,1,0,0,0,258,51,1,0,0,0,259,260,5,23,0,0,260,
-261,3,62,31,0,261,53,1,0,0,0,262,263,5,24,0,0,263,264,3,62,31,0,264,55,1,
-0,0,0,265,266,5,25,0,0,266,267,3,62,31,0,267,57,1,0,0,0,268,269,5,26,0,0,
-269,270,3,62,31,0,270,59,1,0,0,0,271,275,3,64,32,0,272,275,5,41,0,0,273,
-275,5,42,0,0,274,271,1,0,0,0,274,272,1,0,0,0,274,273,1,0,0,0,275,61,1,0,
-0,0,276,285,5,33,0,0,277,282,3,60,30,0,278,279,5,37,0,0,279,281,3,60,30,
-0,280,278,1,0,0,0,281,284,1,0,0,0,282,280,1,0,0,0,282,283,1,0,0,0,283,286,
-1,0,0,0,284,282,1,0,0,0,285,277,1,0,0,0,285,286,1,0,0,0,286,287,1,0,0,0,
-287,288,5,34,0,0,288,63,1,0,0,0,289,290,7,5,0,0,290,65,1,0,0,0,291,292,7,
-6,0,0,292,67,1,0,0,0,29,76,104,106,113,117,121,125,128,132,136,140,152,161,
-164,170,183,197,206,213,221,224,233,241,243,253,257,274,282,285];
+7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,2,34,7,
+34,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,3,1,79,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,114,8,1,10,1,12,1,117,9,1,1,2,1,2,
+1,3,1,3,3,3,123,8,3,1,4,1,4,3,4,127,8,4,1,5,1,5,3,5,131,8,5,1,6,1,6,3,6,
+135,8,6,1,6,3,6,138,8,6,1,7,1,7,3,7,142,8,7,1,8,1,8,3,8,146,8,8,1,9,1,9,
+3,9,150,8,9,1,10,1,10,3,10,154,8,10,1,11,1,11,1,11,1,12,1,12,1,12,1,12,1,
+12,1,12,1,12,3,12,166,8,12,1,13,1,13,1,13,1,13,1,14,1,14,1,14,3,14,175,8,
+14,1,14,3,14,178,8,14,1,14,1,14,1,14,1,14,3,14,184,8,14,1,15,1,15,1,15,1,
+15,1,16,1,16,1,17,1,17,1,17,5,17,195,8,17,10,17,12,17,198,9,17,1,17,3,17,
+201,8,17,1,18,1,18,1,18,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,3,19,214,
+8,19,1,20,1,20,1,20,1,20,1,20,5,20,221,8,20,10,20,12,20,224,9,20,3,20,226,
+8,20,1,20,1,20,1,21,1,21,3,21,232,8,21,1,22,1,22,1,22,1,22,5,22,238,8,22,
+10,22,12,22,241,9,22,3,22,243,8,22,1,22,1,22,1,23,1,23,1,23,1,23,1,23,3,
+23,252,8,23,1,23,1,23,1,23,1,23,1,23,1,23,3,23,260,8,23,3,23,262,8,23,1,
+24,1,24,1,24,1,25,1,25,1,25,1,26,1,26,3,26,272,8,26,1,26,1,26,3,26,276,8,
+26,1,27,1,27,1,27,1,28,1,28,1,28,1,29,1,29,3,29,286,8,29,1,30,1,30,3,30,
+290,8,30,1,31,1,31,1,31,3,31,295,8,31,1,32,1,32,1,32,1,32,5,32,301,8,32,
+10,32,12,32,304,9,32,3,32,306,8,32,1,32,1,32,1,33,1,33,1,34,1,34,1,34,0,
+1,2,35,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,
+48,50,52,54,56,58,60,62,64,66,68,0,8,1,0,3,4,1,0,5,7,1,0,13,18,2,0,9,9,11,
+11,2,0,11,11,23,23,3,0,12,12,14,14,19,20,2,0,9,11,21,30,1,0,1,2,327,0,70,
+1,0,0,0,2,78,1,0,0,0,4,118,1,0,0,0,6,120,1,0,0,0,8,124,1,0,0,0,10,128,1,
+0,0,0,12,132,1,0,0,0,14,139,1,0,0,0,16,143,1,0,0,0,18,147,1,0,0,0,20,151,
+1,0,0,0,22,155,1,0,0,0,24,165,1,0,0,0,26,167,1,0,0,0,28,183,1,0,0,0,30,185,
+1,0,0,0,32,189,1,0,0,0,34,191,1,0,0,0,36,202,1,0,0,0,38,213,1,0,0,0,40,215,
+1,0,0,0,42,231,1,0,0,0,44,233,1,0,0,0,46,261,1,0,0,0,48,263,1,0,0,0,50,266,
+1,0,0,0,52,271,1,0,0,0,54,277,1,0,0,0,56,280,1,0,0,0,58,283,1,0,0,0,60,287,
+1,0,0,0,62,294,1,0,0,0,64,296,1,0,0,0,66,309,1,0,0,0,68,311,1,0,0,0,70,71,
+3,2,1,0,71,72,5,0,0,1,72,1,1,0,0,0,73,74,6,1,-1,0,74,75,3,4,2,0,75,76,3,
+2,1,9,76,79,1,0,0,0,77,79,3,24,12,0,78,73,1,0,0,0,78,77,1,0,0,0,79,115,1,
+0,0,0,80,81,10,11,0,0,81,82,3,6,3,0,82,83,3,2,1,11,83,114,1,0,0,0,84,85,
+10,8,0,0,85,86,3,8,4,0,86,87,3,2,1,9,87,114,1,0,0,0,88,89,10,7,0,0,89,90,
+3,10,5,0,90,91,3,2,1,8,91,114,1,0,0,0,92,93,10,6,0,0,93,94,3,12,6,0,94,95,
+3,2,1,7,95,114,1,0,0,0,96,97,10,5,0,0,97,98,3,14,7,0,98,99,3,2,1,6,99,114,
+1,0,0,0,100,101,10,4,0,0,101,102,3,16,8,0,102,103,3,2,1,5,103,114,1,0,0,
+0,104,105,10,3,0,0,105,106,3,18,9,0,106,107,3,2,1,4,107,114,1,0,0,0,108,
+109,10,2,0,0,109,110,5,38,0,0,110,114,3,2,1,3,111,112,10,10,0,0,112,114,
+3,20,10,0,113,80,1,0,0,0,113,84,1,0,0,0,113,88,1,0,0,0,113,92,1,0,0,0,113,
+96,1,0,0,0,113,100,1,0,0,0,113,104,1,0,0,0,113,108,1,0,0,0,113,111,1,0,0,
+0,114,117,1,0,0,0,115,113,1,0,0,0,115,116,1,0,0,0,116,3,1,0,0,0,117,115,
+1,0,0,0,118,119,7,0,0,0,119,5,1,0,0,0,120,122,5,8,0,0,121,123,3,52,26,0,
+122,121,1,0,0,0,122,123,1,0,0,0,123,7,1,0,0,0,124,126,7,1,0,0,125,127,3,
+52,26,0,126,125,1,0,0,0,126,127,1,0,0,0,127,9,1,0,0,0,128,130,7,0,0,0,129,
+131,3,52,26,0,130,129,1,0,0,0,130,131,1,0,0,0,131,11,1,0,0,0,132,134,7,2,
+0,0,133,135,5,28,0,0,134,133,1,0,0,0,134,135,1,0,0,0,135,137,1,0,0,0,136,
+138,3,52,26,0,137,136,1,0,0,0,137,138,1,0,0,0,138,13,1,0,0,0,139,141,7,3,
+0,0,140,142,3,52,26,0,141,140,1,0,0,0,141,142,1,0,0,0,142,15,1,0,0,0,143,
+145,5,10,0,0,144,146,3,52,26,0,145,144,1,0,0,0,145,146,1,0,0,0,146,17,1,
+0,0,0,147,149,7,4,0,0,148,150,3,52,26,0,149,148,1,0,0,0,149,150,1,0,0,0,
+150,19,1,0,0,0,151,153,5,39,0,0,152,154,3,22,11,0,153,152,1,0,0,0,153,154,
+1,0,0,0,154,21,1,0,0,0,155,156,5,27,0,0,156,157,5,41,0,0,157,23,1,0,0,0,
+158,166,3,40,20,0,159,166,3,46,23,0,160,166,3,28,14,0,161,166,3,36,18,0,
+162,166,3,38,19,0,163,166,3,68,34,0,164,166,3,26,13,0,165,158,1,0,0,0,165,
+159,1,0,0,0,165,160,1,0,0,0,165,161,1,0,0,0,165,162,1,0,0,0,165,163,1,0,
+0,0,165,164,1,0,0,0,166,25,1,0,0,0,167,168,5,33,0,0,168,169,3,2,1,0,169,
+170,5,34,0,0,170,27,1,0,0,0,171,177,5,42,0,0,172,174,5,31,0,0,173,175,3,
+34,17,0,174,173,1,0,0,0,174,175,1,0,0,0,175,176,1,0,0,0,176,178,5,32,0,0,
+177,172,1,0,0,0,177,178,1,0,0,0,178,184,1,0,0,0,179,180,5,31,0,0,180,181,
+3,34,17,0,181,182,5,32,0,0,182,184,1,0,0,0,183,171,1,0,0,0,183,179,1,0,0,
+0,184,29,1,0,0,0,185,186,3,62,31,0,186,187,3,32,16,0,187,188,5,2,0,0,188,
+31,1,0,0,0,189,190,7,5,0,0,190,33,1,0,0,0,191,196,3,30,15,0,192,193,5,37,
+0,0,193,195,3,30,15,0,194,192,1,0,0,0,195,198,1,0,0,0,196,194,1,0,0,0,196,
+197,1,0,0,0,197,200,1,0,0,0,198,196,1,0,0,0,199,201,5,37,0,0,200,199,1,0,
+0,0,200,201,1,0,0,0,201,35,1,0,0,0,202,203,3,28,14,0,203,204,5,40,0,0,204,
+37,1,0,0,0,205,206,3,28,14,0,206,207,5,27,0,0,207,208,5,41,0,0,208,214,1,
+0,0,0,209,210,3,36,18,0,210,211,5,27,0,0,211,212,5,41,0,0,212,214,1,0,0,
+0,213,205,1,0,0,0,213,209,1,0,0,0,214,39,1,0,0,0,215,216,5,30,0,0,216,225,
+5,33,0,0,217,222,3,42,21,0,218,219,5,37,0,0,219,221,3,42,21,0,220,218,1,
+0,0,0,221,224,1,0,0,0,222,220,1,0,0,0,222,223,1,0,0,0,223,226,1,0,0,0,224,
+222,1,0,0,0,225,217,1,0,0,0,225,226,1,0,0,0,226,227,1,0,0,0,227,228,5,34,
+0,0,228,41,1,0,0,0,229,232,3,68,34,0,230,232,3,2,1,0,231,229,1,0,0,0,231,
+230,1,0,0,0,232,43,1,0,0,0,233,242,5,33,0,0,234,239,3,42,21,0,235,236,5,
+37,0,0,236,238,3,42,21,0,237,235,1,0,0,0,238,241,1,0,0,0,239,237,1,0,0,0,
+239,240,1,0,0,0,240,243,1,0,0,0,241,239,1,0,0,0,242,234,1,0,0,0,242,243,
+1,0,0,0,243,244,1,0,0,0,244,245,5,34,0,0,245,45,1,0,0,0,246,247,5,29,0,0,
+247,262,3,44,22,0,248,251,5,29,0,0,249,252,3,48,24,0,250,252,3,50,25,0,251,
+249,1,0,0,0,251,250,1,0,0,0,252,253,1,0,0,0,253,254,3,44,22,0,254,262,1,
+0,0,0,255,256,5,29,0,0,256,259,3,44,22,0,257,260,3,48,24,0,258,260,3,50,
+25,0,259,257,1,0,0,0,259,258,1,0,0,0,260,262,1,0,0,0,261,246,1,0,0,0,261,
+248,1,0,0,0,261,255,1,0,0,0,262,47,1,0,0,0,263,264,5,21,0,0,264,265,3,64,
+32,0,265,49,1,0,0,0,266,267,5,22,0,0,267,268,3,64,32,0,268,51,1,0,0,0,269,
+272,3,54,27,0,270,272,3,56,28,0,271,269,1,0,0,0,271,270,1,0,0,0,272,275,
+1,0,0,0,273,276,3,58,29,0,274,276,3,60,30,0,275,273,1,0,0,0,275,274,1,0,
+0,0,275,276,1,0,0,0,276,53,1,0,0,0,277,278,5,23,0,0,278,279,3,64,32,0,279,
+55,1,0,0,0,280,281,5,24,0,0,281,282,3,64,32,0,282,57,1,0,0,0,283,285,5,25,
+0,0,284,286,3,64,32,0,285,284,1,0,0,0,285,286,1,0,0,0,286,59,1,0,0,0,287,
+289,5,26,0,0,288,290,3,64,32,0,289,288,1,0,0,0,289,290,1,0,0,0,290,61,1,
+0,0,0,291,295,3,66,33,0,292,295,5,42,0,0,293,295,5,43,0,0,294,291,1,0,0,
+0,294,292,1,0,0,0,294,293,1,0,0,0,295,63,1,0,0,0,296,305,5,33,0,0,297,302,
+3,62,31,0,298,299,5,37,0,0,299,301,3,62,31,0,300,298,1,0,0,0,301,304,1,0,
+0,0,302,300,1,0,0,0,302,303,1,0,0,0,303,306,1,0,0,0,304,302,1,0,0,0,305,
+297,1,0,0,0,305,306,1,0,0,0,306,307,1,0,0,0,307,308,5,34,0,0,308,65,1,0,
+0,0,309,310,7,6,0,0,310,67,1,0,0,0,311,312,7,7,0,0,312,69,1,0,0,0,34,78,
+113,115,122,126,130,134,137,141,145,149,153,165,174,177,183,196,200,213,
+222,225,231,239,242,251,259,261,271,275,285,289,294,302,305];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -111,7 +119,7 @@ export default class PromQLParser extends antlr4.Parser {
                             "'=~'", "'!~'", "'by'", "'without'", "'on'", 
                             "'ignoring'", "'group_left'", "'group_right'", 
                             "'offset'", "'bool'", null, null, "'{'", "'}'", 
-                            "'('", "')'", "'['", "']'", "','" ];
+                            "'('", "')'", "'['", "']'", "','", "'@'" ];
     static symbolicNames = [ null, "NUMBER", "STRING", "ADD", "SUB", "MULT", 
                              "DIV", "MOD", "POW", "AND", "OR", "UNLESS", 
                              "EQ", "DEQ", "NE", "GT", "LT", "GE", "LE", 
@@ -119,18 +127,18 @@ export default class PromQLParser extends antlr4.Parser {
                              "GROUP_LEFT", "GROUP_RIGHT", "OFFSET", "BOOL", 
                              "AGGREGATION_OPERATOR", "FUNCTION", "LEFT_BRACE", 
                              "RIGHT_BRACE", "LEFT_PAREN", "RIGHT_PAREN", 
-                             "LEFT_BRACKET", "RIGHT_BRACKET", "COMMA", "SUBQUERY_RANGE", 
-                             "TIME_RANGE", "DURATION", "METRIC_NAME", "LABEL_NAME", 
-                             "WS" ];
+                             "LEFT_BRACKET", "RIGHT_BRACKET", "COMMA", "AT", 
+                             "SUBQUERY_RANGE", "TIME_RANGE", "DURATION", 
+                             "METRIC_NAME", "LABEL_NAME", "WS", "SL_COMMENT" ];
     static ruleNames = [ "expression", "vectorOperation", "unaryOp", "powOp", 
                          "multOp", "addOp", "compareOp", "andUnlessOp", 
-                         "orOp", "subqueryOp", "offsetOp", "vector", "parens", 
-                         "instantSelector", "labelMatcher", "labelMatcherOperator", 
-                         "labelMatcherList", "matrixSelector", "offset", 
-                         "function_", "parameter", "parameterList", "aggregation", 
-                         "by", "without", "grouping", "on_", "ignoring", 
-                         "groupLeft", "groupRight", "labelName", "labelNameList", 
-                         "keyword", "literal" ];
+                         "orOp", "vectorMatchOp", "subqueryOp", "offsetOp", 
+                         "vector", "parens", "instantSelector", "labelMatcher", 
+                         "labelMatcherOperator", "labelMatcherList", "matrixSelector", 
+                         "offset", "function_", "parameter", "parameterList", 
+                         "aggregation", "by", "without", "grouping", "on_", 
+                         "ignoring", "groupLeft", "groupRight", "labelName", 
+                         "labelNameList", "keyword", "literal" ];
 
     constructor(input) {
         super(input);
@@ -138,10 +146,6 @@ export default class PromQLParser extends antlr4.Parser {
         this.ruleNames = PromQLParser.ruleNames;
         this.literalNames = PromQLParser.literalNames;
         this.symbolicNames = PromQLParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
     sempred(localctx, ruleIndex, predIndex) {
@@ -156,19 +160,23 @@ export default class PromQLParser extends antlr4.Parser {
     vectorOperation_sempred(localctx, predIndex) {
     	switch(predIndex) {
     		case 0:
-    			return this.precpred(this._ctx, 9);
+    			return this.precpred(this._ctx, 11);
     		case 1:
-    			return this.precpred(this._ctx, 6);
-    		case 2:
-    			return this.precpred(this._ctx, 5);
-    		case 3:
-    			return this.precpred(this._ctx, 4);
-    		case 4:
-    			return this.precpred(this._ctx, 3);
-    		case 5:
-    			return this.precpred(this._ctx, 2);
-    		case 6:
     			return this.precpred(this._ctx, 8);
+    		case 2:
+    			return this.precpred(this._ctx, 7);
+    		case 3:
+    			return this.precpred(this._ctx, 6);
+    		case 4:
+    			return this.precpred(this._ctx, 5);
+    		case 5:
+    			return this.precpred(this._ctx, 4);
+    		case 6:
+    			return this.precpred(this._ctx, 3);
+    		case 7:
+    			return this.precpred(this._ctx, 2);
+    		case 8:
+    			return this.precpred(this._ctx, 10);
     		default:
     			throw "No predicate with index:" + predIndex;
     	}
@@ -182,9 +190,9 @@ export default class PromQLParser extends antlr4.Parser {
 	    this.enterRule(localctx, 0, PromQLParser.RULE_expression);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 68;
+	        this.state = 70;
 	        this.vectorOperation(0);
-	        this.state = 69;
+	        this.state = 71;
 	        this.match(PromQLParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -213,31 +221,31 @@ export default class PromQLParser extends antlr4.Parser {
 	    this.enterRecursionRule(localctx, 2, PromQLParser.RULE_vectorOperation, _p);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 76;
+	        this.state = 78;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PromQLParser.ADD:
-	        case PromQLParser.SUB:
-	            this.state = 72;
+	        case 3:
+	        case 4:
+	            this.state = 74;
 	            this.unaryOp();
-	            this.state = 73;
-	            this.vectorOperation(7);
-	            break;
-	        case PromQLParser.NUMBER:
-	        case PromQLParser.STRING:
-	        case PromQLParser.AGGREGATION_OPERATOR:
-	        case PromQLParser.FUNCTION:
-	        case PromQLParser.LEFT_BRACE:
-	        case PromQLParser.LEFT_PAREN:
-	        case PromQLParser.METRIC_NAME:
 	            this.state = 75;
+	            this.vectorOperation(9);
+	            break;
+	        case 1:
+	        case 2:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 33:
+	        case 42:
+	            this.state = 77;
 	            this.vector();
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 106;
+	        this.state = 115;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,2,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -246,102 +254,128 @@ export default class PromQLParser extends antlr4.Parser {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 104;
+	                this.state = 113;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
-	                    this.state = 78;
-	                    if (!( this.precpred(this._ctx, 9))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
-	                    }
-	                    this.state = 79;
-	                    this.powOp();
 	                    this.state = 80;
-	                    this.vectorOperation(9);
+	                    if (!( this.precpred(this._ctx, 11))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 11)");
+	                    }
+	                    this.state = 81;
+	                    this.powOp();
+	                    this.state = 82;
+	                    this.vectorOperation(11);
 	                    break;
 
 	                case 2:
 	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
-	                    this.state = 82;
-	                    if (!( this.precpred(this._ctx, 6))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
-	                    }
-	                    this.state = 83;
-	                    this.multOp();
 	                    this.state = 84;
-	                    this.vectorOperation(7);
+	                    if (!( this.precpred(this._ctx, 8))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
+	                    }
+	                    this.state = 85;
+	                    this.multOp();
+	                    this.state = 86;
+	                    this.vectorOperation(9);
 	                    break;
 
 	                case 3:
 	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
-	                    this.state = 86;
-	                    if (!( this.precpred(this._ctx, 5))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
-	                    }
-	                    this.state = 87;
-	                    this.addOp();
 	                    this.state = 88;
-	                    this.vectorOperation(6);
+	                    if (!( this.precpred(this._ctx, 7))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
+	                    }
+	                    this.state = 89;
+	                    this.addOp();
+	                    this.state = 90;
+	                    this.vectorOperation(8);
 	                    break;
 
 	                case 4:
 	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
-	                    this.state = 90;
-	                    if (!( this.precpred(this._ctx, 4))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
-	                    }
-	                    this.state = 91;
-	                    this.compareOp();
 	                    this.state = 92;
-	                    this.vectorOperation(5);
+	                    if (!( this.precpred(this._ctx, 6))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
+	                    }
+	                    this.state = 93;
+	                    this.compareOp();
+	                    this.state = 94;
+	                    this.vectorOperation(7);
 	                    break;
 
 	                case 5:
 	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
-	                    this.state = 94;
-	                    if (!( this.precpred(this._ctx, 3))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
-	                    }
-	                    this.state = 95;
-	                    this.andUnlessOp();
 	                    this.state = 96;
-	                    this.vectorOperation(4);
+	                    if (!( this.precpred(this._ctx, 5))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+	                    }
+	                    this.state = 97;
+	                    this.andUnlessOp();
+	                    this.state = 98;
+	                    this.vectorOperation(6);
 	                    break;
 
 	                case 6:
 	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
-	                    this.state = 98;
-	                    if (!( this.precpred(this._ctx, 2))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
-	                    }
-	                    this.state = 99;
-	                    this.orOp();
 	                    this.state = 100;
-	                    this.vectorOperation(3);
+	                    if (!( this.precpred(this._ctx, 4))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
+	                    }
+	                    this.state = 101;
+	                    this.orOp();
+	                    this.state = 102;
+	                    this.vectorOperation(5);
 	                    break;
 
 	                case 7:
 	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
-	                    this.state = 102;
-	                    if (!( this.precpred(this._ctx, 8))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
+	                    this.state = 104;
+	                    if (!( this.precpred(this._ctx, 3))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
 	                    }
-	                    this.state = 103;
+	                    this.state = 105;
+	                    this.vectorMatchOp();
+	                    this.state = 106;
+	                    this.vectorOperation(4);
+	                    break;
+
+	                case 8:
+	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
+	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
+	                    this.state = 108;
+	                    if (!( this.precpred(this._ctx, 2))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
+	                    }
+	                    this.state = 109;
+	                    this.match(PromQLParser.AT);
+	                    this.state = 110;
+	                    this.vectorOperation(3);
+	                    break;
+
+	                case 9:
+	                    localctx = new VectorOperationContext(this, _parentctx, _parentState);
+	                    this.pushNewRecursionContext(localctx, _startState, PromQLParser.RULE_vectorOperation);
+	                    this.state = 111;
+	                    if (!( this.precpred(this._ctx, 10))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 10)");
+	                    }
+	                    this.state = 112;
 	                    this.subqueryOp();
 	                    break;
 
 	                } 
 	            }
-	            this.state = 108;
+	            this.state = 117;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,2,this._ctx);
 	        }
@@ -365,12 +399,12 @@ export default class PromQLParser extends antlr4.Parser {
 	unaryOp() {
 	    let localctx = new UnaryOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, PromQLParser.RULE_unaryOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 109;
+	        this.state = 118;
 	        _la = this._input.LA(1);
-	        if(!(_la===PromQLParser.ADD || _la===PromQLParser.SUB)) {
+	        if(!(_la===3 || _la===4)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -396,16 +430,16 @@ export default class PromQLParser extends antlr4.Parser {
 	powOp() {
 	    let localctx = new PowOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, PromQLParser.RULE_powOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 111;
+	        this.state = 120;
 	        this.match(PromQLParser.POW);
-	        this.state = 113;
+	        this.state = 122;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PromQLParser.ON || _la===PromQLParser.IGNORING) {
-	            this.state = 112;
+	        if(_la===23 || _la===24) {
+	            this.state = 121;
 	            this.grouping();
 	        }
 
@@ -428,23 +462,23 @@ export default class PromQLParser extends antlr4.Parser {
 	multOp() {
 	    let localctx = new MultOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, PromQLParser.RULE_multOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 115;
+	        this.state = 124;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PromQLParser.MULT) | (1 << PromQLParser.DIV) | (1 << PromQLParser.MOD))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 224) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 117;
+	        this.state = 126;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PromQLParser.ON || _la===PromQLParser.IGNORING) {
-	            this.state = 116;
+	        if(_la===23 || _la===24) {
+	            this.state = 125;
 	            this.grouping();
 	        }
 
@@ -467,23 +501,23 @@ export default class PromQLParser extends antlr4.Parser {
 	addOp() {
 	    let localctx = new AddOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, PromQLParser.RULE_addOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 119;
+	        this.state = 128;
 	        _la = this._input.LA(1);
-	        if(!(_la===PromQLParser.ADD || _la===PromQLParser.SUB)) {
+	        if(!(_la===3 || _la===4)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 121;
+	        this.state = 130;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PromQLParser.ON || _la===PromQLParser.IGNORING) {
-	            this.state = 120;
+	        if(_la===23 || _la===24) {
+	            this.state = 129;
 	            this.grouping();
 	        }
 
@@ -506,31 +540,31 @@ export default class PromQLParser extends antlr4.Parser {
 	compareOp() {
 	    let localctx = new CompareOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, PromQLParser.RULE_compareOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 123;
+	        this.state = 132;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PromQLParser.DEQ) | (1 << PromQLParser.NE) | (1 << PromQLParser.GT) | (1 << PromQLParser.LT) | (1 << PromQLParser.GE) | (1 << PromQLParser.LE))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 516096) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 125;
+	        this.state = 134;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PromQLParser.BOOL) {
-	            this.state = 124;
+	        if(_la===28) {
+	            this.state = 133;
 	            this.match(PromQLParser.BOOL);
 	        }
 
-	        this.state = 128;
+	        this.state = 137;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PromQLParser.ON || _la===PromQLParser.IGNORING) {
-	            this.state = 127;
+	        if(_la===23 || _la===24) {
+	            this.state = 136;
 	            this.grouping();
 	        }
 
@@ -553,23 +587,23 @@ export default class PromQLParser extends antlr4.Parser {
 	andUnlessOp() {
 	    let localctx = new AndUnlessOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, PromQLParser.RULE_andUnlessOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 130;
+	        this.state = 139;
 	        _la = this._input.LA(1);
-	        if(!(_la===PromQLParser.AND || _la===PromQLParser.UNLESS)) {
+	        if(!(_la===9 || _la===11)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 132;
+	        this.state = 141;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PromQLParser.ON || _la===PromQLParser.IGNORING) {
-	            this.state = 131;
+	        if(_la===23 || _la===24) {
+	            this.state = 140;
 	            this.grouping();
 	        }
 
@@ -592,16 +626,55 @@ export default class PromQLParser extends antlr4.Parser {
 	orOp() {
 	    let localctx = new OrOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, PromQLParser.RULE_orOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 134;
+	        this.state = 143;
 	        this.match(PromQLParser.OR);
-	        this.state = 136;
+	        this.state = 145;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PromQLParser.ON || _la===PromQLParser.IGNORING) {
-	            this.state = 135;
+	        if(_la===23 || _la===24) {
+	            this.state = 144;
+	            this.grouping();
+	        }
+
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	vectorMatchOp() {
+	    let localctx = new VectorMatchOpContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 18, PromQLParser.RULE_vectorMatchOp);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 147;
+	        _la = this._input.LA(1);
+	        if(!(_la===11 || _la===23)) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
+	        this.state = 149;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if(_la===23 || _la===24) {
+	            this.state = 148;
 	            this.grouping();
 	        }
 
@@ -623,16 +696,16 @@ export default class PromQLParser extends antlr4.Parser {
 
 	subqueryOp() {
 	    let localctx = new SubqueryOpContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 18, PromQLParser.RULE_subqueryOp);
+	    this.enterRule(localctx, 20, PromQLParser.RULE_subqueryOp);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 138;
+	        this.state = 151;
 	        this.match(PromQLParser.SUBQUERY_RANGE);
-	        this.state = 140;
+	        this.state = 153;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,11,this._ctx);
 	        if(la_===1) {
-	            this.state = 139;
+	            this.state = 152;
 	            this.offsetOp();
 
 	        }
@@ -654,12 +727,12 @@ export default class PromQLParser extends antlr4.Parser {
 
 	offsetOp() {
 	    let localctx = new OffsetOpContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 20, PromQLParser.RULE_offsetOp);
+	    this.enterRule(localctx, 22, PromQLParser.RULE_offsetOp);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 142;
+	        this.state = 155;
 	        this.match(PromQLParser.OFFSET);
-	        this.state = 143;
+	        this.state = 156;
 	        this.match(PromQLParser.DURATION);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -679,51 +752,51 @@ export default class PromQLParser extends antlr4.Parser {
 
 	vector() {
 	    let localctx = new VectorContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 22, PromQLParser.RULE_vector);
+	    this.enterRule(localctx, 24, PromQLParser.RULE_vector);
 	    try {
-	        this.state = 152;
+	        this.state = 165;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,11,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 145;
+	            this.state = 158;
 	            this.function_();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 146;
+	            this.state = 159;
 	            this.aggregation();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 147;
+	            this.state = 160;
 	            this.instantSelector();
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 148;
+	            this.state = 161;
 	            this.matrixSelector();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 149;
+	            this.state = 162;
 	            this.offset();
 	            break;
 
 	        case 6:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 150;
+	            this.state = 163;
 	            this.literal();
 	            break;
 
 	        case 7:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 151;
+	            this.state = 164;
 	            this.parens();
 	            break;
 
@@ -746,14 +819,14 @@ export default class PromQLParser extends antlr4.Parser {
 
 	parens() {
 	    let localctx = new ParensContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 24, PromQLParser.RULE_parens);
+	    this.enterRule(localctx, 26, PromQLParser.RULE_parens);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 154;
+	        this.state = 167;
 	        this.match(PromQLParser.LEFT_PAREN);
-	        this.state = 155;
+	        this.state = 168;
 	        this.vectorOperation(0);
-	        this.state = 156;
+	        this.state = 169;
 	        this.match(PromQLParser.RIGHT_PAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -773,42 +846,42 @@ export default class PromQLParser extends antlr4.Parser {
 
 	instantSelector() {
 	    let localctx = new InstantSelectorContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 26, PromQLParser.RULE_instantSelector);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 28, PromQLParser.RULE_instantSelector);
+	    var _la = 0;
 	    try {
-	        this.state = 170;
+	        this.state = 183;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PromQLParser.METRIC_NAME:
+	        case 42:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 158;
+	            this.state = 171;
 	            this.match(PromQLParser.METRIC_NAME);
-	            this.state = 164;
+	            this.state = 177;
 	            this._errHandler.sync(this);
-	            var la_ = this._interp.adaptivePredict(this._input,13,this._ctx);
+	            var la_ = this._interp.adaptivePredict(this._input,14,this._ctx);
 	            if(la_===1) {
-	                this.state = 159;
+	                this.state = 172;
 	                this.match(PromQLParser.LEFT_BRACE);
-	                this.state = 161;
+	                this.state = 174;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PromQLParser.AND) | (1 << PromQLParser.OR) | (1 << PromQLParser.UNLESS) | (1 << PromQLParser.BY) | (1 << PromQLParser.WITHOUT) | (1 << PromQLParser.ON) | (1 << PromQLParser.IGNORING) | (1 << PromQLParser.GROUP_LEFT) | (1 << PromQLParser.GROUP_RIGHT) | (1 << PromQLParser.OFFSET) | (1 << PromQLParser.BOOL) | (1 << PromQLParser.AGGREGATION_OPERATOR) | (1 << PromQLParser.FUNCTION))) !== 0) || _la===PromQLParser.METRIC_NAME || _la===PromQLParser.LABEL_NAME) {
-	                    this.state = 160;
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2145390080) !== 0) || _la===42 || _la===43) {
+	                    this.state = 173;
 	                    this.labelMatcherList();
 	                }
 
-	                this.state = 163;
+	                this.state = 176;
 	                this.match(PromQLParser.RIGHT_BRACE);
 
 	            }
 	            break;
-	        case PromQLParser.LEFT_BRACE:
+	        case 31:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 166;
+	            this.state = 179;
 	            this.match(PromQLParser.LEFT_BRACE);
-	            this.state = 167;
+	            this.state = 180;
 	            this.labelMatcherList();
-	            this.state = 168;
+	            this.state = 181;
 	            this.match(PromQLParser.RIGHT_BRACE);
 	            break;
 	        default:
@@ -832,14 +905,14 @@ export default class PromQLParser extends antlr4.Parser {
 
 	labelMatcher() {
 	    let localctx = new LabelMatcherContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 28, PromQLParser.RULE_labelMatcher);
+	    this.enterRule(localctx, 30, PromQLParser.RULE_labelMatcher);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 172;
+	        this.state = 185;
 	        this.labelName();
-	        this.state = 173;
+	        this.state = 186;
 	        this.labelMatcherOperator();
-	        this.state = 174;
+	        this.state = 187;
 	        this.match(PromQLParser.STRING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -859,13 +932,13 @@ export default class PromQLParser extends antlr4.Parser {
 
 	labelMatcherOperator() {
 	    let localctx = new LabelMatcherOperatorContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 30, PromQLParser.RULE_labelMatcherOperator);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 32, PromQLParser.RULE_labelMatcherOperator);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 176;
+	        this.state = 189;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PromQLParser.EQ) | (1 << PromQLParser.NE) | (1 << PromQLParser.RE) | (1 << PromQLParser.NRE))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1593344) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -890,24 +963,35 @@ export default class PromQLParser extends antlr4.Parser {
 
 	labelMatcherList() {
 	    let localctx = new LabelMatcherListContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 32, PromQLParser.RULE_labelMatcherList);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 34, PromQLParser.RULE_labelMatcherList);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 178;
+	        this.state = 191;
 	        this.labelMatcher();
-	        this.state = 183;
+	        this.state = 196;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,16,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                this.state = 192;
+	                this.match(PromQLParser.COMMA);
+	                this.state = 193;
+	                this.labelMatcher(); 
+	            }
+	            this.state = 198;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,16,this._ctx);
+	        }
+
+	        this.state = 200;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===PromQLParser.COMMA) {
-	            this.state = 179;
+	        if(_la===37) {
+	            this.state = 199;
 	            this.match(PromQLParser.COMMA);
-	            this.state = 180;
-	            this.labelMatcher();
-	            this.state = 185;
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
 	        }
+
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -926,12 +1010,12 @@ export default class PromQLParser extends antlr4.Parser {
 
 	matrixSelector() {
 	    let localctx = new MatrixSelectorContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 34, PromQLParser.RULE_matrixSelector);
+	    this.enterRule(localctx, 36, PromQLParser.RULE_matrixSelector);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 186;
+	        this.state = 202;
 	        this.instantSelector();
-	        this.state = 187;
+	        this.state = 203;
 	        this.match(PromQLParser.TIME_RANGE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -951,29 +1035,29 @@ export default class PromQLParser extends antlr4.Parser {
 
 	offset() {
 	    let localctx = new OffsetContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 36, PromQLParser.RULE_offset);
+	    this.enterRule(localctx, 38, PromQLParser.RULE_offset);
 	    try {
-	        this.state = 197;
+	        this.state = 213;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,16,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,18,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 189;
+	            this.state = 205;
 	            this.instantSelector();
-	            this.state = 190;
+	            this.state = 206;
 	            this.match(PromQLParser.OFFSET);
-	            this.state = 191;
+	            this.state = 207;
 	            this.match(PromQLParser.DURATION);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 193;
+	            this.state = 209;
 	            this.matrixSelector();
-	            this.state = 194;
+	            this.state = 210;
 	            this.match(PromQLParser.OFFSET);
-	            this.state = 195;
+	            this.state = 211;
 	            this.match(PromQLParser.DURATION);
 	            break;
 
@@ -996,29 +1080,35 @@ export default class PromQLParser extends antlr4.Parser {
 
 	function_() {
 	    let localctx = new Function_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 38, PromQLParser.RULE_function_);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 40, PromQLParser.RULE_function_);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 199;
+	        this.state = 215;
 	        this.match(PromQLParser.FUNCTION);
-	        this.state = 200;
+	        this.state = 216;
 	        this.match(PromQLParser.LEFT_PAREN);
-	        this.state = 201;
-	        this.parameter();
-	        this.state = 206;
+	        this.state = 225;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===PromQLParser.COMMA) {
-	            this.state = 202;
-	            this.match(PromQLParser.COMMA);
-	            this.state = 203;
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3758096414) !== 0) || _la===33 || _la===42) {
+	            this.state = 217;
 	            this.parameter();
-	            this.state = 208;
+	            this.state = 222;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
+	            while(_la===37) {
+	                this.state = 218;
+	                this.match(PromQLParser.COMMA);
+	                this.state = 219;
+	                this.parameter();
+	                this.state = 224;
+	                this._errHandler.sync(this);
+	                _la = this._input.LA(1);
+	            }
 	        }
-	        this.state = 209;
+
+	        this.state = 227;
 	        this.match(PromQLParser.RIGHT_PAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1038,21 +1128,21 @@ export default class PromQLParser extends antlr4.Parser {
 
 	parameter() {
 	    let localctx = new ParameterContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 40, PromQLParser.RULE_parameter);
+	    this.enterRule(localctx, 42, PromQLParser.RULE_parameter);
 	    try {
-	        this.state = 213;
+	        this.state = 231;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,18,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,21,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 211;
+	            this.state = 229;
 	            this.literal();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 212;
+	            this.state = 230;
 	            this.vectorOperation(0);
 	            break;
 
@@ -1075,33 +1165,33 @@ export default class PromQLParser extends antlr4.Parser {
 
 	parameterList() {
 	    let localctx = new ParameterListContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 42, PromQLParser.RULE_parameterList);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 44, PromQLParser.RULE_parameterList);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 215;
+	        this.state = 233;
 	        this.match(PromQLParser.LEFT_PAREN);
-	        this.state = 224;
+	        this.state = 242;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PromQLParser.NUMBER) | (1 << PromQLParser.STRING) | (1 << PromQLParser.ADD) | (1 << PromQLParser.SUB) | (1 << PromQLParser.AGGREGATION_OPERATOR) | (1 << PromQLParser.FUNCTION) | (1 << PromQLParser.LEFT_BRACE))) !== 0) || _la===PromQLParser.LEFT_PAREN || _la===PromQLParser.METRIC_NAME) {
-	            this.state = 216;
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3758096414) !== 0) || _la===33 || _la===42) {
+	            this.state = 234;
 	            this.parameter();
-	            this.state = 221;
+	            this.state = 239;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===PromQLParser.COMMA) {
-	                this.state = 217;
+	            while(_la===37) {
+	                this.state = 235;
 	                this.match(PromQLParser.COMMA);
-	                this.state = 218;
+	                this.state = 236;
 	                this.parameter();
-	                this.state = 223;
+	                this.state = 241;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
 	        }
 
-	        this.state = 226;
+	        this.state = 244;
 	        this.match(PromQLParser.RIGHT_PAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1121,57 +1211,57 @@ export default class PromQLParser extends antlr4.Parser {
 
 	aggregation() {
 	    let localctx = new AggregationContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 44, PromQLParser.RULE_aggregation);
+	    this.enterRule(localctx, 46, PromQLParser.RULE_aggregation);
 	    try {
-	        this.state = 243;
+	        this.state = 261;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,23,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,26,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 228;
+	            this.state = 246;
 	            this.match(PromQLParser.AGGREGATION_OPERATOR);
-	            this.state = 229;
+	            this.state = 247;
 	            this.parameterList();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 230;
+	            this.state = 248;
 	            this.match(PromQLParser.AGGREGATION_OPERATOR);
-	            this.state = 233;
+	            this.state = 251;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case PromQLParser.BY:
-	                this.state = 231;
+	            case 21:
+	                this.state = 249;
 	                this.by();
 	                break;
-	            case PromQLParser.WITHOUT:
-	                this.state = 232;
+	            case 22:
+	                this.state = 250;
 	                this.without();
 	                break;
 	            default:
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
-	            this.state = 235;
+	            this.state = 253;
 	            this.parameterList();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 237;
+	            this.state = 255;
 	            this.match(PromQLParser.AGGREGATION_OPERATOR);
-	            this.state = 238;
+	            this.state = 256;
 	            this.parameterList();
-	            this.state = 241;
+	            this.state = 259;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case PromQLParser.BY:
-	                this.state = 239;
+	            case 21:
+	                this.state = 257;
 	                this.by();
 	                break;
-	            case PromQLParser.WITHOUT:
-	                this.state = 240;
+	            case 22:
+	                this.state = 258;
 	                this.without();
 	                break;
 	            default:
@@ -1198,12 +1288,12 @@ export default class PromQLParser extends antlr4.Parser {
 
 	by() {
 	    let localctx = new ByContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 46, PromQLParser.RULE_by);
+	    this.enterRule(localctx, 48, PromQLParser.RULE_by);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 245;
+	        this.state = 263;
 	        this.match(PromQLParser.BY);
-	        this.state = 246;
+	        this.state = 264;
 	        this.labelNameList();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1223,12 +1313,12 @@ export default class PromQLParser extends antlr4.Parser {
 
 	without() {
 	    let localctx = new WithoutContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 48, PromQLParser.RULE_without);
+	    this.enterRule(localctx, 50, PromQLParser.RULE_without);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 248;
+	        this.state = 266;
 	        this.match(PromQLParser.WITHOUT);
-	        this.state = 249;
+	        this.state = 267;
 	        this.labelNameList();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1248,43 +1338,43 @@ export default class PromQLParser extends antlr4.Parser {
 
 	grouping() {
 	    let localctx = new GroupingContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 50, PromQLParser.RULE_grouping);
+	    this.enterRule(localctx, 52, PromQLParser.RULE_grouping);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 253;
+	        this.state = 271;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PromQLParser.ON:
-	            this.state = 251;
+	        case 23:
+	            this.state = 269;
 	            this.on_();
 	            break;
-	        case PromQLParser.IGNORING:
-	            this.state = 252;
+	        case 24:
+	            this.state = 270;
 	            this.ignoring();
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
-	        this.state = 257;
+	        this.state = 275;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case PromQLParser.GROUP_LEFT:
-	        	this.state = 255;
+	        case 25:
+	        	this.state = 273;
 	        	this.groupLeft();
 	        	break;
-	        case PromQLParser.GROUP_RIGHT:
-	        	this.state = 256;
+	        case 26:
+	        	this.state = 274;
 	        	this.groupRight();
 	        	break;
-	        case PromQLParser.NUMBER:
-	        case PromQLParser.STRING:
-	        case PromQLParser.ADD:
-	        case PromQLParser.SUB:
-	        case PromQLParser.AGGREGATION_OPERATOR:
-	        case PromQLParser.FUNCTION:
-	        case PromQLParser.LEFT_BRACE:
-	        case PromQLParser.LEFT_PAREN:
-	        case PromQLParser.METRIC_NAME:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 33:
+	        case 42:
 	        	break;
 	        default:
 	        	break;
@@ -1307,12 +1397,12 @@ export default class PromQLParser extends antlr4.Parser {
 
 	on_() {
 	    let localctx = new On_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 52, PromQLParser.RULE_on_);
+	    this.enterRule(localctx, 54, PromQLParser.RULE_on_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 259;
+	        this.state = 277;
 	        this.match(PromQLParser.ON);
-	        this.state = 260;
+	        this.state = 278;
 	        this.labelNameList();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1332,12 +1422,12 @@ export default class PromQLParser extends antlr4.Parser {
 
 	ignoring() {
 	    let localctx = new IgnoringContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 54, PromQLParser.RULE_ignoring);
+	    this.enterRule(localctx, 56, PromQLParser.RULE_ignoring);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 262;
+	        this.state = 280;
 	        this.match(PromQLParser.IGNORING);
-	        this.state = 263;
+	        this.state = 281;
 	        this.labelNameList();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1357,13 +1447,19 @@ export default class PromQLParser extends antlr4.Parser {
 
 	groupLeft() {
 	    let localctx = new GroupLeftContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 56, PromQLParser.RULE_groupLeft);
+	    this.enterRule(localctx, 58, PromQLParser.RULE_groupLeft);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 265;
+	        this.state = 283;
 	        this.match(PromQLParser.GROUP_LEFT);
-	        this.state = 266;
-	        this.labelNameList();
+	        this.state = 285;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,29,this._ctx);
+	        if(la_===1) {
+	            this.state = 284;
+	            this.labelNameList();
+
+	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1382,13 +1478,19 @@ export default class PromQLParser extends antlr4.Parser {
 
 	groupRight() {
 	    let localctx = new GroupRightContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 58, PromQLParser.RULE_groupRight);
+	    this.enterRule(localctx, 60, PromQLParser.RULE_groupRight);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 268;
+	        this.state = 287;
 	        this.match(PromQLParser.GROUP_RIGHT);
-	        this.state = 269;
-	        this.labelNameList();
+	        this.state = 289;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,30,this._ctx);
+	        if(la_===1) {
+	            this.state = 288;
+	            this.labelNameList();
+
+	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1407,36 +1509,36 @@ export default class PromQLParser extends antlr4.Parser {
 
 	labelName() {
 	    let localctx = new LabelNameContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 60, PromQLParser.RULE_labelName);
+	    this.enterRule(localctx, 62, PromQLParser.RULE_labelName);
 	    try {
-	        this.state = 274;
+	        this.state = 294;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PromQLParser.AND:
-	        case PromQLParser.OR:
-	        case PromQLParser.UNLESS:
-	        case PromQLParser.BY:
-	        case PromQLParser.WITHOUT:
-	        case PromQLParser.ON:
-	        case PromQLParser.IGNORING:
-	        case PromQLParser.GROUP_LEFT:
-	        case PromQLParser.GROUP_RIGHT:
-	        case PromQLParser.OFFSET:
-	        case PromQLParser.BOOL:
-	        case PromQLParser.AGGREGATION_OPERATOR:
-	        case PromQLParser.FUNCTION:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 271;
+	            this.state = 291;
 	            this.keyword();
 	            break;
-	        case PromQLParser.METRIC_NAME:
+	        case 42:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 272;
+	            this.state = 292;
 	            this.match(PromQLParser.METRIC_NAME);
 	            break;
-	        case PromQLParser.LABEL_NAME:
+	        case 43:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 273;
+	            this.state = 293;
 	            this.match(PromQLParser.LABEL_NAME);
 	            break;
 	        default:
@@ -1460,33 +1562,33 @@ export default class PromQLParser extends antlr4.Parser {
 
 	labelNameList() {
 	    let localctx = new LabelNameListContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 62, PromQLParser.RULE_labelNameList);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 64, PromQLParser.RULE_labelNameList);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 276;
+	        this.state = 296;
 	        this.match(PromQLParser.LEFT_PAREN);
-	        this.state = 285;
+	        this.state = 305;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PromQLParser.AND) | (1 << PromQLParser.OR) | (1 << PromQLParser.UNLESS) | (1 << PromQLParser.BY) | (1 << PromQLParser.WITHOUT) | (1 << PromQLParser.ON) | (1 << PromQLParser.IGNORING) | (1 << PromQLParser.GROUP_LEFT) | (1 << PromQLParser.GROUP_RIGHT) | (1 << PromQLParser.OFFSET) | (1 << PromQLParser.BOOL) | (1 << PromQLParser.AGGREGATION_OPERATOR) | (1 << PromQLParser.FUNCTION))) !== 0) || _la===PromQLParser.METRIC_NAME || _la===PromQLParser.LABEL_NAME) {
-	            this.state = 277;
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2145390080) !== 0) || _la===42 || _la===43) {
+	            this.state = 297;
 	            this.labelName();
-	            this.state = 282;
+	            this.state = 302;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===PromQLParser.COMMA) {
-	                this.state = 278;
+	            while(_la===37) {
+	                this.state = 298;
 	                this.match(PromQLParser.COMMA);
-	                this.state = 279;
+	                this.state = 299;
 	                this.labelName();
-	                this.state = 284;
+	                this.state = 304;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
 	        }
 
-	        this.state = 287;
+	        this.state = 307;
 	        this.match(PromQLParser.RIGHT_PAREN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1506,13 +1608,13 @@ export default class PromQLParser extends antlr4.Parser {
 
 	keyword() {
 	    let localctx = new KeywordContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 64, PromQLParser.RULE_keyword);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 66, PromQLParser.RULE_keyword);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 289;
+	        this.state = 309;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PromQLParser.AND) | (1 << PromQLParser.OR) | (1 << PromQLParser.UNLESS) | (1 << PromQLParser.BY) | (1 << PromQLParser.WITHOUT) | (1 << PromQLParser.ON) | (1 << PromQLParser.IGNORING) | (1 << PromQLParser.GROUP_LEFT) | (1 << PromQLParser.GROUP_RIGHT) | (1 << PromQLParser.OFFSET) | (1 << PromQLParser.BOOL) | (1 << PromQLParser.AGGREGATION_OPERATOR) | (1 << PromQLParser.FUNCTION))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2145390080) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1537,13 +1639,13 @@ export default class PromQLParser extends antlr4.Parser {
 
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 66, PromQLParser.RULE_literal);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 68, PromQLParser.RULE_literal);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 291;
+	        this.state = 311;
 	        _la = this._input.LA(1);
-	        if(!(_la===PromQLParser.NUMBER || _la===PromQLParser.STRING)) {
+	        if(!(_la===1 || _la===2)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1605,12 +1707,14 @@ PromQLParser.RIGHT_PAREN = 34;
 PromQLParser.LEFT_BRACKET = 35;
 PromQLParser.RIGHT_BRACKET = 36;
 PromQLParser.COMMA = 37;
-PromQLParser.SUBQUERY_RANGE = 38;
-PromQLParser.TIME_RANGE = 39;
-PromQLParser.DURATION = 40;
-PromQLParser.METRIC_NAME = 41;
-PromQLParser.LABEL_NAME = 42;
-PromQLParser.WS = 43;
+PromQLParser.AT = 38;
+PromQLParser.SUBQUERY_RANGE = 39;
+PromQLParser.TIME_RANGE = 40;
+PromQLParser.DURATION = 41;
+PromQLParser.METRIC_NAME = 42;
+PromQLParser.LABEL_NAME = 43;
+PromQLParser.WS = 44;
+PromQLParser.SL_COMMENT = 45;
 
 PromQLParser.RULE_expression = 0;
 PromQLParser.RULE_vectorOperation = 1;
@@ -1621,31 +1725,32 @@ PromQLParser.RULE_addOp = 5;
 PromQLParser.RULE_compareOp = 6;
 PromQLParser.RULE_andUnlessOp = 7;
 PromQLParser.RULE_orOp = 8;
-PromQLParser.RULE_subqueryOp = 9;
-PromQLParser.RULE_offsetOp = 10;
-PromQLParser.RULE_vector = 11;
-PromQLParser.RULE_parens = 12;
-PromQLParser.RULE_instantSelector = 13;
-PromQLParser.RULE_labelMatcher = 14;
-PromQLParser.RULE_labelMatcherOperator = 15;
-PromQLParser.RULE_labelMatcherList = 16;
-PromQLParser.RULE_matrixSelector = 17;
-PromQLParser.RULE_offset = 18;
-PromQLParser.RULE_function_ = 19;
-PromQLParser.RULE_parameter = 20;
-PromQLParser.RULE_parameterList = 21;
-PromQLParser.RULE_aggregation = 22;
-PromQLParser.RULE_by = 23;
-PromQLParser.RULE_without = 24;
-PromQLParser.RULE_grouping = 25;
-PromQLParser.RULE_on_ = 26;
-PromQLParser.RULE_ignoring = 27;
-PromQLParser.RULE_groupLeft = 28;
-PromQLParser.RULE_groupRight = 29;
-PromQLParser.RULE_labelName = 30;
-PromQLParser.RULE_labelNameList = 31;
-PromQLParser.RULE_keyword = 32;
-PromQLParser.RULE_literal = 33;
+PromQLParser.RULE_vectorMatchOp = 9;
+PromQLParser.RULE_subqueryOp = 10;
+PromQLParser.RULE_offsetOp = 11;
+PromQLParser.RULE_vector = 12;
+PromQLParser.RULE_parens = 13;
+PromQLParser.RULE_instantSelector = 14;
+PromQLParser.RULE_labelMatcher = 15;
+PromQLParser.RULE_labelMatcherOperator = 16;
+PromQLParser.RULE_labelMatcherList = 17;
+PromQLParser.RULE_matrixSelector = 18;
+PromQLParser.RULE_offset = 19;
+PromQLParser.RULE_function_ = 20;
+PromQLParser.RULE_parameter = 21;
+PromQLParser.RULE_parameterList = 22;
+PromQLParser.RULE_aggregation = 23;
+PromQLParser.RULE_by = 24;
+PromQLParser.RULE_without = 25;
+PromQLParser.RULE_grouping = 26;
+PromQLParser.RULE_on_ = 27;
+PromQLParser.RULE_ignoring = 28;
+PromQLParser.RULE_groupLeft = 29;
+PromQLParser.RULE_groupRight = 30;
+PromQLParser.RULE_labelName = 31;
+PromQLParser.RULE_labelNameList = 32;
+PromQLParser.RULE_keyword = 33;
+PromQLParser.RULE_literal = 34;
 
 class ExpressionContext extends antlr4.ParserRuleContext {
 
@@ -1741,6 +1846,14 @@ class VectorOperationContext extends antlr4.ParserRuleContext {
 
 	orOp() {
 	    return this.getTypedRuleContext(OrOpContext,0);
+	};
+
+	vectorMatchOp() {
+	    return this.getTypedRuleContext(VectorMatchOpContext,0);
+	};
+
+	AT() {
+	    return this.getToken(PromQLParser.AT, 0);
 	};
 
 	subqueryOp() {
@@ -2069,6 +2182,49 @@ class OrOpContext extends antlr4.ParserRuleContext {
 	exitRule(listener) {
 	    if(listener instanceof PromQLParserListener ) {
 	        listener.exitOrOp(this);
+		}
+	}
+
+
+}
+
+
+
+class VectorMatchOpContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = PromQLParser.RULE_vectorMatchOp;
+    }
+
+	ON() {
+	    return this.getToken(PromQLParser.ON, 0);
+	};
+
+	UNLESS() {
+	    return this.getToken(PromQLParser.UNLESS, 0);
+	};
+
+	grouping() {
+	    return this.getTypedRuleContext(GroupingContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof PromQLParserListener ) {
+	        listener.enterVectorMatchOp(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof PromQLParserListener ) {
+	        listener.exitVectorMatchOp(this);
 		}
 	}
 
@@ -2556,6 +2712,10 @@ class Function_Context extends antlr4.ParserRuleContext {
 	    return this.getToken(PromQLParser.LEFT_PAREN, 0);
 	};
 
+	RIGHT_PAREN() {
+	    return this.getToken(PromQLParser.RIGHT_PAREN, 0);
+	};
+
 	parameter = function(i) {
 	    if(i===undefined) {
 	        i = null;
@@ -2565,10 +2725,6 @@ class Function_Context extends antlr4.ParserRuleContext {
 	    } else {
 	        return this.getTypedRuleContext(ParameterContext,i);
 	    }
-	};
-
-	RIGHT_PAREN() {
-	    return this.getToken(PromQLParser.RIGHT_PAREN, 0);
 	};
 
 	COMMA = function(i) {
@@ -3266,6 +3422,7 @@ PromQLParser.AddOpContext = AddOpContext;
 PromQLParser.CompareOpContext = CompareOpContext; 
 PromQLParser.AndUnlessOpContext = AndUnlessOpContext; 
 PromQLParser.OrOpContext = OrOpContext; 
+PromQLParser.VectorMatchOpContext = VectorMatchOpContext; 
 PromQLParser.SubqueryOpContext = SubqueryOpContext; 
 PromQLParser.OffsetOpContext = OffsetOpContext; 
 PromQLParser.VectorContext = VectorContext; 
@@ -3291,3 +3448,12 @@ PromQLParser.LabelNameContext = LabelNameContext;
 PromQLParser.LabelNameListContext = LabelNameListContext; 
 PromQLParser.KeywordContext = KeywordContext; 
 PromQLParser.LiteralContext = LiteralContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

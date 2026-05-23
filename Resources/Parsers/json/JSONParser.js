@@ -1,23 +1,24 @@
-// Generated from ./json/JSON.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/json/JSON.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import JSONListener from './JSONListener.js';
-const serializedATN = [4,1,12,56,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-1,0,1,0,1,1,1,1,1,1,1,1,5,1,17,8,1,10,1,12,1,20,9,1,1,1,1,1,1,1,1,1,3,1,
-26,8,1,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,3,5,3,36,8,3,10,3,12,3,39,9,3,1,3,1,
-3,1,3,1,3,3,3,45,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,54,8,4,1,4,0,0,5,0,
-2,4,6,8,0,0,60,0,10,1,0,0,0,2,25,1,0,0,0,4,27,1,0,0,0,6,44,1,0,0,0,8,53,
-1,0,0,0,10,11,3,8,4,0,11,1,1,0,0,0,12,13,5,1,0,0,13,18,3,4,2,0,14,15,5,2,
-0,0,15,17,3,4,2,0,16,14,1,0,0,0,17,20,1,0,0,0,18,16,1,0,0,0,18,19,1,0,0,
-0,19,21,1,0,0,0,20,18,1,0,0,0,21,22,5,3,0,0,22,26,1,0,0,0,23,24,5,1,0,0,
-24,26,5,3,0,0,25,12,1,0,0,0,25,23,1,0,0,0,26,3,1,0,0,0,27,28,5,10,0,0,28,
-29,5,4,0,0,29,30,3,8,4,0,30,5,1,0,0,0,31,32,5,5,0,0,32,37,3,8,4,0,33,34,
-5,2,0,0,34,36,3,8,4,0,35,33,1,0,0,0,36,39,1,0,0,0,37,35,1,0,0,0,37,38,1,
-0,0,0,38,40,1,0,0,0,39,37,1,0,0,0,40,41,5,6,0,0,41,45,1,0,0,0,42,43,5,5,
-0,0,43,45,5,6,0,0,44,31,1,0,0,0,44,42,1,0,0,0,45,7,1,0,0,0,46,54,5,10,0,
-0,47,54,5,11,0,0,48,54,3,2,1,0,49,54,3,6,3,0,50,54,5,7,0,0,51,54,5,8,0,0,
-52,54,5,9,0,0,53,46,1,0,0,0,53,47,1,0,0,0,53,48,1,0,0,0,53,49,1,0,0,0,53,
-50,1,0,0,0,53,51,1,0,0,0,53,52,1,0,0,0,54,9,1,0,0,0,5,18,25,37,44,53];
+const serializedATN = [4,1,12,57,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+1,0,1,0,1,0,1,1,1,1,1,1,1,1,5,1,18,8,1,10,1,12,1,21,9,1,1,1,1,1,1,1,1,1,
+3,1,27,8,1,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,3,5,3,37,8,3,10,3,12,3,40,9,3,1,
+3,1,3,1,3,1,3,3,3,46,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,55,8,4,1,4,0,0,
+5,0,2,4,6,8,0,0,61,0,10,1,0,0,0,2,26,1,0,0,0,4,28,1,0,0,0,6,45,1,0,0,0,8,
+54,1,0,0,0,10,11,3,8,4,0,11,12,5,0,0,1,12,1,1,0,0,0,13,14,5,1,0,0,14,19,
+3,4,2,0,15,16,5,2,0,0,16,18,3,4,2,0,17,15,1,0,0,0,18,21,1,0,0,0,19,17,1,
+0,0,0,19,20,1,0,0,0,20,22,1,0,0,0,21,19,1,0,0,0,22,23,5,3,0,0,23,27,1,0,
+0,0,24,25,5,1,0,0,25,27,5,3,0,0,26,13,1,0,0,0,26,24,1,0,0,0,27,3,1,0,0,0,
+28,29,5,10,0,0,29,30,5,4,0,0,30,31,3,8,4,0,31,5,1,0,0,0,32,33,5,5,0,0,33,
+38,3,8,4,0,34,35,5,2,0,0,35,37,3,8,4,0,36,34,1,0,0,0,37,40,1,0,0,0,38,36,
+1,0,0,0,38,39,1,0,0,0,39,41,1,0,0,0,40,38,1,0,0,0,41,42,5,6,0,0,42,46,1,
+0,0,0,43,44,5,5,0,0,44,46,5,6,0,0,45,32,1,0,0,0,45,43,1,0,0,0,46,7,1,0,0,
+0,47,55,5,10,0,0,48,55,5,11,0,0,49,55,3,2,1,0,50,55,3,6,3,0,51,55,5,7,0,
+0,52,55,5,8,0,0,53,55,5,9,0,0,54,47,1,0,0,0,54,48,1,0,0,0,54,49,1,0,0,0,
+54,50,1,0,0,0,54,51,1,0,0,0,54,52,1,0,0,0,54,53,1,0,0,0,55,9,1,0,0,0,5,19,
+26,38,45,54];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -43,10 +44,6 @@ export default class JSONParser extends antlr4.Parser {
         this.symbolicNames = JSONParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	json() {
@@ -56,6 +53,8 @@ export default class JSONParser extends antlr4.Parser {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 10;
 	        this.value();
+	        this.state = 11;
+	        this.match(JSONParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -75,39 +74,39 @@ export default class JSONParser extends antlr4.Parser {
 	obj() {
 	    let localctx = new ObjContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, JSONParser.RULE_obj);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 25;
+	        this.state = 26;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 12;
-	            this.match(JSONParser.T__0);
 	            this.state = 13;
+	            this.match(JSONParser.T__0);
+	            this.state = 14;
 	            this.pair();
-	            this.state = 18;
+	            this.state = 19;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===JSONParser.T__1) {
-	                this.state = 14;
-	                this.match(JSONParser.T__1);
+	            while(_la===2) {
 	                this.state = 15;
+	                this.match(JSONParser.T__1);
+	                this.state = 16;
 	                this.pair();
-	                this.state = 20;
+	                this.state = 21;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 21;
+	            this.state = 22;
 	            this.match(JSONParser.T__2);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 23;
-	            this.match(JSONParser.T__0);
 	            this.state = 24;
+	            this.match(JSONParser.T__0);
+	            this.state = 25;
 	            this.match(JSONParser.T__2);
 	            break;
 
@@ -133,11 +132,11 @@ export default class JSONParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, JSONParser.RULE_pair);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 27;
-	        this.match(JSONParser.STRING);
 	        this.state = 28;
-	        this.match(JSONParser.T__3);
+	        this.match(JSONParser.STRING);
 	        this.state = 29;
+	        this.match(JSONParser.T__3);
+	        this.state = 30;
 	        this.value();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -158,39 +157,39 @@ export default class JSONParser extends antlr4.Parser {
 	arr() {
 	    let localctx = new ArrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, JSONParser.RULE_arr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 44;
+	        this.state = 45;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 31;
-	            this.match(JSONParser.T__4);
 	            this.state = 32;
+	            this.match(JSONParser.T__4);
+	            this.state = 33;
 	            this.value();
-	            this.state = 37;
+	            this.state = 38;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===JSONParser.T__1) {
-	                this.state = 33;
-	                this.match(JSONParser.T__1);
+	            while(_la===2) {
 	                this.state = 34;
+	                this.match(JSONParser.T__1);
+	                this.state = 35;
 	                this.value();
-	                this.state = 39;
+	                this.state = 40;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 40;
+	            this.state = 41;
 	            this.match(JSONParser.T__5);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 42;
-	            this.match(JSONParser.T__4);
 	            this.state = 43;
+	            this.match(JSONParser.T__4);
+	            this.state = 44;
 	            this.match(JSONParser.T__5);
 	            break;
 
@@ -215,42 +214,42 @@ export default class JSONParser extends antlr4.Parser {
 	    let localctx = new ValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, JSONParser.RULE_value);
 	    try {
-	        this.state = 53;
+	        this.state = 54;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case JSONParser.STRING:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 46;
+	            this.state = 47;
 	            this.match(JSONParser.STRING);
 	            break;
-	        case JSONParser.NUMBER:
+	        case 11:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 47;
+	            this.state = 48;
 	            this.match(JSONParser.NUMBER);
 	            break;
-	        case JSONParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 48;
+	            this.state = 49;
 	            this.obj();
 	            break;
-	        case JSONParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 49;
+	            this.state = 50;
 	            this.arr();
 	            break;
-	        case JSONParser.T__6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 50;
+	            this.state = 51;
 	            this.match(JSONParser.T__6);
 	            break;
-	        case JSONParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 51;
+	            this.state = 52;
 	            this.match(JSONParser.T__7);
 	            break;
-	        case JSONParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 52;
+	            this.state = 53;
 	            this.match(JSONParser.T__8);
 	            break;
 	        default:
@@ -309,6 +308,10 @@ class JsonContext extends antlr4.ParserRuleContext {
 
 	value() {
 	    return this.getTypedRuleContext(ValueContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(JSONParser.EOF, 0);
 	};
 
 	enterRule(listener) {
@@ -504,3 +507,12 @@ JSONParser.ObjContext = ObjContext;
 JSONParser.PairContext = PairContext; 
 JSONParser.ArrContext = ArrContext; 
 JSONParser.ValueContext = ValueContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

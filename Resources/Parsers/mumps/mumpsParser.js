@@ -1,4 +1,4 @@
-// Generated from ./mumps/mumps.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/mumps/mumps.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import mumpsListener from './mumpsListener.js';
@@ -220,10 +220,6 @@ export default class mumpsParser extends antlr4.Parser {
         this.symbolicNames = mumpsParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
@@ -268,13 +264,13 @@ export default class mumpsParser extends antlr4.Parser {
 	eof() {
 	    let localctx = new EofContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, mumpsParser.RULE_eof);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 80;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.SPACE) {
+	        while(_la===59) {
 	            this.state = 77;
 	            this.match(mumpsParser.SPACE);
 	            this.state = 82;
@@ -284,7 +280,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 84;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.CR) {
+	        if(_la===60) {
 	            this.state = 83;
 	            this.match(mumpsParser.CR);
 	        }
@@ -351,7 +347,7 @@ export default class mumpsParser extends antlr4.Parser {
 	code() {
 	    let localctx = new CodeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, mumpsParser.RULE_code);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 107;
@@ -373,7 +369,7 @@ export default class mumpsParser extends antlr4.Parser {
 	                this.state = 95; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===mumpsParser.SPACE);
+	            } while(_la===59);
 	            this.state = 98; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -383,7 +379,7 @@ export default class mumpsParser extends antlr4.Parser {
 	                this.state = 100; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===mumpsParser.DOT);
+	            } while(_la===52);
 	            break;
 
 	        case 3:
@@ -409,31 +405,31 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 116;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case mumpsParser.BREAK:
-	        case mumpsParser.CLOSE:
-	        case mumpsParser.DO:
-	        case mumpsParser.ELSE:
-	        case mumpsParser.FOR:
-	        case mumpsParser.GOTO:
-	        case mumpsParser.HALT:
-	        case mumpsParser.HANG:
-	        case mumpsParser.JOB:
-	        case mumpsParser.KILL:
-	        case mumpsParser.LOCK:
-	        case mumpsParser.MERGE:
-	        case mumpsParser.NEW:
-	        case mumpsParser.OPEN:
-	        case mumpsParser.QUIT:
-	        case mumpsParser.READ:
-	        case mumpsParser.SET:
-	        case mumpsParser.TCOMMIT:
-	        case mumpsParser.TRESTART:
-	        case mumpsParser.TROLLBACK:
-	        case mumpsParser.TSTART:
-	        case mumpsParser.USE:
-	        case mumpsParser.VIEW:
-	        case mumpsParser.WRITE:
-	        case mumpsParser.XECUTE:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
 	        	this.state = 110; 
 	        	this._errHandler.sync(this);
 	        	_la = this._input.LA(1);
@@ -443,18 +439,18 @@ export default class mumpsParser extends antlr4.Parser {
 	        	    this.state = 112; 
 	        	    this._errHandler.sync(this);
 	        	    _la = this._input.LA(1);
-	        	} while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mumpsParser.BREAK) | (1 << mumpsParser.CLOSE) | (1 << mumpsParser.DO) | (1 << mumpsParser.ELSE) | (1 << mumpsParser.FOR) | (1 << mumpsParser.GOTO) | (1 << mumpsParser.HALT) | (1 << mumpsParser.HANG) | (1 << mumpsParser.JOB) | (1 << mumpsParser.KILL) | (1 << mumpsParser.LOCK) | (1 << mumpsParser.MERGE) | (1 << mumpsParser.NEW) | (1 << mumpsParser.OPEN) | (1 << mumpsParser.QUIT) | (1 << mumpsParser.READ) | (1 << mumpsParser.SET) | (1 << mumpsParser.TCOMMIT) | (1 << mumpsParser.TRESTART) | (1 << mumpsParser.TROLLBACK) | (1 << mumpsParser.TSTART) | (1 << mumpsParser.USE) | (1 << mumpsParser.VIEW) | (1 << mumpsParser.WRITE) | (1 << mumpsParser.XECUTE))) !== 0));
+	        	} while((((_la) & ~0x1f) === 0 && ((1 << _la) & 134217214) !== 0));
 	        	break;
-	        case mumpsParser.IF:
+	        case 9:
 	        	this.state = 114;
 	        	this.if_();
 	        	break;
-	        case mumpsParser.IDENTIFIER:
+	        case 54:
 	        	this.state = 115;
 	        	this.subproc();
 	        	break;
-	        case mumpsParser.SPACE:
-	        case mumpsParser.CR:
+	        case 59:
+	        case 60:
 	        	break;
 	        default:
 	        	break;
@@ -462,7 +458,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 121;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.SPACE) {
+	        while(_la===59) {
 	            this.state = 118;
 	            this.match(mumpsParser.SPACE);
 	            this.state = 123;
@@ -529,13 +525,13 @@ export default class mumpsParser extends antlr4.Parser {
 	routinedecl() {
 	    let localctx = new RoutinedeclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, mumpsParser.RULE_routinedecl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 133;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.PERCENT) {
+	        if(_la===30) {
 	            this.state = 132;
 	            this.match(mumpsParser.PERCENT);
 	        }
@@ -545,13 +541,13 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 141;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.LPAREN) {
+	        if(_la===35) {
 	            this.state = 136;
 	            this.match(mumpsParser.LPAREN);
 	            this.state = 138;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (mumpsParser.AMPERSAND - 31)) | (1 << (mumpsParser.CARAT - 31)) | (1 << (mumpsParser.IDENTIFIER - 31)))) !== 0)) {
+	            if(((((_la - 31)) & ~0x1f) === 0 && ((1 << (_la - 31)) & 8388613) !== 0)) {
 	                this.state = 137;
 	                this.paramlist();
 	            }
@@ -563,7 +559,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 146;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.SPACE) {
+	        while(_la===59) {
 	            this.state = 143;
 	            this.match(mumpsParser.SPACE);
 	            this.state = 148;
@@ -591,7 +587,7 @@ export default class mumpsParser extends antlr4.Parser {
 	paramlist() {
 	    let localctx = new ParamlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, mumpsParser.RULE_paramlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 151;
@@ -599,7 +595,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 156;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.COMMA) {
+	        while(_la===28) {
 	            this.state = 152;
 	            this.match(mumpsParser.COMMA);
 	            this.state = 153;
@@ -650,7 +646,7 @@ export default class mumpsParser extends antlr4.Parser {
 	subproc() {
 	    let localctx = new SubprocContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, mumpsParser.RULE_subproc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 161;
@@ -658,13 +654,13 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 167;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.LPAREN) {
+	        if(_la===35) {
 	            this.state = 162;
 	            this.match(mumpsParser.LPAREN);
 	            this.state = 164;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (mumpsParser.AMPERSAND - 31)) | (1 << (mumpsParser.CARAT - 31)) | (1 << (mumpsParser.IDENTIFIER - 31)))) !== 0)) {
+	            if(((((_la - 31)) & ~0x1f) === 0 && ((1 << (_la - 31)) & 8388613) !== 0)) {
 	                this.state = 163;
 	                this.paramlist();
 	            }
@@ -682,7 +678,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        		this.state = 172;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		while(_la===mumpsParser.SPACE) {
+	        		while(_la===59) {
 	        		    this.state = 169;
 	        		    this.match(mumpsParser.SPACE);
 	        		    this.state = 174;
@@ -718,96 +714,96 @@ export default class mumpsParser extends antlr4.Parser {
 	command() {
 	    let localctx = new CommandContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, mumpsParser.RULE_command);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 195;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mumpsParser.SET:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 180;
 	            this.set_();
 	            break;
-	        case mumpsParser.FOR:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 181;
 	            this.for_();
 	            break;
-	        case mumpsParser.WRITE:
+	        case 25:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 182;
 	            this.write_();
 	            break;
-	        case mumpsParser.READ:
+	        case 17:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 183;
 	            this.read_();
 	            break;
-	        case mumpsParser.QUIT:
+	        case 16:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 184;
 	            this.quit_();
 	            break;
-	        case mumpsParser.HALT:
+	        case 7:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 185;
 	            this.halt_();
 	            break;
-	        case mumpsParser.HANG:
+	        case 8:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 186;
 	            this.hang_();
 	            break;
-	        case mumpsParser.NEW:
+	        case 14:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 187;
 	            this.new_();
 	            break;
-	        case mumpsParser.BREAK:
+	        case 1:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 188;
 	            this.break_();
 	            break;
-	        case mumpsParser.DO:
+	        case 3:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 189;
 	            this.do_();
 	            break;
-	        case mumpsParser.KILL:
+	        case 11:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 190;
 	            this.kill_();
 	            break;
-	        case mumpsParser.VIEW:
+	        case 24:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 191;
 	            this.view_();
 	            break;
-	        case mumpsParser.MERGE:
+	        case 13:
 	            this.enterOuterAlt(localctx, 13);
 	            this.state = 192;
 	            this.merge_();
 	            break;
-	        case mumpsParser.XECUTE:
+	        case 26:
 	            this.enterOuterAlt(localctx, 14);
 	            this.state = 193;
 	            this.xecute_();
 	            break;
-	        case mumpsParser.CLOSE:
-	        case mumpsParser.ELSE:
-	        case mumpsParser.GOTO:
-	        case mumpsParser.JOB:
-	        case mumpsParser.LOCK:
-	        case mumpsParser.OPEN:
-	        case mumpsParser.TCOMMIT:
-	        case mumpsParser.TRESTART:
-	        case mumpsParser.TROLLBACK:
-	        case mumpsParser.TSTART:
-	        case mumpsParser.USE:
+	        case 2:
+	        case 4:
+	        case 6:
+	        case 10:
+	        case 12:
+	        case 15:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 15);
 	            this.state = 194;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mumpsParser.CLOSE) | (1 << mumpsParser.ELSE) | (1 << mumpsParser.GOTO) | (1 << mumpsParser.JOB) | (1 << mumpsParser.LOCK) | (1 << mumpsParser.OPEN) | (1 << mumpsParser.TCOMMIT) | (1 << mumpsParser.TRESTART) | (1 << mumpsParser.TROLLBACK) | (1 << mumpsParser.TSTART) | (1 << mumpsParser.USE))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 16290900) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -862,7 +858,7 @@ export default class mumpsParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, mumpsParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 200;
@@ -875,7 +871,7 @@ export default class mumpsParser extends antlr4.Parser {
 	                this.state = 204;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===mumpsParser.SPACE) {
+	                while(_la===59) {
 	                    this.state = 201;
 	                    this.match(mumpsParser.SPACE);
 	                    this.state = 206;
@@ -884,7 +880,7 @@ export default class mumpsParser extends antlr4.Parser {
 	                }
 	                this.state = 207;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (mumpsParser.ADD - 43)) | (1 << (mumpsParser.SUBTRACT - 43)) | (1 << (mumpsParser.MULTIPLY - 43)) | (1 << (mumpsParser.DIVIDE - 43)) | (1 << (mumpsParser.INTDIVIDE - 43)) | (1 << (mumpsParser.MODULO - 43)) | (1 << (mumpsParser.EXPONENT - 43)))) !== 0))) {
+	                if(!(((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 127) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -922,24 +918,24 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 221;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mumpsParser.AMPERSAND:
-	        case mumpsParser.CARAT:
-	        case mumpsParser.IDENTIFIER:
+	        case 31:
+	        case 33:
+	        case 54:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 214;
 	            this.variable();
 	            break;
-	        case mumpsParser.DOLLAR:
+	        case 29:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 215;
 	            this.function_();
 	            break;
-	        case mumpsParser.NUMBER:
+	        case 56:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 216;
 	            this.match(mumpsParser.NUMBER);
 	            break;
-	        case mumpsParser.LPAREN:
+	        case 35:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 217;
 	            this.match(mumpsParser.LPAREN);
@@ -970,7 +966,7 @@ export default class mumpsParser extends antlr4.Parser {
 	condition() {
 	    let localctx = new ConditionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, mumpsParser.RULE_condition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 228;
 	        this._errHandler.sync(this);
@@ -988,7 +984,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.term();
 	            this.state = 225;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (mumpsParser.NGT - 39)) | (1 << (mumpsParser.NLT - 39)) | (1 << (mumpsParser.GT - 39)) | (1 << (mumpsParser.LT - 39)) | (1 << (mumpsParser.EQUALS - 39)))) !== 0))) {
+	            if(!(((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 2063) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1042,16 +1038,16 @@ export default class mumpsParser extends antlr4.Parser {
 	variable() {
 	    let localctx = new VariableContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, mumpsParser.RULE_variable);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 235;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.AMPERSAND || _la===mumpsParser.CARAT) {
+	        while(_la===31 || _la===33) {
 	            this.state = 232;
 	            _la = this._input.LA(1);
-	            if(!(_la===mumpsParser.AMPERSAND || _la===mumpsParser.CARAT)) {
+	            if(!(_la===31 || _la===33)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1083,7 +1079,7 @@ export default class mumpsParser extends antlr4.Parser {
 	function_() {
 	    let localctx = new Function_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, mumpsParser.RULE_function_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 240;
@@ -1093,7 +1089,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 246;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.LPAREN) {
+	        if(_la===35) {
 	            this.state = 242;
 	            this.match(mumpsParser.LPAREN);
 	            this.state = 243;
@@ -1152,7 +1148,7 @@ export default class mumpsParser extends antlr4.Parser {
 	do_() {
 	    let localctx = new Do_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, mumpsParser.RULE_do_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 252;
@@ -1160,7 +1156,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 254;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 253;
 	            this.postcondition();
 	        }
@@ -1174,19 +1170,19 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 259; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 261;
 	        this.identifier();
 	        this.state = 267;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.LPAREN) {
+	        if(_la===35) {
 	            this.state = 262;
 	            this.match(mumpsParser.LPAREN);
 	            this.state = 264;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (mumpsParser.AMPERSAND - 31)) | (1 << (mumpsParser.CARAT - 31)) | (1 << (mumpsParser.IDENTIFIER - 31)))) !== 0)) {
+	            if(((((_la - 31)) & ~0x1f) === 0 && ((1 << (_la - 31)) & 8388613) !== 0)) {
 	                this.state = 263;
 	                this.paramlist();
 	            }
@@ -1214,7 +1210,7 @@ export default class mumpsParser extends antlr4.Parser {
 	for_() {
 	    let localctx = new For_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, mumpsParser.RULE_for_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 269;
@@ -1228,7 +1224,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 273; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 275;
 	        this.term();
 	        this.state = 276;
@@ -1258,17 +1254,17 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 288; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 296;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mumpsParser.BREAK) | (1 << mumpsParser.CLOSE) | (1 << mumpsParser.DO) | (1 << mumpsParser.ELSE) | (1 << mumpsParser.FOR) | (1 << mumpsParser.GOTO) | (1 << mumpsParser.HALT) | (1 << mumpsParser.HANG) | (1 << mumpsParser.JOB) | (1 << mumpsParser.KILL) | (1 << mumpsParser.LOCK) | (1 << mumpsParser.MERGE) | (1 << mumpsParser.NEW) | (1 << mumpsParser.OPEN) | (1 << mumpsParser.QUIT) | (1 << mumpsParser.READ) | (1 << mumpsParser.SET) | (1 << mumpsParser.TCOMMIT) | (1 << mumpsParser.TRESTART) | (1 << mumpsParser.TROLLBACK) | (1 << mumpsParser.TSTART) | (1 << mumpsParser.USE) | (1 << mumpsParser.VIEW) | (1 << mumpsParser.WRITE) | (1 << mumpsParser.XECUTE))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 134217214) !== 0)) {
 	            this.state = 290;
 	            this.command();
 	            this.state = 292;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===mumpsParser.SPACE) {
+	            if(_la===59) {
 	                this.state = 291;
 	                this.match(mumpsParser.SPACE);
 	            }
@@ -1282,7 +1278,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 303;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.SPACE) {
+	        while(_la===59) {
 	            this.state = 300;
 	            this.match(mumpsParser.SPACE);
 	            this.state = 305;
@@ -1341,7 +1337,7 @@ export default class mumpsParser extends antlr4.Parser {
 	hang_() {
 	    let localctx = new Hang_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, mumpsParser.RULE_hang_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 312;
@@ -1349,7 +1345,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 314;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 313;
 	            this.postcondition();
 	        }
@@ -1363,7 +1359,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 319; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 321;
 	        this.term();
 	    } catch (re) {
@@ -1385,7 +1381,7 @@ export default class mumpsParser extends antlr4.Parser {
 	if_() {
 	    let localctx = new If_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, mumpsParser.RULE_if_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 323;
@@ -1399,13 +1395,13 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 327; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 329;
 	        this.condition();
 	        this.state = 333;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.SPACE) {
+	        while(_la===59) {
 	            this.state = 330;
 	            this.match(mumpsParser.SPACE);
 	            this.state = 335;
@@ -1433,7 +1429,7 @@ export default class mumpsParser extends antlr4.Parser {
 	kill_() {
 	    let localctx = new Kill_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, mumpsParser.RULE_kill_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 338;
@@ -1441,7 +1437,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 340;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 339;
 	            this.postcondition();
 	        }
@@ -1455,7 +1451,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 345; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 347;
 	        this.arglist();
 	    } catch (re) {
@@ -1477,7 +1473,7 @@ export default class mumpsParser extends antlr4.Parser {
 	merge_() {
 	    let localctx = new Merge_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, mumpsParser.RULE_merge_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 349;
@@ -1485,7 +1481,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 351;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 350;
 	            this.postcondition();
 	        }
@@ -1499,7 +1495,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 356; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 358;
 	        this.term();
 	        this.state = 359;
@@ -1509,7 +1505,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 368;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.COMMA) {
+	        while(_la===28) {
 	            this.state = 361;
 	            this.match(mumpsParser.COMMA);
 	            this.state = 362;
@@ -1541,7 +1537,7 @@ export default class mumpsParser extends antlr4.Parser {
 	new_() {
 	    let localctx = new New_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, mumpsParser.RULE_new_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 371;
@@ -1549,7 +1545,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 373;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 372;
 	            this.postcondition();
 	        }
@@ -1563,7 +1559,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 378; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 380;
 	        this.arglist();
 	    } catch (re) {
@@ -1585,7 +1581,7 @@ export default class mumpsParser extends antlr4.Parser {
 	quit_() {
 	    let localctx = new Quit_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, mumpsParser.RULE_quit_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 382;
@@ -1611,7 +1607,7 @@ export default class mumpsParser extends antlr4.Parser {
 	                this.state = 389; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===mumpsParser.SPACE);
+	            } while(_la===59);
 	            this.state = 391;
 	            this.term();
 
@@ -1635,7 +1631,7 @@ export default class mumpsParser extends antlr4.Parser {
 	read_() {
 	    let localctx = new Read_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, mumpsParser.RULE_read_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 394;
@@ -1643,7 +1639,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 396;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 395;
 	            this.postcondition();
 	        }
@@ -1657,7 +1653,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 401; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 403;
 	        this.arglist();
 	    } catch (re) {
@@ -1679,7 +1675,7 @@ export default class mumpsParser extends antlr4.Parser {
 	set_() {
 	    let localctx = new Set_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, mumpsParser.RULE_set_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 405;
@@ -1687,7 +1683,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 407;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 406;
 	            this.postcondition();
 	        }
@@ -1713,7 +1709,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 419;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.COMMA) {
+	        while(_la===28) {
 	            this.state = 415;
 	            this.match(mumpsParser.COMMA);
 	            this.state = 416;
@@ -1741,7 +1737,7 @@ export default class mumpsParser extends antlr4.Parser {
 	view_() {
 	    let localctx = new View_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, mumpsParser.RULE_view_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 422;
@@ -1749,7 +1745,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 424;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 423;
 	            this.postcondition();
 	        }
@@ -1763,7 +1759,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 429; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 431;
 	        this.match(mumpsParser.IDENTIFIER);
 	    } catch (re) {
@@ -1785,7 +1781,7 @@ export default class mumpsParser extends antlr4.Parser {
 	write_() {
 	    let localctx = new Write_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, mumpsParser.RULE_write_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 433;
@@ -1793,7 +1789,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 435;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 434;
 	            this.postcondition();
 	        }
@@ -1807,7 +1803,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 440; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 442;
 	        this.arglist();
 	    } catch (re) {
@@ -1829,7 +1825,7 @@ export default class mumpsParser extends antlr4.Parser {
 	xecute_() {
 	    let localctx = new Xecute_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, mumpsParser.RULE_xecute_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 444;
@@ -1837,7 +1833,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 446;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumpsParser.COLON) {
+	        if(_la===27) {
 	            this.state = 445;
 	            this.postcondition();
 	        }
@@ -1851,7 +1847,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 451; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mumpsParser.SPACE);
+	        } while(_la===59);
 	        this.state = 453;
 	        this.match(mumpsParser.STRING_LITERAL);
 	    } catch (re) {
@@ -1873,13 +1869,13 @@ export default class mumpsParser extends antlr4.Parser {
 	assign() {
 	    let localctx = new AssignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, mumpsParser.RULE_assign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 462;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 29)) & ~0x1f) == 0 && ((1 << (_la - 29)) & ((1 << (mumpsParser.DOLLAR - 29)) | (1 << (mumpsParser.AMPERSAND - 29)) | (1 << (mumpsParser.CARAT - 29)) | (1 << (mumpsParser.BANG - 29)) | (1 << (mumpsParser.LPAREN - 29)) | (1 << (mumpsParser.IDENTIFIER - 29)) | (1 << (mumpsParser.STRING_LITERAL - 29)) | (1 << (mumpsParser.NUMBER - 29)))) !== 0)) {
+	        if(((((_la - 29)) & ~0x1f) === 0 && ((1 << (_la - 29)) & 234881141) !== 0)) {
 	            this.state = 456;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,65,this._ctx);
@@ -1893,7 +1889,7 @@ export default class mumpsParser extends antlr4.Parser {
 	            this.state = 460;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===mumpsParser.RPAREN) {
+	            if(_la===36) {
 	                this.state = 459;
 	                this.match(mumpsParser.RPAREN);
 	            }
@@ -1903,7 +1899,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 467;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.SPACE) {
+	        while(_la===59) {
 	            this.state = 464;
 	            this.match(mumpsParser.SPACE);
 	            this.state = 469;
@@ -1915,7 +1911,7 @@ export default class mumpsParser extends antlr4.Parser {
 	        this.state = 474;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumpsParser.SPACE) {
+	        while(_la===59) {
 	            this.state = 471;
 	            this.match(mumpsParser.SPACE);
 	            this.state = 476;
@@ -1943,7 +1939,7 @@ export default class mumpsParser extends antlr4.Parser {
 	arglist() {
 	    let localctx = new ArglistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, mumpsParser.RULE_arglist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 479;
@@ -1956,7 +1952,7 @@ export default class mumpsParser extends antlr4.Parser {
 	                this.state = 483;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===mumpsParser.SPACE) {
+	                while(_la===59) {
 	                    this.state = 480;
 	                    this.match(mumpsParser.SPACE);
 	                    this.state = 485;
@@ -1992,27 +1988,27 @@ export default class mumpsParser extends antlr4.Parser {
 	arg() {
 	    let localctx = new ArgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, mumpsParser.RULE_arg);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 495;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mumpsParser.DOLLAR:
-	        case mumpsParser.AMPERSAND:
-	        case mumpsParser.CARAT:
-	        case mumpsParser.LPAREN:
-	        case mumpsParser.IDENTIFIER:
-	        case mumpsParser.NUMBER:
+	        case 29:
+	        case 31:
+	        case 33:
+	        case 35:
+	        case 54:
+	        case 56:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 493;
 	            this.expression();
 	            break;
-	        case mumpsParser.BANG:
-	        case mumpsParser.STRING_LITERAL:
+	        case 34:
+	        case 55:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 494;
 	            _la = this._input.LA(1);
-	            if(!(_la===mumpsParser.BANG || _la===mumpsParser.STRING_LITERAL)) {
+	            if(!(_la===34 || _la===55)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -4301,3 +4297,12 @@ mumpsParser.Xecute_Context = Xecute_Context;
 mumpsParser.AssignContext = AssignContext; 
 mumpsParser.ArglistContext = ArglistContext; 
 mumpsParser.ArgContext = ArgContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

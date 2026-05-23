@@ -1,20 +1,20 @@
-// Generated from ./vmf/vmf.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/vmf/vmf.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import vmfListener from './vmfListener.js';
-const serializedATN = [4,1,5,46,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,1,0,4,0,14,8,0,11,0,12,0,15,1,1,1,1,4,1,20,8,1,11,1,12,1,21,1,1,
-4,1,25,8,1,11,1,12,1,26,3,1,29,8,1,1,2,1,2,1,3,1,3,1,4,1,4,1,5,1,5,5,5,39,
-8,5,10,5,12,5,42,9,5,1,5,1,5,1,5,0,0,6,0,2,4,6,8,10,0,1,1,0,3,4,44,0,13,
-1,0,0,0,2,17,1,0,0,0,4,30,1,0,0,0,6,32,1,0,0,0,8,34,1,0,0,0,10,36,1,0,0,
-0,12,14,3,2,1,0,13,12,1,0,0,0,14,15,1,0,0,0,15,13,1,0,0,0,15,16,1,0,0,0,
-16,1,1,0,0,0,17,28,3,4,2,0,18,20,3,6,3,0,19,18,1,0,0,0,20,21,1,0,0,0,21,
-19,1,0,0,0,21,22,1,0,0,0,22,29,1,0,0,0,23,25,3,10,5,0,24,23,1,0,0,0,25,26,
-1,0,0,0,26,24,1,0,0,0,26,27,1,0,0,0,27,29,1,0,0,0,28,19,1,0,0,0,28,24,1,
-0,0,0,29,3,1,0,0,0,30,31,3,8,4,0,31,5,1,0,0,0,32,33,3,8,4,0,33,7,1,0,0,0,
-34,35,7,0,0,0,35,9,1,0,0,0,36,40,5,1,0,0,37,39,3,2,1,0,38,37,1,0,0,0,39,
-42,1,0,0,0,40,38,1,0,0,0,40,41,1,0,0,0,41,43,1,0,0,0,42,40,1,0,0,0,43,44,
-5,2,0,0,44,11,1,0,0,0,5,15,21,26,28,40];
+const serializedATN = [4,1,5,48,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,1,0,4,0,14,8,0,11,0,12,0,15,1,0,1,0,1,1,1,1,4,1,22,8,1,11,1,12,1,
+23,1,1,4,1,27,8,1,11,1,12,1,28,3,1,31,8,1,1,2,1,2,1,3,1,3,1,4,1,4,1,5,1,
+5,5,5,41,8,5,10,5,12,5,44,9,5,1,5,1,5,1,5,0,0,6,0,2,4,6,8,10,0,1,1,0,3,4,
+46,0,13,1,0,0,0,2,19,1,0,0,0,4,32,1,0,0,0,6,34,1,0,0,0,8,36,1,0,0,0,10,38,
+1,0,0,0,12,14,3,2,1,0,13,12,1,0,0,0,14,15,1,0,0,0,15,13,1,0,0,0,15,16,1,
+0,0,0,16,17,1,0,0,0,17,18,5,0,0,1,18,1,1,0,0,0,19,30,3,4,2,0,20,22,3,6,3,
+0,21,20,1,0,0,0,22,23,1,0,0,0,23,21,1,0,0,0,23,24,1,0,0,0,24,31,1,0,0,0,
+25,27,3,10,5,0,26,25,1,0,0,0,27,28,1,0,0,0,28,26,1,0,0,0,28,29,1,0,0,0,29,
+31,1,0,0,0,30,21,1,0,0,0,30,26,1,0,0,0,31,3,1,0,0,0,32,33,3,8,4,0,33,5,1,
+0,0,0,34,35,3,8,4,0,35,7,1,0,0,0,36,37,7,0,0,0,37,9,1,0,0,0,38,42,5,1,0,
+0,39,41,3,2,1,0,40,39,1,0,0,0,41,44,1,0,0,0,42,40,1,0,0,0,42,43,1,0,0,0,
+43,45,1,0,0,0,44,42,1,0,0,0,45,46,5,2,0,0,46,11,1,0,0,0,5,15,23,28,30,42];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -40,16 +40,12 @@ export default class vmfParser extends antlr4.Parser {
         this.symbolicNames = vmfParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	vmf() {
 	    let localctx = new VmfContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, vmfParser.RULE_vmf);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 13; 
@@ -61,7 +57,9 @@ export default class vmfParser extends antlr4.Parser {
 	            this.state = 15; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===vmfParser.QUOTEDSTTRING || _la===vmfParser.STRING);
+	        } while(_la===3 || _la===4);
+	        this.state = 17;
+	        this.match(vmfParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -81,44 +79,44 @@ export default class vmfParser extends antlr4.Parser {
 	keyvalue() {
 	    let localctx = new KeyvalueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, vmfParser.RULE_keyvalue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 17;
+	        this.state = 19;
 	        this.key();
-	        this.state = 28;
+	        this.state = 30;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case vmfParser.QUOTEDSTTRING:
-	        case vmfParser.STRING:
-	            this.state = 19; 
+	        case 3:
+	        case 4:
+	            this.state = 21; 
 	            this._errHandler.sync(this);
 	            var _alt = 1;
 	            do {
 	            	switch (_alt) {
 	            	case 1:
-	            		this.state = 18;
+	            		this.state = 20;
 	            		this.atomicvalue();
 	            		break;
 	            	default:
 	            		throw new antlr4.error.NoViableAltException(this);
 	            	}
-	            	this.state = 21; 
+	            	this.state = 23; 
 	            	this._errHandler.sync(this);
 	            	_alt = this._interp.adaptivePredict(this._input,1, this._ctx);
 	            } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
 	            break;
-	        case vmfParser.T__0:
-	            this.state = 24; 
+	        case 1:
+	            this.state = 26; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            do {
-	                this.state = 23;
+	                this.state = 25;
 	                this.listvalue();
-	                this.state = 26; 
+	                this.state = 28; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===vmfParser.T__0);
+	            } while(_la===1);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
@@ -144,7 +142,7 @@ export default class vmfParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, vmfParser.RULE_key);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 30;
+	        this.state = 32;
 	        this.val();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -167,7 +165,7 @@ export default class vmfParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, vmfParser.RULE_atomicvalue);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 32;
+	        this.state = 34;
 	        this.val();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -188,12 +186,12 @@ export default class vmfParser extends antlr4.Parser {
 	val() {
 	    let localctx = new ValContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, vmfParser.RULE_val);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 34;
+	        this.state = 36;
 	        _la = this._input.LA(1);
-	        if(!(_la===vmfParser.QUOTEDSTTRING || _la===vmfParser.STRING)) {
+	        if(!(_la===3 || _la===4)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -219,22 +217,22 @@ export default class vmfParser extends antlr4.Parser {
 	listvalue() {
 	    let localctx = new ListvalueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, vmfParser.RULE_listvalue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 36;
+	        this.state = 38;
 	        this.match(vmfParser.T__0);
-	        this.state = 40;
+	        this.state = 42;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===vmfParser.QUOTEDSTTRING || _la===vmfParser.STRING) {
-	            this.state = 37;
+	        while(_la===3 || _la===4) {
+	            this.state = 39;
 	            this.keyvalue();
-	            this.state = 42;
+	            this.state = 44;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 43;
+	        this.state = 45;
 	        this.match(vmfParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -280,6 +278,10 @@ class VmfContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = vmfParser.RULE_vmf;
     }
+
+	EOF() {
+	    return this.getToken(vmfParser.EOF, 0);
+	};
 
 	keyvalue = function(i) {
 	    if(i===undefined) {
@@ -524,3 +526,12 @@ vmfParser.KeyContext = KeyContext;
 vmfParser.AtomicvalueContext = AtomicvalueContext; 
 vmfParser.ValContext = ValContext; 
 vmfParser.ListvalueContext = ListvalueContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./Resources/Parsers/python/python3/Python3Parser.g4 by ANTLR 4.13.2
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/python/python3/Python3Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -131,21 +131,21 @@ export default class Python3ParserListener extends antlr4.tree.ParseTreeListener
 	}
 
 
+	// Enter a parse tree produced by Python3Parser#simple_stmts.
+	enterSimple_stmts(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#simple_stmts.
+	exitSimple_stmts(ctx) {
+	}
+
+
 	// Enter a parse tree produced by Python3Parser#simple_stmt.
 	enterSimple_stmt(ctx) {
 	}
 
 	// Exit a parse tree produced by Python3Parser#simple_stmt.
 	exitSimple_stmt(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Python3Parser#small_stmt.
-	enterSmall_stmt(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#small_stmt.
-	exitSmall_stmt(ctx) {
 	}
 
 
@@ -437,12 +437,354 @@ export default class Python3ParserListener extends antlr4.tree.ParseTreeListener
 	}
 
 
-	// Enter a parse tree produced by Python3Parser#suite.
-	enterSuite(ctx) {
+	// Enter a parse tree produced by Python3Parser#block.
+	enterBlock(ctx) {
 	}
 
-	// Exit a parse tree produced by Python3Parser#suite.
-	exitSuite(ctx) {
+	// Exit a parse tree produced by Python3Parser#block.
+	exitBlock(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#match_stmt.
+	enterMatch_stmt(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#match_stmt.
+	exitMatch_stmt(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#subject_expr.
+	enterSubject_expr(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#subject_expr.
+	exitSubject_expr(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#star_named_expressions.
+	enterStar_named_expressions(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#star_named_expressions.
+	exitStar_named_expressions(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#star_named_expression.
+	enterStar_named_expression(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#star_named_expression.
+	exitStar_named_expression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#case_block.
+	enterCase_block(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#case_block.
+	exitCase_block(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#guard.
+	enterGuard(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#guard.
+	exitGuard(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#patterns.
+	enterPatterns(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#patterns.
+	exitPatterns(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#pattern.
+	enterPattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#pattern.
+	exitPattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#as_pattern.
+	enterAs_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#as_pattern.
+	exitAs_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#or_pattern.
+	enterOr_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#or_pattern.
+	exitOr_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#closed_pattern.
+	enterClosed_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#closed_pattern.
+	exitClosed_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#literal_pattern.
+	enterLiteral_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#literal_pattern.
+	exitLiteral_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#literal_expr.
+	enterLiteral_expr(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#literal_expr.
+	exitLiteral_expr(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#complex_number.
+	enterComplex_number(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#complex_number.
+	exitComplex_number(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#signed_number.
+	enterSigned_number(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#signed_number.
+	exitSigned_number(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#signed_real_number.
+	enterSigned_real_number(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#signed_real_number.
+	exitSigned_real_number(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#real_number.
+	enterReal_number(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#real_number.
+	exitReal_number(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#imaginary_number.
+	enterImaginary_number(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#imaginary_number.
+	exitImaginary_number(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#capture_pattern.
+	enterCapture_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#capture_pattern.
+	exitCapture_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#pattern_capture_target.
+	enterPattern_capture_target(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#pattern_capture_target.
+	exitPattern_capture_target(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#wildcard_pattern.
+	enterWildcard_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#wildcard_pattern.
+	exitWildcard_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#value_pattern.
+	enterValue_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#value_pattern.
+	exitValue_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#attr.
+	enterAttr(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#attr.
+	exitAttr(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#name_or_attr.
+	enterName_or_attr(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#name_or_attr.
+	exitName_or_attr(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#group_pattern.
+	enterGroup_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#group_pattern.
+	exitGroup_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#sequence_pattern.
+	enterSequence_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#sequence_pattern.
+	exitSequence_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#open_sequence_pattern.
+	enterOpen_sequence_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#open_sequence_pattern.
+	exitOpen_sequence_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#maybe_sequence_pattern.
+	enterMaybe_sequence_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#maybe_sequence_pattern.
+	exitMaybe_sequence_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#maybe_star_pattern.
+	enterMaybe_star_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#maybe_star_pattern.
+	exitMaybe_star_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#star_pattern.
+	enterStar_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#star_pattern.
+	exitStar_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#mapping_pattern.
+	enterMapping_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#mapping_pattern.
+	exitMapping_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#items_pattern.
+	enterItems_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#items_pattern.
+	exitItems_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#key_value_pattern.
+	enterKey_value_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#key_value_pattern.
+	exitKey_value_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#double_star_pattern.
+	enterDouble_star_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#double_star_pattern.
+	exitDouble_star_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#class_pattern.
+	enterClass_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#class_pattern.
+	exitClass_pattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#positional_patterns.
+	enterPositional_patterns(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#positional_patterns.
+	exitPositional_patterns(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#keyword_patterns.
+	enterKeyword_patterns(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#keyword_patterns.
+	exitKeyword_patterns(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#keyword_pattern.
+	enterKeyword_pattern(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#keyword_pattern.
+	exitKeyword_pattern(ctx) {
 	}
 
 
@@ -545,69 +887,6 @@ export default class Python3ParserListener extends antlr4.tree.ParseTreeListener
 	}
 
 
-	// Enter a parse tree produced by Python3Parser#xor_expr.
-	enterXor_expr(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#xor_expr.
-	exitXor_expr(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Python3Parser#and_expr.
-	enterAnd_expr(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#and_expr.
-	exitAnd_expr(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Python3Parser#shift_expr.
-	enterShift_expr(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#shift_expr.
-	exitShift_expr(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Python3Parser#arith_expr.
-	enterArith_expr(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#arith_expr.
-	exitArith_expr(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Python3Parser#term.
-	enterTerm(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#term.
-	exitTerm(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Python3Parser#factor.
-	enterFactor(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#factor.
-	exitFactor(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Python3Parser#power.
-	enterPower(ctx) {
-	}
-
-	// Exit a parse tree produced by Python3Parser#power.
-	exitPower(ctx) {
-	}
-
-
 	// Enter a parse tree produced by Python3Parser#atom_expr.
 	enterAtom_expr(ctx) {
 	}
@@ -623,6 +902,15 @@ export default class Python3ParserListener extends antlr4.tree.ParseTreeListener
 
 	// Exit a parse tree produced by Python3Parser#atom.
 	exitAtom(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#name.
+	enterName(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#name.
+	exitName(ctx) {
 	}
 
 
@@ -776,6 +1064,15 @@ export default class Python3ParserListener extends antlr4.tree.ParseTreeListener
 
 	// Exit a parse tree produced by Python3Parser#yield_arg.
 	exitYield_arg(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Python3Parser#strings.
+	enterStrings(ctx) {
+	}
+
+	// Exit a parse tree produced by Python3Parser#strings.
+	exitStrings(ctx) {
 	}
 
 

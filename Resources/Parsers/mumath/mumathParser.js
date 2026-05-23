@@ -1,4 +1,4 @@
-// Generated from ./mumath/mumath.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/mumath/mumath.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import mumathListener from './mumathListener.js';
@@ -104,22 +104,18 @@ export default class mumathParser extends antlr4.Parser {
         this.symbolicNames = mumathParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, mumathParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 47;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mumathParser.FUNCTION || _la===mumathParser.ID) {
+	        while(_la===3 || _la===35) {
 	            this.state = 41;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
@@ -142,7 +138,7 @@ export default class mumathParser extends antlr4.Parser {
 	            }
 	            this.state = 43;
 	            _la = this._input.LA(1);
-	            if(!(_la===mumathParser.SEMI || _la===mumathParser.DOLLAR)) {
+	            if(!(_la===23 || _la===24)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -215,7 +211,7 @@ export default class mumathParser extends antlr4.Parser {
 	list_() {
 	    let localctx = new List_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, mumathParser.RULE_list_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 60;
@@ -223,17 +219,17 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 71;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mumathParser.RPAREN:
+	        case 33:
 	            this.state = 61;
 	            this.match(mumathParser.RPAREN);
 	            break;
-	        case mumathParser.ID:
+	        case 35:
 	            this.state = 62;
 	            this.match(mumathParser.ID);
 	            this.state = 67;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===mumathParser.COMMA) {
+	            while(_la===22) {
 	                this.state = 63;
 	                this.match(mumathParser.COMMA);
 	                this.state = 64;
@@ -267,7 +263,7 @@ export default class mumathParser extends antlr4.Parser {
 	functionDefinition() {
 	    let localctx = new FunctionDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, mumathParser.RULE_functionDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 73;
@@ -283,7 +279,7 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 79;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumathParser.COMMA) {
+	        if(_la===22) {
 	            this.state = 78;
 	            this.match(mumathParser.COMMA);
 	        }
@@ -446,7 +442,7 @@ export default class mumathParser extends antlr4.Parser {
 	loop() {
 	    let localctx = new LoopContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, mumathParser.RULE_loop);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 107;
@@ -456,7 +452,7 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 110;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumathParser.COMMA) {
+	        if(_la===22) {
 	            this.state = 109;
 	            this.match(mumathParser.COMMA);
 	        }
@@ -482,7 +478,7 @@ export default class mumathParser extends antlr4.Parser {
 	when() {
 	    let localctx = new WhenContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, mumathParser.RULE_when);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 114;
@@ -493,7 +489,7 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 117;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumathParser.COMMA) {
+	        if(_la===22) {
 	            this.state = 116;
 	            this.match(mumathParser.COMMA);
 	        }
@@ -507,7 +503,7 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 123;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumathParser.COMMA) {
+	        if(_la===22) {
 	            this.state = 122;
 	            this.match(mumathParser.COMMA);
 	        }
@@ -533,7 +529,7 @@ export default class mumathParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, mumathParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 127;
@@ -541,7 +537,7 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 133;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mumathParser.EQF) | (1 << mumathParser.EQUATION) | (1 << mumathParser.EQC) | (1 << mumathParser.NOT_EQUAL) | (1 << mumathParser.LT) | (1 << mumathParser.LE) | (1 << mumathParser.GE) | (1 << mumathParser.GT))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4227924000) !== 0)) {
 	            this.state = 128;
 	            this.relationalOperator();
 	            this.state = 129;
@@ -569,27 +565,27 @@ export default class mumathParser extends antlr4.Parser {
 	relationalOperator() {
 	    let localctx = new RelationalOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, mumathParser.RULE_relationalOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 138;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mumathParser.EQF:
-	        case mumathParser.EQC:
+	        case 5:
+	        case 26:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 136;
 	            this.equal();
 	            break;
-	        case mumathParser.EQUATION:
-	        case mumathParser.NOT_EQUAL:
-	        case mumathParser.LT:
-	        case mumathParser.LE:
-	        case mumathParser.GE:
-	        case mumathParser.GT:
+	        case 16:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 137;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mumathParser.EQUATION) | (1 << mumathParser.NOT_EQUAL) | (1 << mumathParser.LT) | (1 << mumathParser.LE) | (1 << mumathParser.GE) | (1 << mumathParser.GT))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4160815104) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -619,13 +615,13 @@ export default class mumathParser extends antlr4.Parser {
 	simpleExpression() {
 	    let localctx = new SimpleExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, mumathParser.RULE_simpleExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 141;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mumathParser.MINUS) {
+	        if(_la===19) {
 	            this.state = 140;
 	            this.match(mumathParser.MINUS);
 	        }
@@ -635,7 +631,7 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 149;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mumathParser.OR) | (1 << mumathParser.PLUS) | (1 << mumathParser.MINUS))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 787456) !== 0)) {
 	            this.state = 144;
 	            this.addingOperator();
 	            this.state = 145;
@@ -663,12 +659,12 @@ export default class mumathParser extends antlr4.Parser {
 	addingOperator() {
 	    let localctx = new AddingOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, mumathParser.RULE_addingOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 152;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mumathParser.OR) | (1 << mumathParser.PLUS) | (1 << mumathParser.MINUS))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 787456) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -694,7 +690,7 @@ export default class mumathParser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, mumathParser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 154;
@@ -702,7 +698,7 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 160;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (mumathParser.AND - 11)) | (1 << (mumathParser.MOD - 11)) | (1 << (mumathParser.STAR - 11)) | (1 << (mumathParser.SLASH - 11)) | (1 << (mumathParser.POWER - 11)))) !== 0)) {
+	        while(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 8390149) !== 0)) {
 	            this.state = 155;
 	            this.multiplyingOperator();
 	            this.state = 156;
@@ -730,12 +726,12 @@ export default class mumathParser extends antlr4.Parser {
 	multiplyingOperator() {
 	    let localctx = new MultiplyingOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, mumathParser.RULE_multiplyingOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 163;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 11)) & ~0x1f) == 0 && ((1 << (_la - 11)) & ((1 << (mumathParser.AND - 11)) | (1 << (mumathParser.MOD - 11)) | (1 << (mumathParser.STAR - 11)) | (1 << (mumathParser.SLASH - 11)) | (1 << (mumathParser.POWER - 11)))) !== 0))) {
+	        if(!(((((_la - 11)) & ~0x1f) === 0 && ((1 << (_la - 11)) & 8390149) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -872,7 +868,7 @@ export default class mumathParser extends antlr4.Parser {
 	functionDesignator() {
 	    let localctx = new FunctionDesignatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, mumathParser.RULE_functionDesignator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 184;
@@ -882,19 +878,19 @@ export default class mumathParser extends antlr4.Parser {
 	        this.state = 195;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mumathParser.NOT:
-	        case mumathParser.QUOTE:
-	        case mumathParser.MINUS:
-	        case mumathParser.LPAREN:
-	        case mumathParser.ID:
-	        case mumathParser.STRING:
-	        case mumathParser.NUMBER:
+	        case 12:
+	        case 17:
+	        case 19:
+	        case 32:
+	        case 35:
+	        case 37:
+	        case 38:
 	            this.state = 186;
 	            this.actualParameter();
 	            this.state = 191;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===mumathParser.COMMA) {
+	            while(_la===22) {
 	                this.state = 187;
 	                this.match(mumathParser.COMMA);
 	                this.state = 188;
@@ -904,7 +900,7 @@ export default class mumathParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case mumathParser.RPAREN:
+	        case 33:
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
@@ -930,12 +926,12 @@ export default class mumathParser extends antlr4.Parser {
 	equal() {
 	    let localctx = new EqualContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, mumathParser.RULE_equal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 199;
 	        _la = this._input.LA(1);
-	        if(!(_la===mumathParser.EQF || _la===mumathParser.EQC)) {
+	        if(!(_la===5 || _la===26)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2125,3 +2121,12 @@ mumathParser.FactorContext = FactorContext;
 mumathParser.ConstantContext = ConstantContext; 
 mumathParser.FunctionDesignatorContext = FunctionDesignatorContext; 
 mumathParser.EqualContext = EqualContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

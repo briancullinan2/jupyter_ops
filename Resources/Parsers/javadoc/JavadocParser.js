@@ -1,4 +1,4 @@
-// Generated from ./javadoc/JavadocParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/javadoc/JavadocParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import JavadocParserListener from './JavadocParserListener.js';
@@ -112,10 +112,6 @@ export default class JavadocParser extends antlr4.Parser {
         this.symbolicNames = JavadocParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	documentation() {
@@ -125,12 +121,12 @@ export default class JavadocParser extends antlr4.Parser {
 	        this.state = 65;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case JavadocParser.EOF:
+	        case -1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 44;
 	            this.match(JavadocParser.EOF);
 	            break;
-	        case JavadocParser.JAVADOC_START:
+	        case 8:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 45;
 	            this.match(JavadocParser.JAVADOC_START);
@@ -154,16 +150,16 @@ export default class JavadocParser extends antlr4.Parser {
 	            this.state = 54;
 	            this.match(JavadocParser.EOF);
 	            break;
-	        case JavadocParser.NAME:
-	        case JavadocParser.NEWLINE:
-	        case JavadocParser.SPACE:
-	        case JavadocParser.TEXT_CONTENT:
-	        case JavadocParser.AT:
-	        case JavadocParser.STAR:
-	        case JavadocParser.SLASH:
-	        case JavadocParser.INLINE_TAG_START:
-	        case JavadocParser.BRACE_OPEN:
-	        case JavadocParser.BRACE_CLOSE:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 10:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 59;
 	            this._errHandler.sync(this);
@@ -205,7 +201,7 @@ export default class JavadocParser extends antlr4.Parser {
 	documentationContent() {
 	    let localctx = new DocumentationContentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, JavadocParser.RULE_documentationContent);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 95;
 	        this._errHandler.sync(this);
@@ -218,7 +214,7 @@ export default class JavadocParser extends antlr4.Parser {
 	            this.state = 71;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===JavadocParser.NEWLINE || _la===JavadocParser.SPACE) {
+	            while(_la===2 || _la===3) {
 	                this.state = 68;
 	                this.skipWhitespace();
 	                this.state = 73;
@@ -303,12 +299,12 @@ export default class JavadocParser extends antlr4.Parser {
 	skipWhitespace() {
 	    let localctx = new SkipWhitespaceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, JavadocParser.RULE_skipWhitespace);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 97;
 	        _la = this._input.LA(1);
-	        if(!(_la===JavadocParser.NEWLINE || _la===JavadocParser.SPACE)) {
+	        if(!(_la===2 || _la===3)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -334,7 +330,7 @@ export default class JavadocParser extends antlr4.Parser {
 	description() {
 	    let localctx = new DescriptionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, JavadocParser.RULE_description);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 99;
@@ -353,7 +349,7 @@ export default class JavadocParser extends antlr4.Parser {
 	                    this.state = 103; 
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                } while(_la===JavadocParser.NEWLINE);
+	                } while(_la===2);
 	                this.state = 105;
 	                this.descriptionLine(); 
 	            }
@@ -385,13 +381,13 @@ export default class JavadocParser extends antlr4.Parser {
 	        this.state = 126;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case JavadocParser.NAME:
-	        case JavadocParser.SPACE:
-	        case JavadocParser.TEXT_CONTENT:
-	        case JavadocParser.STAR:
-	        case JavadocParser.SLASH:
-	        case JavadocParser.BRACE_OPEN:
-	        case JavadocParser.BRACE_CLOSE:
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 6:
+	        case 7:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 112;
 	            this.descriptionLineStart();
@@ -409,7 +405,7 @@ export default class JavadocParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case JavadocParser.INLINE_TAG_START:
+	        case 10:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 119;
 	            this.inlineTag();
@@ -449,13 +445,13 @@ export default class JavadocParser extends antlr4.Parser {
 	descriptionLineStart() {
 	    let localctx = new DescriptionLineStartContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, JavadocParser.RULE_descriptionLineStart);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 129;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===JavadocParser.SPACE) {
+	        if(_la===3) {
 	            this.state = 128;
 	            this.match(JavadocParser.SPACE);
 	        }
@@ -484,20 +480,20 @@ export default class JavadocParser extends antlr4.Parser {
 	                this.state = 139;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case JavadocParser.NAME:
-	                case JavadocParser.TEXT_CONTENT:
-	                case JavadocParser.STAR:
-	                case JavadocParser.SLASH:
-	                case JavadocParser.BRACE_OPEN:
-	                case JavadocParser.BRACE_CLOSE:
+	                case 1:
+	                case 4:
+	                case 6:
+	                case 7:
+	                case 11:
+	                case 12:
 	                    this.state = 136;
 	                    this.descriptionLineNoSpaceNoAt();
 	                    break;
-	                case JavadocParser.SPACE:
+	                case 3:
 	                    this.state = 137;
 	                    this.match(JavadocParser.SPACE);
 	                    break;
-	                case JavadocParser.AT:
+	                case 5:
 	                    this.state = 138;
 	                    this.match(JavadocParser.AT);
 	                    break;
@@ -529,12 +525,12 @@ export default class JavadocParser extends antlr4.Parser {
 	descriptionLineNoSpaceNoAt() {
 	    let localctx = new DescriptionLineNoSpaceNoAtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, JavadocParser.RULE_descriptionLineNoSpaceNoAt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 144;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JavadocParser.NAME) | (1 << JavadocParser.TEXT_CONTENT) | (1 << JavadocParser.STAR) | (1 << JavadocParser.SLASH) | (1 << JavadocParser.BRACE_OPEN) | (1 << JavadocParser.BRACE_CLOSE))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 6354) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -564,19 +560,19 @@ export default class JavadocParser extends antlr4.Parser {
 	        this.state = 148;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case JavadocParser.INLINE_TAG_START:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 146;
 	            this.inlineTag();
 	            break;
-	        case JavadocParser.NAME:
-	        case JavadocParser.SPACE:
-	        case JavadocParser.TEXT_CONTENT:
-	        case JavadocParser.AT:
-	        case JavadocParser.STAR:
-	        case JavadocParser.SLASH:
-	        case JavadocParser.BRACE_OPEN:
-	        case JavadocParser.BRACE_CLOSE:
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 147;
 	            this.descriptionLineText();
@@ -614,20 +610,20 @@ export default class JavadocParser extends antlr4.Parser {
 	        		this.state = 153;
 	        		this._errHandler.sync(this);
 	        		switch(this._input.LA(1)) {
-	        		case JavadocParser.NAME:
-	        		case JavadocParser.TEXT_CONTENT:
-	        		case JavadocParser.STAR:
-	        		case JavadocParser.SLASH:
-	        		case JavadocParser.BRACE_OPEN:
-	        		case JavadocParser.BRACE_CLOSE:
+	        		case 1:
+	        		case 4:
+	        		case 6:
+	        		case 7:
+	        		case 11:
+	        		case 12:
 	        		    this.state = 150;
 	        		    this.descriptionLineNoSpaceNoAt();
 	        		    break;
-	        		case JavadocParser.SPACE:
+	        		case 3:
 	        		    this.state = 151;
 	        		    this.match(JavadocParser.SPACE);
 	        		    break;
-	        		case JavadocParser.AT:
+	        		case 5:
 	        		    this.state = 152;
 	        		    this.match(JavadocParser.AT);
 	        		    break;
@@ -684,7 +680,7 @@ export default class JavadocParser extends antlr4.Parser {
 	tagSection() {
 	    let localctx = new TagSectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, JavadocParser.RULE_tagSection);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 160; 
@@ -696,7 +692,7 @@ export default class JavadocParser extends antlr4.Parser {
 	            this.state = 162; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===JavadocParser.SPACE || _la===JavadocParser.AT);
+	        } while(_la===3 || _la===5);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -716,13 +712,13 @@ export default class JavadocParser extends antlr4.Parser {
 	blockTag() {
 	    let localctx = new BlockTagContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, JavadocParser.RULE_blockTag);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 165;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===JavadocParser.SPACE) {
+	        if(_la===3) {
 	            this.state = 164;
 	            this.match(JavadocParser.SPACE);
 	        }
@@ -798,23 +794,23 @@ export default class JavadocParser extends antlr4.Parser {
 	        this.state = 183;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case JavadocParser.NAME:
-	        case JavadocParser.SPACE:
-	        case JavadocParser.TEXT_CONTENT:
-	        case JavadocParser.STAR:
-	        case JavadocParser.SLASH:
-	        case JavadocParser.BRACE_OPEN:
-	        case JavadocParser.BRACE_CLOSE:
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 6:
+	        case 7:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 180;
 	            this.blockTagText();
 	            break;
-	        case JavadocParser.INLINE_TAG_START:
+	        case 10:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 181;
 	            this.inlineTag();
 	            break;
-	        case JavadocParser.NEWLINE:
+	        case 2:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 182;
 	            this.match(JavadocParser.NEWLINE);
@@ -878,12 +874,12 @@ export default class JavadocParser extends antlr4.Parser {
 	blockTagTextElement() {
 	    let localctx = new BlockTagTextElementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, JavadocParser.RULE_blockTagTextElement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 190;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JavadocParser.NAME) | (1 << JavadocParser.SPACE) | (1 << JavadocParser.TEXT_CONTENT) | (1 << JavadocParser.STAR) | (1 << JavadocParser.SLASH) | (1 << JavadocParser.BRACE_OPEN) | (1 << JavadocParser.BRACE_CLOSE))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 6362) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -909,7 +905,7 @@ export default class JavadocParser extends antlr4.Parser {
 	inlineTag() {
 	    let localctx = new InlineTagContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, JavadocParser.RULE_inlineTag);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 192;
@@ -932,7 +928,7 @@ export default class JavadocParser extends antlr4.Parser {
 	        this.state = 201;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JavadocParser.NAME) | (1 << JavadocParser.NEWLINE) | (1 << JavadocParser.SPACE) | (1 << JavadocParser.TEXT_CONTENT) | (1 << JavadocParser.STAR) | (1 << JavadocParser.SLASH) | (1 << JavadocParser.BRACE_OPEN))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2270) !== 0)) {
 	            this.state = 200;
 	            this.inlineTagContent();
 	        }
@@ -981,7 +977,7 @@ export default class JavadocParser extends antlr4.Parser {
 	inlineTagContent() {
 	    let localctx = new InlineTagContentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, JavadocParser.RULE_inlineTagContent);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 208; 
@@ -993,7 +989,7 @@ export default class JavadocParser extends antlr4.Parser {
 	            this.state = 210; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JavadocParser.NAME) | (1 << JavadocParser.NEWLINE) | (1 << JavadocParser.SPACE) | (1 << JavadocParser.TEXT_CONTENT) | (1 << JavadocParser.STAR) | (1 << JavadocParser.SLASH) | (1 << JavadocParser.BRACE_OPEN))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2270) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1013,7 +1009,7 @@ export default class JavadocParser extends antlr4.Parser {
 	braceExpression() {
 	    let localctx = new BraceExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, JavadocParser.RULE_braceExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 212;
@@ -1021,7 +1017,7 @@ export default class JavadocParser extends antlr4.Parser {
 	        this.state = 216;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JavadocParser.NAME) | (1 << JavadocParser.NEWLINE) | (1 << JavadocParser.SPACE) | (1 << JavadocParser.TEXT_CONTENT) | (1 << JavadocParser.STAR) | (1 << JavadocParser.SLASH) | (1 << JavadocParser.BRACE_OPEN))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2270) !== 0)) {
 	            this.state = 213;
 	            this.braceContent();
 	            this.state = 218;
@@ -1053,17 +1049,17 @@ export default class JavadocParser extends antlr4.Parser {
 	        this.state = 235;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case JavadocParser.BRACE_OPEN:
+	        case 11:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 221;
 	            this.braceExpression();
 	            break;
-	        case JavadocParser.NAME:
-	        case JavadocParser.NEWLINE:
-	        case JavadocParser.SPACE:
-	        case JavadocParser.TEXT_CONTENT:
-	        case JavadocParser.STAR:
-	        case JavadocParser.SLASH:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 222;
 	            this.braceText();
@@ -1116,12 +1112,12 @@ export default class JavadocParser extends antlr4.Parser {
 	braceText() {
 	    let localctx = new BraceTextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, JavadocParser.RULE_braceText);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 237;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << JavadocParser.NAME) | (1 << JavadocParser.NEWLINE) | (1 << JavadocParser.SPACE) | (1 << JavadocParser.TEXT_CONTENT) | (1 << JavadocParser.STAR) | (1 << JavadocParser.SLASH))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 222) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2310,3 +2306,12 @@ JavadocParser.InlineTagContentContext = InlineTagContentContext;
 JavadocParser.BraceExpressionContext = BraceExpressionContext; 
 JavadocParser.BraceContentContext = BraceContentContext; 
 JavadocParser.BraceTextContext = BraceTextContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./fol/fol.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/fol/fol.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import folListener from './folListener.js';
@@ -70,10 +70,6 @@ export default class folParser extends antlr4.Parser {
         this.symbolicNames = folParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 1:
@@ -98,7 +94,7 @@ export default class folParser extends antlr4.Parser {
 	condition() {
 	    let localctx = new ConditionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, folParser.RULE_condition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 18;
@@ -121,7 +117,7 @@ export default class folParser extends antlr4.Parser {
 	        this.state = 29;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===folParser.ENDLINE) {
+	        while(_la===17) {
 	            this.state = 26;
 	            this.match(folParser.ENDLINE);
 	            this.state = 31;
@@ -155,7 +151,7 @@ export default class folParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 2;
 	    this.enterRecursionRule(localctx, 2, folParser.RULE_formula, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 71;
@@ -216,7 +212,7 @@ export default class folParser extends antlr4.Parser {
 	            this.state = 62;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===folParser.T__4) {
+	            while(_la===5) {
 	                this.state = 57;
 	                this.separator();
 	                this.state = 58;
@@ -284,22 +280,22 @@ export default class folParser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, folParser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 97;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case folParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 82;
 	            this.ind_constant();
 	            break;
-	        case folParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 83;
 	            this.variable();
 	            break;
-	        case folParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 84;
 	            this.func_constant();
@@ -310,7 +306,7 @@ export default class folParser extends antlr4.Parser {
 	            this.state = 92;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===folParser.T__4) {
+	            while(_la===5) {
 	                this.state = 87;
 	                this.separator();
 	                this.state = 88;
@@ -344,12 +340,12 @@ export default class folParser extends antlr4.Parser {
 	bin_connective() {
 	    let localctx = new Bin_connectiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, folParser.RULE_bin_connective);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 99;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << folParser.CONJ) | (1 << folParser.DISJ) | (1 << folParser.IMPL) | (1 << folParser.BICOND))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 122880) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -411,7 +407,7 @@ export default class folParser extends antlr4.Parser {
 	pred_constant() {
 	    let localctx = new Pred_constantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, folParser.RULE_pred_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 108;
@@ -419,7 +415,7 @@ export default class folParser extends antlr4.Parser {
 	        this.state = 112;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===folParser.CHARACTER) {
+	        while(_la===12) {
 	            this.state = 109;
 	            this.match(folParser.CHARACTER);
 	            this.state = 114;
@@ -481,7 +477,7 @@ export default class folParser extends antlr4.Parser {
 	func_constant() {
 	    let localctx = new Func_constantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, folParser.RULE_func_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 122;
@@ -489,7 +485,7 @@ export default class folParser extends antlr4.Parser {
 	        this.state = 126;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===folParser.CHARACTER) {
+	        while(_la===12) {
 	            this.state = 123;
 	            this.match(folParser.CHARACTER);
 	            this.state = 128;
@@ -1058,3 +1054,12 @@ folParser.Pred_constantContext = Pred_constantContext;
 folParser.Ind_constantContext = Ind_constantContext; 
 folParser.Func_constantContext = Func_constantContext; 
 folParser.SeparatorContext = SeparatorContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

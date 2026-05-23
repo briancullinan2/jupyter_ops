@@ -1,4 +1,4 @@
-// Generated from ./tinyos_nesc/TinyosParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/tinyos_nesc/TinyosParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import TinyosParserListener from './TinyosParserListener.js';
@@ -425,10 +425,6 @@ export default class TinyosParser extends antlr4.Parser {
         this.symbolicNames = TinyosParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 51:
@@ -465,7 +461,7 @@ export default class TinyosParser extends antlr4.Parser {
 	compilationUnit() {
 	    let localctx = new CompilationUnitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, TinyosParser.RULE_compilationUnit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 161;
@@ -492,7 +488,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 170;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TinyosParser.HASHTAG) {
+	        while(_la===76) {
 	            this.state = 167;
 	            this.includeDeclarationConfiguration();
 	            this.state = 172;
@@ -603,12 +599,12 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 188;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TinyosParser.MODULE:
+	        case 38:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 186;
 	            this.moduleDeclaration();
 	            break;
-	        case TinyosParser.COFIGURATION:
+	        case 10:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 187;
 	            this.configurationDeclaration();
@@ -660,7 +656,7 @@ export default class TinyosParser extends antlr4.Parser {
 	moduleSignature() {
 	    let localctx = new ModuleSignatureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, TinyosParser.RULE_moduleSignature);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 193;
@@ -670,7 +666,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 196;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TinyosParser.OPAR) {
+	        if(_la===80) {
 	            this.state = 195;
 	            this.match(TinyosParser.OPAR);
 	        }
@@ -678,7 +674,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 199;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TinyosParser.CPAR) {
+	        if(_la===81) {
 	            this.state = 198;
 	            this.match(TinyosParser.CPAR);
 	        }
@@ -727,7 +723,7 @@ export default class TinyosParser extends antlr4.Parser {
 	moduleSignatureBody() {
 	    let localctx = new ModuleSignatureBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, TinyosParser.RULE_moduleSignatureBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 205;
@@ -735,7 +731,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 209;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TinyosParser.PROVIDES || _la===TinyosParser.USES) {
+	        while(_la===41 || _la===49) {
 	            this.state = 206;
 	            this.usesOrProvides();
 	            this.state = 211;
@@ -767,12 +763,12 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 216;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TinyosParser.USES:
+	        case 49:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 214;
 	            this.usesState();
 	            break;
-	        case TinyosParser.PROVIDES:
+	        case 41:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 215;
 	            this.providesState();
@@ -799,7 +795,7 @@ export default class TinyosParser extends antlr4.Parser {
 	usesState() {
 	    let localctx = new UsesStateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, TinyosParser.RULE_usesState);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 239;
 	        this._errHandler.sync(this);
@@ -814,7 +810,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 223;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TinyosParser.ABSTRACT) | (1 << TinyosParser.AS) | (1 << TinyosParser.ATOMIC) | (1 << TinyosParser.BREAK) | (1 << TinyosParser.CALL) | (1 << TinyosParser.ERROR) | (1 << TinyosParser.FALSE))) !== 0) || ((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (TinyosParser.NEW - 39)) | (1 << (TinyosParser.POST - 39)) | (1 << (TinyosParser.RETURN - 39)) | (1 << (TinyosParser.TRUE - 39)) | (1 << (TinyosParser.VOID - 39)) | (1 << (TinyosParser.GT - 39)) | (1 << (TinyosParser.LT - 39)) | (1 << (TinyosParser.MULT - 39)) | (1 << (TinyosParser.ASSIGN - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (TinyosParser.INC - 72)) | (1 << (TinyosParser.DEC - 72)) | (1 << (TinyosParser.BITAND - 72)) | (1 << (TinyosParser.OBRACK - 72)) | (1 << (TinyosParser.CBRACK - 72)) | (1 << (TinyosParser.OPAR - 72)) | (1 << (TinyosParser.CPAR - 72)) | (1 << (TinyosParser.FORWARDARROW - 72)) | (1 << (TinyosParser.BACKARROW - 72)) | (1 << (TinyosParser.COLONCOLON - 72)) | (1 << (TinyosParser.AT - 72)) | (1 << (TinyosParser.COMMA - 72)) | (1 << (TinyosParser.DOT - 72)) | (1 << (TinyosParser.ID - 72)) | (1 << (TinyosParser.INT - 72)) | (1 << (TinyosParser.FLOAT - 72)) | (1 << (TinyosParser.STRING - 72)) | (1 << (TinyosParser.OTHER - 72)) | (1 << (TinyosParser.HEX - 72)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 201326806) !== 0) || ((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 554437131) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 209449927) !== 0)) {
 	                this.state = 220;
 	                this.usesInterfaceDescription();
 	                this.state = 225;
@@ -834,7 +830,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 235;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===TinyosParser.INTERFACE) {
+	            while(_la===35) {
 	                this.state = 229;
 	                this.match(TinyosParser.INTERFACE);
 	                this.state = 230;
@@ -869,7 +865,7 @@ export default class TinyosParser extends antlr4.Parser {
 	providesState() {
 	    let localctx = new ProvidesStateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, TinyosParser.RULE_providesState);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 262;
 	        this._errHandler.sync(this);
@@ -884,7 +880,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 246;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TinyosParser.ABSTRACT) | (1 << TinyosParser.AS) | (1 << TinyosParser.ATOMIC) | (1 << TinyosParser.BREAK) | (1 << TinyosParser.CALL) | (1 << TinyosParser.ERROR) | (1 << TinyosParser.FALSE))) !== 0) || ((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (TinyosParser.NEW - 39)) | (1 << (TinyosParser.POST - 39)) | (1 << (TinyosParser.RETURN - 39)) | (1 << (TinyosParser.TRUE - 39)) | (1 << (TinyosParser.VOID - 39)) | (1 << (TinyosParser.GT - 39)) | (1 << (TinyosParser.LT - 39)) | (1 << (TinyosParser.MULT - 39)) | (1 << (TinyosParser.ASSIGN - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (TinyosParser.INC - 72)) | (1 << (TinyosParser.DEC - 72)) | (1 << (TinyosParser.BITAND - 72)) | (1 << (TinyosParser.OBRACK - 72)) | (1 << (TinyosParser.CBRACK - 72)) | (1 << (TinyosParser.OPAR - 72)) | (1 << (TinyosParser.CPAR - 72)) | (1 << (TinyosParser.FORWARDARROW - 72)) | (1 << (TinyosParser.BACKARROW - 72)) | (1 << (TinyosParser.COLONCOLON - 72)) | (1 << (TinyosParser.AT - 72)) | (1 << (TinyosParser.COMMA - 72)) | (1 << (TinyosParser.DOT - 72)) | (1 << (TinyosParser.ID - 72)) | (1 << (TinyosParser.INT - 72)) | (1 << (TinyosParser.FLOAT - 72)) | (1 << (TinyosParser.STRING - 72)) | (1 << (TinyosParser.OTHER - 72)) | (1 << (TinyosParser.HEX - 72)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 201326806) !== 0) || ((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 554437131) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 209449927) !== 0)) {
 	                this.state = 243;
 	                this.providesInterfaceDescription();
 	                this.state = 248;
@@ -904,7 +900,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 258;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===TinyosParser.INTERFACE) {
+	            while(_la===35) {
 	                this.state = 252;
 	                this.match(TinyosParser.INTERFACE);
 	                this.state = 253;
@@ -1115,13 +1111,13 @@ export default class TinyosParser extends antlr4.Parser {
 	block() {
 	    let localctx = new BlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, TinyosParser.RULE_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 288;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TinyosParser.ABSTRACT) | (1 << TinyosParser.AS) | (1 << TinyosParser.ATOMIC) | (1 << TinyosParser.BREAK) | (1 << TinyosParser.CALL) | (1 << TinyosParser.ENUM) | (1 << TinyosParser.EVENT) | (1 << TinyosParser.ERROR) | (1 << TinyosParser.FALSE) | (1 << TinyosParser.FOR) | (1 << TinyosParser.IF))) !== 0) || ((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (TinyosParser.NEW - 39)) | (1 << (TinyosParser.POST - 39)) | (1 << (TinyosParser.RETURN - 39)) | (1 << (TinyosParser.STATIC - 39)) | (1 << (TinyosParser.SWITCH - 39)) | (1 << (TinyosParser.TASK - 39)) | (1 << (TinyosParser.TRUE - 39)) | (1 << (TinyosParser.VOID - 39)) | (1 << (TinyosParser.WHILE - 39)) | (1 << (TinyosParser.TYPEDEF - 39)) | (1 << (TinyosParser.GT - 39)) | (1 << (TinyosParser.LT - 39)) | (1 << (TinyosParser.MINUS - 39)) | (1 << (TinyosParser.MULT - 39)) | (1 << (TinyosParser.NOT - 39)) | (1 << (TinyosParser.ASSIGN - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (TinyosParser.INC - 72)) | (1 << (TinyosParser.DEC - 72)) | (1 << (TinyosParser.BITAND - 72)) | (1 << (TinyosParser.HASHTAG - 72)) | (1 << (TinyosParser.OBRACK - 72)) | (1 << (TinyosParser.CBRACK - 72)) | (1 << (TinyosParser.OPAR - 72)) | (1 << (TinyosParser.CPAR - 72)) | (1 << (TinyosParser.OBRACE - 72)) | (1 << (TinyosParser.FORWARDARROW - 72)) | (1 << (TinyosParser.BACKARROW - 72)) | (1 << (TinyosParser.COLONCOLON - 72)) | (1 << (TinyosParser.AT - 72)) | (1 << (TinyosParser.COMMA - 72)) | (1 << (TinyosParser.DOT - 72)) | (1 << (TinyosParser.ID - 72)) | (1 << (TinyosParser.INT - 72)) | (1 << (TinyosParser.FLOAT - 72)) | (1 << (TinyosParser.STRING - 72)) | (1 << (TinyosParser.OTHER - 72)) | (1 << (TinyosParser.HEX - 72)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2891972822) !== 0) || ((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 831273931) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 209450967) !== 0)) {
 	            this.state = 285;
 	            this.stat();
 	            this.state = 290;
@@ -1240,7 +1236,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 15);
 	            this.state = 305;
 	            localctx._OTHER = this.match(TinyosParser.OTHER);
-	            System.err.println("unknown char: " + (localctx._OTHER===null ? null : localctx._OTHER.text));
+	            System.err.println("unknown char: " + (localctx._OTHER == null ? null : localctx._OTHER.text));
 	            break;
 
 	        }
@@ -1263,7 +1259,7 @@ export default class TinyosParser extends antlr4.Parser {
 	packet_define() {
 	    let localctx = new Packet_defineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, TinyosParser.RULE_packet_define);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 309;
@@ -1277,7 +1273,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 316;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TinyosParser.ABSTRACT) | (1 << TinyosParser.AS) | (1 << TinyosParser.ATOMIC) | (1 << TinyosParser.BREAK) | (1 << TinyosParser.CALL) | (1 << TinyosParser.ERROR) | (1 << TinyosParser.FALSE))) !== 0) || ((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (TinyosParser.NEW - 39)) | (1 << (TinyosParser.POST - 39)) | (1 << (TinyosParser.RETURN - 39)) | (1 << (TinyosParser.TRUE - 39)) | (1 << (TinyosParser.VOID - 39)) | (1 << (TinyosParser.GT - 39)) | (1 << (TinyosParser.LT - 39)) | (1 << (TinyosParser.MINUS - 39)) | (1 << (TinyosParser.MULT - 39)) | (1 << (TinyosParser.NOT - 39)) | (1 << (TinyosParser.ASSIGN - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (TinyosParser.INC - 72)) | (1 << (TinyosParser.DEC - 72)) | (1 << (TinyosParser.BITAND - 72)) | (1 << (TinyosParser.OBRACK - 72)) | (1 << (TinyosParser.CBRACK - 72)) | (1 << (TinyosParser.OPAR - 72)) | (1 << (TinyosParser.CPAR - 72)) | (1 << (TinyosParser.OBRACE - 72)) | (1 << (TinyosParser.FORWARDARROW - 72)) | (1 << (TinyosParser.BACKARROW - 72)) | (1 << (TinyosParser.COLONCOLON - 72)) | (1 << (TinyosParser.AT - 72)) | (1 << (TinyosParser.COMMA - 72)) | (1 << (TinyosParser.DOT - 72)) | (1 << (TinyosParser.ID - 72)) | (1 << (TinyosParser.INT - 72)) | (1 << (TinyosParser.FLOAT - 72)) | (1 << (TinyosParser.STRING - 72)) | (1 << (TinyosParser.OTHER - 72)) | (1 << (TinyosParser.HEX - 72)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 201326806) !== 0) || ((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 831261195) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 209450951) !== 0)) {
 	            this.state = 313;
 	            this.statement();
 	            this.state = 318;
@@ -1307,7 +1303,7 @@ export default class TinyosParser extends antlr4.Parser {
 	call_stat() {
 	    let localctx = new Call_statContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, TinyosParser.RULE_call_stat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 322;
@@ -1319,7 +1315,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 326;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TinyosParser.SCOL) {
+	        if(_la===77) {
 	            this.state = 325;
 	            this.match(TinyosParser.SCOL);
 	        }
@@ -1413,7 +1409,7 @@ export default class TinyosParser extends antlr4.Parser {
 	statement() {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, TinyosParser.RULE_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 350;
 	        this._errHandler.sync(this);
@@ -1426,7 +1422,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 345;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.SCOL) {
+	            if(_la===77) {
 	                this.state = 344;
 	                this.match(TinyosParser.SCOL);
 	            }
@@ -1741,7 +1737,7 @@ export default class TinyosParser extends antlr4.Parser {
 	task_condition_block() {
 	    let localctx = new Task_condition_blockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, TinyosParser.RULE_task_condition_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 432;
@@ -1759,7 +1755,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 438;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TinyosParser.SCOL) {
+	        if(_la===77) {
 	            this.state = 437;
 	            this.match(TinyosParser.SCOL);
 	        }
@@ -1920,7 +1916,7 @@ export default class TinyosParser extends antlr4.Parser {
 	static_condition_block() {
 	    let localctx = new Static_condition_blockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, TinyosParser.RULE_static_condition_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 479;
@@ -1938,7 +1934,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 485;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TinyosParser.SCOL) {
+	        if(_la===77) {
 	            this.state = 484;
 	            this.match(TinyosParser.SCOL);
 	        }
@@ -2153,7 +2149,7 @@ export default class TinyosParser extends antlr4.Parser {
 	enum_stat() {
 	    let localctx = new Enum_statContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, TinyosParser.RULE_enum_stat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 533;
@@ -2163,7 +2159,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 541;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TinyosParser.ABSTRACT) | (1 << TinyosParser.AS) | (1 << TinyosParser.ATOMIC) | (1 << TinyosParser.BREAK) | (1 << TinyosParser.CALL) | (1 << TinyosParser.ERROR) | (1 << TinyosParser.FALSE))) !== 0) || ((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (TinyosParser.NEW - 39)) | (1 << (TinyosParser.POST - 39)) | (1 << (TinyosParser.RETURN - 39)) | (1 << (TinyosParser.TRUE - 39)) | (1 << (TinyosParser.VOID - 39)) | (1 << (TinyosParser.GT - 39)) | (1 << (TinyosParser.LT - 39)) | (1 << (TinyosParser.MINUS - 39)) | (1 << (TinyosParser.MULT - 39)) | (1 << (TinyosParser.NOT - 39)) | (1 << (TinyosParser.ASSIGN - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (TinyosParser.INC - 72)) | (1 << (TinyosParser.DEC - 72)) | (1 << (TinyosParser.BITAND - 72)) | (1 << (TinyosParser.OBRACK - 72)) | (1 << (TinyosParser.CBRACK - 72)) | (1 << (TinyosParser.OPAR - 72)) | (1 << (TinyosParser.CPAR - 72)) | (1 << (TinyosParser.OBRACE - 72)) | (1 << (TinyosParser.FORWARDARROW - 72)) | (1 << (TinyosParser.BACKARROW - 72)) | (1 << (TinyosParser.COLONCOLON - 72)) | (1 << (TinyosParser.AT - 72)) | (1 << (TinyosParser.COMMA - 72)) | (1 << (TinyosParser.DOT - 72)) | (1 << (TinyosParser.ID - 72)) | (1 << (TinyosParser.INT - 72)) | (1 << (TinyosParser.FLOAT - 72)) | (1 << (TinyosParser.STRING - 72)) | (1 << (TinyosParser.OTHER - 72)) | (1 << (TinyosParser.HEX - 72)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 201326806) !== 0) || ((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 831261195) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 209450951) !== 0)) {
 	            this.state = 535;
 	            this.expr(0);
 	            this.state = 537;
@@ -2509,7 +2505,7 @@ export default class TinyosParser extends antlr4.Parser {
 	for_stat() {
 	    let localctx = new For_statContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, TinyosParser.RULE_for_stat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 617;
@@ -2540,7 +2536,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        		this.state = 624;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		if(_la===TinyosParser.SCOL) {
+	        		if(_la===77) {
 	        		    this.state = 623;
 	        		    this.match(TinyosParser.SCOL);
 	        		}
@@ -2617,7 +2613,7 @@ export default class TinyosParser extends antlr4.Parser {
 	switch_stat() {
 	    let localctx = new Switch_statContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, TinyosParser.RULE_switch_stat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 640;
@@ -2629,7 +2625,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 646;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TinyosParser.CASE || _la===TinyosParser.DEFAULT) {
+	        while(_la===8 || _la===19) {
 	            this.state = 643;
 	            this.switch_stat_block();
 	            this.state = 648;
@@ -2706,7 +2702,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 686;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TinyosParser.CASE:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 661;
 	            this.match(TinyosParser.CASE);
@@ -2745,7 +2741,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 674;
 	            this.match(TinyosParser.SCOL);
 	            break;
-	        case TinyosParser.DEFAULT:
+	        case 19:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 676;
 	            this.match(TinyosParser.DEFAULT);
@@ -2899,7 +2895,7 @@ export default class TinyosParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 102;
 	    this.enterRecursionRule(localctx, 102, TinyosParser.RULE_expr, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 720;
@@ -3002,7 +2998,7 @@ export default class TinyosParser extends antlr4.Parser {
 	                    this.state = 726;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 63)) & ~0x1f) == 0 && ((1 << (_la - 63)) & ((1 << (TinyosParser.MULT - 63)) | (1 << (TinyosParser.DIV - 63)) | (1 << (TinyosParser.MOD - 63)))) !== 0))) {
+	                    if(!(((((_la - 63)) & ~0x1f) === 0 && ((1 << (_la - 63)) & 7) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3023,7 +3019,7 @@ export default class TinyosParser extends antlr4.Parser {
 	                    this.state = 729;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 61)) & ~0x1f) == 0 && ((1 << (_la - 61)) & ((1 << (TinyosParser.PLUS - 61)) | (1 << (TinyosParser.MINUS - 61)) | (1 << (TinyosParser.ASSIGN - 61)))) !== 0))) {
+	                    if(!(((((_la - 61)) & ~0x1f) === 0 && ((1 << (_la - 61)) & 131) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3044,7 +3040,7 @@ export default class TinyosParser extends antlr4.Parser {
 	                    this.state = 732;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (TinyosParser.GT - 57)) | (1 << (TinyosParser.LT - 57)) | (1 << (TinyosParser.GTEQ - 57)) | (1 << (TinyosParser.LTEQ - 57)))) !== 0))) {
+	                    if(!(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 15) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3065,7 +3061,7 @@ export default class TinyosParser extends antlr4.Parser {
 	                    this.state = 735;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===TinyosParser.EQ || _la===TinyosParser.NEQ)) {
+	                    if(!(_la===55 || _la===56)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3128,30 +3124,30 @@ export default class TinyosParser extends antlr4.Parser {
 	atom() {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, TinyosParser.RULE_atom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 753;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TinyosParser.STRING:
+	        case 94:
 	            localctx = new StringAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 748;
 	            this.match(TinyosParser.STRING);
 	            break;
-	        case TinyosParser.ID:
+	        case 91:
 	            localctx = new IdAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 749;
 	            this.match(TinyosParser.ID);
 	            break;
-	        case TinyosParser.INT:
-	        case TinyosParser.FLOAT:
+	        case 92:
+	        case 93:
 	            localctx = new NumberAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 750;
 	            _la = this._input.LA(1);
-	            if(!(_la===TinyosParser.INT || _la===TinyosParser.FLOAT)) {
+	            if(!(_la===92 || _la===93)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3159,13 +3155,13 @@ export default class TinyosParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case TinyosParser.FALSE:
-	        case TinyosParser.TRUE:
+	        case 27:
+	        case 48:
 	            localctx = new BooleanAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 751;
 	            _la = this._input.LA(1);
-	            if(!(_la===TinyosParser.FALSE || _la===TinyosParser.TRUE)) {
+	            if(!(_la===27 || _la===48)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3173,7 +3169,7 @@ export default class TinyosParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case TinyosParser.HEX:
+	        case 99:
 	            localctx = new HexadecimalAtomContext(this, localctx);
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 752;
@@ -3225,7 +3221,7 @@ export default class TinyosParser extends antlr4.Parser {
 	singleDoubleArray() {
 	    let localctx = new SingleDoubleArrayContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, TinyosParser.RULE_singleDoubleArray);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 757;
@@ -3233,7 +3229,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 761;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TinyosParser.FALSE || _la===TinyosParser.TRUE || ((((_la - 82)) & ~0x1f) == 0 && ((1 << (_la - 82)) & ((1 << (TinyosParser.OBRACE - 82)) | (1 << (TinyosParser.ID - 82)) | (1 << (TinyosParser.INT - 82)) | (1 << (TinyosParser.FLOAT - 82)) | (1 << (TinyosParser.STRING - 82)) | (1 << (TinyosParser.HEX - 82)))) !== 0)) {
+	        while(_la===27 || _la===48 || ((((_la - 82)) & ~0x1f) === 0 && ((1 << (_la - 82)) & 138753) !== 0)) {
 	            this.state = 758;
 	            this.arrayElement();
 	            this.state = 763;
@@ -3261,31 +3257,31 @@ export default class TinyosParser extends antlr4.Parser {
 	arrayElement() {
 	    let localctx = new ArrayElementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, TinyosParser.RULE_arrayElement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 779;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TinyosParser.FALSE:
-	        case TinyosParser.TRUE:
-	        case TinyosParser.ID:
-	        case TinyosParser.INT:
-	        case TinyosParser.FLOAT:
-	        case TinyosParser.STRING:
-	        case TinyosParser.HEX:
+	        case 27:
+	        case 48:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 99:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 766;
 	            this.atom();
 	            this.state = 768;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.COMMA) {
+	            if(_la===88) {
 	                this.state = 767;
 	                this.match(TinyosParser.COMMA);
 	            }
 
 	            break;
-	        case TinyosParser.OBRACE:
+	        case 82:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 770;
 	            this.match(TinyosParser.OBRACE);
@@ -3300,7 +3296,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 777;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.COMMA) {
+	            if(_la===88) {
 	                this.state = 776;
 	                this.match(TinyosParser.COMMA);
 	            }
@@ -3328,12 +3324,12 @@ export default class TinyosParser extends antlr4.Parser {
 	chars() {
 	    let localctx = new CharsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, TinyosParser.RULE_chars);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 781;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (TinyosParser.GT - 57)) | (1 << (TinyosParser.LT - 57)) | (1 << (TinyosParser.MULT - 57)) | (1 << (TinyosParser.ASSIGN - 57)) | (1 << (TinyosParser.INC - 57)) | (1 << (TinyosParser.DEC - 57)) | (1 << (TinyosParser.BITAND - 57)) | (1 << (TinyosParser.OBRACK - 57)) | (1 << (TinyosParser.CBRACK - 57)) | (1 << (TinyosParser.OPAR - 57)) | (1 << (TinyosParser.CPAR - 57)) | (1 << (TinyosParser.FORWARDARROW - 57)) | (1 << (TinyosParser.BACKARROW - 57)) | (1 << (TinyosParser.COLONCOLON - 57)) | (1 << (TinyosParser.AT - 57)) | (1 << (TinyosParser.COMMA - 57)))) !== 0) || _la===TinyosParser.DOT)) {
+	        if(!(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 4192438339) !== 0) || _la===89)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3359,12 +3355,12 @@ export default class TinyosParser extends antlr4.Parser {
 	chars_no_comma() {
 	    let localctx = new Chars_no_commaContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, TinyosParser.RULE_chars_no_comma);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 783;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (TinyosParser.GT - 57)) | (1 << (TinyosParser.LT - 57)) | (1 << (TinyosParser.MULT - 57)) | (1 << (TinyosParser.ASSIGN - 57)) | (1 << (TinyosParser.INC - 57)) | (1 << (TinyosParser.DEC - 57)) | (1 << (TinyosParser.BITAND - 57)) | (1 << (TinyosParser.OBRACK - 57)) | (1 << (TinyosParser.CBRACK - 57)) | (1 << (TinyosParser.OPAR - 57)) | (1 << (TinyosParser.CPAR - 57)) | (1 << (TinyosParser.FORWARDARROW - 57)) | (1 << (TinyosParser.BACKARROW - 57)) | (1 << (TinyosParser.COLONCOLON - 57)) | (1 << (TinyosParser.AT - 57)))) !== 0) || _la===TinyosParser.DOT)) {
+	        if(!(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 2044954691) !== 0) || _la===89)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3390,12 +3386,12 @@ export default class TinyosParser extends antlr4.Parser {
 	reservedwords() {
 	    let localctx = new ReservedwordsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 116, TinyosParser.RULE_reservedwords);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 785;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TinyosParser.ABSTRACT) | (1 << TinyosParser.AS) | (1 << TinyosParser.ATOMIC) | (1 << TinyosParser.BREAK) | (1 << TinyosParser.CALL) | (1 << TinyosParser.ERROR))) !== 0) || ((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (TinyosParser.NEW - 39)) | (1 << (TinyosParser.POST - 39)) | (1 << (TinyosParser.RETURN - 39)) | (1 << (TinyosParser.VOID - 39)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 67109078) !== 0) || ((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 2059) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3431,37 +3427,37 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 790;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case TinyosParser.FALSE:
-	            case TinyosParser.TRUE:
-	            case TinyosParser.ID:
-	            case TinyosParser.INT:
-	            case TinyosParser.FLOAT:
-	            case TinyosParser.STRING:
-	            case TinyosParser.HEX:
+	            case 27:
+	            case 48:
+	            case 91:
+	            case 92:
+	            case 93:
+	            case 94:
+	            case 99:
 	                this.state = 787;
 	                this.atom();
 	                break;
-	            case TinyosParser.OTHER:
+	            case 98:
 	                this.state = 788;
 	                this.symbol();
 	                break;
-	            case TinyosParser.GT:
-	            case TinyosParser.LT:
-	            case TinyosParser.MULT:
-	            case TinyosParser.ASSIGN:
-	            case TinyosParser.INC:
-	            case TinyosParser.DEC:
-	            case TinyosParser.BITAND:
-	            case TinyosParser.OBRACK:
-	            case TinyosParser.CBRACK:
-	            case TinyosParser.OPAR:
-	            case TinyosParser.CPAR:
-	            case TinyosParser.FORWARDARROW:
-	            case TinyosParser.BACKARROW:
-	            case TinyosParser.COLONCOLON:
-	            case TinyosParser.AT:
-	            case TinyosParser.COMMA:
-	            case TinyosParser.DOT:
+	            case 57:
+	            case 58:
+	            case 63:
+	            case 68:
+	            case 72:
+	            case 73:
+	            case 74:
+	            case 78:
+	            case 79:
+	            case 80:
+	            case 81:
+	            case 84:
+	            case 85:
+	            case 86:
+	            case 87:
+	            case 88:
+	            case 89:
 	                this.state = 789;
 	                this.chars();
 	                break;
@@ -3484,37 +3480,37 @@ export default class TinyosParser extends antlr4.Parser {
 	                    this.state = 798;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case TinyosParser.FALSE:
-	                    case TinyosParser.TRUE:
-	                    case TinyosParser.ID:
-	                    case TinyosParser.INT:
-	                    case TinyosParser.FLOAT:
-	                    case TinyosParser.STRING:
-	                    case TinyosParser.HEX:
+	                    case 27:
+	                    case 48:
+	                    case 91:
+	                    case 92:
+	                    case 93:
+	                    case 94:
+	                    case 99:
 	                        this.state = 795;
 	                        this.atom();
 	                        break;
-	                    case TinyosParser.OTHER:
+	                    case 98:
 	                        this.state = 796;
 	                        this.symbol();
 	                        break;
-	                    case TinyosParser.GT:
-	                    case TinyosParser.LT:
-	                    case TinyosParser.MULT:
-	                    case TinyosParser.ASSIGN:
-	                    case TinyosParser.INC:
-	                    case TinyosParser.DEC:
-	                    case TinyosParser.BITAND:
-	                    case TinyosParser.OBRACK:
-	                    case TinyosParser.CBRACK:
-	                    case TinyosParser.OPAR:
-	                    case TinyosParser.CPAR:
-	                    case TinyosParser.FORWARDARROW:
-	                    case TinyosParser.BACKARROW:
-	                    case TinyosParser.COLONCOLON:
-	                    case TinyosParser.AT:
-	                    case TinyosParser.COMMA:
-	                    case TinyosParser.DOT:
+	                    case 57:
+	                    case 58:
+	                    case 63:
+	                    case 68:
+	                    case 72:
+	                    case 73:
+	                    case 74:
+	                    case 78:
+	                    case 79:
+	                    case 80:
+	                    case 81:
+	                    case 84:
+	                    case 85:
+	                    case 86:
+	                    case 87:
+	                    case 88:
+	                    case 89:
 	                        this.state = 797;
 	                        this.chars();
 	                        break;
@@ -3534,50 +3530,50 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 809;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case TinyosParser.FALSE:
-	            case TinyosParser.TRUE:
-	            case TinyosParser.ID:
-	            case TinyosParser.INT:
-	            case TinyosParser.FLOAT:
-	            case TinyosParser.STRING:
-	            case TinyosParser.HEX:
+	            case 27:
+	            case 48:
+	            case 91:
+	            case 92:
+	            case 93:
+	            case 94:
+	            case 99:
 	                this.state = 805;
 	                this.atom();
 	                break;
-	            case TinyosParser.OTHER:
+	            case 98:
 	                this.state = 806;
 	                this.symbol();
 	                break;
-	            case TinyosParser.GT:
-	            case TinyosParser.LT:
-	            case TinyosParser.MULT:
-	            case TinyosParser.ASSIGN:
-	            case TinyosParser.INC:
-	            case TinyosParser.DEC:
-	            case TinyosParser.BITAND:
-	            case TinyosParser.OBRACK:
-	            case TinyosParser.CBRACK:
-	            case TinyosParser.OPAR:
-	            case TinyosParser.CPAR:
-	            case TinyosParser.FORWARDARROW:
-	            case TinyosParser.BACKARROW:
-	            case TinyosParser.COLONCOLON:
-	            case TinyosParser.AT:
-	            case TinyosParser.COMMA:
-	            case TinyosParser.DOT:
+	            case 57:
+	            case 58:
+	            case 63:
+	            case 68:
+	            case 72:
+	            case 73:
+	            case 74:
+	            case 78:
+	            case 79:
+	            case 80:
+	            case 81:
+	            case 84:
+	            case 85:
+	            case 86:
+	            case 87:
+	            case 88:
+	            case 89:
 	                this.state = 807;
 	                this.chars();
 	                break;
-	            case TinyosParser.ABSTRACT:
-	            case TinyosParser.AS:
-	            case TinyosParser.ATOMIC:
-	            case TinyosParser.BREAK:
-	            case TinyosParser.CALL:
-	            case TinyosParser.ERROR:
-	            case TinyosParser.NEW:
-	            case TinyosParser.POST:
-	            case TinyosParser.RETURN:
-	            case TinyosParser.VOID:
+	            case 1:
+	            case 2:
+	            case 4:
+	            case 6:
+	            case 7:
+	            case 26:
+	            case 39:
+	            case 40:
+	            case 42:
+	            case 50:
 	                this.state = 808;
 	                this.reservedwords();
 	                break;
@@ -3592,50 +3588,50 @@ export default class TinyosParser extends antlr4.Parser {
 	                    this.state = 815;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case TinyosParser.FALSE:
-	                    case TinyosParser.TRUE:
-	                    case TinyosParser.ID:
-	                    case TinyosParser.INT:
-	                    case TinyosParser.FLOAT:
-	                    case TinyosParser.STRING:
-	                    case TinyosParser.HEX:
+	                    case 27:
+	                    case 48:
+	                    case 91:
+	                    case 92:
+	                    case 93:
+	                    case 94:
+	                    case 99:
 	                        this.state = 811;
 	                        this.atom();
 	                        break;
-	                    case TinyosParser.OTHER:
+	                    case 98:
 	                        this.state = 812;
 	                        this.symbol();
 	                        break;
-	                    case TinyosParser.GT:
-	                    case TinyosParser.LT:
-	                    case TinyosParser.MULT:
-	                    case TinyosParser.ASSIGN:
-	                    case TinyosParser.INC:
-	                    case TinyosParser.DEC:
-	                    case TinyosParser.BITAND:
-	                    case TinyosParser.OBRACK:
-	                    case TinyosParser.CBRACK:
-	                    case TinyosParser.OPAR:
-	                    case TinyosParser.CPAR:
-	                    case TinyosParser.FORWARDARROW:
-	                    case TinyosParser.BACKARROW:
-	                    case TinyosParser.COLONCOLON:
-	                    case TinyosParser.AT:
-	                    case TinyosParser.COMMA:
-	                    case TinyosParser.DOT:
+	                    case 57:
+	                    case 58:
+	                    case 63:
+	                    case 68:
+	                    case 72:
+	                    case 73:
+	                    case 74:
+	                    case 78:
+	                    case 79:
+	                    case 80:
+	                    case 81:
+	                    case 84:
+	                    case 85:
+	                    case 86:
+	                    case 87:
+	                    case 88:
+	                    case 89:
 	                        this.state = 813;
 	                        this.chars();
 	                        break;
-	                    case TinyosParser.ABSTRACT:
-	                    case TinyosParser.AS:
-	                    case TinyosParser.ATOMIC:
-	                    case TinyosParser.BREAK:
-	                    case TinyosParser.CALL:
-	                    case TinyosParser.ERROR:
-	                    case TinyosParser.NEW:
-	                    case TinyosParser.POST:
-	                    case TinyosParser.RETURN:
-	                    case TinyosParser.VOID:
+	                    case 1:
+	                    case 2:
+	                    case 4:
+	                    case 6:
+	                    case 7:
+	                    case 26:
+	                    case 39:
+	                    case 40:
+	                    case 42:
+	                    case 50:
 	                        this.state = 814;
 	                        this.reservedwords();
 	                        break;
@@ -3675,37 +3671,37 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 825;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TinyosParser.FALSE:
-	        case TinyosParser.TRUE:
-	        case TinyosParser.ID:
-	        case TinyosParser.INT:
-	        case TinyosParser.FLOAT:
-	        case TinyosParser.STRING:
-	        case TinyosParser.HEX:
+	        case 27:
+	        case 48:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 99:
 	            this.state = 822;
 	            this.atom();
 	            break;
-	        case TinyosParser.OTHER:
+	        case 98:
 	            this.state = 823;
 	            this.symbol();
 	            break;
-	        case TinyosParser.GT:
-	        case TinyosParser.LT:
-	        case TinyosParser.MULT:
-	        case TinyosParser.ASSIGN:
-	        case TinyosParser.INC:
-	        case TinyosParser.DEC:
-	        case TinyosParser.BITAND:
-	        case TinyosParser.OBRACK:
-	        case TinyosParser.CBRACK:
-	        case TinyosParser.OPAR:
-	        case TinyosParser.CPAR:
-	        case TinyosParser.FORWARDARROW:
-	        case TinyosParser.BACKARROW:
-	        case TinyosParser.COLONCOLON:
-	        case TinyosParser.AT:
-	        case TinyosParser.COMMA:
-	        case TinyosParser.DOT:
+	        case 57:
+	        case 58:
+	        case 63:
+	        case 68:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
 	            this.state = 824;
 	            this.chars();
 	            break;
@@ -3720,37 +3716,37 @@ export default class TinyosParser extends antlr4.Parser {
 	                this.state = 830;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case TinyosParser.FALSE:
-	                case TinyosParser.TRUE:
-	                case TinyosParser.ID:
-	                case TinyosParser.INT:
-	                case TinyosParser.FLOAT:
-	                case TinyosParser.STRING:
-	                case TinyosParser.HEX:
+	                case 27:
+	                case 48:
+	                case 91:
+	                case 92:
+	                case 93:
+	                case 94:
+	                case 99:
 	                    this.state = 827;
 	                    this.atom();
 	                    break;
-	                case TinyosParser.OTHER:
+	                case 98:
 	                    this.state = 828;
 	                    this.symbol();
 	                    break;
-	                case TinyosParser.GT:
-	                case TinyosParser.LT:
-	                case TinyosParser.MULT:
-	                case TinyosParser.ASSIGN:
-	                case TinyosParser.INC:
-	                case TinyosParser.DEC:
-	                case TinyosParser.BITAND:
-	                case TinyosParser.OBRACK:
-	                case TinyosParser.CBRACK:
-	                case TinyosParser.OPAR:
-	                case TinyosParser.CPAR:
-	                case TinyosParser.FORWARDARROW:
-	                case TinyosParser.BACKARROW:
-	                case TinyosParser.COLONCOLON:
-	                case TinyosParser.AT:
-	                case TinyosParser.COMMA:
-	                case TinyosParser.DOT:
+	                case 57:
+	                case 58:
+	                case 63:
+	                case 68:
+	                case 72:
+	                case 73:
+	                case 74:
+	                case 78:
+	                case 79:
+	                case 80:
+	                case 81:
+	                case 84:
+	                case 85:
+	                case 86:
+	                case 87:
+	                case 88:
+	                case 89:
 	                    this.state = 829;
 	                    this.chars();
 	                    break;
@@ -3787,50 +3783,50 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 839;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TinyosParser.FALSE:
-	        case TinyosParser.TRUE:
-	        case TinyosParser.ID:
-	        case TinyosParser.INT:
-	        case TinyosParser.FLOAT:
-	        case TinyosParser.STRING:
-	        case TinyosParser.HEX:
+	        case 27:
+	        case 48:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 99:
 	            this.state = 835;
 	            this.atom();
 	            break;
-	        case TinyosParser.OTHER:
+	        case 98:
 	            this.state = 836;
 	            this.symbol();
 	            break;
-	        case TinyosParser.GT:
-	        case TinyosParser.LT:
-	        case TinyosParser.MULT:
-	        case TinyosParser.ASSIGN:
-	        case TinyosParser.INC:
-	        case TinyosParser.DEC:
-	        case TinyosParser.BITAND:
-	        case TinyosParser.OBRACK:
-	        case TinyosParser.CBRACK:
-	        case TinyosParser.OPAR:
-	        case TinyosParser.CPAR:
-	        case TinyosParser.FORWARDARROW:
-	        case TinyosParser.BACKARROW:
-	        case TinyosParser.COLONCOLON:
-	        case TinyosParser.AT:
-	        case TinyosParser.COMMA:
-	        case TinyosParser.DOT:
+	        case 57:
+	        case 58:
+	        case 63:
+	        case 68:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
 	            this.state = 837;
 	            this.chars();
 	            break;
-	        case TinyosParser.ABSTRACT:
-	        case TinyosParser.AS:
-	        case TinyosParser.ATOMIC:
-	        case TinyosParser.BREAK:
-	        case TinyosParser.CALL:
-	        case TinyosParser.ERROR:
-	        case TinyosParser.NEW:
-	        case TinyosParser.POST:
-	        case TinyosParser.RETURN:
-	        case TinyosParser.VOID:
+	        case 1:
+	        case 2:
+	        case 4:
+	        case 6:
+	        case 7:
+	        case 26:
+	        case 39:
+	        case 40:
+	        case 42:
+	        case 50:
 	            this.state = 838;
 	            this.reservedwords();
 	            break;
@@ -3845,50 +3841,50 @@ export default class TinyosParser extends antlr4.Parser {
 	                this.state = 845;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case TinyosParser.FALSE:
-	                case TinyosParser.TRUE:
-	                case TinyosParser.ID:
-	                case TinyosParser.INT:
-	                case TinyosParser.FLOAT:
-	                case TinyosParser.STRING:
-	                case TinyosParser.HEX:
+	                case 27:
+	                case 48:
+	                case 91:
+	                case 92:
+	                case 93:
+	                case 94:
+	                case 99:
 	                    this.state = 841;
 	                    this.atom();
 	                    break;
-	                case TinyosParser.OTHER:
+	                case 98:
 	                    this.state = 842;
 	                    this.symbol();
 	                    break;
-	                case TinyosParser.GT:
-	                case TinyosParser.LT:
-	                case TinyosParser.MULT:
-	                case TinyosParser.ASSIGN:
-	                case TinyosParser.INC:
-	                case TinyosParser.DEC:
-	                case TinyosParser.BITAND:
-	                case TinyosParser.OBRACK:
-	                case TinyosParser.CBRACK:
-	                case TinyosParser.OPAR:
-	                case TinyosParser.CPAR:
-	                case TinyosParser.FORWARDARROW:
-	                case TinyosParser.BACKARROW:
-	                case TinyosParser.COLONCOLON:
-	                case TinyosParser.AT:
-	                case TinyosParser.COMMA:
-	                case TinyosParser.DOT:
+	                case 57:
+	                case 58:
+	                case 63:
+	                case 68:
+	                case 72:
+	                case 73:
+	                case 74:
+	                case 78:
+	                case 79:
+	                case 80:
+	                case 81:
+	                case 84:
+	                case 85:
+	                case 86:
+	                case 87:
+	                case 88:
+	                case 89:
 	                    this.state = 843;
 	                    this.chars();
 	                    break;
-	                case TinyosParser.ABSTRACT:
-	                case TinyosParser.AS:
-	                case TinyosParser.ATOMIC:
-	                case TinyosParser.BREAK:
-	                case TinyosParser.CALL:
-	                case TinyosParser.ERROR:
-	                case TinyosParser.NEW:
-	                case TinyosParser.POST:
-	                case TinyosParser.RETURN:
-	                case TinyosParser.VOID:
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 6:
+	                case 7:
+	                case 26:
+	                case 39:
+	                case 40:
+	                case 42:
+	                case 50:
 	                    this.state = 844;
 	                    this.reservedwords();
 	                    break;
@@ -3940,37 +3936,37 @@ export default class TinyosParser extends antlr4.Parser {
 	                this.state = 857;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case TinyosParser.GT:
-	                case TinyosParser.LT:
-	                case TinyosParser.MULT:
-	                case TinyosParser.ASSIGN:
-	                case TinyosParser.INC:
-	                case TinyosParser.DEC:
-	                case TinyosParser.BITAND:
-	                case TinyosParser.OBRACK:
-	                case TinyosParser.CBRACK:
-	                case TinyosParser.OPAR:
-	                case TinyosParser.CPAR:
-	                case TinyosParser.FORWARDARROW:
-	                case TinyosParser.BACKARROW:
-	                case TinyosParser.COLONCOLON:
-	                case TinyosParser.AT:
-	                case TinyosParser.COMMA:
-	                case TinyosParser.DOT:
+	                case 57:
+	                case 58:
+	                case 63:
+	                case 68:
+	                case 72:
+	                case 73:
+	                case 74:
+	                case 78:
+	                case 79:
+	                case 80:
+	                case 81:
+	                case 84:
+	                case 85:
+	                case 86:
+	                case 87:
+	                case 88:
+	                case 89:
 	                    this.state = 854;
 	                    this.chars();
 	                    break;
-	                case TinyosParser.OTHER:
+	                case 98:
 	                    this.state = 855;
 	                    this.symbol();
 	                    break;
-	                case TinyosParser.FALSE:
-	                case TinyosParser.TRUE:
-	                case TinyosParser.ID:
-	                case TinyosParser.INT:
-	                case TinyosParser.FLOAT:
-	                case TinyosParser.STRING:
-	                case TinyosParser.HEX:
+	                case 27:
+	                case 48:
+	                case 91:
+	                case 92:
+	                case 93:
+	                case 94:
+	                case 99:
 	                    this.state = 856;
 	                    this.atom();
 	                    break;
@@ -4054,7 +4050,7 @@ export default class TinyosParser extends antlr4.Parser {
 	configurationSignatureBody() {
 	    let localctx = new ConfigurationSignatureBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 130, TinyosParser.RULE_configurationSignatureBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 871;
@@ -4062,7 +4058,7 @@ export default class TinyosParser extends antlr4.Parser {
 	        this.state = 873;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TinyosParser.ABSTRACT) | (1 << TinyosParser.AS) | (1 << TinyosParser.ATOMIC) | (1 << TinyosParser.BREAK) | (1 << TinyosParser.CALL) | (1 << TinyosParser.ERROR) | (1 << TinyosParser.FALSE))) !== 0) || ((((_la - 39)) & ~0x1f) == 0 && ((1 << (_la - 39)) & ((1 << (TinyosParser.NEW - 39)) | (1 << (TinyosParser.POST - 39)) | (1 << (TinyosParser.RETURN - 39)) | (1 << (TinyosParser.TRUE - 39)) | (1 << (TinyosParser.VOID - 39)) | (1 << (TinyosParser.GT - 39)) | (1 << (TinyosParser.LT - 39)) | (1 << (TinyosParser.MINUS - 39)) | (1 << (TinyosParser.MULT - 39)) | (1 << (TinyosParser.NOT - 39)) | (1 << (TinyosParser.ASSIGN - 39)))) !== 0) || ((((_la - 72)) & ~0x1f) == 0 && ((1 << (_la - 72)) & ((1 << (TinyosParser.INC - 72)) | (1 << (TinyosParser.DEC - 72)) | (1 << (TinyosParser.BITAND - 72)) | (1 << (TinyosParser.OBRACK - 72)) | (1 << (TinyosParser.CBRACK - 72)) | (1 << (TinyosParser.OPAR - 72)) | (1 << (TinyosParser.CPAR - 72)) | (1 << (TinyosParser.OBRACE - 72)) | (1 << (TinyosParser.FORWARDARROW - 72)) | (1 << (TinyosParser.BACKARROW - 72)) | (1 << (TinyosParser.COLONCOLON - 72)) | (1 << (TinyosParser.AT - 72)) | (1 << (TinyosParser.COMMA - 72)) | (1 << (TinyosParser.DOT - 72)) | (1 << (TinyosParser.ID - 72)) | (1 << (TinyosParser.INT - 72)) | (1 << (TinyosParser.FLOAT - 72)) | (1 << (TinyosParser.STRING - 72)) | (1 << (TinyosParser.OTHER - 72)) | (1 << (TinyosParser.HEX - 72)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 201326806) !== 0) || ((((_la - 39)) & ~0x1f) === 0 && ((1 << (_la - 39)) & 831261195) !== 0) || ((((_la - 72)) & ~0x1f) === 0 && ((1 << (_la - 72)) & 209450951) !== 0)) {
 	            this.state = 872;
 	            this.expr(0);
 	        }
@@ -4163,32 +4159,32 @@ export default class TinyosParser extends antlr4.Parser {
 	configurationImplementationDescription() {
 	    let localctx = new ConfigurationImplementationDescriptionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 138, TinyosParser.RULE_configurationImplementationDescription);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 891;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TinyosParser.COMPONENTS || _la===TinyosParser.FALSE || _la===TinyosParser.NEW || _la===TinyosParser.TRUE || ((((_la - 76)) & ~0x1f) == 0 && ((1 << (_la - 76)) & ((1 << (TinyosParser.HASHTAG - 76)) | (1 << (TinyosParser.ID - 76)) | (1 << (TinyosParser.INT - 76)) | (1 << (TinyosParser.FLOAT - 76)) | (1 << (TinyosParser.STRING - 76)) | (1 << (TinyosParser.HEX - 76)))) !== 0)) {
+	        while(_la===13 || _la===27 || _la===39 || _la===48 || ((((_la - 76)) & ~0x1f) === 0 && ((1 << (_la - 76)) & 8880129) !== 0)) {
 	            this.state = 889;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case TinyosParser.COMPONENTS:
+	            case 13:
 	                this.state = 886;
 	                this.componentsDefinition();
 	                break;
-	            case TinyosParser.FALSE:
-	            case TinyosParser.NEW:
-	            case TinyosParser.TRUE:
-	            case TinyosParser.ID:
-	            case TinyosParser.INT:
-	            case TinyosParser.FLOAT:
-	            case TinyosParser.STRING:
-	            case TinyosParser.HEX:
+	            case 27:
+	            case 39:
+	            case 48:
+	            case 91:
+	            case 92:
+	            case 93:
+	            case 94:
+	            case 99:
 	                this.state = 887;
 	                this.componentsWiring();
 	                break;
-	            case TinyosParser.HASHTAG:
+	            case 76:
 	                this.state = 888;
 	                this.platformDefinition();
 	                break;
@@ -4260,7 +4256,7 @@ export default class TinyosParser extends antlr4.Parser {
 	platformDefinitionDescription() {
 	    let localctx = new PlatformDefinitionDescriptionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 142, TinyosParser.RULE_platformDefinitionDescription);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 924;
 	        this._errHandler.sync(this);
@@ -4271,7 +4267,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 906;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.DEFINED) {
+	            if(_la===17) {
 	                this.state = 905;
 	                this.match(TinyosParser.DEFINED);
 	            }
@@ -4291,7 +4287,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 914;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.DEFINED) {
+	            if(_la===17) {
 	                this.state = 913;
 	                this.match(TinyosParser.DEFINED);
 	            }
@@ -4363,19 +4359,19 @@ export default class TinyosParser extends antlr4.Parser {
 	componentsDefinitionDetails() {
 	    let localctx = new ComponentsDefinitionDetailsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, TinyosParser.RULE_componentsDefinitionDetails);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 936;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 27)) & ~0x1f) == 0 && ((1 << (_la - 27)) & ((1 << (TinyosParser.FALSE - 27)) | (1 << (TinyosParser.NEW - 27)) | (1 << (TinyosParser.TRUE - 27)))) !== 0) || ((((_la - 91)) & ~0x1f) == 0 && ((1 << (_la - 91)) & ((1 << (TinyosParser.ID - 91)) | (1 << (TinyosParser.INT - 91)) | (1 << (TinyosParser.FLOAT - 91)) | (1 << (TinyosParser.STRING - 91)) | (1 << (TinyosParser.HEX - 91)))) !== 0)) {
+	        while(((((_la - 27)) & ~0x1f) === 0 && ((1 << (_la - 27)) & 2101249) !== 0) || ((((_la - 91)) & ~0x1f) === 0 && ((1 << (_la - 91)) & 271) !== 0)) {
 	            this.state = 930;
 	            this.componentsDefinitionName();
 	            this.state = 932;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.COMMA) {
+	            if(_la===88) {
 	                this.state = 931;
 	                this.match(TinyosParser.COMMA);
 	            }
@@ -4474,14 +4470,14 @@ export default class TinyosParser extends antlr4.Parser {
 	wiringName() {
 	    let localctx = new WiringNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 154, TinyosParser.RULE_wiringName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 946;
 	        this.componentsName();
 	        this.state = 947;
 	        _la = this._input.LA(1);
-	        if(!(_la===TinyosParser.FORWARDARROW || _la===TinyosParser.BACKARROW)) {
+	        if(!(_la===84 || _la===85)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4509,7 +4505,7 @@ export default class TinyosParser extends antlr4.Parser {
 	componentsName() {
 	    let localctx = new ComponentsNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 156, TinyosParser.RULE_componentsName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 986;
 	        this._errHandler.sync(this);
@@ -4544,7 +4540,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 957;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.OPAR) {
+	            if(_la===80) {
 	                this.state = 956;
 	                this.match(TinyosParser.OPAR);
 	            }
@@ -4560,7 +4556,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 963;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.CPAR) {
+	            if(_la===81) {
 	                this.state = 962;
 	                this.match(TinyosParser.CPAR);
 	            }
@@ -4584,7 +4580,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 971;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.NEW) {
+	            if(_la===39) {
 	                this.state = 970;
 	                this.match(TinyosParser.NEW);
 	            }
@@ -4594,7 +4590,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 975;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.OPAR) {
+	            if(_la===80) {
 	                this.state = 974;
 	                this.match(TinyosParser.OPAR);
 	            }
@@ -4602,7 +4598,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 978;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.FALSE || _la===TinyosParser.TRUE || ((((_la - 91)) & ~0x1f) == 0 && ((1 << (_la - 91)) & ((1 << (TinyosParser.ID - 91)) | (1 << (TinyosParser.INT - 91)) | (1 << (TinyosParser.FLOAT - 91)) | (1 << (TinyosParser.STRING - 91)) | (1 << (TinyosParser.HEX - 91)))) !== 0)) {
+	            if(_la===27 || _la===48 || ((((_la - 91)) & ~0x1f) === 0 && ((1 << (_la - 91)) & 271) !== 0)) {
 	                this.state = 977;
 	                this.atom();
 	            }
@@ -4610,7 +4606,7 @@ export default class TinyosParser extends antlr4.Parser {
 	            this.state = 981;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TinyosParser.CPAR) {
+	            if(_la===81) {
 	                this.state = 980;
 	                this.match(TinyosParser.CPAR);
 	            }
@@ -5713,7 +5709,7 @@ class StatContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = TinyosParser.RULE_stat;
-        this._OTHER = null; // Token
+        this._OTHER = null;
     }
 
 	statement() {
@@ -7695,7 +7691,7 @@ class MultiplicationExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -7817,7 +7813,7 @@ class AdditiveExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -7904,7 +7900,7 @@ class RelationalExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -7956,7 +7952,7 @@ class EqualityExprContext extends ExprContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.op = null; // Token;
+        this.op = null;;
         super.copyFrom(ctx);
     }
 
@@ -9769,3 +9765,12 @@ TinyosParser.ComponentsWiringContext = ComponentsWiringContext;
 TinyosParser.WiringContext = WiringContext; 
 TinyosParser.WiringNameContext = WiringNameContext; 
 TinyosParser.ComponentsNameContext = ComponentsNameContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

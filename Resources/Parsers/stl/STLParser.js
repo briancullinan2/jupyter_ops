@@ -1,4 +1,4 @@
-// Generated from ./stl/STL.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/stl/STL.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import STLListener from './STLListener.js';
@@ -41,16 +41,12 @@ export default class STLParser extends antlr4.Parser {
         this.symbolicNames = STLParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	file_() {
 	    let localctx = new File_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, STLParser.RULE_file_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 12;
@@ -58,7 +54,7 @@ export default class STLParser extends antlr4.Parser {
 	        this.state = 16;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STLParser.T__0) {
+	        while(_la===1) {
 	            this.state = 13;
 	            this.triangle();
 	            this.state = 18;
@@ -181,7 +177,7 @@ export default class STLParser extends antlr4.Parser {
 	header() {
 	    let localctx = new HeaderContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, STLParser.RULE_header);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 40;
@@ -189,7 +185,7 @@ export default class STLParser extends antlr4.Parser {
 	        this.state = 42;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STLParser.IDENTIFIER) {
+	        if(_la===11) {
 	            this.state = 41;
 	            localctx.name = this.match(STLParser.IDENTIFIER);
 	        }
@@ -323,7 +319,7 @@ class TriangleContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = STLParser.RULE_triangle;
-        this.n = null; // TripleContext
+        this.n = null;
     }
 
 	vertex = function(i) {
@@ -405,9 +401,9 @@ class TripleContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = STLParser.RULE_triple;
-        this.i = null; // Token
-        this.j = null; // Token
-        this.k = null; // Token
+        this.i = null;
+        this.j = null;
+        this.k = null;
     }
 
 	FLOAT = function(i) {
@@ -451,7 +447,7 @@ class HeaderContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = STLParser.RULE_header;
-        this.name = null; // Token
+        this.name = null;
     }
 
 	IDENTIFIER() {
@@ -487,7 +483,7 @@ class FooterContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = STLParser.RULE_footer;
-        this.name = null; // Token
+        this.name = null;
     }
 
 	IDENTIFIER() {
@@ -518,3 +514,12 @@ STLParser.VertexContext = VertexContext;
 STLParser.TripleContext = TripleContext; 
 STLParser.HeaderContext = HeaderContext; 
 STLParser.FooterContext = FooterContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./scala/Scala.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/scala/Scala.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ScalaListener from './ScalaListener.js';
@@ -584,10 +584,6 @@ export default class ScalaParser extends antlr4.Parser {
         this.symbolicNames = ScalaParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 3:
@@ -651,7 +647,7 @@ export default class ScalaParser extends antlr4.Parser {
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, ScalaParser.RULE_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 225;
 	        this._errHandler.sync(this);
@@ -662,7 +658,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 213;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__0) {
+	            if(_la===1) {
 	                this.state = 212;
 	                this.match(ScalaParser.T__0);
 	            }
@@ -676,7 +672,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 217;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__0) {
+	            if(_la===1) {
 	                this.state = 216;
 	                this.match(ScalaParser.T__0);
 	            }
@@ -735,7 +731,7 @@ export default class ScalaParser extends antlr4.Parser {
 	qualId() {
 	    let localctx = new QualIdContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, ScalaParser.RULE_qualId);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 227;
@@ -743,7 +739,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__2) {
+	        while(_la===3) {
 	            this.state = 228;
 	            this.match(ScalaParser.T__2);
 	            this.state = 229;
@@ -771,7 +767,7 @@ export default class ScalaParser extends antlr4.Parser {
 	ids() {
 	    let localctx = new IdsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, ScalaParser.RULE_ids);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 235;
@@ -779,7 +775,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 240;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 236;
 	            this.match(ScalaParser.T__3);
 	            this.state = 237;
@@ -813,7 +809,7 @@ export default class ScalaParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 6;
 	    this.enterRecursionRule(localctx, 6, ScalaParser.RULE_stableId, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 258;
@@ -829,7 +825,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 247;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.Id) {
+	            if(_la===62) {
 	                this.state = 245;
 	                this.match(ScalaParser.Id);
 	                this.state = 246;
@@ -839,17 +835,17 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 256;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ScalaParser.T__4:
+	            case 5:
 	                this.state = 249;
 	                this.match(ScalaParser.T__4);
 	                break;
-	            case ScalaParser.T__5:
+	            case 6:
 	                this.state = 250;
 	                this.match(ScalaParser.T__5);
 	                this.state = 252;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.T__6) {
+	                if(_la===7) {
 	                    this.state = 251;
 	                    this.classQualifier();
 	                }
@@ -937,7 +933,7 @@ export default class ScalaParser extends antlr4.Parser {
 	type_() {
 	    let localctx = new Type_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, ScalaParser.RULE_type_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 280;
 	        this._errHandler.sync(this);
@@ -960,7 +956,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 278;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__11) {
+	            if(_la===12) {
 	                this.state = 277;
 	                this.existentialClause();
 	            }
@@ -987,7 +983,7 @@ export default class ScalaParser extends antlr4.Parser {
 	functionArgTypes() {
 	    let localctx = new FunctionArgTypesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, ScalaParser.RULE_functionArgTypes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 295;
 	        this._errHandler.sync(this);
@@ -1006,13 +1002,13 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 292;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__8) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__12))) !== 0) || _la===ScalaParser.Id || _la===ScalaParser.NL) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 9824) !== 0) || _la===62 || _la===74) {
 	                this.state = 284;
 	                this.paramType();
 	                this.state = 289;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===ScalaParser.T__3) {
+	                while(_la===4) {
 	                    this.state = 285;
 	                    this.match(ScalaParser.T__3);
 	                    this.state = 286;
@@ -1047,7 +1043,7 @@ export default class ScalaParser extends antlr4.Parser {
 	existentialClause() {
 	    let localctx = new ExistentialClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, ScalaParser.RULE_existentialClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 297;
@@ -1063,7 +1059,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 302; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ScalaParser.T__14 || _la===ScalaParser.T__15);
+	        } while(_la===15 || _la===16);
 	        this.state = 304;
 	        this.match(ScalaParser.T__13);
 	    } catch (re) {
@@ -1089,14 +1085,14 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 310;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 306;
 	            this.match(ScalaParser.T__14);
 	            this.state = 307;
 	            this.typeDcl();
 	            break;
-	        case ScalaParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 308;
 	            this.match(ScalaParser.T__15);
@@ -1163,22 +1159,22 @@ export default class ScalaParser extends antlr4.Parser {
 	compoundType() {
 	    let localctx = new CompoundTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, ScalaParser.RULE_compoundType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 332;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__4:
-	        case ScalaParser.T__5:
-	        case ScalaParser.T__9:
-	        case ScalaParser.Id:
+	        case 5:
+	        case 6:
+	        case 10:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 320;
 	            this.annotType();
 	            this.state = 325;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__16) {
+	            while(_la===17) {
 	                this.state = 321;
 	                this.match(ScalaParser.T__16);
 	                this.state = 322;
@@ -1196,8 +1192,8 @@ export default class ScalaParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case ScalaParser.T__12:
-	        case ScalaParser.NL:
+	        case 13:
+	        case 74:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 331;
 	            this.refinement();
@@ -1271,9 +1267,9 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 351;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__4:
-	        case ScalaParser.T__5:
-	        case ScalaParser.Id:
+	        case 5:
+	        case 6:
+	        case 62:
 	            this.state = 342;
 	            this.stableId(0);
 	            this.state = 345;
@@ -1287,7 +1283,7 @@ export default class ScalaParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case ScalaParser.T__9:
+	        case 10:
 	            this.state = 347;
 	            this.match(ScalaParser.T__9);
 	            this.state = 348;
@@ -1389,7 +1385,7 @@ export default class ScalaParser extends antlr4.Parser {
 	types() {
 	    let localctx = new TypesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, ScalaParser.RULE_types);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 367;
@@ -1397,7 +1393,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 372;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 368;
 	            this.match(ScalaParser.T__3);
 	            this.state = 369;
@@ -1425,13 +1421,13 @@ export default class ScalaParser extends antlr4.Parser {
 	refinement() {
 	    let localctx = new RefinementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, ScalaParser.RULE_refinement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 376;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.NL) {
+	        if(_la===74) {
 	            this.state = 375;
 	            this.match(ScalaParser.NL);
 	        }
@@ -1447,7 +1443,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 382; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ScalaParser.T__14 || _la===ScalaParser.T__15 || _la===ScalaParser.T__47 || _la===ScalaParser.T__55);
+	        } while(_la===15 || _la===16 || _la===48 || _la===56);
 	        this.state = 384;
 	        this.match(ScalaParser.T__13);
 	    } catch (re) {
@@ -1596,7 +1592,7 @@ export default class ScalaParser extends antlr4.Parser {
 	expr() {
 	    let localctx = new ExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, ScalaParser.RULE_expr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 417;
 	        this._errHandler.sync(this);
@@ -1607,16 +1603,16 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 412;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ScalaParser.T__9:
+	            case 10:
 	                this.state = 406;
 	                this.bindings();
 	                break;
-	            case ScalaParser.T__21:
-	            case ScalaParser.Id:
+	            case 22:
+	            case 62:
 	                this.state = 408;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.T__21) {
+	                if(_la===22) {
 	                    this.state = 407;
 	                    this.match(ScalaParser.T__21);
 	                }
@@ -1624,7 +1620,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                this.state = 410;
 	                this.match(ScalaParser.Id);
 	                break;
-	            case ScalaParser.T__19:
+	            case 20:
 	                this.state = 411;
 	                this.match(ScalaParser.T__19);
 	                break;
@@ -1663,7 +1659,7 @@ export default class ScalaParser extends antlr4.Parser {
 	expr1() {
 	    let localctx = new Expr1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, ScalaParser.RULE_expr1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 514;
 	        this._errHandler.sync(this);
@@ -1682,7 +1678,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 426;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.NL) {
+	            while(_la===74) {
 	                this.state = 423;
 	                this.match(ScalaParser.NL);
 	                this.state = 428;
@@ -1716,7 +1712,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 441;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.NL) {
+	            while(_la===74) {
 	                this.state = 438;
 	                this.match(ScalaParser.NL);
 	                this.state = 443;
@@ -1778,7 +1774,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 472;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ScalaParser.T__9:
+	            case 10:
 	                this.state = 464;
 	                this.match(ScalaParser.T__9);
 	                this.state = 465;
@@ -1786,7 +1782,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                this.state = 466;
 	                this.match(ScalaParser.T__10);
 	                break;
-	            case ScalaParser.T__12:
+	            case 13:
 	                this.state = 468;
 	                this.match(ScalaParser.T__12);
 	                this.state = 469;
@@ -1800,7 +1796,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 475;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__30) {
+	            if(_la===31) {
 	                this.state = 474;
 	                this.match(ScalaParser.T__30);
 	            }
@@ -1852,7 +1848,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                    this.state = 488;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===ScalaParser.T__19) {
+	                    if(_la===20) {
 	                        this.state = 487;
 	                        this.match(ScalaParser.T__19);
 	                    }
@@ -1891,7 +1887,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 506;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__18) {
+	            if(_la===19) {
 	                this.state = 505;
 	                this.ascription();
 	            }
@@ -1932,12 +1928,12 @@ export default class ScalaParser extends antlr4.Parser {
 	prefixDef() {
 	    let localctx = new PrefixDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, ScalaParser.RULE_prefixDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 516;
 	        _la = this._input.LA(1);
-	        if(!(_la===ScalaParser.T__0 || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (ScalaParser.T__35 - 36)) | (1 << (ScalaParser.T__36 - 36)) | (1 << (ScalaParser.T__37 - 36)))) !== 0))) {
+	        if(!(_la===1 || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1963,7 +1959,7 @@ export default class ScalaParser extends antlr4.Parser {
 	postfixExpr() {
 	    let localctx = new PostfixExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, ScalaParser.RULE_postfixExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 518;
@@ -1994,7 +1990,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 531;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.NL) {
+	        if(_la===74) {
 	            this.state = 530;
 	            this.match(ScalaParser.NL);
 	        }
@@ -2024,7 +2020,7 @@ export default class ScalaParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 46;
 	    this.enterRecursionRule(localctx, 46, ScalaParser.RULE_infixExpr, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 534;
@@ -2050,7 +2046,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                this.state = 539;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.NL) {
+	                if(_la===74) {
 	                    this.state = 538;
 	                    this.match(ScalaParser.NL);
 	                }
@@ -2138,7 +2134,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 563;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__38:
+	        case 39:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 557;
 	            this.match(ScalaParser.T__38);
@@ -2158,7 +2154,7 @@ export default class ScalaParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case ScalaParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 562;
 	            this.blockExpr();
@@ -2191,7 +2187,7 @@ export default class ScalaParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 52;
 	    this.enterRecursionRule(localctx, 52, ScalaParser.RULE_simpleExpr1, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 581;
@@ -2219,7 +2215,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 571;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__12) | (1 << ScalaParser.T__19) | (1 << ScalaParser.T__21) | (1 << ScalaParser.T__22) | (1 << ScalaParser.T__24) | (1 << ScalaParser.T__25) | (1 << ScalaParser.T__28) | (1 << ScalaParser.T__29))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ScalaParser.T__31 - 32)) | (1 << (ScalaParser.T__32 - 32)) | (1 << (ScalaParser.T__35 - 32)) | (1 << (ScalaParser.T__36 - 32)) | (1 << (ScalaParser.T__37 - 32)) | (1 << (ScalaParser.T__38 - 32)) | (1 << (ScalaParser.Id - 32)) | (1 << (ScalaParser.BooleanLiteral - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (ScalaParser.CharacterLiteral - 64)) | (1 << (ScalaParser.SymbolLiteral - 64)) | (1 << (ScalaParser.IntegerLiteral - 64)) | (1 << (ScalaParser.StringLiteral - 64)) | (1 << (ScalaParser.FloatingPointLiteral - 64)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1724916838) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221225715) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 31) !== 0)) {
 	                this.state = 570;
 	                this.exprs();
 	            }
@@ -2269,7 +2265,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                    this.state = 585;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===ScalaParser.T__19) {
+	                    if(_la===20) {
 	                        this.state = 584;
 	                        this.match(ScalaParser.T__19);
 	                    }
@@ -2290,7 +2286,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                    this.state = 591;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===ScalaParser.T__19) {
+	                    if(_la===20) {
 	                        this.state = 590;
 	                        this.match(ScalaParser.T__19);
 	                    }
@@ -2374,7 +2370,7 @@ export default class ScalaParser extends antlr4.Parser {
 	argumentExprs() {
 	    let localctx = new ArgumentExprsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, ScalaParser.RULE_argumentExprs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 621;
 	        this._errHandler.sync(this);
@@ -2405,7 +2401,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 618;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.NL) {
+	            if(_la===74) {
 	                this.state = 617;
 	                this.match(ScalaParser.NL);
 	            }
@@ -2434,7 +2430,7 @@ export default class ScalaParser extends antlr4.Parser {
 	args() {
 	    let localctx = new ArgsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, ScalaParser.RULE_args);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 635;
 	        this._errHandler.sync(this);
@@ -2445,7 +2441,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 624;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__12) | (1 << ScalaParser.T__19) | (1 << ScalaParser.T__21) | (1 << ScalaParser.T__22) | (1 << ScalaParser.T__24) | (1 << ScalaParser.T__25) | (1 << ScalaParser.T__28) | (1 << ScalaParser.T__29))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ScalaParser.T__31 - 32)) | (1 << (ScalaParser.T__32 - 32)) | (1 << (ScalaParser.T__35 - 32)) | (1 << (ScalaParser.T__36 - 32)) | (1 << (ScalaParser.T__37 - 32)) | (1 << (ScalaParser.T__38 - 32)) | (1 << (ScalaParser.Id - 32)) | (1 << (ScalaParser.BooleanLiteral - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (ScalaParser.CharacterLiteral - 64)) | (1 << (ScalaParser.SymbolLiteral - 64)) | (1 << (ScalaParser.IntegerLiteral - 64)) | (1 << (ScalaParser.StringLiteral - 64)) | (1 << (ScalaParser.FloatingPointLiteral - 64)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1724916838) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221225715) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 31) !== 0)) {
 	                this.state = 623;
 	                this.exprs();
 	            }
@@ -2469,10 +2465,10 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 633;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__18) | (1 << ScalaParser.T__19) | (1 << ScalaParser.T__20))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3670016) !== 0)) {
 	                this.state = 632;
 	                _la = this._input.LA(1);
-	                if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__18) | (1 << ScalaParser.T__19) | (1 << ScalaParser.T__20))) !== 0))) {
+	                if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 3670016) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2548,7 +2544,7 @@ export default class ScalaParser extends antlr4.Parser {
 	block() {
 	    let localctx = new BlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, ScalaParser.RULE_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 648; 
@@ -2570,7 +2566,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 653;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__12) | (1 << ScalaParser.T__19) | (1 << ScalaParser.T__21) | (1 << ScalaParser.T__22) | (1 << ScalaParser.T__24) | (1 << ScalaParser.T__25) | (1 << ScalaParser.T__28) | (1 << ScalaParser.T__29))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ScalaParser.T__31 - 32)) | (1 << (ScalaParser.T__32 - 32)) | (1 << (ScalaParser.T__35 - 32)) | (1 << (ScalaParser.T__36 - 32)) | (1 << (ScalaParser.T__37 - 32)) | (1 << (ScalaParser.T__38 - 32)) | (1 << (ScalaParser.Id - 32)) | (1 << (ScalaParser.BooleanLiteral - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (ScalaParser.CharacterLiteral - 64)) | (1 << (ScalaParser.SymbolLiteral - 64)) | (1 << (ScalaParser.IntegerLiteral - 64)) | (1 << (ScalaParser.StringLiteral - 64)) | (1 << (ScalaParser.FloatingPointLiteral - 64)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1724916838) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3221225715) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 31) !== 0)) {
 	            this.state = 652;
 	            this.resultExpr();
 	        }
@@ -2594,7 +2590,7 @@ export default class ScalaParser extends antlr4.Parser {
 	blockStat() {
 	    let localctx = new BlockStatContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, ScalaParser.RULE_blockStat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 680;
 	        this._errHandler.sync(this);
@@ -2611,7 +2607,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 659;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__43) {
+	            while(_la===44) {
 	                this.state = 656;
 	                this.annotation();
 	                this.state = 661;
@@ -2621,10 +2617,10 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 663;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__21 || _la===ScalaParser.T__39) {
+	            if(_la===22 || _la===40) {
 	                this.state = 662;
 	                _la = this._input.LA(1);
-	                if(!(_la===ScalaParser.T__21 || _la===ScalaParser.T__39)) {
+	                if(!(_la===22 || _la===40)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2642,7 +2638,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 669;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__43) {
+	            while(_la===44) {
 	                this.state = 666;
 	                this.annotation();
 	                this.state = 671;
@@ -2652,7 +2648,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 675;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 22)) & ~0x1f) == 0 && ((1 << (_la - 22)) & ((1 << (ScalaParser.T__21 - 22)) | (1 << (ScalaParser.T__39 - 22)) | (1 << (ScalaParser.T__49 - 22)) | (1 << (ScalaParser.T__50 - 22)) | (1 << (ScalaParser.T__51 - 22)))) !== 0)) {
+	            while(((((_la - 22)) & ~0x1f) === 0 && ((1 << (_la - 22)) & 1879310337) !== 0)) {
 	                this.state = 672;
 	                this.localModifier();
 	                this.state = 677;
@@ -2689,7 +2685,7 @@ export default class ScalaParser extends antlr4.Parser {
 	resultExpr() {
 	    let localctx = new ResultExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, ScalaParser.RULE_resultExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 698;
 	        this._errHandler.sync(this);
@@ -2706,22 +2702,22 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 693;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ScalaParser.T__9:
+	            case 10:
 	                this.state = 683;
 	                this.bindings();
 	                break;
-	            case ScalaParser.T__19:
-	            case ScalaParser.T__21:
-	            case ScalaParser.Id:
+	            case 20:
+	            case 22:
+	            case 62:
 	                this.state = 689;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case ScalaParser.T__21:
-	                case ScalaParser.Id:
+	                case 22:
+	                case 62:
 	                    this.state = 685;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===ScalaParser.T__21) {
+	                    if(_la===22) {
 	                        this.state = 684;
 	                        this.match(ScalaParser.T__21);
 	                    }
@@ -2729,7 +2725,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                    this.state = 687;
 	                    this.match(ScalaParser.Id);
 	                    break;
-	                case ScalaParser.T__19:
+	                case 20:
 	                    this.state = 688;
 	                    this.match(ScalaParser.T__19);
 	                    break;
@@ -2770,7 +2766,7 @@ export default class ScalaParser extends antlr4.Parser {
 	enumerators() {
 	    let localctx = new EnumeratorsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, ScalaParser.RULE_enumerators);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 701; 
@@ -2782,7 +2778,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 703; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__19))) !== 0) || ((((_la - 62)) & ~0x1f) == 0 && ((1 << (_la - 62)) & ((1 << (ScalaParser.Id - 62)) | (1 << (ScalaParser.BooleanLiteral - 62)) | (1 << (ScalaParser.CharacterLiteral - 62)) | (1 << (ScalaParser.SymbolLiteral - 62)) | (1 << (ScalaParser.IntegerLiteral - 62)) | (1 << (ScalaParser.StringLiteral - 62)) | (1 << (ScalaParser.FloatingPointLiteral - 62)) | (1 << (ScalaParser.Varid - 62)) | (1 << (ScalaParser.BoundVarid - 62)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1049702) !== 0) || ((((_la - 62)) & ~0x1f) === 0 && ((1 << (_la - 62)) & 511) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -2818,25 +2814,25 @@ export default class ScalaParser extends antlr4.Parser {
 	                this.state = 713;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case ScalaParser.T__22:
+	                case 23:
 	                    this.state = 708;
 	                    this.guard_();
 	                    break;
-	                case ScalaParser.T__0:
-	                case ScalaParser.T__1:
-	                case ScalaParser.T__4:
-	                case ScalaParser.T__5:
-	                case ScalaParser.T__9:
-	                case ScalaParser.T__19:
-	                case ScalaParser.Id:
-	                case ScalaParser.BooleanLiteral:
-	                case ScalaParser.CharacterLiteral:
-	                case ScalaParser.SymbolLiteral:
-	                case ScalaParser.IntegerLiteral:
-	                case ScalaParser.StringLiteral:
-	                case ScalaParser.FloatingPointLiteral:
-	                case ScalaParser.Varid:
-	                case ScalaParser.BoundVarid:
+	                case 1:
+	                case 2:
+	                case 5:
+	                case 6:
+	                case 10:
+	                case 20:
+	                case 62:
+	                case 63:
+	                case 64:
+	                case 65:
+	                case 66:
+	                case 67:
+	                case 68:
+	                case 69:
+	                case 70:
 	                    this.state = 709;
 	                    this.pattern1();
 	                    this.state = 710;
@@ -2872,7 +2868,7 @@ export default class ScalaParser extends antlr4.Parser {
 	caseClauses() {
 	    let localctx = new CaseClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, ScalaParser.RULE_caseClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 719; 
@@ -2884,7 +2880,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 721; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ScalaParser.T__41);
+	        } while(_la===42);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -2904,7 +2900,7 @@ export default class ScalaParser extends antlr4.Parser {
 	caseClause() {
 	    let localctx = new CaseClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, ScalaParser.RULE_caseClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 723;
@@ -2914,7 +2910,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 726;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__22) {
+	        if(_la===23) {
 	            this.state = 725;
 	            this.guard_();
 	        }
@@ -2967,7 +2963,7 @@ export default class ScalaParser extends antlr4.Parser {
 	pattern() {
 	    let localctx = new PatternContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, ScalaParser.RULE_pattern);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 734;
@@ -2975,7 +2971,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 739;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__42) {
+	        while(_la===43) {
 	            this.state = 735;
 	            this.match(ScalaParser.T__42);
 	            this.state = 736;
@@ -3003,7 +2999,7 @@ export default class ScalaParser extends antlr4.Parser {
 	pattern1() {
 	    let localctx = new Pattern1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, ScalaParser.RULE_pattern1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 746;
 	        this._errHandler.sync(this);
@@ -3013,7 +3009,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 742;
 	            _la = this._input.LA(1);
-	            if(!(_la===ScalaParser.T__19 || _la===ScalaParser.Id || _la===ScalaParser.BoundVarid)) {
+	            if(!(_la===20 || _la===62 || _la===70)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3052,7 +3048,7 @@ export default class ScalaParser extends antlr4.Parser {
 	pattern2() {
 	    let localctx = new Pattern2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, ScalaParser.RULE_pattern2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 754;
 	        this._errHandler.sync(this);
@@ -3065,7 +3061,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 751;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__43) {
+	            if(_la===44) {
 	                this.state = 749;
 	                this.match(ScalaParser.T__43);
 	                this.state = 750;
@@ -3100,7 +3096,7 @@ export default class ScalaParser extends antlr4.Parser {
 	pattern3() {
 	    let localctx = new Pattern3Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, ScalaParser.RULE_pattern3);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 768;
 	        this._errHandler.sync(this);
@@ -3119,13 +3115,13 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 765;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.Id) {
+	            while(_la===62) {
 	                this.state = 758;
 	                this.match(ScalaParser.Id);
 	                this.state = 760;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.NL) {
+	                if(_la===74) {
 	                    this.state = 759;
 	                    this.match(ScalaParser.NL);
 	                }
@@ -3158,7 +3154,7 @@ export default class ScalaParser extends antlr4.Parser {
 	simplePattern() {
 	    let localctx = new SimplePatternContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, ScalaParser.RULE_simplePattern);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 801;
 	        this._errHandler.sync(this);
@@ -3189,13 +3185,13 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 779;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__9) {
+	            if(_la===10) {
 	                this.state = 774;
 	                this.match(ScalaParser.T__9);
 	                this.state = 776;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__19))) !== 0) || ((((_la - 62)) & ~0x1f) == 0 && ((1 << (_la - 62)) & ((1 << (ScalaParser.Id - 62)) | (1 << (ScalaParser.BooleanLiteral - 62)) | (1 << (ScalaParser.CharacterLiteral - 62)) | (1 << (ScalaParser.SymbolLiteral - 62)) | (1 << (ScalaParser.IntegerLiteral - 62)) | (1 << (ScalaParser.StringLiteral - 62)) | (1 << (ScalaParser.FloatingPointLiteral - 62)) | (1 << (ScalaParser.Varid - 62)) | (1 << (ScalaParser.BoundVarid - 62)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1049702) !== 0) || ((((_la - 62)) & ~0x1f) === 0 && ((1 << (_la - 62)) & 511) !== 0)) {
 	                    this.state = 775;
 	                    this.patterns();
 	                }
@@ -3225,7 +3221,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 790;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.Id) {
+	            if(_la===62) {
 	                this.state = 788;
 	                this.match(ScalaParser.Id);
 	                this.state = 789;
@@ -3247,7 +3243,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 798;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__19))) !== 0) || ((((_la - 62)) & ~0x1f) == 0 && ((1 << (_la - 62)) & ((1 << (ScalaParser.Id - 62)) | (1 << (ScalaParser.BooleanLiteral - 62)) | (1 << (ScalaParser.CharacterLiteral - 62)) | (1 << (ScalaParser.SymbolLiteral - 62)) | (1 << (ScalaParser.IntegerLiteral - 62)) | (1 << (ScalaParser.StringLiteral - 62)) | (1 << (ScalaParser.FloatingPointLiteral - 62)) | (1 << (ScalaParser.Varid - 62)) | (1 << (ScalaParser.BoundVarid - 62)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1049702) !== 0) || ((((_la - 62)) & ~0x1f) === 0 && ((1 << (_la - 62)) & 511) !== 0)) {
 	                this.state = 797;
 	                this.patterns();
 	            }
@@ -3325,7 +3321,7 @@ export default class ScalaParser extends antlr4.Parser {
 	typeParamClause() {
 	    let localctx = new TypeParamClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, ScalaParser.RULE_typeParamClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 812;
@@ -3335,7 +3331,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 818;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 814;
 	            this.match(ScalaParser.T__3);
 	            this.state = 815;
@@ -3365,7 +3361,7 @@ export default class ScalaParser extends antlr4.Parser {
 	funTypeParamClause() {
 	    let localctx = new FunTypeParamClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, ScalaParser.RULE_funTypeParamClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 823;
@@ -3375,7 +3371,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 829;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 825;
 	            this.match(ScalaParser.T__3);
 	            this.state = 826;
@@ -3405,13 +3401,13 @@ export default class ScalaParser extends antlr4.Parser {
 	variantTypeParam() {
 	    let localctx = new VariantTypeParamContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, ScalaParser.RULE_variantTypeParam);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 837;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__43) {
+	        while(_la===44) {
 	            this.state = 834;
 	            this.annotation();
 	            this.state = 839;
@@ -3421,10 +3417,10 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 841;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__0 || _la===ScalaParser.T__35) {
+	        if(_la===1 || _la===36) {
 	            this.state = 840;
 	            _la = this._input.LA(1);
-	            if(!(_la===ScalaParser.T__0 || _la===ScalaParser.T__35)) {
+	            if(!(_la===1 || _la===36)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3454,12 +3450,12 @@ export default class ScalaParser extends antlr4.Parser {
 	typeParam() {
 	    let localctx = new TypeParamContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, ScalaParser.RULE_typeParam);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 845;
 	        _la = this._input.LA(1);
-	        if(!(_la===ScalaParser.T__19 || _la===ScalaParser.Id)) {
+	        if(!(_la===20 || _la===62)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3469,7 +3465,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 847;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__6) {
+	        if(_la===7) {
 	            this.state = 846;
 	            this.typeParamClause();
 	        }
@@ -3477,7 +3473,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 851;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__44) {
+	        if(_la===45) {
 	            this.state = 849;
 	            this.match(ScalaParser.T__44);
 	            this.state = 850;
@@ -3487,7 +3483,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 855;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__45) {
+	        if(_la===46) {
 	            this.state = 853;
 	            this.match(ScalaParser.T__45);
 	            this.state = 854;
@@ -3497,7 +3493,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 861;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__46) {
+	        while(_la===47) {
 	            this.state = 857;
 	            this.match(ScalaParser.T__46);
 	            this.state = 858;
@@ -3509,7 +3505,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 868;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__18) {
+	        while(_la===19) {
 	            this.state = 864;
 	            this.match(ScalaParser.T__18);
 	            this.state = 865;
@@ -3537,7 +3533,7 @@ export default class ScalaParser extends antlr4.Parser {
 	paramClauses() {
 	    let localctx = new ParamClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, ScalaParser.RULE_paramClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 874;
@@ -3560,7 +3556,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 878;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.NL) {
+	            if(_la===74) {
 	                this.state = 877;
 	                this.match(ScalaParser.NL);
 	            }
@@ -3594,13 +3590,13 @@ export default class ScalaParser extends antlr4.Parser {
 	paramClause() {
 	    let localctx = new ParamClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, ScalaParser.RULE_paramClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 888;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.NL) {
+	        if(_la===74) {
 	            this.state = 887;
 	            this.match(ScalaParser.NL);
 	        }
@@ -3610,7 +3606,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 892;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__43 || _la===ScalaParser.Id) {
+	        if(_la===44 || _la===62) {
 	            this.state = 891;
 	            this.params();
 	        }
@@ -3636,7 +3632,7 @@ export default class ScalaParser extends antlr4.Parser {
 	params() {
 	    let localctx = new ParamsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, ScalaParser.RULE_params);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 896;
@@ -3644,7 +3640,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 901;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 897;
 	            this.match(ScalaParser.T__3);
 	            this.state = 898;
@@ -3672,13 +3668,13 @@ export default class ScalaParser extends antlr4.Parser {
 	param() {
 	    let localctx = new ParamContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, ScalaParser.RULE_param);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 907;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__43) {
+	        while(_la===44) {
 	            this.state = 904;
 	            this.annotation();
 	            this.state = 909;
@@ -3690,7 +3686,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 913;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__18) {
+	        if(_la===19) {
 	            this.state = 911;
 	            this.match(ScalaParser.T__18);
 	            this.state = 912;
@@ -3700,7 +3696,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 917;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__33) {
+	        if(_la===34) {
 	            this.state = 915;
 	            this.match(ScalaParser.T__33);
 	            this.state = 916;
@@ -3773,7 +3769,7 @@ export default class ScalaParser extends antlr4.Parser {
 	classParamClauses() {
 	    let localctx = new ClassParamClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, ScalaParser.RULE_classParamClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 930;
@@ -3796,7 +3792,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 934;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.NL) {
+	            if(_la===74) {
 	                this.state = 933;
 	                this.match(ScalaParser.NL);
 	            }
@@ -3830,13 +3826,13 @@ export default class ScalaParser extends antlr4.Parser {
 	classParamClause() {
 	    let localctx = new ClassParamClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, ScalaParser.RULE_classParamClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 944;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.NL) {
+	        if(_la===74) {
 	            this.state = 943;
 	            this.match(ScalaParser.NL);
 	        }
@@ -3846,7 +3842,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 948;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__15 || _la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__43 - 40)) | (1 << (ScalaParser.T__47 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)) | (1 << (ScalaParser.Id - 40)))) !== 0)) {
+	        if(_la===16 || _la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 4226833) !== 0)) {
 	            this.state = 947;
 	            this.classParams();
 	        }
@@ -3872,7 +3868,7 @@ export default class ScalaParser extends antlr4.Parser {
 	classParams() {
 	    let localctx = new ClassParamsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, ScalaParser.RULE_classParams);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 952;
@@ -3880,7 +3876,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 957;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 953;
 	            this.match(ScalaParser.T__3);
 	            this.state = 954;
@@ -3908,13 +3904,13 @@ export default class ScalaParser extends antlr4.Parser {
 	classParam() {
 	    let localctx = new ClassParamContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, ScalaParser.RULE_classParam);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 963;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__43) {
+	        while(_la===44) {
 	            this.state = 960;
 	            this.annotation();
 	            this.state = 965;
@@ -3924,7 +3920,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 969;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)))) !== 0)) {
+	        while(_la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 32257) !== 0)) {
 	            this.state = 966;
 	            this.modifier();
 	            this.state = 971;
@@ -3934,10 +3930,10 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 973;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__15 || _la===ScalaParser.T__47) {
+	        if(_la===16 || _la===48) {
 	            this.state = 972;
 	            _la = this._input.LA(1);
-	            if(!(_la===ScalaParser.T__15 || _la===ScalaParser.T__47)) {
+	            if(!(_la===16 || _la===48)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3955,7 +3951,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 980;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__33) {
+	        if(_la===34) {
 	            this.state = 978;
 	            this.match(ScalaParser.T__33);
 	            this.state = 979;
@@ -3981,7 +3977,7 @@ export default class ScalaParser extends antlr4.Parser {
 	bindings() {
 	    let localctx = new BindingsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 116, ScalaParser.RULE_bindings);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 982;
@@ -3991,7 +3987,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 988;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 984;
 	            this.match(ScalaParser.T__3);
 	            this.state = 985;
@@ -4021,12 +4017,12 @@ export default class ScalaParser extends antlr4.Parser {
 	binding() {
 	    let localctx = new BindingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, ScalaParser.RULE_binding);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 993;
 	        _la = this._input.LA(1);
-	        if(!(_la===ScalaParser.T__19 || _la===ScalaParser.Id)) {
+	        if(!(_la===20 || _la===62)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4036,7 +4032,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 996;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__18) {
+	        if(_la===19) {
 	            this.state = 994;
 	            this.match(ScalaParser.T__18);
 	            this.state = 995;
@@ -4066,22 +4062,22 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1001;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__21:
-	        case ScalaParser.T__39:
-	        case ScalaParser.T__49:
-	        case ScalaParser.T__50:
-	        case ScalaParser.T__51:
+	        case 22:
+	        case 40:
+	        case 50:
+	        case 51:
+	        case 52:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 998;
 	            this.localModifier();
 	            break;
-	        case ScalaParser.T__52:
-	        case ScalaParser.T__53:
+	        case 53:
+	        case 54:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 999;
 	            this.accessModifier();
 	            break;
-	        case ScalaParser.T__48:
+	        case 49:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1000;
 	            this.match(ScalaParser.T__48);
@@ -4108,12 +4104,12 @@ export default class ScalaParser extends antlr4.Parser {
 	localModifier() {
 	    let localctx = new LocalModifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 122, ScalaParser.RULE_localModifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1003;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 22)) & ~0x1f) == 0 && ((1 << (_la - 22)) & ((1 << (ScalaParser.T__21 - 22)) | (1 << (ScalaParser.T__39 - 22)) | (1 << (ScalaParser.T__49 - 22)) | (1 << (ScalaParser.T__50 - 22)) | (1 << (ScalaParser.T__51 - 22)))) !== 0))) {
+	        if(!(((((_la - 22)) & ~0x1f) === 0 && ((1 << (_la - 22)) & 1879310337) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4139,12 +4135,12 @@ export default class ScalaParser extends antlr4.Parser {
 	accessModifier() {
 	    let localctx = new AccessModifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, ScalaParser.RULE_accessModifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1005;
 	        _la = this._input.LA(1);
-	        if(!(_la===ScalaParser.T__52 || _la===ScalaParser.T__53)) {
+	        if(!(_la===53 || _la===54)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4154,7 +4150,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1007;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__6) {
+	        if(_la===7) {
 	            this.state = 1006;
 	            this.accessQualifier();
 	        }
@@ -4178,14 +4174,14 @@ export default class ScalaParser extends antlr4.Parser {
 	accessQualifier() {
 	    let localctx = new AccessQualifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 126, ScalaParser.RULE_accessQualifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1009;
 	        this.match(ScalaParser.T__6);
 	        this.state = 1010;
 	        _la = this._input.LA(1);
-	        if(!(_la===ScalaParser.T__4 || _la===ScalaParser.Id)) {
+	        if(!(_la===5 || _la===62)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4278,13 +4274,13 @@ export default class ScalaParser extends antlr4.Parser {
 	templateBody() {
 	    let localctx = new TemplateBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 132, ScalaParser.RULE_templateBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1026;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.NL) {
+	        if(_la===74) {
 	            this.state = 1025;
 	            this.match(ScalaParser.NL);
 	        }
@@ -4308,7 +4304,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1035; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__12) | (1 << ScalaParser.T__14) | (1 << ScalaParser.T__15) | (1 << ScalaParser.T__19) | (1 << ScalaParser.T__21) | (1 << ScalaParser.T__22) | (1 << ScalaParser.T__24) | (1 << ScalaParser.T__25) | (1 << ScalaParser.T__28) | (1 << ScalaParser.T__29))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ScalaParser.T__31 - 32)) | (1 << (ScalaParser.T__32 - 32)) | (1 << (ScalaParser.T__35 - 32)) | (1 << (ScalaParser.T__36 - 32)) | (1 << (ScalaParser.T__37 - 32)) | (1 << (ScalaParser.T__38 - 32)) | (1 << (ScalaParser.T__39 - 32)) | (1 << (ScalaParser.T__41 - 32)) | (1 << (ScalaParser.T__43 - 32)) | (1 << (ScalaParser.T__47 - 32)) | (1 << (ScalaParser.T__48 - 32)) | (1 << (ScalaParser.T__49 - 32)) | (1 << (ScalaParser.T__50 - 32)) | (1 << (ScalaParser.T__51 - 32)) | (1 << (ScalaParser.T__52 - 32)) | (1 << (ScalaParser.T__53 - 32)) | (1 << (ScalaParser.T__54 - 32)) | (1 << (ScalaParser.T__55 - 32)) | (1 << (ScalaParser.T__56 - 32)) | (1 << (ScalaParser.T__57 - 32)) | (1 << (ScalaParser.T__58 - 32)) | (1 << (ScalaParser.Id - 32)) | (1 << (ScalaParser.BooleanLiteral - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (ScalaParser.CharacterLiteral - 64)) | (1 << (ScalaParser.SymbolLiteral - 64)) | (1 << (ScalaParser.IntegerLiteral - 64)) | (1 << (ScalaParser.StringLiteral - 64)) | (1 << (ScalaParser.FloatingPointLiteral - 64)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1725015142) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3489601011) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 31) !== 0));
 	        this.state = 1037;
 	        this.match(ScalaParser.T__13);
 	    } catch (re) {
@@ -4330,7 +4326,7 @@ export default class ScalaParser extends antlr4.Parser {
 	templateStat() {
 	    let localctx = new TemplateStatContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 134, ScalaParser.RULE_templateStat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1073;
 	        this._errHandler.sync(this);
@@ -4347,13 +4343,13 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1046;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__43) {
+	            while(_la===44) {
 	                this.state = 1040;
 	                this.annotation();
 	                this.state = 1042;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.NL) {
+	                if(_la===74) {
 	                    this.state = 1041;
 	                    this.match(ScalaParser.NL);
 	                }
@@ -4365,7 +4361,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1052;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)))) !== 0)) {
+	            while(_la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 32257) !== 0)) {
 	                this.state = 1049;
 	                this.modifier();
 	                this.state = 1054;
@@ -4381,13 +4377,13 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1062;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__43) {
+	            while(_la===44) {
 	                this.state = 1056;
 	                this.annotation();
 	                this.state = 1058;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.NL) {
+	                if(_la===74) {
 	                    this.state = 1057;
 	                    this.match(ScalaParser.NL);
 	                }
@@ -4399,7 +4395,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1068;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)))) !== 0)) {
+	            while(_la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 32257) !== 0)) {
 	                this.state = 1065;
 	                this.modifier();
 	                this.state = 1070;
@@ -4436,19 +4432,19 @@ export default class ScalaParser extends antlr4.Parser {
 	selfType() {
 	    let localctx = new SelfTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 136, ScalaParser.RULE_selfType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1086;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.Id:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1075;
 	            this.match(ScalaParser.Id);
 	            this.state = 1078;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__18) {
+	            if(_la===19) {
 	                this.state = 1076;
 	                this.match(ScalaParser.T__18);
 	                this.state = 1077;
@@ -4458,7 +4454,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1080;
 	            this.match(ScalaParser.T__8);
 	            break;
-	        case ScalaParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1081;
 	            this.match(ScalaParser.T__4);
@@ -4491,7 +4487,7 @@ export default class ScalaParser extends antlr4.Parser {
 	import_() {
 	    let localctx = new Import_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 138, ScalaParser.RULE_import_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1088;
@@ -4501,7 +4497,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1094;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 1090;
 	            this.match(ScalaParser.T__3);
 	            this.state = 1091;
@@ -4529,7 +4525,7 @@ export default class ScalaParser extends antlr4.Parser {
 	importExpr() {
 	    let localctx = new ImportExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 140, ScalaParser.RULE_importExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1097;
@@ -4537,21 +4533,21 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1104;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__2) {
+	        if(_la===3) {
 	            this.state = 1098;
 	            this.match(ScalaParser.T__2);
 	            this.state = 1102;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ScalaParser.Id:
+	            case 62:
 	                this.state = 1099;
 	                this.match(ScalaParser.Id);
 	                break;
-	            case ScalaParser.T__19:
+	            case 20:
 	                this.state = 1100;
 	                this.match(ScalaParser.T__19);
 	                break;
-	            case ScalaParser.T__12:
+	            case 13:
 	                this.state = 1101;
 	                this.importSelectors();
 	                break;
@@ -4601,11 +4597,11 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1117;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.Id:
+	        case 62:
 	            this.state = 1115;
 	            this.importSelector();
 	            break;
-	        case ScalaParser.T__19:
+	        case 20:
 	            this.state = 1116;
 	            this.match(ScalaParser.T__19);
 	            break;
@@ -4633,7 +4629,7 @@ export default class ScalaParser extends antlr4.Parser {
 	importSelector() {
 	    let localctx = new ImportSelectorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 144, ScalaParser.RULE_importSelector);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1121;
@@ -4641,12 +4637,12 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1124;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__8) {
+	        if(_la===9) {
 	            this.state = 1122;
 	            this.match(ScalaParser.T__8);
 	            this.state = 1123;
 	            _la = this._input.LA(1);
-	            if(!(_la===ScalaParser.T__19 || _la===ScalaParser.Id)) {
+	            if(!(_la===20 || _la===62)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -4674,40 +4670,40 @@ export default class ScalaParser extends antlr4.Parser {
 	dcl() {
 	    let localctx = new DclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, ScalaParser.RULE_dcl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1140;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1126;
 	            this.match(ScalaParser.T__15);
 	            this.state = 1127;
 	            this.valDcl();
 	            break;
-	        case ScalaParser.T__47:
+	        case 48:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1128;
 	            this.match(ScalaParser.T__47);
 	            this.state = 1129;
 	            this.varDcl();
 	            break;
-	        case ScalaParser.T__55:
+	        case 56:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1130;
 	            this.match(ScalaParser.T__55);
 	            this.state = 1131;
 	            this.funDcl();
 	            break;
-	        case ScalaParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1132;
 	            this.match(ScalaParser.T__14);
 	            this.state = 1136;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.NL) {
+	            while(_la===74) {
 	                this.state = 1133;
 	                this.match(ScalaParser.NL);
 	                this.state = 1138;
@@ -4793,7 +4789,7 @@ export default class ScalaParser extends antlr4.Parser {
 	funDcl() {
 	    let localctx = new FunDclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 152, ScalaParser.RULE_funDcl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1150;
@@ -4801,7 +4797,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1153;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__18) {
+	        if(_la===19) {
 	            this.state = 1151;
 	            this.match(ScalaParser.T__18);
 	            this.state = 1152;
@@ -4827,7 +4823,7 @@ export default class ScalaParser extends antlr4.Parser {
 	funSig() {
 	    let localctx = new FunSigContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 154, ScalaParser.RULE_funSig);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1155;
@@ -4835,7 +4831,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1157;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__6) {
+	        if(_la===7) {
 	            this.state = 1156;
 	            this.funTypeParamClause();
 	        }
@@ -4861,7 +4857,7 @@ export default class ScalaParser extends antlr4.Parser {
 	typeDcl() {
 	    let localctx = new TypeDclContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 156, ScalaParser.RULE_typeDcl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1161;
@@ -4869,7 +4865,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1163;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__6) {
+	        if(_la===7) {
 	            this.state = 1162;
 	            this.typeParamClause();
 	        }
@@ -4877,7 +4873,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1167;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__44) {
+	        if(_la===45) {
 	            this.state = 1165;
 	            this.match(ScalaParser.T__44);
 	            this.state = 1166;
@@ -4887,7 +4883,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1171;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__45) {
+	        if(_la===46) {
 	            this.state = 1169;
 	            this.match(ScalaParser.T__45);
 	            this.state = 1170;
@@ -4917,14 +4913,14 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1177;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1173;
 	            this.match(ScalaParser.T__15);
 	            this.state = 1174;
 	            this.patDef();
 	            break;
-	        case ScalaParser.T__47:
+	        case 48:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1175;
 	            this.match(ScalaParser.T__47);
@@ -4953,32 +4949,32 @@ export default class ScalaParser extends antlr4.Parser {
 	def_() {
 	    let localctx = new Def_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 160, ScalaParser.RULE_def_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1191;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__15:
-	        case ScalaParser.T__47:
+	        case 16:
+	        case 48:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1179;
 	            this.patVarDef();
 	            break;
-	        case ScalaParser.T__55:
+	        case 56:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1180;
 	            this.match(ScalaParser.T__55);
 	            this.state = 1181;
 	            this.funDef();
 	            break;
-	        case ScalaParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1182;
 	            this.match(ScalaParser.T__14);
 	            this.state = 1186;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.NL) {
+	            while(_la===74) {
 	                this.state = 1183;
 	                this.match(ScalaParser.NL);
 	                this.state = 1188;
@@ -4988,10 +4984,10 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1189;
 	            this.typeDef();
 	            break;
-	        case ScalaParser.T__41:
-	        case ScalaParser.T__56:
-	        case ScalaParser.T__57:
-	        case ScalaParser.T__58:
+	        case 42:
+	        case 57:
+	        case 58:
+	        case 59:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1190;
 	            this.tmplDef();
@@ -5018,7 +5014,7 @@ export default class ScalaParser extends antlr4.Parser {
 	patDef() {
 	    let localctx = new PatDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 162, ScalaParser.RULE_patDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1193;
@@ -5026,7 +5022,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1198;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__3) {
+	        while(_la===4) {
 	            this.state = 1194;
 	            this.match(ScalaParser.T__3);
 	            this.state = 1195;
@@ -5038,7 +5034,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1203;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__18) {
+	        if(_la===19) {
 	            this.state = 1201;
 	            this.match(ScalaParser.T__18);
 	            this.state = 1202;
@@ -5113,7 +5109,7 @@ export default class ScalaParser extends antlr4.Parser {
 	funDef() {
 	    let localctx = new FunDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 166, ScalaParser.RULE_funDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1244;
 	        this._errHandler.sync(this);
@@ -5126,7 +5122,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1220;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__18) {
+	            if(_la===19) {
 	                this.state = 1218;
 	                this.match(ScalaParser.T__18);
 	                this.state = 1219;
@@ -5146,7 +5142,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1227;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.NL) {
+	            if(_la===74) {
 	                this.state = 1226;
 	                this.match(ScalaParser.NL);
 	            }
@@ -5170,18 +5166,18 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1242;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ScalaParser.T__33:
+	            case 34:
 	                this.state = 1236;
 	                this.match(ScalaParser.T__33);
 	                this.state = 1237;
 	                this.constrExpr();
 	                break;
-	            case ScalaParser.T__12:
-	            case ScalaParser.NL:
+	            case 13:
+	            case 74:
 	                this.state = 1239;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.NL) {
+	                if(_la===74) {
 	                    this.state = 1238;
 	                    this.match(ScalaParser.NL);
 	                }
@@ -5214,7 +5210,7 @@ export default class ScalaParser extends antlr4.Parser {
 	typeDef() {
 	    let localctx = new TypeDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 168, ScalaParser.RULE_typeDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1246;
@@ -5222,7 +5218,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1248;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__6) {
+	        if(_la===7) {
 	            this.state = 1247;
 	            this.typeParamClause();
 	        }
@@ -5250,7 +5246,7 @@ export default class ScalaParser extends antlr4.Parser {
 	tmplDef() {
 	    let localctx = new TmplDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 170, ScalaParser.RULE_tmplDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1265;
 	        this._errHandler.sync(this);
@@ -5261,7 +5257,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1254;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__41) {
+	            if(_la===42) {
 	                this.state = 1253;
 	                this.match(ScalaParser.T__41);
 	            }
@@ -5277,7 +5273,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1259;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.T__41) {
+	            if(_la===42) {
 	                this.state = 1258;
 	                this.match(ScalaParser.T__41);
 	            }
@@ -5316,7 +5312,7 @@ export default class ScalaParser extends antlr4.Parser {
 	classDef() {
 	    let localctx = new ClassDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 172, ScalaParser.RULE_classDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1267;
@@ -5324,7 +5320,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1269;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__6) {
+	        if(_la===7) {
 	            this.state = 1268;
 	            this.typeParamClause();
 	        }
@@ -5373,7 +5369,7 @@ export default class ScalaParser extends antlr4.Parser {
 	traitDef() {
 	    let localctx = new TraitDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 174, ScalaParser.RULE_traitDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1283;
@@ -5381,7 +5377,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1285;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__6) {
+	        if(_la===7) {
 	            this.state = 1284;
 	            this.typeParamClause();
 	        }
@@ -5432,7 +5428,7 @@ export default class ScalaParser extends antlr4.Parser {
 	classTemplateOpt() {
 	    let localctx = new ClassTemplateOptContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 178, ScalaParser.RULE_classTemplateOpt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1300;
 	        this._errHandler.sync(this);
@@ -5455,7 +5451,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                this.state = 1295;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.T__59) {
+	                if(_la===60) {
 	                    this.state = 1294;
 	                    this.match(ScalaParser.T__59);
 	                }
@@ -5486,7 +5482,7 @@ export default class ScalaParser extends antlr4.Parser {
 	traitTemplateOpt() {
 	    let localctx = new TraitTemplateOptContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 180, ScalaParser.RULE_traitTemplateOpt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1310;
 	        this._errHandler.sync(this);
@@ -5509,7 +5505,7 @@ export default class ScalaParser extends antlr4.Parser {
 	                this.state = 1305;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.T__59) {
+	                if(_la===60) {
 	                    this.state = 1304;
 	                    this.match(ScalaParser.T__59);
 	                }
@@ -5540,13 +5536,13 @@ export default class ScalaParser extends antlr4.Parser {
 	classTemplate() {
 	    let localctx = new ClassTemplateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, ScalaParser.RULE_classTemplate);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1313;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__12) {
+	        if(_la===13) {
 	            this.state = 1312;
 	            this.earlyDefs();
 	        }
@@ -5580,13 +5576,13 @@ export default class ScalaParser extends antlr4.Parser {
 	traitTemplate() {
 	    let localctx = new TraitTemplateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 184, ScalaParser.RULE_traitTemplate);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1320;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.T__12) {
+	        if(_la===13) {
 	            this.state = 1319;
 	            this.earlyDefs();
 	        }
@@ -5658,7 +5654,7 @@ export default class ScalaParser extends antlr4.Parser {
 	traitParents() {
 	    let localctx = new TraitParentsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 188, ScalaParser.RULE_traitParents);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1334;
@@ -5666,7 +5662,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1339;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__16) {
+	        while(_la===17) {
 	            this.state = 1335;
 	            this.match(ScalaParser.T__16);
 	            this.state = 1336;
@@ -5730,7 +5726,7 @@ export default class ScalaParser extends antlr4.Parser {
 	earlyDefs() {
 	    let localctx = new EarlyDefsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 192, ScalaParser.RULE_earlyDefs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1349;
@@ -5744,7 +5740,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1353; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ScalaParser.T__15 || _la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__43 - 40)) | (1 << (ScalaParser.T__47 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)))) !== 0));
+	        } while(_la===16 || _la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 32529) !== 0));
 	        this.state = 1355;
 	        this.match(ScalaParser.T__13);
 	        this.state = 1356;
@@ -5768,19 +5764,19 @@ export default class ScalaParser extends antlr4.Parser {
 	earlyDef() {
 	    let localctx = new EarlyDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 194, ScalaParser.RULE_earlyDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1364;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__43) {
+	        while(_la===44) {
 	            this.state = 1358;
 	            this.annotation();
 	            this.state = 1360;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ScalaParser.NL) {
+	            if(_la===74) {
 	                this.state = 1359;
 	                this.match(ScalaParser.NL);
 	            }
@@ -5792,7 +5788,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1370;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)))) !== 0)) {
+	        while(_la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 32257) !== 0)) {
 	            this.state = 1367;
 	            this.modifier();
 	            this.state = 1372;
@@ -5824,12 +5820,12 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1377;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ScalaParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1375;
 	            this.selfInvocation();
 	            break;
-	        case ScalaParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1376;
 	            this.constrBlock();
@@ -5856,7 +5852,7 @@ export default class ScalaParser extends antlr4.Parser {
 	constrBlock() {
 	    let localctx = new ConstrBlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 198, ScalaParser.RULE_constrBlock);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1379;
@@ -5866,7 +5862,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1384;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ScalaParser.T__0) | (1 << ScalaParser.T__1) | (1 << ScalaParser.T__4) | (1 << ScalaParser.T__5) | (1 << ScalaParser.T__9) | (1 << ScalaParser.T__12) | (1 << ScalaParser.T__14) | (1 << ScalaParser.T__15) | (1 << ScalaParser.T__19) | (1 << ScalaParser.T__21) | (1 << ScalaParser.T__22) | (1 << ScalaParser.T__24) | (1 << ScalaParser.T__25) | (1 << ScalaParser.T__28) | (1 << ScalaParser.T__29))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (ScalaParser.T__31 - 32)) | (1 << (ScalaParser.T__32 - 32)) | (1 << (ScalaParser.T__35 - 32)) | (1 << (ScalaParser.T__36 - 32)) | (1 << (ScalaParser.T__37 - 32)) | (1 << (ScalaParser.T__38 - 32)) | (1 << (ScalaParser.T__39 - 32)) | (1 << (ScalaParser.T__41 - 32)) | (1 << (ScalaParser.T__43 - 32)) | (1 << (ScalaParser.T__47 - 32)) | (1 << (ScalaParser.T__49 - 32)) | (1 << (ScalaParser.T__50 - 32)) | (1 << (ScalaParser.T__51 - 32)) | (1 << (ScalaParser.T__54 - 32)) | (1 << (ScalaParser.T__55 - 32)) | (1 << (ScalaParser.T__56 - 32)) | (1 << (ScalaParser.T__57 - 32)) | (1 << (ScalaParser.T__58 - 32)) | (1 << (ScalaParser.Id - 32)) | (1 << (ScalaParser.BooleanLiteral - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (ScalaParser.CharacterLiteral - 64)) | (1 << (ScalaParser.SymbolLiteral - 64)) | (1 << (ScalaParser.IntegerLiteral - 64)) | (1 << (ScalaParser.StringLiteral - 64)) | (1 << (ScalaParser.FloatingPointLiteral - 64)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1725015142) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3483178483) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 31) !== 0)) {
 	            this.state = 1381;
 	            this.blockStat();
 	            this.state = 1386;
@@ -5933,7 +5929,7 @@ export default class ScalaParser extends antlr4.Parser {
 	topStatSeq() {
 	    let localctx = new TopStatSeqContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 202, ScalaParser.RULE_topStatSeq);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1396; 
@@ -5945,7 +5941,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1398; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__41 - 40)) | (1 << (ScalaParser.T__43 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)) | (1 << (ScalaParser.T__54 - 40)) | (1 << (ScalaParser.T__56 - 40)) | (1 << (ScalaParser.T__57 - 40)) | (1 << (ScalaParser.T__58 - 40)) | (1 << (ScalaParser.T__60 - 40)))) !== 0));
+	        } while(_la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 3079701) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -5965,7 +5961,7 @@ export default class ScalaParser extends antlr4.Parser {
 	topStat() {
 	    let localctx = new TopStatContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 204, ScalaParser.RULE_topStat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1419;
 	        this._errHandler.sync(this);
@@ -5976,13 +5972,13 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1406;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__43) {
+	            while(_la===44) {
 	                this.state = 1400;
 	                this.annotation();
 	                this.state = 1402;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ScalaParser.NL) {
+	                if(_la===74) {
 	                    this.state = 1401;
 	                    this.match(ScalaParser.NL);
 	                }
@@ -5994,7 +5990,7 @@ export default class ScalaParser extends antlr4.Parser {
 	            this.state = 1412;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===ScalaParser.T__21 || ((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ScalaParser.T__39 - 40)) | (1 << (ScalaParser.T__48 - 40)) | (1 << (ScalaParser.T__49 - 40)) | (1 << (ScalaParser.T__50 - 40)) | (1 << (ScalaParser.T__51 - 40)) | (1 << (ScalaParser.T__52 - 40)) | (1 << (ScalaParser.T__53 - 40)))) !== 0)) {
+	            while(_la===22 || ((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 32257) !== 0)) {
 	                this.state = 1409;
 	                this.modifier();
 	                this.state = 1414;
@@ -6043,7 +6039,7 @@ export default class ScalaParser extends antlr4.Parser {
 	packaging() {
 	    let localctx = new PackagingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 206, ScalaParser.RULE_packaging);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1421;
@@ -6053,7 +6049,7 @@ export default class ScalaParser extends antlr4.Parser {
 	        this.state = 1424;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ScalaParser.NL) {
+	        if(_la===74) {
 	            this.state = 1423;
 	            this.match(ScalaParser.NL);
 	        }

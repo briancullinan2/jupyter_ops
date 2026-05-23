@@ -1,4 +1,4 @@
-// Generated from ./metamath/metamath.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/metamath/metamath.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -173,6 +173,15 @@ export default class metamathListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by metamathParser#mathsymbol.
 	exitMathsymbol(ctx) {
+	}
+
+
+	// Enter a parse tree produced by metamathParser#printablecharacter.
+	enterPrintablecharacter(ctx) {
+	}
+
+	// Exit a parse tree produced by metamathParser#printablecharacter.
+	exitPrintablecharacter(ctx) {
 	}
 
 

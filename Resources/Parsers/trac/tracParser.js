@@ -1,4 +1,4 @@
-// Generated from ./trac/trac.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/trac/trac.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import tracListener from './tracListener.js';
@@ -46,22 +46,18 @@ export default class tracParser extends antlr4.Parser {
         this.symbolicNames = tracParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, tracParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 19;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===tracParser.T__0 || _la===tracParser.T__4) {
+	        while(_la===1 || _la===5) {
 	            this.state = 16;
 	            this.macro();
 	            this.state = 21;
@@ -99,12 +95,12 @@ export default class tracParser extends antlr4.Parser {
 	        this.state = 27;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case tracParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 25;
 	            this.active();
 	            break;
-	        case tracParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 26;
 	            this.neutral();
@@ -131,7 +127,7 @@ export default class tracParser extends antlr4.Parser {
 	active() {
 	    let localctx = new ActiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, tracParser.RULE_active);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 29;
@@ -143,7 +139,7 @@ export default class tracParser extends antlr4.Parser {
 	        this.state = 34;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===tracParser.T__2) {
+	        if(_la===3) {
 	            this.state = 32;
 	            this.match(tracParser.T__2);
 	            this.state = 33;
@@ -171,7 +167,7 @@ export default class tracParser extends antlr4.Parser {
 	neutral() {
 	    let localctx = new NeutralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, tracParser.RULE_neutral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 38;
@@ -183,7 +179,7 @@ export default class tracParser extends antlr4.Parser {
 	        this.state = 43;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===tracParser.T__2) {
+	        if(_la===3) {
 	            this.state = 41;
 	            this.match(tracParser.T__2);
 	            this.state = 42;
@@ -211,7 +207,7 @@ export default class tracParser extends antlr4.Parser {
 	arglist() {
 	    let localctx = new ArglistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, tracParser.RULE_arglist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 47;
@@ -219,7 +215,7 @@ export default class tracParser extends antlr4.Parser {
 	        this.state = 52;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===tracParser.T__2) {
+	        while(_la===3) {
 	            this.state = 48;
 	            this.match(tracParser.T__2);
 	            this.state = 49;
@@ -251,13 +247,13 @@ export default class tracParser extends antlr4.Parser {
 	        this.state = 61;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case tracParser.T__0:
-	        case tracParser.T__4:
+	        case 1:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 55;
 	            this.macro();
 	            break;
-	        case tracParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 56;
 	            this.match(tracParser.T__1);
@@ -266,7 +262,7 @@ export default class tracParser extends antlr4.Parser {
 	            this.state = 58;
 	            this.match(tracParser.T__3);
 	            break;
-	        case tracParser.STRING:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 60;
 	            this.string();
@@ -678,3 +674,12 @@ tracParser.ArglistContext = ArglistContext;
 tracParser.ArgContext = ArgContext; 
 tracParser.NameContext = NameContext; 
 tracParser.StringContext = StringContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

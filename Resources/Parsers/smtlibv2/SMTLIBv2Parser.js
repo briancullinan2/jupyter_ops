@@ -1,4 +1,4 @@
-// Generated from ./smtlibv2/SMTLIBv2.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/smtlibv2/SMTLIBv2.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import SMTLIBv2Listener from './SMTLIBv2Listener.js';
@@ -445,7 +445,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
                              "PK_Theories", "PK_Values", "PK_Verbosity", 
                              "PK_Version", "RS_Model", "UndefinedSymbol", 
                              "WS" ];
-    static ruleNames = [ "start", "generalReservedWord", "simpleSymbol", 
+    static ruleNames = [ "start_", "generalReservedWord", "simpleSymbol", 
                          "quotedSymbol", "predefSymbol", "predefKeyword", 
                          "symbol", "numeral", "decimal", "hexadecimal", 
                          "binary", "string", "keyword", "spec_constant", 
@@ -484,15 +484,11 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
         this.symbolicNames = SMTLIBv2Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
 
 
-
-	start() {
-	    let localctx = new StartContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 0, SMTLIBv2Parser.RULE_start);
+	start_() {
+	    let localctx = new Start_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, SMTLIBv2Parser.RULE_start_);
 	    try {
 	        this.state = 202;
 	        this._errHandler.sync(this);
@@ -550,12 +546,12 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	generalReservedWord() {
 	    let localctx = new GeneralReservedWordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, SMTLIBv2Parser.RULE_generalReservedWord);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 204;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 53)) & ~0x1f) == 0 && ((1 << (_la - 53)) & ((1 << (SMTLIBv2Parser.GRW_Exclamation - 53)) | (1 << (SMTLIBv2Parser.GRW_Underscore - 53)) | (1 << (SMTLIBv2Parser.GRW_As - 53)) | (1 << (SMTLIBv2Parser.GRW_Binary - 53)) | (1 << (SMTLIBv2Parser.GRW_Decimal - 53)) | (1 << (SMTLIBv2Parser.GRW_Exists - 53)) | (1 << (SMTLIBv2Parser.GRW_Hexadecimal - 53)) | (1 << (SMTLIBv2Parser.GRW_Forall - 53)) | (1 << (SMTLIBv2Parser.GRW_Let - 53)) | (1 << (SMTLIBv2Parser.GRW_Match - 53)) | (1 << (SMTLIBv2Parser.GRW_Numeral - 53)) | (1 << (SMTLIBv2Parser.GRW_Par - 53)) | (1 << (SMTLIBv2Parser.GRW_String - 53)))) !== 0) || _la===SMTLIBv2Parser.RS_Model)) {
+	        if(!(((((_la - 53)) & ~0x1f) === 0 && ((1 << (_la - 53)) & 8191) !== 0) || _la===112)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -585,27 +581,27 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 208;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 206;
 	            this.predefSymbol();
 	            break;
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 113:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 207;
 	            this.match(SMTLIBv2Parser.UndefinedSymbol);
@@ -655,12 +651,12 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	predefSymbol() {
 	    let localctx = new PredefSymbolContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, SMTLIBv2Parser.RULE_predefSymbol);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 212;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388480) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -686,12 +682,12 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	predefKeyword() {
 	    let localctx = new PredefKeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, SMTLIBv2Parser.RULE_predefKeyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 214;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 71)) & ~0x1f) == 0 && ((1 << (_la - 71)) & ((1 << (SMTLIBv2Parser.PK_AllStatistics - 71)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 71)) | (1 << (SMTLIBv2Parser.PK_Authors - 71)) | (1 << (SMTLIBv2Parser.PK_Category - 71)) | (1 << (SMTLIBv2Parser.PK_Chainable - 71)) | (1 << (SMTLIBv2Parser.PK_Definition - 71)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 71)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 71)) | (1 << (SMTLIBv2Parser.PK_Extension - 71)) | (1 << (SMTLIBv2Parser.PK_Funs - 71)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 71)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 71)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 71)) | (1 << (SMTLIBv2Parser.PK_Language - 71)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 71)) | (1 << (SMTLIBv2Parser.PK_License - 71)) | (1 << (SMTLIBv2Parser.PK_Named - 71)) | (1 << (SMTLIBv2Parser.PK_Name - 71)) | (1 << (SMTLIBv2Parser.PK_Notes - 71)) | (1 << (SMTLIBv2Parser.PK_Pattern - 71)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 71)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 71)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 71)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 71)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 71)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 71)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 71)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 71)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 71)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 71)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 71)) | (1 << (SMTLIBv2Parser.PK_RightAssoc - 71)))) !== 0) || ((((_la - 103)) & ~0x1f) == 0 && ((1 << (_la - 103)) & ((1 << (SMTLIBv2Parser.PK_SmtLibVersion - 103)) | (1 << (SMTLIBv2Parser.PK_Sorts - 103)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 103)) | (1 << (SMTLIBv2Parser.PK_Source - 103)) | (1 << (SMTLIBv2Parser.PK_Status - 103)) | (1 << (SMTLIBv2Parser.PK_Theories - 103)) | (1 << (SMTLIBv2Parser.PK_Values - 103)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 103)) | (1 << (SMTLIBv2Parser.PK_Version - 103)))) !== 0))) {
+	        if(!(((((_la - 71)) & ~0x1f) === 0 && ((1 << (_la - 71)) & 4294967295) !== 0) || ((((_la - 103)) & ~0x1f) === 0 && ((1 << (_la - 103)) & 511) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -721,28 +717,28 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 218;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 113:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 216;
 	            this.simpleSymbol();
 	            break;
-	        case SMTLIBv2Parser.QuotedSymbol:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 217;
 	            this.quotedSymbol();
@@ -888,52 +884,52 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 233;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.PK_AllStatistics:
-	        case SMTLIBv2Parser.PK_AssertionStackLevels:
-	        case SMTLIBv2Parser.PK_Authors:
-	        case SMTLIBv2Parser.PK_Category:
-	        case SMTLIBv2Parser.PK_Chainable:
-	        case SMTLIBv2Parser.PK_Definition:
-	        case SMTLIBv2Parser.PK_DiagnosticOutputChannel:
-	        case SMTLIBv2Parser.PK_ErrorBehaviour:
-	        case SMTLIBv2Parser.PK_Extension:
-	        case SMTLIBv2Parser.PK_Funs:
-	        case SMTLIBv2Parser.PK_FunsDescription:
-	        case SMTLIBv2Parser.PK_GlobalDeclarations:
-	        case SMTLIBv2Parser.PK_InteractiveMode:
-	        case SMTLIBv2Parser.PK_Language:
-	        case SMTLIBv2Parser.PK_LeftAssoc:
-	        case SMTLIBv2Parser.PK_License:
-	        case SMTLIBv2Parser.PK_Named:
-	        case SMTLIBv2Parser.PK_Name:
-	        case SMTLIBv2Parser.PK_Notes:
-	        case SMTLIBv2Parser.PK_Pattern:
-	        case SMTLIBv2Parser.PK_PrintSuccess:
-	        case SMTLIBv2Parser.PK_ProduceAssertions:
-	        case SMTLIBv2Parser.PK_ProduceAssignments:
-	        case SMTLIBv2Parser.PK_ProduceModels:
-	        case SMTLIBv2Parser.PK_ProduceProofs:
-	        case SMTLIBv2Parser.PK_ProduceUnsatAssumptions:
-	        case SMTLIBv2Parser.PK_ProduceUnsatCores:
-	        case SMTLIBv2Parser.PK_RandomSeed:
-	        case SMTLIBv2Parser.PK_ReasonUnknown:
-	        case SMTLIBv2Parser.PK_RegularOutputChannel:
-	        case SMTLIBv2Parser.PK_ReproducibleResourceLimit:
-	        case SMTLIBv2Parser.PK_RightAssoc:
-	        case SMTLIBv2Parser.PK_SmtLibVersion:
-	        case SMTLIBv2Parser.PK_Sorts:
-	        case SMTLIBv2Parser.PK_SortsDescription:
-	        case SMTLIBv2Parser.PK_Source:
-	        case SMTLIBv2Parser.PK_Status:
-	        case SMTLIBv2Parser.PK_Theories:
-	        case SMTLIBv2Parser.PK_Values:
-	        case SMTLIBv2Parser.PK_Verbosity:
-	        case SMTLIBv2Parser.PK_Version:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 230;
 	            this.predefKeyword();
 	            break;
-	        case SMTLIBv2Parser.Colon:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 231;
 	            this.match(SMTLIBv2Parser.Colon);
@@ -966,27 +962,27 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 240;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.Numeral:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 235;
 	            this.numeral();
 	            break;
-	        case SMTLIBv2Parser.Decimal:
+	        case 69:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 236;
 	            this.decimal();
 	            break;
-	        case SMTLIBv2Parser.HexDecimal:
+	        case 68:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 237;
 	            this.hexadecimal();
 	            break;
-	        case SMTLIBv2Parser.Binary:
+	        case 67:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 238;
 	            this.binary();
 	            break;
-	        case SMTLIBv2Parser.String:
+	        case 5:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 239;
 	            this.string();
@@ -1013,96 +1009,96 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	s_expr() {
 	    let localctx = new S_exprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, SMTLIBv2Parser.RULE_s_expr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 253;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.String:
-	        case SMTLIBv2Parser.Numeral:
-	        case SMTLIBv2Parser.Binary:
-	        case SMTLIBv2Parser.HexDecimal:
-	        case SMTLIBv2Parser.Decimal:
+	        case 5:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 242;
 	            this.spec_constant();
 	            break;
-	        case SMTLIBv2Parser.QuotedSymbol:
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 113:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 243;
 	            this.symbol();
 	            break;
-	        case SMTLIBv2Parser.Colon:
-	        case SMTLIBv2Parser.PK_AllStatistics:
-	        case SMTLIBv2Parser.PK_AssertionStackLevels:
-	        case SMTLIBv2Parser.PK_Authors:
-	        case SMTLIBv2Parser.PK_Category:
-	        case SMTLIBv2Parser.PK_Chainable:
-	        case SMTLIBv2Parser.PK_Definition:
-	        case SMTLIBv2Parser.PK_DiagnosticOutputChannel:
-	        case SMTLIBv2Parser.PK_ErrorBehaviour:
-	        case SMTLIBv2Parser.PK_Extension:
-	        case SMTLIBv2Parser.PK_Funs:
-	        case SMTLIBv2Parser.PK_FunsDescription:
-	        case SMTLIBv2Parser.PK_GlobalDeclarations:
-	        case SMTLIBv2Parser.PK_InteractiveMode:
-	        case SMTLIBv2Parser.PK_Language:
-	        case SMTLIBv2Parser.PK_LeftAssoc:
-	        case SMTLIBv2Parser.PK_License:
-	        case SMTLIBv2Parser.PK_Named:
-	        case SMTLIBv2Parser.PK_Name:
-	        case SMTLIBv2Parser.PK_Notes:
-	        case SMTLIBv2Parser.PK_Pattern:
-	        case SMTLIBv2Parser.PK_PrintSuccess:
-	        case SMTLIBv2Parser.PK_ProduceAssertions:
-	        case SMTLIBv2Parser.PK_ProduceAssignments:
-	        case SMTLIBv2Parser.PK_ProduceModels:
-	        case SMTLIBv2Parser.PK_ProduceProofs:
-	        case SMTLIBv2Parser.PK_ProduceUnsatAssumptions:
-	        case SMTLIBv2Parser.PK_ProduceUnsatCores:
-	        case SMTLIBv2Parser.PK_RandomSeed:
-	        case SMTLIBv2Parser.PK_ReasonUnknown:
-	        case SMTLIBv2Parser.PK_RegularOutputChannel:
-	        case SMTLIBv2Parser.PK_ReproducibleResourceLimit:
-	        case SMTLIBv2Parser.PK_RightAssoc:
-	        case SMTLIBv2Parser.PK_SmtLibVersion:
-	        case SMTLIBv2Parser.PK_Sorts:
-	        case SMTLIBv2Parser.PK_SortsDescription:
-	        case SMTLIBv2Parser.PK_Source:
-	        case SMTLIBv2Parser.PK_Status:
-	        case SMTLIBv2Parser.PK_Theories:
-	        case SMTLIBv2Parser.PK_Values:
-	        case SMTLIBv2Parser.PK_Verbosity:
-	        case SMTLIBv2Parser.PK_Version:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 244;
 	            this.keyword();
 	            break;
-	        case SMTLIBv2Parser.ParOpen:
+	        case 2:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 245;
 	            this.match(SMTLIBv2Parser.ParOpen);
 	            this.state = 249;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.String) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (SMTLIBv2Parser.Numeral - 66)) | (1 << (SMTLIBv2Parser.Binary - 66)) | (1 << (SMTLIBv2Parser.HexDecimal - 66)) | (1 << (SMTLIBv2Parser.Decimal - 66)) | (1 << (SMTLIBv2Parser.Colon - 66)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 66)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 66)) | (1 << (SMTLIBv2Parser.PK_Authors - 66)) | (1 << (SMTLIBv2Parser.PK_Category - 66)) | (1 << (SMTLIBv2Parser.PK_Chainable - 66)) | (1 << (SMTLIBv2Parser.PK_Definition - 66)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 66)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 66)) | (1 << (SMTLIBv2Parser.PK_Extension - 66)) | (1 << (SMTLIBv2Parser.PK_Funs - 66)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 66)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 66)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 66)) | (1 << (SMTLIBv2Parser.PK_Language - 66)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 66)) | (1 << (SMTLIBv2Parser.PK_License - 66)) | (1 << (SMTLIBv2Parser.PK_Named - 66)) | (1 << (SMTLIBv2Parser.PK_Name - 66)) | (1 << (SMTLIBv2Parser.PK_Notes - 66)) | (1 << (SMTLIBv2Parser.PK_Pattern - 66)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 66)))) !== 0) || ((((_la - 98)) & ~0x1f) == 0 && ((1 << (_la - 98)) & ((1 << (SMTLIBv2Parser.PK_RandomSeed - 98)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 98)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 98)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 98)) | (1 << (SMTLIBv2Parser.PK_RightAssoc - 98)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 98)) | (1 << (SMTLIBv2Parser.PK_Sorts - 98)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 98)) | (1 << (SMTLIBv2Parser.PK_Source - 98)) | (1 << (SMTLIBv2Parser.PK_Status - 98)) | (1 << (SMTLIBv2Parser.PK_Theories - 98)) | (1 << (SMTLIBv2Parser.PK_Values - 98)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 98)) | (1 << (SMTLIBv2Parser.PK_Version - 98)) | (1 << (SMTLIBv2Parser.UndefinedSymbol - 98)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388580) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 4294967295) !== 0) || ((((_la - 98)) & ~0x1f) === 0 && ((1 << (_la - 98)) & 49151) !== 0)) {
 	                this.state = 246;
 	                this.s_expr();
 	                this.state = 251;
@@ -1138,29 +1134,29 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 257;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.Numeral:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 255;
 	            this.numeral();
 	            break;
-	        case SMTLIBv2Parser.QuotedSymbol:
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 113:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 256;
 	            this.symbol();
@@ -1187,34 +1183,34 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, SMTLIBv2Parser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 270;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.QuotedSymbol:
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 113:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 259;
 	            this.symbol();
 	            break;
-	        case SMTLIBv2Parser.ParOpen:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 260;
 	            this.match(SMTLIBv2Parser.ParOpen);
@@ -1231,7 +1227,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 266; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.Numeral || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===66 || _la===113);
 	            this.state = 268;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -1257,50 +1253,50 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	attribute_value() {
 	    let localctx = new Attribute_valueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, SMTLIBv2Parser.RULE_attribute_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 282;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.String:
-	        case SMTLIBv2Parser.Numeral:
-	        case SMTLIBv2Parser.Binary:
-	        case SMTLIBv2Parser.HexDecimal:
-	        case SMTLIBv2Parser.Decimal:
+	        case 5:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 272;
 	            this.spec_constant();
 	            break;
-	        case SMTLIBv2Parser.QuotedSymbol:
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 113:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 273;
 	            this.symbol();
 	            break;
-	        case SMTLIBv2Parser.ParOpen:
+	        case 2:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 274;
 	            this.match(SMTLIBv2Parser.ParOpen);
 	            this.state = 278;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.String) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (SMTLIBv2Parser.Numeral - 66)) | (1 << (SMTLIBv2Parser.Binary - 66)) | (1 << (SMTLIBv2Parser.HexDecimal - 66)) | (1 << (SMTLIBv2Parser.Decimal - 66)) | (1 << (SMTLIBv2Parser.Colon - 66)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 66)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 66)) | (1 << (SMTLIBv2Parser.PK_Authors - 66)) | (1 << (SMTLIBv2Parser.PK_Category - 66)) | (1 << (SMTLIBv2Parser.PK_Chainable - 66)) | (1 << (SMTLIBv2Parser.PK_Definition - 66)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 66)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 66)) | (1 << (SMTLIBv2Parser.PK_Extension - 66)) | (1 << (SMTLIBv2Parser.PK_Funs - 66)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 66)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 66)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 66)) | (1 << (SMTLIBv2Parser.PK_Language - 66)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 66)) | (1 << (SMTLIBv2Parser.PK_License - 66)) | (1 << (SMTLIBv2Parser.PK_Named - 66)) | (1 << (SMTLIBv2Parser.PK_Name - 66)) | (1 << (SMTLIBv2Parser.PK_Notes - 66)) | (1 << (SMTLIBv2Parser.PK_Pattern - 66)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 66)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 66)))) !== 0) || ((((_la - 98)) & ~0x1f) == 0 && ((1 << (_la - 98)) & ((1 << (SMTLIBv2Parser.PK_RandomSeed - 98)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 98)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 98)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 98)) | (1 << (SMTLIBv2Parser.PK_RightAssoc - 98)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 98)) | (1 << (SMTLIBv2Parser.PK_Sorts - 98)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 98)) | (1 << (SMTLIBv2Parser.PK_Source - 98)) | (1 << (SMTLIBv2Parser.PK_Status - 98)) | (1 << (SMTLIBv2Parser.PK_Theories - 98)) | (1 << (SMTLIBv2Parser.PK_Values - 98)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 98)) | (1 << (SMTLIBv2Parser.PK_Version - 98)) | (1 << (SMTLIBv2Parser.UndefinedSymbol - 98)))) !== 0)) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388580) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 4294967295) !== 0) || ((((_la - 98)) & ~0x1f) === 0 && ((1 << (_la - 98)) & 49151) !== 0)) {
 	                this.state = 275;
 	                this.s_expr();
 	                this.state = 280;
@@ -1371,7 +1367,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	sort() {
 	    let localctx = new SortContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, SMTLIBv2Parser.RULE_sort);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 300;
 	        this._errHandler.sync(this);
@@ -1398,7 +1394,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 296; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388548) !== 0) || _la===113);
 	            this.state = 298;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -1526,34 +1522,34 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	pattern() {
 	    let localctx = new PatternContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, SMTLIBv2Parser.RULE_pattern);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 331;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.QuotedSymbol:
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 113:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 321;
 	            this.symbol();
 	            break;
-	        case SMTLIBv2Parser.ParOpen:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 322;
 	            this.match(SMTLIBv2Parser.ParOpen);
@@ -1568,7 +1564,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 327; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===113);
 	            this.state = 329;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -1623,7 +1619,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, SMTLIBv2Parser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 407;
 	        this._errHandler.sync(this);
@@ -1656,7 +1652,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 345; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.String) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (SMTLIBv2Parser.Numeral - 66)) | (1 << (SMTLIBv2Parser.Binary - 66)) | (1 << (SMTLIBv2Parser.HexDecimal - 66)) | (1 << (SMTLIBv2Parser.Decimal - 66)))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388580) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 15) !== 0) || _la===113);
 	            this.state = 347;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -1678,7 +1674,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 355; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 357;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            this.state = 358;
@@ -1704,7 +1700,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 367; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 369;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            this.state = 370;
@@ -1730,7 +1726,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 379; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 381;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            this.state = 382;
@@ -1758,7 +1754,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 392; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 394;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            this.state = 395;
@@ -1782,7 +1778,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 403; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0));
+	            } while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0));
 	            this.state = 405;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -1807,7 +1803,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	sort_symbol_decl() {
 	    let localctx = new Sort_symbol_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, SMTLIBv2Parser.RULE_sort_symbol_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 409;
@@ -1819,7 +1815,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 415;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0)) {
+	        while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0)) {
 	            this.state = 412;
 	            this.attribute();
 	            this.state = 417;
@@ -1847,12 +1843,12 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	meta_spec_constant() {
 	    let localctx = new Meta_spec_constantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, SMTLIBv2Parser.RULE_meta_spec_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 420;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (SMTLIBv2Parser.GRW_Decimal - 57)) | (1 << (SMTLIBv2Parser.GRW_Numeral - 57)) | (1 << (SMTLIBv2Parser.GRW_String - 57)))) !== 0))) {
+	        if(!(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 321) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1878,7 +1874,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	fun_symbol_decl() {
 	    let localctx = new Fun_symbol_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, SMTLIBv2Parser.RULE_fun_symbol_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 459;
 	        this._errHandler.sync(this);
@@ -1895,7 +1891,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 428;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0)) {
+	            while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0)) {
 	                this.state = 425;
 	                this.attribute();
 	                this.state = 430;
@@ -1917,7 +1913,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 439;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0)) {
+	            while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0)) {
 	                this.state = 436;
 	                this.attribute();
 	                this.state = 441;
@@ -1943,11 +1939,11 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 449; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388548) !== 0) || _la===113);
 	            this.state = 454;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0)) {
+	            while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0)) {
 	                this.state = 451;
 	                this.attribute();
 	                this.state = 456;
@@ -1978,7 +1974,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	par_fun_symbol_decl() {
 	    let localctx = new Par_fun_symbol_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, SMTLIBv2Parser.RULE_par_fun_symbol_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 487;
 	        this._errHandler.sync(this);
@@ -2007,7 +2003,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 468; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===113);
 	            this.state = 470;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            this.state = 471;
@@ -2023,11 +2019,11 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 476; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388548) !== 0) || _la===113);
 	            this.state = 481;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0)) {
+	            while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0)) {
 	                this.state = 478;
 	                this.attribute();
 	                this.state = 483;
@@ -2060,7 +2056,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	theory_attribute() {
 	    let localctx = new Theory_attributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, SMTLIBv2Parser.RULE_theory_attribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 518;
 	        this._errHandler.sync(this);
@@ -2081,7 +2077,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 494; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 496;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -2101,7 +2097,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 503; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 505;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -2172,7 +2168,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	theory_decl() {
 	    let localctx = new Theory_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, SMTLIBv2Parser.RULE_theory_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 520;
@@ -2190,7 +2186,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 526; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0));
+	        } while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0));
 	        this.state = 528;
 	        this.match(SMTLIBv2Parser.ParClose);
 	    } catch (re) {
@@ -2212,7 +2208,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	logic_attribue() {
 	    let localctx = new Logic_attribueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, SMTLIBv2Parser.RULE_logic_attribue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 548;
 	        this._errHandler.sync(this);
@@ -2233,7 +2229,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 535; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===113);
 	            this.state = 537;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -2296,7 +2292,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	logic() {
 	    let localctx = new LogicContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, SMTLIBv2Parser.RULE_logic);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 550;
@@ -2314,7 +2310,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 556; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0));
+	        } while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0));
 	        this.state = 558;
 	        this.match(SMTLIBv2Parser.ParClose);
 	    } catch (re) {
@@ -2394,7 +2390,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	constructor_dec() {
 	    let localctx = new Constructor_decContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, SMTLIBv2Parser.RULE_constructor_dec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 570;
@@ -2404,7 +2400,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 575;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SMTLIBv2Parser.ParOpen) {
+	        while(_la===2) {
 	            this.state = 572;
 	            this.selector_dec();
 	            this.state = 577;
@@ -2432,7 +2428,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	datatype_dec() {
 	    let localctx = new Datatype_decContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, SMTLIBv2Parser.RULE_datatype_dec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 606;
 	        this._errHandler.sync(this);
@@ -2451,7 +2447,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 584; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 586;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            break;
@@ -2473,7 +2469,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 594; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===113);
 	            this.state = 596;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            this.state = 597;
@@ -2487,7 +2483,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	                this.state = 601; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SMTLIBv2Parser.ParOpen);
+	            } while(_la===2);
 	            this.state = 603;
 	            this.match(SMTLIBv2Parser.ParClose);
 	            this.state = 604;
@@ -2514,7 +2510,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	function_dec() {
 	    let localctx = new Function_decContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, SMTLIBv2Parser.RULE_function_dec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 608;
@@ -2526,7 +2522,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 614;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SMTLIBv2Parser.ParOpen) {
+	        while(_la===2) {
 	            this.state = 611;
 	            this.sorted_var();
 	            this.state = 616;
@@ -2558,7 +2554,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	function_def() {
 	    let localctx = new Function_defContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, SMTLIBv2Parser.RULE_function_def);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 621;
@@ -2568,7 +2564,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 626;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SMTLIBv2Parser.ParOpen) {
+	        while(_la===2) {
 	            this.state = 623;
 	            this.sorted_var();
 	            this.state = 628;
@@ -2604,29 +2600,29 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 639;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SMTLIBv2Parser.QuotedSymbol:
-	        case SMTLIBv2Parser.PS_Not:
-	        case SMTLIBv2Parser.PS_Bool:
-	        case SMTLIBv2Parser.PS_ContinuedExecution:
-	        case SMTLIBv2Parser.PS_Error:
-	        case SMTLIBv2Parser.PS_False:
-	        case SMTLIBv2Parser.PS_ImmediateExit:
-	        case SMTLIBv2Parser.PS_Incomplete:
-	        case SMTLIBv2Parser.PS_Logic:
-	        case SMTLIBv2Parser.PS_Memout:
-	        case SMTLIBv2Parser.PS_Sat:
-	        case SMTLIBv2Parser.PS_Success:
-	        case SMTLIBv2Parser.PS_Theory:
-	        case SMTLIBv2Parser.PS_True:
-	        case SMTLIBv2Parser.PS_Unknown:
-	        case SMTLIBv2Parser.PS_Unsupported:
-	        case SMTLIBv2Parser.PS_Unsat:
-	        case SMTLIBv2Parser.UndefinedSymbol:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 113:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 633;
 	            this.symbol();
 	            break;
-	        case SMTLIBv2Parser.ParOpen:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 634;
 	            this.match(SMTLIBv2Parser.ParOpen);
@@ -2659,13 +2655,13 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	script() {
 	    let localctx = new ScriptContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, SMTLIBv2Parser.RULE_script);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 644;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SMTLIBv2Parser.ParOpen) {
+	        while(_la===2) {
 	            this.state = 641;
 	            this.command();
 	            this.state = 646;
@@ -2739,7 +2735,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	cmd_checkSatAssuming() {
 	    let localctx = new Cmd_checkSatAssumingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, SMTLIBv2Parser.RULE_cmd_checkSatAssuming);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 652;
@@ -2749,7 +2745,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 657;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388548) !== 0) || _la===113) {
 	            this.state = 654;
 	            this.prop_literal();
 	            this.state = 659;
@@ -2831,7 +2827,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	cmd_declareDatatypes() {
 	    let localctx = new Cmd_declareDatatypesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, SMTLIBv2Parser.RULE_cmd_declareDatatypes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 670;
@@ -2847,7 +2843,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 675; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SMTLIBv2Parser.ParOpen);
+	        } while(_la===2);
 	        this.state = 677;
 	        this.match(SMTLIBv2Parser.ParClose);
 	        this.state = 678;
@@ -2861,7 +2857,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 682; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SMTLIBv2Parser.ParOpen);
+	        } while(_la===2);
 	        this.state = 684;
 	        this.match(SMTLIBv2Parser.ParClose);
 	    } catch (re) {
@@ -2883,7 +2879,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	cmd_declareFun() {
 	    let localctx = new Cmd_declareFunContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, SMTLIBv2Parser.RULE_cmd_declareFun);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 686;
@@ -2895,7 +2891,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 692;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388548) !== 0) || _la===113) {
 	            this.state = 689;
 	            this.sort();
 	            this.state = 694;
@@ -3002,7 +2998,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	cmd_defineFunsRec() {
 	    let localctx = new Cmd_defineFunsRecContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, SMTLIBv2Parser.RULE_cmd_defineFunsRec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 708;
@@ -3018,7 +3014,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 713; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SMTLIBv2Parser.ParOpen);
+	        } while(_la===2);
 	        this.state = 715;
 	        this.match(SMTLIBv2Parser.ParClose);
 	        this.state = 716;
@@ -3032,7 +3028,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 720; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.String) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (SMTLIBv2Parser.Numeral - 66)) | (1 << (SMTLIBv2Parser.Binary - 66)) | (1 << (SMTLIBv2Parser.HexDecimal - 66)) | (1 << (SMTLIBv2Parser.Decimal - 66)))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388580) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 15) !== 0) || _la===113);
 	        this.state = 722;
 	        this.match(SMTLIBv2Parser.ParClose);
 	    } catch (re) {
@@ -3054,7 +3050,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	cmd_defineSort() {
 	    let localctx = new Cmd_defineSortContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 106, SMTLIBv2Parser.RULE_cmd_defineSort);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 724;
@@ -3066,7 +3062,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 730;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===113) {
 	            this.state = 727;
 	            this.symbol();
 	            this.state = 732;
@@ -3332,7 +3328,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	cmd_getValue() {
 	    let localctx = new Cmd_getValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 128, SMTLIBv2Parser.RULE_cmd_getValue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 759;
@@ -3348,7 +3344,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 764; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.String) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (SMTLIBv2Parser.Numeral - 66)) | (1 << (SMTLIBv2Parser.Binary - 66)) | (1 << (SMTLIBv2Parser.HexDecimal - 66)) | (1 << (SMTLIBv2Parser.Decimal - 66)))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388580) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 15) !== 0) || _la===113);
 	        this.state = 766;
 	        this.match(SMTLIBv2Parser.ParClose);
 	    } catch (re) {
@@ -3866,12 +3862,12 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	b_value() {
 	    let localctx = new B_valueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, SMTLIBv2Parser.RULE_b_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 909;
 	        _la = this._input.LA(1);
-	        if(!(_la===SMTLIBv2Parser.PS_False || _la===SMTLIBv2Parser.PS_True)) {
+	        if(!(_la===11 || _la===19)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4113,12 +4109,12 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	error_behaviour() {
 	    let localctx = new Error_behaviourContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 152, SMTLIBv2Parser.RULE_error_behaviour);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 952;
 	        _la = this._input.LA(1);
-	        if(!(_la===SMTLIBv2Parser.PS_ContinuedExecution || _la===SMTLIBv2Parser.PS_ImmediateExit)) {
+	        if(!(_la===9 || _la===12)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4379,12 +4375,12 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	check_sat_response() {
 	    let localctx = new Check_sat_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 164, SMTLIBv2Parser.RULE_check_sat_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 998;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 5308416) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4433,7 +4429,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	get_assertions_response() {
 	    let localctx = new Get_assertions_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 168, SMTLIBv2Parser.RULE_get_assertions_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1002;
@@ -4441,7 +4437,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 1006;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.ParOpen) | (1 << SMTLIBv2Parser.String) | (1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (SMTLIBv2Parser.Numeral - 66)) | (1 << (SMTLIBv2Parser.Binary - 66)) | (1 << (SMTLIBv2Parser.HexDecimal - 66)) | (1 << (SMTLIBv2Parser.Decimal - 66)))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388580) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 15) !== 0) || _la===113) {
 	            this.state = 1003;
 	            this.term();
 	            this.state = 1008;
@@ -4469,7 +4465,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	get_assignment_response() {
 	    let localctx = new Get_assignment_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 170, SMTLIBv2Parser.RULE_get_assignment_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1011;
@@ -4477,7 +4473,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 1015;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SMTLIBv2Parser.ParOpen) {
+	        while(_la===2) {
 	            this.state = 1012;
 	            this.t_valuation_pair();
 	            this.state = 1017;
@@ -4505,7 +4501,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	get_info_response() {
 	    let localctx = new Get_info_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 172, SMTLIBv2Parser.RULE_get_info_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1020;
@@ -4519,7 +4515,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 1024; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (SMTLIBv2Parser.Colon - 70)) | (1 << (SMTLIBv2Parser.PK_AllStatistics - 70)) | (1 << (SMTLIBv2Parser.PK_AssertionStackLevels - 70)) | (1 << (SMTLIBv2Parser.PK_Authors - 70)) | (1 << (SMTLIBv2Parser.PK_Category - 70)) | (1 << (SMTLIBv2Parser.PK_Chainable - 70)) | (1 << (SMTLIBv2Parser.PK_Definition - 70)) | (1 << (SMTLIBv2Parser.PK_DiagnosticOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ErrorBehaviour - 70)) | (1 << (SMTLIBv2Parser.PK_Extension - 70)) | (1 << (SMTLIBv2Parser.PK_Funs - 70)) | (1 << (SMTLIBv2Parser.PK_FunsDescription - 70)) | (1 << (SMTLIBv2Parser.PK_GlobalDeclarations - 70)) | (1 << (SMTLIBv2Parser.PK_InteractiveMode - 70)) | (1 << (SMTLIBv2Parser.PK_Language - 70)) | (1 << (SMTLIBv2Parser.PK_LeftAssoc - 70)) | (1 << (SMTLIBv2Parser.PK_License - 70)) | (1 << (SMTLIBv2Parser.PK_Named - 70)) | (1 << (SMTLIBv2Parser.PK_Name - 70)) | (1 << (SMTLIBv2Parser.PK_Notes - 70)) | (1 << (SMTLIBv2Parser.PK_Pattern - 70)) | (1 << (SMTLIBv2Parser.PK_PrintSuccess - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssertions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceAssignments - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceModels - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceProofs - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatAssumptions - 70)) | (1 << (SMTLIBv2Parser.PK_ProduceUnsatCores - 70)) | (1 << (SMTLIBv2Parser.PK_RandomSeed - 70)) | (1 << (SMTLIBv2Parser.PK_ReasonUnknown - 70)) | (1 << (SMTLIBv2Parser.PK_RegularOutputChannel - 70)) | (1 << (SMTLIBv2Parser.PK_ReproducibleResourceLimit - 70)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (SMTLIBv2Parser.PK_RightAssoc - 102)) | (1 << (SMTLIBv2Parser.PK_SmtLibVersion - 102)) | (1 << (SMTLIBv2Parser.PK_Sorts - 102)) | (1 << (SMTLIBv2Parser.PK_SortsDescription - 102)) | (1 << (SMTLIBv2Parser.PK_Source - 102)) | (1 << (SMTLIBv2Parser.PK_Status - 102)) | (1 << (SMTLIBv2Parser.PK_Theories - 102)) | (1 << (SMTLIBv2Parser.PK_Values - 102)) | (1 << (SMTLIBv2Parser.PK_Verbosity - 102)) | (1 << (SMTLIBv2Parser.PK_Version - 102)))) !== 0));
+	        } while(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 4294967295) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 1023) !== 0));
 	        this.state = 1026;
 	        this.match(SMTLIBv2Parser.ParClose);
 	    } catch (re) {
@@ -4541,7 +4537,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	get_model_response() {
 	    let localctx = new Get_model_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 174, SMTLIBv2Parser.RULE_get_model_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1045;
 	        this._errHandler.sync(this);
@@ -4556,7 +4552,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 1033;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SMTLIBv2Parser.ParOpen) {
+	            while(_la===2) {
 	                this.state = 1030;
 	                this.model_response();
 	                this.state = 1035;
@@ -4574,7 +4570,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 1041;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SMTLIBv2Parser.ParOpen) {
+	            while(_la===2) {
 	                this.state = 1038;
 	                this.model_response();
 	                this.state = 1043;
@@ -4651,7 +4647,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	get_unsat_assump_response() {
 	    let localctx = new Get_unsat_assump_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 180, SMTLIBv2Parser.RULE_get_unsat_assump_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1051;
@@ -4659,7 +4655,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 1055;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===113) {
 	            this.state = 1052;
 	            this.symbol();
 	            this.state = 1057;
@@ -4687,7 +4683,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	get_unsat_core_response() {
 	    let localctx = new Get_unsat_core_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, SMTLIBv2Parser.RULE_get_unsat_core_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1060;
@@ -4695,7 +4691,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	        this.state = 1064;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SMTLIBv2Parser.QuotedSymbol) | (1 << SMTLIBv2Parser.PS_Not) | (1 << SMTLIBv2Parser.PS_Bool) | (1 << SMTLIBv2Parser.PS_ContinuedExecution) | (1 << SMTLIBv2Parser.PS_Error) | (1 << SMTLIBv2Parser.PS_False) | (1 << SMTLIBv2Parser.PS_ImmediateExit) | (1 << SMTLIBv2Parser.PS_Incomplete) | (1 << SMTLIBv2Parser.PS_Logic) | (1 << SMTLIBv2Parser.PS_Memout) | (1 << SMTLIBv2Parser.PS_Sat) | (1 << SMTLIBv2Parser.PS_Success) | (1 << SMTLIBv2Parser.PS_Theory) | (1 << SMTLIBv2Parser.PS_True) | (1 << SMTLIBv2Parser.PS_Unknown) | (1 << SMTLIBv2Parser.PS_Unsupported) | (1 << SMTLIBv2Parser.PS_Unsat))) !== 0) || _la===SMTLIBv2Parser.UndefinedSymbol) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388544) !== 0) || _la===113) {
 	            this.state = 1061;
 	            this.symbol();
 	            this.state = 1066;
@@ -4723,7 +4719,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	get_value_response() {
 	    let localctx = new Get_value_responseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 184, SMTLIBv2Parser.RULE_get_value_response);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1069;
@@ -4737,7 +4733,7 @@ export default class SMTLIBv2Parser extends antlr4.Parser {
 	            this.state = 1073; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SMTLIBv2Parser.ParOpen);
+	        } while(_la===2);
 	        this.state = 1075;
 	        this.match(SMTLIBv2Parser.ParClose);
 	    } catch (re) {
@@ -5019,7 +5015,7 @@ SMTLIBv2Parser.RS_Model = 112;
 SMTLIBv2Parser.UndefinedSymbol = 113;
 SMTLIBv2Parser.WS = 114;
 
-SMTLIBv2Parser.RULE_start = 0;
+SMTLIBv2Parser.RULE_start_ = 0;
 SMTLIBv2Parser.RULE_generalReservedWord = 1;
 SMTLIBv2Parser.RULE_simpleSymbol = 2;
 SMTLIBv2Parser.RULE_quotedSymbol = 3;
@@ -5115,7 +5111,7 @@ SMTLIBv2Parser.RULE_get_value_response = 92;
 SMTLIBv2Parser.RULE_specific_success_response = 93;
 SMTLIBv2Parser.RULE_general_response = 94;
 
-class StartContext extends antlr4.ParserRuleContext {
+class Start_Context extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
         if(parent===undefined) {
@@ -5126,7 +5122,7 @@ class StartContext extends antlr4.ParserRuleContext {
         }
         super(parent, invokingState);
         this.parser = parser;
-        this.ruleIndex = SMTLIBv2Parser.RULE_start;
+        this.ruleIndex = SMTLIBv2Parser.RULE_start_;
     }
 
 	logic() {
@@ -5151,13 +5147,13 @@ class StartContext extends antlr4.ParserRuleContext {
 
 	enterRule(listener) {
 	    if(listener instanceof SMTLIBv2Listener ) {
-	        listener.enterStart(this);
+	        listener.enterStart_(this);
 		}
 	}
 
 	exitRule(listener) {
 	    if(listener instanceof SMTLIBv2Listener ) {
-	        listener.exitStart(this);
+	        listener.exitStart_(this);
 		}
 	}
 
@@ -10234,7 +10230,7 @@ class General_responseContext extends antlr4.ParserRuleContext {
 
 
 
-SMTLIBv2Parser.StartContext = StartContext; 
+SMTLIBv2Parser.Start_Context = Start_Context; 
 SMTLIBv2Parser.GeneralReservedWordContext = GeneralReservedWordContext; 
 SMTLIBv2Parser.SimpleSymbolContext = SimpleSymbolContext; 
 SMTLIBv2Parser.QuotedSymbolContext = QuotedSymbolContext; 
@@ -10329,3 +10325,12 @@ SMTLIBv2Parser.Get_unsat_core_responseContext = Get_unsat_core_responseContext;
 SMTLIBv2Parser.Get_value_responseContext = Get_value_responseContext; 
 SMTLIBv2Parser.Specific_success_responseContext = Specific_success_responseContext; 
 SMTLIBv2Parser.General_responseContext = General_responseContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

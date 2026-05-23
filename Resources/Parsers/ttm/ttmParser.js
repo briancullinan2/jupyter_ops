@@ -1,4 +1,4 @@
-// Generated from ./ttm/ttm.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/ttm/ttm.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ttmListener from './ttmListener.js';
@@ -45,22 +45,18 @@ export default class ttmParser extends antlr4.Parser {
         this.symbolicNames = ttmParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, ttmParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 19;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ttmParser.ACTIVE || _la===ttmParser.NEUTRAL) {
+	        while(_la===4 || _la===5) {
 	            this.state = 16;
 	            this.function_();
 	            this.state = 21;
@@ -98,12 +94,12 @@ export default class ttmParser extends antlr4.Parser {
 	        this.state = 27;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ttmParser.ACTIVE:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 25;
 	            this.active();
 	            break;
-	        case ttmParser.NEUTRAL:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 26;
 	            this.neutral();
@@ -130,7 +126,7 @@ export default class ttmParser extends antlr4.Parser {
 	active() {
 	    let localctx = new ActiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, ttmParser.RULE_active);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 29;
@@ -140,7 +136,7 @@ export default class ttmParser extends antlr4.Parser {
 	        this.state = 33;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ttmParser.T__0) {
+	        if(_la===1) {
 	            this.state = 31;
 	            this.match(ttmParser.T__0);
 	            this.state = 32;
@@ -168,7 +164,7 @@ export default class ttmParser extends antlr4.Parser {
 	neutral() {
 	    let localctx = new NeutralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, ttmParser.RULE_neutral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 37;
@@ -178,7 +174,7 @@ export default class ttmParser extends antlr4.Parser {
 	        this.state = 41;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ttmParser.T__0) {
+	        if(_la===1) {
 	            this.state = 39;
 	            this.match(ttmParser.T__0);
 	            this.state = 40;
@@ -206,7 +202,7 @@ export default class ttmParser extends antlr4.Parser {
 	arglist() {
 	    let localctx = new ArglistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, ttmParser.RULE_arglist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 45;
@@ -214,7 +210,7 @@ export default class ttmParser extends antlr4.Parser {
 	        this.state = 50;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ttmParser.T__0) {
+	        while(_la===1) {
 	            this.state = 46;
 	            this.match(ttmParser.T__0);
 	            this.state = 47;
@@ -246,13 +242,13 @@ export default class ttmParser extends antlr4.Parser {
 	        this.state = 59;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ttmParser.ACTIVE:
-	        case ttmParser.NEUTRAL:
+	        case 4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 53;
 	            this.function_();
 	            break;
-	        case ttmParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 54;
 	            this.match(ttmParser.T__2);
@@ -261,8 +257,8 @@ export default class ttmParser extends antlr4.Parser {
 	            this.state = 56;
 	            this.match(ttmParser.T__1);
 	            break;
-	        case ttmParser.ESCSTRING:
-	        case ttmParser.STRING:
+	        case 6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 58;
 	            this.string();
@@ -312,12 +308,12 @@ export default class ttmParser extends antlr4.Parser {
 	string() {
 	    let localctx = new StringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, ttmParser.RULE_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 63;
 	        _la = this._input.LA(1);
-	        if(!(_la===ttmParser.ESCSTRING || _la===ttmParser.STRING)) {
+	        if(!(_la===6 || _la===7)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -695,3 +691,12 @@ ttmParser.ArglistContext = ArglistContext;
 ttmParser.ArgContext = ArgContext; 
 ttmParser.FunctionnameContext = FunctionnameContext; 
 ttmParser.StringContext = StringContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

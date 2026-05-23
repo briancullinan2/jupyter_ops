@@ -1,4 +1,4 @@
-// Generated from ./dgol/dgol.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/dgol/dgol.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import dgolListener from './dgolListener.js';
@@ -94,16 +94,12 @@ export default class dgolParser extends antlr4.Parser {
         this.symbolicNames = dgolParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	module() {
 	    let localctx = new ModuleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, dgolParser.RULE_module);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 36;
@@ -114,11 +110,11 @@ export default class dgolParser extends antlr4.Parser {
 	                this.state = 34;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case dgolParser.T__0:
+	                case 1:
 	                    this.state = 32;
 	                    this.usedeclaration();
 	                    break;
-	                case dgolParser.NL:
+	                case 22:
 	                    this.state = 33;
 	                    this.match(dgolParser.NL);
 	                    break;
@@ -134,15 +130,15 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 43;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===dgolParser.T__1 || _la===dgolParser.NL) {
+	        while(_la===2 || _la===22) {
 	            this.state = 41;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case dgolParser.T__1:
+	            case 2:
 	                this.state = 39;
 	                this.subroutinedefinition();
 	                break;
-	            case dgolParser.NL:
+	            case 22:
 	                this.state = 40;
 	                this.match(dgolParser.NL);
 	                break;
@@ -156,11 +152,11 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 48;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case dgolParser.T__6:
+	        case 7:
 	            this.state = 46;
 	            this.programdefinition();
 	            break;
-	        case dgolParser.T__7:
+	        case 8:
 	            this.state = 47;
 	            this.librarydefinition();
 	            break;
@@ -170,7 +166,7 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 53;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===dgolParser.NL) {
+	        while(_la===22) {
 	            this.state = 50;
 	            this.match(dgolParser.NL);
 	            this.state = 55;
@@ -223,7 +219,7 @@ export default class dgolParser extends antlr4.Parser {
 	subroutinedefinition() {
 	    let localctx = new SubroutinedefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, dgolParser.RULE_subroutinedefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 60;
@@ -235,13 +231,13 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 71;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===dgolParser.IDENTIFER) {
+	        if(_la===21) {
 	            this.state = 63;
 	            this.match(dgolParser.IDENTIFER);
 	            this.state = 68;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===dgolParser.T__3) {
+	            while(_la===4) {
 	                this.state = 64;
 	                this.match(dgolParser.T__3);
 	                this.state = 65;
@@ -318,7 +314,7 @@ export default class dgolParser extends antlr4.Parser {
 	librarydefinition() {
 	    let localctx = new LibrarydefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, dgolParser.RULE_librarydefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 88;
@@ -328,15 +324,15 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 94;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===dgolParser.T__1 || _la===dgolParser.NL) {
+	        while(_la===2 || _la===22) {
 	            this.state = 92;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case dgolParser.T__1:
+	            case 2:
 	                this.state = 90;
 	                this.subroutinedeclaration();
 	                break;
-	            case dgolParser.NL:
+	            case 22:
 	                this.state = 91;
 	                this.match(dgolParser.NL);
 	                break;
@@ -399,17 +395,17 @@ export default class dgolParser extends antlr4.Parser {
 	statements() {
 	    let localctx = new StatementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, dgolParser.RULE_statements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << dgolParser.T__9) | (1 << dgolParser.T__14) | (1 << dgolParser.T__15) | (1 << dgolParser.T__16) | (1 << dgolParser.T__18) | (1 << dgolParser.T__19) | (1 << dgolParser.NL))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 5997568) !== 0)) {
 	            this.state = 106;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << dgolParser.T__9) | (1 << dgolParser.T__14) | (1 << dgolParser.T__15) | (1 << dgolParser.T__16) | (1 << dgolParser.T__18) | (1 << dgolParser.T__19))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1803264) !== 0)) {
 	                this.state = 105;
 	                this.statement();
 	            }
@@ -443,32 +439,32 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 120;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case dgolParser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 114;
 	            this.letstatement();
 	            break;
-	        case dgolParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 115;
 	            this.ifstatement();
 	            break;
-	        case dgolParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 116;
 	            this.dostatement();
 	            break;
-	        case dgolParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 117;
 	            this.callstatement();
 	            break;
-	        case dgolParser.T__18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 118;
 	            this.returnstatement();
 	            break;
-	        case dgolParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 119;
 	            this.exitstatement();
@@ -495,12 +491,12 @@ export default class dgolParser extends antlr4.Parser {
 	identifierorzero() {
 	    let localctx = new IdentifierorzeroContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, dgolParser.RULE_identifierorzero);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 122;
 	        _la = this._input.LA(1);
-	        if(!(_la===dgolParser.T__8 || _la===dgolParser.IDENTIFER)) {
+	        if(!(_la===9 || _la===21)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -535,19 +531,19 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 132;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case dgolParser.T__10:
+	        case 11:
 	            this.state = 126;
 	            this.match(dgolParser.T__10);
 	            this.state = 127;
 	            this.identifierorzero();
 	            break;
-	        case dgolParser.T__11:
+	        case 12:
 	            this.state = 128;
 	            this.match(dgolParser.T__11);
 	            this.state = 129;
 	            this.match(dgolParser.IDENTIFER);
 	            break;
-	        case dgolParser.T__12:
+	        case 13:
 	            this.state = 130;
 	            this.match(dgolParser.T__12);
 	            this.state = 131;
@@ -575,7 +571,7 @@ export default class dgolParser extends antlr4.Parser {
 	ifstatement() {
 	    let localctx = new IfstatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, dgolParser.RULE_ifstatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 134;
@@ -598,7 +594,7 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 145;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===dgolParser.T__13) {
+	        if(_la===14) {
 	            this.state = 142;
 	            this.match(dgolParser.T__13);
 	            this.state = 143;
@@ -630,7 +626,7 @@ export default class dgolParser extends antlr4.Parser {
 	ifhead() {
 	    let localctx = new IfheadContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, dgolParser.RULE_ifhead);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 150;
@@ -639,7 +635,7 @@ export default class dgolParser extends antlr4.Parser {
 	        this.match(dgolParser.IDENTIFER);
 	        this.state = 152;
 	        _la = this._input.LA(1);
-	        if(!(_la===dgolParser.T__10 || _la===dgolParser.T__12)) {
+	        if(!(_la===11 || _la===13)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -671,7 +667,7 @@ export default class dgolParser extends antlr4.Parser {
 	dostatement() {
 	    let localctx = new DostatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, dgolParser.RULE_dostatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 157;
@@ -681,7 +677,7 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 161;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===dgolParser.T__11) {
+	        if(_la===12) {
 	            this.state = 159;
 	            this.match(dgolParser.T__11);
 	            this.state = 160;
@@ -715,7 +711,7 @@ export default class dgolParser extends antlr4.Parser {
 	callstatement() {
 	    let localctx = new CallstatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, dgolParser.RULE_callstatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 168;
@@ -725,7 +721,7 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 172;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===dgolParser.T__17) {
+	        if(_la===18) {
 	            this.state = 170;
 	            this.match(dgolParser.T__17);
 	            this.state = 171;
@@ -737,13 +733,13 @@ export default class dgolParser extends antlr4.Parser {
 	        this.state = 183;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===dgolParser.T__8 || _la===dgolParser.IDENTIFER) {
+	        if(_la===9 || _la===21) {
 	            this.state = 175;
 	            this.identifierorzero();
 	            this.state = 180;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===dgolParser.T__3) {
+	            while(_la===4) {
 	                this.state = 176;
 	                this.match(dgolParser.T__3);
 	                this.state = 177;

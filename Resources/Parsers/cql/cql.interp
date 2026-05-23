@@ -10,11 +10,11 @@ null
 '<>'
 '=='
 '/'
-null
-null
-null
-null
-null
+'AND'
+'OR'
+'NOT'
+'PROX'
+'SORTBY'
 null
 null
 null

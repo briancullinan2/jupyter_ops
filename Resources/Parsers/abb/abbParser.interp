@@ -2,20 +2,20 @@ token literal names:
 null
 'module'
 'endmodule'
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
+'PROC'
+'ENDPROC'
+'LOCAL'
+'CONST'
+'PERS'
+'VAR'
+'TOOLDATA'
+'WOBJDATA'
+'SPEEDDATA'
+'ZONEDATA'
+'CLOCK'
+'BOOL'
+'\\ON'
+'\\OFF'
 '/'
 ':='
 ','
@@ -103,7 +103,7 @@ INTLITERAL
 IDENTIFIER
 
 rule names:
-module
+module_
 moduleData
 moduleName
 dataList

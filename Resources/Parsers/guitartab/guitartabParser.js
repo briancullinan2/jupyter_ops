@@ -1,16 +1,16 @@
-// Generated from ./guitartab/guitartab.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/guitartab/guitartab.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import guitartabListener from './guitartabListener.js';
-const serializedATN = [4,1,18,29,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,4,0,
-10,8,0,11,0,12,0,11,1,1,1,1,1,1,1,1,4,1,18,8,1,11,1,12,1,19,1,2,4,2,23,8,
-2,11,2,12,2,24,1,3,1,3,1,3,0,0,4,0,2,4,6,0,2,1,0,15,16,1,0,1,14,27,0,9,1,
-0,0,0,2,13,1,0,0,0,4,22,1,0,0,0,6,26,1,0,0,0,8,10,3,2,1,0,9,8,1,0,0,0,10,
-11,1,0,0,0,11,9,1,0,0,0,11,12,1,0,0,0,12,1,1,0,0,0,13,17,3,6,3,0,14,15,3,
-4,2,0,15,16,5,17,0,0,16,18,1,0,0,0,17,14,1,0,0,0,18,19,1,0,0,0,19,17,1,0,
-0,0,19,20,1,0,0,0,20,3,1,0,0,0,21,23,7,0,0,0,22,21,1,0,0,0,23,24,1,0,0,0,
-24,22,1,0,0,0,24,25,1,0,0,0,25,5,1,0,0,0,26,27,7,1,0,0,27,7,1,0,0,0,3,11,
-19,24];
+const serializedATN = [4,1,18,31,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,4,0,
+10,8,0,11,0,12,0,11,1,0,1,0,1,1,1,1,1,1,1,1,4,1,20,8,1,11,1,12,1,21,1,2,
+4,2,25,8,2,11,2,12,2,26,1,3,1,3,1,3,0,0,4,0,2,4,6,0,2,1,0,15,16,1,0,1,14,
+29,0,9,1,0,0,0,2,15,1,0,0,0,4,24,1,0,0,0,6,28,1,0,0,0,8,10,3,2,1,0,9,8,1,
+0,0,0,10,11,1,0,0,0,11,9,1,0,0,0,11,12,1,0,0,0,12,13,1,0,0,0,13,14,5,0,0,
+1,14,1,1,0,0,0,15,19,3,6,3,0,16,17,3,4,2,0,17,18,5,17,0,0,18,20,1,0,0,0,
+19,16,1,0,0,0,20,21,1,0,0,0,21,19,1,0,0,0,21,22,1,0,0,0,22,3,1,0,0,0,23,
+25,7,0,0,0,24,23,1,0,0,0,25,26,1,0,0,0,26,24,1,0,0,0,26,27,1,0,0,0,27,5,
+1,0,0,0,28,29,7,1,0,0,29,7,1,0,0,0,3,11,21,26];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -38,16 +38,12 @@ export default class guitartabParser extends antlr4.Parser {
         this.symbolicNames = guitartabParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	tab() {
 	    let localctx = new TabContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, guitartabParser.RULE_tab);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 9; 
@@ -59,7 +55,9 @@ export default class guitartabParser extends antlr4.Parser {
 	            this.state = 11; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << guitartabParser.BA) | (1 << guitartabParser.BB) | (1 << guitartabParser.BC) | (1 << guitartabParser.BD) | (1 << guitartabParser.BE) | (1 << guitartabParser.BF) | (1 << guitartabParser.BG) | (1 << guitartabParser.LA) | (1 << guitartabParser.LB) | (1 << guitartabParser.LC) | (1 << guitartabParser.LD) | (1 << guitartabParser.LE) | (1 << guitartabParser.LF) | (1 << guitartabParser.LG))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 32766) !== 0));
+	        this.state = 13;
+	        this.match(guitartabParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -79,23 +77,23 @@ export default class guitartabParser extends antlr4.Parser {
 	string() {
 	    let localctx = new StringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, guitartabParser.RULE_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 13;
+	        this.state = 15;
 	        this.note();
-	        this.state = 17; 
+	        this.state = 19; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 14;
+	            this.state = 16;
 	            this.position();
-	            this.state = 15;
+	            this.state = 17;
 	            this.match(guitartabParser.FRET);
-	            this.state = 19; 
+	            this.state = 21; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===guitartabParser.FINGER || _la===guitartabParser.BARLNE);
+	        } while(_la===15 || _la===16);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -115,26 +113,26 @@ export default class guitartabParser extends antlr4.Parser {
 	position() {
 	    let localctx = new PositionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, guitartabParser.RULE_position);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 22; 
+	        this.state = 24; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 21;
+	            this.state = 23;
 	            _la = this._input.LA(1);
-	            if(!(_la===guitartabParser.FINGER || _la===guitartabParser.BARLNE)) {
+	            if(!(_la===15 || _la===16)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 24; 
+	            this.state = 26; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===guitartabParser.FINGER || _la===guitartabParser.BARLNE);
+	        } while(_la===15 || _la===16);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -154,12 +152,12 @@ export default class guitartabParser extends antlr4.Parser {
 	note() {
 	    let localctx = new NoteContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, guitartabParser.RULE_note);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 26;
+	        this.state = 28;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << guitartabParser.BA) | (1 << guitartabParser.BB) | (1 << guitartabParser.BC) | (1 << guitartabParser.BD) | (1 << guitartabParser.BE) | (1 << guitartabParser.BF) | (1 << guitartabParser.BG) | (1 << guitartabParser.LA) | (1 << guitartabParser.LB) | (1 << guitartabParser.LC) | (1 << guitartabParser.LD) | (1 << guitartabParser.LE) | (1 << guitartabParser.LF) | (1 << guitartabParser.LG))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 32766) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -221,6 +219,10 @@ class TabContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = guitartabParser.RULE_tab;
     }
+
+	EOF() {
+	    return this.getToken(guitartabParser.EOF, 0);
+	};
 
 	string = function(i) {
 	    if(i===undefined) {
@@ -455,3 +457,12 @@ guitartabParser.TabContext = TabContext;
 guitartabParser.StringContext = StringContext; 
 guitartabParser.PositionContext = PositionContext; 
 guitartabParser.NoteContext = NoteContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

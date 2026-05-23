@@ -1,4 +1,4 @@
-// Generated from ./protobuf3/Protobuf3.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/protobuf3/Protobuf3.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import Protobuf3Listener from './Protobuf3Listener.js';
@@ -210,16 +210,12 @@ export default class Protobuf3Parser extends antlr4.Parser {
         this.symbolicNames = Protobuf3Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	proto() {
 	    let localctx = new ProtoContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, Protobuf3Parser.RULE_proto);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 102;
@@ -227,29 +223,29 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 110;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Protobuf3Parser.IMPORT) | (1 << Protobuf3Parser.PACKAGE) | (1 << Protobuf3Parser.OPTION) | (1 << Protobuf3Parser.ENUM) | (1 << Protobuf3Parser.MESSAGE) | (1 << Protobuf3Parser.SERVICE))) !== 0) || _la===Protobuf3Parser.SEMI) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1879048292) !== 0) || _la===36) {
 	            this.state = 108;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case Protobuf3Parser.IMPORT:
+	            case 2:
 	                this.state = 103;
 	                this.importStatement();
 	                break;
-	            case Protobuf3Parser.PACKAGE:
+	            case 5:
 	                this.state = 104;
 	                this.packageStatement();
 	                break;
-	            case Protobuf3Parser.OPTION:
+	            case 6:
 	                this.state = 105;
 	                this.optionStatement();
 	                break;
-	            case Protobuf3Parser.ENUM:
-	            case Protobuf3Parser.MESSAGE:
-	            case Protobuf3Parser.SERVICE:
+	            case 28:
+	            case 29:
+	            case 30:
 	                this.state = 106;
 	                this.topLevelDef();
 	                break;
-	            case Protobuf3Parser.SEMI:
+	            case 36:
 	                this.state = 107;
 	                this.emptyStatement_();
 	                break;
@@ -279,7 +275,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	syntax() {
 	    let localctx = new SyntaxContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, Protobuf3Parser.RULE_syntax);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 113;
@@ -288,7 +284,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.match(Protobuf3Parser.EQ);
 	        this.state = 115;
 	        _la = this._input.LA(1);
-	        if(!(_la===Protobuf3Parser.PROTO3_LIT_SINGLE || _la===Protobuf3Parser.PROTO3_LIT_DOBULE)) {
+	        if(!(_la===34 || _la===35)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -316,7 +312,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	importStatement() {
 	    let localctx = new ImportStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, Protobuf3Parser.RULE_importStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 118;
@@ -324,10 +320,10 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 120;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.WEAK || _la===Protobuf3Parser.PUBLIC) {
+	        if(_la===3 || _la===4) {
 	            this.state = 119;
 	            _la = this._input.LA(1);
-	            if(!(_la===Protobuf3Parser.WEAK || _la===Protobuf3Parser.PUBLIC)) {
+	            if(!(_la===3 || _la===4)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -417,51 +413,51 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	optionName() {
 	    let localctx = new OptionNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, Protobuf3Parser.RULE_optionName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 143;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Protobuf3Parser.SYNTAX:
-	        case Protobuf3Parser.IMPORT:
-	        case Protobuf3Parser.WEAK:
-	        case Protobuf3Parser.PUBLIC:
-	        case Protobuf3Parser.PACKAGE:
-	        case Protobuf3Parser.OPTION:
-	        case Protobuf3Parser.REPEATED:
-	        case Protobuf3Parser.ONEOF:
-	        case Protobuf3Parser.MAP:
-	        case Protobuf3Parser.INT32:
-	        case Protobuf3Parser.INT64:
-	        case Protobuf3Parser.UINT32:
-	        case Protobuf3Parser.UINT64:
-	        case Protobuf3Parser.SINT32:
-	        case Protobuf3Parser.SINT64:
-	        case Protobuf3Parser.FIXED32:
-	        case Protobuf3Parser.FIXED64:
-	        case Protobuf3Parser.SFIXED32:
-	        case Protobuf3Parser.SFIXED64:
-	        case Protobuf3Parser.BOOL:
-	        case Protobuf3Parser.STRING:
-	        case Protobuf3Parser.DOUBLE:
-	        case Protobuf3Parser.FLOAT:
-	        case Protobuf3Parser.BYTES:
-	        case Protobuf3Parser.RESERVED:
-	        case Protobuf3Parser.TO:
-	        case Protobuf3Parser.MAX:
-	        case Protobuf3Parser.ENUM:
-	        case Protobuf3Parser.MESSAGE:
-	        case Protobuf3Parser.SERVICE:
-	        case Protobuf3Parser.RPC:
-	        case Protobuf3Parser.STREAM:
-	        case Protobuf3Parser.RETURNS:
-	        case Protobuf3Parser.BOOL_LIT:
-	        case Protobuf3Parser.IDENTIFIER:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 52:
+	        case 55:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 135;
 	            this.fullIdent();
 	            break;
-	        case Protobuf3Parser.LP:
+	        case 38:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 136;
 	            this.match(Protobuf3Parser.LP);
@@ -472,7 +468,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	            this.state = 141;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Protobuf3Parser.DOT) {
+	            if(_la===46) {
 	                this.state = 139;
 	                this.match(Protobuf3Parser.DOT);
 	                this.state = 140;
@@ -502,7 +498,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	field() {
 	    let localctx = new FieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, Protobuf3Parser.RULE_field);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 146;
@@ -524,7 +520,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 156;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.LB) {
+	        if(_la===40) {
 	            this.state = 152;
 	            this.match(Protobuf3Parser.LB);
 	            this.state = 153;
@@ -554,7 +550,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	fieldOptions() {
 	    let localctx = new FieldOptionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, Protobuf3Parser.RULE_fieldOptions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 160;
@@ -562,7 +558,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 165;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Protobuf3Parser.COMMA) {
+	        while(_la===47) {
 	            this.state = 161;
 	            this.match(Protobuf3Parser.COMMA);
 	            this.state = 162;
@@ -640,7 +636,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	oneof() {
 	    let localctx = new OneofContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, Protobuf3Parser.RULE_oneof);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 174;
@@ -652,7 +648,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 182;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Protobuf3Parser.SYNTAX) | (1 << Protobuf3Parser.IMPORT) | (1 << Protobuf3Parser.WEAK) | (1 << Protobuf3Parser.PUBLIC) | (1 << Protobuf3Parser.PACKAGE) | (1 << Protobuf3Parser.OPTION) | (1 << Protobuf3Parser.REPEATED) | (1 << Protobuf3Parser.ONEOF) | (1 << Protobuf3Parser.MAP) | (1 << Protobuf3Parser.INT32) | (1 << Protobuf3Parser.INT64) | (1 << Protobuf3Parser.UINT32) | (1 << Protobuf3Parser.UINT64) | (1 << Protobuf3Parser.SINT32) | (1 << Protobuf3Parser.SINT64) | (1 << Protobuf3Parser.FIXED32) | (1 << Protobuf3Parser.FIXED64) | (1 << Protobuf3Parser.SFIXED32) | (1 << Protobuf3Parser.SFIXED64) | (1 << Protobuf3Parser.BOOL) | (1 << Protobuf3Parser.STRING) | (1 << Protobuf3Parser.DOUBLE) | (1 << Protobuf3Parser.FLOAT) | (1 << Protobuf3Parser.BYTES) | (1 << Protobuf3Parser.RESERVED) | (1 << Protobuf3Parser.TO) | (1 << Protobuf3Parser.MAX) | (1 << Protobuf3Parser.ENUM) | (1 << Protobuf3Parser.MESSAGE) | (1 << Protobuf3Parser.SERVICE) | (1 << Protobuf3Parser.RPC))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Protobuf3Parser.STREAM - 32)) | (1 << (Protobuf3Parser.RETURNS - 32)) | (1 << (Protobuf3Parser.SEMI - 32)) | (1 << (Protobuf3Parser.DOT - 32)) | (1 << (Protobuf3Parser.BOOL_LIT - 32)) | (1 << (Protobuf3Parser.IDENTIFIER - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 9453587) !== 0)) {
 	            this.state = 180;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
@@ -698,7 +694,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	oneofField() {
 	    let localctx = new OneofFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, Protobuf3Parser.RULE_oneofField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 187;
@@ -712,7 +708,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 195;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.LB) {
+	        if(_la===40) {
 	            this.state = 191;
 	            this.match(Protobuf3Parser.LB);
 	            this.state = 192;
@@ -742,7 +738,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	mapField() {
 	    let localctx = new MapFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, Protobuf3Parser.RULE_mapField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 199;
@@ -766,7 +762,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 212;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.LB) {
+	        if(_la===40) {
 	            this.state = 208;
 	            this.match(Protobuf3Parser.LB);
 	            this.state = 209;
@@ -796,12 +792,12 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	keyType() {
 	    let localctx = new KeyTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, Protobuf3Parser.RULE_keyType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 216;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Protobuf3Parser.INT32) | (1 << Protobuf3Parser.INT64) | (1 << Protobuf3Parser.UINT32) | (1 << Protobuf3Parser.UINT64) | (1 << Protobuf3Parser.SINT32) | (1 << Protobuf3Parser.SINT64) | (1 << Protobuf3Parser.FIXED32) | (1 << Protobuf3Parser.FIXED64) | (1 << Protobuf3Parser.SFIXED32) | (1 << Protobuf3Parser.SFIXED64) | (1 << Protobuf3Parser.BOOL) | (1 << Protobuf3Parser.STRING))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4193280) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -961,13 +957,13 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 240;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Protobuf3Parser.INT_LIT:
+	        case 54:
 	            this.state = 238;
 	            this.ranges();
 	            break;
-	        case Protobuf3Parser.PROTO3_LIT_SINGLE:
-	        case Protobuf3Parser.PROTO3_LIT_DOBULE:
-	        case Protobuf3Parser.STR_LIT:
+	        case 34:
+	        case 35:
+	        case 51:
 	            this.state = 239;
 	            this.reservedFieldNames();
 	            break;
@@ -995,7 +991,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	ranges() {
 	    let localctx = new RangesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, Protobuf3Parser.RULE_ranges);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 244;
@@ -1003,7 +999,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 249;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Protobuf3Parser.COMMA) {
+	        while(_la===47) {
 	            this.state = 245;
 	            this.match(Protobuf3Parser.COMMA);
 	            this.state = 246;
@@ -1031,7 +1027,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	range_() {
 	    let localctx = new Range_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, Protobuf3Parser.RULE_range_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 252;
@@ -1039,17 +1035,17 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 258;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.TO) {
+	        if(_la===26) {
 	            this.state = 253;
 	            this.match(Protobuf3Parser.TO);
 	            this.state = 256;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case Protobuf3Parser.INT_LIT:
+	            case 54:
 	                this.state = 254;
 	                this.intLit();
 	                break;
-	            case Protobuf3Parser.MAX:
+	            case 27:
 	                this.state = 255;
 	                this.match(Protobuf3Parser.MAX);
 	                break;
@@ -1077,7 +1073,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	reservedFieldNames() {
 	    let localctx = new ReservedFieldNamesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, Protobuf3Parser.RULE_reservedFieldNames);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 260;
@@ -1085,7 +1081,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 265;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Protobuf3Parser.COMMA) {
+	        while(_la===47) {
 	            this.state = 261;
 	            this.match(Protobuf3Parser.COMMA);
 	            this.state = 262;
@@ -1117,17 +1113,17 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 271;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Protobuf3Parser.MESSAGE:
+	        case 29:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 268;
 	            this.messageDef();
 	            break;
-	        case Protobuf3Parser.ENUM:
+	        case 28:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 269;
 	            this.enumDef();
 	            break;
-	        case Protobuf3Parser.SERVICE:
+	        case 30:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 270;
 	            this.serviceDef();
@@ -1181,7 +1177,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	enumBody() {
 	    let localctx = new EnumBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, Protobuf3Parser.RULE_enumBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 277;
@@ -1189,7 +1185,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 281;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Protobuf3Parser.SYNTAX) | (1 << Protobuf3Parser.IMPORT) | (1 << Protobuf3Parser.WEAK) | (1 << Protobuf3Parser.PUBLIC) | (1 << Protobuf3Parser.PACKAGE) | (1 << Protobuf3Parser.OPTION) | (1 << Protobuf3Parser.REPEATED) | (1 << Protobuf3Parser.ONEOF) | (1 << Protobuf3Parser.MAP) | (1 << Protobuf3Parser.INT32) | (1 << Protobuf3Parser.INT64) | (1 << Protobuf3Parser.UINT32) | (1 << Protobuf3Parser.UINT64) | (1 << Protobuf3Parser.SINT32) | (1 << Protobuf3Parser.SINT64) | (1 << Protobuf3Parser.FIXED32) | (1 << Protobuf3Parser.FIXED64) | (1 << Protobuf3Parser.SFIXED32) | (1 << Protobuf3Parser.SFIXED64) | (1 << Protobuf3Parser.BOOL) | (1 << Protobuf3Parser.STRING) | (1 << Protobuf3Parser.DOUBLE) | (1 << Protobuf3Parser.FLOAT) | (1 << Protobuf3Parser.BYTES) | (1 << Protobuf3Parser.RESERVED) | (1 << Protobuf3Parser.TO) | (1 << Protobuf3Parser.MAX) | (1 << Protobuf3Parser.ENUM) | (1 << Protobuf3Parser.MESSAGE) | (1 << Protobuf3Parser.SERVICE) | (1 << Protobuf3Parser.RPC))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Protobuf3Parser.STREAM - 32)) | (1 << (Protobuf3Parser.RETURNS - 32)) | (1 << (Protobuf3Parser.SEMI - 32)) | (1 << (Protobuf3Parser.BOOL_LIT - 32)) | (1 << (Protobuf3Parser.IDENTIFIER - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 9437203) !== 0)) {
 	            this.state = 278;
 	            this.enumElement();
 	            this.state = 283;
@@ -1260,7 +1256,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	enumField() {
 	    let localctx = new EnumFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, Protobuf3Parser.RULE_enumField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 291;
@@ -1270,7 +1266,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 294;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.MINUS) {
+	        if(_la===50) {
 	            this.state = 293;
 	            this.match(Protobuf3Parser.MINUS);
 	        }
@@ -1280,7 +1276,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 298;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.LB) {
+	        if(_la===40) {
 	            this.state = 297;
 	            this.enumValueOptions();
 	        }
@@ -1306,7 +1302,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	enumValueOptions() {
 	    let localctx = new EnumValueOptionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, Protobuf3Parser.RULE_enumValueOptions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 302;
@@ -1316,7 +1312,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 308;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Protobuf3Parser.COMMA) {
+	        while(_la===47) {
 	            this.state = 304;
 	            this.match(Protobuf3Parser.COMMA);
 	            this.state = 305;
@@ -1400,7 +1396,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	messageBody() {
 	    let localctx = new MessageBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, Protobuf3Parser.RULE_messageBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 321;
@@ -1408,7 +1404,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 325;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Protobuf3Parser.SYNTAX) | (1 << Protobuf3Parser.IMPORT) | (1 << Protobuf3Parser.WEAK) | (1 << Protobuf3Parser.PUBLIC) | (1 << Protobuf3Parser.PACKAGE) | (1 << Protobuf3Parser.OPTION) | (1 << Protobuf3Parser.REPEATED) | (1 << Protobuf3Parser.ONEOF) | (1 << Protobuf3Parser.MAP) | (1 << Protobuf3Parser.INT32) | (1 << Protobuf3Parser.INT64) | (1 << Protobuf3Parser.UINT32) | (1 << Protobuf3Parser.UINT64) | (1 << Protobuf3Parser.SINT32) | (1 << Protobuf3Parser.SINT64) | (1 << Protobuf3Parser.FIXED32) | (1 << Protobuf3Parser.FIXED64) | (1 << Protobuf3Parser.SFIXED32) | (1 << Protobuf3Parser.SFIXED64) | (1 << Protobuf3Parser.BOOL) | (1 << Protobuf3Parser.STRING) | (1 << Protobuf3Parser.DOUBLE) | (1 << Protobuf3Parser.FLOAT) | (1 << Protobuf3Parser.BYTES) | (1 << Protobuf3Parser.RESERVED) | (1 << Protobuf3Parser.TO) | (1 << Protobuf3Parser.MAX) | (1 << Protobuf3Parser.ENUM) | (1 << Protobuf3Parser.MESSAGE) | (1 << Protobuf3Parser.SERVICE) | (1 << Protobuf3Parser.RPC))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Protobuf3Parser.STREAM - 32)) | (1 << (Protobuf3Parser.RETURNS - 32)) | (1 << (Protobuf3Parser.SEMI - 32)) | (1 << (Protobuf3Parser.DOT - 32)) | (1 << (Protobuf3Parser.BOOL_LIT - 32)) | (1 << (Protobuf3Parser.IDENTIFIER - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 9453587) !== 0)) {
 	            this.state = 322;
 	            this.messageElement();
 	            this.state = 327;
@@ -1509,7 +1505,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	serviceDef() {
 	    let localctx = new ServiceDefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, Protobuf3Parser.RULE_serviceDef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 340;
@@ -1521,7 +1517,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 346;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 6)) & ~0x1f) == 0 && ((1 << (_la - 6)) & ((1 << (Protobuf3Parser.OPTION - 6)) | (1 << (Protobuf3Parser.RPC - 6)) | (1 << (Protobuf3Parser.SEMI - 6)))) !== 0)) {
+	        while(((((_la - 6)) & ~0x1f) === 0 && ((1 << (_la - 6)) & 1107296257) !== 0)) {
 	            this.state = 343;
 	            this.serviceElement();
 	            this.state = 348;
@@ -1553,17 +1549,17 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 354;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Protobuf3Parser.OPTION:
+	        case 6:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 351;
 	            this.optionStatement();
 	            break;
-	        case Protobuf3Parser.RPC:
+	        case 31:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 352;
 	            this.rpc();
 	            break;
-	        case Protobuf3Parser.SEMI:
+	        case 36:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 353;
 	            this.emptyStatement_();
@@ -1590,7 +1586,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	rpc() {
 	    let localctx = new RpcContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, Protobuf3Parser.RULE_rpc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 356;
@@ -1630,21 +1626,21 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 381;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Protobuf3Parser.LC:
+	        case 42:
 	            this.state = 371;
 	            this.match(Protobuf3Parser.LC);
 	            this.state = 376;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Protobuf3Parser.OPTION || _la===Protobuf3Parser.SEMI) {
+	            while(_la===6 || _la===36) {
 	                this.state = 374;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case Protobuf3Parser.OPTION:
+	                case 6:
 	                    this.state = 372;
 	                    this.optionStatement();
 	                    break;
-	                case Protobuf3Parser.SEMI:
+	                case 36:
 	                    this.state = 373;
 	                    this.emptyStatement_();
 	                    break;
@@ -1658,7 +1654,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	            this.state = 379;
 	            this.match(Protobuf3Parser.RC);
 	            break;
-	        case Protobuf3Parser.SEMI:
+	        case 36:
 	            this.state = 380;
 	            this.match(Protobuf3Parser.SEMI);
 	            break;
@@ -1684,7 +1680,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	constant() {
 	    let localctx = new ConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, Protobuf3Parser.RULE_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 395;
 	        this._errHandler.sync(this);
@@ -1701,10 +1697,10 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	            this.state = 385;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Protobuf3Parser.PLUS || _la===Protobuf3Parser.MINUS) {
+	            if(_la===49 || _la===50) {
 	                this.state = 384;
 	                _la = this._input.LA(1);
-	                if(!(_la===Protobuf3Parser.PLUS || _la===Protobuf3Parser.MINUS)) {
+	                if(!(_la===49 || _la===50)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1722,10 +1718,10 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	            this.state = 389;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Protobuf3Parser.PLUS || _la===Protobuf3Parser.MINUS) {
+	            if(_la===49 || _la===50) {
 	                this.state = 388;
 	                _la = this._input.LA(1);
-	                if(!(_la===Protobuf3Parser.PLUS || _la===Protobuf3Parser.MINUS)) {
+	                if(!(_la===49 || _la===50)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1776,7 +1772,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	blockLit() {
 	    let localctx = new BlockLitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, Protobuf3Parser.RULE_blockLit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 397;
@@ -1784,7 +1780,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 404;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Protobuf3Parser.SYNTAX) | (1 << Protobuf3Parser.IMPORT) | (1 << Protobuf3Parser.WEAK) | (1 << Protobuf3Parser.PUBLIC) | (1 << Protobuf3Parser.PACKAGE) | (1 << Protobuf3Parser.OPTION) | (1 << Protobuf3Parser.REPEATED) | (1 << Protobuf3Parser.ONEOF) | (1 << Protobuf3Parser.MAP) | (1 << Protobuf3Parser.INT32) | (1 << Protobuf3Parser.INT64) | (1 << Protobuf3Parser.UINT32) | (1 << Protobuf3Parser.UINT64) | (1 << Protobuf3Parser.SINT32) | (1 << Protobuf3Parser.SINT64) | (1 << Protobuf3Parser.FIXED32) | (1 << Protobuf3Parser.FIXED64) | (1 << Protobuf3Parser.SFIXED32) | (1 << Protobuf3Parser.SFIXED64) | (1 << Protobuf3Parser.BOOL) | (1 << Protobuf3Parser.STRING) | (1 << Protobuf3Parser.DOUBLE) | (1 << Protobuf3Parser.FLOAT) | (1 << Protobuf3Parser.BYTES) | (1 << Protobuf3Parser.RESERVED) | (1 << Protobuf3Parser.TO) | (1 << Protobuf3Parser.MAX) | (1 << Protobuf3Parser.ENUM) | (1 << Protobuf3Parser.MESSAGE) | (1 << Protobuf3Parser.SERVICE) | (1 << Protobuf3Parser.RPC))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Protobuf3Parser.STREAM - 32)) | (1 << (Protobuf3Parser.RETURNS - 32)) | (1 << (Protobuf3Parser.BOOL_LIT - 32)) | (1 << (Protobuf3Parser.IDENTIFIER - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 9437187) !== 0)) {
 	            this.state = 398;
 	            this.ident();
 	            this.state = 399;
@@ -1843,45 +1839,45 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 413;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Protobuf3Parser.IDENTIFIER:
+	        case 55:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 411;
 	            this.match(Protobuf3Parser.IDENTIFIER);
 	            break;
-	        case Protobuf3Parser.SYNTAX:
-	        case Protobuf3Parser.IMPORT:
-	        case Protobuf3Parser.WEAK:
-	        case Protobuf3Parser.PUBLIC:
-	        case Protobuf3Parser.PACKAGE:
-	        case Protobuf3Parser.OPTION:
-	        case Protobuf3Parser.REPEATED:
-	        case Protobuf3Parser.ONEOF:
-	        case Protobuf3Parser.MAP:
-	        case Protobuf3Parser.INT32:
-	        case Protobuf3Parser.INT64:
-	        case Protobuf3Parser.UINT32:
-	        case Protobuf3Parser.UINT64:
-	        case Protobuf3Parser.SINT32:
-	        case Protobuf3Parser.SINT64:
-	        case Protobuf3Parser.FIXED32:
-	        case Protobuf3Parser.FIXED64:
-	        case Protobuf3Parser.SFIXED32:
-	        case Protobuf3Parser.SFIXED64:
-	        case Protobuf3Parser.BOOL:
-	        case Protobuf3Parser.STRING:
-	        case Protobuf3Parser.DOUBLE:
-	        case Protobuf3Parser.FLOAT:
-	        case Protobuf3Parser.BYTES:
-	        case Protobuf3Parser.RESERVED:
-	        case Protobuf3Parser.TO:
-	        case Protobuf3Parser.MAX:
-	        case Protobuf3Parser.ENUM:
-	        case Protobuf3Parser.MESSAGE:
-	        case Protobuf3Parser.SERVICE:
-	        case Protobuf3Parser.RPC:
-	        case Protobuf3Parser.STREAM:
-	        case Protobuf3Parser.RETURNS:
-	        case Protobuf3Parser.BOOL_LIT:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 52:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 412;
 	            this.keywords();
@@ -1908,7 +1904,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	fullIdent() {
 	    let localctx = new FullIdentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, Protobuf3Parser.RULE_fullIdent);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 415;
@@ -1916,7 +1912,7 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	        this.state = 420;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Protobuf3Parser.DOT) {
+	        while(_la===46) {
 	            this.state = 416;
 	            this.match(Protobuf3Parser.DOT);
 	            this.state = 417;
@@ -2105,13 +2101,13 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	messageType() {
 	    let localctx = new MessageTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, Protobuf3Parser.RULE_messageType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 438;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.DOT) {
+	        if(_la===46) {
 	            this.state = 437;
 	            this.match(Protobuf3Parser.DOT);
 	        }
@@ -2152,13 +2148,13 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	enumType() {
 	    let localctx = new EnumTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, Protobuf3Parser.RULE_enumType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 451;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Protobuf3Parser.DOT) {
+	        if(_la===46) {
 	            this.state = 450;
 	            this.match(Protobuf3Parser.DOT);
 	        }
@@ -2222,12 +2218,12 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	strLit() {
 	    let localctx = new StrLitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, Protobuf3Parser.RULE_strLit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 465;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (Protobuf3Parser.PROTO3_LIT_SINGLE - 34)) | (1 << (Protobuf3Parser.PROTO3_LIT_DOBULE - 34)) | (1 << (Protobuf3Parser.STR_LIT - 34)))) !== 0))) {
+	        if(!(((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 131075) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2299,12 +2295,12 @@ export default class Protobuf3Parser extends antlr4.Parser {
 	keywords() {
 	    let localctx = new KeywordsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, Protobuf3Parser.RULE_keywords);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 471;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Protobuf3Parser.SYNTAX) | (1 << Protobuf3Parser.IMPORT) | (1 << Protobuf3Parser.WEAK) | (1 << Protobuf3Parser.PUBLIC) | (1 << Protobuf3Parser.PACKAGE) | (1 << Protobuf3Parser.OPTION) | (1 << Protobuf3Parser.REPEATED) | (1 << Protobuf3Parser.ONEOF) | (1 << Protobuf3Parser.MAP) | (1 << Protobuf3Parser.INT32) | (1 << Protobuf3Parser.INT64) | (1 << Protobuf3Parser.UINT32) | (1 << Protobuf3Parser.UINT64) | (1 << Protobuf3Parser.SINT32) | (1 << Protobuf3Parser.SINT64) | (1 << Protobuf3Parser.FIXED32) | (1 << Protobuf3Parser.FIXED64) | (1 << Protobuf3Parser.SFIXED32) | (1 << Protobuf3Parser.SFIXED64) | (1 << Protobuf3Parser.BOOL) | (1 << Protobuf3Parser.STRING) | (1 << Protobuf3Parser.DOUBLE) | (1 << Protobuf3Parser.FLOAT) | (1 << Protobuf3Parser.BYTES) | (1 << Protobuf3Parser.RESERVED) | (1 << Protobuf3Parser.TO) | (1 << Protobuf3Parser.MAX) | (1 << Protobuf3Parser.ENUM) | (1 << Protobuf3Parser.MESSAGE) | (1 << Protobuf3Parser.SERVICE) | (1 << Protobuf3Parser.RPC))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Protobuf3Parser.STREAM - 32)) | (1 << (Protobuf3Parser.RETURNS - 32)) | (1 << (Protobuf3Parser.BOOL_LIT - 32)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 1048579) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {

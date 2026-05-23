@@ -1,4 +1,4 @@
-// Generated from ./cpp/CPP14Parser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cpp/CPP14Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -122,12 +122,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#initcapture.
-	enterInitcapture(ctx) {
+	// Enter a parse tree produced by CPP14Parser#initCapture.
+	enterInitCapture(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#initcapture.
-	exitInitcapture(ctx) {
+	// Exit a parse tree produced by CPP14Parser#initCapture.
+	exitInitCapture(ctx) {
 	}
 
 
@@ -194,12 +194,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#newExpression.
-	enterNewExpression(ctx) {
+	// Enter a parse tree produced by CPP14Parser#newExpression_.
+	enterNewExpression_(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#newExpression.
-	exitNewExpression(ctx) {
+	// Exit a parse tree produced by CPP14Parser#newExpression_.
+	exitNewExpression_(ctx) {
 	}
 
 
@@ -221,12 +221,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#newDeclarator.
-	enterNewDeclarator(ctx) {
+	// Enter a parse tree produced by CPP14Parser#newDeclarator_.
+	enterNewDeclarator_(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#newDeclarator.
-	exitNewDeclarator(ctx) {
+	// Exit a parse tree produced by CPP14Parser#newDeclarator_.
+	exitNewDeclarator_(ctx) {
 	}
 
 
@@ -239,12 +239,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#newInitializer.
-	enterNewInitializer(ctx) {
+	// Enter a parse tree produced by CPP14Parser#newInitializer_.
+	enterNewInitializer_(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#newInitializer.
-	exitNewInitializer(ctx) {
+	// Exit a parse tree produced by CPP14Parser#newInitializer_.
+	exitNewInitializer_(ctx) {
 	}
 
 
@@ -545,12 +545,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#declarationseq.
-	enterDeclarationseq(ctx) {
+	// Enter a parse tree produced by CPP14Parser#declarationSeq.
+	enterDeclarationSeq(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#declarationseq.
-	exitDeclarationseq(ctx) {
+	// Exit a parse tree produced by CPP14Parser#declarationSeq.
+	exitDeclarationSeq(ctx) {
 	}
 
 
@@ -599,12 +599,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#emptyDeclaration.
-	enterEmptyDeclaration(ctx) {
+	// Enter a parse tree produced by CPP14Parser#emptyDeclaration_.
+	enterEmptyDeclaration_(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#emptyDeclaration.
-	exitEmptyDeclaration(ctx) {
+	// Exit a parse tree produced by CPP14Parser#emptyDeclaration_.
+	exitEmptyDeclaration_(ctx) {
 	}
 
 
@@ -788,21 +788,21 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#enumkey.
-	enterEnumkey(ctx) {
+	// Enter a parse tree produced by CPP14Parser#enumKey.
+	enterEnumKey(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#enumkey.
-	exitEnumkey(ctx) {
+	// Exit a parse tree produced by CPP14Parser#enumKey.
+	exitEnumKey(ctx) {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#enumbase.
-	enterEnumbase(ctx) {
+	// Enter a parse tree produced by CPP14Parser#enumBase.
+	enterEnumBase(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#enumbase.
-	exitEnumbase(ctx) {
+	// Exit a parse tree produced by CPP14Parser#enumBase.
+	exitEnumBase(ctx) {
 	}
 
 
@@ -878,12 +878,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#qualifiednamespacespecifier.
-	enterQualifiednamespacespecifier(ctx) {
+	// Enter a parse tree produced by CPP14Parser#qualifiedNamespaceSpecifier.
+	enterQualifiedNamespaceSpecifier(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#qualifiednamespacespecifier.
-	exitQualifiednamespacespecifier(ctx) {
+	// Exit a parse tree produced by CPP14Parser#qualifiedNamespaceSpecifier.
+	exitQualifiedNamespaceSpecifier(ctx) {
 	}
 
 
@@ -941,12 +941,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#alignmentspecifier.
-	enterAlignmentspecifier(ctx) {
+	// Enter a parse tree produced by CPP14Parser#alignmentSpecifier.
+	enterAlignmentSpecifier(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#alignmentspecifier.
-	exitAlignmentspecifier(ctx) {
+	// Exit a parse tree produced by CPP14Parser#alignmentSpecifier.
+	exitAlignmentSpecifier(ctx) {
 	}
 
 
@@ -995,12 +995,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#balancedtoken.
-	enterBalancedtoken(ctx) {
+	// Enter a parse tree produced by CPP14Parser#balancedToken.
+	enterBalancedToken(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#balancedtoken.
-	exitBalancedtoken(ctx) {
+	// Exit a parse tree produced by CPP14Parser#balancedToken.
+	exitBalancedToken(ctx) {
 	}
 
 
@@ -1076,12 +1076,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#cvqualifierseq.
-	enterCvqualifierseq(ctx) {
+	// Enter a parse tree produced by CPP14Parser#cvQualifierSeq.
+	enterCvQualifierSeq(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#cvqualifierseq.
-	exitCvqualifierseq(ctx) {
+	// Exit a parse tree produced by CPP14Parser#cvQualifierSeq.
+	exitCvQualifierSeq(ctx) {
 	}
 
 
@@ -1094,21 +1094,21 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#refqualifier.
-	enterRefqualifier(ctx) {
+	// Enter a parse tree produced by CPP14Parser#refQualifier.
+	enterRefQualifier(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#refqualifier.
-	exitRefqualifier(ctx) {
+	// Exit a parse tree produced by CPP14Parser#refQualifier.
+	exitRefQualifier(ctx) {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#declaratorid.
-	enterDeclaratorid(ctx) {
+	// Enter a parse tree produced by CPP14Parser#declaratorId.
+	enterDeclaratorId(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#declaratorid.
-	exitDeclaratorid(ctx) {
+	// Exit a parse tree produced by CPP14Parser#declaratorId.
+	exitDeclaratorId(ctx) {
 	}
 
 
@@ -1319,12 +1319,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#memberdeclaration.
-	enterMemberdeclaration(ctx) {
+	// Enter a parse tree produced by CPP14Parser#memberDeclaration.
+	enterMemberDeclaration(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#memberdeclaration.
-	exitMemberdeclaration(ctx) {
+	// Exit a parse tree produced by CPP14Parser#memberDeclaration.
+	exitMemberDeclaration(ctx) {
 	}
 
 
@@ -1481,12 +1481,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#meminitializerid.
-	enterMeminitializerid(ctx) {
+	// Enter a parse tree produced by CPP14Parser#memInitializerId.
+	enterMemInitializerId(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#meminitializerid.
-	exitMeminitializerid(ctx) {
+	// Exit a parse tree produced by CPP14Parser#memInitializerId.
+	exitMemInitializerId(ctx) {
 	}
 
 
@@ -1517,12 +1517,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#templateparameterList.
-	enterTemplateparameterList(ctx) {
+	// Enter a parse tree produced by CPP14Parser#templateParameterList.
+	enterTemplateParameterList(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#templateparameterList.
-	exitTemplateparameterList(ctx) {
+	// Exit a parse tree produced by CPP14Parser#templateParameterList.
+	exitTemplateParameterList(ctx) {
 	}
 
 
@@ -1697,12 +1697,12 @@ export default class CPP14ParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by CPP14Parser#noeExceptSpecification.
-	enterNoeExceptSpecification(ctx) {
+	// Enter a parse tree produced by CPP14Parser#noExceptSpecification.
+	enterNoExceptSpecification(ctx) {
 	}
 
-	// Exit a parse tree produced by CPP14Parser#noeExceptSpecification.
-	exitNoeExceptSpecification(ctx) {
+	// Exit a parse tree produced by CPP14Parser#noExceptSpecification.
+	exitNoExceptSpecification(ctx) {
 	}
 
 

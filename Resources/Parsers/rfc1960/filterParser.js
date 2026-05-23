@@ -1,34 +1,35 @@
-// Generated from ./rfc1960/filter.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/rfc1960/filter.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import filterListener from './filterListener.js';
-const serializedATN = [4,1,12,100,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,12,105,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
-2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1,1,
-3,1,43,8,1,1,2,1,2,1,2,1,3,1,3,1,3,1,4,1,4,1,4,1,5,1,5,1,5,1,5,3,5,58,8,
-5,1,6,1,6,1,6,3,6,63,8,6,1,7,1,7,1,7,1,7,1,8,1,8,1,9,1,9,1,9,1,10,1,10,1,
-10,3,10,77,8,10,1,10,1,10,3,10,81,8,10,1,11,1,11,1,12,1,12,3,12,87,8,12,
-1,13,1,13,1,13,3,13,92,8,13,1,14,1,14,1,15,1,15,1,16,1,16,1,16,0,0,17,0,
-2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,0,1,1,0,8,11,92,0,34,1,0,0,0,
-2,42,1,0,0,0,4,44,1,0,0,0,6,47,1,0,0,0,8,50,1,0,0,0,10,57,1,0,0,0,12,62,
-1,0,0,0,14,64,1,0,0,0,16,68,1,0,0,0,18,70,1,0,0,0,20,73,1,0,0,0,22,82,1,
-0,0,0,24,84,1,0,0,0,26,88,1,0,0,0,28,93,1,0,0,0,30,95,1,0,0,0,32,97,1,0,
-0,0,34,35,5,1,0,0,35,36,3,2,1,0,36,37,5,2,0,0,37,1,1,0,0,0,38,43,3,4,2,0,
-39,43,3,6,3,0,40,43,3,8,4,0,41,43,3,12,6,0,42,38,1,0,0,0,42,39,1,0,0,0,42,
-40,1,0,0,0,42,41,1,0,0,0,43,3,1,0,0,0,44,45,5,3,0,0,45,46,3,10,5,0,46,5,
-1,0,0,0,47,48,5,4,0,0,48,49,3,10,5,0,49,7,1,0,0,0,50,51,5,5,0,0,51,52,3,
-0,0,0,52,9,1,0,0,0,53,58,3,0,0,0,54,55,3,0,0,0,55,56,3,10,5,0,56,58,1,0,
-0,0,57,53,1,0,0,0,57,54,1,0,0,0,58,11,1,0,0,0,59,63,3,14,7,0,60,63,3,18,
-9,0,61,63,3,20,10,0,62,59,1,0,0,0,62,60,1,0,0,0,62,61,1,0,0,0,63,13,1,0,
-0,0,64,65,3,30,15,0,65,66,3,16,8,0,66,67,3,32,16,0,67,15,1,0,0,0,68,69,7,
-0,0,0,69,17,1,0,0,0,70,71,3,30,15,0,71,72,5,6,0,0,72,19,1,0,0,0,73,74,3,
-30,15,0,74,76,5,8,0,0,75,77,3,22,11,0,76,75,1,0,0,0,76,77,1,0,0,0,77,78,
-1,0,0,0,78,80,3,24,12,0,79,81,3,28,14,0,80,79,1,0,0,0,80,81,1,0,0,0,81,21,
-1,0,0,0,82,83,3,32,16,0,83,23,1,0,0,0,84,86,5,7,0,0,85,87,3,26,13,0,86,85,
-1,0,0,0,86,87,1,0,0,0,87,25,1,0,0,0,88,89,3,32,16,0,89,91,5,7,0,0,90,92,
-3,26,13,0,91,90,1,0,0,0,91,92,1,0,0,0,92,27,1,0,0,0,93,94,3,32,16,0,94,29,
-1,0,0,0,95,96,5,12,0,0,96,31,1,0,0,0,97,98,5,12,0,0,98,33,1,0,0,0,7,42,57,
-62,76,80,86,91];
+2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,1,0,1,0,1,0,1,1,1,1,1,
+1,1,1,1,2,1,2,1,2,1,2,3,2,48,8,2,1,3,1,3,1,3,1,4,1,4,1,4,1,5,1,5,1,5,1,6,
+1,6,1,6,1,6,3,6,63,8,6,1,7,1,7,1,7,3,7,68,8,7,1,8,1,8,1,8,1,8,1,9,1,9,1,
+10,1,10,1,10,1,11,1,11,1,11,3,11,82,8,11,1,11,1,11,3,11,86,8,11,1,12,1,12,
+1,13,1,13,3,13,92,8,13,1,14,1,14,1,14,3,14,97,8,14,1,15,1,15,1,16,1,16,1,
+17,1,17,1,17,0,0,18,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,0,1,
+1,0,8,11,96,0,36,1,0,0,0,2,39,1,0,0,0,4,47,1,0,0,0,6,49,1,0,0,0,8,52,1,0,
+0,0,10,55,1,0,0,0,12,62,1,0,0,0,14,67,1,0,0,0,16,69,1,0,0,0,18,73,1,0,0,
+0,20,75,1,0,0,0,22,78,1,0,0,0,24,87,1,0,0,0,26,89,1,0,0,0,28,93,1,0,0,0,
+30,98,1,0,0,0,32,100,1,0,0,0,34,102,1,0,0,0,36,37,3,2,1,0,37,38,5,0,0,1,
+38,1,1,0,0,0,39,40,5,1,0,0,40,41,3,4,2,0,41,42,5,2,0,0,42,3,1,0,0,0,43,48,
+3,6,3,0,44,48,3,8,4,0,45,48,3,10,5,0,46,48,3,14,7,0,47,43,1,0,0,0,47,44,
+1,0,0,0,47,45,1,0,0,0,47,46,1,0,0,0,48,5,1,0,0,0,49,50,5,3,0,0,50,51,3,12,
+6,0,51,7,1,0,0,0,52,53,5,4,0,0,53,54,3,12,6,0,54,9,1,0,0,0,55,56,5,5,0,0,
+56,57,3,2,1,0,57,11,1,0,0,0,58,63,3,2,1,0,59,60,3,2,1,0,60,61,3,12,6,0,61,
+63,1,0,0,0,62,58,1,0,0,0,62,59,1,0,0,0,63,13,1,0,0,0,64,68,3,16,8,0,65,68,
+3,20,10,0,66,68,3,22,11,0,67,64,1,0,0,0,67,65,1,0,0,0,67,66,1,0,0,0,68,15,
+1,0,0,0,69,70,3,32,16,0,70,71,3,18,9,0,71,72,3,34,17,0,72,17,1,0,0,0,73,
+74,7,0,0,0,74,19,1,0,0,0,75,76,3,32,16,0,76,77,5,6,0,0,77,21,1,0,0,0,78,
+79,3,32,16,0,79,81,5,8,0,0,80,82,3,24,12,0,81,80,1,0,0,0,81,82,1,0,0,0,82,
+83,1,0,0,0,83,85,3,26,13,0,84,86,3,30,15,0,85,84,1,0,0,0,85,86,1,0,0,0,86,
+23,1,0,0,0,87,88,3,34,17,0,88,25,1,0,0,0,89,91,5,7,0,0,90,92,3,28,14,0,91,
+90,1,0,0,0,91,92,1,0,0,0,92,27,1,0,0,0,93,94,3,34,17,0,94,96,5,7,0,0,95,
+97,3,28,14,0,96,95,1,0,0,0,96,97,1,0,0,0,97,29,1,0,0,0,98,99,3,34,17,0,99,
+31,1,0,0,0,100,101,5,12,0,0,101,33,1,0,0,0,102,103,5,12,0,0,103,35,1,0,0,
+0,7,47,62,67,81,85,91,96];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -44,10 +45,10 @@ export default class filterParser extends antlr4.Parser {
                             "'*'", "'='", "'~='", "'>='", "'<='" ];
     static symbolicNames = [ null, null, null, null, null, null, null, null, 
                              "EQUAL", "APPROX", "GREATER", "LESS", "OCTETSTRING" ];
-    static ruleNames = [ "filter_", "filtercomp", "and_", "or_", "not_", 
-                         "filterlist", "item", "simple", "filtertype", "present", 
-                         "substring", "initial", "any_", "starval", "final_", 
-                         "attr", "value" ];
+    static ruleNames = [ "file_", "filter_", "filtercomp", "and_", "or_", 
+                         "not_", "filterlist", "item", "simple", "filtertype", 
+                         "present", "substring", "initial", "any_", "starval", 
+                         "final_", "attr", "value" ];
 
     constructor(input) {
         super(input);
@@ -57,22 +58,43 @@ export default class filterParser extends antlr4.Parser {
         this.symbolicNames = filterParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
+
+
+	file_() {
+	    let localctx = new File_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, filterParser.RULE_file_);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 36;
+	        this.filter_();
+	        this.state = 37;
+	        this.match(filterParser.EOF);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
 
 
 
 	filter_() {
 	    let localctx = new Filter_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 0, filterParser.RULE_filter_);
+	    this.enterRule(localctx, 2, filterParser.RULE_filter_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 34;
+	        this.state = 39;
 	        this.match(filterParser.T__0);
-	        this.state = 35;
+	        this.state = 40;
 	        this.filtercomp();
-	        this.state = 36;
+	        this.state = 41;
 	        this.match(filterParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -92,29 +114,29 @@ export default class filterParser extends antlr4.Parser {
 
 	filtercomp() {
 	    let localctx = new FiltercompContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 2, filterParser.RULE_filtercomp);
+	    this.enterRule(localctx, 4, filterParser.RULE_filtercomp);
 	    try {
-	        this.state = 42;
+	        this.state = 47;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case filterParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 38;
+	            this.state = 43;
 	            this.and_();
 	            break;
-	        case filterParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 39;
+	            this.state = 44;
 	            this.or_();
 	            break;
-	        case filterParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 40;
+	            this.state = 45;
 	            this.not_();
 	            break;
-	        case filterParser.OCTETSTRING:
+	        case 12:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 41;
+	            this.state = 46;
 	            this.item();
 	            break;
 	        default:
@@ -138,12 +160,12 @@ export default class filterParser extends antlr4.Parser {
 
 	and_() {
 	    let localctx = new And_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 4, filterParser.RULE_and_);
+	    this.enterRule(localctx, 6, filterParser.RULE_and_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 44;
+	        this.state = 49;
 	        this.match(filterParser.T__2);
-	        this.state = 45;
+	        this.state = 50;
 	        this.filterlist();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -163,12 +185,12 @@ export default class filterParser extends antlr4.Parser {
 
 	or_() {
 	    let localctx = new Or_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 6, filterParser.RULE_or_);
+	    this.enterRule(localctx, 8, filterParser.RULE_or_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 47;
+	        this.state = 52;
 	        this.match(filterParser.T__3);
-	        this.state = 48;
+	        this.state = 53;
 	        this.filterlist();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -188,12 +210,12 @@ export default class filterParser extends antlr4.Parser {
 
 	not_() {
 	    let localctx = new Not_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 8, filterParser.RULE_not_);
+	    this.enterRule(localctx, 10, filterParser.RULE_not_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 50;
+	        this.state = 55;
 	        this.match(filterParser.T__4);
-	        this.state = 51;
+	        this.state = 56;
 	        this.filter_();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -213,23 +235,23 @@ export default class filterParser extends antlr4.Parser {
 
 	filterlist() {
 	    let localctx = new FilterlistContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 10, filterParser.RULE_filterlist);
+	    this.enterRule(localctx, 12, filterParser.RULE_filterlist);
 	    try {
-	        this.state = 57;
+	        this.state = 62;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 53;
+	            this.state = 58;
 	            this.filter_();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 54;
+	            this.state = 59;
 	            this.filter_();
-	            this.state = 55;
+	            this.state = 60;
 	            this.filterlist();
 	            break;
 
@@ -252,27 +274,27 @@ export default class filterParser extends antlr4.Parser {
 
 	item() {
 	    let localctx = new ItemContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 12, filterParser.RULE_item);
+	    this.enterRule(localctx, 14, filterParser.RULE_item);
 	    try {
-	        this.state = 62;
+	        this.state = 67;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 59;
+	            this.state = 64;
 	            this.simple();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 60;
+	            this.state = 65;
 	            this.present();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 61;
+	            this.state = 66;
 	            this.substring();
 	            break;
 
@@ -295,14 +317,14 @@ export default class filterParser extends antlr4.Parser {
 
 	simple() {
 	    let localctx = new SimpleContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 14, filterParser.RULE_simple);
+	    this.enterRule(localctx, 16, filterParser.RULE_simple);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 64;
+	        this.state = 69;
 	        this.attr();
-	        this.state = 65;
+	        this.state = 70;
 	        this.filtertype();
-	        this.state = 66;
+	        this.state = 71;
 	        this.value();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -322,13 +344,13 @@ export default class filterParser extends antlr4.Parser {
 
 	filtertype() {
 	    let localctx = new FiltertypeContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 16, filterParser.RULE_filtertype);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 18, filterParser.RULE_filtertype);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 68;
+	        this.state = 73;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << filterParser.EQUAL) | (1 << filterParser.APPROX) | (1 << filterParser.GREATER) | (1 << filterParser.LESS))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 3840) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -353,12 +375,12 @@ export default class filterParser extends antlr4.Parser {
 
 	present() {
 	    let localctx = new PresentContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 18, filterParser.RULE_present);
+	    this.enterRule(localctx, 20, filterParser.RULE_present);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 70;
+	        this.state = 75;
 	        this.attr();
-	        this.state = 71;
+	        this.state = 76;
 	        this.match(filterParser.T__5);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -378,29 +400,29 @@ export default class filterParser extends antlr4.Parser {
 
 	substring() {
 	    let localctx = new SubstringContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 20, filterParser.RULE_substring);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 22, filterParser.RULE_substring);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 73;
+	        this.state = 78;
 	        this.attr();
-	        this.state = 74;
+	        this.state = 79;
 	        this.match(filterParser.EQUAL);
-	        this.state = 76;
+	        this.state = 81;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===filterParser.OCTETSTRING) {
-	            this.state = 75;
+	        if(_la===12) {
+	            this.state = 80;
 	            this.initial();
 	        }
 
-	        this.state = 78;
+	        this.state = 83;
 	        this.any_();
-	        this.state = 80;
+	        this.state = 85;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===filterParser.OCTETSTRING) {
-	            this.state = 79;
+	        if(_la===12) {
+	            this.state = 84;
 	            this.final_();
 	        }
 
@@ -422,10 +444,10 @@ export default class filterParser extends antlr4.Parser {
 
 	initial() {
 	    let localctx = new InitialContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 22, filterParser.RULE_initial);
+	    this.enterRule(localctx, 24, filterParser.RULE_initial);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 82;
+	        this.state = 87;
 	        this.value();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -445,47 +467,14 @@ export default class filterParser extends antlr4.Parser {
 
 	any_() {
 	    let localctx = new Any_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 24, filterParser.RULE_any_);
+	    this.enterRule(localctx, 26, filterParser.RULE_any_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 84;
-	        this.match(filterParser.T__6);
-	        this.state = 86;
-	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
-	        if(la_===1) {
-	            this.state = 85;
-	            this.starval();
-
-	        }
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	starval() {
-	    let localctx = new StarvalContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 26, filterParser.RULE_starval);
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 88;
-	        this.value();
 	        this.state = 89;
 	        this.match(filterParser.T__6);
 	        this.state = 91;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
 	        if(la_===1) {
 	            this.state = 90;
 	            this.starval();
@@ -507,12 +496,45 @@ export default class filterParser extends antlr4.Parser {
 
 
 
-	final_() {
-	    let localctx = new Final_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 28, filterParser.RULE_final_);
+	starval() {
+	    let localctx = new StarvalContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 28, filterParser.RULE_starval);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 93;
+	        this.value();
+	        this.state = 94;
+	        this.match(filterParser.T__6);
+	        this.state = 96;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
+	        if(la_===1) {
+	            this.state = 95;
+	            this.starval();
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	final_() {
+	    let localctx = new Final_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 30, filterParser.RULE_final_);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 98;
 	        this.value();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -532,10 +554,10 @@ export default class filterParser extends antlr4.Parser {
 
 	attr() {
 	    let localctx = new AttrContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 30, filterParser.RULE_attr);
+	    this.enterRule(localctx, 32, filterParser.RULE_attr);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 95;
+	        this.state = 100;
 	        this.match(filterParser.OCTETSTRING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -555,10 +577,10 @@ export default class filterParser extends antlr4.Parser {
 
 	value() {
 	    let localctx = new ValueContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 32, filterParser.RULE_value);
+	    this.enterRule(localctx, 34, filterParser.RULE_value);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 97;
+	        this.state = 102;
 	        this.match(filterParser.OCTETSTRING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -591,23 +613,63 @@ filterParser.GREATER = 10;
 filterParser.LESS = 11;
 filterParser.OCTETSTRING = 12;
 
-filterParser.RULE_filter_ = 0;
-filterParser.RULE_filtercomp = 1;
-filterParser.RULE_and_ = 2;
-filterParser.RULE_or_ = 3;
-filterParser.RULE_not_ = 4;
-filterParser.RULE_filterlist = 5;
-filterParser.RULE_item = 6;
-filterParser.RULE_simple = 7;
-filterParser.RULE_filtertype = 8;
-filterParser.RULE_present = 9;
-filterParser.RULE_substring = 10;
-filterParser.RULE_initial = 11;
-filterParser.RULE_any_ = 12;
-filterParser.RULE_starval = 13;
-filterParser.RULE_final_ = 14;
-filterParser.RULE_attr = 15;
-filterParser.RULE_value = 16;
+filterParser.RULE_file_ = 0;
+filterParser.RULE_filter_ = 1;
+filterParser.RULE_filtercomp = 2;
+filterParser.RULE_and_ = 3;
+filterParser.RULE_or_ = 4;
+filterParser.RULE_not_ = 5;
+filterParser.RULE_filterlist = 6;
+filterParser.RULE_item = 7;
+filterParser.RULE_simple = 8;
+filterParser.RULE_filtertype = 9;
+filterParser.RULE_present = 10;
+filterParser.RULE_substring = 11;
+filterParser.RULE_initial = 12;
+filterParser.RULE_any_ = 13;
+filterParser.RULE_starval = 14;
+filterParser.RULE_final_ = 15;
+filterParser.RULE_attr = 16;
+filterParser.RULE_value = 17;
+
+class File_Context extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = filterParser.RULE_file_;
+    }
+
+	filter_() {
+	    return this.getTypedRuleContext(Filter_Context,0);
+	};
+
+	EOF() {
+	    return this.getToken(filterParser.EOF, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof filterListener ) {
+	        listener.enterFile_(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof filterListener ) {
+	        listener.exitFile_(this);
+		}
+	}
+
+
+}
+
+
 
 class Filter_Context extends antlr4.ParserRuleContext {
 
@@ -1269,6 +1331,7 @@ class ValueContext extends antlr4.ParserRuleContext {
 
 
 
+filterParser.File_Context = File_Context; 
 filterParser.Filter_Context = Filter_Context; 
 filterParser.FiltercompContext = FiltercompContext; 
 filterParser.And_Context = And_Context; 
@@ -1286,3 +1349,12 @@ filterParser.StarvalContext = StarvalContext;
 filterParser.Final_Context = Final_Context; 
 filterParser.AttrContext = AttrContext; 
 filterParser.ValueContext = ValueContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

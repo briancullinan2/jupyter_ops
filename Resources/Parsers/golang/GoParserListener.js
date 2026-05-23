@@ -1,4 +1,4 @@
-// Generated from ./golang/GoParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/golang/GoParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -20,6 +20,24 @@ export default class GoParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GoParser#packageClause.
 	exitPackageClause(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#packageName.
+	enterPackageName(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#packageName.
+	exitPackageName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#identifier.
+	enterIdentifier(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#identifier.
+	exitIdentifier(ctx) {
 	}
 
 
@@ -110,6 +128,60 @@ export default class GoParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GoParser#typeSpec.
 	exitTypeSpec(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#aliasDecl.
+	enterAliasDecl(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#aliasDecl.
+	exitAliasDecl(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#typeDef.
+	enterTypeDef(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#typeDef.
+	exitTypeDef(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#typeParameters.
+	enterTypeParameters(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#typeParameters.
+	exitTypeParameters(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#typeParameterDecl.
+	enterTypeParameterDecl(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#typeParameterDecl.
+	exitTypeParameterDecl(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#typeElement.
+	enterTypeElement(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#typeElement.
+	exitTypeElement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#typeTerm.
+	enterTypeTerm(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#typeTerm.
+	exitTypeTerm(ctx) {
 	}
 
 
@@ -245,15 +317,6 @@ export default class GoParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GoParser#shortVarDecl.
 	exitShortVarDecl(ctx) {
-	}
-
-
-	// Enter a parse tree produced by GoParser#emptyStmt.
-	enterEmptyStmt(ctx) {
-	}
-
-	// Exit a parse tree produced by GoParser#emptyStmt.
-	exitEmptyStmt(ctx) {
 	}
 
 
@@ -455,6 +518,15 @@ export default class GoParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by GoParser#condition.
+	enterCondition(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#condition.
+	exitCondition(ctx) {
+	}
+
+
 	// Enter a parse tree produced by GoParser#forClause.
 	enterForClause(ctx) {
 	}
@@ -488,6 +560,15 @@ export default class GoParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GoParser#type_.
 	exitType_(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GoParser#typeArgs.
+	enterTypeArgs(ctx) {
+	}
+
+	// Exit a parse tree produced by GoParser#typeArgs.
+	exitTypeArgs(ctx) {
 	}
 
 
@@ -659,15 +740,6 @@ export default class GoParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GoParser#conversion.
 	exitConversion(ctx) {
-	}
-
-
-	// Enter a parse tree produced by GoParser#nonNamedType.
-	enterNonNamedType(ctx) {
-	}
-
-	// Exit a parse tree produced by GoParser#nonNamedType.
-	exitNonNamedType(ctx) {
 	}
 
 
@@ -875,15 +947,6 @@ export default class GoParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GoParser#methodExpr.
 	exitMethodExpr(ctx) {
-	}
-
-
-	// Enter a parse tree produced by GoParser#receiverType.
-	enterReceiverType(ctx) {
-	}
-
-	// Exit a parse tree produced by GoParser#receiverType.
-	exitReceiverType(ctx) {
 	}
 
 

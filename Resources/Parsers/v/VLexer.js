@@ -1,4 +1,4 @@
-// Generated from ./v/V.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/v/V.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -346,10 +346,6 @@ export default class VLexer extends antlr4.Lexer {
             }
 
     }
-
-    get atn() {
-        return atn;
-    }
 }
 
 VLexer.EOF = antlr4.Token.EOF;
@@ -422,3 +418,12 @@ VLexer.LINE_COMMENT = 66;
 
 
 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

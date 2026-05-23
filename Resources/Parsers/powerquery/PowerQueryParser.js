@@ -1,4 +1,4 @@
-// Generated from ./powerquery/PowerQueryParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/powerquery/PowerQueryParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import PowerQueryParserListener from './PowerQueryParserListener.js';
@@ -324,10 +324,6 @@ export default class PowerQueryParser extends antlr4.Parser {
         this.symbolicNames = PowerQueryParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 10:
@@ -455,13 +451,13 @@ export default class PowerQueryParser extends antlr4.Parser {
 	section() {
 	    let localctx = new SectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, PowerQueryParser.RULE_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 209;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.OPEN_BRACKET) {
+	        if(_la===7) {
 	            this.state = 208;
 	            this.literal_attribs();
 	        }
@@ -475,7 +471,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 215;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.OPEN_BRACKET || _la===PowerQueryParser.SHARED || _la===PowerQueryParser.IDENTIFIER) {
+	        if(_la===7 || _la===19 || _la===68) {
 	            this.state = 214;
 	            this.section_members();
 	        }
@@ -522,7 +518,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	section_members() {
 	    let localctx = new Section_membersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, PowerQueryParser.RULE_section_members);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 219;
@@ -530,7 +526,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 221;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.OPEN_BRACKET || _la===PowerQueryParser.SHARED || _la===PowerQueryParser.IDENTIFIER) {
+	        if(_la===7 || _la===19 || _la===68) {
 	            this.state = 220;
 	            this.section_members();
 	        }
@@ -554,13 +550,13 @@ export default class PowerQueryParser extends antlr4.Parser {
 	section_member() {
 	    let localctx = new Section_memberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, PowerQueryParser.RULE_section_member);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 224;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.OPEN_BRACKET) {
+	        if(_la===7) {
 	            this.state = 223;
 	            this.literal_attribs();
 	        }
@@ -568,7 +564,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 227;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.SHARED) {
+	        if(_la===19) {
 	            this.state = 226;
 	            this.match(PowerQueryParser.SHARED);
 	        }
@@ -870,13 +866,13 @@ export default class PowerQueryParser extends antlr4.Parser {
 	nullable_primitive_type() {
 	    let localctx = new Nullable_primitive_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, PowerQueryParser.RULE_nullable_primitive_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 278;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.NULLABLE) {
+	        if(_la===16) {
 	            this.state = 277;
 	            this.match(PowerQueryParser.NULLABLE);
 	        }
@@ -1236,33 +1232,33 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 363;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerQueryParser.OPEN_BRACKET:
-	        case PowerQueryParser.OPEN_BRACE:
-	        case PowerQueryParser.OPEN_PAREN:
-	        case PowerQueryParser.ELLIPSES:
-	        case PowerQueryParser.TYPE:
-	        case PowerQueryParser.AT:
-	        case PowerQueryParser.LITERAL:
-	        case PowerQueryParser.IDENTIFIER:
+	        case 7:
+	        case 9:
+	        case 11:
+	        case 26:
+	        case 27:
+	        case 48:
+	        case 66:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 356;
 	            this.type_expression();
 	            break;
-	        case PowerQueryParser.PLUS:
+	        case 54:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 357;
 	            this.match(PowerQueryParser.PLUS);
 	            this.state = 358;
 	            this.unary_expression();
 	            break;
-	        case PowerQueryParser.MINUS:
+	        case 55:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 359;
 	            this.match(PowerQueryParser.MINUS);
 	            this.state = 360;
 	            this.unary_expression();
 	            break;
-	        case PowerQueryParser.NOT:
+	        case 53:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 361;
 	            this.match(PowerQueryParser.NOT);
@@ -1297,7 +1293,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 40;
 	    this.enterRecursionRule(localctx, 40, PowerQueryParser.RULE_primary_expression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 375;
@@ -1441,7 +1437,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	                    this.state = 397;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PowerQueryParser.OPEN_BRACKET) | (1 << PowerQueryParser.OPEN_BRACE) | (1 << PowerQueryParser.OPEN_PAREN) | (1 << PowerQueryParser.TRY) | (1 << PowerQueryParser.ERROR) | (1 << PowerQueryParser.ELLIPSES) | (1 << PowerQueryParser.TYPE) | (1 << PowerQueryParser.EACH) | (1 << PowerQueryParser.LET) | (1 << PowerQueryParser.IF))) !== 0) || ((((_la - 48)) & ~0x1f) == 0 && ((1 << (_la - 48)) & ((1 << (PowerQueryParser.AT - 48)) | (1 << (PowerQueryParser.NOT - 48)) | (1 << (PowerQueryParser.PLUS - 48)) | (1 << (PowerQueryParser.MINUS - 48)) | (1 << (PowerQueryParser.LITERAL - 48)) | (1 << (PowerQueryParser.IDENTIFIER - 48)))) !== 0)) {
+	                    if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3179285120) !== 0) || ((((_la - 48)) & ~0x1f) === 0 && ((1 << (_la - 48)) & 1310945) !== 0)) {
 	                        this.state = 396;
 	                        this.argument_list();
 	                    }
@@ -1526,12 +1522,12 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 411;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerQueryParser.IDENTIFIER:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 409;
 	            this.exclusive_identifier_reference();
 	            break;
-	        case PowerQueryParser.AT:
+	        case 48:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 410;
 	            this.inclusive_identifier_reference();
@@ -1724,7 +1720,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	list_expression() {
 	    let localctx = new List_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, PowerQueryParser.RULE_list_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 435;
@@ -1732,7 +1728,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 437;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PowerQueryParser.OPEN_BRACKET) | (1 << PowerQueryParser.OPEN_BRACE) | (1 << PowerQueryParser.OPEN_PAREN) | (1 << PowerQueryParser.TRY) | (1 << PowerQueryParser.ERROR) | (1 << PowerQueryParser.ELLIPSES) | (1 << PowerQueryParser.TYPE) | (1 << PowerQueryParser.EACH) | (1 << PowerQueryParser.LET) | (1 << PowerQueryParser.IF))) !== 0) || ((((_la - 48)) & ~0x1f) == 0 && ((1 << (_la - 48)) & ((1 << (PowerQueryParser.AT - 48)) | (1 << (PowerQueryParser.NOT - 48)) | (1 << (PowerQueryParser.PLUS - 48)) | (1 << (PowerQueryParser.MINUS - 48)) | (1 << (PowerQueryParser.LITERAL - 48)) | (1 << (PowerQueryParser.IDENTIFIER - 48)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3179285120) !== 0) || ((((_la - 48)) & ~0x1f) === 0 && ((1 << (_la - 48)) & 1310945) !== 0)) {
 	            this.state = 436;
 	            this.item_list();
 	        }
@@ -1840,7 +1836,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	record_expression() {
 	    let localctx = new Record_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, PowerQueryParser.RULE_record_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 455;
@@ -1848,7 +1844,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 457;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.IDENTIFIER) {
+	        if(_la===68) {
 	            this.state = 456;
 	            this.field_list();
 	        }
@@ -2238,7 +2234,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	function_expression() {
 	    let localctx = new Function_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, PowerQueryParser.RULE_function_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 511;
@@ -2246,7 +2242,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 513;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.IDENTIFIER) {
+	        if(_la===68) {
 	            this.state = 512;
 	            this.parameter_list();
 	        }
@@ -2256,7 +2252,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 517;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.AS) {
+	        if(_la===49) {
 	            this.state = 516;
 	            this.return_type();
 	        }
@@ -2389,7 +2385,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	parameter() {
 	    let localctx = new ParameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, PowerQueryParser.RULE_parameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 538;
@@ -2397,7 +2393,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 540;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.AS) {
+	        if(_la===49) {
 	            this.state = 539;
 	            this.parameter_type();
 	        }
@@ -2855,18 +2851,18 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 600;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerQueryParser.OPEN_BRACKET:
-	        case PowerQueryParser.OPEN_BRACE:
-	        case PowerQueryParser.OPEN_PAREN:
-	        case PowerQueryParser.ELLIPSES:
-	        case PowerQueryParser.AT:
-	        case PowerQueryParser.LITERAL:
-	        case PowerQueryParser.IDENTIFIER:
+	        case 7:
+	        case 9:
+	        case 11:
+	        case 26:
+	        case 48:
+	        case 66:
+	        case 68:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 597;
 	            this.primary_expression(0);
 	            break;
-	        case PowerQueryParser.TYPE:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 598;
 	            this.match(PowerQueryParser.TYPE);
@@ -2899,32 +2895,32 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 604;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerQueryParser.OPEN_PAREN:
+	        case 11:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 602;
 	            this.parenthesized_expression();
 	            break;
-	        case PowerQueryParser.OPEN_BRACKET:
-	        case PowerQueryParser.OPEN_BRACE:
-	        case PowerQueryParser.TABLE:
-	        case PowerQueryParser.NULLABLE:
-	        case PowerQueryParser.FUNCTION_START:
-	        case PowerQueryParser.TYPE:
-	        case PowerQueryParser.TEXT:
-	        case PowerQueryParser.RECORD:
-	        case PowerQueryParser.NUMBER:
-	        case PowerQueryParser.NONE:
-	        case PowerQueryParser.LOGICAL:
-	        case PowerQueryParser.LIST:
-	        case PowerQueryParser.FUNCTION:
-	        case PowerQueryParser.DURATION:
-	        case PowerQueryParser.DATETIMEZONE:
-	        case PowerQueryParser.ANY:
-	        case PowerQueryParser.ANYNONNULL:
-	        case PowerQueryParser.BINARY:
-	        case PowerQueryParser.DATE:
-	        case PowerQueryParser.DATETIME:
-	        case PowerQueryParser.LITERAL:
+	        case 7:
+	        case 9:
+	        case 15:
+	        case 16:
+	        case 25:
+	        case 27:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 66:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 603;
 	            this.primary_type();
@@ -3012,12 +3008,12 @@ export default class PowerQueryParser extends antlr4.Parser {
 	primitive_type() {
 	    let localctx = new Primitive_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 140, PowerQueryParser.RULE_primitive_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 614;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 15)) & ~0x1f) == 0 && ((1 << (_la - 15)) & ((1 << (PowerQueryParser.TABLE - 15)) | (1 << (PowerQueryParser.TYPE - 15)) | (1 << (PowerQueryParser.TEXT - 15)) | (1 << (PowerQueryParser.RECORD - 15)) | (1 << (PowerQueryParser.NUMBER - 15)) | (1 << (PowerQueryParser.NONE - 15)) | (1 << (PowerQueryParser.LOGICAL - 15)) | (1 << (PowerQueryParser.LIST - 15)) | (1 << (PowerQueryParser.FUNCTION - 15)) | (1 << (PowerQueryParser.DURATION - 15)) | (1 << (PowerQueryParser.DATETIMEZONE - 15)) | (1 << (PowerQueryParser.ANY - 15)) | (1 << (PowerQueryParser.ANYNONNULL - 15)) | (1 << (PowerQueryParser.BINARY - 15)) | (1 << (PowerQueryParser.DATE - 15)))) !== 0) || _la===PowerQueryParser.DATETIME || _la===PowerQueryParser.LITERAL)) {
+	        if(!(((((_la - 15)) & ~0x1f) === 0 && ((1 << (_la - 15)) & 4294447105) !== 0) || _la===47 || _la===66)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3043,7 +3039,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	record_type() {
 	    let localctx = new Record_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 142, PowerQueryParser.RULE_record_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 631;
 	        this._errHandler.sync(this);
@@ -3066,7 +3062,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	            this.state = 622;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===PowerQueryParser.OPTIONAL_TEXT || _la===PowerQueryParser.IDENTIFIER) {
+	            if(_la===14 || _la===68) {
 	                this.state = 621;
 	                this.field_specification_list();
 	            }
@@ -3150,13 +3146,13 @@ export default class PowerQueryParser extends antlr4.Parser {
 	field_specification() {
 	    let localctx = new Field_specificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, PowerQueryParser.RULE_field_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 641;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.OPTIONAL_TEXT) {
+	        if(_la===14) {
 	            this.state = 640;
 	            this.match(PowerQueryParser.OPTIONAL_TEXT);
 	        }
@@ -3166,7 +3162,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 645;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.EQUALS) {
+	        if(_la===5) {
 	            this.state = 644;
 	            this.field_type_specification();
 	        }
@@ -3311,7 +3307,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	function_type() {
 	    let localctx = new Function_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 158, PowerQueryParser.RULE_function_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 660;
@@ -3319,7 +3315,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 662;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.OPTIONAL_TEXT || _la===PowerQueryParser.IDENTIFIER) {
+	        if(_la===14 || _la===68) {
 	            this.state = 661;
 	            this.parameter_specification_list();
 	        }
@@ -3778,7 +3774,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	record_literal() {
 	    let localctx = new Record_literalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 190, PowerQueryParser.RULE_record_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 724;
@@ -3786,7 +3782,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 726;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.IDENTIFIER) {
+	        if(_la===68) {
 	            this.state = 725;
 	            this.literal_field_list();
 	        }
@@ -3880,7 +3876,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	list_literal() {
 	    let localctx = new List_literalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 196, PowerQueryParser.RULE_list_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 741;
@@ -3888,7 +3884,7 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 743;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerQueryParser.OPEN_BRACKET || _la===PowerQueryParser.OPEN_BRACE || _la===PowerQueryParser.LITERAL) {
+	        if(_la===7 || _la===9 || _la===66) {
 	            this.state = 742;
 	            this.literal_item_list();
 	        }
@@ -3959,17 +3955,17 @@ export default class PowerQueryParser extends antlr4.Parser {
 	        this.state = 757;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerQueryParser.OPEN_BRACKET:
+	        case 7:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 754;
 	            this.record_literal();
 	            break;
-	        case PowerQueryParser.OPEN_BRACE:
+	        case 9:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 755;
 	            this.list_literal();
 	            break;
-	        case PowerQueryParser.LITERAL:
+	        case 66:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 756;
 	            this.match(PowerQueryParser.LITERAL);
@@ -8603,3 +8599,12 @@ PowerQueryParser.Literal_fieldContext = Literal_fieldContext;
 PowerQueryParser.List_literalContext = List_literalContext; 
 PowerQueryParser.Literal_item_listContext = Literal_item_listContext; 
 PowerQueryParser.Any_literalContext = Any_literalContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

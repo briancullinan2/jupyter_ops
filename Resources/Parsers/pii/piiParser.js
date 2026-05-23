@@ -1,4 +1,4 @@
-// Generated from ./pii/pii.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/pii/pii.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import piiListener from './piiListener.js';
@@ -41,10 +41,6 @@ export default class piiParser extends antlr4.Parser {
         this.symbolicNames = piiParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	pii() {
@@ -55,11 +51,11 @@ export default class piiParser extends antlr4.Parser {
 	        this.state = 14;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case piiParser.T__0:
+	        case 1:
 	            this.state = 12;
 	            this.issn();
 	            break;
-	        case piiParser.T__1:
+	        case 2:
 	            this.state = 13;
 	            this.isbn();
 	            break;
@@ -231,12 +227,12 @@ export default class piiParser extends antlr4.Parser {
 	check() {
 	    let localctx = new CheckContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, piiParser.RULE_check);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 52;
 	        _la = this._input.LA(1);
-	        if(!(_la===piiParser.T__2 || _la===piiParser.DIGIT)) {
+	        if(!(_la===3 || _la===4)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -546,3 +542,12 @@ piiParser.IsbnContext = IsbnContext;
 piiParser.YearContext = YearContext; 
 piiParser.ItemContext = ItemContext; 
 piiParser.CheckContext = CheckContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

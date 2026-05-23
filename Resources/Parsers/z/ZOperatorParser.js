@@ -1,4 +1,4 @@
-// Generated from ./z/ZOperatorParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/z/ZOperatorParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ZOperatorParserListener from './ZOperatorParserListener.js';
@@ -191,22 +191,18 @@ export default class ZOperatorParser extends antlr4.Parser {
         this.symbolicNames = ZOperatorParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	specification() {
 	    let localctx = new SpecificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, ZOperatorParser.RULE_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 47;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ZOperatorParser.ZED) | (1 << ZOperatorParser.SCH) | (1 << ZOperatorParser.AX) | (1 << ZOperatorParser.TEXT))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 30) !== 0)) {
 	            this.state = 45;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
@@ -252,7 +248,7 @@ export default class ZOperatorParser extends antlr4.Parser {
 	section() {
 	    let localctx = new SectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, ZOperatorParser.RULE_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 76;
 	        this._errHandler.sync(this);
@@ -272,7 +268,7 @@ export default class ZOperatorParser extends antlr4.Parser {
 	            this.state = 57;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ZOperatorParser.NAME) {
+	            if(_la===68) {
 	                this.state = 56;
 	                this.formals();
 	            }
@@ -442,7 +438,7 @@ export default class ZOperatorParser extends antlr4.Parser {
 	formals() {
 	    let localctx = new FormalsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, ZOperatorParser.RULE_formals);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 108;
@@ -450,7 +446,7 @@ export default class ZOperatorParser extends antlr4.Parser {
 	        this.state = 113;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ZOperatorParser.COMMA) {
+	        while(_la===39) {
 	            this.state = 109;
 	            this.match(ZOperatorParser.COMMA);
 	            this.state = 110;
@@ -482,7 +478,7 @@ export default class ZOperatorParser extends antlr4.Parser {
 	        this.state = 122;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZOperatorParser.RELATION:
+	        case 32:
 	            localctx = new RelationOperatorTemplateContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 116;
@@ -490,7 +486,7 @@ export default class ZOperatorParser extends antlr4.Parser {
 	            this.state = 117;
 	            this.template_();
 	            break;
-	        case ZOperatorParser.FUNCTION:
+	        case 24:
 	            localctx = new FunctionOperatorTemplateContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 118;
@@ -498,7 +494,7 @@ export default class ZOperatorParser extends antlr4.Parser {
 	            this.state = 119;
 	            this.categoryTemplate();
 	            break;
-	        case ZOperatorParser.GENERIC:
+	        case 25:
 	            localctx = new GenericOperatorTemplateContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 120;
@@ -604,12 +600,12 @@ export default class ZOperatorParser extends antlr4.Parser {
 	assoc() {
 	    let localctx = new AssocContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, ZOperatorParser.RULE_assoc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 135;
 	        _la = this._input.LA(1);
-	        if(!(_la===ZOperatorParser.LEFTASSOC || _la===ZOperatorParser.RIGHTASSOC)) {
+	        if(!(_la===27 || _la===33)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -691,11 +687,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	        this.state = 147;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZOperatorParser.NAME:
+	        case 68:
 	            this.state = 144;
 	            this.prefixName();
 	            break;
-	        case ZOperatorParser.POWERSET:
+	        case 29:
 	            this.state = 145;
 	            this.match(ZOperatorParser.POWERSET);
 	            this.state = 146;
@@ -931,11 +927,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	                    this.state = 180;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZOperatorParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 178;
 	                        this.optArgName();
 	                        break;
-	                    case ZOperatorParser.LIST:
+	                    case 48:
 	                        this.state = 179;
 	                        this.optListName();
 	                        break;
@@ -951,11 +947,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	            this.state = 187;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZOperatorParser.ARGUMENT:
+	            case 47:
 	                this.state = 185;
 	                this.argName();
 	                break;
-	            case ZOperatorParser.LIST:
+	            case 48:
 	                this.state = 186;
 	                this.listName();
 	                break;
@@ -1013,11 +1009,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	                    this.state = 199;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZOperatorParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 197;
 	                        this.optArgName();
 	                        break;
-	                    case ZOperatorParser.LIST:
+	                    case 48:
 	                        this.state = 198;
 	                        this.optListName();
 	                        break;
@@ -1033,11 +1029,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	            this.state = 206;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZOperatorParser.ARGUMENT:
+	            case 47:
 	                this.state = 204;
 	                this.argName();
 	                break;
-	            case ZOperatorParser.LIST:
+	            case 48:
 	                this.state = 205;
 	                this.listName();
 	                break;
@@ -1095,11 +1091,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	                    this.state = 217;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case ZOperatorParser.ARGUMENT:
+	                    case 47:
 	                        this.state = 215;
 	                        this.optArgName();
 	                        break;
-	                    case ZOperatorParser.LIST:
+	                    case 48:
 	                        this.state = 216;
 	                        this.optListName();
 	                        break;
@@ -1115,11 +1111,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	            this.state = 224;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case ZOperatorParser.ARGUMENT:
+	            case 47:
 	                this.state = 222;
 	                this.argName();
 	                break;
-	            case ZOperatorParser.LIST:
+	            case 48:
 	                this.state = 223;
 	                this.listName();
 	                break;
@@ -1162,11 +1158,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	                this.state = 233;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case ZOperatorParser.ARGUMENT:
+	                case 47:
 	                    this.state = 231;
 	                    this.optArgName();
 	                    break;
-	                case ZOperatorParser.LIST:
+	                case 48:
 	                    this.state = 232;
 	                    this.optListName();
 	                    break;
@@ -1182,11 +1178,11 @@ export default class ZOperatorParser extends antlr4.Parser {
 	        this.state = 240;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ZOperatorParser.ARGUMENT:
+	        case 47:
 	            this.state = 238;
 	            this.argName();
 	            break;
-	        case ZOperatorParser.LIST:
+	        case 48:
 	            this.state = 239;
 	            this.listName();
 	            break;
@@ -2733,3 +2729,12 @@ ZOperatorParser.PrefixNameContext = PrefixNameContext;
 ZOperatorParser.PostfixNameContext = PostfixNameContext; 
 ZOperatorParser.InfixNameContext = InfixNameContext; 
 ZOperatorParser.NofixNameContext = NofixNameContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

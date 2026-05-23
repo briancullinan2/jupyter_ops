@@ -1,56 +1,57 @@
-// Generated from ./refal/refal.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/refal/refal.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import refalListener from './refalListener.js';
-const serializedATN = [4,1,24,168,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,24,173,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
-20,7,20,2,21,7,21,1,0,1,0,1,0,3,0,48,8,0,1,0,3,0,51,8,0,1,0,1,0,1,0,1,0,
-3,0,57,8,0,1,0,1,0,1,0,1,0,5,0,63,8,0,10,0,12,0,66,9,0,1,1,3,1,69,8,1,1,
-1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,3,3,84,8,3,1,4,1,4,1,5,
-1,5,1,5,3,5,91,8,5,3,5,93,8,5,1,6,1,6,1,6,1,6,1,6,1,6,3,6,101,8,6,1,7,1,
-7,1,8,1,8,1,8,1,8,1,8,1,8,3,8,111,8,8,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,
-12,1,12,3,12,122,8,12,1,13,1,13,1,13,1,13,1,13,1,13,3,13,130,8,13,1,14,1,
-14,1,14,1,14,1,14,1,14,1,15,1,15,1,15,1,15,1,15,3,15,143,8,15,1,16,1,16,
-1,17,1,17,1,17,3,17,150,8,17,1,18,1,18,1,18,1,18,1,19,1,19,1,19,1,19,1,20,
-1,20,1,20,1,20,1,21,1,21,3,21,166,8,21,1,21,0,1,0,22,0,2,4,6,8,10,12,14,
-16,18,20,22,24,26,28,30,32,34,36,38,40,42,0,2,1,0,5,7,1,0,18,19,165,0,56,
-1,0,0,0,2,68,1,0,0,0,4,75,1,0,0,0,6,78,1,0,0,0,8,85,1,0,0,0,10,87,1,0,0,
-0,12,94,1,0,0,0,14,102,1,0,0,0,16,110,1,0,0,0,18,112,1,0,0,0,20,114,1,0,
-0,0,22,116,1,0,0,0,24,121,1,0,0,0,26,129,1,0,0,0,28,131,1,0,0,0,30,142,1,
-0,0,0,32,144,1,0,0,0,34,149,1,0,0,0,36,151,1,0,0,0,38,155,1,0,0,0,40,159,
-1,0,0,0,42,165,1,0,0,0,44,45,6,0,-1,0,45,50,3,2,1,0,46,48,5,1,0,0,47,46,
-1,0,0,0,47,48,1,0,0,0,48,49,1,0,0,0,49,51,3,0,0,0,50,47,1,0,0,0,50,51,1,
-0,0,0,51,57,1,0,0,0,52,53,3,4,2,0,53,54,5,1,0,0,54,55,3,0,0,2,55,57,1,0,
-0,0,56,44,1,0,0,0,56,52,1,0,0,0,57,64,1,0,0,0,58,59,10,1,0,0,59,60,3,4,2,
-0,60,61,5,1,0,0,61,63,1,0,0,0,62,58,1,0,0,0,63,66,1,0,0,0,64,62,1,0,0,0,
-64,65,1,0,0,0,65,1,1,0,0,0,66,64,1,0,0,0,67,69,5,2,0,0,68,67,1,0,0,0,68,
-69,1,0,0,0,69,70,1,0,0,0,70,71,3,8,4,0,71,72,5,3,0,0,72,73,3,10,5,0,73,74,
-5,4,0,0,74,3,1,0,0,0,75,76,7,0,0,0,76,77,3,6,3,0,77,5,1,0,0,0,78,83,3,8,
-4,0,79,80,5,8,0,0,80,81,3,6,3,0,81,82,5,1,0,0,82,84,1,0,0,0,83,79,1,0,0,
-0,83,84,1,0,0,0,84,7,1,0,0,0,85,86,3,32,16,0,86,9,1,0,0,0,87,92,3,12,6,0,
-88,90,5,1,0,0,89,91,3,10,5,0,90,89,1,0,0,0,90,91,1,0,0,0,91,93,1,0,0,0,92,
-88,1,0,0,0,92,93,1,0,0,0,93,11,1,0,0,0,94,95,3,14,7,0,95,100,3,16,8,0,96,
-97,5,9,0,0,97,101,3,22,11,0,98,99,5,8,0,0,99,101,3,28,14,0,100,96,1,0,0,
-0,100,98,1,0,0,0,101,13,1,0,0,0,102,103,3,18,9,0,103,15,1,0,0,0,104,105,
-5,8,0,0,105,106,3,20,10,0,106,107,5,10,0,0,107,108,3,18,9,0,108,109,3,16,
-8,0,109,111,1,0,0,0,110,104,1,0,0,0,110,111,1,0,0,0,111,17,1,0,0,0,112,113,
-3,24,12,0,113,19,1,0,0,0,114,115,3,24,12,0,115,21,1,0,0,0,116,117,3,24,12,
-0,117,23,1,0,0,0,118,119,3,26,13,0,119,120,3,24,12,0,120,122,1,0,0,0,121,
-118,1,0,0,0,121,122,1,0,0,0,122,25,1,0,0,0,123,130,3,30,15,0,124,130,3,34,
-17,0,125,126,5,11,0,0,126,127,3,24,12,0,127,128,5,12,0,0,128,130,1,0,0,0,
-129,123,1,0,0,0,129,124,1,0,0,0,129,125,1,0,0,0,130,27,1,0,0,0,131,132,3,
-20,10,0,132,133,5,10,0,0,133,134,5,3,0,0,134,135,3,10,5,0,135,136,5,4,0,
-0,136,29,1,0,0,0,137,143,3,32,16,0,138,143,5,17,0,0,139,143,5,19,0,0,140,
-143,5,20,0,0,141,143,5,21,0,0,142,137,1,0,0,0,142,138,1,0,0,0,142,139,1,
-0,0,0,142,140,1,0,0,0,142,141,1,0,0,0,143,31,1,0,0,0,144,145,7,1,0,0,145,
-33,1,0,0,0,146,150,3,36,18,0,147,150,3,38,19,0,148,150,3,40,20,0,149,146,
-1,0,0,0,149,147,1,0,0,0,149,148,1,0,0,0,150,35,1,0,0,0,151,152,5,13,0,0,
-152,153,5,14,0,0,153,154,3,42,21,0,154,37,1,0,0,0,155,156,5,15,0,0,156,157,
-5,14,0,0,157,158,3,42,21,0,158,39,1,0,0,0,159,160,5,16,0,0,160,161,5,14,
-0,0,161,162,3,42,21,0,162,41,1,0,0,0,163,166,3,32,16,0,164,166,5,17,0,0,
-165,163,1,0,0,0,165,164,1,0,0,0,166,43,1,0,0,0,15,47,50,56,64,68,83,90,92,
-100,110,121,129,142,149,165];
+20,7,20,2,21,7,21,2,22,7,22,1,0,1,0,1,0,1,1,1,1,1,1,3,1,53,8,1,1,1,3,1,56,
+8,1,1,1,1,1,1,1,1,1,3,1,62,8,1,1,1,1,1,1,1,1,1,5,1,68,8,1,10,1,12,1,71,9,
+1,1,2,3,2,74,8,2,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,3,4,
+89,8,4,1,5,1,5,1,6,1,6,1,6,3,6,96,8,6,3,6,98,8,6,1,7,1,7,1,7,1,7,1,7,1,7,
+3,7,106,8,7,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,3,9,116,8,9,1,10,1,10,1,11,1,
+11,1,12,1,12,1,13,1,13,1,13,3,13,127,8,13,1,14,1,14,1,14,1,14,1,14,1,14,
+3,14,135,8,14,1,15,1,15,1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,3,16,
+148,8,16,1,17,1,17,1,18,1,18,1,18,3,18,155,8,18,1,19,1,19,1,19,1,19,1,20,
+1,20,1,20,1,20,1,21,1,21,1,21,1,21,1,22,1,22,3,22,171,8,22,1,22,0,1,2,23,
+0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,0,2,1,0,
+5,7,1,0,18,19,169,0,46,1,0,0,0,2,61,1,0,0,0,4,73,1,0,0,0,6,80,1,0,0,0,8,
+83,1,0,0,0,10,90,1,0,0,0,12,92,1,0,0,0,14,99,1,0,0,0,16,107,1,0,0,0,18,115,
+1,0,0,0,20,117,1,0,0,0,22,119,1,0,0,0,24,121,1,0,0,0,26,126,1,0,0,0,28,134,
+1,0,0,0,30,136,1,0,0,0,32,147,1,0,0,0,34,149,1,0,0,0,36,154,1,0,0,0,38,156,
+1,0,0,0,40,160,1,0,0,0,42,164,1,0,0,0,44,170,1,0,0,0,46,47,3,2,1,0,47,48,
+5,0,0,1,48,1,1,0,0,0,49,50,6,1,-1,0,50,55,3,4,2,0,51,53,5,1,0,0,52,51,1,
+0,0,0,52,53,1,0,0,0,53,54,1,0,0,0,54,56,3,2,1,0,55,52,1,0,0,0,55,56,1,0,
+0,0,56,62,1,0,0,0,57,58,3,6,3,0,58,59,5,1,0,0,59,60,3,2,1,2,60,62,1,0,0,
+0,61,49,1,0,0,0,61,57,1,0,0,0,62,69,1,0,0,0,63,64,10,1,0,0,64,65,3,6,3,0,
+65,66,5,1,0,0,66,68,1,0,0,0,67,63,1,0,0,0,68,71,1,0,0,0,69,67,1,0,0,0,69,
+70,1,0,0,0,70,3,1,0,0,0,71,69,1,0,0,0,72,74,5,2,0,0,73,72,1,0,0,0,73,74,
+1,0,0,0,74,75,1,0,0,0,75,76,3,10,5,0,76,77,5,3,0,0,77,78,3,12,6,0,78,79,
+5,4,0,0,79,5,1,0,0,0,80,81,7,0,0,0,81,82,3,8,4,0,82,7,1,0,0,0,83,88,3,10,
+5,0,84,85,5,8,0,0,85,86,3,8,4,0,86,87,5,1,0,0,87,89,1,0,0,0,88,84,1,0,0,
+0,88,89,1,0,0,0,89,9,1,0,0,0,90,91,3,34,17,0,91,11,1,0,0,0,92,97,3,14,7,
+0,93,95,5,1,0,0,94,96,3,12,6,0,95,94,1,0,0,0,95,96,1,0,0,0,96,98,1,0,0,0,
+97,93,1,0,0,0,97,98,1,0,0,0,98,13,1,0,0,0,99,100,3,16,8,0,100,105,3,18,9,
+0,101,102,5,9,0,0,102,106,3,24,12,0,103,104,5,8,0,0,104,106,3,30,15,0,105,
+101,1,0,0,0,105,103,1,0,0,0,106,15,1,0,0,0,107,108,3,20,10,0,108,17,1,0,
+0,0,109,110,5,8,0,0,110,111,3,22,11,0,111,112,5,10,0,0,112,113,3,20,10,0,
+113,114,3,18,9,0,114,116,1,0,0,0,115,109,1,0,0,0,115,116,1,0,0,0,116,19,
+1,0,0,0,117,118,3,26,13,0,118,21,1,0,0,0,119,120,3,26,13,0,120,23,1,0,0,
+0,121,122,3,26,13,0,122,25,1,0,0,0,123,124,3,28,14,0,124,125,3,26,13,0,125,
+127,1,0,0,0,126,123,1,0,0,0,126,127,1,0,0,0,127,27,1,0,0,0,128,135,3,32,
+16,0,129,135,3,36,18,0,130,131,5,11,0,0,131,132,3,26,13,0,132,133,5,12,0,
+0,133,135,1,0,0,0,134,128,1,0,0,0,134,129,1,0,0,0,134,130,1,0,0,0,135,29,
+1,0,0,0,136,137,3,22,11,0,137,138,5,10,0,0,138,139,5,3,0,0,139,140,3,12,
+6,0,140,141,5,4,0,0,141,31,1,0,0,0,142,148,3,34,17,0,143,148,5,17,0,0,144,
+148,5,19,0,0,145,148,5,20,0,0,146,148,5,21,0,0,147,142,1,0,0,0,147,143,1,
+0,0,0,147,144,1,0,0,0,147,145,1,0,0,0,147,146,1,0,0,0,148,33,1,0,0,0,149,
+150,7,1,0,0,150,35,1,0,0,0,151,155,3,38,19,0,152,155,3,40,20,0,153,155,3,
+42,21,0,154,151,1,0,0,0,154,152,1,0,0,0,154,153,1,0,0,0,155,37,1,0,0,0,156,
+157,5,13,0,0,157,158,5,14,0,0,158,159,3,44,22,0,159,39,1,0,0,0,160,161,5,
+15,0,0,161,162,5,14,0,0,162,163,3,44,22,0,163,41,1,0,0,0,164,165,5,16,0,
+0,165,166,5,14,0,0,166,167,3,44,22,0,167,43,1,0,0,0,168,171,3,34,17,0,169,
+171,5,17,0,0,170,168,1,0,0,0,170,169,1,0,0,0,171,45,1,0,0,0,15,52,55,61,
+69,73,88,95,97,105,115,126,134,147,154,170];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -69,11 +70,12 @@ export default class refalParser extends antlr4.Parser {
                              null, null, null, null, null, null, null, null, 
                              null, "DIGITS", "IDENTIFER", "STRING", "STRING2", 
                              "CHAR", "LINE_COMMENT", "BLOCK_COMMENT", "WS" ];
-    static ruleNames = [ "program", "f_definition", "external_decl", "f_name_list", 
-                         "f_name", "block_", "sentence", "left_side", "conditions", 
-                         "pattern", "arg_", "right_side", "expression_", 
-                         "term_", "block_ending", "symbol", "identifier", 
-                         "variable", "svar", "tvar", "evar", "index" ];
+    static ruleNames = [ "file_", "program", "f_definition", "external_decl", 
+                         "f_name_list", "f_name", "block_", "sentence", 
+                         "left_side", "conditions", "pattern", "arg_", "right_side", 
+                         "expression_", "term_", "block_ending", "symbol", 
+                         "identifier", "variable", "svar", "tvar", "evar", 
+                         "index" ];
 
     constructor(input) {
         super(input);
@@ -83,13 +85,9 @@ export default class refalParser extends antlr4.Parser {
         this.symbolicNames = refalParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
-    	case 0:
+    	case 1:
     	    		return this.program_sempred(localctx, predIndex);
         default:
             throw "No predicate with index:" + ruleIndex;
@@ -107,6 +105,31 @@ export default class refalParser extends antlr4.Parser {
 
 
 
+
+	file_() {
+	    let localctx = new File_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, refalParser.RULE_file_);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 46;
+	        this.program(0);
+	        this.state = 47;
+	        this.match(refalParser.EOF);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
 	program(_p) {
 		if(_p===undefined) {
 		    _p = 0;
@@ -115,51 +138,51 @@ export default class refalParser extends antlr4.Parser {
 	    const _parentState = this.state;
 	    let localctx = new ProgramContext(this, this._ctx, _parentState);
 	    let _prevctx = localctx;
-	    const _startState = 0;
-	    this.enterRecursionRule(localctx, 0, refalParser.RULE_program, _p);
-	    var _la = 0; // Token type
+	    const _startState = 2;
+	    this.enterRecursionRule(localctx, 2, refalParser.RULE_program, _p);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 56;
+	        this.state = 61;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case refalParser.T__1:
-	        case refalParser.IDENTIFER:
-	        case refalParser.STRING:
-	            this.state = 45;
-	            this.f_definition();
+	        case 2:
+	        case 18:
+	        case 19:
 	            this.state = 50;
+	            this.f_definition();
+	            this.state = 55;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	            if(la_===1) {
-	                this.state = 47;
+	                this.state = 52;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===refalParser.T__0) {
-	                    this.state = 46;
+	                if(_la===1) {
+	                    this.state = 51;
 	                    this.match(refalParser.T__0);
 	                }
 
-	                this.state = 49;
+	                this.state = 54;
 	                this.program(0);
 
 	            }
 	            break;
-	        case refalParser.T__4:
-	        case refalParser.T__5:
-	        case refalParser.T__6:
-	            this.state = 52;
+	        case 5:
+	        case 6:
+	        case 7:
+	            this.state = 57;
 	            this.external_decl();
-	            this.state = 53;
+	            this.state = 58;
 	            this.match(refalParser.T__0);
-	            this.state = 54;
+	            this.state = 59;
 	            this.program(2);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 64;
+	        this.state = 69;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,3,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -170,16 +193,16 @@ export default class refalParser extends antlr4.Parser {
 	                _prevctx = localctx;
 	                localctx = new ProgramContext(this, _parentctx, _parentState);
 	                this.pushNewRecursionContext(localctx, _startState, refalParser.RULE_program);
-	                this.state = 58;
+	                this.state = 63;
 	                if (!( this.precpred(this._ctx, 1))) {
 	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
 	                }
-	                this.state = 59;
+	                this.state = 64;
 	                this.external_decl();
-	                this.state = 60;
+	                this.state = 65;
 	                this.match(refalParser.T__0); 
 	            }
-	            this.state = 66;
+	            this.state = 71;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        }
@@ -202,25 +225,25 @@ export default class refalParser extends antlr4.Parser {
 
 	f_definition() {
 	    let localctx = new F_definitionContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 2, refalParser.RULE_f_definition);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 4, refalParser.RULE_f_definition);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 68;
+	        this.state = 73;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===refalParser.T__1) {
-	            this.state = 67;
+	        if(_la===2) {
+	            this.state = 72;
 	            this.match(refalParser.T__1);
 	        }
 
-	        this.state = 70;
+	        this.state = 75;
 	        this.f_name();
-	        this.state = 71;
+	        this.state = 76;
 	        this.match(refalParser.T__2);
-	        this.state = 72;
+	        this.state = 77;
 	        this.block_();
-	        this.state = 73;
+	        this.state = 78;
 	        this.match(refalParser.T__3);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -240,20 +263,20 @@ export default class refalParser extends antlr4.Parser {
 
 	external_decl() {
 	    let localctx = new External_declContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 4, refalParser.RULE_external_decl);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 6, refalParser.RULE_external_decl);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 75;
+	        this.state = 80;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << refalParser.T__4) | (1 << refalParser.T__5) | (1 << refalParser.T__6))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 224) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 76;
+	        this.state = 81;
 	        this.f_name_list();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -273,21 +296,21 @@ export default class refalParser extends antlr4.Parser {
 
 	f_name_list() {
 	    let localctx = new F_name_listContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 6, refalParser.RULE_f_name_list);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 8, refalParser.RULE_f_name_list);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 78;
-	        this.f_name();
 	        this.state = 83;
+	        this.f_name();
+	        this.state = 88;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===refalParser.T__7) {
-	            this.state = 79;
+	        if(_la===8) {
+	            this.state = 84;
 	            this.match(refalParser.T__7);
-	            this.state = 80;
+	            this.state = 85;
 	            this.f_name_list();
-	            this.state = 81;
+	            this.state = 86;
 	            this.match(refalParser.T__0);
 	        }
 
@@ -309,10 +332,10 @@ export default class refalParser extends antlr4.Parser {
 
 	f_name() {
 	    let localctx = new F_nameContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 8, refalParser.RULE_f_name);
+	    this.enterRule(localctx, 10, refalParser.RULE_f_name);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 85;
+	        this.state = 90;
 	        this.identifier();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -332,23 +355,23 @@ export default class refalParser extends antlr4.Parser {
 
 	block_() {
 	    let localctx = new Block_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 10, refalParser.RULE_block_);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 12, refalParser.RULE_block_);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 87;
-	        this.sentence();
 	        this.state = 92;
+	        this.sentence();
+	        this.state = 97;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===refalParser.T__0) {
-	            this.state = 88;
+	        if(_la===1) {
+	            this.state = 93;
 	            this.match(refalParser.T__0);
-	            this.state = 90;
+	            this.state = 95;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << refalParser.T__7) | (1 << refalParser.T__8) | (1 << refalParser.T__10) | (1 << refalParser.T__12) | (1 << refalParser.T__14) | (1 << refalParser.T__15) | (1 << refalParser.DIGITS) | (1 << refalParser.IDENTIFER) | (1 << refalParser.STRING) | (1 << refalParser.STRING2) | (1 << refalParser.CHAR))) !== 0)) {
-	                this.state = 89;
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4172544) !== 0)) {
+	                this.state = 94;
 	                this.block_();
 	            }
 
@@ -372,26 +395,26 @@ export default class refalParser extends antlr4.Parser {
 
 	sentence() {
 	    let localctx = new SentenceContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 12, refalParser.RULE_sentence);
+	    this.enterRule(localctx, 14, refalParser.RULE_sentence);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 94;
+	        this.state = 99;
 	        this.left_side();
-	        this.state = 95;
-	        this.conditions();
 	        this.state = 100;
+	        this.conditions();
+	        this.state = 105;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case refalParser.T__8:
-	            this.state = 96;
+	        case 9:
+	            this.state = 101;
 	            this.match(refalParser.T__8);
-	            this.state = 97;
+	            this.state = 102;
 	            this.right_side();
 	            break;
-	        case refalParser.T__7:
-	            this.state = 98;
+	        case 8:
+	            this.state = 103;
 	            this.match(refalParser.T__7);
-	            this.state = 99;
+	            this.state = 104;
 	            this.block_ending();
 	            break;
 	        default:
@@ -415,10 +438,10 @@ export default class refalParser extends antlr4.Parser {
 
 	left_side() {
 	    let localctx = new Left_sideContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 14, refalParser.RULE_left_side);
+	    this.enterRule(localctx, 16, refalParser.RULE_left_side);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 102;
+	        this.state = 107;
 	        this.pattern();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -438,22 +461,22 @@ export default class refalParser extends antlr4.Parser {
 
 	conditions() {
 	    let localctx = new ConditionsContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 16, refalParser.RULE_conditions);
+	    this.enterRule(localctx, 18, refalParser.RULE_conditions);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 110;
+	        this.state = 115;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
 	        if(la_===1) {
-	            this.state = 104;
+	            this.state = 109;
 	            this.match(refalParser.T__7);
-	            this.state = 105;
+	            this.state = 110;
 	            this.arg_();
-	            this.state = 106;
+	            this.state = 111;
 	            this.match(refalParser.T__9);
-	            this.state = 107;
+	            this.state = 112;
 	            this.pattern();
-	            this.state = 108;
+	            this.state = 113;
 	            this.conditions();
 
 	        }
@@ -475,10 +498,10 @@ export default class refalParser extends antlr4.Parser {
 
 	pattern() {
 	    let localctx = new PatternContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 18, refalParser.RULE_pattern);
+	    this.enterRule(localctx, 20, refalParser.RULE_pattern);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 112;
+	        this.state = 117;
 	        this.expression_();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -498,10 +521,10 @@ export default class refalParser extends antlr4.Parser {
 
 	arg_() {
 	    let localctx = new Arg_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 20, refalParser.RULE_arg_);
+	    this.enterRule(localctx, 22, refalParser.RULE_arg_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 114;
+	        this.state = 119;
 	        this.expression_();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -521,10 +544,10 @@ export default class refalParser extends antlr4.Parser {
 
 	right_side() {
 	    let localctx = new Right_sideContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 22, refalParser.RULE_right_side);
+	    this.enterRule(localctx, 24, refalParser.RULE_right_side);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 116;
+	        this.state = 121;
 	        this.expression_();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -544,17 +567,17 @@ export default class refalParser extends antlr4.Parser {
 
 	expression_() {
 	    let localctx = new Expression_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 24, refalParser.RULE_expression_);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 26, refalParser.RULE_expression_);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 121;
+	        this.state = 126;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << refalParser.T__10) | (1 << refalParser.T__12) | (1 << refalParser.T__14) | (1 << refalParser.T__15) | (1 << refalParser.DIGITS) | (1 << refalParser.IDENTIFER) | (1 << refalParser.STRING) | (1 << refalParser.STRING2) | (1 << refalParser.CHAR))) !== 0)) {
-	            this.state = 118;
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4171776) !== 0)) {
+	            this.state = 123;
 	            this.term_();
-	            this.state = 119;
+	            this.state = 124;
 	            this.expression_();
 	        }
 
@@ -576,34 +599,34 @@ export default class refalParser extends antlr4.Parser {
 
 	term_() {
 	    let localctx = new Term_Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 26, refalParser.RULE_term_);
+	    this.enterRule(localctx, 28, refalParser.RULE_term_);
 	    try {
-	        this.state = 129;
+	        this.state = 134;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case refalParser.DIGITS:
-	        case refalParser.IDENTIFER:
-	        case refalParser.STRING:
-	        case refalParser.STRING2:
-	        case refalParser.CHAR:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 123;
+	            this.state = 128;
 	            this.symbol();
 	            break;
-	        case refalParser.T__12:
-	        case refalParser.T__14:
-	        case refalParser.T__15:
+	        case 13:
+	        case 15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 124;
+	            this.state = 129;
 	            this.variable();
 	            break;
-	        case refalParser.T__10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 125;
+	            this.state = 130;
 	            this.match(refalParser.T__10);
-	            this.state = 126;
+	            this.state = 131;
 	            this.expression_();
-	            this.state = 127;
+	            this.state = 132;
 	            this.match(refalParser.T__11);
 	            break;
 	        default:
@@ -627,18 +650,18 @@ export default class refalParser extends antlr4.Parser {
 
 	block_ending() {
 	    let localctx = new Block_endingContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 28, refalParser.RULE_block_ending);
+	    this.enterRule(localctx, 30, refalParser.RULE_block_ending);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 131;
+	        this.state = 136;
 	        this.arg_();
-	        this.state = 132;
+	        this.state = 137;
 	        this.match(refalParser.T__9);
-	        this.state = 133;
+	        this.state = 138;
 	        this.match(refalParser.T__2);
-	        this.state = 134;
+	        this.state = 139;
 	        this.block_();
-	        this.state = 135;
+	        this.state = 140;
 	        this.match(refalParser.T__3);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -658,39 +681,39 @@ export default class refalParser extends antlr4.Parser {
 
 	symbol() {
 	    let localctx = new SymbolContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 30, refalParser.RULE_symbol);
+	    this.enterRule(localctx, 32, refalParser.RULE_symbol);
 	    try {
-	        this.state = 142;
+	        this.state = 147;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 137;
+	            this.state = 142;
 	            this.identifier();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 138;
+	            this.state = 143;
 	            this.match(refalParser.DIGITS);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 139;
+	            this.state = 144;
 	            this.match(refalParser.STRING);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 140;
+	            this.state = 145;
 	            this.match(refalParser.STRING2);
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 141;
+	            this.state = 146;
 	            this.match(refalParser.CHAR);
 	            break;
 
@@ -713,13 +736,13 @@ export default class refalParser extends antlr4.Parser {
 
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 32, refalParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    this.enterRule(localctx, 34, refalParser.RULE_identifier);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 144;
+	        this.state = 149;
 	        _la = this._input.LA(1);
-	        if(!(_la===refalParser.IDENTIFER || _la===refalParser.STRING)) {
+	        if(!(_la===18 || _la===19)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -744,24 +767,24 @@ export default class refalParser extends antlr4.Parser {
 
 	variable() {
 	    let localctx = new VariableContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 34, refalParser.RULE_variable);
+	    this.enterRule(localctx, 36, refalParser.RULE_variable);
 	    try {
-	        this.state = 149;
+	        this.state = 154;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case refalParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 146;
+	            this.state = 151;
 	            this.svar();
 	            break;
-	        case refalParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 147;
+	            this.state = 152;
 	            this.tvar();
 	            break;
-	        case refalParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 148;
+	            this.state = 153;
 	            this.evar();
 	            break;
 	        default:
@@ -785,14 +808,14 @@ export default class refalParser extends antlr4.Parser {
 
 	svar() {
 	    let localctx = new SvarContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 36, refalParser.RULE_svar);
+	    this.enterRule(localctx, 38, refalParser.RULE_svar);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 151;
+	        this.state = 156;
 	        this.match(refalParser.T__12);
-	        this.state = 152;
+	        this.state = 157;
 	        this.match(refalParser.T__13);
-	        this.state = 153;
+	        this.state = 158;
 	        this.index();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -812,14 +835,14 @@ export default class refalParser extends antlr4.Parser {
 
 	tvar() {
 	    let localctx = new TvarContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 38, refalParser.RULE_tvar);
+	    this.enterRule(localctx, 40, refalParser.RULE_tvar);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 155;
+	        this.state = 160;
 	        this.match(refalParser.T__14);
-	        this.state = 156;
+	        this.state = 161;
 	        this.match(refalParser.T__13);
-	        this.state = 157;
+	        this.state = 162;
 	        this.index();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -839,14 +862,14 @@ export default class refalParser extends antlr4.Parser {
 
 	evar() {
 	    let localctx = new EvarContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 40, refalParser.RULE_evar);
+	    this.enterRule(localctx, 42, refalParser.RULE_evar);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 159;
+	        this.state = 164;
 	        this.match(refalParser.T__15);
-	        this.state = 160;
+	        this.state = 165;
 	        this.match(refalParser.T__13);
-	        this.state = 161;
+	        this.state = 166;
 	        this.index();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -866,20 +889,20 @@ export default class refalParser extends antlr4.Parser {
 
 	index() {
 	    let localctx = new IndexContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 42, refalParser.RULE_index);
+	    this.enterRule(localctx, 44, refalParser.RULE_index);
 	    try {
-	        this.state = 165;
+	        this.state = 170;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case refalParser.IDENTIFER:
-	        case refalParser.STRING:
+	        case 18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 163;
+	            this.state = 168;
 	            this.identifier();
 	            break;
-	        case refalParser.DIGITS:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 164;
+	            this.state = 169;
 	            this.match(refalParser.DIGITS);
 	            break;
 	        default:
@@ -928,28 +951,68 @@ refalParser.LINE_COMMENT = 22;
 refalParser.BLOCK_COMMENT = 23;
 refalParser.WS = 24;
 
-refalParser.RULE_program = 0;
-refalParser.RULE_f_definition = 1;
-refalParser.RULE_external_decl = 2;
-refalParser.RULE_f_name_list = 3;
-refalParser.RULE_f_name = 4;
-refalParser.RULE_block_ = 5;
-refalParser.RULE_sentence = 6;
-refalParser.RULE_left_side = 7;
-refalParser.RULE_conditions = 8;
-refalParser.RULE_pattern = 9;
-refalParser.RULE_arg_ = 10;
-refalParser.RULE_right_side = 11;
-refalParser.RULE_expression_ = 12;
-refalParser.RULE_term_ = 13;
-refalParser.RULE_block_ending = 14;
-refalParser.RULE_symbol = 15;
-refalParser.RULE_identifier = 16;
-refalParser.RULE_variable = 17;
-refalParser.RULE_svar = 18;
-refalParser.RULE_tvar = 19;
-refalParser.RULE_evar = 20;
-refalParser.RULE_index = 21;
+refalParser.RULE_file_ = 0;
+refalParser.RULE_program = 1;
+refalParser.RULE_f_definition = 2;
+refalParser.RULE_external_decl = 3;
+refalParser.RULE_f_name_list = 4;
+refalParser.RULE_f_name = 5;
+refalParser.RULE_block_ = 6;
+refalParser.RULE_sentence = 7;
+refalParser.RULE_left_side = 8;
+refalParser.RULE_conditions = 9;
+refalParser.RULE_pattern = 10;
+refalParser.RULE_arg_ = 11;
+refalParser.RULE_right_side = 12;
+refalParser.RULE_expression_ = 13;
+refalParser.RULE_term_ = 14;
+refalParser.RULE_block_ending = 15;
+refalParser.RULE_symbol = 16;
+refalParser.RULE_identifier = 17;
+refalParser.RULE_variable = 18;
+refalParser.RULE_svar = 19;
+refalParser.RULE_tvar = 20;
+refalParser.RULE_evar = 21;
+refalParser.RULE_index = 22;
+
+class File_Context extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = refalParser.RULE_file_;
+    }
+
+	program() {
+	    return this.getTypedRuleContext(ProgramContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(refalParser.EOF, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof refalListener ) {
+	        listener.enterFile_(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof refalListener ) {
+	        listener.exitFile_(this);
+		}
+	}
+
+
+}
+
+
 
 class ProgramContext extends antlr4.ParserRuleContext {
 
@@ -1810,6 +1873,7 @@ class IndexContext extends antlr4.ParserRuleContext {
 
 
 
+refalParser.File_Context = File_Context; 
 refalParser.ProgramContext = ProgramContext; 
 refalParser.F_definitionContext = F_definitionContext; 
 refalParser.External_declContext = External_declContext; 
@@ -1832,3 +1896,12 @@ refalParser.SvarContext = SvarContext;
 refalParser.TvarContext = TvarContext; 
 refalParser.EvarContext = EvarContext; 
 refalParser.IndexContext = IndexContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

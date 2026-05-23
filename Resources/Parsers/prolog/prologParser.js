@@ -1,4 +1,4 @@
-// Generated from ./prolog/prolog.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/prolog/prolog.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import prologListener from './prologListener.js';
@@ -75,10 +75,6 @@ export default class prologParser extends antlr4.Parser {
         this.symbolicNames = prologParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 4:
@@ -103,13 +99,13 @@ export default class prologParser extends antlr4.Parser {
 	p_text() {
 	    let localctx = new P_textContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, prologParser.RULE_p_text);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 20;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << prologParser.T__0) | (1 << prologParser.T__2) | (1 << prologParser.T__3) | (1 << prologParser.T__5) | (1 << prologParser.T__6) | (1 << prologParser.T__9) | (1 << prologParser.T__11) | (1 << prologParser.T__12) | (1 << prologParser.T__13) | (1 << prologParser.T__14) | (1 << prologParser.T__15) | (1 << prologParser.T__16) | (1 << prologParser.T__17) | (1 << prologParser.T__18) | (1 << prologParser.T__19) | (1 << prologParser.T__20) | (1 << prologParser.T__21) | (1 << prologParser.T__22) | (1 << prologParser.T__23) | (1 << prologParser.T__24) | (1 << prologParser.T__25) | (1 << prologParser.T__26) | (1 << prologParser.T__27) | (1 << prologParser.T__28) | (1 << prologParser.T__29) | (1 << prologParser.T__30))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (prologParser.T__31 - 32)) | (1 << (prologParser.T__32 - 32)) | (1 << (prologParser.T__33 - 32)) | (1 << (prologParser.T__34 - 32)) | (1 << (prologParser.T__35 - 32)) | (1 << (prologParser.T__36 - 32)) | (1 << (prologParser.T__37 - 32)) | (1 << (prologParser.T__38 - 32)) | (1 << (prologParser.T__39 - 32)) | (1 << (prologParser.T__40 - 32)) | (1 << (prologParser.T__41 - 32)) | (1 << (prologParser.T__42 - 32)) | (1 << (prologParser.T__43 - 32)) | (1 << (prologParser.T__44 - 32)) | (1 << (prologParser.T__45 - 32)) | (1 << (prologParser.T__46 - 32)) | (1 << (prologParser.T__47 - 32)) | (1 << (prologParser.T__48 - 32)) | (1 << (prologParser.T__49 - 32)) | (1 << (prologParser.T__50 - 32)) | (1 << (prologParser.LETTER_DIGIT - 32)) | (1 << (prologParser.VARIABLE - 32)) | (1 << (prologParser.DECIMAL - 32)) | (1 << (prologParser.BINARY - 32)) | (1 << (prologParser.OCTAL - 32)) | (1 << (prologParser.HEX - 32)) | (1 << (prologParser.CHARACTER_CODE_CONSTANT - 32)) | (1 << (prologParser.FLOAT - 32)) | (1 << (prologParser.GRAPHIC_TOKEN - 32)) | (1 << (prologParser.QUOTED - 32)) | (1 << (prologParser.DOUBLE_QUOTED_LIST - 32)) | (1 << (prologParser.BACK_QUOTED_STRING - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294964442) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4294967295) !== 0)) {
 	            this.state = 18;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
@@ -202,7 +198,7 @@ export default class prologParser extends antlr4.Parser {
 	termlist() {
 	    let localctx = new TermlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, prologParser.RULE_termlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 32;
@@ -210,7 +206,7 @@ export default class prologParser extends antlr4.Parser {
 	        this.state = 37;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===prologParser.T__2) {
+	        while(_la===3) {
 	            this.state = 33;
 	            this.match(prologParser.T__2);
 	            this.state = 34;
@@ -244,7 +240,7 @@ export default class prologParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 8;
 	    this.enterRecursionRule(localctx, 8, prologParser.RULE_term, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 75;
@@ -279,7 +275,7 @@ export default class prologParser extends antlr4.Parser {
 	            this.state = 47;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===prologParser.T__5) {
+	            if(_la===6) {
 	                this.state = 46;
 	                this.match(prologParser.T__5);
 	            }
@@ -295,7 +291,7 @@ export default class prologParser extends antlr4.Parser {
 	            this.state = 51;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===prologParser.T__5) {
+	            if(_la===6) {
 	                this.state = 50;
 	                this.match(prologParser.T__5);
 	            }
@@ -339,7 +335,7 @@ export default class prologParser extends antlr4.Parser {
 	            this.state = 66;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===prologParser.T__7) {
+	            if(_la===8) {
 	                this.state = 64;
 	                this.match(prologParser.T__7);
 	                this.state = 65;
@@ -416,12 +412,12 @@ export default class prologParser extends antlr4.Parser {
 	operator_() {
 	    let localctx = new Operator_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, prologParser.RULE_operator_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 86;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << prologParser.T__0) | (1 << prologParser.T__2) | (1 << prologParser.T__5) | (1 << prologParser.T__11) | (1 << prologParser.T__12) | (1 << prologParser.T__13) | (1 << prologParser.T__14) | (1 << prologParser.T__15) | (1 << prologParser.T__16) | (1 << prologParser.T__17) | (1 << prologParser.T__18) | (1 << prologParser.T__19) | (1 << prologParser.T__20) | (1 << prologParser.T__21) | (1 << prologParser.T__22) | (1 << prologParser.T__23) | (1 << prologParser.T__24) | (1 << prologParser.T__25) | (1 << prologParser.T__26) | (1 << prologParser.T__27) | (1 << prologParser.T__28) | (1 << prologParser.T__29) | (1 << prologParser.T__30))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (prologParser.T__31 - 32)) | (1 << (prologParser.T__32 - 32)) | (1 << (prologParser.T__33 - 32)) | (1 << (prologParser.T__34 - 32)) | (1 << (prologParser.T__35 - 32)) | (1 << (prologParser.T__36 - 32)) | (1 << (prologParser.T__37 - 32)) | (1 << (prologParser.T__38 - 32)) | (1 << (prologParser.T__39 - 32)) | (1 << (prologParser.T__40 - 32)) | (1 << (prologParser.T__41 - 32)) | (1 << (prologParser.T__42 - 32)) | (1 << (prologParser.T__43 - 32)) | (1 << (prologParser.T__44 - 32)) | (1 << (prologParser.T__45 - 32)) | (1 << (prologParser.T__46 - 32)) | (1 << (prologParser.T__47 - 32)) | (1 << (prologParser.T__48 - 32)) | (1 << (prologParser.T__49 - 32)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294963274) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 524287) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -451,7 +447,7 @@ export default class prologParser extends antlr4.Parser {
 	        this.state = 99;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case prologParser.T__6:
+	        case 7:
 	            localctx = new Empty_listContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 88;
@@ -459,7 +455,7 @@ export default class prologParser extends antlr4.Parser {
 	            this.state = 89;
 	            this.match(prologParser.T__8);
 	            break;
-	        case prologParser.T__9:
+	        case 10:
 	            localctx = new Empty_bracesContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 90;
@@ -467,43 +463,43 @@ export default class prologParser extends antlr4.Parser {
 	            this.state = 91;
 	            this.match(prologParser.T__10);
 	            break;
-	        case prologParser.LETTER_DIGIT:
+	        case 52:
 	            localctx = new NameContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 92;
 	            this.match(prologParser.LETTER_DIGIT);
 	            break;
-	        case prologParser.GRAPHIC_TOKEN:
+	        case 60:
 	            localctx = new GraphicContext(this, localctx);
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 93;
 	            this.match(prologParser.GRAPHIC_TOKEN);
 	            break;
-	        case prologParser.QUOTED:
+	        case 61:
 	            localctx = new Quoted_stringContext(this, localctx);
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 94;
 	            this.match(prologParser.QUOTED);
 	            break;
-	        case prologParser.DOUBLE_QUOTED_LIST:
+	        case 62:
 	            localctx = new Dq_stringContext(this, localctx);
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 95;
 	            this.match(prologParser.DOUBLE_QUOTED_LIST);
 	            break;
-	        case prologParser.BACK_QUOTED_STRING:
+	        case 63:
 	            localctx = new Backq_stringContext(this, localctx);
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 96;
 	            this.match(prologParser.BACK_QUOTED_STRING);
 	            break;
-	        case prologParser.T__17:
+	        case 18:
 	            localctx = new SemicolonContext(this, localctx);
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 97;
 	            this.match(prologParser.T__17);
 	            break;
-	        case prologParser.T__50:
+	        case 51:
 	            localctx = new CutContext(this, localctx);
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 98;
@@ -531,12 +527,12 @@ export default class prologParser extends antlr4.Parser {
 	integer() {
 	    let localctx = new IntegerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, prologParser.RULE_integer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 101;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (prologParser.DECIMAL - 54)) | (1 << (prologParser.BINARY - 54)) | (1 << (prologParser.OCTAL - 54)) | (1 << (prologParser.HEX - 54)) | (1 << (prologParser.CHARACTER_CODE_CONSTANT - 54)))) !== 0))) {
+	        if(!(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 31) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1487,3 +1483,12 @@ prologParser.TermContext = TermContext;
 prologParser.Operator_Context = Operator_Context; 
 prologParser.AtomContext = AtomContext; 
 prologParser.IntegerContext = IntegerContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

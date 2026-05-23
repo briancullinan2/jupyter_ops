@@ -1,4 +1,4 @@
-// Generated from ./pgn/PGN.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/pgn/PGN.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import PGNListener from './PGNListener.js';
@@ -58,10 +58,6 @@ export default class PGNParser extends antlr4.Parser {
         this.symbolicNames = PGNParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	parse() {
@@ -92,13 +88,13 @@ export default class PGNParser extends antlr4.Parser {
 	pgn_database() {
 	    let localctx = new Pgn_databaseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, PGNParser.RULE_pgn_database);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 34;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PGNParser.WHITE_WINS) | (1 << PGNParser.BLACK_WINS) | (1 << PGNParser.DRAWN_GAME) | (1 << PGNParser.INTEGER) | (1 << PGNParser.ASTERISK) | (1 << PGNParser.LEFT_BRACKET) | (1 << PGNParser.LEFT_PARENTHESIS) | (1 << PGNParser.NUMERIC_ANNOTATION_GLYPH) | (1 << PGNParser.SYMBOL))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 809486) !== 0)) {
 	            this.state = 31;
 	            this.pgn_game();
 	            this.state = 36;
@@ -149,13 +145,13 @@ export default class PGNParser extends antlr4.Parser {
 	tag_section() {
 	    let localctx = new Tag_sectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, PGNParser.RULE_tag_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 43;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===PGNParser.LEFT_BRACKET) {
+	        while(_la===12) {
 	            this.state = 40;
 	            this.tag_pair();
 	            this.state = 45;
@@ -281,23 +277,23 @@ export default class PGNParser extends antlr4.Parser {
 	element_sequence() {
 	    let localctx = new Element_sequenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, PGNParser.RULE_element_sequence);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 62;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PGNParser.INTEGER) | (1 << PGNParser.LEFT_PARENTHESIS) | (1 << PGNParser.NUMERIC_ANNOTATION_GLYPH) | (1 << PGNParser.SYMBOL))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 803328) !== 0)) {
 	            this.state = 60;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case PGNParser.INTEGER:
-	            case PGNParser.NUMERIC_ANNOTATION_GLYPH:
-	            case PGNParser.SYMBOL:
+	            case 9:
+	            case 18:
+	            case 19:
 	                this.state = 58;
 	                this.element();
 	                break;
-	            case PGNParser.LEFT_PARENTHESIS:
+	            case 14:
 	                this.state = 59;
 	                this.recursive_variation();
 	                break;
@@ -331,17 +327,17 @@ export default class PGNParser extends antlr4.Parser {
 	        this.state = 68;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PGNParser.INTEGER:
+	        case 9:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 65;
 	            this.move_number_indication();
 	            break;
-	        case PGNParser.SYMBOL:
+	        case 19:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 66;
 	            this.san_move();
 	            break;
-	        case PGNParser.NUMERIC_ANNOTATION_GLYPH:
+	        case 18:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 67;
 	            this.match(PGNParser.NUMERIC_ANNOTATION_GLYPH);
@@ -368,7 +364,7 @@ export default class PGNParser extends antlr4.Parser {
 	move_number_indication() {
 	    let localctx = new Move_number_indicationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, PGNParser.RULE_move_number_indication);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 70;
@@ -376,7 +372,7 @@ export default class PGNParser extends antlr4.Parser {
 	        this.state = 72;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PGNParser.PERIOD) {
+	        if(_la===10) {
 	            this.state = 71;
 	            this.match(PGNParser.PERIOD);
 	        }
@@ -450,12 +446,12 @@ export default class PGNParser extends antlr4.Parser {
 	game_termination() {
 	    let localctx = new Game_terminationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, PGNParser.RULE_game_termination);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 80;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PGNParser.WHITE_WINS) | (1 << PGNParser.BLACK_WINS) | (1 << PGNParser.DRAWN_GAME) | (1 << PGNParser.ASTERISK))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2062) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1110,3 +1106,12 @@ PGNParser.Move_number_indicationContext = Move_number_indicationContext;
 PGNParser.San_moveContext = San_moveContext; 
 PGNParser.Recursive_variationContext = Recursive_variationContext; 
 PGNParser.Game_terminationContext = Game_terminationContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

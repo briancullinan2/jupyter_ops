@@ -1,4 +1,4 @@
-// Generated from ./powerbuilderdw/PowerBuilderDWParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/powerbuilderdw/PowerBuilderDWParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import PowerBuilderDWParserListener from './PowerBuilderDWParserListener.js';
@@ -219,16 +219,12 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
         this.symbolicNames = PowerBuilderDWParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	start_rule() {
 	    let localctx = new Start_ruleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, PowerBuilderDWParser.RULE_start_rule);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 45;
@@ -248,7 +244,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 50; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===PowerBuilderDWParser.TABLE || _la===PowerBuilderDWParser.COLUMN || _la===PowerBuilderDWParser.TYPE || _la===PowerBuilderDWParser.UPDATE || _la===PowerBuilderDWParser.ID);
+	        } while(_la===1 || _la===2 || _la===45 || _la===51 || _la===148);
 	        this.state = 52;
 	        this.match(PowerBuilderDWParser.EOF);
 	    } catch (re) {
@@ -270,13 +266,13 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	header_rule() {
 	    let localctx = new Header_ruleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, PowerBuilderDWParser.RULE_header_rule);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 57;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===PowerBuilderDWParser.EXPORT_HEADER) {
+	        while(_la===146) {
 	            this.state = 54;
 	            this.match(PowerBuilderDWParser.EXPORT_HEADER);
 	            this.state = 59;
@@ -286,7 +282,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 63;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerBuilderDWParser.RELEASE) {
+	        if(_la===84) {
 	            this.state = 60;
 	            this.match(PowerBuilderDWParser.RELEASE);
 	            this.state = 61;
@@ -351,14 +347,14 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	datawindow_property() {
 	    let localctx = new Datawindow_propertyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, PowerBuilderDWParser.RULE_datawindow_property);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 98;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.TYPE:
-	        case PowerBuilderDWParser.UPDATE:
-	        case PowerBuilderDWParser.ID:
+	        case 45:
+	        case 51:
+	        case 148:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 70;
 	            this.attribute_name();
@@ -367,7 +363,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 75;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (PowerBuilderDWParser.TYPE - 45)) | (1 << (PowerBuilderDWParser.NULL_ - 45)) | (1 << (PowerBuilderDWParser.UPDATE - 45)))) !== 0) || ((((_la - 130)) & ~0x1f) == 0 && ((1 << (_la - 130)) & ((1 << (PowerBuilderDWParser.DQUOTED_STRING - 130)) | (1 << (PowerBuilderDWParser.NUMBER - 130)) | (1 << (PowerBuilderDWParser.DATE - 130)) | (1 << (PowerBuilderDWParser.TIME - 130)) | (1 << (PowerBuilderDWParser.ID - 130)))) !== 0)) {
+	            while(((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 97) !== 0) || ((((_la - 130)) & ~0x1f) === 0 && ((1 << (_la - 130)) & 288769) !== 0)) {
 	                this.state = 72;
 	                this.datawindow_property_attribute_sub();
 	                this.state = 77;
@@ -377,7 +373,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 78;
 	            this.match(PowerBuilderDWParser.RPAREN);
 	            break;
-	        case PowerBuilderDWParser.TABLE:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 80;
 	            this.match(PowerBuilderDWParser.TABLE);
@@ -392,11 +388,11 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                this.state = 85; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===PowerBuilderDWParser.COLUMN || _la===PowerBuilderDWParser.RET_LIT);
+	            } while(_la===2 || _la===149);
 	            this.state = 87;
 	            this.match(PowerBuilderDWParser.RPAREN);
 	            break;
-	        case PowerBuilderDWParser.COLUMN:
+	        case 2:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 89;
 	            this.match(PowerBuilderDWParser.COLUMN);
@@ -405,7 +401,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 94;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (PowerBuilderDWParser.TYPE - 45)) | (1 << (PowerBuilderDWParser.NULL_ - 45)) | (1 << (PowerBuilderDWParser.UPDATE - 45)))) !== 0) || ((((_la - 130)) & ~0x1f) == 0 && ((1 << (_la - 130)) & ((1 << (PowerBuilderDWParser.DQUOTED_STRING - 130)) | (1 << (PowerBuilderDWParser.NUMBER - 130)) | (1 << (PowerBuilderDWParser.DATE - 130)) | (1 << (PowerBuilderDWParser.TIME - 130)) | (1 << (PowerBuilderDWParser.ID - 130)))) !== 0)) {
+	            while(((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 97) !== 0) || ((((_la - 130)) & ~0x1f) === 0 && ((1 << (_la - 130)) & 288769) !== 0)) {
 	                this.state = 91;
 	                this.datawindow_property_attribute_sub();
 	                this.state = 96;
@@ -441,12 +437,12 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 102;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.COLUMN:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 100;
 	            this.column_attribute();
 	            break;
-	        case PowerBuilderDWParser.RET_LIT:
+	        case 149:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 101;
 	            this.retrieve_attribute();
@@ -473,7 +469,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	column_attribute() {
 	    let localctx = new Column_attributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, PowerBuilderDWParser.RULE_column_attribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 104;
@@ -503,7 +499,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 116; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (PowerBuilderDWParser.TYPE - 45)) | (1 << (PowerBuilderDWParser.NULL_ - 45)) | (1 << (PowerBuilderDWParser.UPDATE - 45)))) !== 0) || ((((_la - 130)) & ~0x1f) == 0 && ((1 << (_la - 130)) & ((1 << (PowerBuilderDWParser.DQUOTED_STRING - 130)) | (1 << (PowerBuilderDWParser.NUMBER - 130)) | (1 << (PowerBuilderDWParser.DATE - 130)) | (1 << (PowerBuilderDWParser.TIME - 130)) | (1 << (PowerBuilderDWParser.ID - 130)))) !== 0));
+	        } while(((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 97) !== 0) || ((((_la - 130)) & ~0x1f) === 0 && ((1 << (_la - 130)) & 288769) !== 0));
 	        this.state = 118;
 	        this.match(PowerBuilderDWParser.RPAREN);
 	    } catch (re) {
@@ -525,7 +521,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	retrieve_attribute() {
 	    let localctx = new Retrieve_attributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, PowerBuilderDWParser.RULE_retrieve_attribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 120;
@@ -533,7 +529,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 122;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerBuilderDWParser.ARGS_LIT) {
+	        if(_la===150) {
 	            this.state = 121;
 	            this.match(PowerBuilderDWParser.ARGS_LIT);
 	        }
@@ -541,7 +537,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 125;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerBuilderDWParser.SORT_LIT) {
+	        if(_la===151) {
 	            this.state = 124;
 	            this.match(PowerBuilderDWParser.SORT_LIT);
 	        }
@@ -565,35 +561,35 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	datawindow_property_attribute_sub() {
 	    let localctx = new Datawindow_property_attribute_subContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, PowerBuilderDWParser.RULE_datawindow_property_attribute_sub);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 148;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.NULL_:
+	        case 50:
 	            this.state = 127;
 	            this.match(PowerBuilderDWParser.NULL_);
 	            break;
-	        case PowerBuilderDWParser.NUMBER:
+	        case 141:
 	            this.state = 128;
 	            this.numeric_atom();
 	            break;
-	        case PowerBuilderDWParser.DQUOTED_STRING:
+	        case 130:
 	            this.state = 129;
 	            this.match(PowerBuilderDWParser.DQUOTED_STRING);
 	            break;
-	        case PowerBuilderDWParser.DATE:
+	        case 143:
 	            this.state = 130;
 	            this.match(PowerBuilderDWParser.DATE);
 	            break;
-	        case PowerBuilderDWParser.TIME:
+	        case 144:
 	            this.state = 131;
 	            this.match(PowerBuilderDWParser.TIME);
 	            break;
-	        case PowerBuilderDWParser.TYPE:
-	        case PowerBuilderDWParser.UPDATE:
-	        case PowerBuilderDWParser.ID:
+	        case 45:
+	        case 51:
+	        case 148:
 	            this.state = 132;
 	            this.attribute_name();
 	            this.state = 133;
@@ -608,7 +604,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                this.state = 136;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===PowerBuilderDWParser.LBRACE || _la===PowerBuilderDWParser.BRACES) {
+	                if(_la===126 || _la===128) {
 	                    this.state = 135;
 	                    this.array_decl_sub();
 	                }
@@ -627,7 +623,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                    this.state = 142; 
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                } while(((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (PowerBuilderDWParser.TYPE - 45)) | (1 << (PowerBuilderDWParser.NULL_ - 45)) | (1 << (PowerBuilderDWParser.UPDATE - 45)))) !== 0) || ((((_la - 130)) & ~0x1f) == 0 && ((1 << (_la - 130)) & ((1 << (PowerBuilderDWParser.DQUOTED_STRING - 130)) | (1 << (PowerBuilderDWParser.NUMBER - 130)) | (1 << (PowerBuilderDWParser.DATE - 130)) | (1 << (PowerBuilderDWParser.TIME - 130)) | (1 << (PowerBuilderDWParser.ID - 130)))) !== 0));
+	                } while(((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 97) !== 0) || ((((_la - 130)) & ~0x1f) === 0 && ((1 << (_la - 130)) & 288769) !== 0));
 	                this.state = 144;
 	                this.match(PowerBuilderDWParser.RPAREN);
 	                break;
@@ -640,7 +636,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 151;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerBuilderDWParser.COMMA) {
+	        if(_la===132) {
 	            this.state = 150;
 	            this.match(PowerBuilderDWParser.COMMA);
 	        }
@@ -664,21 +660,21 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	attribute_name() {
 	    let localctx = new Attribute_nameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, PowerBuilderDWParser.RULE_attribute_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 156;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.ID:
+	        case 148:
 	            this.state = 153;
 	            this.identifier_name();
 	            break;
-	        case PowerBuilderDWParser.TYPE:
+	        case 45:
 	            this.state = 154;
 	            this.match(PowerBuilderDWParser.TYPE);
 	            break;
-	        case PowerBuilderDWParser.UPDATE:
+	        case 51:
 	            this.state = 155;
 	            this.match(PowerBuilderDWParser.UPDATE);
 	            break;
@@ -688,7 +684,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 159;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerBuilderDWParser.NUMBER) {
+	        if(_la===141) {
 	            this.state = 158;
 	            this.match(PowerBuilderDWParser.NUMBER);
 	        }
@@ -696,29 +692,29 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 171;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===PowerBuilderDWParser.DOT) {
+	        while(_la===142) {
 	            this.state = 161;
 	            this.match(PowerBuilderDWParser.DOT);
 	            this.state = 167;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case PowerBuilderDWParser.ID:
+	            case 148:
 	                this.state = 162;
 	                this.identifier_name();
 	                break;
-	            case PowerBuilderDWParser.CASE:
+	            case 52:
 	                this.state = 163;
 	                this.match(PowerBuilderDWParser.CASE);
 	                break;
-	            case PowerBuilderDWParser.TYPE:
+	            case 45:
 	                this.state = 164;
 	                this.match(PowerBuilderDWParser.TYPE);
 	                break;
-	            case PowerBuilderDWParser.ON:
+	            case 46:
 	                this.state = 165;
 	                this.match(PowerBuilderDWParser.ON);
 	                break;
-	            case PowerBuilderDWParser.DYNAMIC:
+	            case 53:
 	                this.state = 166;
 	                this.match(PowerBuilderDWParser.DYNAMIC);
 	                break;
@@ -771,7 +767,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	attribute_value() {
 	    let localctx = new Attribute_valueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, PowerBuilderDWParser.RULE_attribute_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 236;
 	        this._errHandler.sync(this);
@@ -794,7 +790,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 179;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===PowerBuilderDWParser.MINUS) {
+	            if(_la===115) {
 	                this.state = 178;
 	                this.match(PowerBuilderDWParser.MINUS);
 	            }
@@ -884,35 +880,35 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 198;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case PowerBuilderDWParser.CLOSE:
-	            case PowerBuilderDWParser.HALT:
-	            case PowerBuilderDWParser.LCURLY:
+	            case 76:
+	            case 99:
+	            case 124:
 	                this.state = 196;
 	                this.expression();
 	                break;
-	            case PowerBuilderDWParser.ANY:
-	            case PowerBuilderDWParser.BLOB:
-	            case PowerBuilderDWParser.BOOLEAN:
-	            case PowerBuilderDWParser.BYTE:
-	            case PowerBuilderDWParser.CHARACTER:
-	            case PowerBuilderDWParser.CHAR:
-	            case PowerBuilderDWParser.DATE_TYPE:
-	            case PowerBuilderDWParser.DATETIME:
-	            case PowerBuilderDWParser.DECIMAL:
-	            case PowerBuilderDWParser.DEC:
-	            case PowerBuilderDWParser.DOUBLE:
-	            case PowerBuilderDWParser.INTEGER:
-	            case PowerBuilderDWParser.INT:
-	            case PowerBuilderDWParser.LONG:
-	            case PowerBuilderDWParser.LONGLONG:
-	            case PowerBuilderDWParser.REAL:
-	            case PowerBuilderDWParser.STRING:
-	            case PowerBuilderDWParser.TIME_TYPE:
-	            case PowerBuilderDWParser.UNSIGNEDINTEGER:
-	            case PowerBuilderDWParser.UINT:
-	            case PowerBuilderDWParser.UNSIGNEDLONG:
-	            case PowerBuilderDWParser.ULONG:
-	            case PowerBuilderDWParser.WINDOW:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
 	                this.state = 197;
 	                this.dataTypeSub();
 	                break;
@@ -922,41 +918,41 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 205;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===PowerBuilderDWParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 200;
 	                this.match(PowerBuilderDWParser.COMMA);
 	                this.state = 203;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case PowerBuilderDWParser.CLOSE:
-	                case PowerBuilderDWParser.HALT:
-	                case PowerBuilderDWParser.LCURLY:
+	                case 76:
+	                case 99:
+	                case 124:
 	                    this.state = 201;
 	                    this.expression();
 	                    break;
-	                case PowerBuilderDWParser.ANY:
-	                case PowerBuilderDWParser.BLOB:
-	                case PowerBuilderDWParser.BOOLEAN:
-	                case PowerBuilderDWParser.BYTE:
-	                case PowerBuilderDWParser.CHARACTER:
-	                case PowerBuilderDWParser.CHAR:
-	                case PowerBuilderDWParser.DATE_TYPE:
-	                case PowerBuilderDWParser.DATETIME:
-	                case PowerBuilderDWParser.DECIMAL:
-	                case PowerBuilderDWParser.DEC:
-	                case PowerBuilderDWParser.DOUBLE:
-	                case PowerBuilderDWParser.INTEGER:
-	                case PowerBuilderDWParser.INT:
-	                case PowerBuilderDWParser.LONG:
-	                case PowerBuilderDWParser.LONGLONG:
-	                case PowerBuilderDWParser.REAL:
-	                case PowerBuilderDWParser.STRING:
-	                case PowerBuilderDWParser.TIME_TYPE:
-	                case PowerBuilderDWParser.UNSIGNEDINTEGER:
-	                case PowerBuilderDWParser.UINT:
-	                case PowerBuilderDWParser.UNSIGNEDLONG:
-	                case PowerBuilderDWParser.ULONG:
-	                case PowerBuilderDWParser.WINDOW:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 28:
+	                case 29:
+	                case 30:
 	                    this.state = 202;
 	                    this.dataTypeSub();
 	                    break;
@@ -970,7 +966,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 225;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===PowerBuilderDWParser.COMMA) {
+	            while(_la===132) {
 	                this.state = 208;
 	                this.match(PowerBuilderDWParser.COMMA);
 	                this.state = 209;
@@ -978,35 +974,35 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                this.state = 212;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case PowerBuilderDWParser.CLOSE:
-	                case PowerBuilderDWParser.HALT:
-	                case PowerBuilderDWParser.LCURLY:
+	                case 76:
+	                case 99:
+	                case 124:
 	                    this.state = 210;
 	                    this.expression();
 	                    break;
-	                case PowerBuilderDWParser.ANY:
-	                case PowerBuilderDWParser.BLOB:
-	                case PowerBuilderDWParser.BOOLEAN:
-	                case PowerBuilderDWParser.BYTE:
-	                case PowerBuilderDWParser.CHARACTER:
-	                case PowerBuilderDWParser.CHAR:
-	                case PowerBuilderDWParser.DATE_TYPE:
-	                case PowerBuilderDWParser.DATETIME:
-	                case PowerBuilderDWParser.DECIMAL:
-	                case PowerBuilderDWParser.DEC:
-	                case PowerBuilderDWParser.DOUBLE:
-	                case PowerBuilderDWParser.INTEGER:
-	                case PowerBuilderDWParser.INT:
-	                case PowerBuilderDWParser.LONG:
-	                case PowerBuilderDWParser.LONGLONG:
-	                case PowerBuilderDWParser.REAL:
-	                case PowerBuilderDWParser.STRING:
-	                case PowerBuilderDWParser.TIME_TYPE:
-	                case PowerBuilderDWParser.UNSIGNEDINTEGER:
-	                case PowerBuilderDWParser.UINT:
-	                case PowerBuilderDWParser.UNSIGNEDLONG:
-	                case PowerBuilderDWParser.ULONG:
-	                case PowerBuilderDWParser.WINDOW:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 18:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 25:
+	                case 26:
+	                case 27:
+	                case 28:
+	                case 29:
+	                case 30:
 	                    this.state = 211;
 	                    this.dataTypeSub();
 	                    break;
@@ -1016,41 +1012,41 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                this.state = 219;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===PowerBuilderDWParser.COMMA) {
+	                if(_la===132) {
 	                    this.state = 214;
 	                    this.match(PowerBuilderDWParser.COMMA);
 	                    this.state = 217;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case PowerBuilderDWParser.CLOSE:
-	                    case PowerBuilderDWParser.HALT:
-	                    case PowerBuilderDWParser.LCURLY:
+	                    case 76:
+	                    case 99:
+	                    case 124:
 	                        this.state = 215;
 	                        this.expression();
 	                        break;
-	                    case PowerBuilderDWParser.ANY:
-	                    case PowerBuilderDWParser.BLOB:
-	                    case PowerBuilderDWParser.BOOLEAN:
-	                    case PowerBuilderDWParser.BYTE:
-	                    case PowerBuilderDWParser.CHARACTER:
-	                    case PowerBuilderDWParser.CHAR:
-	                    case PowerBuilderDWParser.DATE_TYPE:
-	                    case PowerBuilderDWParser.DATETIME:
-	                    case PowerBuilderDWParser.DECIMAL:
-	                    case PowerBuilderDWParser.DEC:
-	                    case PowerBuilderDWParser.DOUBLE:
-	                    case PowerBuilderDWParser.INTEGER:
-	                    case PowerBuilderDWParser.INT:
-	                    case PowerBuilderDWParser.LONG:
-	                    case PowerBuilderDWParser.LONGLONG:
-	                    case PowerBuilderDWParser.REAL:
-	                    case PowerBuilderDWParser.STRING:
-	                    case PowerBuilderDWParser.TIME_TYPE:
-	                    case PowerBuilderDWParser.UNSIGNEDINTEGER:
-	                    case PowerBuilderDWParser.UINT:
-	                    case PowerBuilderDWParser.UNSIGNEDLONG:
-	                    case PowerBuilderDWParser.ULONG:
-	                    case PowerBuilderDWParser.WINDOW:
+	                    case 8:
+	                    case 9:
+	                    case 10:
+	                    case 11:
+	                    case 12:
+	                    case 13:
+	                    case 14:
+	                    case 15:
+	                    case 16:
+	                    case 17:
+	                    case 18:
+	                    case 19:
+	                    case 20:
+	                    case 21:
+	                    case 22:
+	                    case 23:
+	                    case 24:
+	                    case 25:
+	                    case 26:
+	                    case 27:
+	                    case 28:
+	                    case 29:
+	                    case 30:
 	                        this.state = 216;
 	                        this.dataTypeSub();
 	                        break;
@@ -1076,7 +1072,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 234;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===PowerBuilderDWParser.LPAREN) {
+	            if(_la===134) {
 	                this.state = 231;
 	                this.match(PowerBuilderDWParser.LPAREN);
 	                this.state = 232;
@@ -1130,12 +1126,12 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	dataTypeSub() {
 	    let localctx = new DataTypeSubContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, PowerBuilderDWParser.RULE_dataTypeSub);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 240;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PowerBuilderDWParser.ANY) | (1 << PowerBuilderDWParser.BLOB) | (1 << PowerBuilderDWParser.BOOLEAN) | (1 << PowerBuilderDWParser.BYTE) | (1 << PowerBuilderDWParser.CHARACTER) | (1 << PowerBuilderDWParser.CHAR) | (1 << PowerBuilderDWParser.DATE_TYPE) | (1 << PowerBuilderDWParser.DATETIME) | (1 << PowerBuilderDWParser.DECIMAL) | (1 << PowerBuilderDWParser.DEC) | (1 << PowerBuilderDWParser.DOUBLE) | (1 << PowerBuilderDWParser.INTEGER) | (1 << PowerBuilderDWParser.INT) | (1 << PowerBuilderDWParser.LONG) | (1 << PowerBuilderDWParser.LONGLONG) | (1 << PowerBuilderDWParser.REAL) | (1 << PowerBuilderDWParser.STRING) | (1 << PowerBuilderDWParser.TIME_TYPE) | (1 << PowerBuilderDWParser.UNSIGNEDINTEGER) | (1 << PowerBuilderDWParser.UINT) | (1 << PowerBuilderDWParser.UNSIGNEDLONG) | (1 << PowerBuilderDWParser.ULONG) | (1 << PowerBuilderDWParser.WINDOW))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2147483392) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1165,13 +1161,13 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 244;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.CLOSE:
-	        case PowerBuilderDWParser.HALT:
+	        case 76:
+	        case 99:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 242;
 	            this.close_call_sub();
 	            break;
-	        case PowerBuilderDWParser.LCURLY:
+	        case 124:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 243;
 	            this.match(PowerBuilderDWParser.LCURLY);
@@ -1198,31 +1194,31 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	array_decl_sub() {
 	    let localctx = new Array_decl_subContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, PowerBuilderDWParser.RULE_array_decl_sub);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 279;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.BRACES:
+	        case 128:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 246;
 	            this.match(PowerBuilderDWParser.BRACES);
 	            break;
-	        case PowerBuilderDWParser.LBRACE:
+	        case 126:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 247;
 	            this.match(PowerBuilderDWParser.LBRACE);
 	            this.state = 276;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 114)) & ~0x1f) == 0 && ((1 << (_la - 114)) & ((1 << (PowerBuilderDWParser.PLUS - 114)) | (1 << (PowerBuilderDWParser.MINUS - 114)) | (1 << (PowerBuilderDWParser.NUMBER - 114)))) !== 0)) {
+	            if(((((_la - 114)) & ~0x1f) === 0 && ((1 << (_la - 114)) & 134217731) !== 0)) {
 	                this.state = 249;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS) {
+	                if(_la===114 || _la===115) {
 	                    this.state = 248;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS)) {
+	                    if(!(_la===114 || _la===115)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1236,16 +1232,16 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                this.state = 257;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===PowerBuilderDWParser.TO) {
+	                if(_la===47) {
 	                    this.state = 252;
 	                    this.match(PowerBuilderDWParser.TO);
 	                    this.state = 254;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS) {
+	                    if(_la===114 || _la===115) {
 	                        this.state = 253;
 	                        _la = this._input.LA(1);
-	                        if(!(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS)) {
+	                        if(!(_la===114 || _la===115)) {
 	                        this._errHandler.recoverInline(this);
 	                        }
 	                        else {
@@ -1261,16 +1257,16 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                this.state = 273;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===PowerBuilderDWParser.COMMA) {
+	                while(_la===132) {
 	                    this.state = 259;
 	                    this.match(PowerBuilderDWParser.COMMA);
 	                    this.state = 261;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS) {
+	                    if(_la===114 || _la===115) {
 	                        this.state = 260;
 	                        _la = this._input.LA(1);
-	                        if(!(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS)) {
+	                        if(!(_la===114 || _la===115)) {
 	                        this._errHandler.recoverInline(this);
 	                        }
 	                        else {
@@ -1284,16 +1280,16 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	                    this.state = 269;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===PowerBuilderDWParser.TO) {
+	                    if(_la===47) {
 	                        this.state = 264;
 	                        this.match(PowerBuilderDWParser.TO);
 	                        this.state = 266;
 	                        this._errHandler.sync(this);
 	                        _la = this._input.LA(1);
-	                        if(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS) {
+	                        if(_la===114 || _la===115) {
 	                            this.state = 265;
 	                            _la = this._input.LA(1);
-	                            if(!(_la===PowerBuilderDWParser.PLUS || _la===PowerBuilderDWParser.MINUS)) {
+	                            if(!(_la===114 || _la===115)) {
 	                            this._errHandler.recoverInline(this);
 	                            }
 	                            else {
@@ -1341,7 +1337,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 288;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.CLOSE:
+	        case 76:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 281;
 	            this.match(PowerBuilderDWParser.CLOSE);
@@ -1352,7 +1348,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 284;
 	            this.match(PowerBuilderDWParser.RPAREN);
 	            break;
-	        case PowerBuilderDWParser.HALT:
+	        case 99:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 286;
 	            this.match(PowerBuilderDWParser.HALT);
@@ -1381,13 +1377,13 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	expression_list() {
 	    let localctx = new Expression_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, PowerBuilderDWParser.RULE_expression_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 291;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerBuilderDWParser.REF) {
+	        if(_la===49) {
 	            this.state = 290;
 	            this.match(PowerBuilderDWParser.REF);
 	        }
@@ -1397,13 +1393,13 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 301;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===PowerBuilderDWParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 294;
 	            this.match(PowerBuilderDWParser.COMMA);
 	            this.state = 296;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===PowerBuilderDWParser.REF) {
+	            if(_la===49) {
 	                this.state = 295;
 	                this.match(PowerBuilderDWParser.REF);
 	            }
@@ -1433,18 +1429,18 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	atom_sub_call1() {
 	    let localctx = new Atom_sub_call1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, PowerBuilderDWParser.RULE_atom_sub_call1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 306;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.SUPER:
-	        case PowerBuilderDWParser.ID:
+	        case 100:
+	        case 148:
 	            this.state = 304;
 	            this.identifier();
 	            break;
-	        case PowerBuilderDWParser.DESCRIBE:
+	        case 93:
 	            this.state = 305;
 	            this.match(PowerBuilderDWParser.DESCRIBE);
 	            break;
@@ -1456,7 +1452,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 310;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===PowerBuilderDWParser.REF || _la===PowerBuilderDWParser.CLOSE || _la===PowerBuilderDWParser.HALT || _la===PowerBuilderDWParser.LCURLY) {
+	        if(_la===49 || _la===76 || _la===99 || _la===124) {
 	            this.state = 309;
 	            this.expression_list();
 	        }
@@ -1482,7 +1478,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, PowerBuilderDWParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 334;
 	        this._errHandler.sync(this);
@@ -1503,26 +1499,26 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.state = 320;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case PowerBuilderDWParser.CREATE:
+	            case 85:
 	                this.state = 317;
 	                this.match(PowerBuilderDWParser.CREATE);
 	                break;
-	            case PowerBuilderDWParser.DESTROY:
+	            case 86:
 	                this.state = 318;
 	                this.match(PowerBuilderDWParser.DESTROY);
 	                break;
-	            case PowerBuilderDWParser.READONLY:
-	            case PowerBuilderDWParser.TYPE:
-	            case PowerBuilderDWParser.UPDATE:
-	            case PowerBuilderDWParser.OPEN:
-	            case PowerBuilderDWParser.GOTO:
-	            case PowerBuilderDWParser.CLOSE:
-	            case PowerBuilderDWParser.SELECT:
-	            case PowerBuilderDWParser.DELETE:
-	            case PowerBuilderDWParser.INSERT:
-	            case PowerBuilderDWParser.DESCRIBE:
-	            case PowerBuilderDWParser.TIME:
-	            case PowerBuilderDWParser.ID:
+	            case 43:
+	            case 45:
+	            case 51:
+	            case 62:
+	            case 63:
+	            case 76:
+	            case 90:
+	            case 91:
+	            case 92:
+	            case 93:
+	            case 144:
+	            case 148:
 	                this.state = 319;
 	                this.identifier_name_ex();
 	                break;
@@ -1539,7 +1535,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.match(PowerBuilderDWParser.COLONCOLON);
 	            this.state = 324;
 	            _la = this._input.LA(1);
-	            if(!(_la===PowerBuilderDWParser.CREATE || _la===PowerBuilderDWParser.DESTROY)) {
+	            if(!(_la===85 || _la===86)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1556,7 +1552,7 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	            this.match(PowerBuilderDWParser.DOT);
 	            this.state = 328;
 	            _la = this._input.LA(1);
-	            if(!(_la===PowerBuilderDWParser.CREATE || _la===PowerBuilderDWParser.DESTROY)) {
+	            if(!(_la===85 || _la===86)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1599,62 +1595,62 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	        this.state = 348;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case PowerBuilderDWParser.ID:
+	        case 148:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 336;
 	            this.identifier_name();
 	            break;
-	        case PowerBuilderDWParser.SELECT:
+	        case 90:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 337;
 	            this.match(PowerBuilderDWParser.SELECT);
 	            break;
-	        case PowerBuilderDWParser.TYPE:
+	        case 45:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 338;
 	            this.match(PowerBuilderDWParser.TYPE);
 	            break;
-	        case PowerBuilderDWParser.UPDATE:
+	        case 51:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 339;
 	            this.match(PowerBuilderDWParser.UPDATE);
 	            break;
-	        case PowerBuilderDWParser.DELETE:
+	        case 91:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 340;
 	            this.match(PowerBuilderDWParser.DELETE);
 	            break;
-	        case PowerBuilderDWParser.OPEN:
+	        case 62:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 341;
 	            this.match(PowerBuilderDWParser.OPEN);
 	            break;
-	        case PowerBuilderDWParser.CLOSE:
+	        case 76:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 342;
 	            this.match(PowerBuilderDWParser.CLOSE);
 	            break;
-	        case PowerBuilderDWParser.GOTO:
+	        case 63:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 343;
 	            this.match(PowerBuilderDWParser.GOTO);
 	            break;
-	        case PowerBuilderDWParser.INSERT:
+	        case 92:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 344;
 	            this.match(PowerBuilderDWParser.INSERT);
 	            break;
-	        case PowerBuilderDWParser.DESCRIBE:
+	        case 93:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 345;
 	            this.match(PowerBuilderDWParser.DESCRIBE);
 	            break;
-	        case PowerBuilderDWParser.TIME:
+	        case 144:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 346;
 	            this.match(PowerBuilderDWParser.TIME);
 	            break;
-	        case PowerBuilderDWParser.READONLY:
+	        case 43:
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 347;
 	            this.match(PowerBuilderDWParser.READONLY);
@@ -1704,12 +1700,12 @@ export default class PowerBuilderDWParser extends antlr4.Parser {
 	boolean_atom() {
 	    let localctx = new Boolean_atomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, PowerBuilderDWParser.RULE_boolean_atom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 352;
 	        _la = this._input.LA(1);
-	        if(!(_la===PowerBuilderDWParser.TRUE || _la===PowerBuilderDWParser.FALSE)) {
+	        if(!(_la===31 || _la===32)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2321,7 +2317,7 @@ class Datawindow_property_attribute_subContext extends antlr4.ParserRuleContext 
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = PowerBuilderDWParser.RULE_datawindow_property_attribute_sub;
-        this.eq = null; // Token
+        this.eq = null;
     }
 
 	NULL_() {
@@ -3405,3 +3401,12 @@ PowerBuilderDWParser.IdentifierContext = IdentifierContext;
 PowerBuilderDWParser.Identifier_name_exContext = Identifier_name_exContext; 
 PowerBuilderDWParser.Atom_sub_member1Context = Atom_sub_member1Context; 
 PowerBuilderDWParser.Boolean_atomContext = Boolean_atomContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

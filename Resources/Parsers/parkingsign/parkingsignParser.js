@@ -1,100 +1,101 @@
-// Generated from ./parkingsign/parkingsign.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/parkingsign/parkingsign.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import parkingsignListener from './parkingsignListener.js';
-const serializedATN = [4,1,53,295,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,53,297,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
 7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,1,0,5,0,
-70,8,0,10,0,12,0,73,9,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,83,8,1,1,2,3,
-2,86,8,2,1,2,1,2,1,2,1,2,1,3,3,3,93,8,3,1,3,1,3,3,3,97,8,3,1,3,3,3,100,8,
-3,1,3,3,3,103,8,3,1,4,3,4,106,8,4,1,4,1,4,3,4,110,8,4,1,4,4,4,113,8,4,11,
-4,12,4,114,1,4,3,4,118,8,4,1,4,3,4,121,8,4,1,5,3,5,124,8,5,1,5,1,5,4,5,128,
-8,5,11,5,12,5,129,1,5,3,5,133,8,5,1,5,3,5,136,8,5,1,6,1,6,1,6,1,6,1,6,3,
-6,143,8,6,1,6,3,6,146,8,6,1,6,3,6,149,8,6,1,7,1,7,1,7,1,7,3,7,155,8,7,1,
-7,1,7,1,7,3,7,160,8,7,1,7,3,7,163,8,7,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,
-8,1,8,1,8,1,8,1,8,3,8,178,8,8,1,9,1,9,3,9,182,8,9,1,9,1,9,1,9,1,9,1,9,1,
-9,1,10,1,10,1,10,1,11,1,11,1,11,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,14,
-1,14,1,14,1,14,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,
-16,218,8,16,1,17,1,17,1,18,1,18,1,18,1,18,1,19,1,19,1,19,1,19,1,20,1,20,
-1,20,1,20,1,20,1,20,1,20,1,20,1,20,3,20,239,8,20,1,21,1,21,1,22,1,22,1,23,
-1,23,1,24,1,24,3,24,249,8,24,1,24,1,24,1,25,1,25,1,26,1,26,1,27,1,27,1,27,
-3,27,260,8,27,1,28,1,28,1,29,1,29,1,29,3,29,267,8,29,1,29,1,29,3,29,271,
-8,29,1,29,1,29,3,29,275,8,29,1,30,1,30,1,30,3,30,280,8,30,1,31,1,31,1,31,
-3,31,285,8,31,1,32,1,32,3,32,289,8,32,1,33,1,33,3,33,293,8,33,1,33,0,0,34,
-0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,
-52,54,56,58,60,62,64,66,0,7,1,0,48,49,1,0,16,17,1,0,9,11,1,0,21,22,1,0,35,
-36,1,0,32,33,1,0,40,46,308,0,71,1,0,0,0,2,82,1,0,0,0,4,85,1,0,0,0,6,92,1,
-0,0,0,8,105,1,0,0,0,10,123,1,0,0,0,12,137,1,0,0,0,14,154,1,0,0,0,16,164,
-1,0,0,0,18,181,1,0,0,0,20,189,1,0,0,0,22,192,1,0,0,0,24,195,1,0,0,0,26,198,
-1,0,0,0,28,202,1,0,0,0,30,206,1,0,0,0,32,217,1,0,0,0,34,219,1,0,0,0,36,221,
-1,0,0,0,38,225,1,0,0,0,40,238,1,0,0,0,42,240,1,0,0,0,44,242,1,0,0,0,46,244,
-1,0,0,0,48,246,1,0,0,0,50,252,1,0,0,0,52,254,1,0,0,0,54,259,1,0,0,0,56,261,
-1,0,0,0,58,274,1,0,0,0,60,279,1,0,0,0,62,284,1,0,0,0,64,288,1,0,0,0,66,292,
-1,0,0,0,68,70,3,2,1,0,69,68,1,0,0,0,70,73,1,0,0,0,71,69,1,0,0,0,71,72,1,
-0,0,0,72,1,1,0,0,0,73,71,1,0,0,0,74,83,3,4,2,0,75,83,3,6,3,0,76,83,3,8,4,
-0,77,83,3,10,5,0,78,83,3,14,7,0,79,83,3,16,8,0,80,83,3,12,6,0,81,83,3,18,
-9,0,82,74,1,0,0,0,82,75,1,0,0,0,82,76,1,0,0,0,82,77,1,0,0,0,82,78,1,0,0,
-0,82,79,1,0,0,0,82,80,1,0,0,0,82,81,1,0,0,0,83,3,1,0,0,0,84,86,3,22,11,0,
-85,84,1,0,0,0,85,86,1,0,0,0,86,87,1,0,0,0,87,88,3,32,16,0,88,89,3,56,28,
-0,89,90,3,20,10,0,90,5,1,0,0,0,91,93,3,22,11,0,92,91,1,0,0,0,92,93,1,0,0,
-0,93,96,1,0,0,0,94,97,3,54,27,0,95,97,3,32,16,0,96,94,1,0,0,0,96,95,1,0,
-0,0,97,99,1,0,0,0,98,100,5,15,0,0,99,98,1,0,0,0,99,100,1,0,0,0,100,102,1,
-0,0,0,101,103,3,40,20,0,102,101,1,0,0,0,102,103,1,0,0,0,103,7,1,0,0,0,104,
-106,3,48,24,0,105,104,1,0,0,0,105,106,1,0,0,0,106,109,1,0,0,0,107,110,3,
-24,12,0,108,110,3,26,13,0,109,107,1,0,0,0,109,108,1,0,0,0,110,112,1,0,0,
-0,111,113,3,32,16,0,112,111,1,0,0,0,113,114,1,0,0,0,114,112,1,0,0,0,114,
-115,1,0,0,0,115,117,1,0,0,0,116,118,5,15,0,0,117,116,1,0,0,0,117,118,1,0,
-0,0,118,120,1,0,0,0,119,121,3,40,20,0,120,119,1,0,0,0,120,121,1,0,0,0,121,
-9,1,0,0,0,122,124,3,48,24,0,123,122,1,0,0,0,123,124,1,0,0,0,124,125,1,0,
-0,0,125,127,3,28,14,0,126,128,3,32,16,0,127,126,1,0,0,0,128,129,1,0,0,0,
-129,127,1,0,0,0,129,130,1,0,0,0,130,132,1,0,0,0,131,133,5,15,0,0,132,131,
-1,0,0,0,132,133,1,0,0,0,133,135,1,0,0,0,134,136,3,40,20,0,135,134,1,0,0,
-0,135,136,1,0,0,0,136,11,1,0,0,0,137,138,3,48,24,0,138,139,5,37,0,0,139,
-142,3,22,11,0,140,143,3,54,27,0,141,143,3,32,16,0,142,140,1,0,0,0,142,141,
-1,0,0,0,143,145,1,0,0,0,144,146,5,15,0,0,145,144,1,0,0,0,145,146,1,0,0,0,
-146,148,1,0,0,0,147,149,3,40,20,0,148,147,1,0,0,0,148,149,1,0,0,0,149,13,
-1,0,0,0,150,151,5,52,0,0,151,155,5,34,0,0,152,153,5,52,0,0,153,155,3,50,
-25,0,154,150,1,0,0,0,154,152,1,0,0,0,155,156,1,0,0,0,156,157,5,8,0,0,157,
-159,3,32,16,0,158,160,5,15,0,0,159,158,1,0,0,0,159,160,1,0,0,0,160,162,1,
-0,0,0,161,163,3,40,20,0,162,161,1,0,0,0,162,163,1,0,0,0,163,15,1,0,0,0,164,
-165,5,52,0,0,165,166,5,34,0,0,166,167,5,8,0,0,167,168,3,40,20,0,168,169,
-3,40,20,0,169,170,3,58,29,0,170,171,3,58,29,0,171,172,5,9,0,0,172,173,5,
-9,0,0,173,174,3,58,29,0,174,177,3,58,29,0,175,176,5,15,0,0,176,178,5,20,
-0,0,177,175,1,0,0,0,177,178,1,0,0,0,178,17,1,0,0,0,179,180,5,28,0,0,180,
-182,5,29,0,0,181,179,1,0,0,0,181,182,1,0,0,0,182,183,1,0,0,0,183,184,5,30,
-0,0,184,185,5,7,0,0,185,186,5,52,0,0,186,187,5,31,0,0,187,188,3,52,26,0,
-188,19,1,0,0,0,189,190,5,47,0,0,190,191,7,0,0,0,191,21,1,0,0,0,192,193,5,
-7,0,0,193,194,5,8,0,0,194,23,1,0,0,0,195,196,5,7,0,0,196,197,5,25,0,0,197,
-25,1,0,0,0,198,199,5,26,0,0,199,200,5,8,0,0,200,201,5,27,0,0,201,27,1,0,
-0,0,202,203,5,38,0,0,203,204,5,39,0,0,204,205,5,27,0,0,205,29,1,0,0,0,206,
-207,5,18,0,0,207,208,5,19,0,0,208,31,1,0,0,0,209,210,3,58,29,0,210,211,3,
-44,22,0,211,212,3,58,29,0,212,218,1,0,0,0,213,214,5,52,0,0,214,215,3,44,
-22,0,215,216,3,58,29,0,216,218,1,0,0,0,217,209,1,0,0,0,217,213,1,0,0,0,218,
-33,1,0,0,0,219,220,7,1,0,0,220,35,1,0,0,0,221,222,3,56,28,0,222,223,3,44,
-22,0,223,224,3,56,28,0,224,37,1,0,0,0,225,226,3,56,28,0,226,227,3,46,23,
-0,227,228,3,56,28,0,228,39,1,0,0,0,229,239,3,34,17,0,230,239,3,30,15,0,231,
-239,5,20,0,0,232,239,3,38,19,0,233,239,3,36,18,0,234,235,3,56,28,0,235,236,
-5,27,0,0,236,239,1,0,0,0,237,239,3,56,28,0,238,229,1,0,0,0,238,230,1,0,0,
-0,238,231,1,0,0,0,238,232,1,0,0,0,238,233,1,0,0,0,238,234,1,0,0,0,238,237,
-1,0,0,0,239,41,1,0,0,0,240,241,3,40,20,0,241,43,1,0,0,0,242,243,7,2,0,0,
-243,45,1,0,0,0,244,245,7,3,0,0,245,47,1,0,0,0,246,248,5,23,0,0,247,249,5,
-11,0,0,248,247,1,0,0,0,248,249,1,0,0,0,249,250,1,0,0,0,250,251,5,24,0,0,
-251,49,1,0,0,0,252,253,7,4,0,0,253,51,1,0,0,0,254,255,7,5,0,0,255,53,1,0,
-0,0,256,260,5,12,0,0,257,258,5,13,0,0,258,260,5,14,0,0,259,256,1,0,0,0,259,
-257,1,0,0,0,260,55,1,0,0,0,261,262,7,6,0,0,262,57,1,0,0,0,263,266,5,52,0,
-0,264,265,5,1,0,0,265,267,5,52,0,0,266,264,1,0,0,0,266,267,1,0,0,0,267,270,
-1,0,0,0,268,271,3,64,32,0,269,271,3,66,33,0,270,268,1,0,0,0,270,269,1,0,
-0,0,270,271,1,0,0,0,271,275,1,0,0,0,272,275,3,60,30,0,273,275,3,62,31,0,
-274,263,1,0,0,0,274,272,1,0,0,0,274,273,1,0,0,0,275,59,1,0,0,0,276,280,5,
-50,0,0,277,278,5,2,0,0,278,280,5,50,0,0,279,276,1,0,0,0,279,277,1,0,0,0,
-280,61,1,0,0,0,281,285,5,51,0,0,282,283,5,2,0,0,283,285,5,51,0,0,284,281,
-1,0,0,0,284,282,1,0,0,0,285,63,1,0,0,0,286,289,5,3,0,0,287,289,5,4,0,0,288,
-286,1,0,0,0,288,287,1,0,0,0,289,65,1,0,0,0,290,293,5,5,0,0,291,293,5,6,0,
-0,292,290,1,0,0,0,292,291,1,0,0,0,293,67,1,0,0,0,35,71,82,85,92,96,99,102,
-105,109,114,117,120,123,129,132,135,142,145,148,154,159,162,177,181,217,
-238,248,259,266,270,274,279,284,288,292];
+70,8,0,10,0,12,0,73,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,85,8,
+1,1,2,3,2,88,8,2,1,2,1,2,1,2,1,2,1,3,3,3,95,8,3,1,3,1,3,3,3,99,8,3,1,3,3,
+3,102,8,3,1,3,3,3,105,8,3,1,4,3,4,108,8,4,1,4,1,4,3,4,112,8,4,1,4,4,4,115,
+8,4,11,4,12,4,116,1,4,3,4,120,8,4,1,4,3,4,123,8,4,1,5,3,5,126,8,5,1,5,1,
+5,4,5,130,8,5,11,5,12,5,131,1,5,3,5,135,8,5,1,5,3,5,138,8,5,1,6,1,6,1,6,
+1,6,1,6,3,6,145,8,6,1,6,3,6,148,8,6,1,6,3,6,151,8,6,1,7,1,7,1,7,1,7,3,7,
+157,8,7,1,7,1,7,1,7,3,7,162,8,7,1,7,3,7,165,8,7,1,8,1,8,1,8,1,8,1,8,1,8,
+1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,8,180,8,8,1,9,1,9,3,9,184,8,9,1,9,1,9,1,9,
+1,9,1,9,1,9,1,10,1,10,1,10,1,11,1,11,1,11,1,12,1,12,1,12,1,13,1,13,1,13,
+1,13,1,14,1,14,1,14,1,14,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,
+16,1,16,3,16,220,8,16,1,17,1,17,1,18,1,18,1,18,1,18,1,19,1,19,1,19,1,19,
+1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,3,20,241,8,20,1,21,1,21,1,22,
+1,22,1,23,1,23,1,24,1,24,3,24,251,8,24,1,24,1,24,1,25,1,25,1,26,1,26,1,27,
+1,27,1,27,3,27,262,8,27,1,28,1,28,1,29,1,29,1,29,3,29,269,8,29,1,29,1,29,
+3,29,273,8,29,1,29,1,29,3,29,277,8,29,1,30,1,30,1,30,3,30,282,8,30,1,31,
+1,31,1,31,3,31,287,8,31,1,32,1,32,3,32,291,8,32,1,33,1,33,3,33,295,8,33,
+1,33,0,0,34,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,
+44,46,48,50,52,54,56,58,60,62,64,66,0,7,1,0,48,49,1,0,16,17,1,0,9,11,1,0,
+21,22,1,0,35,36,1,0,32,33,1,0,40,46,310,0,71,1,0,0,0,2,84,1,0,0,0,4,87,1,
+0,0,0,6,94,1,0,0,0,8,107,1,0,0,0,10,125,1,0,0,0,12,139,1,0,0,0,14,156,1,
+0,0,0,16,166,1,0,0,0,18,183,1,0,0,0,20,191,1,0,0,0,22,194,1,0,0,0,24,197,
+1,0,0,0,26,200,1,0,0,0,28,204,1,0,0,0,30,208,1,0,0,0,32,219,1,0,0,0,34,221,
+1,0,0,0,36,223,1,0,0,0,38,227,1,0,0,0,40,240,1,0,0,0,42,242,1,0,0,0,44,244,
+1,0,0,0,46,246,1,0,0,0,48,248,1,0,0,0,50,254,1,0,0,0,52,256,1,0,0,0,54,261,
+1,0,0,0,56,263,1,0,0,0,58,276,1,0,0,0,60,281,1,0,0,0,62,286,1,0,0,0,64,290,
+1,0,0,0,66,294,1,0,0,0,68,70,3,2,1,0,69,68,1,0,0,0,70,73,1,0,0,0,71,69,1,
+0,0,0,71,72,1,0,0,0,72,74,1,0,0,0,73,71,1,0,0,0,74,75,5,0,0,1,75,1,1,0,0,
+0,76,85,3,4,2,0,77,85,3,6,3,0,78,85,3,8,4,0,79,85,3,10,5,0,80,85,3,14,7,
+0,81,85,3,16,8,0,82,85,3,12,6,0,83,85,3,18,9,0,84,76,1,0,0,0,84,77,1,0,0,
+0,84,78,1,0,0,0,84,79,1,0,0,0,84,80,1,0,0,0,84,81,1,0,0,0,84,82,1,0,0,0,
+84,83,1,0,0,0,85,3,1,0,0,0,86,88,3,22,11,0,87,86,1,0,0,0,87,88,1,0,0,0,88,
+89,1,0,0,0,89,90,3,32,16,0,90,91,3,56,28,0,91,92,3,20,10,0,92,5,1,0,0,0,
+93,95,3,22,11,0,94,93,1,0,0,0,94,95,1,0,0,0,95,98,1,0,0,0,96,99,3,54,27,
+0,97,99,3,32,16,0,98,96,1,0,0,0,98,97,1,0,0,0,99,101,1,0,0,0,100,102,5,15,
+0,0,101,100,1,0,0,0,101,102,1,0,0,0,102,104,1,0,0,0,103,105,3,40,20,0,104,
+103,1,0,0,0,104,105,1,0,0,0,105,7,1,0,0,0,106,108,3,48,24,0,107,106,1,0,
+0,0,107,108,1,0,0,0,108,111,1,0,0,0,109,112,3,24,12,0,110,112,3,26,13,0,
+111,109,1,0,0,0,111,110,1,0,0,0,112,114,1,0,0,0,113,115,3,32,16,0,114,113,
+1,0,0,0,115,116,1,0,0,0,116,114,1,0,0,0,116,117,1,0,0,0,117,119,1,0,0,0,
+118,120,5,15,0,0,119,118,1,0,0,0,119,120,1,0,0,0,120,122,1,0,0,0,121,123,
+3,40,20,0,122,121,1,0,0,0,122,123,1,0,0,0,123,9,1,0,0,0,124,126,3,48,24,
+0,125,124,1,0,0,0,125,126,1,0,0,0,126,127,1,0,0,0,127,129,3,28,14,0,128,
+130,3,32,16,0,129,128,1,0,0,0,130,131,1,0,0,0,131,129,1,0,0,0,131,132,1,
+0,0,0,132,134,1,0,0,0,133,135,5,15,0,0,134,133,1,0,0,0,134,135,1,0,0,0,135,
+137,1,0,0,0,136,138,3,40,20,0,137,136,1,0,0,0,137,138,1,0,0,0,138,11,1,0,
+0,0,139,140,3,48,24,0,140,141,5,37,0,0,141,144,3,22,11,0,142,145,3,54,27,
+0,143,145,3,32,16,0,144,142,1,0,0,0,144,143,1,0,0,0,145,147,1,0,0,0,146,
+148,5,15,0,0,147,146,1,0,0,0,147,148,1,0,0,0,148,150,1,0,0,0,149,151,3,40,
+20,0,150,149,1,0,0,0,150,151,1,0,0,0,151,13,1,0,0,0,152,153,5,52,0,0,153,
+157,5,34,0,0,154,155,5,52,0,0,155,157,3,50,25,0,156,152,1,0,0,0,156,154,
+1,0,0,0,157,158,1,0,0,0,158,159,5,8,0,0,159,161,3,32,16,0,160,162,5,15,0,
+0,161,160,1,0,0,0,161,162,1,0,0,0,162,164,1,0,0,0,163,165,3,40,20,0,164,
+163,1,0,0,0,164,165,1,0,0,0,165,15,1,0,0,0,166,167,5,52,0,0,167,168,5,34,
+0,0,168,169,5,8,0,0,169,170,3,40,20,0,170,171,3,40,20,0,171,172,3,58,29,
+0,172,173,3,58,29,0,173,174,5,9,0,0,174,175,5,9,0,0,175,176,3,58,29,0,176,
+179,3,58,29,0,177,178,5,15,0,0,178,180,5,20,0,0,179,177,1,0,0,0,179,180,
+1,0,0,0,180,17,1,0,0,0,181,182,5,28,0,0,182,184,5,29,0,0,183,181,1,0,0,0,
+183,184,1,0,0,0,184,185,1,0,0,0,185,186,5,30,0,0,186,187,5,7,0,0,187,188,
+5,52,0,0,188,189,5,31,0,0,189,190,3,52,26,0,190,19,1,0,0,0,191,192,5,47,
+0,0,192,193,7,0,0,0,193,21,1,0,0,0,194,195,5,7,0,0,195,196,5,8,0,0,196,23,
+1,0,0,0,197,198,5,7,0,0,198,199,5,25,0,0,199,25,1,0,0,0,200,201,5,26,0,0,
+201,202,5,8,0,0,202,203,5,27,0,0,203,27,1,0,0,0,204,205,5,38,0,0,205,206,
+5,39,0,0,206,207,5,27,0,0,207,29,1,0,0,0,208,209,5,18,0,0,209,210,5,19,0,
+0,210,31,1,0,0,0,211,212,3,58,29,0,212,213,3,44,22,0,213,214,3,58,29,0,214,
+220,1,0,0,0,215,216,5,52,0,0,216,217,3,44,22,0,217,218,3,58,29,0,218,220,
+1,0,0,0,219,211,1,0,0,0,219,215,1,0,0,0,220,33,1,0,0,0,221,222,7,1,0,0,222,
+35,1,0,0,0,223,224,3,56,28,0,224,225,3,44,22,0,225,226,3,56,28,0,226,37,
+1,0,0,0,227,228,3,56,28,0,228,229,3,46,23,0,229,230,3,56,28,0,230,39,1,0,
+0,0,231,241,3,34,17,0,232,241,3,30,15,0,233,241,5,20,0,0,234,241,3,38,19,
+0,235,241,3,36,18,0,236,237,3,56,28,0,237,238,5,27,0,0,238,241,1,0,0,0,239,
+241,3,56,28,0,240,231,1,0,0,0,240,232,1,0,0,0,240,233,1,0,0,0,240,234,1,
+0,0,0,240,235,1,0,0,0,240,236,1,0,0,0,240,239,1,0,0,0,241,41,1,0,0,0,242,
+243,3,40,20,0,243,43,1,0,0,0,244,245,7,2,0,0,245,45,1,0,0,0,246,247,7,3,
+0,0,247,47,1,0,0,0,248,250,5,23,0,0,249,251,5,11,0,0,250,249,1,0,0,0,250,
+251,1,0,0,0,251,252,1,0,0,0,252,253,5,24,0,0,253,49,1,0,0,0,254,255,7,4,
+0,0,255,51,1,0,0,0,256,257,7,5,0,0,257,53,1,0,0,0,258,262,5,12,0,0,259,260,
+5,13,0,0,260,262,5,14,0,0,261,258,1,0,0,0,261,259,1,0,0,0,262,55,1,0,0,0,
+263,264,7,6,0,0,264,57,1,0,0,0,265,268,5,52,0,0,266,267,5,1,0,0,267,269,
+5,52,0,0,268,266,1,0,0,0,268,269,1,0,0,0,269,272,1,0,0,0,270,273,3,64,32,
+0,271,273,3,66,33,0,272,270,1,0,0,0,272,271,1,0,0,0,272,273,1,0,0,0,273,
+277,1,0,0,0,274,277,3,60,30,0,275,277,3,62,31,0,276,265,1,0,0,0,276,274,
+1,0,0,0,276,275,1,0,0,0,277,59,1,0,0,0,278,282,5,50,0,0,279,280,5,2,0,0,
+280,282,5,50,0,0,281,278,1,0,0,0,281,279,1,0,0,0,282,61,1,0,0,0,283,287,
+5,51,0,0,284,285,5,2,0,0,285,287,5,51,0,0,286,283,1,0,0,0,286,284,1,0,0,
+0,287,63,1,0,0,0,288,291,5,3,0,0,289,291,5,4,0,0,290,288,1,0,0,0,290,289,
+1,0,0,0,291,65,1,0,0,0,292,295,5,5,0,0,293,295,5,6,0,0,294,292,1,0,0,0,294,
+293,1,0,0,0,295,67,1,0,0,0,35,71,84,87,94,98,101,104,107,111,116,119,122,
+125,131,134,137,144,147,150,156,161,164,179,183,219,240,250,261,268,272,
+276,281,286,290,294];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -147,28 +148,26 @@ export default class parkingsignParser extends antlr4.Parser {
         this.symbolicNames = parkingsignParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	parkingSigns() {
 	    let localctx = new ParkingSignsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, parkingsignParser.RULE_parkingSigns);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 71;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << parkingsignParser.T__1) | (1 << parkingsignParser.NO) | (1 << parkingsignParser.ANYTIME) | (1 << parkingsignParser.ANY) | (1 << parkingsignParser.TOW) | (1 << parkingsignParser.VALET) | (1 << parkingsignParser.VEHICLES) | (1 << parkingsignParser.DISTRICT))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (parkingsignParser.PASSENGER - 38)) | (1 << (parkingsignParser.NOON - 38)) | (1 << (parkingsignParser.MIDNIGHT - 38)) | (1 << (parkingsignParser.INT - 38)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1417687172) !== 0) || ((((_la - 38)) & ~0x1f) === 0 && ((1 << (_la - 38)) & 28673) !== 0)) {
 	            this.state = 68;
 	            this.parkingSign();
 	            this.state = 73;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 74;
+	        this.match(parkingsignParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -189,55 +188,55 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new ParkingSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, parkingsignParser.RULE_parkingSign);
 	    try {
-	        this.state = 82;
+	        this.state = 84;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 74;
+	            this.state = 76;
 	            this.streetSweepingSign();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 75;
+	            this.state = 77;
 	            this.noParkingSign();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 76;
+	            this.state = 78;
 	            this.noStoppingSign();
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 77;
+	            this.state = 79;
 	            this.passengerLoadingSign();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 78;
+	            this.state = 80;
 	            this.singleTimeLimitSign();
 	            break;
 
 	        case 6:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 79;
+	            this.state = 81;
 	            this.doubleTimeLimitSign();
 	            break;
 
 	        case 7:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 80;
+	            this.state = 82;
 	            this.temporaryNoParkingSign();
 	            break;
 
 	        case 8:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 81;
+	            this.state = 83;
 	            this.permitSign();
 	            break;
 
@@ -261,22 +260,22 @@ export default class parkingsignParser extends antlr4.Parser {
 	streetSweepingSign() {
 	    let localctx = new StreetSweepingSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, parkingsignParser.RULE_streetSweepingSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 85;
+	        this.state = 87;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.NO) {
-	            this.state = 84;
+	        if(_la===7) {
+	            this.state = 86;
 	            this.noParking();
 	        }
 
-	        this.state = 87;
-	        this.timeRange();
-	        this.state = 88;
-	        this.day();
 	        this.state = 89;
+	        this.timeRange();
+	        this.state = 90;
+	        this.day();
+	        this.state = 91;
 	        this.streetSweeping();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -297,48 +296,48 @@ export default class parkingsignParser extends antlr4.Parser {
 	noParkingSign() {
 	    let localctx = new NoParkingSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, parkingsignParser.RULE_noParkingSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 92;
+	        this.state = 94;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.NO) {
-	            this.state = 91;
+	        if(_la===7) {
+	            this.state = 93;
 	            this.noParking();
 	        }
 
-	        this.state = 96;
+	        this.state = 98;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.ANYTIME:
-	        case parkingsignParser.ANY:
-	            this.state = 94;
+	        case 12:
+	        case 13:
+	            this.state = 96;
 	            this.anyTime();
 	            break;
-	        case parkingsignParser.T__1:
-	        case parkingsignParser.NOON:
-	        case parkingsignParser.MIDNIGHT:
-	        case parkingsignParser.INT:
-	            this.state = 95;
+	        case 2:
+	        case 50:
+	        case 51:
+	        case 52:
+	            this.state = 97;
 	            this.timeRange();
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
-	        this.state = 99;
+	        this.state = 101;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.EXCEPT) {
-	            this.state = 98;
+	        if(_la===15) {
+	            this.state = 100;
 	            this.match(parkingsignParser.EXCEPT);
 	        }
 
-	        this.state = 102;
+	        this.state = 104;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & ((1 << (parkingsignParser.DAILY - 16)) | (1 << (parkingsignParser.NIGHTLY - 16)) | (1 << (parkingsignParser.SCHOOL - 16)) | (1 << (parkingsignParser.HOLIDAYS - 16)) | (1 << (parkingsignParser.MON - 16)) | (1 << (parkingsignParser.TUE - 16)) | (1 << (parkingsignParser.WED - 16)) | (1 << (parkingsignParser.THU - 16)) | (1 << (parkingsignParser.FRI - 16)) | (1 << (parkingsignParser.SAT - 16)) | (1 << (parkingsignParser.SUN - 16)))) !== 0)) {
-	            this.state = 101;
+	        if(((((_la - 16)) & ~0x1f) === 0 && ((1 << (_la - 16)) & 2130706455) !== 0)) {
+	            this.state = 103;
 	            this.dayRange();
 	        }
 
@@ -361,60 +360,60 @@ export default class parkingsignParser extends antlr4.Parser {
 	noStoppingSign() {
 	    let localctx = new NoStoppingSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, parkingsignParser.RULE_noStoppingSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 105;
+	        this.state = 107;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.TOW) {
-	            this.state = 104;
+	        if(_la===23) {
+	            this.state = 106;
 	            this.towAway();
 	        }
 
-	        this.state = 109;
+	        this.state = 111;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.NO:
-	            this.state = 107;
+	        case 7:
+	            this.state = 109;
 	            this.noStopping();
 	            break;
-	        case parkingsignParser.VALET:
-	            this.state = 108;
+	        case 26:
+	            this.state = 110;
 	            this.valetOnly();
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
-	        this.state = 112; 
+	        this.state = 114; 
 	        this._errHandler.sync(this);
 	        var _alt = 1;
 	        do {
 	        	switch (_alt) {
 	        	case 1:
-	        		this.state = 111;
+	        		this.state = 113;
 	        		this.timeRange();
 	        		break;
 	        	default:
 	        		throw new antlr4.error.NoViableAltException(this);
 	        	}
-	        	this.state = 114; 
+	        	this.state = 116; 
 	        	this._errHandler.sync(this);
 	        	_alt = this._interp.adaptivePredict(this._input,9, this._ctx);
 	        } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
-	        this.state = 117;
+	        this.state = 119;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.EXCEPT) {
-	            this.state = 116;
+	        if(_la===15) {
+	            this.state = 118;
 	            this.match(parkingsignParser.EXCEPT);
 	        }
 
-	        this.state = 120;
+	        this.state = 122;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & ((1 << (parkingsignParser.DAILY - 16)) | (1 << (parkingsignParser.NIGHTLY - 16)) | (1 << (parkingsignParser.SCHOOL - 16)) | (1 << (parkingsignParser.HOLIDAYS - 16)) | (1 << (parkingsignParser.MON - 16)) | (1 << (parkingsignParser.TUE - 16)) | (1 << (parkingsignParser.WED - 16)) | (1 << (parkingsignParser.THU - 16)) | (1 << (parkingsignParser.FRI - 16)) | (1 << (parkingsignParser.SAT - 16)) | (1 << (parkingsignParser.SUN - 16)))) !== 0)) {
-	            this.state = 119;
+	        if(((((_la - 16)) & ~0x1f) === 0 && ((1 << (_la - 16)) & 2130706455) !== 0)) {
+	            this.state = 121;
 	            this.dayRange();
 	        }
 
@@ -437,48 +436,48 @@ export default class parkingsignParser extends antlr4.Parser {
 	passengerLoadingSign() {
 	    let localctx = new PassengerLoadingSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, parkingsignParser.RULE_passengerLoadingSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 123;
+	        this.state = 125;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.TOW) {
-	            this.state = 122;
+	        if(_la===23) {
+	            this.state = 124;
 	            this.towAway();
 	        }
 
-	        this.state = 125;
+	        this.state = 127;
 	        this.loadingOnly();
-	        this.state = 127; 
+	        this.state = 129; 
 	        this._errHandler.sync(this);
 	        var _alt = 1;
 	        do {
 	        	switch (_alt) {
 	        	case 1:
-	        		this.state = 126;
+	        		this.state = 128;
 	        		this.timeRange();
 	        		break;
 	        	default:
 	        		throw new antlr4.error.NoViableAltException(this);
 	        	}
-	        	this.state = 129; 
+	        	this.state = 131; 
 	        	this._errHandler.sync(this);
 	        	_alt = this._interp.adaptivePredict(this._input,13, this._ctx);
 	        } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
-	        this.state = 132;
+	        this.state = 134;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.EXCEPT) {
-	            this.state = 131;
+	        if(_la===15) {
+	            this.state = 133;
 	            this.match(parkingsignParser.EXCEPT);
 	        }
 
-	        this.state = 135;
+	        this.state = 137;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & ((1 << (parkingsignParser.DAILY - 16)) | (1 << (parkingsignParser.NIGHTLY - 16)) | (1 << (parkingsignParser.SCHOOL - 16)) | (1 << (parkingsignParser.HOLIDAYS - 16)) | (1 << (parkingsignParser.MON - 16)) | (1 << (parkingsignParser.TUE - 16)) | (1 << (parkingsignParser.WED - 16)) | (1 << (parkingsignParser.THU - 16)) | (1 << (parkingsignParser.FRI - 16)) | (1 << (parkingsignParser.SAT - 16)) | (1 << (parkingsignParser.SUN - 16)))) !== 0)) {
-	            this.state = 134;
+	        if(((((_la - 16)) & ~0x1f) === 0 && ((1 << (_la - 16)) & 2130706455) !== 0)) {
+	            this.state = 136;
 	            this.dayRange();
 	        }
 
@@ -501,46 +500,46 @@ export default class parkingsignParser extends antlr4.Parser {
 	temporaryNoParkingSign() {
 	    let localctx = new TemporaryNoParkingSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, parkingsignParser.RULE_temporaryNoParkingSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 137;
-	        this.towAway();
-	        this.state = 138;
-	        this.match(parkingsignParser.TEMPORARY);
 	        this.state = 139;
+	        this.towAway();
+	        this.state = 140;
+	        this.match(parkingsignParser.TEMPORARY);
+	        this.state = 141;
 	        this.noParking();
-	        this.state = 142;
+	        this.state = 144;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.ANYTIME:
-	        case parkingsignParser.ANY:
-	            this.state = 140;
+	        case 12:
+	        case 13:
+	            this.state = 142;
 	            this.anyTime();
 	            break;
-	        case parkingsignParser.T__1:
-	        case parkingsignParser.NOON:
-	        case parkingsignParser.MIDNIGHT:
-	        case parkingsignParser.INT:
-	            this.state = 141;
+	        case 2:
+	        case 50:
+	        case 51:
+	        case 52:
+	            this.state = 143;
 	            this.timeRange();
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
-	        this.state = 145;
+	        this.state = 147;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.EXCEPT) {
-	            this.state = 144;
+	        if(_la===15) {
+	            this.state = 146;
 	            this.match(parkingsignParser.EXCEPT);
 	        }
 
-	        this.state = 148;
+	        this.state = 150;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & ((1 << (parkingsignParser.DAILY - 16)) | (1 << (parkingsignParser.NIGHTLY - 16)) | (1 << (parkingsignParser.SCHOOL - 16)) | (1 << (parkingsignParser.HOLIDAYS - 16)) | (1 << (parkingsignParser.MON - 16)) | (1 << (parkingsignParser.TUE - 16)) | (1 << (parkingsignParser.WED - 16)) | (1 << (parkingsignParser.THU - 16)) | (1 << (parkingsignParser.FRI - 16)) | (1 << (parkingsignParser.SAT - 16)) | (1 << (parkingsignParser.SUN - 16)))) !== 0)) {
-	            this.state = 147;
+	        if(((((_la - 16)) & ~0x1f) === 0 && ((1 << (_la - 16)) & 2130706455) !== 0)) {
+	            this.state = 149;
 	            this.dayRange();
 	        }
 
@@ -563,45 +562,45 @@ export default class parkingsignParser extends antlr4.Parser {
 	singleTimeLimitSign() {
 	    let localctx = new SingleTimeLimitSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, parkingsignParser.RULE_singleTimeLimitSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 154;
+	        this.state = 156;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,19,this._ctx);
 	        switch(la_) {
 	        case 1:
-	            this.state = 150;
+	            this.state = 152;
 	            this.match(parkingsignParser.INT);
-	            this.state = 151;
+	            this.state = 153;
 	            this.match(parkingsignParser.HOUR);
 	            break;
 
 	        case 2:
-	            this.state = 152;
+	            this.state = 154;
 	            this.match(parkingsignParser.INT);
-	            this.state = 153;
+	            this.state = 155;
 	            this.minute();
 	            break;
 
 	        }
-	        this.state = 156;
+	        this.state = 158;
 	        this.match(parkingsignParser.PARKING);
-	        this.state = 157;
-	        this.timeRange();
 	        this.state = 159;
+	        this.timeRange();
+	        this.state = 161;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.EXCEPT) {
-	            this.state = 158;
+	        if(_la===15) {
+	            this.state = 160;
 	            this.match(parkingsignParser.EXCEPT);
 	        }
 
-	        this.state = 162;
+	        this.state = 164;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & ((1 << (parkingsignParser.DAILY - 16)) | (1 << (parkingsignParser.NIGHTLY - 16)) | (1 << (parkingsignParser.SCHOOL - 16)) | (1 << (parkingsignParser.HOLIDAYS - 16)) | (1 << (parkingsignParser.MON - 16)) | (1 << (parkingsignParser.TUE - 16)) | (1 << (parkingsignParser.WED - 16)) | (1 << (parkingsignParser.THU - 16)) | (1 << (parkingsignParser.FRI - 16)) | (1 << (parkingsignParser.SAT - 16)) | (1 << (parkingsignParser.SUN - 16)))) !== 0)) {
-	            this.state = 161;
+	        if(((((_la - 16)) & ~0x1f) === 0 && ((1 << (_la - 16)) & 2130706455) !== 0)) {
+	            this.state = 163;
 	            this.dayRange();
 	        }
 
@@ -624,38 +623,38 @@ export default class parkingsignParser extends antlr4.Parser {
 	doubleTimeLimitSign() {
 	    let localctx = new DoubleTimeLimitSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, parkingsignParser.RULE_doubleTimeLimitSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 164;
-	        this.match(parkingsignParser.INT);
-	        this.state = 165;
-	        this.match(parkingsignParser.HOUR);
 	        this.state = 166;
-	        this.match(parkingsignParser.PARKING);
+	        this.match(parkingsignParser.INT);
 	        this.state = 167;
-	        this.dayRange();
+	        this.match(parkingsignParser.HOUR);
 	        this.state = 168;
-	        this.dayRange();
+	        this.match(parkingsignParser.PARKING);
 	        this.state = 169;
-	        this.time();
+	        this.dayRange();
 	        this.state = 170;
-	        this.time();
+	        this.dayRange();
 	        this.state = 171;
-	        this.match(parkingsignParser.TO);
+	        this.time();
 	        this.state = 172;
-	        this.match(parkingsignParser.TO);
+	        this.time();
 	        this.state = 173;
-	        this.time();
+	        this.match(parkingsignParser.TO);
 	        this.state = 174;
+	        this.match(parkingsignParser.TO);
+	        this.state = 175;
 	        this.time();
-	        this.state = 177;
+	        this.state = 176;
+	        this.time();
+	        this.state = 179;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.EXCEPT) {
-	            this.state = 175;
+	        if(_la===15) {
+	            this.state = 177;
 	            this.match(parkingsignParser.EXCEPT);
-	            this.state = 176;
+	            this.state = 178;
 	            this.match(parkingsignParser.HOLIDAYS);
 	        }
 
@@ -678,28 +677,28 @@ export default class parkingsignParser extends antlr4.Parser {
 	permitSign() {
 	    let localctx = new PermitSignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, parkingsignParser.RULE_permitSign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 181;
+	        this.state = 183;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.VEHICLES) {
-	            this.state = 179;
+	        if(_la===28) {
+	            this.state = 181;
 	            this.match(parkingsignParser.VEHICLES);
-	            this.state = 180;
+	            this.state = 182;
 	            this.match(parkingsignParser.WITH);
 	        }
 
-	        this.state = 183;
-	        this.match(parkingsignParser.DISTRICT);
-	        this.state = 184;
-	        this.match(parkingsignParser.NO);
 	        this.state = 185;
-	        this.match(parkingsignParser.INT);
+	        this.match(parkingsignParser.DISTRICT);
 	        this.state = 186;
-	        this.match(parkingsignParser.PERMITS);
+	        this.match(parkingsignParser.NO);
 	        this.state = 187;
+	        this.match(parkingsignParser.INT);
+	        this.state = 188;
+	        this.match(parkingsignParser.PERMITS);
+	        this.state = 189;
 	        this.exempt();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -720,14 +719,14 @@ export default class parkingsignParser extends antlr4.Parser {
 	streetSweeping() {
 	    let localctx = new StreetSweepingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, parkingsignParser.RULE_streetSweeping);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 189;
+	        this.state = 191;
 	        this.match(parkingsignParser.STREET);
-	        this.state = 190;
+	        this.state = 192;
 	        _la = this._input.LA(1);
-	        if(!(_la===parkingsignParser.SWEEPING || _la===parkingsignParser.CLEANING)) {
+	        if(!(_la===48 || _la===49)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -755,9 +754,9 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 22, parkingsignParser.RULE_noParking);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 192;
+	        this.state = 194;
 	        this.match(parkingsignParser.NO);
-	        this.state = 193;
+	        this.state = 195;
 	        this.match(parkingsignParser.PARKING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -780,9 +779,9 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, parkingsignParser.RULE_noStopping);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 195;
+	        this.state = 197;
 	        this.match(parkingsignParser.NO);
-	        this.state = 196;
+	        this.state = 198;
 	        this.match(parkingsignParser.STOPPING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -805,11 +804,11 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 26, parkingsignParser.RULE_valetOnly);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 198;
-	        this.match(parkingsignParser.VALET);
-	        this.state = 199;
-	        this.match(parkingsignParser.PARKING);
 	        this.state = 200;
+	        this.match(parkingsignParser.VALET);
+	        this.state = 201;
+	        this.match(parkingsignParser.PARKING);
+	        this.state = 202;
 	        this.match(parkingsignParser.ONLY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -832,11 +831,11 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 28, parkingsignParser.RULE_loadingOnly);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 202;
-	        this.match(parkingsignParser.PASSENGER);
-	        this.state = 203;
-	        this.match(parkingsignParser.LOADING);
 	        this.state = 204;
+	        this.match(parkingsignParser.PASSENGER);
+	        this.state = 205;
+	        this.match(parkingsignParser.LOADING);
+	        this.state = 206;
 	        this.match(parkingsignParser.ONLY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -859,9 +858,9 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, parkingsignParser.RULE_schoolDays);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 206;
+	        this.state = 208;
 	        this.match(parkingsignParser.SCHOOL);
-	        this.state = 207;
+	        this.state = 209;
 	        this.match(parkingsignParser.DAYS);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -883,27 +882,27 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new TimeRangeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, parkingsignParser.RULE_timeRange);
 	    try {
-	        this.state = 217;
+	        this.state = 219;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,24,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 209;
-	            this.time();
-	            this.state = 210;
-	            this.to();
 	            this.state = 211;
+	            this.time();
+	            this.state = 212;
+	            this.to();
+	            this.state = 213;
 	            this.time();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 213;
-	            this.match(parkingsignParser.INT);
-	            this.state = 214;
-	            this.to();
 	            this.state = 215;
+	            this.match(parkingsignParser.INT);
+	            this.state = 216;
+	            this.to();
+	            this.state = 217;
 	            this.time();
 	            break;
 
@@ -927,12 +926,12 @@ export default class parkingsignParser extends antlr4.Parser {
 	everyDay() {
 	    let localctx = new EveryDayContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, parkingsignParser.RULE_everyDay);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 219;
+	        this.state = 221;
 	        _la = this._input.LA(1);
-	        if(!(_la===parkingsignParser.DAILY || _la===parkingsignParser.NIGHTLY)) {
+	        if(!(_la===16 || _la===17)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -960,11 +959,11 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 36, parkingsignParser.RULE_dayToDay);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 221;
-	        this.day();
-	        this.state = 222;
-	        this.to();
 	        this.state = 223;
+	        this.day();
+	        this.state = 224;
+	        this.to();
+	        this.state = 225;
 	        this.day();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -987,11 +986,11 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 38, parkingsignParser.RULE_dayAndDay);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 225;
-	        this.day();
-	        this.state = 226;
-	        this.and_();
 	        this.state = 227;
+	        this.day();
+	        this.state = 228;
+	        this.and_();
+	        this.state = 229;
 	        this.day();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1013,51 +1012,51 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new DayRangeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, parkingsignParser.RULE_dayRange);
 	    try {
-	        this.state = 238;
+	        this.state = 240;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,25,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 229;
+	            this.state = 231;
 	            this.everyDay();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 230;
+	            this.state = 232;
 	            this.schoolDays();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 231;
+	            this.state = 233;
 	            this.match(parkingsignParser.HOLIDAYS);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 232;
+	            this.state = 234;
 	            this.dayAndDay();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 233;
+	            this.state = 235;
 	            this.dayToDay();
 	            break;
 
 	        case 6:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 234;
+	            this.state = 236;
 	            this.day();
-	            this.state = 235;
+	            this.state = 237;
 	            this.match(parkingsignParser.ONLY);
 	            break;
 
 	        case 7:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 237;
+	            this.state = 239;
 	            this.day();
 	            break;
 
@@ -1083,7 +1082,7 @@ export default class parkingsignParser extends antlr4.Parser {
 	    this.enterRule(localctx, 42, parkingsignParser.RULE_dayRangePlus);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 240;
+	        this.state = 242;
 	        this.dayRange();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1104,12 +1103,12 @@ export default class parkingsignParser extends antlr4.Parser {
 	to() {
 	    let localctx = new ToContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, parkingsignParser.RULE_to);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 242;
+	        this.state = 244;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << parkingsignParser.TO) | (1 << parkingsignParser.THRU) | (1 << parkingsignParser.DASH))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 3584) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1135,12 +1134,12 @@ export default class parkingsignParser extends antlr4.Parser {
 	and_() {
 	    let localctx = new And_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, parkingsignParser.RULE_and_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 244;
+	        this.state = 246;
 	        _la = this._input.LA(1);
-	        if(!(_la===parkingsignParser.AND || _la===parkingsignParser.AMPERSAND)) {
+	        if(!(_la===21 || _la===22)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1166,20 +1165,20 @@ export default class parkingsignParser extends antlr4.Parser {
 	towAway() {
 	    let localctx = new TowAwayContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, parkingsignParser.RULE_towAway);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 246;
-	        this.match(parkingsignParser.TOW);
 	        this.state = 248;
+	        this.match(parkingsignParser.TOW);
+	        this.state = 250;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===parkingsignParser.DASH) {
-	            this.state = 247;
+	        if(_la===11) {
+	            this.state = 249;
 	            this.match(parkingsignParser.DASH);
 	        }
 
-	        this.state = 250;
+	        this.state = 252;
 	        this.match(parkingsignParser.AWAY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1200,12 +1199,12 @@ export default class parkingsignParser extends antlr4.Parser {
 	minute() {
 	    let localctx = new MinuteContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, parkingsignParser.RULE_minute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 252;
+	        this.state = 254;
 	        _la = this._input.LA(1);
-	        if(!(_la===parkingsignParser.MINUTE || _la===parkingsignParser.MIN)) {
+	        if(!(_la===35 || _la===36)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1231,12 +1230,12 @@ export default class parkingsignParser extends antlr4.Parser {
 	exempt() {
 	    let localctx = new ExemptContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, parkingsignParser.RULE_exempt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 254;
+	        this.state = 256;
 	        _la = this._input.LA(1);
-	        if(!(_la===parkingsignParser.EXEMPTED || _la===parkingsignParser.EXEMPT)) {
+	        if(!(_la===32 || _la===33)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1263,19 +1262,19 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new AnyTimeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, parkingsignParser.RULE_anyTime);
 	    try {
-	        this.state = 259;
+	        this.state = 261;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.ANYTIME:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 256;
+	            this.state = 258;
 	            this.match(parkingsignParser.ANYTIME);
 	            break;
-	        case parkingsignParser.ANY:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 257;
+	            this.state = 259;
 	            this.match(parkingsignParser.ANY);
-	            this.state = 258;
+	            this.state = 260;
 	            this.match(parkingsignParser.TIME);
 	            break;
 	        default:
@@ -1300,12 +1299,12 @@ export default class parkingsignParser extends antlr4.Parser {
 	day() {
 	    let localctx = new DayContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, parkingsignParser.RULE_day);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 261;
+	        this.state = 263;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (parkingsignParser.MON - 40)) | (1 << (parkingsignParser.TUE - 40)) | (1 << (parkingsignParser.WED - 40)) | (1 << (parkingsignParser.THU - 40)) | (1 << (parkingsignParser.FRI - 40)) | (1 << (parkingsignParser.SAT - 40)) | (1 << (parkingsignParser.SUN - 40)))) !== 0))) {
+	        if(!(((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 127) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1331,67 +1330,67 @@ export default class parkingsignParser extends antlr4.Parser {
 	time() {
 	    let localctx = new TimeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, parkingsignParser.RULE_time);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 274;
+	        this.state = 276;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,30,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 263;
+	            this.state = 265;
 	            this.match(parkingsignParser.INT);
-	            this.state = 266;
+	            this.state = 268;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===parkingsignParser.T__0) {
-	                this.state = 264;
+	            if(_la===1) {
+	                this.state = 266;
 	                this.match(parkingsignParser.T__0);
-	                this.state = 265;
+	                this.state = 267;
 	                this.match(parkingsignParser.INT);
 	            }
 
-	            this.state = 270;
+	            this.state = 272;
 	            this._errHandler.sync(this);
 	            switch (this._input.LA(1)) {
-	            case parkingsignParser.T__2:
-	            case parkingsignParser.T__3:
-	            	this.state = 268;
+	            case 3:
+	            case 4:
+	            	this.state = 270;
 	            	this.am();
 	            	break;
-	            case parkingsignParser.T__4:
-	            case parkingsignParser.T__5:
-	            	this.state = 269;
+	            case 5:
+	            case 6:
+	            	this.state = 271;
 	            	this.pm();
 	            	break;
-	            case parkingsignParser.EOF:
-	            case parkingsignParser.T__1:
-	            case parkingsignParser.NO:
-	            case parkingsignParser.TO:
-	            case parkingsignParser.THRU:
-	            case parkingsignParser.DASH:
-	            case parkingsignParser.ANYTIME:
-	            case parkingsignParser.ANY:
-	            case parkingsignParser.EXCEPT:
-	            case parkingsignParser.DAILY:
-	            case parkingsignParser.NIGHTLY:
-	            case parkingsignParser.SCHOOL:
-	            case parkingsignParser.HOLIDAYS:
-	            case parkingsignParser.TOW:
-	            case parkingsignParser.VALET:
-	            case parkingsignParser.VEHICLES:
-	            case parkingsignParser.DISTRICT:
-	            case parkingsignParser.PASSENGER:
-	            case parkingsignParser.MON:
-	            case parkingsignParser.TUE:
-	            case parkingsignParser.WED:
-	            case parkingsignParser.THU:
-	            case parkingsignParser.FRI:
-	            case parkingsignParser.SAT:
-	            case parkingsignParser.SUN:
-	            case parkingsignParser.NOON:
-	            case parkingsignParser.MIDNIGHT:
-	            case parkingsignParser.INT:
+	            case -1:
+	            case 2:
+	            case 7:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 20:
+	            case 23:
+	            case 26:
+	            case 28:
+	            case 30:
+	            case 38:
+	            case 40:
+	            case 41:
+	            case 42:
+	            case 43:
+	            case 44:
+	            case 45:
+	            case 46:
+	            case 50:
+	            case 51:
+	            case 52:
 	            	break;
 	            default:
 	            	break;
@@ -1400,13 +1399,13 @@ export default class parkingsignParser extends antlr4.Parser {
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 272;
+	            this.state = 274;
 	            this.twelveNoon();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 273;
+	            this.state = 275;
 	            this.twelveMidnight();
 	            break;
 
@@ -1431,19 +1430,19 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new TwelveNoonContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, parkingsignParser.RULE_twelveNoon);
 	    try {
-	        this.state = 279;
+	        this.state = 281;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.NOON:
+	        case 50:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 276;
+	            this.state = 278;
 	            this.match(parkingsignParser.NOON);
 	            break;
-	        case parkingsignParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 277;
+	            this.state = 279;
 	            this.match(parkingsignParser.T__1);
-	            this.state = 278;
+	            this.state = 280;
 	            this.match(parkingsignParser.NOON);
 	            break;
 	        default:
@@ -1469,19 +1468,19 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new TwelveMidnightContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, parkingsignParser.RULE_twelveMidnight);
 	    try {
-	        this.state = 284;
+	        this.state = 286;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.MIDNIGHT:
+	        case 51:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 281;
+	            this.state = 283;
 	            this.match(parkingsignParser.MIDNIGHT);
 	            break;
-	        case parkingsignParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 282;
+	            this.state = 284;
 	            this.match(parkingsignParser.T__1);
-	            this.state = 283;
+	            this.state = 285;
 	            this.match(parkingsignParser.MIDNIGHT);
 	            break;
 	        default:
@@ -1507,17 +1506,17 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new AmContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, parkingsignParser.RULE_am);
 	    try {
-	        this.state = 288;
+	        this.state = 290;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 286;
+	            this.state = 288;
 	            this.match(parkingsignParser.T__2);
 	            break;
-	        case parkingsignParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 287;
+	            this.state = 289;
 	            this.match(parkingsignParser.T__3);
 	            break;
 	        default:
@@ -1543,17 +1542,17 @@ export default class parkingsignParser extends antlr4.Parser {
 	    let localctx = new PmContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, parkingsignParser.RULE_pm);
 	    try {
-	        this.state = 292;
+	        this.state = 294;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case parkingsignParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 290;
+	            this.state = 292;
 	            this.match(parkingsignParser.T__4);
 	            break;
-	        case parkingsignParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 291;
+	            this.state = 293;
 	            this.match(parkingsignParser.T__5);
 	            break;
 	        default:
@@ -1679,6 +1678,10 @@ class ParkingSignsContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = parkingsignParser.RULE_parkingSigns;
     }
+
+	EOF() {
+	    return this.getToken(parkingsignParser.EOF, 0);
+	};
 
 	parkingSign = function(i) {
 	    if(i===undefined) {
@@ -3305,3 +3308,12 @@ parkingsignParser.TwelveNoonContext = TwelveNoonContext;
 parkingsignParser.TwelveMidnightContext = TwelveMidnightContext; 
 parkingsignParser.AmContext = AmContext; 
 parkingsignParser.PmContext = PmContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

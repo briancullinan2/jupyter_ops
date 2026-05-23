@@ -1,4 +1,4 @@
-// Generated from ./informix/informix.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/informix/informix.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import informixListener from './informixListener.js';
@@ -1420,22 +1420,18 @@ export default class informixParser extends antlr4.Parser {
         this.symbolicNames = informixParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	compilation_unit() {
 	    let localctx = new Compilation_unitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, informixParser.RULE_compilation_unit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 401;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.DATABASE) {
+	        if(_la===61) {
 	            this.state = 400;
 	            this.databaseDeclaration();
 	        }
@@ -1443,7 +1439,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 404;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.GLOBALS) {
+	        if(_la===122) {
 	            this.state = 403;
 	            this.globalDeclaration();
 	        }
@@ -1451,7 +1447,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 407;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.DEFINE) {
+	        if(_la===73) {
 	            this.state = 406;
 	            this.typeDeclarations();
 	        }
@@ -1461,7 +1457,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 411;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.FUNCTION || _la===informixParser.REPORT) {
+	        if(_la===120 || _la===234) {
 	            this.state = 410;
 	            this.functionOrReportDefinitions();
 	        }
@@ -1510,13 +1506,13 @@ export default class informixParser extends antlr4.Parser {
 	mainBlock() {
 	    let localctx = new MainBlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, informixParser.RULE_mainBlock);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 418;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.EOL) {
+	        if(_la===339) {
 	            this.state = 417;
 	            this.eol();
 	        }
@@ -1528,7 +1524,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 423;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.DEFINE) {
+	        if(_la===73) {
 	            this.state = 422;
 	            this.typeDeclarations();
 	        }
@@ -1536,7 +1532,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 426;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DEFER - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0) || _la===informixParser.EOL) {
+	        if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471953) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0) || _la===339) {
 	            this.state = 425;
 	            this.mainStatements();
 	        }
@@ -1566,7 +1562,7 @@ export default class informixParser extends antlr4.Parser {
 	mainStatements() {
 	    let localctx = new MainStatementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, informixParser.RULE_mainStatements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 435; 
@@ -1576,80 +1572,80 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 435;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.DEFER:
+	            case 72:
 	                this.state = 432;
 	                this.deferStatement();
 	                break;
-	            case informixParser.ALLOCATE:
-	            case informixParser.BEGIN:
-	            case informixParser.CALL:
-	            case informixParser.CASE:
-	            case informixParser.CLEAR:
-	            case informixParser.CLOSE:
-	            case informixParser.COMMIT:
-	            case informixParser.CONSTRUCT:
-	            case informixParser.CONTINUE:
-	            case informixParser.CREATE:
-	            case informixParser.CURRENT:
-	            case informixParser.DATABASE:
-	            case informixParser.DEALLOCATE:
-	            case informixParser.DECLARE:
-	            case informixParser.DELETE:
-	            case informixParser.DISPLAY:
-	            case informixParser.DROP:
-	            case informixParser.ERROR:
-	            case informixParser.EXECUTE:
-	            case informixParser.EXIT:
-	            case informixParser.FETCH:
-	            case informixParser.FINISH:
-	            case informixParser.FLUSH:
-	            case informixParser.FOR:
-	            case informixParser.FOREACH:
-	            case informixParser.FREE:
-	            case informixParser.GOTO:
-	            case informixParser.HIDE:
-	            case informixParser.IF:
-	            case informixParser.INITIALIZE:
-	            case informixParser.INPUT:
-	            case informixParser.INSERT:
-	            case informixParser.LET:
-	            case informixParser.LOAD:
-	            case informixParser.LOCATE:
-	            case informixParser.LOCK:
-	            case informixParser.MENU:
-	            case informixParser.MESSAGE:
-	            case informixParser.NEED:
-	            case informixParser.NEXT:
-	            case informixParser.OPEN:
-	            case informixParser.OPTIONS:
-	            case informixParser.OUTPUT:
-	            case informixParser.PAUSE:
-	            case informixParser.PREPARE:
-	            case informixParser.PRINT:
-	            case informixParser.PROMPT:
-	            case informixParser.PUT:
-	            case informixParser.RESIZE:
-	            case informixParser.RETURN:
-	            case informixParser.ROLLBACK:
-	            case informixParser.RUN:
-	            case informixParser.SCROLL:
-	            case informixParser.SKIP2:
-	            case informixParser.SELECT:
-	            case informixParser.SET:
-	            case informixParser.SHOW:
-	            case informixParser.SLEEP:
-	            case informixParser.START:
-	            case informixParser.TERMINATE:
-	            case informixParser.UNLOAD:
-	            case informixParser.UPDATE:
-	            case informixParser.VALIDATE:
-	            case informixParser.WHENEVER:
-	            case informixParser.WHILE:
-	            case informixParser.IDENT:
+	            case 5:
+	            case 20:
+	            case 33:
+	            case 34:
+	            case 39:
+	            case 41:
+	            case 47:
+	            case 52:
+	            case 53:
+	            case 57:
+	            case 58:
+	            case 61:
+	            case 65:
+	            case 69:
+	            case 74:
+	            case 80:
+	            case 85:
+	            case 89:
+	            case 94:
+	            case 95:
+	            case 102:
+	            case 106:
+	            case 110:
+	            case 111:
+	            case 115:
+	            case 118:
+	            case 124:
+	            case 130:
+	            case 133:
+	            case 139:
+	            case 140:
+	            case 141:
+	            case 159:
+	            case 164:
+	            case 165:
+	            case 166:
+	            case 171:
+	            case 172:
+	            case 186:
+	            case 187:
+	            case 201:
+	            case 203:
+	            case 207:
+	            case 212:
+	            case 216:
+	            case 218:
+	            case 221:
+	            case 222:
+	            case 235:
+	            case 236:
+	            case 240:
+	            case 243:
+	            case 245:
+	            case 247:
+	            case 248:
+	            case 249:
+	            case 251:
+	            case 253:
+	            case 261:
+	            case 269:
+	            case 287:
+	            case 289:
+	            case 292:
+	            case 301:
+	            case 303:
+	            case 332:
 	                this.state = 433;
 	                this.codeBlock();
 	                break;
-	            case informixParser.EOL:
+	            case 339:
 	                this.state = 434;
 	                this.eol();
 	                break;
@@ -1659,7 +1655,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 437; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DEFER - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0) || _la===informixParser.EOL);
+	        } while(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471953) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0) || _la===339);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1679,14 +1675,14 @@ export default class informixParser extends antlr4.Parser {
 	deferStatement() {
 	    let localctx = new DeferStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, informixParser.RULE_deferStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 439;
 	        this.match(informixParser.DEFER);
 	        this.state = 440;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.INTERRUPT || _la===informixParser.QUIT)) {
+	        if(!(_la===147 || _la===223)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1714,7 +1710,7 @@ export default class informixParser extends antlr4.Parser {
 	functionOrReportDefinitions() {
 	    let localctx = new FunctionOrReportDefinitionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, informixParser.RULE_functionOrReportDefinitions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 445; 
@@ -1724,11 +1720,11 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 445;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.REPORT:
+	            case 234:
 	                this.state = 443;
 	                this.reportDefinition();
 	                break;
-	            case informixParser.FUNCTION:
+	            case 120:
 	                this.state = 444;
 	                this.functionDefinition();
 	                break;
@@ -1738,7 +1734,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 447; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===informixParser.FUNCTION || _la===informixParser.REPORT);
+	        } while(_la===120 || _la===234);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1789,7 +1785,7 @@ export default class informixParser extends antlr4.Parser {
 	functionDefinition() {
 	    let localctx = new FunctionDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, informixParser.RULE_functionDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 453;
@@ -1799,7 +1795,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 456;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.LPAREN) {
+	        if(_la===325) {
 	            this.state = 455;
 	            this.parameterList();
 	        }
@@ -1811,7 +1807,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 461;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	        if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	            this.state = 460;
 	            this.codeBlock();
 	        }
@@ -1841,7 +1837,7 @@ export default class informixParser extends antlr4.Parser {
 	parameterList() {
 	    let localctx = new ParameterListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, informixParser.RULE_parameterList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 467;
@@ -1849,7 +1845,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 471;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.IDENT) {
+	        while(_la===332) {
 	            this.state = 468;
 	            this.parameterGroup();
 	            this.state = 473;
@@ -1877,7 +1873,7 @@ export default class informixParser extends antlr4.Parser {
 	parameterGroup() {
 	    let localctx = new ParameterGroupContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, informixParser.RULE_parameterGroup);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 476;
@@ -1885,7 +1881,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 481;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 477;
 	            this.match(informixParser.COMMA);
 	            this.state = 478;
@@ -1920,11 +1916,11 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 491;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.STRING_LITERAL:
+	        case 333:
 	            this.state = 485;
 	            this.string();
 	            break;
-	        case informixParser.EOL:
+	        case 339:
 	            this.state = 486;
 	            this.eol();
 	            this.state = 487;
@@ -1958,7 +1954,7 @@ export default class informixParser extends antlr4.Parser {
 	typeDeclarations() {
 	    let localctx = new TypeDeclarationsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, informixParser.RULE_typeDeclarations);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 496; 
@@ -1970,7 +1966,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 498; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===informixParser.DEFINE);
+	        } while(_la===73);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1990,7 +1986,7 @@ export default class informixParser extends antlr4.Parser {
 	typeDeclaration() {
 	    let localctx = new TypeDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, informixParser.RULE_typeDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 500;
@@ -2000,7 +1996,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 506;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 502;
 	            this.match(informixParser.COMMA);
 	            this.state = 503;
@@ -2028,7 +2024,7 @@ export default class informixParser extends antlr4.Parser {
 	variableDeclaration() {
 	    let localctx = new VariableDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, informixParser.RULE_variableDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 530;
 	        this._errHandler.sync(this);
@@ -2041,7 +2037,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 514;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 510;
 	                this.match(informixParser.COMMA);
 	                this.state = 511;
@@ -2103,44 +2099,44 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 536;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.BIGINT:
-	        case informixParser.CHAR:
-	        case informixParser.DATE:
-	        case informixParser.DATETIME:
-	        case informixParser.DEC:
-	        case informixParser.DECIMAL:
-	        case informixParser.DOUBLE:
-	        case informixParser.FLOAT:
-	        case informixParser.INT:
-	        case informixParser.INTEGER:
-	        case informixParser.INTERVAL:
-	        case informixParser.MONEY:
-	        case informixParser.NCHAR:
-	        case informixParser.NUMERIC:
-	        case informixParser.NVARCHAR:
-	        case informixParser.REAL:
-	        case informixParser.SMALLFLOAT:
-	        case informixParser.SMALLINT:
-	        case informixParser.VARCHAR:
-	        case informixParser.CHARACTER:
+	        case 22:
+	        case 35:
+	        case 62:
+	        case 63:
+	        case 66:
+	        case 67:
+	        case 83:
+	        case 109:
+	        case 144:
+	        case 146:
+	        case 148:
+	        case 183:
+	        case 184:
+	        case 194:
+	        case 196:
+	        case 226:
+	        case 254:
+	        case 255:
+	        case 294:
+	        case 341:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 532;
 	            this.typeIdentifier();
 	            break;
-	        case informixParser.LIKE:
+	        case 160:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 533;
 	            this.indirectType();
 	            break;
-	        case informixParser.BYTE:
-	        case informixParser.TEXT:
+	        case 31:
+	        case 271:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 534;
 	            this.largeType();
 	            break;
-	        case informixParser.ARRAY:
-	        case informixParser.DYNAMIC:
-	        case informixParser.RECORD:
+	        case 18:
+	        case 86:
+	        case 225:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 535;
 	            this.structuredType();
@@ -2200,34 +2196,34 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 546;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.CHAR:
-	        case informixParser.NCHAR:
-	        case informixParser.NVARCHAR:
-	        case informixParser.VARCHAR:
-	        case informixParser.CHARACTER:
+	        case 35:
+	        case 184:
+	        case 196:
+	        case 294:
+	        case 341:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 543;
 	            this.charType();
 	            break;
-	        case informixParser.BIGINT:
-	        case informixParser.DEC:
-	        case informixParser.DECIMAL:
-	        case informixParser.DOUBLE:
-	        case informixParser.FLOAT:
-	        case informixParser.INT:
-	        case informixParser.INTEGER:
-	        case informixParser.MONEY:
-	        case informixParser.NUMERIC:
-	        case informixParser.REAL:
-	        case informixParser.SMALLFLOAT:
-	        case informixParser.SMALLINT:
+	        case 22:
+	        case 66:
+	        case 67:
+	        case 83:
+	        case 109:
+	        case 144:
+	        case 146:
+	        case 183:
+	        case 194:
+	        case 226:
+	        case 254:
+	        case 255:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 544;
 	            this.numberType();
 	            break;
-	        case informixParser.DATE:
-	        case informixParser.DATETIME:
-	        case informixParser.INTERVAL:
+	        case 62:
+	        case 63:
+	        case 148:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 545;
 	            this.timeType();
@@ -2254,12 +2250,12 @@ export default class informixParser extends antlr4.Parser {
 	largeType() {
 	    let localctx = new LargeTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, informixParser.RULE_largeType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 548;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.BYTE || _la===informixParser.TEXT)) {
+	        if(!(_la===31 || _la===271)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2285,21 +2281,21 @@ export default class informixParser extends antlr4.Parser {
 	numberType() {
 	    let localctx = new NumberTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, informixParser.RULE_numberType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 569;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.BIGINT:
-	        case informixParser.INT:
-	        case informixParser.INTEGER:
-	        case informixParser.REAL:
-	        case informixParser.SMALLFLOAT:
-	        case informixParser.SMALLINT:
+	        case 22:
+	        case 144:
+	        case 146:
+	        case 226:
+	        case 254:
+	        case 255:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 550;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.BIGINT || _la===informixParser.INT || _la===informixParser.INTEGER || ((((_la - 226)) & ~0x1f) == 0 && ((1 << (_la - 226)) & ((1 << (informixParser.REAL - 226)) | (1 << (informixParser.SMALLFLOAT - 226)) | (1 << (informixParser.SMALLINT - 226)))) !== 0))) {
+	            if(!(_la===22 || _la===144 || _la===146 || ((((_la - 226)) & ~0x1f) === 0 && ((1 << (_la - 226)) & 805306369) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2307,14 +2303,14 @@ export default class informixParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case informixParser.DEC:
-	        case informixParser.DECIMAL:
-	        case informixParser.MONEY:
-	        case informixParser.NUMERIC:
+	        case 66:
+	        case 67:
+	        case 183:
+	        case 194:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 551;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.DEC || _la===informixParser.DECIMAL || _la===informixParser.MONEY || _la===informixParser.NUMERIC)) {
+	            if(!(_la===66 || _la===67 || _la===183 || _la===194)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2324,7 +2320,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 560;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 552;
 	                this.match(informixParser.LPAREN);
 	                this.state = 553;
@@ -2332,7 +2328,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 556;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.COMMA) {
+	                if(_la===316) {
 	                    this.state = 554;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 555;
@@ -2344,12 +2340,12 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.DOUBLE:
-	        case informixParser.FLOAT:
+	        case 83:
+	        case 109:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 562;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.DOUBLE || _la===informixParser.FLOAT)) {
+	            if(!(_la===83 || _la===109)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2359,7 +2355,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 567;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 563;
 	                this.match(informixParser.LPAREN);
 	                this.state = 564;
@@ -2391,17 +2387,17 @@ export default class informixParser extends antlr4.Parser {
 	charType() {
 	    let localctx = new CharTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, informixParser.RULE_charType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 587;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.NVARCHAR:
-	        case informixParser.VARCHAR:
+	        case 196:
+	        case 294:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 571;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.NVARCHAR || _la===informixParser.VARCHAR)) {
+	            if(!(_la===196 || _la===294)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2415,7 +2411,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 576;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.COMMA) {
+	            if(_la===316) {
 	                this.state = 574;
 	                this.match(informixParser.COMMA);
 	                this.state = 575;
@@ -2425,13 +2421,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 578;
 	            this.match(informixParser.RPAREN);
 	            break;
-	        case informixParser.CHAR:
-	        case informixParser.NCHAR:
-	        case informixParser.CHARACTER:
+	        case 35:
+	        case 184:
+	        case 341:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 580;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.CHAR || _la===informixParser.NCHAR || _la===informixParser.CHARACTER)) {
+	            if(!(_la===35 || _la===184 || _la===341)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2441,7 +2437,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 585;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 581;
 	                this.match(informixParser.LPAREN);
 	                this.state = 582;
@@ -2477,19 +2473,19 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 594;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.DATE:
+	        case 62:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 589;
 	            this.match(informixParser.DATE);
 	            break;
-	        case informixParser.DATETIME:
+	        case 63:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 590;
 	            this.match(informixParser.DATETIME);
 	            this.state = 591;
 	            this.datetimeQualifier();
 	            break;
-	        case informixParser.INTERVAL:
+	        case 148:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 592;
 	            this.match(informixParser.INTERVAL);
@@ -2522,7 +2518,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 617;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.YEAR:
+	        case 310:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 596;
 	            this.match(informixParser.YEAR);
@@ -2531,7 +2527,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 598;
 	            this.yearQualifier();
 	            break;
-	        case informixParser.MONTH:
+	        case 182:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 599;
 	            this.match(informixParser.MONTH);
@@ -2540,7 +2536,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 601;
 	            this.monthQualifier();
 	            break;
-	        case informixParser.DAY:
+	        case 64:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 602;
 	            this.match(informixParser.DAY);
@@ -2549,7 +2545,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 604;
 	            this.dayQualifier();
 	            break;
-	        case informixParser.HOUR:
+	        case 132:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 605;
 	            this.match(informixParser.HOUR);
@@ -2558,7 +2554,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 607;
 	            this.hourQualifier();
 	            break;
-	        case informixParser.MINUTE:
+	        case 178:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 608;
 	            this.match(informixParser.MINUTE);
@@ -2567,7 +2563,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 610;
 	            this.minuteQualifier();
 	            break;
-	        case informixParser.SECOND:
+	        case 246:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 611;
 	            this.match(informixParser.SECOND);
@@ -2576,7 +2572,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 613;
 	            this.secondQualifier();
 	            break;
-	        case informixParser.FRACTION:
+	        case 117:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 614;
 	            this.match(informixParser.FRACTION);
@@ -2607,19 +2603,19 @@ export default class informixParser extends antlr4.Parser {
 	intervalQualifier() {
 	    let localctx = new IntervalQualifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, informixParser.RULE_intervalQualifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 676;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.YEAR:
+	        case 310:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 619;
 	            this.match(informixParser.YEAR);
 	            this.state = 624;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 620;
 	                this.match(informixParser.LPAREN);
 	                this.state = 621;
@@ -2633,14 +2629,14 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 627;
 	            this.yearQualifier();
 	            break;
-	        case informixParser.MONTH:
+	        case 182:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 628;
 	            this.match(informixParser.MONTH);
 	            this.state = 633;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 629;
 	                this.match(informixParser.LPAREN);
 	                this.state = 630;
@@ -2654,14 +2650,14 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 636;
 	            this.monthQualifier();
 	            break;
-	        case informixParser.DAY:
+	        case 64:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 637;
 	            this.match(informixParser.DAY);
 	            this.state = 642;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 638;
 	                this.match(informixParser.LPAREN);
 	                this.state = 639;
@@ -2675,14 +2671,14 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 645;
 	            this.dayQualifier();
 	            break;
-	        case informixParser.HOUR:
+	        case 132:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 646;
 	            this.match(informixParser.HOUR);
 	            this.state = 651;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 647;
 	                this.match(informixParser.LPAREN);
 	                this.state = 648;
@@ -2696,14 +2692,14 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 654;
 	            this.hourQualifier();
 	            break;
-	        case informixParser.MINUTE:
+	        case 178:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 655;
 	            this.match(informixParser.MINUTE);
 	            this.state = 660;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 656;
 	                this.match(informixParser.LPAREN);
 	                this.state = 657;
@@ -2717,14 +2713,14 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 663;
 	            this.minuteQualifier();
 	            break;
-	        case informixParser.SECOND:
+	        case 246:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 664;
 	            this.match(informixParser.SECOND);
 	            this.state = 669;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 665;
 	                this.match(informixParser.LPAREN);
 	                this.state = 666;
@@ -2738,7 +2734,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 672;
 	            this.secondQualifier();
 	            break;
-	        case informixParser.FRACTION:
+	        case 117:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 673;
 	            this.match(informixParser.FRACTION);
@@ -2796,17 +2792,17 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 682;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.YEAR:
+	        case 310:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 680;
 	            this.match(informixParser.YEAR);
 	            break;
-	        case informixParser.DAY:
-	        case informixParser.FRACTION:
-	        case informixParser.HOUR:
-	        case informixParser.MINUTE:
-	        case informixParser.MONTH:
-	        case informixParser.SECOND:
+	        case 64:
+	        case 117:
+	        case 132:
+	        case 178:
+	        case 182:
+	        case 246:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 681;
 	            this.monthQualifier();
@@ -2837,16 +2833,16 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 686;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.MONTH:
+	        case 182:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 684;
 	            this.match(informixParser.MONTH);
 	            break;
-	        case informixParser.DAY:
-	        case informixParser.FRACTION:
-	        case informixParser.HOUR:
-	        case informixParser.MINUTE:
-	        case informixParser.SECOND:
+	        case 64:
+	        case 117:
+	        case 132:
+	        case 178:
+	        case 246:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 685;
 	            this.dayQualifier();
@@ -2877,15 +2873,15 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 690;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.DAY:
+	        case 64:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 688;
 	            this.match(informixParser.DAY);
 	            break;
-	        case informixParser.FRACTION:
-	        case informixParser.HOUR:
-	        case informixParser.MINUTE:
-	        case informixParser.SECOND:
+	        case 117:
+	        case 132:
+	        case 178:
+	        case 246:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 689;
 	            this.hourQualifier();
@@ -2916,14 +2912,14 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 694;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.HOUR:
+	        case 132:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 692;
 	            this.match(informixParser.HOUR);
 	            break;
-	        case informixParser.FRACTION:
-	        case informixParser.MINUTE:
-	        case informixParser.SECOND:
+	        case 117:
+	        case 178:
+	        case 246:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 693;
 	            this.minuteQualifier();
@@ -2954,13 +2950,13 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 698;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.MINUTE:
+	        case 178:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 696;
 	            this.match(informixParser.MINUTE);
 	            break;
-	        case informixParser.FRACTION:
-	        case informixParser.SECOND:
+	        case 117:
+	        case 246:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 697;
 	            this.secondQualifier();
@@ -2991,12 +2987,12 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 702;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.SECOND:
+	        case 246:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 700;
 	            this.match(informixParser.SECOND);
 	            break;
-	        case informixParser.FRACTION:
+	        case 117:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 701;
 	            this.fractionQualifier();
@@ -3062,17 +3058,17 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 714;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.RECORD:
+	        case 225:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 711;
 	            this.recordType();
 	            break;
-	        case informixParser.ARRAY:
+	        case 18:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 712;
 	            this.arrayType();
 	            break;
-	        case informixParser.DYNAMIC:
+	        case 86:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 713;
 	            this.dynArrayType();
@@ -3099,7 +3095,7 @@ export default class informixParser extends antlr4.Parser {
 	recordType() {
 	    let localctx = new RecordTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, informixParser.RULE_recordType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 716;
@@ -3107,7 +3103,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 734;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.EOL:
+	        case 339:
 	            this.state = 717;
 	            this.eol();
 
@@ -3116,7 +3112,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 723;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 719;
 	                this.match(informixParser.COMMA);
 	                this.state = 720;
@@ -3130,7 +3126,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 727;
 	            this.match(informixParser.RECORD);
 	            break;
-	        case informixParser.LIKE:
+	        case 160:
 	            this.state = 729;
 	            this.match(informixParser.LIKE);
 	            this.state = 730;
@@ -3220,35 +3216,35 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 755;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.RECORD:
+	        case 225:
 	            this.state = 752;
 	            this.recordType();
 	            break;
-	        case informixParser.BIGINT:
-	        case informixParser.CHAR:
-	        case informixParser.DATE:
-	        case informixParser.DATETIME:
-	        case informixParser.DEC:
-	        case informixParser.DECIMAL:
-	        case informixParser.DOUBLE:
-	        case informixParser.FLOAT:
-	        case informixParser.INT:
-	        case informixParser.INTEGER:
-	        case informixParser.INTERVAL:
-	        case informixParser.MONEY:
-	        case informixParser.NCHAR:
-	        case informixParser.NUMERIC:
-	        case informixParser.NVARCHAR:
-	        case informixParser.REAL:
-	        case informixParser.SMALLFLOAT:
-	        case informixParser.SMALLINT:
-	        case informixParser.VARCHAR:
-	        case informixParser.CHARACTER:
+	        case 22:
+	        case 35:
+	        case 62:
+	        case 63:
+	        case 66:
+	        case 67:
+	        case 83:
+	        case 109:
+	        case 144:
+	        case 146:
+	        case 148:
+	        case 183:
+	        case 184:
+	        case 194:
+	        case 196:
+	        case 226:
+	        case 254:
+	        case 255:
+	        case 294:
+	        case 341:
 	            this.state = 753;
 	            this.typeIdentifier();
 	            break;
-	        case informixParser.BYTE:
-	        case informixParser.TEXT:
+	        case 31:
+	        case 271:
 	            this.state = 754;
 	            this.largeType();
 	            break;
@@ -3291,30 +3287,30 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 765;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.RECORD:
+	        case 225:
 	            this.state = 763;
 	            this.recordType();
 	            break;
-	        case informixParser.BIGINT:
-	        case informixParser.CHAR:
-	        case informixParser.DATE:
-	        case informixParser.DATETIME:
-	        case informixParser.DEC:
-	        case informixParser.DECIMAL:
-	        case informixParser.DOUBLE:
-	        case informixParser.FLOAT:
-	        case informixParser.INT:
-	        case informixParser.INTEGER:
-	        case informixParser.INTERVAL:
-	        case informixParser.MONEY:
-	        case informixParser.NCHAR:
-	        case informixParser.NUMERIC:
-	        case informixParser.NVARCHAR:
-	        case informixParser.REAL:
-	        case informixParser.SMALLFLOAT:
-	        case informixParser.SMALLINT:
-	        case informixParser.VARCHAR:
-	        case informixParser.CHARACTER:
+	        case 22:
+	        case 35:
+	        case 62:
+	        case 63:
+	        case 66:
+	        case 67:
+	        case 83:
+	        case 109:
+	        case 144:
+	        case 146:
+	        case 148:
+	        case 183:
+	        case 184:
+	        case 194:
+	        case 196:
+	        case 226:
+	        case 254:
+	        case 255:
+	        case 294:
+	        case 341:
 	            this.state = 764;
 	            this.typeIdentifier();
 	            break;
@@ -3363,13 +3359,13 @@ export default class informixParser extends antlr4.Parser {
 	statement() {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, informixParser.RULE_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 772;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.IDENT) {
+	        if(_la===332) {
 	            this.state = 769;
 	            this.label();
 	            this.state = 770;
@@ -3408,75 +3404,75 @@ export default class informixParser extends antlr4.Parser {
 	        		this.state = 778;
 	        		this._errHandler.sync(this);
 	        		switch(this._input.LA(1)) {
-	        		case informixParser.ALLOCATE:
-	        		case informixParser.BEGIN:
-	        		case informixParser.CALL:
-	        		case informixParser.CASE:
-	        		case informixParser.CLEAR:
-	        		case informixParser.CLOSE:
-	        		case informixParser.COMMIT:
-	        		case informixParser.CONSTRUCT:
-	        		case informixParser.CONTINUE:
-	        		case informixParser.CREATE:
-	        		case informixParser.CURRENT:
-	        		case informixParser.DEALLOCATE:
-	        		case informixParser.DECLARE:
-	        		case informixParser.DELETE:
-	        		case informixParser.DISPLAY:
-	        		case informixParser.DROP:
-	        		case informixParser.ERROR:
-	        		case informixParser.EXECUTE:
-	        		case informixParser.EXIT:
-	        		case informixParser.FETCH:
-	        		case informixParser.FINISH:
-	        		case informixParser.FLUSH:
-	        		case informixParser.FOR:
-	        		case informixParser.FOREACH:
-	        		case informixParser.FREE:
-	        		case informixParser.GOTO:
-	        		case informixParser.HIDE:
-	        		case informixParser.IF:
-	        		case informixParser.INITIALIZE:
-	        		case informixParser.INPUT:
-	        		case informixParser.INSERT:
-	        		case informixParser.LET:
-	        		case informixParser.LOAD:
-	        		case informixParser.LOCATE:
-	        		case informixParser.LOCK:
-	        		case informixParser.MENU:
-	        		case informixParser.MESSAGE:
-	        		case informixParser.NEED:
-	        		case informixParser.NEXT:
-	        		case informixParser.OPEN:
-	        		case informixParser.OPTIONS:
-	        		case informixParser.OUTPUT:
-	        		case informixParser.PAUSE:
-	        		case informixParser.PREPARE:
-	        		case informixParser.PRINT:
-	        		case informixParser.PROMPT:
-	        		case informixParser.PUT:
-	        		case informixParser.RESIZE:
-	        		case informixParser.RETURN:
-	        		case informixParser.ROLLBACK:
-	        		case informixParser.RUN:
-	        		case informixParser.SCROLL:
-	        		case informixParser.SKIP2:
-	        		case informixParser.SELECT:
-	        		case informixParser.SET:
-	        		case informixParser.SHOW:
-	        		case informixParser.SLEEP:
-	        		case informixParser.START:
-	        		case informixParser.TERMINATE:
-	        		case informixParser.UNLOAD:
-	        		case informixParser.UPDATE:
-	        		case informixParser.VALIDATE:
-	        		case informixParser.WHENEVER:
-	        		case informixParser.WHILE:
-	        		case informixParser.IDENT:
+	        		case 5:
+	        		case 20:
+	        		case 33:
+	        		case 34:
+	        		case 39:
+	        		case 41:
+	        		case 47:
+	        		case 52:
+	        		case 53:
+	        		case 57:
+	        		case 58:
+	        		case 65:
+	        		case 69:
+	        		case 74:
+	        		case 80:
+	        		case 85:
+	        		case 89:
+	        		case 94:
+	        		case 95:
+	        		case 102:
+	        		case 106:
+	        		case 110:
+	        		case 111:
+	        		case 115:
+	        		case 118:
+	        		case 124:
+	        		case 130:
+	        		case 133:
+	        		case 139:
+	        		case 140:
+	        		case 141:
+	        		case 159:
+	        		case 164:
+	        		case 165:
+	        		case 166:
+	        		case 171:
+	        		case 172:
+	        		case 186:
+	        		case 187:
+	        		case 201:
+	        		case 203:
+	        		case 207:
+	        		case 212:
+	        		case 216:
+	        		case 218:
+	        		case 221:
+	        		case 222:
+	        		case 235:
+	        		case 236:
+	        		case 240:
+	        		case 243:
+	        		case 245:
+	        		case 247:
+	        		case 248:
+	        		case 249:
+	        		case 251:
+	        		case 253:
+	        		case 261:
+	        		case 269:
+	        		case 287:
+	        		case 289:
+	        		case 292:
+	        		case 301:
+	        		case 303:
+	        		case 332:
 	        		    this.state = 776;
 	        		    this.statement();
 	        		    break;
-	        		case informixParser.DATABASE:
+	        		case 61:
 	        		    this.state = 777;
 	        		    this.databaseDeclaration();
 	        		    break;
@@ -3537,74 +3533,74 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 786;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ALLOCATE:
-	        case informixParser.BEGIN:
-	        case informixParser.CALL:
-	        case informixParser.CLEAR:
-	        case informixParser.CLOSE:
-	        case informixParser.COMMIT:
-	        case informixParser.CONSTRUCT:
-	        case informixParser.CONTINUE:
-	        case informixParser.CREATE:
-	        case informixParser.CURRENT:
-	        case informixParser.DEALLOCATE:
-	        case informixParser.DECLARE:
-	        case informixParser.DELETE:
-	        case informixParser.DISPLAY:
-	        case informixParser.DROP:
-	        case informixParser.ERROR:
-	        case informixParser.EXECUTE:
-	        case informixParser.EXIT:
-	        case informixParser.FETCH:
-	        case informixParser.FINISH:
-	        case informixParser.FLUSH:
-	        case informixParser.FREE:
-	        case informixParser.GOTO:
-	        case informixParser.HIDE:
-	        case informixParser.INITIALIZE:
-	        case informixParser.INPUT:
-	        case informixParser.INSERT:
-	        case informixParser.LET:
-	        case informixParser.LOAD:
-	        case informixParser.LOCATE:
-	        case informixParser.LOCK:
-	        case informixParser.MENU:
-	        case informixParser.MESSAGE:
-	        case informixParser.NEED:
-	        case informixParser.NEXT:
-	        case informixParser.OPEN:
-	        case informixParser.OPTIONS:
-	        case informixParser.OUTPUT:
-	        case informixParser.PAUSE:
-	        case informixParser.PREPARE:
-	        case informixParser.PRINT:
-	        case informixParser.PROMPT:
-	        case informixParser.PUT:
-	        case informixParser.RESIZE:
-	        case informixParser.RETURN:
-	        case informixParser.ROLLBACK:
-	        case informixParser.RUN:
-	        case informixParser.SCROLL:
-	        case informixParser.SKIP2:
-	        case informixParser.SELECT:
-	        case informixParser.SET:
-	        case informixParser.SHOW:
-	        case informixParser.SLEEP:
-	        case informixParser.START:
-	        case informixParser.TERMINATE:
-	        case informixParser.UNLOAD:
-	        case informixParser.UPDATE:
-	        case informixParser.VALIDATE:
-	        case informixParser.WHENEVER:
+	        case 5:
+	        case 20:
+	        case 33:
+	        case 39:
+	        case 41:
+	        case 47:
+	        case 52:
+	        case 53:
+	        case 57:
+	        case 58:
+	        case 65:
+	        case 69:
+	        case 74:
+	        case 80:
+	        case 85:
+	        case 89:
+	        case 94:
+	        case 95:
+	        case 102:
+	        case 106:
+	        case 110:
+	        case 118:
+	        case 124:
+	        case 130:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 159:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 171:
+	        case 172:
+	        case 186:
+	        case 187:
+	        case 201:
+	        case 203:
+	        case 207:
+	        case 212:
+	        case 216:
+	        case 218:
+	        case 221:
+	        case 222:
+	        case 235:
+	        case 236:
+	        case 240:
+	        case 243:
+	        case 245:
+	        case 247:
+	        case 248:
+	        case 249:
+	        case 251:
+	        case 253:
+	        case 261:
+	        case 269:
+	        case 287:
+	        case 289:
+	        case 292:
+	        case 301:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 784;
 	            this.simpleStatement();
 	            break;
-	        case informixParser.CASE:
-	        case informixParser.FOR:
-	        case informixParser.FOREACH:
-	        case informixParser.IF:
-	        case informixParser.WHILE:
+	        case 34:
+	        case 111:
+	        case 115:
+	        case 133:
+	        case 303:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 785;
 	            this.structuredStatement();
@@ -3631,7 +3627,7 @@ export default class informixParser extends antlr4.Parser {
 	simpleStatement() {
 	    let localctx = new SimpleStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, informixParser.RULE_simpleStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 799;
 	        this._errHandler.sync(this);
@@ -3656,7 +3652,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 792;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.SEMI) {
+	            if(_la===317) {
 	                this.state = 791;
 	                this.match(informixParser.SEMI);
 	            }
@@ -3720,44 +3716,44 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 804;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
 	            this.state = 802;
 	            this.variable();
 	            break;
-	        case informixParser.STRING_LITERAL:
+	        case 333:
 	            this.state = 803;
 	            this.string();
 	            break;
@@ -3787,96 +3783,96 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 818;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case informixParser.WITHOUT:
+	        case 306:
 	        	this.state = 814;
 	        	this.match(informixParser.WITHOUT);
 	        	this.state = 815;
 	        	this.match(informixParser.WAITING);
 	        	break;
-	        case informixParser.RETURNING:
+	        case 237:
 	        	this.state = 816;
 	        	this.match(informixParser.RETURNING);
 	        	this.state = 817;
 	        	this.variable();
 	        	break;
-	        case informixParser.AFTER:
-	        case informixParser.ALLOCATE:
-	        case informixParser.BEFORE:
-	        case informixParser.BEGIN:
-	        case informixParser.CALL:
-	        case informixParser.CASE:
-	        case informixParser.CLEAR:
-	        case informixParser.CLOSE:
-	        case informixParser.COMMAND:
-	        case informixParser.COMMIT:
-	        case informixParser.CONSTRUCT:
-	        case informixParser.CONTINUE:
-	        case informixParser.CREATE:
-	        case informixParser.CURRENT:
-	        case informixParser.DATABASE:
-	        case informixParser.DEALLOCATE:
-	        case informixParser.DECLARE:
-	        case informixParser.DEFER:
-	        case informixParser.DELETE:
-	        case informixParser.DISPLAY:
-	        case informixParser.DROP:
-	        case informixParser.ELSE:
-	        case informixParser.END:
-	        case informixParser.ERROR:
-	        case informixParser.EXECUTE:
-	        case informixParser.EXIT:
-	        case informixParser.FETCH:
-	        case informixParser.FINISH:
-	        case informixParser.FIRST:
-	        case informixParser.FLUSH:
-	        case informixParser.FOR:
-	        case informixParser.FOREACH:
-	        case informixParser.FREE:
-	        case informixParser.GOTO:
-	        case informixParser.HIDE:
-	        case informixParser.IF:
-	        case informixParser.INITIALIZE:
-	        case informixParser.INPUT:
-	        case informixParser.INSERT:
-	        case informixParser.LET:
-	        case informixParser.LOAD:
-	        case informixParser.LOCATE:
-	        case informixParser.LOCK:
-	        case informixParser.MENU:
-	        case informixParser.MESSAGE:
-	        case informixParser.NEED:
-	        case informixParser.NEXT:
-	        case informixParser.ON:
-	        case informixParser.OPEN:
-	        case informixParser.OPTIONS:
-	        case informixParser.OUTPUT:
-	        case informixParser.OTHERWISE:
-	        case informixParser.PAGE:
-	        case informixParser.PAUSE:
-	        case informixParser.PREPARE:
-	        case informixParser.PRINT:
-	        case informixParser.PROMPT:
-	        case informixParser.PUT:
-	        case informixParser.RESIZE:
-	        case informixParser.RETURN:
-	        case informixParser.ROLLBACK:
-	        case informixParser.RUN:
-	        case informixParser.SCROLL:
-	        case informixParser.SKIP2:
-	        case informixParser.SELECT:
-	        case informixParser.SET:
-	        case informixParser.SHOW:
-	        case informixParser.SLEEP:
-	        case informixParser.START:
-	        case informixParser.TERMINATE:
-	        case informixParser.UNLOAD:
-	        case informixParser.UPDATE:
-	        case informixParser.VALIDATE:
-	        case informixParser.WHEN:
-	        case informixParser.WHENEVER:
-	        case informixParser.WHILE:
-	        case informixParser.IDENT:
-	        case informixParser.EOL:
+	        case 2:
+	        case 5:
+	        case 19:
+	        case 20:
+	        case 33:
+	        case 34:
+	        case 39:
+	        case 41:
+	        case 45:
+	        case 47:
+	        case 52:
+	        case 53:
+	        case 57:
+	        case 58:
+	        case 61:
+	        case 65:
+	        case 69:
+	        case 72:
+	        case 74:
+	        case 80:
+	        case 85:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 94:
+	        case 95:
+	        case 102:
+	        case 106:
+	        case 107:
+	        case 110:
+	        case 111:
+	        case 115:
+	        case 118:
+	        case 124:
+	        case 130:
+	        case 133:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 159:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 171:
+	        case 172:
+	        case 186:
+	        case 187:
+	        case 200:
+	        case 201:
+	        case 203:
+	        case 207:
+	        case 209:
+	        case 210:
+	        case 212:
+	        case 216:
+	        case 218:
+	        case 221:
+	        case 222:
+	        case 235:
+	        case 236:
+	        case 240:
+	        case 243:
+	        case 245:
+	        case 247:
+	        case 248:
+	        case 249:
+	        case 251:
+	        case 253:
+	        case 261:
+	        case 269:
+	        case 287:
+	        case 289:
+	        case 292:
+	        case 300:
+	        case 301:
+	        case 303:
+	        case 332:
+	        case 339:
 	        	break;
 	        default:
 	        	break;
@@ -3900,7 +3896,7 @@ export default class informixParser extends antlr4.Parser {
 	assignmentStatement() {
 	    let localctx = new AssignmentStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, informixParser.RULE_assignmentStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 820;
@@ -3914,7 +3910,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 828;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 824;
 	            this.match(informixParser.COMMA);
 	            this.state = 825;
@@ -3942,7 +3938,7 @@ export default class informixParser extends antlr4.Parser {
 	procedureStatement() {
 	    let localctx = new ProcedureStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, informixParser.RULE_procedureStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 831;
@@ -3952,19 +3948,19 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 845;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.LPAREN) {
+	        if(_la===325) {
 	            this.state = 833;
 	            this.match(informixParser.LPAREN);
 	            this.state = 842;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.ACCEPT) | (1 << informixParser.ASCII) | (1 << informixParser.AVG))) !== 0) || ((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (informixParser.COLUMN - 43)) | (1 << (informixParser.COUNT - 43)) | (1 << (informixParser.CURRENT - 43)) | (1 << (informixParser.DATE - 43)) | (1 << (informixParser.DAY - 43)))) !== 0) || ((((_la - 98)) & ~0x1f) == 0 && ((1 << (_la - 98)) & ((1 << (informixParser.EXTEND - 98)) | (1 << (informixParser.FALSE - 98)) | (1 << (informixParser.FIRST - 98)) | (1 << (informixParser.FOUND - 98)) | (1 << (informixParser.GROUP - 98)))) !== 0) || ((((_la - 130)) & ~0x1f) == 0 && ((1 << (_la - 130)) & ((1 << (informixParser.HIDE - 130)) | (1 << (informixParser.INDEX - 130)) | (1 << (informixParser.INFIELD - 130)) | (1 << (informixParser.INT_FLAG - 130)) | (1 << (informixParser.INTERRUPT - 130)) | (1 << (informixParser.LAST - 130)) | (1 << (informixParser.LENGTH - 130)))) !== 0) || ((((_la - 162)) & ~0x1f) == 0 && ((1 << (_la - 162)) & ((1 << (informixParser.LINENO - 162)) | (1 << (informixParser.MAX - 162)) | (1 << (informixParser.MDY - 162)) | (1 << (informixParser.MIN - 162)) | (1 << (informixParser.MONTH - 162)) | (1 << (informixParser.NO - 162)) | (1 << (informixParser.NOT - 162)) | (1 << (informixParser.NOTFOUND - 162)))) !== 0) || ((((_la - 195)) & ~0x1f) == 0 && ((1 << (_la - 195)) & ((1 << (informixParser.NULL_ - 195)) | (1 << (informixParser.PAGENO - 195)) | (1 << (informixParser.PREPARE - 195)) | (1 << (informixParser.REAL - 195)))) !== 0) || ((((_la - 252)) & ~0x1f) == 0 && ((1 << (_la - 252)) & ((1 << (informixParser.SIZE - 252)) | (1 << (informixParser.SQL - 252)) | (1 << (informixParser.STATUS - 252)) | (1 << (informixParser.SUM - 252)) | (1 << (informixParser.TEMP - 252)) | (1 << (informixParser.TIME - 252)) | (1 << (informixParser.TODAY - 252)) | (1 << (informixParser.TRUE - 252)))) !== 0) || ((((_la - 290)) & ~0x1f) == 0 && ((1 << (_la - 290)) & ((1 << (informixParser.USER - 290)) | (1 << (informixParser.WEEKDAY - 290)) | (1 << (informixParser.WAIT - 290)) | (1 << (informixParser.WORK - 290)) | (1 << (informixParser.YEAR - 290)) | (1 << (informixParser.PLUS - 290)) | (1 << (informixParser.MINUS - 290)) | (1 << (informixParser.STAR - 290)))) !== 0) || ((((_la - 325)) & ~0x1f) == 0 && ((1 << (_la - 325)) & ((1 << (informixParser.LPAREN - 325)) | (1 << (informixParser.IDENT - 325)) | (1 << (informixParser.STRING_LITERAL - 325)) | (1 << (informixParser.NUM_INT - 325)) | (1 << (informixParser.NUM_REAL - 325)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 135176) !== 0) || ((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 2656257) !== 0) || ((((_la - 98)) & ~0x1f) === 0 && ((1 << (_la - 98)) & 268698121) !== 0) || ((((_la - 130)) & ~0x1f) === 0 && ((1 << (_la - 130)) & 335708481) !== 0) || ((((_la - 162)) & ~0x1f) === 0 && ((1 << (_la - 162)) & 1880154113) !== 0) || ((((_la - 195)) & ~0x1f) === 0 && ((1 << (_la - 195)) & 2149646337) !== 0) || ((((_la - 252)) & ~0x1f) === 0 && ((1 << (_la - 252)) & 310661185) !== 0) || ((((_la - 290)) & ~0x1f) === 0 && ((1 << (_la - 290)) & 30933153) !== 0) || ((((_la - 325)) & ~0x1f) === 0 && ((1 << (_la - 325)) & 1921) !== 0)) {
 	                this.state = 834;
 	                this.actualParameter();
 	                this.state = 839;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 835;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 836;
@@ -3982,7 +3978,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 856;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.RETURNING) {
+	        if(_la===237) {
 	            this.state = 847;
 	            this.match(informixParser.RETURNING);
 	            this.state = 848;
@@ -3990,7 +3986,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 853;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 849;
 	                this.match(informixParser.COMMA);
 	                this.state = 850;
@@ -4047,63 +4043,63 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 862;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.STAR:
+	        case 314:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 860;
 	            this.match(informixParser.STAR);
 	            break;
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.AVG:
-	        case informixParser.COLUMN:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.DATE:
-	        case informixParser.DAY:
-	        case informixParser.EXTEND:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INFIELD:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MAX:
-	        case informixParser.MDY:
-	        case informixParser.MIN:
-	        case informixParser.MONTH:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.PREPARE:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.SUM:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.YEAR:
-	        case informixParser.PLUS:
-	        case informixParser.MINUS:
-	        case informixParser.LPAREN:
-	        case informixParser.IDENT:
-	        case informixParser.STRING_LITERAL:
-	        case informixParser.NUM_INT:
-	        case informixParser.NUM_REAL:
+	        case 3:
+	        case 12:
+	        case 17:
+	        case 43:
+	        case 54:
+	        case 58:
+	        case 62:
+	        case 64:
+	        case 98:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 138:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 182:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 216:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 266:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 310:
+	        case 312:
+	        case 313:
+	        case 325:
+	        case 332:
+	        case 333:
+	        case 334:
+	        case 335:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 861;
 	            this.expression();
@@ -4130,7 +4126,7 @@ export default class informixParser extends antlr4.Parser {
 	gotoStatement() {
 	    let localctx = new GotoStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, informixParser.RULE_gotoStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 864;
@@ -4138,7 +4134,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 866;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.COLON) {
+	        if(_la===318) {
 	            this.state = 865;
 	            this.match(informixParser.COLON);
 	        }
@@ -4166,7 +4162,7 @@ export default class informixParser extends antlr4.Parser {
 	condition() {
 	    let localctx = new ConditionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, informixParser.RULE_condition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 880;
 	        this._errHandler.sync(this);
@@ -4176,7 +4172,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 871;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.FALSE || _la===informixParser.TRUE)) {
+	            if(!(_la===101 || _la===280)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -4264,7 +4260,7 @@ export default class informixParser extends antlr4.Parser {
 	logicalFactor() {
 	    let localctx = new LogicalFactorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, informixParser.RULE_logicalFactor);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 953;
 	        this._errHandler.sync(this);
@@ -4282,7 +4278,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 893;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 892;
 	                this.match(informixParser.NOT);
 	            }
@@ -4294,7 +4290,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 899;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 898;
 	                this.match(informixParser.NOT);
 	            }
@@ -4306,7 +4302,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 905;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ESC) {
+	            if(_la===342) {
 	                this.state = 903;
 	                this.match(informixParser.ESC);
 	                this.state = 904;
@@ -4322,7 +4318,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 909;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 908;
 	                this.match(informixParser.NOT);
 	            }
@@ -4334,7 +4330,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 915;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 914;
 	                this.match(informixParser.NOT);
 	            }
@@ -4358,7 +4354,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 925;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 924;
 	                this.match(informixParser.NOT);
 	            }
@@ -4372,7 +4368,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 932;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 931;
 	                this.match(informixParser.NOT);
 	            }
@@ -4441,7 +4437,7 @@ export default class informixParser extends antlr4.Parser {
 	quantifiedFactor() {
 	    let localctx = new QuantifiedFactorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, informixParser.RULE_quantifiedFactor);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 982;
 	        this._errHandler.sync(this);
@@ -4456,10 +4452,10 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 958;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ALL || _la===informixParser.ANY) {
+	            if(_la===6 || _la===9) {
 	                this.state = 957;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.ALL || _la===informixParser.ANY)) {
+	                if(!(_la===6 || _la===9)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -4477,10 +4473,10 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 965;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ALL || _la===informixParser.ANY) {
+	            if(_la===6 || _la===9) {
 	                this.state = 964;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.ALL || _la===informixParser.ANY)) {
+	                if(!(_la===6 || _la===9)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -4498,7 +4494,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 970;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 969;
 	                this.match(informixParser.NOT);
 	            }
@@ -4510,7 +4506,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 976;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 975;
 	                this.match(informixParser.NOT);
 	            }
@@ -4613,7 +4609,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlExpression() {
 	    let localctx = new SqlExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, informixParser.RULE_sqlExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 994;
@@ -4625,7 +4621,7 @@ export default class informixParser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 995;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.PLUS || _la===informixParser.MINUS)) {
+	                if(!(_la===312 || _la===313)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -4659,13 +4655,13 @@ export default class informixParser extends antlr4.Parser {
 	sqlAlias() {
 	    let localctx = new SqlAliasContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, informixParser.RULE_sqlAlias);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1003;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.AS) {
+	        if(_la===10) {
 	            this.state = 1002;
 	            this.match(informixParser.AS);
 	        }
@@ -4703,15 +4699,15 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 1011;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case informixParser.STAR:
+	                case 314:
 	                    this.state = 1008;
 	                    this.sqlMultiply();
 	                    break;
-	                case informixParser.DIV:
+	                case 344:
 	                    this.state = 1009;
 	                    this.match(informixParser.DIV);
 	                    break;
-	                case informixParser.SLASH:
+	                case 315:
 	                    this.state = 1010;
 	                    this.match(informixParser.SLASH);
 	                    break;
@@ -4806,7 +4802,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlFactor2() {
 	    let localctx = new SqlFactor2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, informixParser.RULE_sqlFactor2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1122;
 	        this._errHandler.sync(this);
@@ -4819,7 +4815,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1032;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.UNITS) {
+	            if(_la===286) {
 	                this.state = 1030;
 	                this.match(informixParser.UNITS);
 	                this.state = 1031;
@@ -4831,7 +4827,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1037;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.UNITS) {
+	            if(_la===286) {
 	                this.state = 1035;
 	                this.match(informixParser.UNITS);
 	                this.state = 1036;
@@ -4847,7 +4843,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1042;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.UNITS) {
+	            if(_la===286) {
 	                this.state = 1040;
 	                this.match(informixParser.UNITS);
 	                this.state = 1041;
@@ -4859,7 +4855,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1047;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.UNITS) {
+	            if(_la===286) {
 	                this.state = 1045;
 	                this.match(informixParser.UNITS);
 	                this.state = 1046;
@@ -4880,7 +4876,7 @@ export default class informixParser extends antlr4.Parser {
 	            if(la_===1) {
 	                this.state = 1051;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.ALL || _la===informixParser.DISTINCT || _la===informixParser.STAR)) {
+	                if(!(_la===6 || _la===81 || _la===314)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -4892,13 +4888,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1062;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.ACCEPT) | (1 << informixParser.ASCII) | (1 << informixParser.AVG))) !== 0) || ((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (informixParser.COUNT - 54)) | (1 << (informixParser.CURRENT - 54)) | (1 << (informixParser.DATE - 54)) | (1 << (informixParser.DAY - 54)) | (1 << (informixParser.DECODE - 54)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (informixParser.FALSE - 101)) | (1 << (informixParser.FIRST - 101)) | (1 << (informixParser.FOUND - 101)) | (1 << (informixParser.GROUP - 101)) | (1 << (informixParser.HIDE - 101)))) !== 0) || ((((_la - 136)) & ~0x1f) == 0 && ((1 << (_la - 136)) & ((1 << (informixParser.INDEX - 136)) | (1 << (informixParser.INT_FLAG - 136)) | (1 << (informixParser.INTERRUPT - 136)) | (1 << (informixParser.LAST - 136)) | (1 << (informixParser.LENGTH - 136)) | (1 << (informixParser.LINENO - 136)))) !== 0) || ((((_la - 175)) & ~0x1f) == 0 && ((1 << (_la - 175)) & ((1 << (informixParser.MAX - 175)) | (1 << (informixParser.MDY - 175)) | (1 << (informixParser.MIN - 175)) | (1 << (informixParser.MOD - 175)) | (1 << (informixParser.MONTH - 175)) | (1 << (informixParser.NO - 175)) | (1 << (informixParser.NOT - 175)) | (1 << (informixParser.NOTFOUND - 175)) | (1 << (informixParser.NULL_ - 175)) | (1 << (informixParser.NVL - 175)))) !== 0) || _la===informixParser.PAGENO || _la===informixParser.REAL || ((((_la - 252)) & ~0x1f) == 0 && ((1 << (_la - 252)) & ((1 << (informixParser.SIZE - 252)) | (1 << (informixParser.SQL - 252)) | (1 << (informixParser.STATUS - 252)) | (1 << (informixParser.SUM - 252)) | (1 << (informixParser.TEMP - 252)) | (1 << (informixParser.TIME - 252)) | (1 << (informixParser.TODAY - 252)) | (1 << (informixParser.TRUE - 252)))) !== 0) || ((((_la - 290)) & ~0x1f) == 0 && ((1 << (_la - 290)) & ((1 << (informixParser.USER - 290)) | (1 << (informixParser.WEEKDAY - 290)) | (1 << (informixParser.WAIT - 290)) | (1 << (informixParser.WORK - 290)) | (1 << (informixParser.YEAR - 290)) | (1 << (informixParser.PLUS - 290)) | (1 << (informixParser.MINUS - 290)) | (1 << (informixParser.STAR - 290)))) !== 0) || ((((_la - 325)) & ~0x1f) == 0 && ((1 << (_la - 325)) & ((1 << (informixParser.LPAREN - 325)) | (1 << (informixParser.IDENT - 325)) | (1 << (informixParser.STRING_LITERAL - 325)) | (1 << (informixParser.NUM_INT - 325)) | (1 << (informixParser.NUM_REAL - 325)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 135176) !== 0) || ((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 17681) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 570458177) !== 0) || ((((_la - 136)) & ~0x1f) === 0 && ((1 << (_la - 136)) & 72354305) !== 0) || ((((_la - 175)) & ~0x1f) === 0 && ((1 << (_la - 175)) & 5472407) !== 0) || _la===211 || _la===226 || ((((_la - 252)) & ~0x1f) === 0 && ((1 << (_la - 252)) & 310661185) !== 0) || ((((_la - 290)) & ~0x1f) === 0 && ((1 << (_la - 290)) & 30933153) !== 0) || ((((_la - 325)) & ~0x1f) === 0 && ((1 << (_la - 325)) & 1921) !== 0)) {
 	                this.state = 1054;
 	                this.sqlExpression();
 	                this.state = 1059;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 1055;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 1056;
@@ -4921,7 +4917,7 @@ export default class informixParser extends antlr4.Parser {
 	            if(la_===1) {
 	                this.state = 1068;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.ALL || _la===informixParser.DISTINCT || _la===informixParser.STAR)) {
+	                if(!(_la===6 || _la===81 || _la===314)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -4933,13 +4929,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1079;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.ACCEPT) | (1 << informixParser.ASCII) | (1 << informixParser.AVG))) !== 0) || ((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (informixParser.COUNT - 54)) | (1 << (informixParser.CURRENT - 54)) | (1 << (informixParser.DATE - 54)) | (1 << (informixParser.DAY - 54)) | (1 << (informixParser.DECODE - 54)))) !== 0) || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (informixParser.FALSE - 101)) | (1 << (informixParser.FIRST - 101)) | (1 << (informixParser.FOUND - 101)) | (1 << (informixParser.GROUP - 101)) | (1 << (informixParser.HIDE - 101)))) !== 0) || ((((_la - 136)) & ~0x1f) == 0 && ((1 << (_la - 136)) & ((1 << (informixParser.INDEX - 136)) | (1 << (informixParser.INT_FLAG - 136)) | (1 << (informixParser.INTERRUPT - 136)) | (1 << (informixParser.LAST - 136)) | (1 << (informixParser.LENGTH - 136)) | (1 << (informixParser.LINENO - 136)))) !== 0) || ((((_la - 175)) & ~0x1f) == 0 && ((1 << (_la - 175)) & ((1 << (informixParser.MAX - 175)) | (1 << (informixParser.MDY - 175)) | (1 << (informixParser.MIN - 175)) | (1 << (informixParser.MOD - 175)) | (1 << (informixParser.MONTH - 175)) | (1 << (informixParser.NO - 175)) | (1 << (informixParser.NOT - 175)) | (1 << (informixParser.NOTFOUND - 175)) | (1 << (informixParser.NULL_ - 175)) | (1 << (informixParser.NVL - 175)))) !== 0) || _la===informixParser.PAGENO || _la===informixParser.REAL || ((((_la - 252)) & ~0x1f) == 0 && ((1 << (_la - 252)) & ((1 << (informixParser.SIZE - 252)) | (1 << (informixParser.SQL - 252)) | (1 << (informixParser.STATUS - 252)) | (1 << (informixParser.SUM - 252)) | (1 << (informixParser.TEMP - 252)) | (1 << (informixParser.TIME - 252)) | (1 << (informixParser.TODAY - 252)) | (1 << (informixParser.TRUE - 252)))) !== 0) || ((((_la - 290)) & ~0x1f) == 0 && ((1 << (_la - 290)) & ((1 << (informixParser.USER - 290)) | (1 << (informixParser.WEEKDAY - 290)) | (1 << (informixParser.WAIT - 290)) | (1 << (informixParser.WORK - 290)) | (1 << (informixParser.YEAR - 290)) | (1 << (informixParser.PLUS - 290)) | (1 << (informixParser.MINUS - 290)) | (1 << (informixParser.STAR - 290)))) !== 0) || ((((_la - 325)) & ~0x1f) == 0 && ((1 << (_la - 325)) & ((1 << (informixParser.LPAREN - 325)) | (1 << (informixParser.IDENT - 325)) | (1 << (informixParser.STRING_LITERAL - 325)) | (1 << (informixParser.NUM_INT - 325)) | (1 << (informixParser.NUM_REAL - 325)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 135176) !== 0) || ((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 17681) !== 0) || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 570458177) !== 0) || ((((_la - 136)) & ~0x1f) === 0 && ((1 << (_la - 136)) & 72354305) !== 0) || ((((_la - 175)) & ~0x1f) === 0 && ((1 << (_la - 175)) & 5472407) !== 0) || _la===211 || _la===226 || ((((_la - 252)) & ~0x1f) === 0 && ((1 << (_la - 252)) & 310661185) !== 0) || ((((_la - 290)) & ~0x1f) === 0 && ((1 << (_la - 290)) & 30933153) !== 0) || ((((_la - 325)) & ~0x1f) === 0 && ((1 << (_la - 325)) & 1921) !== 0)) {
 	                this.state = 1071;
 	                this.sqlExpression();
 	                this.state = 1076;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 1072;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 1073;
@@ -4966,7 +4962,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1090;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1086;
 	                this.match(informixParser.COMMA);
 	                this.state = 1087;
@@ -4987,7 +4983,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1102;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1098;
 	                this.match(informixParser.COMMA);
 	                this.state = 1099;
@@ -5004,7 +5000,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1107;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.PLUS || _la===informixParser.MINUS)) {
+	            if(!(_la===312 || _la===313)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5015,7 +5011,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.sqlExpression();
 	            this.state = 1110;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.PLUS || _la===informixParser.MINUS)) {
+	            if(!(_la===312 || _la===313)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5068,7 +5064,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlExpressionList() {
 	    let localctx = new SqlExpressionListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 120, informixParser.RULE_sqlExpressionList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1124;
@@ -5086,7 +5082,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1130; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===informixParser.COMMA);
+	        } while(_la===316);
 	        this.state = 1132;
 	        this.match(informixParser.RPAREN);
 	    } catch (re) {
@@ -5237,12 +5233,12 @@ export default class informixParser extends antlr4.Parser {
 	dateFunction() {
 	    let localctx = new DateFunctionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 128, informixParser.RULE_dateFunction);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1150;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.DATE || _la===informixParser.DAY || _la===informixParser.MONTH || _la===informixParser.YEAR)) {
+	        if(!(_la===62 || _la===64 || _la===182 || _la===310)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5314,12 +5310,12 @@ export default class informixParser extends antlr4.Parser {
 	groupFunction() {
 	    let localctx = new GroupFunctionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 134, informixParser.RULE_groupFunction);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1156;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.AVG || _la===informixParser.COUNT || _la===informixParser.MAX || _la===informixParser.MIN || _la===informixParser.SUM)) {
+	        if(!(_la===17 || _la===54 || _la===175 || _la===177 || _la===266)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5345,17 +5341,17 @@ export default class informixParser extends antlr4.Parser {
 	otherFunction() {
 	    let localctx = new OtherFunctionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 136, informixParser.RULE_otherFunction);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1160;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.DECODE:
-	        case informixParser.NVL:
+	        case 68:
+	        case 197:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1158;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.DECODE || _la===informixParser.NVL)) {
+	            if(!(_la===68 || _la===197)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5363,40 +5359,40 @@ export default class informixParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1159;
 	            this.constantIdentifier();
@@ -5446,53 +5442,53 @@ export default class informixParser extends antlr4.Parser {
 	relationalOperator() {
 	    let localctx = new RelationalOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 140, informixParser.RULE_relationalOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1175;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.EQUAL:
+	        case 319:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1164;
 	            this.match(informixParser.EQUAL);
 	            break;
-	        case informixParser.NOT_EQUAL:
+	        case 320:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1165;
 	            this.match(informixParser.NOT_EQUAL);
 	            break;
-	        case informixParser.LE:
+	        case 322:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1166;
 	            this.match(informixParser.LE);
 	            break;
-	        case informixParser.LT:
+	        case 321:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1167;
 	            this.match(informixParser.LT);
 	            break;
-	        case informixParser.GE:
+	        case 323:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1168;
 	            this.match(informixParser.GE);
 	            break;
-	        case informixParser.GT:
+	        case 324:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 1169;
 	            this.match(informixParser.GT);
 	            break;
-	        case informixParser.LIKE:
+	        case 160:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 1170;
 	            this.match(informixParser.LIKE);
 	            break;
-	        case informixParser.MATCHES:
-	        case informixParser.NOT:
+	        case 170:
+	        case 191:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 1172;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 1171;
 	                this.match(informixParser.NOT);
 	            }
@@ -5656,7 +5652,7 @@ export default class informixParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 148, informixParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1206;
@@ -5664,15 +5660,15 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1212;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.CLIPPED || _la===informixParser.USING) {
+	        while(_la===40 || _la===291) {
 	            this.state = 1210;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.CLIPPED:
+	            case 40:
 	                this.state = 1207;
 	                this.match(informixParser.CLIPPED);
 	                break;
-	            case informixParser.USING:
+	            case 291:
 	                this.state = 1208;
 	                this.match(informixParser.USING);
 	                this.state = 1209;
@@ -5810,12 +5806,12 @@ export default class informixParser extends antlr4.Parser {
 	addingOperator() {
 	    let localctx = new AddingOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 154, informixParser.RULE_addingOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1243;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.PLUS || _la===informixParser.MINUS)) {
+	        if(!(_la===312 || _la===313)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5841,7 +5837,7 @@ export default class informixParser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 156, informixParser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1245;
@@ -5849,7 +5845,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1251;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.MOD || ((((_la - 314)) & ~0x1f) == 0 && ((1 << (_la - 314)) & ((1 << (informixParser.STAR - 314)) | (1 << (informixParser.SLASH - 314)) | (1 << (informixParser.DIV - 314)))) !== 0)) {
+	        while(_la===179 || ((((_la - 314)) & ~0x1f) === 0 && ((1 << (_la - 314)) & 1073741827) !== 0)) {
 	            this.state = 1246;
 	            this.multiplyingOperator();
 	            this.state = 1247;
@@ -5877,12 +5873,12 @@ export default class informixParser extends antlr4.Parser {
 	multiplyingOperator() {
 	    let localctx = new MultiplyingOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 158, informixParser.RULE_multiplyingOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1254;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.MOD || ((((_la - 314)) & ~0x1f) == 0 && ((1 << (_la - 314)) & ((1 << (informixParser.STAR - 314)) | (1 << (informixParser.SLASH - 314)) | (1 << (informixParser.DIV - 314)))) !== 0))) {
+	        if(!(_la===179 || ((((_la - 314)) & ~0x1f) === 0 && ((1 << (_la - 314)) & 1073741827) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5983,7 +5979,7 @@ export default class informixParser extends antlr4.Parser {
 	functionDesignator() {
 	    let localctx = new FunctionDesignatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 162, informixParser.RULE_functionDesignator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1274;
@@ -5997,13 +5993,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1284;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.ACCEPT) | (1 << informixParser.ASCII) | (1 << informixParser.AVG))) !== 0) || ((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (informixParser.COLUMN - 43)) | (1 << (informixParser.COUNT - 43)) | (1 << (informixParser.CURRENT - 43)) | (1 << (informixParser.DATE - 43)) | (1 << (informixParser.DAY - 43)))) !== 0) || ((((_la - 98)) & ~0x1f) == 0 && ((1 << (_la - 98)) & ((1 << (informixParser.EXTEND - 98)) | (1 << (informixParser.FALSE - 98)) | (1 << (informixParser.FIRST - 98)) | (1 << (informixParser.FOUND - 98)) | (1 << (informixParser.GROUP - 98)))) !== 0) || ((((_la - 130)) & ~0x1f) == 0 && ((1 << (_la - 130)) & ((1 << (informixParser.HIDE - 130)) | (1 << (informixParser.INDEX - 130)) | (1 << (informixParser.INFIELD - 130)) | (1 << (informixParser.INT_FLAG - 130)) | (1 << (informixParser.INTERRUPT - 130)) | (1 << (informixParser.LAST - 130)) | (1 << (informixParser.LENGTH - 130)))) !== 0) || ((((_la - 162)) & ~0x1f) == 0 && ((1 << (_la - 162)) & ((1 << (informixParser.LINENO - 162)) | (1 << (informixParser.MAX - 162)) | (1 << (informixParser.MDY - 162)) | (1 << (informixParser.MIN - 162)) | (1 << (informixParser.MONTH - 162)) | (1 << (informixParser.NO - 162)) | (1 << (informixParser.NOT - 162)) | (1 << (informixParser.NOTFOUND - 162)))) !== 0) || ((((_la - 195)) & ~0x1f) == 0 && ((1 << (_la - 195)) & ((1 << (informixParser.NULL_ - 195)) | (1 << (informixParser.PAGENO - 195)) | (1 << (informixParser.PREPARE - 195)) | (1 << (informixParser.REAL - 195)))) !== 0) || ((((_la - 252)) & ~0x1f) == 0 && ((1 << (_la - 252)) & ((1 << (informixParser.SIZE - 252)) | (1 << (informixParser.SQL - 252)) | (1 << (informixParser.STATUS - 252)) | (1 << (informixParser.SUM - 252)) | (1 << (informixParser.TEMP - 252)) | (1 << (informixParser.TIME - 252)) | (1 << (informixParser.TODAY - 252)) | (1 << (informixParser.TRUE - 252)))) !== 0) || ((((_la - 290)) & ~0x1f) == 0 && ((1 << (_la - 290)) & ((1 << (informixParser.USER - 290)) | (1 << (informixParser.WEEKDAY - 290)) | (1 << (informixParser.WAIT - 290)) | (1 << (informixParser.WORK - 290)) | (1 << (informixParser.YEAR - 290)) | (1 << (informixParser.PLUS - 290)) | (1 << (informixParser.MINUS - 290)) | (1 << (informixParser.STAR - 290)))) !== 0) || ((((_la - 325)) & ~0x1f) == 0 && ((1 << (_la - 325)) & ((1 << (informixParser.LPAREN - 325)) | (1 << (informixParser.IDENT - 325)) | (1 << (informixParser.STRING_LITERAL - 325)) | (1 << (informixParser.NUM_INT - 325)) | (1 << (informixParser.NUM_REAL - 325)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 135176) !== 0) || ((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 2656257) !== 0) || ((((_la - 98)) & ~0x1f) === 0 && ((1 << (_la - 98)) & 268698121) !== 0) || ((((_la - 130)) & ~0x1f) === 0 && ((1 << (_la - 130)) & 335708481) !== 0) || ((((_la - 162)) & ~0x1f) === 0 && ((1 << (_la - 162)) & 1880154113) !== 0) || ((((_la - 195)) & ~0x1f) === 0 && ((1 << (_la - 195)) & 2149646337) !== 0) || ((((_la - 252)) & ~0x1f) === 0 && ((1 << (_la - 252)) & 310661185) !== 0) || ((((_la - 290)) & ~0x1f) === 0 && ((1 << (_la - 290)) & 30933153) !== 0) || ((((_la - 325)) & ~0x1f) === 0 && ((1 << (_la - 325)) & 1921) !== 0)) {
 	                this.state = 1276;
 	                this.actualParameter();
 	                this.state = 1281;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 1277;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 1278;
@@ -6037,7 +6033,7 @@ export default class informixParser extends antlr4.Parser {
 	functionIdentifier() {
 	    let localctx = new FunctionIdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 164, informixParser.RULE_functionIdentifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1291;
 	        this._errHandler.sync(this);
@@ -6047,7 +6043,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1289;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.AVG || ((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (informixParser.COLUMN - 43)) | (1 << (informixParser.COUNT - 43)) | (1 << (informixParser.DATE - 43)) | (1 << (informixParser.DAY - 43)))) !== 0) || _la===informixParser.EXTEND || _la===informixParser.INFIELD || ((((_la - 175)) & ~0x1f) == 0 && ((1 << (_la - 175)) & ((1 << (informixParser.MAX - 175)) | (1 << (informixParser.MDY - 175)) | (1 << (informixParser.MIN - 175)) | (1 << (informixParser.MONTH - 175)))) !== 0) || _la===informixParser.PREPARE || ((((_la - 266)) & ~0x1f) == 0 && ((1 << (_la - 266)) & ((1 << (informixParser.SUM - 266)) | (1 << (informixParser.TIME - 266)) | (1 << (informixParser.TODAY - 266)) | (1 << (informixParser.WEEKDAY - 266)))) !== 0) || _la===informixParser.YEAR)) {
+	            if(!(_la===17 || ((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 2623489) !== 0) || _la===98 || _la===138 || ((((_la - 175)) & ~0x1f) === 0 && ((1 << (_la - 175)) & 135) !== 0) || _la===216 || ((((_la - 266)) & ~0x1f) === 0 && ((1 << (_la - 266)) & 536873473) !== 0) || _la===310)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -6186,14 +6182,14 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1311;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.NUM_INT:
-	        case informixParser.NUM_REAL:
+	        case 334:
+	        case 335:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1307;
 	            this.unsignedNumber();
 	            break;
-	        case informixParser.PLUS:
-	        case informixParser.MINUS:
+	        case 312:
+	        case 313:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1308;
 	            this.sign();
@@ -6305,7 +6301,7 @@ export default class informixParser extends antlr4.Parser {
 	indexingVariable() {
 	    let localctx = new IndexingVariableContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 178, informixParser.RULE_indexingVariable);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1321;
@@ -6315,7 +6311,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1327;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1323;
 	            this.match(informixParser.COMMA);
 	            this.state = 1324;
@@ -6345,7 +6341,7 @@ export default class informixParser extends antlr4.Parser {
 	componentVariable() {
 	    let localctx = new ComponentVariableContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 180, informixParser.RULE_componentVariable);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1332;
@@ -6353,7 +6349,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1334;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.LBRACK) {
+	        if(_la===327) {
 	            this.state = 1333;
 	            this.indexingVariable();
 	        }
@@ -6378,7 +6374,7 @@ export default class informixParser extends antlr4.Parser {
 	            if(la_===1) {
 	                this.state = 1340;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.THROUGH || _la===informixParser.THRU)) {
+	                if(!(_la===273 || _la===274)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -6460,15 +6456,15 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1352;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.CASE:
-	        case informixParser.IF:
+	        case 34:
+	        case 133:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1350;
 	            this.conditionalStatement();
 	            break;
-	        case informixParser.FOR:
-	        case informixParser.FOREACH:
-	        case informixParser.WHILE:
+	        case 111:
+	        case 115:
+	        case 303:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1351;
 	            this.repetetiveStatement();
@@ -6499,12 +6495,12 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1356;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.IF:
+	        case 133:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1354;
 	            this.ifStatement();
 	            break;
-	        case informixParser.CASE:
+	        case 34:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1355;
 	            this.caseStatement();
@@ -6531,7 +6527,7 @@ export default class informixParser extends antlr4.Parser {
 	ifStatement() {
 	    let localctx = new IfStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 190, informixParser.RULE_ifStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1358;
@@ -6543,7 +6539,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1362;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	        if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	            this.state = 1361;
 	            this.codeBlock();
 	        }
@@ -6551,13 +6547,13 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1368;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ELSE) {
+	        if(_la===87) {
 	            this.state = 1364;
 	            this.match(informixParser.ELSE);
 	            this.state = 1366;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	            if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	                this.state = 1365;
 	                this.codeBlock();
 	            }
@@ -6591,17 +6587,17 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1376;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.WHILE:
+	        case 303:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1373;
 	            this.whileStatement();
 	            break;
-	        case informixParser.FOREACH:
+	        case 115:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1374;
 	            this.forEachStatement();
 	            break;
-	        case informixParser.FOR:
+	        case 111:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1375;
 	            this.forStatement();
@@ -6628,7 +6624,7 @@ export default class informixParser extends antlr4.Parser {
 	whileStatement() {
 	    let localctx = new WhileStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 194, informixParser.RULE_whileStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1378;
@@ -6638,7 +6634,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1381;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	        if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	            this.state = 1380;
 	            this.codeBlock();
 	        }
@@ -6666,7 +6662,7 @@ export default class informixParser extends antlr4.Parser {
 	forStatement() {
 	    let localctx = new ForStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 196, informixParser.RULE_forStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1386;
@@ -6680,7 +6676,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1392;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.STEP) {
+	        if(_la===345) {
 	            this.state = 1390;
 	            this.match(informixParser.STEP);
 	            this.state = 1391;
@@ -6692,7 +6688,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1396;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	        if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	            this.state = 1395;
 	            this.codeBlock();
 	        }
@@ -6818,7 +6814,7 @@ export default class informixParser extends antlr4.Parser {
 	forEachStatement() {
 	    let localctx = new ForEachStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 206, informixParser.RULE_forEachStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1412;
@@ -6828,7 +6824,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1416;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.USING) {
+	        if(_la===291) {
 	            this.state = 1414;
 	            this.match(informixParser.USING);
 	            this.state = 1415;
@@ -6838,7 +6834,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1420;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.INTO) {
+	        if(_la===143) {
 	            this.state = 1418;
 	            this.match(informixParser.INTO);
 	            this.state = 1419;
@@ -6848,7 +6844,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1424;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.WITH) {
+	        if(_la===305) {
 	            this.state = 1422;
 	            this.match(informixParser.WITH);
 	            this.state = 1423;
@@ -6860,7 +6856,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1428;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	        if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	            this.state = 1427;
 	            this.codeBlock();
 	        }
@@ -6890,7 +6886,7 @@ export default class informixParser extends antlr4.Parser {
 	variableList() {
 	    let localctx = new VariableListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 208, informixParser.RULE_variableList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1434;
@@ -6898,7 +6894,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1439;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1435;
 	            this.match(informixParser.COMMA);
 	            this.state = 1436;
@@ -6926,7 +6922,7 @@ export default class informixParser extends antlr4.Parser {
 	variableOrConstantList() {
 	    let localctx = new VariableOrConstantListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 210, informixParser.RULE_variableOrConstantList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1442;
@@ -6934,7 +6930,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1447;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1443;
 	            this.match(informixParser.COMMA);
 	            this.state = 1444;
@@ -6962,7 +6958,7 @@ export default class informixParser extends antlr4.Parser {
 	caseStatement() {
 	    let localctx = new CaseStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 212, informixParser.RULE_caseStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1487;
 	        this._errHandler.sync(this);
@@ -6977,7 +6973,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1459;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.WHEN) {
+	            while(_la===300) {
 	                this.state = 1452;
 	                this.match(informixParser.WHEN);
 	                this.state = 1453;
@@ -6985,7 +6981,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 1455;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	                if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	                    this.state = 1454;
 	                    this.codeBlock();
 	                }
@@ -6997,13 +6993,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1466;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.OTHERWISE) {
+	            if(_la===209) {
 	                this.state = 1462;
 	                this.match(informixParser.OTHERWISE);
 	                this.state = 1464;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	                if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	                    this.state = 1463;
 	                    this.codeBlock();
 	                }
@@ -7023,7 +7019,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1478;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.WHEN) {
+	            while(_la===300) {
 	                this.state = 1472;
 	                this.match(informixParser.WHEN);
 	                this.state = 1473;
@@ -7037,7 +7033,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1483;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.OTHERWISE) {
+	            if(_la===209) {
 	                this.state = 1481;
 	                this.match(informixParser.OTHERWISE);
 	                this.state = 1482;
@@ -7074,52 +7070,52 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1493;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.CONTINUE:
-	        case informixParser.EXIT:
-	        case informixParser.GOTO:
-	        case informixParser.RETURN:
-	        case informixParser.RUN:
-	        case informixParser.SLEEP:
+	        case 53:
+	        case 95:
+	        case 124:
+	        case 236:
+	        case 243:
+	        case 253:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1489;
 	            this.otherProgramFlowStatement();
 	            break;
-	        case informixParser.ALLOCATE:
-	        case informixParser.DEALLOCATE:
-	        case informixParser.FREE:
-	        case informixParser.INITIALIZE:
-	        case informixParser.LOCATE:
-	        case informixParser.RESIZE:
-	        case informixParser.VALIDATE:
+	        case 5:
+	        case 65:
+	        case 118:
+	        case 139:
+	        case 165:
+	        case 235:
+	        case 292:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1490;
 	            this.otherStorageStatement();
 	            break;
-	        case informixParser.FINISH:
-	        case informixParser.NEED:
-	        case informixParser.OUTPUT:
-	        case informixParser.PAUSE:
-	        case informixParser.PRINT:
-	        case informixParser.SKIP2:
-	        case informixParser.START:
-	        case informixParser.TERMINATE:
+	        case 106:
+	        case 186:
+	        case 207:
+	        case 212:
+	        case 218:
+	        case 247:
+	        case 261:
+	        case 269:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1491;
 	            this.reportStatement();
 	            break;
-	        case informixParser.CLEAR:
-	        case informixParser.CLOSE:
-	        case informixParser.CONSTRUCT:
-	        case informixParser.CURRENT:
-	        case informixParser.DISPLAY:
-	        case informixParser.ERROR:
-	        case informixParser.INPUT:
-	        case informixParser.MENU:
-	        case informixParser.MESSAGE:
-	        case informixParser.OPEN:
-	        case informixParser.OPTIONS:
-	        case informixParser.PROMPT:
-	        case informixParser.SCROLL:
+	        case 39:
+	        case 41:
+	        case 52:
+	        case 58:
+	        case 80:
+	        case 89:
+	        case 140:
+	        case 171:
+	        case 172:
+	        case 201:
+	        case 203:
+	        case 221:
+	        case 245:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1492;
 	            this.screenStatement();
@@ -7150,34 +7146,34 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1502;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.RUN:
+	        case 243:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1495;
 	            this.runStatement();
 	            break;
-	        case informixParser.GOTO:
+	        case 124:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1496;
 	            this.gotoStatement();
 	            break;
-	        case informixParser.SLEEP:
+	        case 253:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1497;
 	            this.match(informixParser.SLEEP);
 	            this.state = 1498;
 	            this.expression();
 	            break;
-	        case informixParser.EXIT:
+	        case 95:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1499;
 	            this.exitStatements();
 	            break;
-	        case informixParser.CONTINUE:
+	        case 53:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1500;
 	            this.continueStatements();
 	            break;
-	        case informixParser.RETURN:
+	        case 236:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 1501;
 	            this.returnStatement();
@@ -7204,12 +7200,12 @@ export default class informixParser extends antlr4.Parser {
 	exitTypes() {
 	    let localctx = new ExitTypesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 218, informixParser.RULE_exitTypes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1504;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.CASE || _la===informixParser.CONSTRUCT || _la===informixParser.DISPLAY || _la===informixParser.FOR || _la===informixParser.FOREACH || _la===informixParser.INPUT || _la===informixParser.MENU || _la===informixParser.REPORT || _la===informixParser.WHILE)) {
+	        if(!(_la===34 || _la===52 || _la===80 || _la===111 || _la===115 || _la===140 || _la===171 || _la===234 || _la===303)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -7319,12 +7315,12 @@ export default class informixParser extends antlr4.Parser {
 	otherStorageStatement() {
 	    let localctx = new OtherStorageStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 224, informixParser.RULE_otherStorageStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1596;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ALLOCATE:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1523;
 	            this.match(informixParser.ALLOCATE);
@@ -7335,7 +7331,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1526;
 	            this.arrayIndexer();
 	            break;
-	        case informixParser.LOCATE:
+	        case 165:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1528;
 	            this.match(informixParser.LOCATE);
@@ -7346,11 +7342,11 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1537;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.MEMORY:
+	            case 346:
 	                this.state = 1531;
 	                this.match(informixParser.MEMORY);
 	                break;
-	            case informixParser.FILE:
+	            case 105:
 	                this.state = 1532;
 	                this.match(informixParser.FILE);
 	                this.state = 1535;
@@ -7370,7 +7366,7 @@ export default class informixParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case informixParser.DEALLOCATE:
+	        case 65:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1539;
 	            this.match(informixParser.DEALLOCATE);
@@ -7379,7 +7375,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1541;
 	            this.identifier();
 	            break;
-	        case informixParser.RESIZE:
+	        case 235:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1542;
 	            this.match(informixParser.RESIZE);
@@ -7390,7 +7386,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1545;
 	            this.arrayIndexer();
 	            break;
-	        case informixParser.FREE:
+	        case 118:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1547;
 	            this.match(informixParser.FREE);
@@ -7399,7 +7395,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1553;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1549;
 	                this.match(informixParser.COMMA);
 	                this.state = 1550;
@@ -7409,7 +7405,7 @@ export default class informixParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case informixParser.INITIALIZE:
+	        case 139:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 1556;
 	            this.match(informixParser.INITIALIZE);
@@ -7418,7 +7414,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1562;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1558;
 	                this.match(informixParser.COMMA);
 	                this.state = 1559;
@@ -7430,13 +7426,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1576;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.TO:
+	            case 276:
 	                this.state = 1565;
 	                this.match(informixParser.TO);
 	                this.state = 1566;
 	                this.match(informixParser.NULL_);
 	                break;
-	            case informixParser.LIKE:
+	            case 160:
 	                this.state = 1567;
 	                this.match(informixParser.LIKE);
 	                this.state = 1568;
@@ -7444,7 +7440,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 1573;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 1569;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 1570;
@@ -7458,7 +7454,7 @@ export default class informixParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case informixParser.VALIDATE:
+	        case 292:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 1578;
 	            this.match(informixParser.VALIDATE);
@@ -7467,7 +7463,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1584;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1580;
 	                this.match(informixParser.COMMA);
 	                this.state = 1581;
@@ -7483,7 +7479,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1593;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1589;
 	                this.match(informixParser.COMMA);
 	                this.state = 1590;
@@ -7515,7 +7511,7 @@ export default class informixParser extends antlr4.Parser {
 	printExpressionItem() {
 	    let localctx = new PrintExpressionItemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 226, informixParser.RULE_printExpressionItem);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1617;
 	        this._errHandler.sync(this);
@@ -7533,7 +7529,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1600;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.LINENO || _la===informixParser.PAGENO)) {
+	            if(!(_la===162 || _la===211)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -7565,10 +7561,10 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1607;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.SPACE || _la===informixParser.SPACES) {
+	            if(_la===256 || _la===257) {
 	                this.state = 1606;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.SPACE || _la===informixParser.SPACES)) {
+	                if(!(_la===256 || _la===257)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -7580,13 +7576,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1615;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.WORDWRAP) {
+	            if(_la===308) {
 	                this.state = 1609;
 	                this.match(informixParser.WORDWRAP);
 	                this.state = 1613;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.RIGHT) {
+	                if(_la===239) {
 	                    this.state = 1610;
 	                    this.match(informixParser.RIGHT);
 	                    this.state = 1611;
@@ -7619,7 +7615,7 @@ export default class informixParser extends antlr4.Parser {
 	printExpressionList() {
 	    let localctx = new PrintExpressionListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 228, informixParser.RULE_printExpressionList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1619;
@@ -7627,7 +7623,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1624;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1620;
 	            this.match(informixParser.COMMA);
 	            this.state = 1621;
@@ -7655,12 +7651,12 @@ export default class informixParser extends antlr4.Parser {
 	reportStatement() {
 	    let localctx = new ReportStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 230, informixParser.RULE_reportStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1718;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.START:
+	        case 261:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1627;
 	            this.match(informixParser.START);
@@ -7671,74 +7667,74 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1637;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.TO) {
+	            if(_la===276) {
 	                this.state = 1630;
 	                this.match(informixParser.TO);
 	                this.state = 1635;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case informixParser.ACCEPT:
-	                case informixParser.ASCII:
-	                case informixParser.AVG:
-	                case informixParser.COLUMN:
-	                case informixParser.COUNT:
-	                case informixParser.CURRENT:
-	                case informixParser.DATE:
-	                case informixParser.DAY:
-	                case informixParser.EXTEND:
-	                case informixParser.FALSE:
-	                case informixParser.FIRST:
-	                case informixParser.FOUND:
-	                case informixParser.GROUP:
-	                case informixParser.HIDE:
-	                case informixParser.INDEX:
-	                case informixParser.INFIELD:
-	                case informixParser.INT_FLAG:
-	                case informixParser.INTERRUPT:
-	                case informixParser.LAST:
-	                case informixParser.LENGTH:
-	                case informixParser.LINENO:
-	                case informixParser.MAX:
-	                case informixParser.MDY:
-	                case informixParser.MIN:
-	                case informixParser.MONTH:
-	                case informixParser.NO:
-	                case informixParser.NOT:
-	                case informixParser.NOTFOUND:
-	                case informixParser.NULL_:
-	                case informixParser.PAGENO:
-	                case informixParser.PREPARE:
-	                case informixParser.REAL:
-	                case informixParser.SIZE:
-	                case informixParser.SQL:
-	                case informixParser.STATUS:
-	                case informixParser.SUM:
-	                case informixParser.TEMP:
-	                case informixParser.TIME:
-	                case informixParser.TODAY:
-	                case informixParser.TRUE:
-	                case informixParser.USER:
-	                case informixParser.WEEKDAY:
-	                case informixParser.WAIT:
-	                case informixParser.WORK:
-	                case informixParser.YEAR:
-	                case informixParser.PLUS:
-	                case informixParser.MINUS:
-	                case informixParser.LPAREN:
-	                case informixParser.IDENT:
-	                case informixParser.STRING_LITERAL:
-	                case informixParser.NUM_INT:
-	                case informixParser.NUM_REAL:
+	                case 3:
+	                case 12:
+	                case 17:
+	                case 43:
+	                case 54:
+	                case 58:
+	                case 62:
+	                case 64:
+	                case 98:
+	                case 101:
+	                case 107:
+	                case 116:
+	                case 126:
+	                case 130:
+	                case 136:
+	                case 138:
+	                case 145:
+	                case 147:
+	                case 156:
+	                case 158:
+	                case 162:
+	                case 175:
+	                case 176:
+	                case 177:
+	                case 182:
+	                case 190:
+	                case 191:
+	                case 192:
+	                case 195:
+	                case 211:
+	                case 216:
+	                case 226:
+	                case 252:
+	                case 258:
+	                case 264:
+	                case 266:
+	                case 270:
+	                case 275:
+	                case 277:
+	                case 280:
+	                case 290:
+	                case 295:
+	                case 297:
+	                case 309:
+	                case 310:
+	                case 312:
+	                case 313:
+	                case 325:
+	                case 332:
+	                case 333:
+	                case 334:
+	                case 335:
 	                    this.state = 1631;
 	                    this.expression();
 	                    break;
-	                case informixParser.PIPE:
+	                case 214:
 	                    this.state = 1632;
 	                    this.match(informixParser.PIPE);
 	                    this.state = 1633;
 	                    this.expression();
 	                    break;
-	                case informixParser.PRINTER:
+	                case 219:
 	                    this.state = 1634;
 	                    this.match(informixParser.PRINTER);
 	                    break;
@@ -7750,7 +7746,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1664;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.WITH) {
+	            if(_la===305) {
 	                this.state = 1639;
 	                this.match(informixParser.WITH);
 	                this.state = 1661;
@@ -7828,7 +7824,7 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.TERMINATE:
+	        case 269:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1666;
 	            this.match(informixParser.TERMINATE);
@@ -7837,7 +7833,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1668;
 	            this.constantIdentifier();
 	            break;
-	        case informixParser.FINISH:
+	        case 106:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1669;
 	            this.match(informixParser.FINISH);
@@ -7846,20 +7842,20 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1671;
 	            this.constantIdentifier();
 	            break;
-	        case informixParser.PAUSE:
+	        case 212:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1672;
 	            this.match(informixParser.PAUSE);
 	            this.state = 1674;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.STRING_LITERAL) {
+	            if(_la===333) {
 	                this.state = 1673;
 	                this.string();
 	            }
 
 	            break;
-	        case informixParser.NEED:
+	        case 186:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1676;
 	            this.match(informixParser.NEED);
@@ -7868,7 +7864,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1678;
 	            this.match(informixParser.LINES);
 	            break;
-	        case informixParser.PRINT:
+	        case 218:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 1680;
 	            this.match(informixParser.PRINT);
@@ -7887,7 +7883,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 1685;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.SEMI) {
+	                if(_la===317) {
 	                    this.state = 1684;
 	                    this.match(informixParser.SEMI);
 	                }
@@ -7901,70 +7897,70 @@ export default class informixParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case informixParser.SKIP2:
+	        case 247:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 1691;
 	            this.match(informixParser.SKIP2);
 	            this.state = 1699;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.ACCEPT:
-	            case informixParser.ASCII:
-	            case informixParser.AVG:
-	            case informixParser.COLUMN:
-	            case informixParser.COUNT:
-	            case informixParser.CURRENT:
-	            case informixParser.DATE:
-	            case informixParser.DAY:
-	            case informixParser.EXTEND:
-	            case informixParser.FALSE:
-	            case informixParser.FIRST:
-	            case informixParser.FOUND:
-	            case informixParser.GROUP:
-	            case informixParser.HIDE:
-	            case informixParser.INDEX:
-	            case informixParser.INFIELD:
-	            case informixParser.INT_FLAG:
-	            case informixParser.INTERRUPT:
-	            case informixParser.LAST:
-	            case informixParser.LENGTH:
-	            case informixParser.LINENO:
-	            case informixParser.MAX:
-	            case informixParser.MDY:
-	            case informixParser.MIN:
-	            case informixParser.MONTH:
-	            case informixParser.NO:
-	            case informixParser.NOT:
-	            case informixParser.NOTFOUND:
-	            case informixParser.NULL_:
-	            case informixParser.PAGENO:
-	            case informixParser.PREPARE:
-	            case informixParser.REAL:
-	            case informixParser.SIZE:
-	            case informixParser.SQL:
-	            case informixParser.STATUS:
-	            case informixParser.SUM:
-	            case informixParser.TEMP:
-	            case informixParser.TIME:
-	            case informixParser.TODAY:
-	            case informixParser.TRUE:
-	            case informixParser.USER:
-	            case informixParser.WEEKDAY:
-	            case informixParser.WAIT:
-	            case informixParser.WORK:
-	            case informixParser.YEAR:
-	            case informixParser.PLUS:
-	            case informixParser.MINUS:
-	            case informixParser.LPAREN:
-	            case informixParser.IDENT:
-	            case informixParser.STRING_LITERAL:
-	            case informixParser.NUM_INT:
-	            case informixParser.NUM_REAL:
+	            case 3:
+	            case 12:
+	            case 17:
+	            case 43:
+	            case 54:
+	            case 58:
+	            case 62:
+	            case 64:
+	            case 98:
+	            case 101:
+	            case 107:
+	            case 116:
+	            case 126:
+	            case 130:
+	            case 136:
+	            case 138:
+	            case 145:
+	            case 147:
+	            case 156:
+	            case 158:
+	            case 162:
+	            case 175:
+	            case 176:
+	            case 177:
+	            case 182:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 195:
+	            case 211:
+	            case 216:
+	            case 226:
+	            case 252:
+	            case 258:
+	            case 264:
+	            case 266:
+	            case 270:
+	            case 275:
+	            case 277:
+	            case 280:
+	            case 290:
+	            case 295:
+	            case 297:
+	            case 309:
+	            case 310:
+	            case 312:
+	            case 313:
+	            case 325:
+	            case 332:
+	            case 333:
+	            case 334:
+	            case 335:
 	                this.state = 1692;
 	                this.expression();
 	                this.state = 1693;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.LINE || _la===informixParser.LINES)) {
+	                if(!(_la===161 || _la===163)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -7972,7 +7968,7 @@ export default class informixParser extends antlr4.Parser {
 	                    this.consume();
 	                }
 	                break;
-	            case informixParser.TO:
+	            case 276:
 	                this.state = 1695;
 	                this.match(informixParser.TO);
 	                this.state = 1696;
@@ -7986,7 +7982,7 @@ export default class informixParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case informixParser.OUTPUT:
+	        case 207:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 1701;
 	            this.match(informixParser.OUTPUT);
@@ -8001,13 +7997,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1714;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.ACCEPT) | (1 << informixParser.ASCII) | (1 << informixParser.AVG))) !== 0) || ((((_la - 43)) & ~0x1f) == 0 && ((1 << (_la - 43)) & ((1 << (informixParser.COLUMN - 43)) | (1 << (informixParser.COUNT - 43)) | (1 << (informixParser.CURRENT - 43)) | (1 << (informixParser.DATE - 43)) | (1 << (informixParser.DAY - 43)))) !== 0) || ((((_la - 98)) & ~0x1f) == 0 && ((1 << (_la - 98)) & ((1 << (informixParser.EXTEND - 98)) | (1 << (informixParser.FALSE - 98)) | (1 << (informixParser.FIRST - 98)) | (1 << (informixParser.FOUND - 98)) | (1 << (informixParser.GROUP - 98)))) !== 0) || ((((_la - 130)) & ~0x1f) == 0 && ((1 << (_la - 130)) & ((1 << (informixParser.HIDE - 130)) | (1 << (informixParser.INDEX - 130)) | (1 << (informixParser.INFIELD - 130)) | (1 << (informixParser.INT_FLAG - 130)) | (1 << (informixParser.INTERRUPT - 130)) | (1 << (informixParser.LAST - 130)) | (1 << (informixParser.LENGTH - 130)))) !== 0) || ((((_la - 162)) & ~0x1f) == 0 && ((1 << (_la - 162)) & ((1 << (informixParser.LINENO - 162)) | (1 << (informixParser.MAX - 162)) | (1 << (informixParser.MDY - 162)) | (1 << (informixParser.MIN - 162)) | (1 << (informixParser.MONTH - 162)) | (1 << (informixParser.NO - 162)) | (1 << (informixParser.NOT - 162)) | (1 << (informixParser.NOTFOUND - 162)))) !== 0) || ((((_la - 195)) & ~0x1f) == 0 && ((1 << (_la - 195)) & ((1 << (informixParser.NULL_ - 195)) | (1 << (informixParser.PAGENO - 195)) | (1 << (informixParser.PREPARE - 195)) | (1 << (informixParser.REAL - 195)))) !== 0) || ((((_la - 252)) & ~0x1f) == 0 && ((1 << (_la - 252)) & ((1 << (informixParser.SIZE - 252)) | (1 << (informixParser.SQL - 252)) | (1 << (informixParser.STATUS - 252)) | (1 << (informixParser.SUM - 252)) | (1 << (informixParser.TEMP - 252)) | (1 << (informixParser.TIME - 252)) | (1 << (informixParser.TODAY - 252)) | (1 << (informixParser.TRUE - 252)))) !== 0) || ((((_la - 290)) & ~0x1f) == 0 && ((1 << (_la - 290)) & ((1 << (informixParser.USER - 290)) | (1 << (informixParser.WEEKDAY - 290)) | (1 << (informixParser.WAIT - 290)) | (1 << (informixParser.WORK - 290)) | (1 << (informixParser.YEAR - 290)) | (1 << (informixParser.PLUS - 290)) | (1 << (informixParser.MINUS - 290)))) !== 0) || ((((_la - 325)) & ~0x1f) == 0 && ((1 << (_la - 325)) & ((1 << (informixParser.LPAREN - 325)) | (1 << (informixParser.IDENT - 325)) | (1 << (informixParser.STRING_LITERAL - 325)) | (1 << (informixParser.NUM_INT - 325)) | (1 << (informixParser.NUM_REAL - 325)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 135176) !== 0) || ((((_la - 43)) & ~0x1f) === 0 && ((1 << (_la - 43)) & 2656257) !== 0) || ((((_la - 98)) & ~0x1f) === 0 && ((1 << (_la - 98)) & 268698121) !== 0) || ((((_la - 130)) & ~0x1f) === 0 && ((1 << (_la - 130)) & 335708481) !== 0) || ((((_la - 162)) & ~0x1f) === 0 && ((1 << (_la - 162)) & 1880154113) !== 0) || ((((_la - 195)) & ~0x1f) === 0 && ((1 << (_la - 195)) & 2149646337) !== 0) || ((((_la - 252)) & ~0x1f) === 0 && ((1 << (_la - 252)) & 310661185) !== 0) || ((((_la - 290)) & ~0x1f) === 0 && ((1 << (_la - 290)) & 14155937) !== 0) || ((((_la - 325)) & ~0x1f) === 0 && ((1 << (_la - 325)) & 1921) !== 0)) {
 	                this.state = 1706;
 	                this.expression();
 	                this.state = 1711;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 1707;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 1708;
@@ -8043,7 +8039,7 @@ export default class informixParser extends antlr4.Parser {
 	fieldName() {
 	    let localctx = new FieldNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 232, informixParser.RULE_fieldName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1747;
 	        this._errHandler.sync(this);
@@ -8060,7 +8056,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 1725;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.LBRACK) {
+	                if(_la===327) {
 	                    this.state = 1721;
 	                    this.match(informixParser.LBRACK);
 	                    this.state = 1722;
@@ -8084,7 +8080,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1737;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LBRACK) {
+	            if(_la===327) {
 	                this.state = 1733;
 	                this.match(informixParser.LBRACK);
 	                this.state = 1734;
@@ -8098,17 +8094,17 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1745;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.STAR:
+	            case 314:
 	                this.state = 1740;
 	                this.match(informixParser.STAR);
 	                break;
-	            case informixParser.IDENT:
+	            case 332:
 	                this.state = 1741;
 	                this.identifier();
 	                this.state = 1743;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.THROUGH || _la===informixParser.THRU) {
+	                if(_la===273 || _la===274) {
 	                    this.state = 1742;
 	                    this.thruNotation();
 	                }
@@ -8139,12 +8135,12 @@ export default class informixParser extends antlr4.Parser {
 	thruNotation() {
 	    let localctx = new ThruNotationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 234, informixParser.RULE_thruNotation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1749;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.THROUGH || _la===informixParser.THRU)) {
+	        if(!(_la===273 || _la===274)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8154,7 +8150,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1752;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.SAME) {
+	        if(_la===347) {
 	            this.state = 1750;
 	            this.match(informixParser.SAME);
 	            this.state = 1751;
@@ -8220,7 +8216,7 @@ export default class informixParser extends antlr4.Parser {
 	keyList() {
 	    let localctx = new KeyListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 238, informixParser.RULE_keyList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1764;
@@ -8228,7 +8224,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1769;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1765;
 	            this.match(informixParser.COMMA);
 	            this.state = 1766;
@@ -8335,7 +8331,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1804;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.NEXT:
+	        case 187:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1790;
 	            this.match(informixParser.NEXT);
@@ -8344,15 +8340,15 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1795;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.IDENT:
+	            case 332:
 	                this.state = 1792;
 	                this.fieldName();
 	                break;
-	            case informixParser.NEXT:
+	            case 187:
 	                this.state = 1793;
 	                this.match(informixParser.NEXT);
 	                break;
-	            case informixParser.PREVIOUS:
+	            case 217:
 	                this.state = 1794;
 	                this.match(informixParser.PREVIOUS);
 	                break;
@@ -8362,7 +8358,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1797;
 	            this.eol();
 	            break;
-	        case informixParser.CONTINUE:
+	        case 53:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1798;
 	            this.match(informixParser.CONTINUE);
@@ -8371,7 +8367,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1800;
 	            this.eol();
 	            break;
-	        case informixParser.EXIT:
+	        case 95:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1801;
 	            this.match(informixParser.EXIT);
@@ -8402,12 +8398,12 @@ export default class informixParser extends antlr4.Parser {
 	specialAttribute() {
 	    let localctx = new SpecialAttributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 244, informixParser.RULE_specialAttribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1806;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.BLINK || _la===informixParser.REVERSE || _la===informixParser.UNDERLINE)) {
+	        if(!(_la===24 || _la===238 || _la===283)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8433,16 +8429,16 @@ export default class informixParser extends antlr4.Parser {
 	attribute() {
 	    let localctx = new AttributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 246, informixParser.RULE_attribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1809;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.BLACK) | (1 << informixParser.BLUE) | (1 << informixParser.BOLD))) !== 0) || _la===informixParser.CYAN || _la===informixParser.DIM || _la===informixParser.GREEN || _la===informixParser.INVISIBLE || _la===informixParser.MAGENTA || _la===informixParser.NORMAL || _la===informixParser.RED || _la===informixParser.WHITE || _la===informixParser.YELLOW) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 109051904) !== 0) || _la===60 || _la===77 || _la===125 || _la===149 || _la===169 || _la===189 || _la===228 || _la===304 || _la===311) {
 	            this.state = 1808;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.BLACK) | (1 << informixParser.BLUE) | (1 << informixParser.BOLD))) !== 0) || _la===informixParser.CYAN || _la===informixParser.DIM || _la===informixParser.GREEN || _la===informixParser.INVISIBLE || _la===informixParser.MAGENTA || _la===informixParser.NORMAL || _la===informixParser.RED || _la===informixParser.WHITE || _la===informixParser.YELLOW)) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 109051904) !== 0) || _la===60 || _la===77 || _la===125 || _la===149 || _la===169 || _la===189 || _la===228 || _la===304 || _la===311)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -8456,7 +8452,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1816;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1812;
 	            this.match(informixParser.COMMA);
 	            this.state = 1813;
@@ -8484,12 +8480,12 @@ export default class informixParser extends antlr4.Parser {
 	attributeList() {
 	    let localctx = new AttributeListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 248, informixParser.RULE_attributeList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1819;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES)) {
+	        if(!(_la===14 || _la===15)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8521,7 +8517,7 @@ export default class informixParser extends antlr4.Parser {
 	constructGroupStatement() {
 	    let localctx = new ConstructGroupStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 250, informixParser.RULE_constructGroupStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1824;
@@ -8535,7 +8531,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1828; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0));
+	        } while(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -8555,7 +8551,7 @@ export default class informixParser extends antlr4.Parser {
 	constructStatement() {
 	    let localctx = new ConstructStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 252, informixParser.RULE_constructStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1830;
@@ -8563,7 +8559,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1843;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.BY:
+	        case 30:
 	            this.state = 1831;
 	            this.match(informixParser.BY);
 	            this.state = 1832;
@@ -8575,40 +8571,40 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1835;
 	            this.columnsList();
 	            break;
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
 	            this.state = 1837;
 	            this.variable();
 	            this.state = 1838;
@@ -8626,7 +8622,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1846;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 1845;
 	            this.attributeList();
 	        }
@@ -8634,7 +8630,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1850;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.HELP) {
+	        if(_la===129) {
 	            this.state = 1848;
 	            this.match(informixParser.HELP);
 	            this.state = 1849;
@@ -8654,7 +8650,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 1855; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===informixParser.AFTER || _la===informixParser.BEFORE || _la===informixParser.ON);
+	            } while(_la===2 || _la===19 || _la===200);
 	            this.state = 1857;
 	            this.match(informixParser.END);
 	            this.state = 1858;
@@ -8680,7 +8676,7 @@ export default class informixParser extends antlr4.Parser {
 	displayArrayStatement() {
 	    let localctx = new DisplayArrayStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 254, informixParser.RULE_displayArrayStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1862;
@@ -8696,7 +8692,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1868;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 1867;
 	            this.attributeList();
 	        }
@@ -8747,14 +8743,14 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1884;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.CONTINUE:
+	        case 53:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1880;
 	            this.match(informixParser.CONTINUE);
 	            this.state = 1881;
 	            this.match(informixParser.DISPLAY);
 	            break;
-	        case informixParser.EXIT:
+	        case 95:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1882;
 	            this.match(informixParser.EXIT);
@@ -8830,7 +8826,7 @@ export default class informixParser extends antlr4.Parser {
 	displayStatement() {
 	    let localctx = new DisplayStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 260, informixParser.RULE_displayStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1896;
@@ -8838,7 +8834,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1924;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.BY:
+	        case 30:
 	            this.state = 1897;
 	            this.match(informixParser.BY);
 	            this.state = 1898;
@@ -8849,7 +8845,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1904;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1900;
 	                this.match(informixParser.COMMA);
 	                this.state = 1901;
@@ -8859,64 +8855,64 @@ export default class informixParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.AVG:
-	        case informixParser.COLUMN:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.DATE:
-	        case informixParser.DAY:
-	        case informixParser.EXTEND:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INFIELD:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MAX:
-	        case informixParser.MDY:
-	        case informixParser.MIN:
-	        case informixParser.MONTH:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.PREPARE:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.SUM:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.YEAR:
-	        case informixParser.PLUS:
-	        case informixParser.MINUS:
-	        case informixParser.LPAREN:
-	        case informixParser.IDENT:
-	        case informixParser.STRING_LITERAL:
-	        case informixParser.NUM_INT:
-	        case informixParser.NUM_REAL:
+	        case 3:
+	        case 12:
+	        case 17:
+	        case 43:
+	        case 54:
+	        case 58:
+	        case 62:
+	        case 64:
+	        case 98:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 138:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 182:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 216:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 266:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 310:
+	        case 312:
+	        case 313:
+	        case 325:
+	        case 332:
+	        case 333:
+	        case 334:
+	        case 335:
 	            this.state = 1907;
 	            this.expression();
 	            this.state = 1912;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 1908;
 	                this.match(informixParser.COMMA);
 	                this.state = 1909;
@@ -8928,13 +8924,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1922;
 	            this._errHandler.sync(this);
 	            switch (this._input.LA(1)) {
-	            case informixParser.TO:
+	            case 276:
 	            	this.state = 1915;
 	            	this.match(informixParser.TO);
 	            	this.state = 1916;
 	            	this.fieldList();
 	            	break;
-	            case informixParser.AT:
+	            case 13:
 	            	this.state = 1917;
 	            	this.match(informixParser.AT);
 	            	this.state = 1918;
@@ -8944,9 +8940,9 @@ export default class informixParser extends antlr4.Parser {
 	            	this.state = 1920;
 	            	this.expression();
 	            	break;
-	            case informixParser.ATTRIBUTE:
-	            case informixParser.ATTRIBUTES:
-	            case informixParser.EOL:
+	            case 14:
+	            case 15:
+	            case 339:
 	            	break;
 	            default:
 	            	break;
@@ -8958,7 +8954,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1927;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 1926;
 	            this.attributeList();
 	        }
@@ -8984,7 +8980,7 @@ export default class informixParser extends antlr4.Parser {
 	errorStatement() {
 	    let localctx = new ErrorStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 262, informixParser.RULE_errorStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1931;
@@ -8994,7 +8990,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1937;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1933;
 	            this.match(informixParser.COMMA);
 	            this.state = 1934;
@@ -9006,7 +9002,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1941;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 1940;
 	            this.attributeList();
 	        }
@@ -9030,7 +9026,7 @@ export default class informixParser extends antlr4.Parser {
 	messageStatement() {
 	    let localctx = new MessageStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 264, informixParser.RULE_messageStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1943;
@@ -9040,7 +9036,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1949;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1945;
 	            this.match(informixParser.COMMA);
 	            this.state = 1946;
@@ -9052,7 +9048,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1953;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 1952;
 	            this.attributeList();
 	        }
@@ -9076,7 +9072,7 @@ export default class informixParser extends antlr4.Parser {
 	promptStatement() {
 	    let localctx = new PromptStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 266, informixParser.RULE_promptStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1955;
@@ -9086,7 +9082,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1961;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 1957;
 	            this.match(informixParser.COMMA);
 	            this.state = 1958;
@@ -9098,7 +9094,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1965;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 1964;
 	            this.attributeList();
 	        }
@@ -9108,7 +9104,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1969;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.CHAR) {
+	        if(_la===35) {
 	            this.state = 1968;
 	            this.match(informixParser.CHAR);
 	        }
@@ -9118,7 +9114,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1974;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.HELP) {
+	        if(_la===129) {
 	            this.state = 1972;
 	            this.match(informixParser.HELP);
 	            this.state = 1973;
@@ -9128,7 +9124,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 1977;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 1976;
 	            this.attributeList();
 	        }
@@ -9140,7 +9136,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 1989;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.ON) {
+	            while(_la===200) {
 	                this.state = 1979;
 	                this.match(informixParser.ON);
 	                this.state = 1980;
@@ -9154,7 +9150,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 1985;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	                if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	                    this.state = 1984;
 	                    this.codeBlock();
 	                }
@@ -9188,7 +9184,7 @@ export default class informixParser extends antlr4.Parser {
 	inputEvents() {
 	    let localctx = new InputEventsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 268, informixParser.RULE_inputEvents);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2010;
 	        this._errHandler.sync(this);
@@ -9198,7 +9194,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1996;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.AFTER || _la===informixParser.BEFORE)) {
+	            if(!(_la===2 || _la===19)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -9207,7 +9203,7 @@ export default class informixParser extends antlr4.Parser {
 	            }
 	            this.state = 1997;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.DELETE || _la===informixParser.INPUT || _la===informixParser.INSERT || _la===informixParser.ROW)) {
+	            if(!(_la===74 || _la===140 || _la===141 || _la===241)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -9270,12 +9266,12 @@ export default class informixParser extends antlr4.Parser {
 	inputInsideStatement() {
 	    let localctx = new InputInsideStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 270, informixParser.RULE_inputInsideStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2024;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.NEXT:
+	        case 187:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2012;
 	            this.match(informixParser.NEXT);
@@ -9284,15 +9280,15 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2016;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.IDENT:
+	            case 332:
 	                this.state = 2014;
 	                this.fieldName();
 	                break;
-	            case informixParser.NEXT:
-	            case informixParser.PREVIOUS:
+	            case 187:
+	            case 217:
 	                this.state = 2015;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.NEXT || _la===informixParser.PREVIOUS)) {
+	                if(!(_la===187 || _la===217)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -9304,19 +9300,19 @@ export default class informixParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case informixParser.CONTINUE:
-	        case informixParser.EXIT:
+	        case 53:
+	        case 95:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2022;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.CONTINUE:
+	            case 53:
 	                this.state = 2018;
 	                this.match(informixParser.CONTINUE);
 	                this.state = 2019;
 	                this.match(informixParser.INPUT);
 	                break;
-	            case informixParser.EXIT:
+	            case 95:
 	                this.state = 2020;
 	                this.match(informixParser.EXIT);
 	                this.state = 2021;
@@ -9348,7 +9344,7 @@ export default class informixParser extends antlr4.Parser {
 	inputGroupStatement() {
 	    let localctx = new InputGroupStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 272, informixParser.RULE_inputGroupStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2026;
@@ -9356,7 +9352,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2030;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	        while(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	            this.state = 2027;
 	            this.codeBlock();
 	            this.state = 2032;
@@ -9382,7 +9378,7 @@ export default class informixParser extends antlr4.Parser {
 	inputStatement() {
 	    let localctx = new InputStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 274, informixParser.RULE_inputStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2033;
@@ -9390,7 +9386,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2063;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.BY:
+	        case 30:
 	            this.state = 2034;
 	            this.match(informixParser.BY);
 	            this.state = 2035;
@@ -9400,7 +9396,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2041;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2037;
 	                this.match(informixParser.COMMA);
 	                this.state = 2038;
@@ -9412,7 +9408,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2046;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.WITHOUT) {
+	            if(_la===306) {
 	                this.state = 2044;
 	                this.match(informixParser.WITHOUT);
 	                this.state = 2045;
@@ -9420,64 +9416,64 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.AVG:
-	        case informixParser.COLUMN:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.DATE:
-	        case informixParser.DAY:
-	        case informixParser.EXTEND:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INFIELD:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MAX:
-	        case informixParser.MDY:
-	        case informixParser.MIN:
-	        case informixParser.MONTH:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.PREPARE:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.SUM:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.YEAR:
-	        case informixParser.PLUS:
-	        case informixParser.MINUS:
-	        case informixParser.LPAREN:
-	        case informixParser.IDENT:
-	        case informixParser.STRING_LITERAL:
-	        case informixParser.NUM_INT:
-	        case informixParser.NUM_REAL:
+	        case 3:
+	        case 12:
+	        case 17:
+	        case 43:
+	        case 54:
+	        case 58:
+	        case 62:
+	        case 64:
+	        case 98:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 138:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 182:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 216:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 266:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 310:
+	        case 312:
+	        case 313:
+	        case 325:
+	        case 332:
+	        case 333:
+	        case 334:
+	        case 335:
 	            this.state = 2048;
 	            this.expression();
 	            this.state = 2053;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2049;
 	                this.match(informixParser.COMMA);
 	                this.state = 2050;
@@ -9489,7 +9485,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2058;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.WITHOUT) {
+	            if(_la===306) {
 	                this.state = 2056;
 	                this.match(informixParser.WITHOUT);
 	                this.state = 2057;
@@ -9507,7 +9503,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2066;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 2065;
 	            this.attributeList();
 	        }
@@ -9515,7 +9511,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2070;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.HELP) {
+	        if(_la===129) {
 	            this.state = 2068;
 	            this.match(informixParser.HELP);
 	            this.state = 2069;
@@ -9535,7 +9531,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2075; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===informixParser.AFTER || _la===informixParser.BEFORE || _la===informixParser.ON);
+	            } while(_la===2 || _la===19 || _la===200);
 	            this.state = 2077;
 	            this.match(informixParser.END);
 	            this.state = 2078;
@@ -9561,7 +9557,7 @@ export default class informixParser extends antlr4.Parser {
 	inputArrayStatement() {
 	    let localctx = new InputArrayStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 276, informixParser.RULE_inputArrayStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2082;
@@ -9573,7 +9569,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2087;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.WITHOUT) {
+	        if(_la===306) {
 	            this.state = 2085;
 	            this.match(informixParser.WITHOUT);
 	            this.state = 2086;
@@ -9587,7 +9583,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2095;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2091;
 	            this.match(informixParser.COMMA);
 	            this.state = 2092;
@@ -9599,7 +9595,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2100;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.HELP) {
+	        if(_la===129) {
 	            this.state = 2098;
 	            this.match(informixParser.HELP);
 	            this.state = 2099;
@@ -9609,7 +9605,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2103;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	        if(_la===14 || _la===15) {
 	            this.state = 2102;
 	            this.attributeList();
 	        }
@@ -9627,7 +9623,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2108; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===informixParser.AFTER || _la===informixParser.BEFORE || _la===informixParser.ON);
+	            } while(_la===2 || _la===19 || _la===200);
 	            this.state = 2110;
 	            this.match(informixParser.END);
 	            this.state = 2111;
@@ -9653,19 +9649,19 @@ export default class informixParser extends antlr4.Parser {
 	menuEvents() {
 	    let localctx = new MenuEventsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 278, informixParser.RULE_menuEvents);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2133;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.BEFORE:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2115;
 	            this.match(informixParser.BEFORE);
 	            this.state = 2116;
 	            this.match(informixParser.MENU);
 	            break;
-	        case informixParser.COMMAND:
+	        case 45:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2117;
 	            this.match(informixParser.COMMAND);
@@ -9673,7 +9669,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2123;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.KEY) {
+	            if(_la===154) {
 	                this.state = 2118;
 	                this.match(informixParser.KEY);
 	                this.state = 2119;
@@ -9697,7 +9693,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2131;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.HELP) {
+	            if(_la===129) {
 	                this.state = 2129;
 	                this.match(informixParser.HELP);
 	                this.state = 2130;
@@ -9727,12 +9723,12 @@ export default class informixParser extends antlr4.Parser {
 	menuInsideStatement() {
 	    let localctx = new MenuInsideStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 280, informixParser.RULE_menuInsideStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2178;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.NEXT:
+	        case 187:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2135;
 	            this.match(informixParser.NEXT);
@@ -9741,62 +9737,62 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2139;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.ACCEPT:
-	            case informixParser.ASCII:
-	            case informixParser.AVG:
-	            case informixParser.COLUMN:
-	            case informixParser.COUNT:
-	            case informixParser.CURRENT:
-	            case informixParser.DATE:
-	            case informixParser.DAY:
-	            case informixParser.EXTEND:
-	            case informixParser.FALSE:
-	            case informixParser.FIRST:
-	            case informixParser.FOUND:
-	            case informixParser.GROUP:
-	            case informixParser.HIDE:
-	            case informixParser.INDEX:
-	            case informixParser.INFIELD:
-	            case informixParser.INT_FLAG:
-	            case informixParser.INTERRUPT:
-	            case informixParser.LAST:
-	            case informixParser.LENGTH:
-	            case informixParser.LINENO:
-	            case informixParser.MAX:
-	            case informixParser.MDY:
-	            case informixParser.MIN:
-	            case informixParser.MONTH:
-	            case informixParser.NO:
-	            case informixParser.NOT:
-	            case informixParser.NOTFOUND:
-	            case informixParser.NULL_:
-	            case informixParser.PAGENO:
-	            case informixParser.PREPARE:
-	            case informixParser.REAL:
-	            case informixParser.SIZE:
-	            case informixParser.SQL:
-	            case informixParser.STATUS:
-	            case informixParser.SUM:
-	            case informixParser.TEMP:
-	            case informixParser.TIME:
-	            case informixParser.TODAY:
-	            case informixParser.TRUE:
-	            case informixParser.USER:
-	            case informixParser.WEEKDAY:
-	            case informixParser.WAIT:
-	            case informixParser.WORK:
-	            case informixParser.YEAR:
-	            case informixParser.PLUS:
-	            case informixParser.MINUS:
-	            case informixParser.LPAREN:
-	            case informixParser.IDENT:
-	            case informixParser.STRING_LITERAL:
-	            case informixParser.NUM_INT:
-	            case informixParser.NUM_REAL:
+	            case 3:
+	            case 12:
+	            case 17:
+	            case 43:
+	            case 54:
+	            case 58:
+	            case 62:
+	            case 64:
+	            case 98:
+	            case 101:
+	            case 107:
+	            case 116:
+	            case 126:
+	            case 130:
+	            case 136:
+	            case 138:
+	            case 145:
+	            case 147:
+	            case 156:
+	            case 158:
+	            case 162:
+	            case 175:
+	            case 176:
+	            case 177:
+	            case 182:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 195:
+	            case 211:
+	            case 216:
+	            case 226:
+	            case 252:
+	            case 258:
+	            case 264:
+	            case 266:
+	            case 270:
+	            case 275:
+	            case 277:
+	            case 280:
+	            case 290:
+	            case 295:
+	            case 297:
+	            case 309:
+	            case 310:
+	            case 312:
+	            case 313:
+	            case 325:
+	            case 332:
+	            case 333:
+	            case 334:
+	            case 335:
 	                this.state = 2137;
 	                this.expression();
 	                break;
-	            case informixParser.ALL:
+	            case 6:
 	                this.state = 2138;
 	                this.match(informixParser.ALL);
 	                break;
@@ -9806,7 +9802,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2145;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2141;
 	                this.match(informixParser.COMMA);
 	                this.state = 2142;
@@ -9816,7 +9812,7 @@ export default class informixParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case informixParser.SHOW:
+	        case 251:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2148;
 	            this.match(informixParser.SHOW);
@@ -9825,62 +9821,62 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2152;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.ACCEPT:
-	            case informixParser.ASCII:
-	            case informixParser.AVG:
-	            case informixParser.COLUMN:
-	            case informixParser.COUNT:
-	            case informixParser.CURRENT:
-	            case informixParser.DATE:
-	            case informixParser.DAY:
-	            case informixParser.EXTEND:
-	            case informixParser.FALSE:
-	            case informixParser.FIRST:
-	            case informixParser.FOUND:
-	            case informixParser.GROUP:
-	            case informixParser.HIDE:
-	            case informixParser.INDEX:
-	            case informixParser.INFIELD:
-	            case informixParser.INT_FLAG:
-	            case informixParser.INTERRUPT:
-	            case informixParser.LAST:
-	            case informixParser.LENGTH:
-	            case informixParser.LINENO:
-	            case informixParser.MAX:
-	            case informixParser.MDY:
-	            case informixParser.MIN:
-	            case informixParser.MONTH:
-	            case informixParser.NO:
-	            case informixParser.NOT:
-	            case informixParser.NOTFOUND:
-	            case informixParser.NULL_:
-	            case informixParser.PAGENO:
-	            case informixParser.PREPARE:
-	            case informixParser.REAL:
-	            case informixParser.SIZE:
-	            case informixParser.SQL:
-	            case informixParser.STATUS:
-	            case informixParser.SUM:
-	            case informixParser.TEMP:
-	            case informixParser.TIME:
-	            case informixParser.TODAY:
-	            case informixParser.TRUE:
-	            case informixParser.USER:
-	            case informixParser.WEEKDAY:
-	            case informixParser.WAIT:
-	            case informixParser.WORK:
-	            case informixParser.YEAR:
-	            case informixParser.PLUS:
-	            case informixParser.MINUS:
-	            case informixParser.LPAREN:
-	            case informixParser.IDENT:
-	            case informixParser.STRING_LITERAL:
-	            case informixParser.NUM_INT:
-	            case informixParser.NUM_REAL:
+	            case 3:
+	            case 12:
+	            case 17:
+	            case 43:
+	            case 54:
+	            case 58:
+	            case 62:
+	            case 64:
+	            case 98:
+	            case 101:
+	            case 107:
+	            case 116:
+	            case 126:
+	            case 130:
+	            case 136:
+	            case 138:
+	            case 145:
+	            case 147:
+	            case 156:
+	            case 158:
+	            case 162:
+	            case 175:
+	            case 176:
+	            case 177:
+	            case 182:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 195:
+	            case 211:
+	            case 216:
+	            case 226:
+	            case 252:
+	            case 258:
+	            case 264:
+	            case 266:
+	            case 270:
+	            case 275:
+	            case 277:
+	            case 280:
+	            case 290:
+	            case 295:
+	            case 297:
+	            case 309:
+	            case 310:
+	            case 312:
+	            case 313:
+	            case 325:
+	            case 332:
+	            case 333:
+	            case 334:
+	            case 335:
 	                this.state = 2150;
 	                this.expression();
 	                break;
-	            case informixParser.ALL:
+	            case 6:
 	                this.state = 2151;
 	                this.match(informixParser.ALL);
 	                break;
@@ -9890,7 +9886,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2158;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2154;
 	                this.match(informixParser.COMMA);
 	                this.state = 2155;
@@ -9900,7 +9896,7 @@ export default class informixParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case informixParser.HIDE:
+	        case 130:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2161;
 	            this.match(informixParser.HIDE);
@@ -9909,62 +9905,62 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2165;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.ACCEPT:
-	            case informixParser.ASCII:
-	            case informixParser.AVG:
-	            case informixParser.COLUMN:
-	            case informixParser.COUNT:
-	            case informixParser.CURRENT:
-	            case informixParser.DATE:
-	            case informixParser.DAY:
-	            case informixParser.EXTEND:
-	            case informixParser.FALSE:
-	            case informixParser.FIRST:
-	            case informixParser.FOUND:
-	            case informixParser.GROUP:
-	            case informixParser.HIDE:
-	            case informixParser.INDEX:
-	            case informixParser.INFIELD:
-	            case informixParser.INT_FLAG:
-	            case informixParser.INTERRUPT:
-	            case informixParser.LAST:
-	            case informixParser.LENGTH:
-	            case informixParser.LINENO:
-	            case informixParser.MAX:
-	            case informixParser.MDY:
-	            case informixParser.MIN:
-	            case informixParser.MONTH:
-	            case informixParser.NO:
-	            case informixParser.NOT:
-	            case informixParser.NOTFOUND:
-	            case informixParser.NULL_:
-	            case informixParser.PAGENO:
-	            case informixParser.PREPARE:
-	            case informixParser.REAL:
-	            case informixParser.SIZE:
-	            case informixParser.SQL:
-	            case informixParser.STATUS:
-	            case informixParser.SUM:
-	            case informixParser.TEMP:
-	            case informixParser.TIME:
-	            case informixParser.TODAY:
-	            case informixParser.TRUE:
-	            case informixParser.USER:
-	            case informixParser.WEEKDAY:
-	            case informixParser.WAIT:
-	            case informixParser.WORK:
-	            case informixParser.YEAR:
-	            case informixParser.PLUS:
-	            case informixParser.MINUS:
-	            case informixParser.LPAREN:
-	            case informixParser.IDENT:
-	            case informixParser.STRING_LITERAL:
-	            case informixParser.NUM_INT:
-	            case informixParser.NUM_REAL:
+	            case 3:
+	            case 12:
+	            case 17:
+	            case 43:
+	            case 54:
+	            case 58:
+	            case 62:
+	            case 64:
+	            case 98:
+	            case 101:
+	            case 107:
+	            case 116:
+	            case 126:
+	            case 130:
+	            case 136:
+	            case 138:
+	            case 145:
+	            case 147:
+	            case 156:
+	            case 158:
+	            case 162:
+	            case 175:
+	            case 176:
+	            case 177:
+	            case 182:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 195:
+	            case 211:
+	            case 216:
+	            case 226:
+	            case 252:
+	            case 258:
+	            case 264:
+	            case 266:
+	            case 270:
+	            case 275:
+	            case 277:
+	            case 280:
+	            case 290:
+	            case 295:
+	            case 297:
+	            case 309:
+	            case 310:
+	            case 312:
+	            case 313:
+	            case 325:
+	            case 332:
+	            case 333:
+	            case 334:
+	            case 335:
 	                this.state = 2163;
 	                this.expression();
 	                break;
-	            case informixParser.ALL:
+	            case 6:
 	                this.state = 2164;
 	                this.match(informixParser.ALL);
 	                break;
@@ -9974,7 +9970,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2171;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2167;
 	                this.match(informixParser.COMMA);
 	                this.state = 2168;
@@ -9984,14 +9980,14 @@ export default class informixParser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case informixParser.CONTINUE:
+	        case 53:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2174;
 	            this.match(informixParser.CONTINUE);
 	            this.state = 2175;
 	            this.match(informixParser.MENU);
 	            break;
-	        case informixParser.EXIT:
+	        case 95:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 2176;
 	            this.match(informixParser.EXIT);
@@ -10020,7 +10016,7 @@ export default class informixParser extends antlr4.Parser {
 	menuGroupStatement() {
 	    let localctx = new MenuGroupStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 282, informixParser.RULE_menuGroupStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2180;
@@ -10028,7 +10024,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2182;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALLOCATE || _la===informixParser.BEGIN || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (informixParser.CALL - 33)) | (1 << (informixParser.CASE - 33)) | (1 << (informixParser.CLEAR - 33)) | (1 << (informixParser.CLOSE - 33)) | (1 << (informixParser.COMMIT - 33)) | (1 << (informixParser.CONSTRUCT - 33)) | (1 << (informixParser.CONTINUE - 33)) | (1 << (informixParser.CREATE - 33)) | (1 << (informixParser.CURRENT - 33)) | (1 << (informixParser.DATABASE - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (informixParser.DEALLOCATE - 65)) | (1 << (informixParser.DECLARE - 65)) | (1 << (informixParser.DELETE - 65)) | (1 << (informixParser.DISPLAY - 65)) | (1 << (informixParser.DROP - 65)) | (1 << (informixParser.ERROR - 65)) | (1 << (informixParser.EXECUTE - 65)) | (1 << (informixParser.EXIT - 65)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (informixParser.FETCH - 102)) | (1 << (informixParser.FINISH - 102)) | (1 << (informixParser.FLUSH - 102)) | (1 << (informixParser.FOR - 102)) | (1 << (informixParser.FOREACH - 102)) | (1 << (informixParser.FREE - 102)) | (1 << (informixParser.GOTO - 102)) | (1 << (informixParser.HIDE - 102)) | (1 << (informixParser.IF - 102)))) !== 0) || ((((_la - 139)) & ~0x1f) == 0 && ((1 << (_la - 139)) & ((1 << (informixParser.INITIALIZE - 139)) | (1 << (informixParser.INPUT - 139)) | (1 << (informixParser.INSERT - 139)) | (1 << (informixParser.LET - 139)) | (1 << (informixParser.LOAD - 139)) | (1 << (informixParser.LOCATE - 139)) | (1 << (informixParser.LOCK - 139)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (informixParser.MENU - 171)) | (1 << (informixParser.MESSAGE - 171)) | (1 << (informixParser.NEED - 171)) | (1 << (informixParser.NEXT - 171)) | (1 << (informixParser.OPEN - 171)))) !== 0) || ((((_la - 203)) & ~0x1f) == 0 && ((1 << (_la - 203)) & ((1 << (informixParser.OPTIONS - 203)) | (1 << (informixParser.OUTPUT - 203)) | (1 << (informixParser.PAUSE - 203)) | (1 << (informixParser.PREPARE - 203)) | (1 << (informixParser.PRINT - 203)) | (1 << (informixParser.PROMPT - 203)) | (1 << (informixParser.PUT - 203)))) !== 0) || ((((_la - 235)) & ~0x1f) == 0 && ((1 << (_la - 235)) & ((1 << (informixParser.RESIZE - 235)) | (1 << (informixParser.RETURN - 235)) | (1 << (informixParser.ROLLBACK - 235)) | (1 << (informixParser.RUN - 235)) | (1 << (informixParser.SCROLL - 235)) | (1 << (informixParser.SKIP2 - 235)) | (1 << (informixParser.SELECT - 235)) | (1 << (informixParser.SET - 235)) | (1 << (informixParser.SHOW - 235)) | (1 << (informixParser.SLEEP - 235)) | (1 << (informixParser.START - 235)))) !== 0) || ((((_la - 269)) & ~0x1f) == 0 && ((1 << (_la - 269)) & ((1 << (informixParser.TERMINATE - 269)) | (1 << (informixParser.UNLOAD - 269)) | (1 << (informixParser.UPDATE - 269)) | (1 << (informixParser.VALIDATE - 269)))) !== 0) || ((((_la - 301)) & ~0x1f) == 0 && ((1 << (_la - 301)) & ((1 << (informixParser.WHENEVER - 301)) | (1 << (informixParser.WHILE - 301)) | (1 << (informixParser.IDENT - 301)))) !== 0)) {
+	        if(_la===5 || _la===20 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 320356675) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 1628471825) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 2420187921) !== 0) || ((((_la - 139)) & ~0x1f) === 0 && ((1 << (_la - 139)) & 235929607) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 1073840131) !== 0) || ((((_la - 203)) & ~0x1f) === 0 && ((1 << (_la - 203)) & 827921) !== 0) || ((((_la - 235)) & ~0x1f) === 0 && ((1 << (_la - 235)) & 67466531) !== 0) || ((((_la - 269)) & ~0x1f) === 0 && ((1 << (_la - 269)) & 9699329) !== 0) || ((((_la - 301)) & ~0x1f) === 0 && ((1 << (_la - 301)) & 2147483653) !== 0)) {
 	            this.state = 2181;
 	            this.codeBlock();
 	        }
@@ -10052,7 +10048,7 @@ export default class informixParser extends antlr4.Parser {
 	menuStatement() {
 	    let localctx = new MenuStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 284, informixParser.RULE_menuStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2184;
@@ -10062,7 +10058,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2189;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.BEFORE || _la===informixParser.COMMAND) {
+	        while(_la===19 || _la===45) {
 	            this.state = 2186;
 	            this.menuGroupStatement();
 	            this.state = 2191;
@@ -10092,19 +10088,19 @@ export default class informixParser extends antlr4.Parser {
 	reservedLinePosition() {
 	    let localctx = new ReservedLinePositionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 286, informixParser.RULE_reservedLinePosition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2206;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.FIRST:
+	        case 107:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2195;
 	            this.match(informixParser.FIRST);
 	            this.state = 2198;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.PLUS) {
+	            if(_la===312) {
 	                this.state = 2196;
 	                this.match(informixParser.PLUS);
 	                this.state = 2197;
@@ -10112,22 +10108,22 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.PLUS:
-	        case informixParser.MINUS:
-	        case informixParser.NUM_INT:
-	        case informixParser.NUM_REAL:
+	        case 312:
+	        case 313:
+	        case 334:
+	        case 335:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2200;
 	            this.numericConstant();
 	            break;
-	        case informixParser.LAST:
+	        case 156:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2201;
 	            this.match(informixParser.LAST);
 	            this.state = 2204;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.MINUS) {
+	            if(_la===313) {
 	                this.state = 2202;
 	                this.match(informixParser.MINUS);
 	                this.state = 2203;
@@ -10157,27 +10153,27 @@ export default class informixParser extends antlr4.Parser {
 	specialWindowAttribute() {
 	    let localctx = new SpecialWindowAttributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 288, informixParser.RULE_specialWindowAttribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2220;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.BLACK:
-	        case informixParser.BLUE:
-	        case informixParser.BOLD:
-	        case informixParser.CYAN:
-	        case informixParser.DIM:
-	        case informixParser.GREEN:
-	        case informixParser.INVISIBLE:
-	        case informixParser.MAGENTA:
-	        case informixParser.NORMAL:
-	        case informixParser.RED:
-	        case informixParser.WHITE:
-	        case informixParser.YELLOW:
+	        case 23:
+	        case 25:
+	        case 26:
+	        case 60:
+	        case 77:
+	        case 125:
+	        case 149:
+	        case 169:
+	        case 189:
+	        case 228:
+	        case 304:
+	        case 311:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2208;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << informixParser.BLACK) | (1 << informixParser.BLUE) | (1 << informixParser.BOLD))) !== 0) || _la===informixParser.CYAN || _la===informixParser.DIM || _la===informixParser.GREEN || _la===informixParser.INVISIBLE || _la===informixParser.MAGENTA || _la===informixParser.NORMAL || _la===informixParser.RED || _la===informixParser.WHITE || _la===informixParser.YELLOW)) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 109051904) !== 0) || _la===60 || _la===77 || _la===125 || _la===149 || _la===169 || _la===189 || _la===228 || _la===304 || _la===311)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -10185,24 +10181,24 @@ export default class informixParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case informixParser.REVERSE:
+	        case 238:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2209;
 	            this.match(informixParser.REVERSE);
 	            break;
-	        case informixParser.BORDER:
+	        case 27:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2210;
 	            this.match(informixParser.BORDER);
 	            break;
-	        case informixParser.FORM:
-	        case informixParser.MENU:
-	        case informixParser.MESSAGE:
-	        case informixParser.PROMPT:
+	        case 112:
+	        case 171:
+	        case 172:
+	        case 221:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2211;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.FORM || _la===informixParser.MENU || _la===informixParser.MESSAGE || _la===informixParser.PROMPT)) {
+	            if(!(_la===112 || _la===171 || _la===172 || _la===221)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -10214,7 +10210,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2213;
 	            this.reservedLinePosition();
 	            break;
-	        case informixParser.COMMENT:
+	        case 46:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 2214;
 	            this.match(informixParser.COMMENT);
@@ -10223,16 +10219,16 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2218;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.FIRST:
-	            case informixParser.LAST:
-	            case informixParser.PLUS:
-	            case informixParser.MINUS:
-	            case informixParser.NUM_INT:
-	            case informixParser.NUM_REAL:
+	            case 107:
+	            case 156:
+	            case 312:
+	            case 313:
+	            case 334:
+	            case 335:
 	                this.state = 2216;
 	                this.reservedLinePosition();
 	                break;
-	            case informixParser.OFF:
+	            case 199:
 	                this.state = 2217;
 	                this.match(informixParser.OFF);
 	                break;
@@ -10262,7 +10258,7 @@ export default class informixParser extends antlr4.Parser {
 	windowAttribute() {
 	    let localctx = new WindowAttributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 290, informixParser.RULE_windowAttribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2222;
@@ -10270,7 +10266,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2227;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2223;
 	            this.match(informixParser.COMMA);
 	            this.state = 2224;
@@ -10298,12 +10294,12 @@ export default class informixParser extends antlr4.Parser {
 	windowAttributeList() {
 	    let localctx = new WindowAttributeListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 292, informixParser.RULE_windowAttributeList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2230;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES)) {
+	        if(!(_la===14 || _la===15)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -10335,7 +10331,7 @@ export default class informixParser extends antlr4.Parser {
 	optionStatement() {
 	    let localctx = new OptionStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 294, informixParser.RULE_optionStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2290;
@@ -10402,11 +10398,11 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2257;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.WRAP:
+	            case 348:
 	                this.state = 2254;
 	                this.match(informixParser.WRAP);
 	                break;
-	            case informixParser.NO:
+	            case 190:
 	                this.state = 2255;
 	                this.match(informixParser.NO);
 	                this.state = 2256;
@@ -10501,7 +10497,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.match(informixParser.INTERRUPT);
 	            this.state = 2286;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.OFF || _la===informixParser.ON)) {
+	            if(!(_la===199 || _la===200)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -10517,7 +10513,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.match(informixParser.ORDER);
 	            this.state = 2289;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.CONSTRAINED || _la===informixParser.UNCONSTRAINED)) {
+	            if(!(_la===50 || _la===282)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -10546,7 +10542,7 @@ export default class informixParser extends antlr4.Parser {
 	optionsStatement() {
 	    let localctx = new OptionsStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 296, informixParser.RULE_optionsStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2292;
@@ -10556,7 +10552,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2298;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2294;
 	            this.match(informixParser.COMMA);
 	            this.state = 2295;
@@ -10584,7 +10580,7 @@ export default class informixParser extends antlr4.Parser {
 	screenStatement() {
 	    let localctx = new ScreenStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 298, informixParser.RULE_screenStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2390;
 	        this._errHandler.sync(this);
@@ -10614,7 +10610,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2306;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.WINDOW) {
+	                if(_la===307) {
 	                    this.state = 2305;
 	                    this.match(informixParser.WINDOW);
 	                }
@@ -10672,11 +10668,11 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2328;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.SCREEN:
+	            case 244:
 	                this.state = 2326;
 	                this.match(informixParser.SCREEN);
 	                break;
-	            case informixParser.IDENT:
+	            case 332:
 	                this.state = 2327;
 	                this.identifier();
 	                break;
@@ -10710,7 +10706,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2337;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	            if(_la===14 || _la===15) {
 	                this.state = 2336;
 	                this.attributeList();
 	            }
@@ -10817,7 +10813,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2373;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ATTRIBUTE || _la===informixParser.ATTRIBUTES) {
+	            if(_la===14 || _la===15) {
 	                this.state = 2372;
 	                this.windowAttributeList();
 	            }
@@ -10839,7 +10835,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2382;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2378;
 	                this.match(informixParser.COMMA);
 	                this.state = 2379;
@@ -10850,7 +10846,7 @@ export default class informixParser extends antlr4.Parser {
 	            }
 	            this.state = 2385;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.DOWN || _la===informixParser.UP)) {
+	            if(!(_la===84 || _la===288)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -10860,7 +10856,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2388;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.BY) {
+	            if(_la===30) {
 	                this.state = 2386;
 	                this.match(informixParser.BY);
 	                this.state = 2387;
@@ -10956,12 +10952,12 @@ export default class informixParser extends antlr4.Parser {
 	cursorManipulationStatement() {
 	    let localctx = new CursorManipulationStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 302, informixParser.RULE_cursorManipulationStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2472;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.CLOSE:
+	        case 41:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2401;
 	            this.match(informixParser.CLOSE);
@@ -10970,7 +10966,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2403;
 	            this.eol();
 	            break;
-	        case informixParser.DECLARE:
+	        case 69:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2405;
 	            this.match(informixParser.DECLARE);
@@ -10979,13 +10975,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2437;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.CURSOR:
+	            case 59:
 	                this.state = 2407;
 	                this.match(informixParser.CURSOR);
 	                this.state = 2410;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.WITH) {
+	                if(_la===305) {
 	                    this.state = 2408;
 	                    this.match(informixParser.WITH);
 	                    this.state = 2409;
@@ -10997,7 +10993,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2424;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case informixParser.SELECT:
+	                case 248:
 	                    this.state = 2413;
 	                    this.sqlSelectStatement();
 	                    this.state = 2420;
@@ -11011,7 +11007,7 @@ export default class informixParser extends antlr4.Parser {
 	                        this.state = 2418;
 	                        this._errHandler.sync(this);
 	                        _la = this._input.LA(1);
-	                        if(_la===informixParser.OF) {
+	                        if(_la===198) {
 	                            this.state = 2416;
 	                            this.match(informixParser.OF);
 	                            this.state = 2417;
@@ -11021,44 +11017,44 @@ export default class informixParser extends antlr4.Parser {
 
 	                    }
 	                    break;
-	                case informixParser.INSERT:
+	                case 141:
 	                    this.state = 2422;
 	                    this.sqlInsertStatement();
 	                    break;
-	                case informixParser.ACCEPT:
-	                case informixParser.ASCII:
-	                case informixParser.COUNT:
-	                case informixParser.CURRENT:
-	                case informixParser.FALSE:
-	                case informixParser.FIRST:
-	                case informixParser.FOUND:
-	                case informixParser.GROUP:
-	                case informixParser.HIDE:
-	                case informixParser.INDEX:
-	                case informixParser.INT_FLAG:
-	                case informixParser.INTERRUPT:
-	                case informixParser.LAST:
-	                case informixParser.LENGTH:
-	                case informixParser.LINENO:
-	                case informixParser.MDY:
-	                case informixParser.NO:
-	                case informixParser.NOT:
-	                case informixParser.NOTFOUND:
-	                case informixParser.NULL_:
-	                case informixParser.PAGENO:
-	                case informixParser.REAL:
-	                case informixParser.SIZE:
-	                case informixParser.SQL:
-	                case informixParser.STATUS:
-	                case informixParser.TEMP:
-	                case informixParser.TIME:
-	                case informixParser.TODAY:
-	                case informixParser.TRUE:
-	                case informixParser.USER:
-	                case informixParser.WEEKDAY:
-	                case informixParser.WAIT:
-	                case informixParser.WORK:
-	                case informixParser.IDENT:
+	                case 3:
+	                case 12:
+	                case 54:
+	                case 58:
+	                case 101:
+	                case 107:
+	                case 116:
+	                case 126:
+	                case 130:
+	                case 136:
+	                case 145:
+	                case 147:
+	                case 156:
+	                case 158:
+	                case 162:
+	                case 176:
+	                case 190:
+	                case 191:
+	                case 192:
+	                case 195:
+	                case 211:
+	                case 226:
+	                case 252:
+	                case 258:
+	                case 264:
+	                case 270:
+	                case 275:
+	                case 277:
+	                case 280:
+	                case 290:
+	                case 295:
+	                case 297:
+	                case 309:
+	                case 332:
 	                    this.state = 2423;
 	                    this.statementId();
 	                    break;
@@ -11066,7 +11062,7 @@ export default class informixParser extends antlr4.Parser {
 	                    throw new antlr4.error.NoViableAltException(this);
 	                }
 	                break;
-	            case informixParser.SCROLL:
+	            case 245:
 	                this.state = 2426;
 	                this.match(informixParser.SCROLL);
 	                this.state = 2427;
@@ -11074,7 +11070,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2430;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.WITH) {
+	                if(_la===305) {
 	                    this.state = 2428;
 	                    this.match(informixParser.WITH);
 	                    this.state = 2429;
@@ -11086,44 +11082,44 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2435;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case informixParser.SELECT:
+	                case 248:
 	                    this.state = 2433;
 	                    this.sqlSelectStatement();
 	                    break;
-	                case informixParser.ACCEPT:
-	                case informixParser.ASCII:
-	                case informixParser.COUNT:
-	                case informixParser.CURRENT:
-	                case informixParser.FALSE:
-	                case informixParser.FIRST:
-	                case informixParser.FOUND:
-	                case informixParser.GROUP:
-	                case informixParser.HIDE:
-	                case informixParser.INDEX:
-	                case informixParser.INT_FLAG:
-	                case informixParser.INTERRUPT:
-	                case informixParser.LAST:
-	                case informixParser.LENGTH:
-	                case informixParser.LINENO:
-	                case informixParser.MDY:
-	                case informixParser.NO:
-	                case informixParser.NOT:
-	                case informixParser.NOTFOUND:
-	                case informixParser.NULL_:
-	                case informixParser.PAGENO:
-	                case informixParser.REAL:
-	                case informixParser.SIZE:
-	                case informixParser.SQL:
-	                case informixParser.STATUS:
-	                case informixParser.TEMP:
-	                case informixParser.TIME:
-	                case informixParser.TODAY:
-	                case informixParser.TRUE:
-	                case informixParser.USER:
-	                case informixParser.WEEKDAY:
-	                case informixParser.WAIT:
-	                case informixParser.WORK:
-	                case informixParser.IDENT:
+	                case 3:
+	                case 12:
+	                case 54:
+	                case 58:
+	                case 101:
+	                case 107:
+	                case 116:
+	                case 126:
+	                case 130:
+	                case 136:
+	                case 145:
+	                case 147:
+	                case 156:
+	                case 158:
+	                case 162:
+	                case 176:
+	                case 190:
+	                case 191:
+	                case 192:
+	                case 195:
+	                case 211:
+	                case 226:
+	                case 252:
+	                case 258:
+	                case 264:
+	                case 270:
+	                case 275:
+	                case 277:
+	                case 280:
+	                case 290:
+	                case 295:
+	                case 297:
+	                case 309:
+	                case 332:
 	                    this.state = 2434;
 	                    this.statementId();
 	                    break;
@@ -11135,22 +11131,22 @@ export default class informixParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case informixParser.FETCH:
+	        case 102:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2439;
 	            this.match(informixParser.FETCH);
 	            this.state = 2449;
 	            this._errHandler.sync(this);
 	            switch (this._input.LA(1)) {
-	            case informixParser.NEXT:
+	            case 187:
 	            	this.state = 2440;
 	            	this.match(informixParser.NEXT);
 	            	break;
-	            case informixParser.PREVIOUS:
-	            case informixParser.PRIOR:
+	            case 217:
+	            case 349:
 	            	this.state = 2441;
 	            	_la = this._input.LA(1);
-	            	if(!(_la===informixParser.PREVIOUS || _la===informixParser.PRIOR)) {
+	            	if(!(_la===217 || _la===349)) {
 	            	this._errHandler.recoverInline(this);
 	            	}
 	            	else {
@@ -11158,31 +11154,31 @@ export default class informixParser extends antlr4.Parser {
 	            	    this.consume();
 	            	}
 	            	break;
-	            case informixParser.FIRST:
+	            case 107:
 	            	this.state = 2442;
 	            	this.match(informixParser.FIRST);
 	            	break;
-	            case informixParser.LAST:
+	            case 156:
 	            	this.state = 2443;
 	            	this.match(informixParser.LAST);
 	            	break;
-	            case informixParser.CURRENT:
+	            case 58:
 	            	this.state = 2444;
 	            	this.match(informixParser.CURRENT);
 	            	break;
-	            case informixParser.RELATIVE:
+	            case 229:
 	            	this.state = 2445;
 	            	this.match(informixParser.RELATIVE);
 	            	this.state = 2446;
 	            	this.expression();
 	            	break;
-	            case informixParser.ABSOLUTE:
+	            case 1:
 	            	this.state = 2447;
 	            	this.match(informixParser.ABSOLUTE);
 	            	this.state = 2448;
 	            	this.expression();
 	            	break;
-	            case informixParser.IDENT:
+	            case 332:
 	            	break;
 	            default:
 	            	break;
@@ -11192,7 +11188,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2454;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.INTO) {
+	            if(_la===143) {
 	                this.state = 2452;
 	                this.match(informixParser.INTO);
 	                this.state = 2453;
@@ -11200,7 +11196,7 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.FLUSH:
+	        case 110:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2456;
 	            this.match(informixParser.FLUSH);
@@ -11209,7 +11205,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2458;
 	            this.eol();
 	            break;
-	        case informixParser.OPEN:
+	        case 201:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 2460;
 	            this.match(informixParser.OPEN);
@@ -11218,7 +11214,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2464;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.USING) {
+	            if(_la===291) {
 	                this.state = 2462;
 	                this.match(informixParser.USING);
 	                this.state = 2463;
@@ -11226,7 +11222,7 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.PUT:
+	        case 222:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 2466;
 	            this.match(informixParser.PUT);
@@ -11235,7 +11231,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2470;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.FROM) {
+	            if(_la===119) {
 	                this.state = 2468;
 	                this.match(informixParser.FROM);
 	                this.state = 2469;
@@ -11265,7 +11261,7 @@ export default class informixParser extends antlr4.Parser {
 	columnsList() {
 	    let localctx = new ColumnsListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 304, informixParser.RULE_columnsList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2474;
@@ -11273,7 +11269,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2479;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2475;
 	            this.match(informixParser.COMMA);
 	            this.state = 2476;
@@ -11370,45 +11366,45 @@ export default class informixParser extends antlr4.Parser {
 	columnItem() {
 	    let localctx = new ColumnItemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 312, informixParser.RULE_columnItem);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2521;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2488;
 	            this.constantIdentifier();
@@ -11424,7 +11420,7 @@ export default class informixParser extends antlr4.Parser {
 	            case 2:
 	                this.state = 2490;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.BYTE || _la===informixParser.TEXT)) {
+	                if(!(_la===31 || _la===271)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -11434,50 +11430,50 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2496;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.IN) {
+	                if(_la===134) {
 	                    this.state = 2491;
 	                    this.match(informixParser.IN);
 	                    this.state = 2494;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case informixParser.TABLE:
+	                    case 267:
 	                        this.state = 2492;
 	                        this.match(informixParser.TABLE);
 	                        break;
-	                    case informixParser.ACCEPT:
-	                    case informixParser.ASCII:
-	                    case informixParser.COUNT:
-	                    case informixParser.CURRENT:
-	                    case informixParser.FALSE:
-	                    case informixParser.FIRST:
-	                    case informixParser.FOUND:
-	                    case informixParser.GROUP:
-	                    case informixParser.HIDE:
-	                    case informixParser.INDEX:
-	                    case informixParser.INT_FLAG:
-	                    case informixParser.INTERRUPT:
-	                    case informixParser.LAST:
-	                    case informixParser.LENGTH:
-	                    case informixParser.LINENO:
-	                    case informixParser.MDY:
-	                    case informixParser.NO:
-	                    case informixParser.NOT:
-	                    case informixParser.NOTFOUND:
-	                    case informixParser.NULL_:
-	                    case informixParser.PAGENO:
-	                    case informixParser.REAL:
-	                    case informixParser.SIZE:
-	                    case informixParser.SQL:
-	                    case informixParser.STATUS:
-	                    case informixParser.TEMP:
-	                    case informixParser.TIME:
-	                    case informixParser.TODAY:
-	                    case informixParser.TRUE:
-	                    case informixParser.USER:
-	                    case informixParser.WEEKDAY:
-	                    case informixParser.WAIT:
-	                    case informixParser.WORK:
-	                    case informixParser.IDENT:
+	                    case 3:
+	                    case 12:
+	                    case 54:
+	                    case 58:
+	                    case 101:
+	                    case 107:
+	                    case 116:
+	                    case 126:
+	                    case 130:
+	                    case 136:
+	                    case 145:
+	                    case 147:
+	                    case 156:
+	                    case 158:
+	                    case 162:
+	                    case 176:
+	                    case 190:
+	                    case 191:
+	                    case 192:
+	                    case 195:
+	                    case 211:
+	                    case 226:
+	                    case 252:
+	                    case 258:
+	                    case 264:
+	                    case 270:
+	                    case 275:
+	                    case 277:
+	                    case 280:
+	                    case 290:
+	                    case 295:
+	                    case 297:
+	                    case 309:
+	                    case 332:
 	                        this.state = 2493;
 	                        this.constantIdentifier();
 	                        break;
@@ -11492,7 +11488,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2502;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.NOT) {
+	            if(_la===191) {
 	                this.state = 2500;
 	                this.match(informixParser.NOT);
 	                this.state = 2501;
@@ -11500,7 +11496,7 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.UNIQUE:
+	        case 285:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2504;
 	            this.match(informixParser.UNIQUE);
@@ -11509,13 +11505,13 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2514;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ACCEPT || _la===informixParser.ASCII || _la===informixParser.COUNT || _la===informixParser.CURRENT || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (informixParser.FALSE - 101)) | (1 << (informixParser.FIRST - 101)) | (1 << (informixParser.FOUND - 101)) | (1 << (informixParser.GROUP - 101)) | (1 << (informixParser.HIDE - 101)))) !== 0) || ((((_la - 136)) & ~0x1f) == 0 && ((1 << (_la - 136)) & ((1 << (informixParser.INDEX - 136)) | (1 << (informixParser.INT_FLAG - 136)) | (1 << (informixParser.INTERRUPT - 136)) | (1 << (informixParser.LAST - 136)) | (1 << (informixParser.LENGTH - 136)) | (1 << (informixParser.LINENO - 136)))) !== 0) || ((((_la - 176)) & ~0x1f) == 0 && ((1 << (_la - 176)) & ((1 << (informixParser.MDY - 176)) | (1 << (informixParser.NO - 176)) | (1 << (informixParser.NOT - 176)) | (1 << (informixParser.NOTFOUND - 176)) | (1 << (informixParser.NULL_ - 176)))) !== 0) || _la===informixParser.PAGENO || _la===informixParser.REAL || ((((_la - 252)) & ~0x1f) == 0 && ((1 << (_la - 252)) & ((1 << (informixParser.SIZE - 252)) | (1 << (informixParser.SQL - 252)) | (1 << (informixParser.STATUS - 252)) | (1 << (informixParser.TEMP - 252)) | (1 << (informixParser.TIME - 252)) | (1 << (informixParser.TODAY - 252)) | (1 << (informixParser.TRUE - 252)))) !== 0) || ((((_la - 290)) & ~0x1f) == 0 && ((1 << (_la - 290)) & ((1 << (informixParser.USER - 290)) | (1 << (informixParser.WEEKDAY - 290)) | (1 << (informixParser.WAIT - 290)) | (1 << (informixParser.WORK - 290)))) !== 0) || _la===informixParser.IDENT) {
+	            if(_la===3 || _la===12 || _la===54 || _la===58 || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 570458177) !== 0) || ((((_la - 136)) & ~0x1f) === 0 && ((1 << (_la - 136)) & 72354305) !== 0) || ((((_la - 176)) & ~0x1f) === 0 && ((1 << (_la - 176)) & 638977) !== 0) || _la===211 || _la===226 || ((((_la - 252)) & ~0x1f) === 0 && ((1 << (_la - 252)) & 310644801) !== 0) || ((((_la - 290)) & ~0x1f) === 0 && ((1 << (_la - 290)) & 524449) !== 0) || _la===332) {
 	                this.state = 2506;
 	                this.constantIdentifier();
 	                this.state = 2511;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 2507;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 2508;
@@ -11531,7 +11527,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2519;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.CONSTRAINT) {
+	            if(_la===51) {
 	                this.state = 2517;
 	                this.match(informixParser.CONSTRAINT);
 	                this.state = 2518;
@@ -11561,7 +11557,7 @@ export default class informixParser extends antlr4.Parser {
 	dataDefinitionStatement() {
 	    let localctx = new DataDefinitionStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 314, informixParser.RULE_dataDefinitionStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2599;
 	        this._errHandler.sync(this);
@@ -11584,7 +11580,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2528;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.TEMP) {
+	            if(_la===270) {
 	                this.state = 2527;
 	                this.match(informixParser.TEMP);
 	            }
@@ -11600,7 +11596,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2538;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2534;
 	                this.match(informixParser.COMMA);
 	                this.state = 2535;
@@ -11614,7 +11610,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2545;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.WITH) {
+	            if(_la===305) {
 	                this.state = 2542;
 	                this.match(informixParser.WITH);
 	                this.state = 2543;
@@ -11626,7 +11622,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2549;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.IN) {
+	            if(_la===134) {
 	                this.state = 2547;
 	                this.match(informixParser.IN);
 	                this.state = 2548;
@@ -11636,7 +11632,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2554;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.EXTENT) {
+	            if(_la===99) {
 	                this.state = 2551;
 	                this.match(informixParser.EXTENT);
 	                this.state = 2552;
@@ -11669,7 +11665,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.match(informixParser.LPAREN);
 	                this.state = 2564;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.PAGE || _la===informixParser.ROW)) {
+	                if(!(_la===210 || _la===241)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -11689,7 +11685,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2570;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.UNIQUE) {
+	            if(_la===285) {
 	                this.state = 2569;
 	                this.match(informixParser.UNIQUE);
 	            }
@@ -11697,7 +11693,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2573;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.CLUSTER) {
+	            if(_la===42) {
 	                this.state = 2572;
 	                this.match(informixParser.CLUSTER);
 	            }
@@ -11717,10 +11713,10 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2582;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ASC || _la===informixParser.DESC) {
+	            if(_la===11 || _la===76) {
 	                this.state = 2581;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.ASC || _la===informixParser.DESC)) {
+	                if(!(_la===11 || _la===76)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -11732,7 +11728,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2591;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2584;
 	                this.match(informixParser.COMMA);
 	                this.state = 2585;
@@ -11740,10 +11736,10 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2587;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.ASC || _la===informixParser.DESC) {
+	                if(_la===11 || _la===76) {
 	                    this.state = 2586;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===informixParser.ASC || _la===informixParser.DESC)) {
+	                    if(!(_la===11 || _la===76)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -11794,32 +11790,32 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2607;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.INSERT:
+	        case 141:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2601;
 	            this.sqlInsertStatement();
 	            break;
-	        case informixParser.DELETE:
+	        case 74:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2602;
 	            this.sqlDeleteStatement();
 	            break;
-	        case informixParser.SELECT:
+	        case 248:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2603;
 	            this.sqlSelectStatement();
 	            break;
-	        case informixParser.UPDATE:
+	        case 289:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2604;
 	            this.sqlUpdateStatement();
 	            break;
-	        case informixParser.LOAD:
+	        case 164:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 2605;
 	            this.sqlLoadStatement();
 	            break;
-	        case informixParser.UNLOAD:
+	        case 287:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 2606;
 	            this.sqlUnLoadStatement();
@@ -11869,58 +11865,58 @@ export default class informixParser extends antlr4.Parser {
 	columnsTableId() {
 	    let localctx = new ColumnsTableIdContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 320, informixParser.RULE_columnsTableId);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2622;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.STAR:
+	        case 314:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2611;
 	            this.match(informixParser.STAR);
 	            break;
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
-	        case informixParser.STRING_LITERAL:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
+	        case 333:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2612;
 	            this.tableIdentifier();
 	            this.state = 2614;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LBRACK) {
+	            if(_la===327) {
 	                this.state = 2613;
 	                this.indexingVariable();
 	            }
@@ -11964,7 +11960,7 @@ export default class informixParser extends antlr4.Parser {
 	selectList() {
 	    let localctx = new SelectListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 322, informixParser.RULE_selectList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2624;
@@ -11972,7 +11968,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2626;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.AS || _la===informixParser.IDENT) {
+	        if(_la===10 || _la===332) {
 	            this.state = 2625;
 	            this.sqlAlias();
 	        }
@@ -11980,7 +11976,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2635;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2628;
 	            this.match(informixParser.COMMA);
 	            this.state = 2629;
@@ -11988,7 +11984,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2631;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.AS || _la===informixParser.IDENT) {
+	            if(_la===10 || _la===332) {
 	                this.state = 2630;
 	                this.sqlAlias();
 	            }
@@ -12016,7 +12012,7 @@ export default class informixParser extends antlr4.Parser {
 	headSelectStatement() {
 	    let localctx = new HeadSelectStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 324, informixParser.RULE_headSelectStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2638;
@@ -12024,15 +12020,15 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2641;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case informixParser.ALL:
+	        case 6:
 	        	this.state = 2639;
 	        	this.match(informixParser.ALL);
 	        	break;
-	        case informixParser.DISTINCT:
-	        case informixParser.UNIQUE:
+	        case 81:
+	        case 285:
 	        	this.state = 2640;
 	        	_la = this._input.LA(1);
-	        	if(!(_la===informixParser.DISTINCT || _la===informixParser.UNIQUE)) {
+	        	if(!(_la===81 || _la===285)) {
 	        	this._errHandler.recoverInline(this);
 	        	}
 	        	else {
@@ -12040,58 +12036,58 @@ export default class informixParser extends antlr4.Parser {
 	        	    this.consume();
 	        	}
 	        	break;
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.AVG:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.DATE:
-	        case informixParser.DAY:
-	        case informixParser.DECODE:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MAX:
-	        case informixParser.MDY:
-	        case informixParser.MIN:
-	        case informixParser.MOD:
-	        case informixParser.MONTH:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.NVL:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.SUM:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.YEAR:
-	        case informixParser.PLUS:
-	        case informixParser.MINUS:
-	        case informixParser.STAR:
-	        case informixParser.LPAREN:
-	        case informixParser.IDENT:
-	        case informixParser.STRING_LITERAL:
-	        case informixParser.NUM_INT:
-	        case informixParser.NUM_REAL:
+	        case 3:
+	        case 12:
+	        case 17:
+	        case 54:
+	        case 58:
+	        case 62:
+	        case 64:
+	        case 68:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 179:
+	        case 182:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 197:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 266:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 310:
+	        case 312:
+	        case 313:
+	        case 314:
+	        case 325:
+	        case 332:
+	        case 333:
+	        case 334:
+	        case 335:
 	        	break;
 	        default:
 	        	break;
@@ -12199,13 +12195,13 @@ export default class informixParser extends antlr4.Parser {
 	fromTable() {
 	    let localctx = new FromTableContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 330, informixParser.RULE_fromTable);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2662;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.OUTER) {
+	        if(_la===208) {
 	            this.state = 2661;
 	            this.match(informixParser.OUTER);
 	        }
@@ -12262,7 +12258,7 @@ export default class informixParser extends antlr4.Parser {
 	fromSelectStatement() {
 	    let localctx = new FromSelectStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 334, informixParser.RULE_fromSelectStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2670;
@@ -12270,46 +12266,46 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2678;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.OUTER:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
-	        case informixParser.STRING_LITERAL:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 208:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
+	        case 333:
 	            this.state = 2671;
 	            this.fromTable();
 	            break;
-	        case informixParser.LPAREN:
+	        case 325:
 	            this.state = 2672;
 	            this.match(informixParser.LPAREN);
 	            this.state = 2673;
@@ -12331,52 +12327,52 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2692;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2680;
 	            this.match(informixParser.COMMA);
 	            this.state = 2688;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.ACCEPT:
-	            case informixParser.ASCII:
-	            case informixParser.COUNT:
-	            case informixParser.CURRENT:
-	            case informixParser.FALSE:
-	            case informixParser.FIRST:
-	            case informixParser.FOUND:
-	            case informixParser.GROUP:
-	            case informixParser.HIDE:
-	            case informixParser.INDEX:
-	            case informixParser.INT_FLAG:
-	            case informixParser.INTERRUPT:
-	            case informixParser.LAST:
-	            case informixParser.LENGTH:
-	            case informixParser.LINENO:
-	            case informixParser.MDY:
-	            case informixParser.NO:
-	            case informixParser.NOT:
-	            case informixParser.NOTFOUND:
-	            case informixParser.NULL_:
-	            case informixParser.OUTER:
-	            case informixParser.PAGENO:
-	            case informixParser.REAL:
-	            case informixParser.SIZE:
-	            case informixParser.SQL:
-	            case informixParser.STATUS:
-	            case informixParser.TEMP:
-	            case informixParser.TIME:
-	            case informixParser.TODAY:
-	            case informixParser.TRUE:
-	            case informixParser.USER:
-	            case informixParser.WEEKDAY:
-	            case informixParser.WAIT:
-	            case informixParser.WORK:
-	            case informixParser.IDENT:
-	            case informixParser.STRING_LITERAL:
+	            case 3:
+	            case 12:
+	            case 54:
+	            case 58:
+	            case 101:
+	            case 107:
+	            case 116:
+	            case 126:
+	            case 130:
+	            case 136:
+	            case 145:
+	            case 147:
+	            case 156:
+	            case 158:
+	            case 162:
+	            case 176:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 195:
+	            case 208:
+	            case 211:
+	            case 226:
+	            case 252:
+	            case 258:
+	            case 264:
+	            case 270:
+	            case 275:
+	            case 277:
+	            case 280:
+	            case 290:
+	            case 295:
+	            case 297:
+	            case 309:
+	            case 332:
+	            case 333:
 	                this.state = 2681;
 	                this.fromTable();
 	                break;
-	            case informixParser.LPAREN:
+	            case 325:
 	                this.state = 2682;
 	                this.match(informixParser.LPAREN);
 	                this.state = 2683;
@@ -12441,7 +12437,7 @@ export default class informixParser extends antlr4.Parser {
 	mainSelectStatement() {
 	    let localctx = new MainSelectStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 338, informixParser.RULE_mainSelectStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2697;
@@ -12449,7 +12445,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2700;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.INTO) {
+	        if(_la===143) {
 	            this.state = 2698;
 	            this.match(informixParser.INTO);
 	            this.state = 2699;
@@ -12461,7 +12457,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2704;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.WHERE) {
+	        if(_la===302) {
 	            this.state = 2703;
 	            this.whereStatement();
 	        }
@@ -12469,7 +12465,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2707;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.GROUP) {
+	        if(_la===126) {
 	            this.state = 2706;
 	            this.groupByStatement();
 	        }
@@ -12477,7 +12473,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2710;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.HAVING) {
+	        if(_la===127) {
 	            this.state = 2709;
 	            this.havingStatement();
 	        }
@@ -12485,7 +12481,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2713;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.UNION) {
+	        if(_la===284) {
 	            this.state = 2712;
 	            this.unionSelectStatement();
 	        }
@@ -12493,7 +12489,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2716;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ORDER) {
+	        if(_la===206) {
 	            this.state = 2715;
 	            this.orderbyStatement();
 	        }
@@ -12501,7 +12497,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2721;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.INTO) {
+	        if(_la===143) {
 	            this.state = 2718;
 	            this.match(informixParser.INTO);
 	            this.state = 2719;
@@ -12513,7 +12509,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2726;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.WITH) {
+	        if(_la===305) {
 	            this.state = 2723;
 	            this.match(informixParser.WITH);
 	            this.state = 2724;
@@ -12541,7 +12537,7 @@ export default class informixParser extends antlr4.Parser {
 	unionSelectStatement() {
 	    let localctx = new UnionSelectStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 340, informixParser.RULE_unionSelectStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2728;
@@ -12549,7 +12545,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2730;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ALL) {
+	        if(_la===6) {
 	            this.state = 2729;
 	            this.match(informixParser.ALL);
 	        }
@@ -12575,7 +12571,7 @@ export default class informixParser extends antlr4.Parser {
 	simpleSelectStatement() {
 	    let localctx = new SimpleSelectStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 342, informixParser.RULE_simpleSelectStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2734;
@@ -12585,7 +12581,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2737;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.WHERE) {
+	        if(_la===302) {
 	            this.state = 2736;
 	            this.whereStatement();
 	        }
@@ -12593,7 +12589,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2740;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.GROUP) {
+	        if(_la===126) {
 	            this.state = 2739;
 	            this.groupByStatement();
 	        }
@@ -12601,7 +12597,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2743;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.HAVING) {
+	        if(_la===127) {
 	            this.state = 2742;
 	            this.havingStatement();
 	        }
@@ -12609,7 +12605,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2746;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.UNION) {
+	        if(_la===284) {
 	            this.state = 2745;
 	            this.unionSelectStatement();
 	        }
@@ -12710,7 +12706,7 @@ export default class informixParser extends antlr4.Parser {
 	orderbyColumn() {
 	    let localctx = new OrderbyColumnContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 350, informixParser.RULE_orderbyColumn);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2758;
@@ -12718,10 +12714,10 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2760;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ASC || _la===informixParser.DESC) {
+	        if(_la===11 || _la===76) {
 	            this.state = 2759;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.ASC || _la===informixParser.DESC)) {
+	            if(!(_la===11 || _la===76)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -12749,7 +12745,7 @@ export default class informixParser extends antlr4.Parser {
 	orderbyStatement() {
 	    let localctx = new OrderbyStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 352, informixParser.RULE_orderbyStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2762;
@@ -12761,7 +12757,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2769;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2765;
 	            this.match(informixParser.COMMA);
 	            this.state = 2766;
@@ -12789,7 +12785,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlLoadStatement() {
 	    let localctx = new SqlLoadStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 354, informixParser.RULE_sqlLoadStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2772;
@@ -12799,44 +12795,44 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2776;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
 	            this.state = 2774;
 	            this.variable();
 	            break;
-	        case informixParser.STRING_LITERAL:
+	        case 333:
 	            this.state = 2775;
 	            this.string();
 	            break;
@@ -12846,50 +12842,50 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2783;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.DELIMITER) {
+	        if(_la===75) {
 	            this.state = 2778;
 	            this.match(informixParser.DELIMITER);
 	            this.state = 2781;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.ACCEPT:
-	            case informixParser.ASCII:
-	            case informixParser.COUNT:
-	            case informixParser.CURRENT:
-	            case informixParser.FALSE:
-	            case informixParser.FIRST:
-	            case informixParser.FOUND:
-	            case informixParser.GROUP:
-	            case informixParser.HIDE:
-	            case informixParser.INDEX:
-	            case informixParser.INT_FLAG:
-	            case informixParser.INTERRUPT:
-	            case informixParser.LAST:
-	            case informixParser.LENGTH:
-	            case informixParser.LINENO:
-	            case informixParser.MDY:
-	            case informixParser.NO:
-	            case informixParser.NOT:
-	            case informixParser.NOTFOUND:
-	            case informixParser.NULL_:
-	            case informixParser.PAGENO:
-	            case informixParser.REAL:
-	            case informixParser.SIZE:
-	            case informixParser.SQL:
-	            case informixParser.STATUS:
-	            case informixParser.TEMP:
-	            case informixParser.TIME:
-	            case informixParser.TODAY:
-	            case informixParser.TRUE:
-	            case informixParser.USER:
-	            case informixParser.WEEKDAY:
-	            case informixParser.WAIT:
-	            case informixParser.WORK:
-	            case informixParser.IDENT:
+	            case 3:
+	            case 12:
+	            case 54:
+	            case 58:
+	            case 101:
+	            case 107:
+	            case 116:
+	            case 126:
+	            case 130:
+	            case 136:
+	            case 145:
+	            case 147:
+	            case 156:
+	            case 158:
+	            case 162:
+	            case 176:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 195:
+	            case 211:
+	            case 226:
+	            case 252:
+	            case 258:
+	            case 264:
+	            case 270:
+	            case 275:
+	            case 277:
+	            case 280:
+	            case 290:
+	            case 295:
+	            case 297:
+	            case 309:
+	            case 332:
 	                this.state = 2779;
 	                this.variable();
 	                break;
-	            case informixParser.STRING_LITERAL:
+	            case 333:
 	                this.state = 2780;
 	                this.string();
 	                break;
@@ -12912,7 +12908,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2792;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.LPAREN) {
+	            if(_la===325) {
 	                this.state = 2788;
 	                this.match(informixParser.LPAREN);
 	                this.state = 2789;
@@ -12950,7 +12946,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlUnLoadStatement() {
 	    let localctx = new SqlUnLoadStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 356, informixParser.RULE_sqlUnLoadStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2799;
@@ -12960,44 +12956,44 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2803;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
-	        case informixParser.IDENT:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
+	        case 332:
 	            this.state = 2801;
 	            this.variable();
 	            break;
-	        case informixParser.STRING_LITERAL:
+	        case 333:
 	            this.state = 2802;
 	            this.string();
 	            break;
@@ -13007,50 +13003,50 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2810;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.DELIMITER) {
+	        if(_la===75) {
 	            this.state = 2805;
 	            this.match(informixParser.DELIMITER);
 	            this.state = 2808;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.ACCEPT:
-	            case informixParser.ASCII:
-	            case informixParser.COUNT:
-	            case informixParser.CURRENT:
-	            case informixParser.FALSE:
-	            case informixParser.FIRST:
-	            case informixParser.FOUND:
-	            case informixParser.GROUP:
-	            case informixParser.HIDE:
-	            case informixParser.INDEX:
-	            case informixParser.INT_FLAG:
-	            case informixParser.INTERRUPT:
-	            case informixParser.LAST:
-	            case informixParser.LENGTH:
-	            case informixParser.LINENO:
-	            case informixParser.MDY:
-	            case informixParser.NO:
-	            case informixParser.NOT:
-	            case informixParser.NOTFOUND:
-	            case informixParser.NULL_:
-	            case informixParser.PAGENO:
-	            case informixParser.REAL:
-	            case informixParser.SIZE:
-	            case informixParser.SQL:
-	            case informixParser.STATUS:
-	            case informixParser.TEMP:
-	            case informixParser.TIME:
-	            case informixParser.TODAY:
-	            case informixParser.TRUE:
-	            case informixParser.USER:
-	            case informixParser.WEEKDAY:
-	            case informixParser.WAIT:
-	            case informixParser.WORK:
-	            case informixParser.IDENT:
+	            case 3:
+	            case 12:
+	            case 54:
+	            case 58:
+	            case 101:
+	            case 107:
+	            case 116:
+	            case 126:
+	            case 130:
+	            case 136:
+	            case 145:
+	            case 147:
+	            case 156:
+	            case 158:
+	            case 162:
+	            case 176:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 195:
+	            case 211:
+	            case 226:
+	            case 252:
+	            case 258:
+	            case 264:
+	            case 270:
+	            case 275:
+	            case 277:
+	            case 280:
+	            case 290:
+	            case 295:
+	            case 297:
+	            case 309:
+	            case 332:
 	                this.state = 2806;
 	                this.variable();
 	                break;
-	            case informixParser.STRING_LITERAL:
+	            case 333:
 	                this.state = 2807;
 	                this.string();
 	                break;
@@ -13082,7 +13078,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlInsertStatement() {
 	    let localctx = new SqlInsertStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 358, informixParser.RULE_sqlInsertStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2815;
@@ -13094,7 +13090,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2822;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.LPAREN) {
+	        if(_la===325) {
 	            this.state = 2818;
 	            this.match(informixParser.LPAREN);
 	            this.state = 2819;
@@ -13106,7 +13102,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2837;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.VALUES:
+	        case 293:
 	            this.state = 2824;
 	            this.match(informixParser.VALUES);
 	            this.state = 2825;
@@ -13116,7 +13112,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2831;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2827;
 	                this.match(informixParser.COMMA);
 	                this.state = 2828;
@@ -13128,7 +13124,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2834;
 	            this.match(informixParser.RPAREN);
 	            break;
-	        case informixParser.SELECT:
+	        case 248:
 	            this.state = 2836;
 	            this.simpleSelectStatement();
 	            break;
@@ -13154,7 +13150,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlUpdateStatement() {
 	    let localctx = new SqlUpdateStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 360, informixParser.RULE_sqlUpdateStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2839;
@@ -13177,7 +13173,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2852;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===informixParser.COMMA) {
+	            while(_la===316) {
 	                this.state = 2845;
 	                this.match(informixParser.COMMA);
 	                this.state = 2846;
@@ -13196,7 +13192,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2865;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.LPAREN:
+	            case 325:
 	                this.state = 2855;
 	                this.match(informixParser.LPAREN);
 	                this.state = 2856;
@@ -13204,12 +13200,12 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2857;
 	                this.match(informixParser.RPAREN);
 	                break;
-	            case informixParser.STAR:
-	            case informixParser.IDENT:
+	            case 314:
+	            case 332:
 	                this.state = 2862;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.IDENT) {
+	                if(_la===332) {
 	                    this.state = 2859;
 	                    this.aliasName();
 	                    this.state = 2860;
@@ -13227,7 +13223,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2885;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.LPAREN:
+	            case 325:
 	                this.state = 2868;
 	                this.match(informixParser.LPAREN);
 	                this.state = 2869;
@@ -13235,7 +13231,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2874;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===informixParser.COMMA) {
+	                while(_la===316) {
 	                    this.state = 2870;
 	                    this.match(informixParser.COMMA);
 	                    this.state = 2871;
@@ -13247,12 +13243,12 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 2877;
 	                this.match(informixParser.RPAREN);
 	                break;
-	            case informixParser.STAR:
-	            case informixParser.IDENT:
+	            case 314:
+	            case 332:
 	                this.state = 2882;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.IDENT) {
+	                if(_la===332) {
 	                    this.state = 2879;
 	                    this.aliasName();
 	                    this.state = 2880;
@@ -13271,7 +13267,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2896;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.WHERE) {
+	        if(_la===302) {
 	            this.state = 2889;
 	            this.match(informixParser.WHERE);
 	            this.state = 2894;
@@ -13314,7 +13310,7 @@ export default class informixParser extends antlr4.Parser {
 	sqlDeleteStatement() {
 	    let localctx = new SqlDeleteStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 362, informixParser.RULE_sqlDeleteStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2898;
@@ -13326,7 +13322,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2908;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.WHERE) {
+	        if(_la===302) {
 	            this.state = 2901;
 	            this.match(informixParser.WHERE);
 	            this.state = 2906;
@@ -13371,7 +13367,7 @@ export default class informixParser extends antlr4.Parser {
 	actualParameterList() {
 	    let localctx = new ActualParameterListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 364, informixParser.RULE_actualParameterList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2912;
@@ -13379,7 +13375,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2917;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.COMMA) {
+	        while(_la===316) {
 	            this.state = 2913;
 	            this.match(informixParser.COMMA);
 	            this.state = 2914;
@@ -13407,12 +13403,12 @@ export default class informixParser extends antlr4.Parser {
 	dynamicManagementStatement() {
 	    let localctx = new DynamicManagementStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 366, informixParser.RULE_dynamicManagementStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2943;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.PREPARE:
+	        case 216:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2920;
 	            this.match(informixParser.PREPARE);
@@ -13423,7 +13419,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2923;
 	            this.expression();
 	            break;
-	        case informixParser.EXECUTE:
+	        case 94:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2925;
 	            this.match(informixParser.EXECUTE);
@@ -13432,7 +13428,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2929;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.USING) {
+	            if(_la===291) {
 	                this.state = 2927;
 	                this.match(informixParser.USING);
 	                this.state = 2928;
@@ -13440,7 +13436,7 @@ export default class informixParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case informixParser.FREE:
+	        case 118:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2931;
 	            this.match(informixParser.FREE);
@@ -13460,7 +13456,7 @@ export default class informixParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case informixParser.LOCK:
+	        case 166:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2936;
 	            this.match(informixParser.LOCK);
@@ -13472,7 +13468,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.match(informixParser.IN);
 	            this.state = 2940;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.EXCLUSIVE || _la===informixParser.SHARE)) {
+	            if(!(_la===92 || _la===250)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -13504,7 +13500,7 @@ export default class informixParser extends antlr4.Parser {
 	queryOptimizationStatement() {
 	    let localctx = new QueryOptimizationStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 368, informixParser.RULE_queryOptimizationStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2981;
 	        this._errHandler.sync(this);
@@ -13543,19 +13539,19 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2962;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.WAIT:
+	            case 297:
 	                this.state = 2956;
 	                this.match(informixParser.WAIT);
 	                this.state = 2958;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===informixParser.SECONDS) {
+	                if(_la===350) {
 	                    this.state = 2957;
 	                    this.match(informixParser.SECONDS);
 	                }
 
 	                break;
-	            case informixParser.NOT:
+	            case 191:
 	                this.state = 2960;
 	                this.match(informixParser.NOT);
 	                this.state = 2961;
@@ -13574,7 +13570,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.match(informixParser.EXPLAIN);
 	            this.state = 2966;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.OFF || _la===informixParser.ON)) {
+	            if(!(_la===199 || _la===200)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -13594,18 +13590,18 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2974;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.CURSOR:
+	            case 59:
 	                this.state = 2970;
 	                this.match(informixParser.CURSOR);
 	                this.state = 2971;
 	                this.match(informixParser.STABILITY);
 	                break;
-	            case informixParser.COMMITTED:
-	            case informixParser.DIRTY:
-	            case informixParser.REPEATABLE:
+	            case 48:
+	            case 79:
+	            case 232:
 	                this.state = 2972;
 	                _la = this._input.LA(1);
-	                if(!(_la===informixParser.COMMITTED || _la===informixParser.DIRTY || _la===informixParser.REPEATABLE)) {
+	                if(!(_la===48 || _la===79 || _la===232)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -13627,7 +13623,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 2978;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.BUFFERED) {
+	            if(_la===29) {
 	                this.state = 2977;
 	                this.match(informixParser.BUFFERED);
 	            }
@@ -13656,7 +13652,7 @@ export default class informixParser extends antlr4.Parser {
 	databaseDeclaration() {
 	    let localctx = new DatabaseDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 370, informixParser.RULE_databaseDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2983;
@@ -13667,7 +13663,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2987;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ATSYMBOL) {
+	        if(_la===330) {
 	            this.state = 2985;
 	            this.match(informixParser.ATSYMBOL);
 	            this.state = 2986;
@@ -13677,7 +13673,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2990;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.EXCLUSIVE) {
+	        if(_la===92) {
 	            this.state = 2989;
 	            this.match(informixParser.EXCLUSIVE);
 	        }
@@ -13685,7 +13681,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 2993;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.SEMI) {
+	        if(_la===317) {
 	            this.state = 2992;
 	            this.match(informixParser.SEMI);
 	        }
@@ -13738,26 +13734,26 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3005;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.WHENEVER:
+	        case 301:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2998;
 	            this.wheneverStatement();
 	            break;
-	        case informixParser.BEGIN:
+	        case 20:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2999;
 	            this.match(informixParser.BEGIN);
 	            this.state = 3000;
 	            this.match(informixParser.WORK);
 	            break;
-	        case informixParser.COMMIT:
+	        case 47:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 3001;
 	            this.match(informixParser.COMMIT);
 	            this.state = 3002;
 	            this.match(informixParser.WORK);
 	            break;
-	        case informixParser.ROLLBACK:
+	        case 240:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 3003;
 	            this.match(informixParser.ROLLBACK);
@@ -13815,33 +13811,33 @@ export default class informixParser extends antlr4.Parser {
 	wheneverType() {
 	    let localctx = new WheneverTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 378, informixParser.RULE_wheneverType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 3019;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.NOT:
+	        case 191:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 3012;
 	            this.match(informixParser.NOT);
 	            this.state = 3013;
 	            this.match(informixParser.FOUND);
 	            break;
-	        case informixParser.ANY:
-	        case informixParser.ERROR:
-	        case informixParser.SQLERROR:
+	        case 9:
+	        case 89:
+	        case 259:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 3015;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.ANY) {
+	            if(_la===9) {
 	                this.state = 3014;
 	                this.match(informixParser.ANY);
 	            }
 
 	            this.state = 3017;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.ERROR || _la===informixParser.SQLERROR)) {
+	            if(!(_la===89 || _la===259)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -13849,12 +13845,12 @@ export default class informixParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case informixParser.SQLWARNING:
-	        case informixParser.WARNING:
+	        case 260:
+	        case 299:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 3018;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.SQLWARNING || _la===informixParser.WARNING)) {
+	            if(!(_la===260 || _la===299)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -13884,17 +13880,17 @@ export default class informixParser extends antlr4.Parser {
 	wheneverFlow() {
 	    let localctx = new WheneverFlowContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 380, informixParser.RULE_wheneverFlow);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 3033;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.CONTINUE:
-	        case informixParser.STOP:
+	        case 53:
+	        case 265:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 3021;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.CONTINUE || _la===informixParser.STOP)) {
+	            if(!(_la===53 || _la===265)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -13902,26 +13898,26 @@ export default class informixParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case informixParser.CALL:
+	        case 33:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 3022;
 	            this.match(informixParser.CALL);
 	            this.state = 3023;
 	            this.identifier();
 	            break;
-	        case informixParser.GO:
-	        case informixParser.GOTO:
+	        case 123:
+	        case 124:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 3027;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.GO:
+	            case 123:
 	                this.state = 3024;
 	                this.match(informixParser.GO);
 	                this.state = 3025;
 	                this.match(informixParser.TO);
 	                break;
-	            case informixParser.GOTO:
+	            case 124:
 	                this.state = 3026;
 	                this.match(informixParser.GOTO);
 	                break;
@@ -13931,7 +13927,7 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 3030;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.COLON) {
+	            if(_la===318) {
 	                this.state = 3029;
 	                this.match(informixParser.COLON);
 	            }
@@ -13961,7 +13957,7 @@ export default class informixParser extends antlr4.Parser {
 	reportDefinition() {
 	    let localctx = new ReportDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 382, informixParser.RULE_reportDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 3035;
@@ -13971,7 +13967,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3038;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.LPAREN) {
+	        if(_la===325) {
 	            this.state = 3037;
 	            this.parameterList();
 	        }
@@ -13979,7 +13975,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3041;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.DEFINE) {
+	        if(_la===73) {
 	            this.state = 3040;
 	            this.typeDeclarations();
 	        }
@@ -13987,7 +13983,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3044;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.OUTPUT) {
+	        if(_la===207) {
 	            this.state = 3043;
 	            this.outputReport();
 	        }
@@ -13995,13 +13991,13 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3052;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.ORDER) {
+	        if(_la===206) {
 	            this.state = 3046;
 	            this.match(informixParser.ORDER);
 	            this.state = 3048;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===informixParser.EXTERNAL) {
+	            if(_la===100) {
 	                this.state = 3047;
 	                this.match(informixParser.EXTERNAL);
 	            }
@@ -14015,7 +14011,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3055;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.FORMAT) {
+	        if(_la===113) {
 	            this.state = 3054;
 	            this.formatReport();
 	        }
@@ -14043,7 +14039,7 @@ export default class informixParser extends antlr4.Parser {
 	outputReport() {
 	    let localctx = new OutputReportContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 384, informixParser.RULE_outputReport);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 3060;
@@ -14051,7 +14047,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3069;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===informixParser.REPORT) {
+	        if(_la===234) {
 	            this.state = 3061;
 	            this.match(informixParser.REPORT);
 	            this.state = 3062;
@@ -14059,17 +14055,17 @@ export default class informixParser extends antlr4.Parser {
 	            this.state = 3067;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case informixParser.STRING_LITERAL:
+	            case 333:
 	                this.state = 3063;
 	                this.string();
 	                break;
-	            case informixParser.PIPE:
+	            case 214:
 	                this.state = 3064;
 	                this.match(informixParser.PIPE);
 	                this.state = 3065;
 	                this.string();
 	                break;
-	            case informixParser.PRINTER:
+	            case 219:
 	                this.state = 3066;
 	                this.match(informixParser.PRINTER);
 	                break;
@@ -14081,7 +14077,7 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3092;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===informixParser.BOTTOM || _la===informixParser.LEFT || _la===informixParser.PAGE || _la===informixParser.RIGHT || _la===informixParser.TOP) {
+	        while(_la===28 || _la===157 || _la===210 || _la===239 || _la===278) {
 	            this.state = 3090;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,398,this._ctx);
@@ -14166,7 +14162,7 @@ export default class informixParser extends antlr4.Parser {
 	formatReport() {
 	    let localctx = new FormatReportContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 386, informixParser.RULE_formatReport);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 3095;
@@ -14174,17 +14170,17 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3123;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.EVERY:
+	        case 91:
 	            this.state = 3096;
 	            this.match(informixParser.EVERY);
 	            this.state = 3097;
 	            this.match(informixParser.ROW);
 	            break;
-	        case informixParser.AFTER:
-	        case informixParser.BEFORE:
-	        case informixParser.FIRST:
-	        case informixParser.ON:
-	        case informixParser.PAGE:
+	        case 2:
+	        case 19:
+	        case 107:
+	        case 200:
+	        case 210:
 	            this.state = 3119; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -14197,7 +14193,7 @@ export default class informixParser extends antlr4.Parser {
 	                    this.state = 3099;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===informixParser.FIRST) {
+	                    if(_la===107) {
 	                        this.state = 3098;
 	                        this.match(informixParser.FIRST);
 	                    }
@@ -14221,13 +14217,13 @@ export default class informixParser extends antlr4.Parser {
 	                    this.state = 3110;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
-	                    case informixParser.EVERY:
+	                    case 91:
 	                        this.state = 3106;
 	                        this.match(informixParser.EVERY);
 	                        this.state = 3107;
 	                        this.match(informixParser.ROW);
 	                        break;
-	                    case informixParser.LAST:
+	                    case 156:
 	                        this.state = 3108;
 	                        this.match(informixParser.LAST);
 	                        this.state = 3109;
@@ -14241,7 +14237,7 @@ export default class informixParser extends antlr4.Parser {
 	                case 4:
 	                    this.state = 3112;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===informixParser.AFTER || _la===informixParser.BEFORE)) {
+	                    if(!(_la===2 || _la===19)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -14262,7 +14258,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.state = 3121; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===informixParser.AFTER || _la===informixParser.BEFORE || _la===informixParser.FIRST || _la===informixParser.ON || _la===informixParser.PAGE);
+	            } while(_la===2 || _la===19 || _la===107 || _la===200 || _la===210);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
@@ -14313,12 +14309,12 @@ export default class informixParser extends antlr4.Parser {
 	        this.state = 3129;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.NUM_INT:
+	        case 334:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 3127;
 	            this.unsignedInteger();
 	            break;
-	        case informixParser.NUM_REAL:
+	        case 335:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 3128;
 	            this.unsignedReal();
@@ -14391,12 +14387,12 @@ export default class informixParser extends antlr4.Parser {
 	sign() {
 	    let localctx = new SignContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 396, informixParser.RULE_sign);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 3135;
 	        _la = this._input.LA(1);
-	        if(!(_la===informixParser.PLUS || _la===informixParser.MINUS)) {
+	        if(!(_la===312 || _la===313)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -14422,48 +14418,48 @@ export default class informixParser extends antlr4.Parser {
 	constantIdentifier() {
 	    let localctx = new ConstantIdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 398, informixParser.RULE_constantIdentifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 3139;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case informixParser.ACCEPT:
-	        case informixParser.ASCII:
-	        case informixParser.COUNT:
-	        case informixParser.CURRENT:
-	        case informixParser.FALSE:
-	        case informixParser.FIRST:
-	        case informixParser.FOUND:
-	        case informixParser.GROUP:
-	        case informixParser.HIDE:
-	        case informixParser.INDEX:
-	        case informixParser.INT_FLAG:
-	        case informixParser.INTERRUPT:
-	        case informixParser.LAST:
-	        case informixParser.LENGTH:
-	        case informixParser.LINENO:
-	        case informixParser.MDY:
-	        case informixParser.NO:
-	        case informixParser.NOT:
-	        case informixParser.NOTFOUND:
-	        case informixParser.NULL_:
-	        case informixParser.PAGENO:
-	        case informixParser.REAL:
-	        case informixParser.SIZE:
-	        case informixParser.SQL:
-	        case informixParser.STATUS:
-	        case informixParser.TEMP:
-	        case informixParser.TIME:
-	        case informixParser.TODAY:
-	        case informixParser.TRUE:
-	        case informixParser.USER:
-	        case informixParser.WEEKDAY:
-	        case informixParser.WAIT:
-	        case informixParser.WORK:
+	        case 3:
+	        case 12:
+	        case 54:
+	        case 58:
+	        case 101:
+	        case 107:
+	        case 116:
+	        case 126:
+	        case 130:
+	        case 136:
+	        case 145:
+	        case 147:
+	        case 156:
+	        case 158:
+	        case 162:
+	        case 176:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 195:
+	        case 211:
+	        case 226:
+	        case 252:
+	        case 258:
+	        case 264:
+	        case 270:
+	        case 275:
+	        case 277:
+	        case 280:
+	        case 290:
+	        case 295:
+	        case 297:
+	        case 309:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 3137;
 	            _la = this._input.LA(1);
-	            if(!(_la===informixParser.ACCEPT || _la===informixParser.ASCII || _la===informixParser.COUNT || _la===informixParser.CURRENT || ((((_la - 101)) & ~0x1f) == 0 && ((1 << (_la - 101)) & ((1 << (informixParser.FALSE - 101)) | (1 << (informixParser.FIRST - 101)) | (1 << (informixParser.FOUND - 101)) | (1 << (informixParser.GROUP - 101)) | (1 << (informixParser.HIDE - 101)))) !== 0) || ((((_la - 136)) & ~0x1f) == 0 && ((1 << (_la - 136)) & ((1 << (informixParser.INDEX - 136)) | (1 << (informixParser.INT_FLAG - 136)) | (1 << (informixParser.INTERRUPT - 136)) | (1 << (informixParser.LAST - 136)) | (1 << (informixParser.LENGTH - 136)) | (1 << (informixParser.LINENO - 136)))) !== 0) || ((((_la - 176)) & ~0x1f) == 0 && ((1 << (_la - 176)) & ((1 << (informixParser.MDY - 176)) | (1 << (informixParser.NO - 176)) | (1 << (informixParser.NOT - 176)) | (1 << (informixParser.NOTFOUND - 176)) | (1 << (informixParser.NULL_ - 176)))) !== 0) || _la===informixParser.PAGENO || _la===informixParser.REAL || ((((_la - 252)) & ~0x1f) == 0 && ((1 << (_la - 252)) & ((1 << (informixParser.SIZE - 252)) | (1 << (informixParser.SQL - 252)) | (1 << (informixParser.STATUS - 252)) | (1 << (informixParser.TEMP - 252)) | (1 << (informixParser.TIME - 252)) | (1 << (informixParser.TODAY - 252)) | (1 << (informixParser.TRUE - 252)))) !== 0) || ((((_la - 290)) & ~0x1f) == 0 && ((1 << (_la - 290)) & ((1 << (informixParser.USER - 290)) | (1 << (informixParser.WEEKDAY - 290)) | (1 << (informixParser.WAIT - 290)) | (1 << (informixParser.WORK - 290)))) !== 0))) {
+	            if(!(_la===3 || _la===12 || _la===54 || _la===58 || ((((_la - 101)) & ~0x1f) === 0 && ((1 << (_la - 101)) & 570458177) !== 0) || ((((_la - 136)) & ~0x1f) === 0 && ((1 << (_la - 136)) & 72354305) !== 0) || ((((_la - 176)) & ~0x1f) === 0 && ((1 << (_la - 176)) & 638977) !== 0) || _la===211 || _la===226 || ((((_la - 252)) & ~0x1f) === 0 && ((1 << (_la - 252)) & 310644801) !== 0) || ((((_la - 290)) & ~0x1f) === 0 && ((1 << (_la - 290)) & 524449) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -14471,7 +14467,7 @@ export default class informixParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case informixParser.IDENT:
+	        case 332:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 3138;
 	            this.identifier();
@@ -28318,3 +28314,12 @@ informixParser.UnsignedIntegerContext = UnsignedIntegerContext;
 informixParser.UnsignedRealContext = UnsignedRealContext; 
 informixParser.SignContext = SignContext; 
 informixParser.ConstantIdentifierContext = ConstantIdentifierContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

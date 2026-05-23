@@ -1,85 +1,85 @@
-// Generated from ./focal/focal.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/focal/focal.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import focalListener from './focalListener.js';
-const serializedATN = [4,1,41,245,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,41,247,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
-20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,1,0,4,0,50,8,0,11,0,12,0,51,1,1,1,
-1,1,1,1,2,1,2,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,
-4,3,4,74,8,4,1,5,1,5,1,5,1,5,5,5,80,8,5,10,5,12,5,83,9,5,1,6,1,6,1,6,1,6,
-1,6,5,6,90,8,6,10,6,12,6,93,9,6,1,7,1,7,1,7,1,7,3,7,99,8,7,1,8,1,8,1,8,1,
-8,1,8,1,8,1,8,1,8,3,8,109,8,8,1,8,1,8,1,8,1,9,1,9,1,10,1,10,1,10,1,10,1,
-10,1,10,3,10,122,8,10,1,11,1,11,3,11,126,8,11,1,12,1,12,1,12,1,12,1,12,1,
-12,1,12,1,12,1,12,1,12,1,12,3,12,139,8,12,1,13,1,13,1,13,1,13,5,13,145,8,
-13,10,13,12,13,148,9,13,1,13,1,13,3,13,152,8,13,1,14,1,14,4,14,156,8,14,
-11,14,12,14,157,1,14,4,14,161,8,14,11,14,12,14,162,1,14,1,14,1,14,1,14,1,
-14,3,14,170,8,14,1,15,1,15,1,16,1,16,1,16,3,16,177,8,16,1,17,1,17,1,18,1,
-18,1,18,5,18,184,8,18,10,18,12,18,187,9,18,1,19,1,19,1,19,5,19,192,8,19,
-10,19,12,19,195,9,19,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,
-20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,3,20,
-221,8,20,1,21,1,21,1,21,3,21,226,8,21,1,22,1,22,1,22,1,22,1,22,1,22,1,22,
-1,22,1,22,1,22,3,22,238,8,22,1,23,3,23,241,8,23,1,23,1,23,1,23,0,0,24,0,
-2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,0,6,1,0,
-2,3,1,0,5,6,1,0,8,9,1,0,13,14,1,0,15,16,1,0,18,19,262,0,49,1,0,0,0,2,53,
-1,0,0,0,4,56,1,0,0,0,6,58,1,0,0,0,8,73,1,0,0,0,10,75,1,0,0,0,12,84,1,0,0,
-0,14,94,1,0,0,0,16,100,1,0,0,0,18,113,1,0,0,0,20,115,1,0,0,0,22,123,1,0,
-0,0,24,127,1,0,0,0,26,140,1,0,0,0,28,169,1,0,0,0,30,171,1,0,0,0,32,173,1,
-0,0,0,34,178,1,0,0,0,36,180,1,0,0,0,38,188,1,0,0,0,40,220,1,0,0,0,42,222,
-1,0,0,0,44,237,1,0,0,0,46,240,1,0,0,0,48,50,3,2,1,0,49,48,1,0,0,0,50,51,
-1,0,0,0,51,49,1,0,0,0,51,52,1,0,0,0,52,1,1,0,0,0,53,54,3,6,3,0,54,55,3,8,
-4,0,55,3,1,0,0,0,56,57,5,35,0,0,57,5,1,0,0,0,58,59,3,4,2,0,59,60,5,1,0,0,
-60,61,5,35,0,0,61,7,1,0,0,0,62,74,3,10,5,0,63,74,3,14,7,0,64,74,3,16,8,0,
-65,74,3,20,10,0,66,74,3,18,9,0,67,74,3,22,11,0,68,74,3,24,12,0,69,74,3,26,
-13,0,70,74,3,30,15,0,71,74,3,32,16,0,72,74,3,34,17,0,73,62,1,0,0,0,73,63,
-1,0,0,0,73,64,1,0,0,0,73,65,1,0,0,0,73,66,1,0,0,0,73,67,1,0,0,0,73,68,1,
-0,0,0,73,69,1,0,0,0,73,70,1,0,0,0,73,71,1,0,0,0,73,72,1,0,0,0,74,9,1,0,0,
-0,75,76,7,0,0,0,76,81,3,12,6,0,77,78,5,4,0,0,78,80,3,12,6,0,79,77,1,0,0,
-0,80,83,1,0,0,0,81,79,1,0,0,0,81,82,1,0,0,0,82,11,1,0,0,0,83,81,1,0,0,0,
-84,85,5,39,0,0,85,86,5,4,0,0,86,91,5,34,0,0,87,88,5,4,0,0,88,90,5,34,0,0,
-89,87,1,0,0,0,90,93,1,0,0,0,91,89,1,0,0,0,91,92,1,0,0,0,92,13,1,0,0,0,93,
-91,1,0,0,0,94,98,7,1,0,0,95,99,5,7,0,0,96,99,3,4,2,0,97,99,3,6,3,0,98,95,
-1,0,0,0,98,96,1,0,0,0,98,97,1,0,0,0,99,15,1,0,0,0,100,101,7,2,0,0,101,102,
-5,34,0,0,102,103,5,10,0,0,103,104,3,36,18,0,104,105,5,4,0,0,105,108,3,36,
-18,0,106,107,5,4,0,0,107,109,3,36,18,0,108,106,1,0,0,0,108,109,1,0,0,0,109,
-110,1,0,0,0,110,111,5,11,0,0,111,112,3,8,4,0,112,17,1,0,0,0,113,114,5,12,
-0,0,114,19,1,0,0,0,115,116,7,3,0,0,116,117,5,34,0,0,117,118,5,10,0,0,118,
-121,3,36,18,0,119,120,5,11,0,0,120,122,3,8,4,0,121,119,1,0,0,0,121,122,1,
-0,0,0,122,21,1,0,0,0,123,125,7,4,0,0,124,126,3,6,3,0,125,124,1,0,0,0,125,
-126,1,0,0,0,126,23,1,0,0,0,127,128,5,17,0,0,128,129,3,36,18,0,129,130,3,
-6,3,0,130,131,5,4,0,0,131,132,3,6,3,0,132,133,1,0,0,0,133,134,5,4,0,0,134,
-135,3,6,3,0,135,138,1,0,0,0,136,137,5,11,0,0,137,139,3,8,4,0,138,136,1,0,
-0,0,138,139,1,0,0,0,139,25,1,0,0,0,140,141,7,5,0,0,141,146,3,28,14,0,142,
-143,5,4,0,0,143,145,3,28,14,0,144,142,1,0,0,0,145,148,1,0,0,0,146,144,1,
-0,0,0,146,147,1,0,0,0,147,151,1,0,0,0,148,146,1,0,0,0,149,150,5,11,0,0,150,
-152,3,8,4,0,151,149,1,0,0,0,151,152,1,0,0,0,152,27,1,0,0,0,153,170,3,36,
-18,0,154,156,5,20,0,0,155,154,1,0,0,0,156,157,1,0,0,0,157,155,1,0,0,0,157,
-158,1,0,0,0,158,170,1,0,0,0,159,161,5,21,0,0,160,159,1,0,0,0,161,162,1,0,
-0,0,162,160,1,0,0,0,162,163,1,0,0,0,163,170,1,0,0,0,164,170,5,39,0,0,165,
-166,5,22,0,0,166,167,5,35,0,0,167,168,5,1,0,0,168,170,5,35,0,0,169,153,1,
-0,0,0,169,155,1,0,0,0,169,160,1,0,0,0,169,164,1,0,0,0,169,165,1,0,0,0,170,
-29,1,0,0,0,171,172,5,23,0,0,172,31,1,0,0,0,173,176,5,24,0,0,174,177,3,4,
-2,0,175,177,3,6,3,0,176,174,1,0,0,0,176,175,1,0,0,0,176,177,1,0,0,0,177,
-33,1,0,0,0,178,179,5,40,0,0,179,35,1,0,0,0,180,185,3,38,19,0,181,182,5,32,
-0,0,182,184,3,38,19,0,183,181,1,0,0,0,184,187,1,0,0,0,185,183,1,0,0,0,185,
-186,1,0,0,0,186,37,1,0,0,0,187,185,1,0,0,0,188,193,3,40,20,0,189,190,5,33,
-0,0,190,192,3,40,20,0,191,189,1,0,0,0,192,195,1,0,0,0,193,191,1,0,0,0,193,
-194,1,0,0,0,194,39,1,0,0,0,195,193,1,0,0,0,196,197,5,25,0,0,197,198,3,36,
-18,0,198,199,5,26,0,0,199,221,1,0,0,0,200,201,5,27,0,0,201,202,3,36,18,0,
-202,203,5,28,0,0,203,221,1,0,0,0,204,205,5,29,0,0,205,206,3,36,18,0,206,
-207,5,30,0,0,207,221,1,0,0,0,208,221,3,42,21,0,209,221,5,34,0,0,210,211,
-5,34,0,0,211,212,5,25,0,0,212,213,3,36,18,0,213,214,5,26,0,0,214,221,1,0,
-0,0,215,216,5,38,0,0,216,217,5,25,0,0,217,218,3,36,18,0,218,219,5,26,0,0,
-219,221,1,0,0,0,220,196,1,0,0,0,220,200,1,0,0,0,220,204,1,0,0,0,220,208,
-1,0,0,0,220,209,1,0,0,0,220,210,1,0,0,0,220,215,1,0,0,0,221,41,1,0,0,0,222,
-225,3,44,22,0,223,224,5,31,0,0,224,226,3,46,23,0,225,223,1,0,0,0,225,226,
-1,0,0,0,226,43,1,0,0,0,227,238,3,46,23,0,228,229,3,46,23,0,229,230,5,1,0,
-0,230,238,1,0,0,0,231,232,5,1,0,0,232,238,3,46,23,0,233,234,3,46,23,0,234,
-235,5,1,0,0,235,236,3,46,23,0,236,238,1,0,0,0,237,227,1,0,0,0,237,228,1,
-0,0,0,237,231,1,0,0,0,237,233,1,0,0,0,238,45,1,0,0,0,239,241,5,32,0,0,240,
-239,1,0,0,0,240,241,1,0,0,0,241,242,1,0,0,0,242,243,5,35,0,0,243,47,1,0,
-0,0,21,51,73,81,91,98,108,121,125,138,146,151,157,162,169,176,185,193,220,
-225,237,240];
+20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,1,0,4,0,50,8,0,11,0,12,0,51,1,0,1,
+0,1,1,1,1,1,1,1,2,1,2,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,
+4,1,4,1,4,3,4,76,8,4,1,5,1,5,1,5,1,5,5,5,82,8,5,10,5,12,5,85,9,5,1,6,1,6,
+1,6,1,6,1,6,5,6,92,8,6,10,6,12,6,95,9,6,1,7,1,7,1,7,1,7,3,7,101,8,7,1,8,
+1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,8,111,8,8,1,8,1,8,1,8,1,9,1,9,1,10,1,10,1,
+10,1,10,1,10,1,10,3,10,124,8,10,1,11,1,11,3,11,128,8,11,1,12,1,12,1,12,1,
+12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,141,8,12,1,13,1,13,1,13,1,13,
+5,13,147,8,13,10,13,12,13,150,9,13,1,13,1,13,3,13,154,8,13,1,14,1,14,4,14,
+158,8,14,11,14,12,14,159,1,14,4,14,163,8,14,11,14,12,14,164,1,14,1,14,1,
+14,1,14,1,14,3,14,172,8,14,1,15,1,15,1,16,1,16,1,16,3,16,179,8,16,1,17,1,
+17,1,18,1,18,1,18,5,18,186,8,18,10,18,12,18,189,9,18,1,19,1,19,1,19,5,19,
+194,8,19,10,19,12,19,197,9,19,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,
+20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,
+1,20,3,20,223,8,20,1,21,1,21,1,21,3,21,228,8,21,1,22,1,22,1,22,1,22,1,22,
+1,22,1,22,1,22,1,22,1,22,3,22,240,8,22,1,23,3,23,243,8,23,1,23,1,23,1,23,
+0,0,24,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,
+0,6,1,0,2,3,1,0,5,6,1,0,8,9,1,0,13,14,1,0,15,16,1,0,18,19,264,0,49,1,0,0,
+0,2,55,1,0,0,0,4,58,1,0,0,0,6,60,1,0,0,0,8,75,1,0,0,0,10,77,1,0,0,0,12,86,
+1,0,0,0,14,96,1,0,0,0,16,102,1,0,0,0,18,115,1,0,0,0,20,117,1,0,0,0,22,125,
+1,0,0,0,24,129,1,0,0,0,26,142,1,0,0,0,28,171,1,0,0,0,30,173,1,0,0,0,32,175,
+1,0,0,0,34,180,1,0,0,0,36,182,1,0,0,0,38,190,1,0,0,0,40,222,1,0,0,0,42,224,
+1,0,0,0,44,239,1,0,0,0,46,242,1,0,0,0,48,50,3,2,1,0,49,48,1,0,0,0,50,51,
+1,0,0,0,51,49,1,0,0,0,51,52,1,0,0,0,52,53,1,0,0,0,53,54,5,0,0,1,54,1,1,0,
+0,0,55,56,3,6,3,0,56,57,3,8,4,0,57,3,1,0,0,0,58,59,5,35,0,0,59,5,1,0,0,0,
+60,61,3,4,2,0,61,62,5,1,0,0,62,63,5,35,0,0,63,7,1,0,0,0,64,76,3,10,5,0,65,
+76,3,14,7,0,66,76,3,16,8,0,67,76,3,20,10,0,68,76,3,18,9,0,69,76,3,22,11,
+0,70,76,3,24,12,0,71,76,3,26,13,0,72,76,3,30,15,0,73,76,3,32,16,0,74,76,
+3,34,17,0,75,64,1,0,0,0,75,65,1,0,0,0,75,66,1,0,0,0,75,67,1,0,0,0,75,68,
+1,0,0,0,75,69,1,0,0,0,75,70,1,0,0,0,75,71,1,0,0,0,75,72,1,0,0,0,75,73,1,
+0,0,0,75,74,1,0,0,0,76,9,1,0,0,0,77,78,7,0,0,0,78,83,3,12,6,0,79,80,5,4,
+0,0,80,82,3,12,6,0,81,79,1,0,0,0,82,85,1,0,0,0,83,81,1,0,0,0,83,84,1,0,0,
+0,84,11,1,0,0,0,85,83,1,0,0,0,86,87,5,39,0,0,87,88,5,4,0,0,88,93,5,34,0,
+0,89,90,5,4,0,0,90,92,5,34,0,0,91,89,1,0,0,0,92,95,1,0,0,0,93,91,1,0,0,0,
+93,94,1,0,0,0,94,13,1,0,0,0,95,93,1,0,0,0,96,100,7,1,0,0,97,101,5,7,0,0,
+98,101,3,4,2,0,99,101,3,6,3,0,100,97,1,0,0,0,100,98,1,0,0,0,100,99,1,0,0,
+0,101,15,1,0,0,0,102,103,7,2,0,0,103,104,5,34,0,0,104,105,5,10,0,0,105,106,
+3,36,18,0,106,107,5,4,0,0,107,110,3,36,18,0,108,109,5,4,0,0,109,111,3,36,
+18,0,110,108,1,0,0,0,110,111,1,0,0,0,111,112,1,0,0,0,112,113,5,11,0,0,113,
+114,3,8,4,0,114,17,1,0,0,0,115,116,5,12,0,0,116,19,1,0,0,0,117,118,7,3,0,
+0,118,119,5,34,0,0,119,120,5,10,0,0,120,123,3,36,18,0,121,122,5,11,0,0,122,
+124,3,8,4,0,123,121,1,0,0,0,123,124,1,0,0,0,124,21,1,0,0,0,125,127,7,4,0,
+0,126,128,3,6,3,0,127,126,1,0,0,0,127,128,1,0,0,0,128,23,1,0,0,0,129,130,
+5,17,0,0,130,131,3,36,18,0,131,132,3,6,3,0,132,133,5,4,0,0,133,134,3,6,3,
+0,134,135,1,0,0,0,135,136,5,4,0,0,136,137,3,6,3,0,137,140,1,0,0,0,138,139,
+5,11,0,0,139,141,3,8,4,0,140,138,1,0,0,0,140,141,1,0,0,0,141,25,1,0,0,0,
+142,143,7,5,0,0,143,148,3,28,14,0,144,145,5,4,0,0,145,147,3,28,14,0,146,
+144,1,0,0,0,147,150,1,0,0,0,148,146,1,0,0,0,148,149,1,0,0,0,149,153,1,0,
+0,0,150,148,1,0,0,0,151,152,5,11,0,0,152,154,3,8,4,0,153,151,1,0,0,0,153,
+154,1,0,0,0,154,27,1,0,0,0,155,172,3,36,18,0,156,158,5,20,0,0,157,156,1,
+0,0,0,158,159,1,0,0,0,159,157,1,0,0,0,159,160,1,0,0,0,160,172,1,0,0,0,161,
+163,5,21,0,0,162,161,1,0,0,0,163,164,1,0,0,0,164,162,1,0,0,0,164,165,1,0,
+0,0,165,172,1,0,0,0,166,172,5,39,0,0,167,168,5,22,0,0,168,169,5,35,0,0,169,
+170,5,1,0,0,170,172,5,35,0,0,171,155,1,0,0,0,171,157,1,0,0,0,171,162,1,0,
+0,0,171,166,1,0,0,0,171,167,1,0,0,0,172,29,1,0,0,0,173,174,5,23,0,0,174,
+31,1,0,0,0,175,178,5,24,0,0,176,179,3,4,2,0,177,179,3,6,3,0,178,176,1,0,
+0,0,178,177,1,0,0,0,178,179,1,0,0,0,179,33,1,0,0,0,180,181,5,40,0,0,181,
+35,1,0,0,0,182,187,3,38,19,0,183,184,5,32,0,0,184,186,3,38,19,0,185,183,
+1,0,0,0,186,189,1,0,0,0,187,185,1,0,0,0,187,188,1,0,0,0,188,37,1,0,0,0,189,
+187,1,0,0,0,190,195,3,40,20,0,191,192,5,33,0,0,192,194,3,40,20,0,193,191,
+1,0,0,0,194,197,1,0,0,0,195,193,1,0,0,0,195,196,1,0,0,0,196,39,1,0,0,0,197,
+195,1,0,0,0,198,199,5,25,0,0,199,200,3,36,18,0,200,201,5,26,0,0,201,223,
+1,0,0,0,202,203,5,27,0,0,203,204,3,36,18,0,204,205,5,28,0,0,205,223,1,0,
+0,0,206,207,5,29,0,0,207,208,3,36,18,0,208,209,5,30,0,0,209,223,1,0,0,0,
+210,223,3,42,21,0,211,223,5,34,0,0,212,213,5,34,0,0,213,214,5,25,0,0,214,
+215,3,36,18,0,215,216,5,26,0,0,216,223,1,0,0,0,217,218,5,38,0,0,218,219,
+5,25,0,0,219,220,3,36,18,0,220,221,5,26,0,0,221,223,1,0,0,0,222,198,1,0,
+0,0,222,202,1,0,0,0,222,206,1,0,0,0,222,210,1,0,0,0,222,211,1,0,0,0,222,
+212,1,0,0,0,222,217,1,0,0,0,223,41,1,0,0,0,224,227,3,44,22,0,225,226,5,31,
+0,0,226,228,3,46,23,0,227,225,1,0,0,0,227,228,1,0,0,0,228,43,1,0,0,0,229,
+240,3,46,23,0,230,231,3,46,23,0,231,232,5,1,0,0,232,240,1,0,0,0,233,234,
+5,1,0,0,234,240,3,46,23,0,235,236,3,46,23,0,236,237,5,1,0,0,237,238,3,46,
+23,0,238,240,1,0,0,0,239,229,1,0,0,0,239,230,1,0,0,0,239,233,1,0,0,0,239,
+235,1,0,0,0,240,45,1,0,0,0,241,243,5,32,0,0,242,241,1,0,0,0,242,243,1,0,
+0,0,243,244,1,0,0,0,244,245,5,35,0,0,245,47,1,0,0,0,21,51,75,83,93,100,110,
+123,127,140,148,153,159,164,171,178,187,195,222,227,239,242];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -118,16 +118,12 @@ export default class focalParser extends antlr4.Parser {
         this.symbolicNames = focalParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	prog() {
 	    let localctx = new ProgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, focalParser.RULE_prog);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 49; 
@@ -139,7 +135,9 @@ export default class focalParser extends antlr4.Parser {
 	            this.state = 51; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===focalParser.INTEGER);
+	        } while(_la===35);
+	        this.state = 53;
+	        this.match(focalParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -161,9 +159,9 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 2, focalParser.RULE_statement);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 53;
+	        this.state = 55;
 	        this.linenum();
-	        this.state = 54;
+	        this.state = 56;
 	        this.command();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -186,7 +184,7 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, focalParser.RULE_grpnum);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 56;
+	        this.state = 58;
 	        this.match(focalParser.INTEGER);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -209,11 +207,11 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, focalParser.RULE_linenum);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 58;
-	        this.grpnum();
-	        this.state = 59;
-	        this.match(focalParser.T__0);
 	        this.state = 60;
+	        this.grpnum();
+	        this.state = 61;
+	        this.match(focalParser.T__0);
+	        this.state = 62;
 	        this.match(focalParser.INTEGER);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -235,68 +233,68 @@ export default class focalParser extends antlr4.Parser {
 	    let localctx = new CommandContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, focalParser.RULE_command);
 	    try {
-	        this.state = 73;
+	        this.state = 75;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case focalParser.T__1:
-	        case focalParser.T__2:
+	        case 2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 62;
+	            this.state = 64;
 	            this.ask();
 	            break;
-	        case focalParser.T__4:
-	        case focalParser.T__5:
+	        case 5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 63;
+	            this.state = 65;
 	            this.do_();
 	            break;
-	        case focalParser.T__7:
-	        case focalParser.T__8:
+	        case 8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 64;
+	            this.state = 66;
 	            this.for_();
 	            break;
-	        case focalParser.T__12:
-	        case focalParser.T__13:
+	        case 13:
+	        case 14:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 65;
+	            this.state = 67;
 	            this.set_();
 	            break;
-	        case focalParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 66;
+	            this.state = 68;
 	            this.quit();
 	            break;
-	        case focalParser.T__14:
-	        case focalParser.T__15:
+	        case 15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 67;
+	            this.state = 69;
 	            this.goto_();
 	            break;
-	        case focalParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 68;
+	            this.state = 70;
 	            this.if_();
 	            break;
-	        case focalParser.T__17:
-	        case focalParser.T__18:
+	        case 18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 69;
+	            this.state = 71;
 	            this.type_();
 	            break;
-	        case focalParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 9);
-	            this.state = 70;
+	            this.state = 72;
 	            this.return_();
 	            break;
-	        case focalParser.T__23:
+	        case 24:
 	            this.enterOuterAlt(localctx, 10);
-	            this.state = 71;
+	            this.state = 73;
 	            this.write_();
 	            break;
-	        case focalParser.COMMENT:
+	        case 40:
 	            this.enterOuterAlt(localctx, 11);
-	            this.state = 72;
+	            this.state = 74;
 	            this.comment();
 	            break;
 	        default:
@@ -321,29 +319,29 @@ export default class focalParser extends antlr4.Parser {
 	ask() {
 	    let localctx = new AskContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, focalParser.RULE_ask);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 75;
+	        this.state = 77;
 	        _la = this._input.LA(1);
-	        if(!(_la===focalParser.T__1 || _la===focalParser.T__2)) {
+	        if(!(_la===2 || _la===3)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 76;
+	        this.state = 78;
 	        this.askpair();
-	        this.state = 81;
+	        this.state = 83;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===focalParser.T__3) {
-	            this.state = 77;
+	        while(_la===4) {
+	            this.state = 79;
 	            this.match(focalParser.T__3);
-	            this.state = 78;
+	            this.state = 80;
 	            this.askpair();
-	            this.state = 83;
+	            this.state = 85;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -368,23 +366,23 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, focalParser.RULE_askpair);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 84;
-	        this.match(focalParser.STRING_LITERAL);
-	        this.state = 85;
-	        this.match(focalParser.T__3);
 	        this.state = 86;
+	        this.match(focalParser.STRING_LITERAL);
+	        this.state = 87;
+	        this.match(focalParser.T__3);
+	        this.state = 88;
 	        this.match(focalParser.VARIABLE);
-	        this.state = 91;
+	        this.state = 93;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,3,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 87;
+	                this.state = 89;
 	                this.match(focalParser.T__3);
-	                this.state = 88;
+	                this.state = 90;
 	                this.match(focalParser.VARIABLE); 
 	            }
-	            this.state = 93;
+	            this.state = 95;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        }
@@ -408,34 +406,34 @@ export default class focalParser extends antlr4.Parser {
 	do_() {
 	    let localctx = new Do_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, focalParser.RULE_do_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 94;
+	        this.state = 96;
 	        _la = this._input.LA(1);
-	        if(!(_la===focalParser.T__4 || _la===focalParser.T__5)) {
+	        if(!(_la===5 || _la===6)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 98;
+	        this.state = 100;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
 	        switch(la_) {
 	        case 1:
-	            this.state = 95;
+	            this.state = 97;
 	            this.match(focalParser.T__6);
 	            break;
 
 	        case 2:
-	            this.state = 96;
+	            this.state = 98;
 	            this.grpnum();
 	            break;
 
 	        case 3:
-	            this.state = 97;
+	            this.state = 99;
 	            this.linenum();
 	            break;
 
@@ -459,41 +457,41 @@ export default class focalParser extends antlr4.Parser {
 	for_() {
 	    let localctx = new For_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, focalParser.RULE_for_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 100;
+	        this.state = 102;
 	        _la = this._input.LA(1);
-	        if(!(_la===focalParser.T__7 || _la===focalParser.T__8)) {
+	        if(!(_la===8 || _la===9)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 101;
-	        this.match(focalParser.VARIABLE);
-	        this.state = 102;
-	        this.match(focalParser.T__9);
 	        this.state = 103;
-	        this.expression();
+	        this.match(focalParser.VARIABLE);
 	        this.state = 104;
-	        this.match(focalParser.T__3);
+	        this.match(focalParser.T__9);
 	        this.state = 105;
 	        this.expression();
-	        this.state = 108;
+	        this.state = 106;
+	        this.match(focalParser.T__3);
+	        this.state = 107;
+	        this.expression();
+	        this.state = 110;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===focalParser.T__3) {
-	            this.state = 106;
+	        if(_la===4) {
+	            this.state = 108;
 	            this.match(focalParser.T__3);
-	            this.state = 107;
+	            this.state = 109;
 	            this.expression();
 	        }
 
-	        this.state = 110;
+	        this.state = 112;
 	        this.match(focalParser.T__10);
-	        this.state = 111;
+	        this.state = 113;
 	        this.command();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -516,7 +514,7 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 18, focalParser.RULE_quit);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 113;
+	        this.state = 115;
 	        this.match(focalParser.T__11);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -537,31 +535,31 @@ export default class focalParser extends antlr4.Parser {
 	set_() {
 	    let localctx = new Set_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, focalParser.RULE_set_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 115;
+	        this.state = 117;
 	        _la = this._input.LA(1);
-	        if(!(_la===focalParser.T__12 || _la===focalParser.T__13)) {
+	        if(!(_la===13 || _la===14)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 116;
-	        this.match(focalParser.VARIABLE);
-	        this.state = 117;
-	        this.match(focalParser.T__9);
 	        this.state = 118;
+	        this.match(focalParser.VARIABLE);
+	        this.state = 119;
+	        this.match(focalParser.T__9);
+	        this.state = 120;
 	        this.expression();
-	        this.state = 121;
+	        this.state = 123;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===focalParser.T__10) {
-	            this.state = 119;
+	        if(_la===11) {
+	            this.state = 121;
 	            this.match(focalParser.T__10);
-	            this.state = 120;
+	            this.state = 122;
 	            this.command();
 	        }
 
@@ -584,23 +582,23 @@ export default class focalParser extends antlr4.Parser {
 	goto_() {
 	    let localctx = new Goto_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, focalParser.RULE_goto_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 123;
+	        this.state = 125;
 	        _la = this._input.LA(1);
-	        if(!(_la===focalParser.T__14 || _la===focalParser.T__15)) {
+	        if(!(_la===15 || _la===16)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 125;
+	        this.state = 127;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,7,this._ctx);
 	        if(la_===1) {
-	            this.state = 124;
+	            this.state = 126;
 	            this.linenum();
 
 	        }
@@ -623,32 +621,32 @@ export default class focalParser extends antlr4.Parser {
 	if_() {
 	    let localctx = new If_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, focalParser.RULE_if_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 127;
-	        this.match(focalParser.T__16);
-	        this.state = 128;
-	        this.expression();
 	        this.state = 129;
-	        this.linenum();
-
+	        this.match(focalParser.T__16);
 	        this.state = 130;
-	        this.match(focalParser.T__3);
+	        this.expression();
 	        this.state = 131;
 	        this.linenum();
 
-	        this.state = 133;
+	        this.state = 132;
 	        this.match(focalParser.T__3);
-	        this.state = 134;
+	        this.state = 133;
 	        this.linenum();
-	        this.state = 138;
+
+	        this.state = 135;
+	        this.match(focalParser.T__3);
+	        this.state = 136;
+	        this.linenum();
+	        this.state = 140;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===focalParser.T__10) {
-	            this.state = 136;
+	        if(_la===11) {
+	            this.state = 138;
 	            this.match(focalParser.T__10);
-	            this.state = 137;
+	            this.state = 139;
 	            this.command();
 	        }
 
@@ -671,39 +669,39 @@ export default class focalParser extends antlr4.Parser {
 	type_() {
 	    let localctx = new Type_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, focalParser.RULE_type_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 140;
+	        this.state = 142;
 	        _la = this._input.LA(1);
-	        if(!(_la===focalParser.T__17 || _la===focalParser.T__18)) {
+	        if(!(_la===18 || _la===19)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 141;
+	        this.state = 143;
 	        this.typeexpression();
-	        this.state = 146;
+	        this.state = 148;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===focalParser.T__3) {
-	            this.state = 142;
+	        while(_la===4) {
+	            this.state = 144;
 	            this.match(focalParser.T__3);
-	            this.state = 143;
+	            this.state = 145;
 	            this.typeexpression();
-	            this.state = 148;
+	            this.state = 150;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 151;
+	        this.state = 153;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===focalParser.T__10) {
-	            this.state = 149;
+	        if(_la===11) {
+	            this.state = 151;
 	            this.match(focalParser.T__10);
-	            this.state = 150;
+	            this.state = 152;
 	            this.command();
 	        }
 
@@ -726,63 +724,63 @@ export default class focalParser extends antlr4.Parser {
 	typeexpression() {
 	    let localctx = new TypeexpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, focalParser.RULE_typeexpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 169;
+	        this.state = 171;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case focalParser.T__0:
-	        case focalParser.T__24:
-	        case focalParser.T__26:
-	        case focalParser.T__28:
-	        case focalParser.PLUSMIN:
-	        case focalParser.VARIABLE:
-	        case focalParser.INTEGER:
-	        case focalParser.BUILTIN:
+	        case 1:
+	        case 25:
+	        case 27:
+	        case 29:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 153;
+	            this.state = 155;
 	            this.expression();
 	            break;
-	        case focalParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 155; 
+	            this.state = 157; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            do {
-	                this.state = 154;
+	                this.state = 156;
 	                this.match(focalParser.T__19);
-	                this.state = 157; 
+	                this.state = 159; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===focalParser.T__19);
+	            } while(_la===20);
 	            break;
-	        case focalParser.T__20:
+	        case 21:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 160; 
+	            this.state = 162; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            do {
-	                this.state = 159;
+	                this.state = 161;
 	                this.match(focalParser.T__20);
-	                this.state = 162; 
+	                this.state = 164; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===focalParser.T__20);
+	            } while(_la===21);
 	            break;
-	        case focalParser.STRING_LITERAL:
+	        case 39:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 164;
+	            this.state = 166;
 	            this.match(focalParser.STRING_LITERAL);
 	            break;
-	        case focalParser.T__21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 165;
-	            this.match(focalParser.T__21);
-	            this.state = 166;
-	            this.match(focalParser.INTEGER);
 	            this.state = 167;
-	            this.match(focalParser.T__0);
+	            this.match(focalParser.T__21);
 	            this.state = 168;
+	            this.match(focalParser.INTEGER);
+	            this.state = 169;
+	            this.match(focalParser.T__0);
+	            this.state = 170;
 	            this.match(focalParser.INTEGER);
 	            break;
 	        default:
@@ -809,7 +807,7 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, focalParser.RULE_return_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 171;
+	        this.state = 173;
 	        this.match(focalParser.T__22);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -832,17 +830,17 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 32, focalParser.RULE_write_);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 173;
+	        this.state = 175;
 	        this.match(focalParser.T__23);
-	        this.state = 176;
+	        this.state = 178;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,14,this._ctx);
 	        if(la_===1) {
-	            this.state = 174;
+	            this.state = 176;
 	            this.grpnum();
 
 	        } else if(la_===2) {
-	            this.state = 175;
+	            this.state = 177;
 	            this.linenum();
 
 	        }
@@ -867,7 +865,7 @@ export default class focalParser extends antlr4.Parser {
 	    this.enterRule(localctx, 34, focalParser.RULE_comment);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 178;
+	        this.state = 180;
 	        this.match(focalParser.COMMENT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -888,20 +886,20 @@ export default class focalParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, focalParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 180;
+	        this.state = 182;
 	        this.primary();
-	        this.state = 185;
+	        this.state = 187;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===focalParser.PLUSMIN) {
-	            this.state = 181;
+	        while(_la===32) {
+	            this.state = 183;
 	            this.match(focalParser.PLUSMIN);
-	            this.state = 182;
+	            this.state = 184;
 	            this.primary();
-	            this.state = 187;
+	            this.state = 189;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -924,20 +922,20 @@ export default class focalParser extends antlr4.Parser {
 	primary() {
 	    let localctx = new PrimaryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, focalParser.RULE_primary);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 188;
+	        this.state = 190;
 	        this.term();
-	        this.state = 193;
+	        this.state = 195;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===focalParser.MULOP) {
-	            this.state = 189;
+	        while(_la===33) {
+	            this.state = 191;
 	            this.match(focalParser.MULOP);
-	            this.state = 190;
+	            this.state = 192;
 	            this.term();
-	            this.state = 195;
+	            this.state = 197;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -961,73 +959,73 @@ export default class focalParser extends antlr4.Parser {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, focalParser.RULE_term);
 	    try {
-	        this.state = 220;
+	        this.state = 222;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,17,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 196;
-	            this.match(focalParser.T__24);
-	            this.state = 197;
-	            this.expression();
 	            this.state = 198;
+	            this.match(focalParser.T__24);
+	            this.state = 199;
+	            this.expression();
+	            this.state = 200;
 	            this.match(focalParser.T__25);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 200;
-	            this.match(focalParser.T__26);
-	            this.state = 201;
-	            this.expression();
 	            this.state = 202;
+	            this.match(focalParser.T__26);
+	            this.state = 203;
+	            this.expression();
+	            this.state = 204;
 	            this.match(focalParser.T__27);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 204;
-	            this.match(focalParser.T__28);
-	            this.state = 205;
-	            this.expression();
 	            this.state = 206;
+	            this.match(focalParser.T__28);
+	            this.state = 207;
+	            this.expression();
+	            this.state = 208;
 	            this.match(focalParser.T__29);
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 208;
+	            this.state = 210;
 	            this.number();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 209;
+	            this.state = 211;
 	            this.match(focalParser.VARIABLE);
 	            break;
 
 	        case 6:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 210;
-	            this.match(focalParser.VARIABLE);
-	            this.state = 211;
-	            this.match(focalParser.T__24);
 	            this.state = 212;
-	            this.expression();
+	            this.match(focalParser.VARIABLE);
 	            this.state = 213;
+	            this.match(focalParser.T__24);
+	            this.state = 214;
+	            this.expression();
+	            this.state = 215;
 	            this.match(focalParser.T__25);
 	            break;
 
 	        case 7:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 215;
-	            this.match(focalParser.BUILTIN);
-	            this.state = 216;
-	            this.match(focalParser.T__24);
 	            this.state = 217;
-	            this.expression();
+	            this.match(focalParser.BUILTIN);
 	            this.state = 218;
+	            this.match(focalParser.T__24);
+	            this.state = 219;
+	            this.expression();
+	            this.state = 220;
 	            this.match(focalParser.T__25);
 	            break;
 
@@ -1051,18 +1049,18 @@ export default class focalParser extends antlr4.Parser {
 	number() {
 	    let localctx = new NumberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, focalParser.RULE_number);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 222;
+	        this.state = 224;
 	        this.mantissa();
-	        this.state = 225;
+	        this.state = 227;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===focalParser.T__30) {
-	            this.state = 223;
+	        if(_la===31) {
+	            this.state = 225;
 	            this.match(focalParser.T__30);
-	            this.state = 224;
+	            this.state = 226;
 	            this.signed_();
 	        }
 
@@ -1086,39 +1084,39 @@ export default class focalParser extends antlr4.Parser {
 	    let localctx = new MantissaContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, focalParser.RULE_mantissa);
 	    try {
-	        this.state = 237;
+	        this.state = 239;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,19,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 227;
+	            this.state = 229;
 	            this.signed_();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 228;
+	            this.state = 230;
 	            this.signed_();
-	            this.state = 229;
+	            this.state = 231;
 	            this.match(focalParser.T__0);
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 231;
+	            this.state = 233;
 	            this.match(focalParser.T__0);
-	            this.state = 232;
+	            this.state = 234;
 	            this.signed_();
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 233;
-	            this.signed_();
-	            this.state = 234;
-	            this.match(focalParser.T__0);
 	            this.state = 235;
+	            this.signed_();
+	            this.state = 236;
+	            this.match(focalParser.T__0);
+	            this.state = 237;
 	            this.signed_();
 	            break;
 
@@ -1142,18 +1140,18 @@ export default class focalParser extends antlr4.Parser {
 	signed_() {
 	    let localctx = new Signed_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, focalParser.RULE_signed_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 240;
+	        this.state = 242;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===focalParser.PLUSMIN) {
-	            this.state = 239;
+	        if(_la===32) {
+	            this.state = 241;
 	            this.match(focalParser.PLUSMIN);
 	        }
 
-	        this.state = 242;
+	        this.state = 244;
 	        this.match(focalParser.INTEGER);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1253,6 +1251,10 @@ class ProgContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = focalParser.RULE_prog;
     }
+
+	EOF() {
+	    return this.getToken(focalParser.EOF, 0);
+	};
 
 	statement = function(i) {
 	    if(i===undefined) {
@@ -2311,3 +2313,12 @@ focalParser.TermContext = TermContext;
 focalParser.NumberContext = NumberContext; 
 focalParser.MantissaContext = MantissaContext; 
 focalParser.Signed_Context = Signed_Context; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

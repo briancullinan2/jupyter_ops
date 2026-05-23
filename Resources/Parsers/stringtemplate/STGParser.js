@@ -1,4 +1,4 @@
-// Generated from ./stringtemplate/STGParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/stringtemplate/STGParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import STGParserListener from './STGParserListener.js';
@@ -83,22 +83,18 @@ export default class STGParser extends antlr4.Parser {
         this.symbolicNames = STGParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	group() {
 	    let localctx = new GroupContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, STGParser.RULE_group);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 23;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STGParser.DELIMITERS) {
+	        if(_la===25) {
 	            this.state = 22;
 	            this.delimiters();
 	        }
@@ -106,7 +102,7 @@ export default class STGParser extends antlr4.Parser {
 	        this.state = 26;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===STGParser.IMPORT) {
+	        if(_la===26) {
 	            this.state = 25;
 	            this.imports();
 	        }
@@ -133,7 +129,7 @@ export default class STGParser extends antlr4.Parser {
 	            this.state = 32; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===STGParser.ID || _la===STGParser.AT);
+	        } while(_la===7 || _la===21);
 	        this.state = 34;
 	        this.match(STGParser.EOF);
 	    } catch (re) {
@@ -184,7 +180,7 @@ export default class STGParser extends antlr4.Parser {
 	imports() {
 	    let localctx = new ImportsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, STGParser.RULE_imports);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 43; 
@@ -198,7 +194,7 @@ export default class STGParser extends antlr4.Parser {
 	            this.state = 45; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===STGParser.IMPORT);
+	        } while(_la===26);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -218,7 +214,7 @@ export default class STGParser extends antlr4.Parser {
 	template_() {
 	    let localctx = new Template_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, STGParser.RULE_template_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 66;
 	        this._errHandler.sync(this);
@@ -229,7 +225,7 @@ export default class STGParser extends antlr4.Parser {
 	            this.state = 59;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case STGParser.AT:
+	            case 21:
 	                this.state = 47;
 	                this.match(STGParser.AT);
 	                this.state = 48;
@@ -243,7 +239,7 @@ export default class STGParser extends antlr4.Parser {
 	                this.state = 52;
 	                this.match(STGParser.RPAREN);
 	                break;
-	            case STGParser.ID:
+	            case 7:
 	                this.state = 53;
 	                this.match(STGParser.ID);
 	                this.state = 54;
@@ -251,7 +247,7 @@ export default class STGParser extends antlr4.Parser {
 	                this.state = 56;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===STGParser.ID) {
+	                if(_la===7) {
 	                    this.state = 55;
 	                    this.formalArgs();
 	                }
@@ -266,7 +262,7 @@ export default class STGParser extends antlr4.Parser {
 	            this.match(STGParser.TMPL_ASSIGN);
 	            this.state = 62;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << STGParser.STRING) | (1 << STGParser.BIGSTRING) | (1 << STGParser.BIGSTRING_NO_NL))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1792) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -305,7 +301,7 @@ export default class STGParser extends antlr4.Parser {
 	formalArgs() {
 	    let localctx = new FormalArgsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, STGParser.RULE_formalArgs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 68;
@@ -313,7 +309,7 @@ export default class STGParser extends antlr4.Parser {
 	        this.state = 73;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===STGParser.COMMA) {
+	        while(_la===15) {
 	            this.state = 69;
 	            this.match(STGParser.COMMA);
 	            this.state = 70;
@@ -431,12 +427,12 @@ export default class STGParser extends antlr4.Parser {
 	dictPairs() {
 	    let localctx = new DictPairsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, STGParser.RULE_dictPairs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 109;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case STGParser.STRING:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 96;
 	            this.keyValuePair();
@@ -458,7 +454,7 @@ export default class STGParser extends antlr4.Parser {
 	            this.state = 106;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===STGParser.COMMA) {
+	            if(_la===15) {
 	                this.state = 104;
 	                this.match(STGParser.COMMA);
 	                this.state = 105;
@@ -466,7 +462,7 @@ export default class STGParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case STGParser.DEFAULT:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 108;
 	            this.defaultValuePair();
@@ -551,44 +547,44 @@ export default class STGParser extends antlr4.Parser {
 	        this.state = 128;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case STGParser.BIGSTRING:
+	        case 9:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 119;
 	            this.match(STGParser.BIGSTRING);
 	            break;
-	        case STGParser.BIGSTRING_NO_NL:
+	        case 10:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 120;
 	            this.match(STGParser.BIGSTRING_NO_NL);
 	            break;
-	        case STGParser.ANON_TEMPLATE:
+	        case 11:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 121;
 	            this.match(STGParser.ANON_TEMPLATE);
 	            break;
-	        case STGParser.STRING:
+	        case 8:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 122;
 	            this.match(STGParser.STRING);
 	            break;
-	        case STGParser.TRUE:
+	        case 22:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 123;
 	            this.match(STGParser.TRUE);
 	            break;
-	        case STGParser.FALSE:
+	        case 23:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 124;
 	            this.match(STGParser.FALSE);
 	            break;
-	        case STGParser.LBRACK:
+	        case 19:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 125;
 	            this.match(STGParser.LBRACK);
 	            this.state = 126;
 	            this.match(STGParser.RBRACK);
 	            break;
-	        case STGParser.KEY:
+	        case 28:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 127;
 	            this.match(STGParser.KEY);
@@ -1310,3 +1306,12 @@ STGParser.DictPairsContext = DictPairsContext;
 STGParser.KeyValuePairContext = KeyValuePairContext; 
 STGParser.DefaultValuePairContext = DefaultValuePairContext; 
 STGParser.KeyValueContext = KeyValueContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

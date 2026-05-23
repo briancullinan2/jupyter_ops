@@ -1,4 +1,4 @@
-// Generated from ./promql/PromQLParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/promql/PromQLParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -83,6 +83,15 @@ export default class PromQLParserListener extends antlr4.tree.ParseTreeListener 
 
 	// Exit a parse tree produced by PromQLParser#orOp.
 	exitOrOp(ctx) {
+	}
+
+
+	// Enter a parse tree produced by PromQLParser#vectorMatchOp.
+	enterVectorMatchOp(ctx) {
+	}
+
+	// Exit a parse tree produced by PromQLParser#vectorMatchOp.
+	exitVectorMatchOp(ctx) {
 	}
 
 

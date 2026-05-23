@@ -1,52 +1,53 @@
-// Generated from ./janus/janus.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/janus/janus.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import janusListener from './janusListener.js';
-const serializedATN = [4,1,29,151,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,29,153,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,1,0,1,0,1,0,1,0,3,0,35,8,0,5,0,37,8,0,10,0,12,0,40,9,
-0,1,0,1,0,1,0,5,0,45,8,0,10,0,12,0,48,9,0,1,1,4,1,51,8,1,11,1,12,1,52,1,
-2,1,2,1,2,1,2,1,2,1,2,3,2,61,8,2,1,3,1,3,1,3,1,3,3,3,67,8,3,1,3,1,3,3,3,
-71,8,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,3,4,80,8,4,1,4,1,4,3,4,84,8,4,1,4,1,4,
-1,4,1,5,1,5,1,5,1,5,3,5,93,8,5,1,6,1,6,1,6,1,7,1,7,1,7,1,8,1,8,1,8,1,8,1,
-8,1,8,3,8,107,8,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,117,8,9,1,10,1,10,
-1,10,1,11,1,11,1,11,1,11,1,11,3,11,127,8,11,1,12,1,12,1,12,1,12,1,12,1,12,
-1,12,1,12,1,12,1,12,3,12,139,8,12,1,13,1,13,1,13,1,13,1,13,1,13,3,13,147,
-8,13,1,14,1,14,1,14,0,0,15,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,0,0,159,
-0,38,1,0,0,0,2,50,1,0,0,0,4,60,1,0,0,0,6,62,1,0,0,0,8,75,1,0,0,0,10,92,1,
-0,0,0,12,94,1,0,0,0,14,97,1,0,0,0,16,106,1,0,0,0,18,116,1,0,0,0,20,118,1,
-0,0,0,22,126,1,0,0,0,24,138,1,0,0,0,26,146,1,0,0,0,28,148,1,0,0,0,30,34,
-5,26,0,0,31,32,5,1,0,0,32,33,5,27,0,0,33,35,5,2,0,0,34,31,1,0,0,0,34,35,
-1,0,0,0,35,37,1,0,0,0,36,30,1,0,0,0,37,40,1,0,0,0,38,36,1,0,0,0,38,39,1,
-0,0,0,39,46,1,0,0,0,40,38,1,0,0,0,41,42,5,3,0,0,42,43,5,26,0,0,43,45,3,2,
-1,0,44,41,1,0,0,0,45,48,1,0,0,0,46,44,1,0,0,0,46,47,1,0,0,0,47,1,1,0,0,0,
-48,46,1,0,0,0,49,51,3,4,2,0,50,49,1,0,0,0,51,52,1,0,0,0,52,50,1,0,0,0,52,
-53,1,0,0,0,53,3,1,0,0,0,54,61,3,6,3,0,55,61,3,8,4,0,56,61,3,10,5,0,57,61,
-3,12,6,0,58,61,3,14,7,0,59,61,3,16,8,0,60,54,1,0,0,0,60,55,1,0,0,0,60,56,
-1,0,0,0,60,57,1,0,0,0,60,58,1,0,0,0,60,59,1,0,0,0,61,5,1,0,0,0,62,63,5,4,
-0,0,63,66,3,22,11,0,64,65,5,5,0,0,65,67,3,2,1,0,66,64,1,0,0,0,66,67,1,0,
-0,0,67,70,1,0,0,0,68,69,5,6,0,0,69,71,3,2,1,0,70,68,1,0,0,0,70,71,1,0,0,
-0,71,72,1,0,0,0,72,73,5,7,0,0,73,74,3,22,11,0,74,7,1,0,0,0,75,76,5,8,0,0,
-76,79,3,22,11,0,77,78,5,9,0,0,78,80,3,2,1,0,79,77,1,0,0,0,79,80,1,0,0,0,
-80,83,1,0,0,0,81,82,5,10,0,0,82,84,3,2,1,0,83,81,1,0,0,0,83,84,1,0,0,0,84,
-85,1,0,0,0,85,86,5,11,0,0,86,87,3,22,11,0,87,9,1,0,0,0,88,89,5,12,0,0,89,
-93,5,26,0,0,90,91,5,13,0,0,91,93,5,26,0,0,92,88,1,0,0,0,92,90,1,0,0,0,93,
-11,1,0,0,0,94,95,5,14,0,0,95,96,5,26,0,0,96,13,1,0,0,0,97,98,5,15,0,0,98,
-99,5,26,0,0,99,15,1,0,0,0,100,101,3,26,13,0,101,102,3,18,9,0,102,107,1,0,
-0,0,103,104,3,26,13,0,104,105,3,20,10,0,105,107,1,0,0,0,106,100,1,0,0,0,
-106,103,1,0,0,0,107,17,1,0,0,0,108,109,5,16,0,0,109,117,3,22,11,0,110,111,
-5,17,0,0,111,117,3,22,11,0,112,113,5,18,0,0,113,117,3,22,11,0,114,115,5,
-19,0,0,115,117,3,22,11,0,116,108,1,0,0,0,116,110,1,0,0,0,116,112,1,0,0,0,
-116,114,1,0,0,0,117,19,1,0,0,0,118,119,5,20,0,0,119,120,3,26,13,0,120,21,
-1,0,0,0,121,127,3,24,12,0,122,123,3,24,12,0,123,124,5,25,0,0,124,125,3,22,
-11,0,125,127,1,0,0,0,126,121,1,0,0,0,126,122,1,0,0,0,127,23,1,0,0,0,128,
-129,5,21,0,0,129,130,3,22,11,0,130,131,5,22,0,0,131,139,1,0,0,0,132,133,
-5,23,0,0,133,139,3,22,11,0,134,135,5,24,0,0,135,139,3,22,11,0,136,139,3,
-26,13,0,137,139,3,28,14,0,138,128,1,0,0,0,138,132,1,0,0,0,138,134,1,0,0,
-0,138,136,1,0,0,0,138,137,1,0,0,0,139,25,1,0,0,0,140,147,5,26,0,0,141,142,
-5,26,0,0,142,143,5,1,0,0,143,144,3,22,11,0,144,145,5,2,0,0,145,147,1,0,0,
-0,146,140,1,0,0,0,146,141,1,0,0,0,147,27,1,0,0,0,148,149,5,27,0,0,149,29,
-1,0,0,0,15,34,38,46,52,60,66,70,79,83,92,106,116,126,138,146];
+0,1,0,1,0,1,0,5,0,45,8,0,10,0,12,0,48,9,0,1,0,1,0,1,1,4,1,53,8,1,11,1,12,
+1,54,1,2,1,2,1,2,1,2,1,2,1,2,3,2,63,8,2,1,3,1,3,1,3,1,3,3,3,69,8,3,1,3,1,
+3,3,3,73,8,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,3,4,82,8,4,1,4,1,4,3,4,86,8,4,1,
+4,1,4,1,4,1,5,1,5,1,5,1,5,3,5,95,8,5,1,6,1,6,1,6,1,7,1,7,1,7,1,8,1,8,1,8,
+1,8,1,8,1,8,3,8,109,8,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,119,8,9,1,10,
+1,10,1,10,1,11,1,11,1,11,1,11,1,11,3,11,129,8,11,1,12,1,12,1,12,1,12,1,12,
+1,12,1,12,1,12,1,12,1,12,3,12,141,8,12,1,13,1,13,1,13,1,13,1,13,1,13,3,13,
+149,8,13,1,14,1,14,1,14,0,0,15,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,0,
+0,161,0,38,1,0,0,0,2,52,1,0,0,0,4,62,1,0,0,0,6,64,1,0,0,0,8,77,1,0,0,0,10,
+94,1,0,0,0,12,96,1,0,0,0,14,99,1,0,0,0,16,108,1,0,0,0,18,118,1,0,0,0,20,
+120,1,0,0,0,22,128,1,0,0,0,24,140,1,0,0,0,26,148,1,0,0,0,28,150,1,0,0,0,
+30,34,5,26,0,0,31,32,5,1,0,0,32,33,5,27,0,0,33,35,5,2,0,0,34,31,1,0,0,0,
+34,35,1,0,0,0,35,37,1,0,0,0,36,30,1,0,0,0,37,40,1,0,0,0,38,36,1,0,0,0,38,
+39,1,0,0,0,39,46,1,0,0,0,40,38,1,0,0,0,41,42,5,3,0,0,42,43,5,26,0,0,43,45,
+3,2,1,0,44,41,1,0,0,0,45,48,1,0,0,0,46,44,1,0,0,0,46,47,1,0,0,0,47,49,1,
+0,0,0,48,46,1,0,0,0,49,50,5,0,0,1,50,1,1,0,0,0,51,53,3,4,2,0,52,51,1,0,0,
+0,53,54,1,0,0,0,54,52,1,0,0,0,54,55,1,0,0,0,55,3,1,0,0,0,56,63,3,6,3,0,57,
+63,3,8,4,0,58,63,3,10,5,0,59,63,3,12,6,0,60,63,3,14,7,0,61,63,3,16,8,0,62,
+56,1,0,0,0,62,57,1,0,0,0,62,58,1,0,0,0,62,59,1,0,0,0,62,60,1,0,0,0,62,61,
+1,0,0,0,63,5,1,0,0,0,64,65,5,4,0,0,65,68,3,22,11,0,66,67,5,5,0,0,67,69,3,
+2,1,0,68,66,1,0,0,0,68,69,1,0,0,0,69,72,1,0,0,0,70,71,5,6,0,0,71,73,3,2,
+1,0,72,70,1,0,0,0,72,73,1,0,0,0,73,74,1,0,0,0,74,75,5,7,0,0,75,76,3,22,11,
+0,76,7,1,0,0,0,77,78,5,8,0,0,78,81,3,22,11,0,79,80,5,9,0,0,80,82,3,2,1,0,
+81,79,1,0,0,0,81,82,1,0,0,0,82,85,1,0,0,0,83,84,5,10,0,0,84,86,3,2,1,0,85,
+83,1,0,0,0,85,86,1,0,0,0,86,87,1,0,0,0,87,88,5,11,0,0,88,89,3,22,11,0,89,
+9,1,0,0,0,90,91,5,12,0,0,91,95,5,26,0,0,92,93,5,13,0,0,93,95,5,26,0,0,94,
+90,1,0,0,0,94,92,1,0,0,0,95,11,1,0,0,0,96,97,5,14,0,0,97,98,5,26,0,0,98,
+13,1,0,0,0,99,100,5,15,0,0,100,101,5,26,0,0,101,15,1,0,0,0,102,103,3,26,
+13,0,103,104,3,18,9,0,104,109,1,0,0,0,105,106,3,26,13,0,106,107,3,20,10,
+0,107,109,1,0,0,0,108,102,1,0,0,0,108,105,1,0,0,0,109,17,1,0,0,0,110,111,
+5,16,0,0,111,119,3,22,11,0,112,113,5,17,0,0,113,119,3,22,11,0,114,115,5,
+18,0,0,115,119,3,22,11,0,116,117,5,19,0,0,117,119,3,22,11,0,118,110,1,0,
+0,0,118,112,1,0,0,0,118,114,1,0,0,0,118,116,1,0,0,0,119,19,1,0,0,0,120,121,
+5,20,0,0,121,122,3,26,13,0,122,21,1,0,0,0,123,129,3,24,12,0,124,125,3,24,
+12,0,125,126,5,25,0,0,126,127,3,22,11,0,127,129,1,0,0,0,128,123,1,0,0,0,
+128,124,1,0,0,0,129,23,1,0,0,0,130,131,5,21,0,0,131,132,3,22,11,0,132,133,
+5,22,0,0,133,141,1,0,0,0,134,135,5,23,0,0,135,141,3,22,11,0,136,137,5,24,
+0,0,137,141,3,22,11,0,138,141,3,26,13,0,139,141,3,28,14,0,140,130,1,0,0,
+0,140,134,1,0,0,0,140,136,1,0,0,0,140,138,1,0,0,0,140,139,1,0,0,0,141,25,
+1,0,0,0,142,149,5,26,0,0,143,144,5,26,0,0,144,145,5,1,0,0,145,146,3,22,11,
+0,146,147,5,2,0,0,147,149,1,0,0,0,148,142,1,0,0,0,148,143,1,0,0,0,149,27,
+1,0,0,0,150,151,5,27,0,0,151,29,1,0,0,0,15,34,38,46,54,62,68,72,81,85,94,
+108,118,128,140,148];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -80,28 +81,24 @@ export default class janusParser extends antlr4.Parser {
         this.symbolicNames = janusParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, janusParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 38;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===janusParser.IDENT) {
+	        while(_la===26) {
 	            this.state = 30;
 	            this.match(janusParser.IDENT);
 	            this.state = 34;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===janusParser.T__0) {
+	            if(_la===1) {
 	                this.state = 31;
 	                this.match(janusParser.T__0);
 	                this.state = 32;
@@ -117,7 +114,7 @@ export default class janusParser extends antlr4.Parser {
 	        this.state = 46;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===janusParser.T__2) {
+	        while(_la===3) {
 	            this.state = 41;
 	            this.match(janusParser.T__2);
 	            this.state = 42;
@@ -128,6 +125,8 @@ export default class janusParser extends antlr4.Parser {
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 49;
+	        this.match(janusParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -147,19 +146,19 @@ export default class janusParser extends antlr4.Parser {
 	statements() {
 	    let localctx = new StatementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, janusParser.RULE_statements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 50; 
+	        this.state = 52; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 49;
+	            this.state = 51;
 	            this.statement();
-	            this.state = 52; 
+	            this.state = 54; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << janusParser.T__3) | (1 << janusParser.T__7) | (1 << janusParser.T__11) | (1 << janusParser.T__12) | (1 << janusParser.T__13) | (1 << janusParser.T__14) | (1 << janusParser.IDENT))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 67170576) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -180,38 +179,38 @@ export default class janusParser extends antlr4.Parser {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, janusParser.RULE_statement);
 	    try {
-	        this.state = 60;
+	        this.state = 62;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case janusParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 54;
+	            this.state = 56;
 	            this.ifstmt();
 	            break;
-	        case janusParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 55;
+	            this.state = 57;
 	            this.dostmt();
 	            break;
-	        case janusParser.T__11:
-	        case janusParser.T__12:
+	        case 12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 56;
+	            this.state = 58;
 	            this.callstmt();
 	            break;
-	        case janusParser.T__13:
+	        case 14:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 57;
+	            this.state = 59;
 	            this.readstmt();
 	            break;
-	        case janusParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 58;
+	            this.state = 60;
 	            this.writestmt();
 	            break;
-	        case janusParser.IDENT:
+	        case 26:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 59;
+	            this.state = 61;
 	            this.lvalstmt();
 	            break;
 	        default:
@@ -236,36 +235,36 @@ export default class janusParser extends antlr4.Parser {
 	ifstmt() {
 	    let localctx = new IfstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, janusParser.RULE_ifstmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 62;
+	        this.state = 64;
 	        this.match(janusParser.T__3);
-	        this.state = 63;
+	        this.state = 65;
 	        this.expression();
-	        this.state = 66;
+	        this.state = 68;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===janusParser.T__4) {
-	            this.state = 64;
+	        if(_la===5) {
+	            this.state = 66;
 	            this.match(janusParser.T__4);
-	            this.state = 65;
-	            this.statements();
-	        }
-
-	        this.state = 70;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        if(_la===janusParser.T__5) {
-	            this.state = 68;
-	            this.match(janusParser.T__5);
-	            this.state = 69;
+	            this.state = 67;
 	            this.statements();
 	        }
 
 	        this.state = 72;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if(_la===6) {
+	            this.state = 70;
+	            this.match(janusParser.T__5);
+	            this.state = 71;
+	            this.statements();
+	        }
+
+	        this.state = 74;
 	        this.match(janusParser.T__6);
-	        this.state = 73;
+	        this.state = 75;
 	        this.expression();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -286,36 +285,36 @@ export default class janusParser extends antlr4.Parser {
 	dostmt() {
 	    let localctx = new DostmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, janusParser.RULE_dostmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 75;
+	        this.state = 77;
 	        this.match(janusParser.T__7);
-	        this.state = 76;
+	        this.state = 78;
 	        this.expression();
-	        this.state = 79;
+	        this.state = 81;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===janusParser.T__8) {
-	            this.state = 77;
+	        if(_la===9) {
+	            this.state = 79;
 	            this.match(janusParser.T__8);
-	            this.state = 78;
-	            this.statements();
-	        }
-
-	        this.state = 83;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        if(_la===janusParser.T__9) {
-	            this.state = 81;
-	            this.match(janusParser.T__9);
-	            this.state = 82;
+	            this.state = 80;
 	            this.statements();
 	        }
 
 	        this.state = 85;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if(_la===10) {
+	            this.state = 83;
+	            this.match(janusParser.T__9);
+	            this.state = 84;
+	            this.statements();
+	        }
+
+	        this.state = 87;
 	        this.match(janusParser.T__10);
-	        this.state = 86;
+	        this.state = 88;
 	        this.expression();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -337,21 +336,21 @@ export default class janusParser extends antlr4.Parser {
 	    let localctx = new CallstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, janusParser.RULE_callstmt);
 	    try {
-	        this.state = 92;
+	        this.state = 94;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case janusParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 88;
+	            this.state = 90;
 	            this.match(janusParser.T__11);
-	            this.state = 89;
+	            this.state = 91;
 	            this.match(janusParser.IDENT);
 	            break;
-	        case janusParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 90;
+	            this.state = 92;
 	            this.match(janusParser.T__12);
-	            this.state = 91;
+	            this.state = 93;
 	            this.match(janusParser.IDENT);
 	            break;
 	        default:
@@ -378,9 +377,9 @@ export default class janusParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, janusParser.RULE_readstmt);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 94;
+	        this.state = 96;
 	        this.match(janusParser.T__13);
-	        this.state = 95;
+	        this.state = 97;
 	        this.match(janusParser.IDENT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -403,9 +402,9 @@ export default class janusParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, janusParser.RULE_writestmt);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 97;
+	        this.state = 99;
 	        this.match(janusParser.T__14);
-	        this.state = 98;
+	        this.state = 100;
 	        this.match(janusParser.IDENT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -427,23 +426,23 @@ export default class janusParser extends antlr4.Parser {
 	    let localctx = new LvalstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, janusParser.RULE_lvalstmt);
 	    try {
-	        this.state = 106;
+	        this.state = 108;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 100;
+	            this.state = 102;
 	            this.lvalue();
-	            this.state = 101;
+	            this.state = 103;
 	            this.modstmt();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 103;
+	            this.state = 105;
 	            this.lvalue();
-	            this.state = 104;
+	            this.state = 106;
 	            this.swapstmt();
 	            break;
 
@@ -468,35 +467,35 @@ export default class janusParser extends antlr4.Parser {
 	    let localctx = new ModstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, janusParser.RULE_modstmt);
 	    try {
-	        this.state = 116;
+	        this.state = 118;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case janusParser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 108;
-	            this.match(janusParser.T__15);
-	            this.state = 109;
-	            this.expression();
-	            break;
-	        case janusParser.T__16:
-	            this.enterOuterAlt(localctx, 2);
 	            this.state = 110;
-	            this.match(janusParser.T__16);
+	            this.match(janusParser.T__15);
 	            this.state = 111;
 	            this.expression();
 	            break;
-	        case janusParser.T__17:
-	            this.enterOuterAlt(localctx, 3);
+	        case 17:
+	            this.enterOuterAlt(localctx, 2);
 	            this.state = 112;
-	            this.match(janusParser.T__17);
+	            this.match(janusParser.T__16);
 	            this.state = 113;
 	            this.expression();
 	            break;
-	        case janusParser.T__18:
-	            this.enterOuterAlt(localctx, 4);
+	        case 18:
+	            this.enterOuterAlt(localctx, 3);
 	            this.state = 114;
-	            this.match(janusParser.T__18);
+	            this.match(janusParser.T__17);
 	            this.state = 115;
+	            this.expression();
+	            break;
+	        case 19:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 116;
+	            this.match(janusParser.T__18);
+	            this.state = 117;
 	            this.expression();
 	            break;
 	        default:
@@ -523,9 +522,9 @@ export default class janusParser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, janusParser.RULE_swapstmt);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 118;
+	        this.state = 120;
 	        this.match(janusParser.T__19);
-	        this.state = 119;
+	        this.state = 121;
 	        this.lvalue();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -547,23 +546,23 @@ export default class janusParser extends antlr4.Parser {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, janusParser.RULE_expression);
 	    try {
-	        this.state = 126;
+	        this.state = 128;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 121;
+	            this.state = 123;
 	            this.minexp();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 122;
-	            this.minexp();
-	            this.state = 123;
-	            this.match(janusParser.BINOP);
 	            this.state = 124;
+	            this.minexp();
+	            this.state = 125;
+	            this.match(janusParser.BINOP);
+	            this.state = 126;
 	            this.expression();
 	            break;
 
@@ -588,40 +587,40 @@ export default class janusParser extends antlr4.Parser {
 	    let localctx = new MinexpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, janusParser.RULE_minexp);
 	    try {
-	        this.state = 138;
+	        this.state = 140;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case janusParser.T__20:
+	        case 21:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 128;
-	            this.match(janusParser.T__20);
-	            this.state = 129;
-	            this.expression();
 	            this.state = 130;
+	            this.match(janusParser.T__20);
+	            this.state = 131;
+	            this.expression();
+	            this.state = 132;
 	            this.match(janusParser.T__21);
 	            break;
-	        case janusParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 132;
-	            this.match(janusParser.T__22);
-	            this.state = 133;
-	            this.expression();
-	            break;
-	        case janusParser.T__23:
-	            this.enterOuterAlt(localctx, 3);
 	            this.state = 134;
-	            this.match(janusParser.T__23);
+	            this.match(janusParser.T__22);
 	            this.state = 135;
 	            this.expression();
 	            break;
-	        case janusParser.IDENT:
-	            this.enterOuterAlt(localctx, 4);
+	        case 24:
+	            this.enterOuterAlt(localctx, 3);
 	            this.state = 136;
+	            this.match(janusParser.T__23);
+	            this.state = 137;
+	            this.expression();
+	            break;
+	        case 26:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 138;
 	            this.lvalue();
 	            break;
-	        case janusParser.NUM:
+	        case 27:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 137;
+	            this.state = 139;
 	            this.constant();
 	            break;
 	        default:
@@ -647,25 +646,25 @@ export default class janusParser extends antlr4.Parser {
 	    let localctx = new LvalueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, janusParser.RULE_lvalue);
 	    try {
-	        this.state = 146;
+	        this.state = 148;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,14,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 140;
+	            this.state = 142;
 	            this.match(janusParser.IDENT);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 141;
-	            this.match(janusParser.IDENT);
-	            this.state = 142;
-	            this.match(janusParser.T__0);
 	            this.state = 143;
-	            this.expression();
+	            this.match(janusParser.IDENT);
 	            this.state = 144;
+	            this.match(janusParser.T__0);
+	            this.state = 145;
+	            this.expression();
+	            this.state = 146;
 	            this.match(janusParser.T__1);
 	            break;
 
@@ -691,7 +690,7 @@ export default class janusParser extends antlr4.Parser {
 	    this.enterRule(localctx, 28, janusParser.RULE_constant);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 148;
+	        this.state = 150;
 	        this.match(janusParser.NUM);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -770,6 +769,10 @@ class ProgramContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = janusParser.RULE_program;
     }
+
+	EOF() {
+	    return this.getToken(janusParser.EOF, 0);
+	};
 
 	IDENT = function(i) {
 		if(i===undefined) {
@@ -1420,3 +1423,12 @@ janusParser.ExpressionContext = ExpressionContext;
 janusParser.MinexpContext = MinexpContext; 
 janusParser.LvalueContext = LvalueContext; 
 janusParser.ConstantContext = ConstantContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./http/http.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/http/http.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -95,15 +95,6 @@ export default class httpListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by httpParser#http_name.
-	enterHttp_name(ctx) {
-	}
-
-	// Exit a parse tree produced by httpParser#http_name.
-	exitHttp_name(ctx) {
-	}
-
-
 	// Enter a parse tree produced by httpParser#header_field.
 	enterHeader_field(ctx) {
 	}
@@ -131,6 +122,15 @@ export default class httpListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by httpParser#tchar.
+	enterTchar(ctx) {
+	}
+
+	// Exit a parse tree produced by httpParser#tchar.
+	exitTchar(ctx) {
+	}
+
+
 	// Enter a parse tree produced by httpParser#field_value.
 	enterField_value(ctx) {
 	}
@@ -146,6 +146,15 @@ export default class httpListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by httpParser#field_content.
 	exitField_content(ctx) {
+	}
+
+
+	// Enter a parse tree produced by httpParser#ows.
+	enterOws(ctx) {
+	}
+
+	// Exit a parse tree produced by httpParser#ows.
+	exitOws(ctx) {
 	}
 
 
@@ -185,6 +194,24 @@ export default class httpListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by httpParser#pct_encoded.
+	enterPct_encoded(ctx) {
+	}
+
+	// Exit a parse tree produced by httpParser#pct_encoded.
+	exitPct_encoded(ctx) {
+	}
+
+
+	// Enter a parse tree produced by httpParser#hexdig.
+	enterHexdig(ctx) {
+	}
+
+	// Exit a parse tree produced by httpParser#hexdig.
+	exitHexdig(ctx) {
+	}
+
+
 	// Enter a parse tree produced by httpParser#unreserved.
 	enterUnreserved(ctx) {
 	}
@@ -203,21 +230,12 @@ export default class httpListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by httpParser#tchar.
-	enterTchar(ctx) {
+	// Enter a parse tree produced by httpParser#vchar.
+	enterVchar(ctx) {
 	}
 
-	// Exit a parse tree produced by httpParser#tchar.
-	exitTchar(ctx) {
-	}
-
-
-	// Enter a parse tree produced by httpParser#vCHAR.
-	enterVCHAR(ctx) {
-	}
-
-	// Exit a parse tree produced by httpParser#vCHAR.
-	exitVCHAR(ctx) {
+	// Exit a parse tree produced by httpParser#vchar.
+	exitVchar(ctx) {
 	}
 
 

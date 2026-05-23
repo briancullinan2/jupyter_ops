@@ -1,4 +1,4 @@
-// Generated from ./teal/Teal.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/teal/Teal.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import TealListener from './TealListener.js';
@@ -272,10 +272,6 @@ export default class TealParser extends antlr4.Parser {
         this.symbolicNames = TealParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 22:
@@ -341,13 +337,13 @@ export default class TealParser extends antlr4.Parser {
 	block() {
 	    let localctx = new BlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, TealParser.RULE_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 102;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TealParser.T__0) | (1 << TealParser.T__2) | (1 << TealParser.T__3) | (1 << TealParser.T__4) | (1 << TealParser.T__6) | (1 << TealParser.T__7) | (1 << TealParser.T__9) | (1 << TealParser.T__13) | (1 << TealParser.T__16) | (1 << TealParser.T__17) | (1 << TealParser.T__19) | (1 << TealParser.T__22))) !== 0) || _la===TealParser.T__36 || _la===TealParser.NAME) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 9848250) !== 0) || _la===37 || _la===65) {
 	            this.state = 99;
 	            this.stat();
 	            this.state = 104;
@@ -357,7 +353,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 106;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__35) {
+	        if(_la===36) {
 	            this.state = 105;
 	            this.retstat();
 	        }
@@ -381,7 +377,7 @@ export default class TealParser extends antlr4.Parser {
 	stat() {
 	    let localctx = new StatContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, TealParser.RULE_stat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 219;
 	        this._errHandler.sync(this);
@@ -488,7 +484,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 144;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===TealParser.T__11) {
+	            while(_la===12) {
 	                this.state = 137;
 	                this.match(TealParser.T__11);
 	                this.state = 138;
@@ -504,7 +500,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 149;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__12) {
+	            if(_la===13) {
 	                this.state = 147;
 	                this.match(TealParser.T__12);
 	                this.state = 148;
@@ -533,7 +529,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 161;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__14) {
+	            if(_la===15) {
 	                this.state = 159;
 	                this.match(TealParser.T__14);
 	                this.state = 160;
@@ -601,7 +597,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 187;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__18) {
+	            if(_la===19) {
 	                this.state = 185;
 	                this.match(TealParser.T__18);
 	                this.state = 186;
@@ -611,7 +607,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 191;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__1) {
+	            if(_la===2) {
 	                this.state = 189;
 	                this.match(TealParser.T__1);
 	                this.state = 190;
@@ -669,7 +665,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 210;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__18) {
+	            if(_la===19) {
 	                this.state = 208;
 	                this.match(TealParser.T__18);
 	                this.state = 209;
@@ -715,7 +711,7 @@ export default class TealParser extends antlr4.Parser {
 	attnamelist() {
 	    let localctx = new AttnamelistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, TealParser.RULE_attnamelist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 221;
@@ -723,7 +719,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 223;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__20) {
+	        if(_la===21) {
 	            this.state = 222;
 	            this.attrib();
 	        }
@@ -731,7 +727,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TealParser.T__14) {
+	        while(_la===15) {
 	            this.state = 225;
 	            this.match(TealParser.T__14);
 	            this.state = 226;
@@ -739,7 +735,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 228;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__20) {
+	            if(_la===21) {
 	                this.state = 227;
 	                this.attrib();
 	            }
@@ -798,7 +794,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 251;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TealParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 239;
 	            this.match(TealParser.T__22);
@@ -807,13 +803,13 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 241;
 	            this.match(TealParser.T__23);
 	            break;
-	        case TealParser.T__16:
-	        case TealParser.T__25:
-	        case TealParser.T__26:
-	        case TealParser.T__27:
-	        case TealParser.T__28:
-	        case TealParser.T__29:
-	        case TealParser.NAME:
+	        case 17:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 65:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 243;
 	            this.basetype();
@@ -983,7 +979,7 @@ export default class TealParser extends antlr4.Parser {
 	retlist() {
 	    let localctx = new RetlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, TealParser.RULE_retlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 292;
 	        this._errHandler.sync(this);
@@ -996,7 +992,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 282;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TealParser.T__16) | (1 << TealParser.T__22) | (1 << TealParser.T__25) | (1 << TealParser.T__26) | (1 << TealParser.T__27) | (1 << TealParser.T__28) | (1 << TealParser.T__29))) !== 0) || _la===TealParser.NAME) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2088894464) !== 0) || _la===65) {
 	                this.state = 281;
 	                this.typelist();
 	            }
@@ -1004,7 +1000,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 285;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__31) {
+	            if(_la===32) {
 	                this.state = 284;
 	                this.match(TealParser.T__31);
 	            }
@@ -1047,7 +1043,7 @@ export default class TealParser extends antlr4.Parser {
 	typeargs() {
 	    let localctx = new TypeargsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, TealParser.RULE_typeargs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 294;
@@ -1057,7 +1053,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 300;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TealParser.T__14) {
+	        while(_la===15) {
 	            this.state = 296;
 	            this.match(TealParser.T__14);
 	            this.state = 297;
@@ -1087,12 +1083,12 @@ export default class TealParser extends antlr4.Parser {
 	newtype() {
 	    let localctx = new NewtypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, TealParser.RULE_newtype);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 342;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TealParser.T__32:
+	        case 33:
 	            localctx = new RecordNewTypeContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 305;
@@ -1100,7 +1096,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 307;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__20) {
+	            if(_la===21) {
 	                this.state = 306;
 	                this.typeargs();
 	            }
@@ -1108,7 +1104,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 313;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__29) {
+	            if(_la===30) {
 	                this.state = 309;
 	                this.match(TealParser.T__29);
 	                this.state = 310;
@@ -1137,7 +1133,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 328;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===TealParser.NAME) {
+	            while(_la===65) {
 	                this.state = 323;
 	                this.match(TealParser.NAME);
 	                this.state = 324;
@@ -1151,7 +1147,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 331;
 	            this.match(TealParser.T__5);
 	            break;
-	        case TealParser.T__33:
+	        case 34:
 	            localctx = new EnumNewTypeContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 332;
@@ -1159,7 +1155,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 336;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (TealParser.NORMALSTRING - 66)) | (1 << (TealParser.CHARSTRING - 66)) | (1 << (TealParser.LONGSTRING - 66)))) !== 0)) {
+	            while(((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 7) !== 0)) {
 	                this.state = 333;
 	                this.str();
 	                this.state = 338;
@@ -1169,7 +1165,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 339;
 	            this.match(TealParser.T__5);
 	            break;
-	        case TealParser.T__34:
+	        case 35:
 	            localctx = new FuncNewTypeContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 340;
@@ -1199,13 +1195,13 @@ export default class TealParser extends antlr4.Parser {
 	functiontype() {
 	    let localctx = new FunctiontypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, TealParser.RULE_functiontype);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 345;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__20) {
+	        if(_la===21) {
 	            this.state = 344;
 	            this.typeargs();
 	        }
@@ -1245,7 +1241,7 @@ export default class TealParser extends antlr4.Parser {
 	partypelist() {
 	    let localctx = new PartypelistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, TealParser.RULE_partypelist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 354;
@@ -1253,7 +1249,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 359;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TealParser.T__14) {
+	        while(_la===15) {
 	            this.state = 355;
 	            this.match(TealParser.T__14);
 	            this.state = 356;
@@ -1352,7 +1348,7 @@ export default class TealParser extends antlr4.Parser {
 	parname() {
 	    let localctx = new ParnameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, TealParser.RULE_parname);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 376;
@@ -1360,7 +1356,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 379;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__18) {
+	        if(_la===19) {
 	            this.state = 377;
 	            this.match(TealParser.T__18);
 	            this.state = 378;
@@ -1386,7 +1382,7 @@ export default class TealParser extends antlr4.Parser {
 	retstat() {
 	    let localctx = new RetstatContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, TealParser.RULE_retstat);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        localctx = new ReturnStatContext(this, localctx);
 	        this.enterOuterAlt(localctx, 1);
@@ -1395,7 +1391,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 383;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 17)) & ~0x1f) == 0 && ((1 << (_la - 17)) & ((1 << (TealParser.T__16 - 17)) | (1 << (TealParser.T__22 - 17)) | (1 << (TealParser.T__27 - 17)) | (1 << (TealParser.T__29 - 17)) | (1 << (TealParser.T__31 - 17)) | (1 << (TealParser.T__38 - 17)) | (1 << (TealParser.T__39 - 17)))) !== 0) || ((((_la - 53)) & ~0x1f) == 0 && ((1 << (_la - 53)) & ((1 << (TealParser.T__52 - 53)) | (1 << (TealParser.T__58 - 53)) | (1 << (TealParser.T__61 - 53)) | (1 << (TealParser.T__62 - 53)) | (1 << (TealParser.NAME - 53)) | (1 << (TealParser.NORMALSTRING - 53)) | (1 << (TealParser.CHARSTRING - 53)) | (1 << (TealParser.LONGSTRING - 53)) | (1 << (TealParser.INT - 53)) | (1 << (TealParser.HEX - 53)) | (1 << (TealParser.FLOAT - 53)) | (1 << (TealParser.HEX_FLOAT - 53)))) !== 0)) {
+	        if(((((_la - 17)) & ~0x1f) === 0 && ((1 << (_la - 17)) & 12625985) !== 0) || ((((_la - 53)) & ~0x1f) === 0 && ((1 << (_la - 53)) & 1046081) !== 0)) {
 	            this.state = 382;
 	            this.explist();
 	        }
@@ -1403,7 +1399,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 386;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__0) {
+	        if(_la===1) {
 	            this.state = 385;
 	            this.match(TealParser.T__0);
 	        }
@@ -1454,7 +1450,7 @@ export default class TealParser extends antlr4.Parser {
 	funcname() {
 	    let localctx = new FuncnameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, TealParser.RULE_funcname);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 392;
@@ -1462,7 +1458,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 397;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TealParser.T__37) {
+	        while(_la===38) {
 	            this.state = 393;
 	            this.match(TealParser.T__37);
 	            this.state = 394;
@@ -1474,7 +1470,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 402;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__18) {
+	        if(_la===19) {
 	            this.state = 400;
 	            this.match(TealParser.T__18);
 	            this.state = 401;
@@ -1500,7 +1496,7 @@ export default class TealParser extends antlr4.Parser {
 	varlist() {
 	    let localctx = new VarlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, TealParser.RULE_varlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 404;
@@ -1508,7 +1504,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 409;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TealParser.T__14) {
+	        while(_la===15) {
 	            this.state = 405;
 	            this.match(TealParser.T__14);
 	            this.state = 406;
@@ -1574,7 +1570,7 @@ export default class TealParser extends antlr4.Parser {
 	explist() {
 	    let localctx = new ExplistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, TealParser.RULE_explist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 420;
@@ -1582,7 +1578,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 425;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TealParser.T__14) {
+	        while(_la===15) {
 	            this.state = 421;
 	            this.match(TealParser.T__14);
 	            this.state = 422;
@@ -1962,11 +1958,11 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 512;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TealParser.NAME:
+	        case 65:
 	            this.state = 506;
 	            this.match(TealParser.NAME);
 	            break;
-	        case TealParser.T__22:
+	        case 23:
 	            this.state = 507;
 	            this.match(TealParser.T__22);
 	            this.state = 508;
@@ -2011,13 +2007,13 @@ export default class TealParser extends antlr4.Parser {
 	varSuffix() {
 	    let localctx = new VarSuffixContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, TealParser.RULE_varSuffix);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 523;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TealParser.T__18) | (1 << TealParser.T__22) | (1 << TealParser.T__29))) !== 0) || ((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (TealParser.NORMALSTRING - 66)) | (1 << (TealParser.CHARSTRING - 66)) | (1 << (TealParser.LONGSTRING - 66)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1082654720) !== 0) || ((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 7) !== 0)) {
 	            this.state = 520;
 	            this.nameAndArgs();
 	            this.state = 525;
@@ -2027,7 +2023,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 532;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TealParser.T__42:
+	        case 43:
 	            this.state = 526;
 	            this.match(TealParser.T__42);
 	            this.state = 527;
@@ -2035,7 +2031,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 528;
 	            this.match(TealParser.T__43);
 	            break;
-	        case TealParser.T__37:
+	        case 38:
 	            this.state = 530;
 	            this.match(TealParser.T__37);
 	            this.state = 531;
@@ -2063,13 +2059,13 @@ export default class TealParser extends antlr4.Parser {
 	nameAndArgs() {
 	    let localctx = new NameAndArgsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, TealParser.RULE_nameAndArgs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 536;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__18) {
+	        if(_la===19) {
 	            this.state = 534;
 	            this.match(TealParser.T__18);
 	            this.state = 535;
@@ -2097,19 +2093,19 @@ export default class TealParser extends antlr4.Parser {
 	args() {
 	    let localctx = new ArgsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, TealParser.RULE_args);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 547;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TealParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 540;
 	            this.match(TealParser.T__22);
 	            this.state = 542;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 17)) & ~0x1f) == 0 && ((1 << (_la - 17)) & ((1 << (TealParser.T__16 - 17)) | (1 << (TealParser.T__22 - 17)) | (1 << (TealParser.T__27 - 17)) | (1 << (TealParser.T__29 - 17)) | (1 << (TealParser.T__31 - 17)) | (1 << (TealParser.T__38 - 17)) | (1 << (TealParser.T__39 - 17)))) !== 0) || ((((_la - 53)) & ~0x1f) == 0 && ((1 << (_la - 53)) & ((1 << (TealParser.T__52 - 53)) | (1 << (TealParser.T__58 - 53)) | (1 << (TealParser.T__61 - 53)) | (1 << (TealParser.T__62 - 53)) | (1 << (TealParser.NAME - 53)) | (1 << (TealParser.NORMALSTRING - 53)) | (1 << (TealParser.CHARSTRING - 53)) | (1 << (TealParser.LONGSTRING - 53)) | (1 << (TealParser.INT - 53)) | (1 << (TealParser.HEX - 53)) | (1 << (TealParser.FLOAT - 53)) | (1 << (TealParser.HEX_FLOAT - 53)))) !== 0)) {
+	            if(((((_la - 17)) & ~0x1f) === 0 && ((1 << (_la - 17)) & 12625985) !== 0) || ((((_la - 53)) & ~0x1f) === 0 && ((1 << (_la - 53)) & 1046081) !== 0)) {
 	                this.state = 541;
 	                this.explist();
 	            }
@@ -2117,14 +2113,14 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 544;
 	            this.match(TealParser.T__23);
 	            break;
-	        case TealParser.T__29:
+	        case 30:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 545;
 	            this.tableconstructor();
 	            break;
-	        case TealParser.NORMALSTRING:
-	        case TealParser.CHARSTRING:
-	        case TealParser.LONGSTRING:
+	        case 66:
+	        case 67:
+	        case 68:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 546;
 	            this.str();
@@ -2176,13 +2172,13 @@ export default class TealParser extends antlr4.Parser {
 	funcbody() {
 	    let localctx = new FuncbodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, TealParser.RULE_funcbody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 553;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__20) {
+	        if(_la===21) {
 	            this.state = 552;
 	            this.typeargs();
 	        }
@@ -2192,7 +2188,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 557;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__31 || _la===TealParser.NAME) {
+	        if(_la===32 || _la===65) {
 	            this.state = 556;
 	            this.parlist();
 	        }
@@ -2202,7 +2198,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 562;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__18) {
+	        if(_la===19) {
 	            this.state = 560;
 	            this.match(TealParser.T__18);
 	            this.state = 561;
@@ -2232,7 +2228,7 @@ export default class TealParser extends antlr4.Parser {
 	parlist() {
 	    let localctx = new ParlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, TealParser.RULE_parlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 587;
 	        this._errHandler.sync(this);
@@ -2245,7 +2241,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 570;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__14) {
+	            if(_la===15) {
 	                this.state = 568;
 	                this.match(TealParser.T__14);
 	                this.state = 569;
@@ -2267,7 +2263,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 580;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__14) {
+	            if(_la===15) {
 	                this.state = 574;
 	                this.match(TealParser.T__14);
 	                this.state = 575;
@@ -2275,7 +2271,7 @@ export default class TealParser extends antlr4.Parser {
 	                this.state = 578;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===TealParser.T__18) {
+	                if(_la===19) {
 	                    this.state = 576;
 	                    this.match(TealParser.T__18);
 	                    this.state = 577;
@@ -2293,7 +2289,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 585;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__18) {
+	            if(_la===19) {
 	                this.state = 583;
 	                this.match(TealParser.T__18);
 	                this.state = 584;
@@ -2322,7 +2318,7 @@ export default class TealParser extends antlr4.Parser {
 	tableconstructor() {
 	    let localctx = new TableconstructorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, TealParser.RULE_tableconstructor);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 589;
@@ -2330,7 +2326,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 591;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 17)) & ~0x1f) == 0 && ((1 << (_la - 17)) & ((1 << (TealParser.T__16 - 17)) | (1 << (TealParser.T__22 - 17)) | (1 << (TealParser.T__27 - 17)) | (1 << (TealParser.T__29 - 17)) | (1 << (TealParser.T__31 - 17)) | (1 << (TealParser.T__38 - 17)) | (1 << (TealParser.T__39 - 17)) | (1 << (TealParser.T__42 - 17)))) !== 0) || ((((_la - 53)) & ~0x1f) == 0 && ((1 << (_la - 53)) & ((1 << (TealParser.T__52 - 53)) | (1 << (TealParser.T__58 - 53)) | (1 << (TealParser.T__61 - 53)) | (1 << (TealParser.T__62 - 53)) | (1 << (TealParser.NAME - 53)) | (1 << (TealParser.NORMALSTRING - 53)) | (1 << (TealParser.CHARSTRING - 53)) | (1 << (TealParser.LONGSTRING - 53)) | (1 << (TealParser.INT - 53)) | (1 << (TealParser.HEX - 53)) | (1 << (TealParser.FLOAT - 53)) | (1 << (TealParser.HEX_FLOAT - 53)))) !== 0)) {
+	        if(((((_la - 17)) & ~0x1f) === 0 && ((1 << (_la - 17)) & 79734849) !== 0) || ((((_la - 53)) & ~0x1f) === 0 && ((1 << (_la - 53)) & 1046081) !== 0)) {
 	            this.state = 590;
 	            this.fieldlist();
 	        }
@@ -2356,7 +2352,7 @@ export default class TealParser extends antlr4.Parser {
 	fieldlist() {
 	    let localctx = new FieldlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, TealParser.RULE_fieldlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 595;
@@ -2379,7 +2375,7 @@ export default class TealParser extends antlr4.Parser {
 	        this.state = 605;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===TealParser.T__0 || _la===TealParser.T__14) {
+	        if(_la===1 || _la===15) {
 	            this.state = 604;
 	            this.fieldsep();
 	        }
@@ -2403,7 +2399,7 @@ export default class TealParser extends antlr4.Parser {
 	field() {
 	    let localctx = new FieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, TealParser.RULE_field);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 624;
 	        this._errHandler.sync(this);
@@ -2432,7 +2428,7 @@ export default class TealParser extends antlr4.Parser {
 	            this.state = 616;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===TealParser.T__18) {
+	            if(_la===19) {
 	                this.state = 614;
 	                this.match(TealParser.T__18);
 	                this.state = 615;
@@ -2483,12 +2479,12 @@ export default class TealParser extends antlr4.Parser {
 	fieldsep() {
 	    let localctx = new FieldsepContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, TealParser.RULE_fieldsep);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 626;
 	        _la = this._input.LA(1);
-	        if(!(_la===TealParser.T__0 || _la===TealParser.T__14)) {
+	        if(!(_la===1 || _la===15)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2560,12 +2556,12 @@ export default class TealParser extends antlr4.Parser {
 	operatorComparison() {
 	    let localctx = new OperatorComparisonContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, TealParser.RULE_operatorComparison);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 632;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 21)) & ~0x1f) == 0 && ((1 << (_la - 21)) & ((1 << (TealParser.T__20 - 21)) | (1 << (TealParser.T__21 - 21)) | (1 << (TealParser.T__46 - 21)) | (1 << (TealParser.T__47 - 21)) | (1 << (TealParser.T__48 - 21)) | (1 << (TealParser.T__49 - 21)))) !== 0))) {
+	        if(!(((((_la - 21)) & ~0x1f) === 0 && ((1 << (_la - 21)) & 1006632963) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2614,12 +2610,12 @@ export default class TealParser extends antlr4.Parser {
 	operatorAddSub() {
 	    let localctx = new OperatorAddSubContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, TealParser.RULE_operatorAddSub);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 636;
 	        _la = this._input.LA(1);
-	        if(!(_la===TealParser.T__51 || _la===TealParser.T__52)) {
+	        if(!(_la===52 || _la===53)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2645,12 +2641,12 @@ export default class TealParser extends antlr4.Parser {
 	operatorMulDivMod() {
 	    let localctx = new OperatorMulDivModContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, TealParser.RULE_operatorMulDivMod);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 638;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (TealParser.T__53 - 54)) | (1 << (TealParser.T__54 - 54)) | (1 << (TealParser.T__55 - 54)) | (1 << (TealParser.T__56 - 54)))) !== 0))) {
+	        if(!(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 15) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2676,12 +2672,12 @@ export default class TealParser extends antlr4.Parser {
 	operatorBitwise() {
 	    let localctx = new OperatorBitwiseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, TealParser.RULE_operatorBitwise);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 640;
 	        _la = this._input.LA(1);
-	        if(!(_la===TealParser.T__24 || ((((_la - 58)) & ~0x1f) == 0 && ((1 << (_la - 58)) & ((1 << (TealParser.T__57 - 58)) | (1 << (TealParser.T__58 - 58)) | (1 << (TealParser.T__59 - 58)) | (1 << (TealParser.T__60 - 58)))) !== 0))) {
+	        if(!(_la===25 || ((((_la - 58)) & ~0x1f) === 0 && ((1 << (_la - 58)) & 15) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2707,12 +2703,12 @@ export default class TealParser extends antlr4.Parser {
 	operatorUnary() {
 	    let localctx = new OperatorUnaryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, TealParser.RULE_operatorUnary);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 642;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 53)) & ~0x1f) == 0 && ((1 << (_la - 53)) & ((1 << (TealParser.T__52 - 53)) | (1 << (TealParser.T__58 - 53)) | (1 << (TealParser.T__61 - 53)) | (1 << (TealParser.T__62 - 53)))) !== 0))) {
+	        if(!(((((_la - 53)) & ~0x1f) === 0 && ((1 << (_la - 53)) & 1601) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2761,12 +2757,12 @@ export default class TealParser extends antlr4.Parser {
 	number() {
 	    let localctx = new NumberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, TealParser.RULE_number);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 646;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 69)) & ~0x1f) == 0 && ((1 << (_la - 69)) & ((1 << (TealParser.INT - 69)) | (1 << (TealParser.HEX - 69)) | (1 << (TealParser.FLOAT - 69)) | (1 << (TealParser.HEX_FLOAT - 69)))) !== 0))) {
+	        if(!(((((_la - 69)) & ~0x1f) === 0 && ((1 << (_la - 69)) & 15) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2792,12 +2788,12 @@ export default class TealParser extends antlr4.Parser {
 	str() {
 	    let localctx = new StrContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, TealParser.RULE_str);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 648;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 66)) & ~0x1f) == 0 && ((1 << (_la - 66)) & ((1 << (TealParser.NORMALSTRING - 66)) | (1 << (TealParser.CHARSTRING - 66)) | (1 << (TealParser.LONGSTRING - 66)))) !== 0))) {
+	        if(!(((((_la - 66)) & ~0x1f) === 0 && ((1 << (_la - 66)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5866,3 +5862,12 @@ TealParser.OperatorUnaryContext = OperatorUnaryContext;
 TealParser.OperatorPowerContext = OperatorPowerContext; 
 TealParser.NumberContext = NumberContext; 
 TealParser.StrContext = StrContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

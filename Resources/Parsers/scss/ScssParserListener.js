@@ -1,4 +1,4 @@
-// Generated from ./scss/ScssParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/scss/ScssParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -23,267 +23,6 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#declaredParams.
-	enterDeclaredParams(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#declaredParams.
-	exitDeclaredParams(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#declaredParam.
-	enterDeclaredParam(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#declaredParam.
-	exitDeclaredParam(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#variableName.
-	enterVariableName(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#variableName.
-	exitVariableName(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#paramOptionalValue.
-	enterParamOptionalValue(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#paramOptionalValue.
-	exitParamOptionalValue(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#passedParams.
-	enterPassedParams(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#passedParams.
-	exitPassedParams(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#passedParam.
-	enterPassedParam(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#passedParam.
-	exitPassedParam(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#mixinDeclaration.
-	enterMixinDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#mixinDeclaration.
-	exitMixinDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#contentDeclaration.
-	enterContentDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#contentDeclaration.
-	exitContentDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#includeDeclaration.
-	enterIncludeDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#includeDeclaration.
-	exitIncludeDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#functionDeclaration.
-	enterFunctionDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#functionDeclaration.
-	exitFunctionDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#functionBody.
-	enterFunctionBody(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#functionBody.
-	exitFunctionBody(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#functionReturn.
-	enterFunctionReturn(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#functionReturn.
-	exitFunctionReturn(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#functionStatement.
-	enterFunctionStatement(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#functionStatement.
-	exitFunctionStatement(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#commandStatement.
-	enterCommandStatement(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#commandStatement.
-	exitCommandStatement(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#mathCharacter.
-	enterMathCharacter(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#mathCharacter.
-	exitMathCharacter(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#mathStatement.
-	enterMathStatement(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#mathStatement.
-	exitMathStatement(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#expression.
-	enterExpression(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#expression.
-	exitExpression(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#ifDeclaration.
-	enterIfDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#ifDeclaration.
-	exitIfDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#elseIfStatement.
-	enterElseIfStatement(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#elseIfStatement.
-	exitElseIfStatement(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#elseStatement.
-	enterElseStatement(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#elseStatement.
-	exitElseStatement(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#conditions.
-	enterConditions(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#conditions.
-	exitConditions(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#condition.
-	enterCondition(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#condition.
-	exitCondition(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#variableDeclaration.
-	enterVariableDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#variableDeclaration.
-	exitVariableDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#forDeclaration.
-	enterForDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#forDeclaration.
-	exitForDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#fromNumber.
-	enterFromNumber(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#fromNumber.
-	exitFromNumber(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#throughNumber.
-	enterThroughNumber(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#throughNumber.
-	exitThroughNumber(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#whileDeclaration.
-	enterWhileDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#whileDeclaration.
-	exitWhileDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#eachDeclaration.
-	enterEachDeclaration(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#eachDeclaration.
-	exitEachDeclaration(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#eachValueList.
-	enterEachValueList(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#eachValueList.
-	exitEachValueList(ctx) {
-	}
-
-
 	// Enter a parse tree produced by ScssParser#importDeclaration.
 	enterImportDeclaration(ctx) {
 	}
@@ -293,12 +32,12 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#referenceUrl.
-	enterReferenceUrl(ctx) {
+	// Enter a parse tree produced by ScssParser#importPath.
+	enterImportPath(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#referenceUrl.
-	exitReferenceUrl(ctx) {
+	// Exit a parse tree produced by ScssParser#importPath.
+	exitImportPath(ctx) {
 	}
 
 
@@ -320,12 +59,66 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#keywordArgument.
-	enterKeywordArgument(ctx) {
+	// Enter a parse tree produced by ScssParser#variableDeclaration.
+	enterVariableDeclaration(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#keywordArgument.
-	exitKeywordArgument(ctx) {
+	// Exit a parse tree produced by ScssParser#variableDeclaration.
+	exitVariableDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#variableValue.
+	enterVariableValue(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#variableValue.
+	exitVariableValue(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#variableName.
+	enterVariableName(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#variableName.
+	exitVariableName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#namespace_.
+	enterNamespace_(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#namespace_.
+	exitNamespace_(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#propertyDeclaration.
+	enterPropertyDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#propertyDeclaration.
+	exitPropertyDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#prio.
+	enterPrio(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#prio.
+	exitPrio(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#propertyValue.
+	enterPropertyValue(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#propertyValue.
+	exitPropertyValue(ctx) {
 	}
 
 
@@ -356,15 +149,6 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#mediaType.
-	enterMediaType(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#mediaType.
-	exitMediaType(ctx) {
-	}
-
-
 	// Enter a parse tree produced by ScssParser#mediaExpression.
 	enterMediaExpression(ctx) {
 	}
@@ -374,12 +158,111 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#mediaFeature.
-	enterMediaFeature(ctx) {
+	// Enter a parse tree produced by ScssParser#mixinDeclaration.
+	enterMixinDeclaration(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#mediaFeature.
-	exitMediaFeature(ctx) {
+	// Exit a parse tree produced by ScssParser#mixinDeclaration.
+	exitMixinDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#contentDeclaration.
+	enterContentDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#contentDeclaration.
+	exitContentDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#fontFaceDeclaration.
+	enterFontFaceDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#fontFaceDeclaration.
+	exitFontFaceDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#keyframesDeclaration.
+	enterKeyframesDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#keyframesDeclaration.
+	exitKeyframesDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#keyframesBlock.
+	enterKeyframesBlock(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#keyframesBlock.
+	exitKeyframesBlock(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#percentageStatement.
+	enterPercentageStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#percentageStatement.
+	exitPercentageStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#includeDeclaration.
+	enterIncludeDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#includeDeclaration.
+	exitIncludeDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#interpolationDeclaration.
+	enterInterpolationDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#interpolationDeclaration.
+	exitInterpolationDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#extendDeclaration.
+	enterExtendDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#extendDeclaration.
+	exitExtendDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#warndingDeclaration.
+	enterWarndingDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#warndingDeclaration.
+	exitWarndingDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#errorDeclaration.
+	enterErrorDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#errorDeclaration.
+	exitErrorDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#atStatementDeclaration.
+	enterAtStatementDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#atStatementDeclaration.
+	exitAtStatementDeclaration(ctx) {
 	}
 
 
@@ -401,12 +284,12 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#selectors.
-	enterSelectors(ctx) {
+	// Enter a parse tree produced by ScssParser#selectorGroup.
+	enterSelectorGroup(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#selectors.
-	exitSelectors(ctx) {
+	// Exit a parse tree produced by ScssParser#selectorGroup.
+	exitSelectorGroup(ctx) {
 	}
 
 
@@ -419,15 +302,6 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#element.
-	enterElement(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#element.
-	exitElement(ctx) {
-	}
-
-
 	// Enter a parse tree produced by ScssParser#combinator.
 	enterCombinator(ctx) {
 	}
@@ -437,12 +311,75 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#pseudo.
-	enterPseudo(ctx) {
+	// Enter a parse tree produced by ScssParser#selectorSequence.
+	enterSelectorSequence(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#pseudo.
-	exitPseudo(ctx) {
+	// Exit a parse tree produced by ScssParser#selectorSequence.
+	exitSelectorSequence(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#id.
+	enterId(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#id.
+	exitId(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#typeSelector.
+	enterTypeSelector(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#typeSelector.
+	exitTypeSelector(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#typeNamespacePrefix.
+	enterTypeNamespacePrefix(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#typeNamespacePrefix.
+	exitTypeNamespacePrefix(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#universal.
+	enterUniversal(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#universal.
+	exitUniversal(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#className.
+	enterClassName(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#className.
+	exitClassName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#interpolation.
+	enterInterpolation(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#interpolation.
+	exitInterpolation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#parentRef.
+	enterParentRef(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#parentRef.
+	exitParentRef(ctx) {
 	}
 
 
@@ -455,93 +392,120 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#attribRelate.
-	enterAttribRelate(ctx) {
+	// Enter a parse tree produced by ScssParser#pseudo.
+	enterPseudo(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#attribRelate.
-	exitAttribRelate(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#identifier.
-	enterIdentifier(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#identifier.
-	exitIdentifier(ctx) {
+	// Exit a parse tree produced by ScssParser#pseudo.
+	exitPseudo(ctx) {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#pseudoIdentifier.
-	enterPseudoIdentifier(ctx) {
+	// Enter a parse tree produced by ScssParser#functionalPseudo.
+	enterFunctionalPseudo(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#pseudoIdentifier.
-	exitPseudoIdentifier(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#identifierPart.
-	enterIdentifierPart(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#identifierPart.
-	exitIdentifierPart(ctx) {
+	// Exit a parse tree produced by ScssParser#functionalPseudo.
+	exitFunctionalPseudo(ctx) {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#identifierVariableName.
-	enterIdentifierVariableName(ctx) {
+	// Enter a parse tree produced by ScssParser#pseudoParameter.
+	enterPseudoParameter(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#identifierVariableName.
-	exitIdentifierVariableName(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#property_.
-	enterProperty_(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#property_.
-	exitProperty_(ctx) {
+	// Exit a parse tree produced by ScssParser#pseudoParameter.
+	exitPseudoParameter(ctx) {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#lastProperty.
-	enterLastProperty(ctx) {
+	// Enter a parse tree produced by ScssParser#negation.
+	enterNegation(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#lastProperty.
-	exitLastProperty(ctx) {
-	}
-
-
-	// Enter a parse tree produced by ScssParser#propertyValue.
-	enterPropertyValue(ctx) {
-	}
-
-	// Exit a parse tree produced by ScssParser#propertyValue.
-	exitPropertyValue(ctx) {
+	// Exit a parse tree produced by ScssParser#negation.
+	exitNegation(ctx) {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#url.
-	enterUrl(ctx) {
+	// Enter a parse tree produced by ScssParser#negationArg.
+	enterNegationArg(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#url.
-	exitUrl(ctx) {
+	// Exit a parse tree produced by ScssParser#negationArg.
+	exitNegationArg(ctx) {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#measurement.
-	enterMeasurement(ctx) {
+	// Enter a parse tree produced by ScssParser#operator_.
+	enterOperator_(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#measurement.
-	exitMeasurement(ctx) {
+	// Exit a parse tree produced by ScssParser#operator_.
+	exitOperator_(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#value.
+	enterValue(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#value.
+	exitValue(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#functionDeclaration.
+	enterFunctionDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#functionDeclaration.
+	exitFunctionDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#parameters.
+	enterParameters(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#parameters.
+	exitParameters(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#parameter.
+	enterParameter(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#parameter.
+	exitParameter(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#functionBody.
+	enterFunctionBody(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#functionBody.
+	exitFunctionBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#functionReturn.
+	enterFunctionReturn(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#functionReturn.
+	exitFunctionReturn(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#functionStatement.
+	enterFunctionStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#functionStatement.
+	exitFunctionStatement(ctx) {
 	}
 
 
@@ -554,21 +518,39 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#namespace.
-	enterNamespace(ctx) {
+	// Enter a parse tree produced by ScssParser#expression.
+	enterExpression(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#namespace.
-	exitNamespace(ctx) {
+	// Exit a parse tree produced by ScssParser#expression.
+	exitExpression(ctx) {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#list_.
-	enterList_(ctx) {
+	// Enter a parse tree produced by ScssParser#expressionPart.
+	enterExpressionPart(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#list_.
-	exitList_(ctx) {
+	// Exit a parse tree produced by ScssParser#expressionPart.
+	exitExpressionPart(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#ifExpression.
+	enterIfExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#ifExpression.
+	exitIfExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#listDeclaration.
+	enterListDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#listDeclaration.
+	exitListDeclaration(ctx) {
 	}
 
 
@@ -608,12 +590,21 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by ScssParser#map_.
-	enterMap_(ctx) {
+	// Enter a parse tree produced by ScssParser#mapDeclaration.
+	enterMapDeclaration(ctx) {
 	}
 
-	// Exit a parse tree produced by ScssParser#map_.
-	exitMap_(ctx) {
+	// Exit a parse tree produced by ScssParser#mapDeclaration.
+	exitMapDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#mapEntries.
+	enterMapEntries(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#mapEntries.
+	exitMapEntries(ctx) {
 	}
 
 
@@ -641,6 +632,249 @@ export default class ScssParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by ScssParser#mapValue.
 	exitMapValue(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#ifDeclaration.
+	enterIfDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#ifDeclaration.
+	exitIfDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#elseIfStatement.
+	enterElseIfStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#elseIfStatement.
+	exitElseIfStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#elseStatement.
+	enterElseStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#elseStatement.
+	exitElseStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#forDeclaration.
+	enterForDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#forDeclaration.
+	exitForDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#through.
+	enterThrough(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#through.
+	exitThrough(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#whileDeclaration.
+	enterWhileDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#whileDeclaration.
+	exitWhileDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#eachDeclaration.
+	enterEachDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#eachDeclaration.
+	exitEachDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#eachValueList.
+	enterEachValueList(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#eachValueList.
+	exitEachValueList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#var_.
+	enterVar_(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#var_.
+	exitVar_(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#calc.
+	enterCalc(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#calc.
+	exitCalc(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#rotate.
+	enterRotate(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#rotate.
+	exitRotate(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#rgba.
+	enterRgba(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#rgba.
+	exitRgba(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#repeat.
+	enterRepeat(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#repeat.
+	exitRepeat(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#unit.
+	enterUnit(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#unit.
+	exitUnit(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#length.
+	enterLength(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#length.
+	exitLength(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#dimension.
+	enterDimension(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#dimension.
+	exitDimension(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#percentage.
+	enterPercentage(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#percentage.
+	exitPercentage(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#degree.
+	enterDegree(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#degree.
+	exitDegree(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#measurment.
+	enterMeasurment(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#measurment.
+	exitMeasurment(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#uri.
+	enterUri(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#uri.
+	exitUri(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#arglist.
+	enterArglist(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#arglist.
+	exitArglist(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#plusMinus.
+	enterPlusMinus(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#plusMinus.
+	exitPlusMinus(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#hexcolor.
+	enterHexcolor(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#hexcolor.
+	exitHexcolor(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#color.
+	enterColor(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#color.
+	exitColor(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#boolean.
+	enterBoolean(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#boolean.
+	exitBoolean(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#number.
+	enterNumber(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#number.
+	exitNumber(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ScssParser#identifier.
+	enterIdentifier(ctx) {
+	}
+
+	// Exit a parse tree produced by ScssParser#identifier.
+	exitIdentifier(ctx) {
 	}
 
 

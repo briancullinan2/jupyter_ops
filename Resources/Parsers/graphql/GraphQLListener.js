@@ -1,4 +1,4 @@
-// Generated from ./graphql/GraphQL.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/graphql/GraphQL.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -20,6 +20,15 @@ export default class GraphQLListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GraphQLParser#definition.
 	exitDefinition(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GraphQLParser#executableDocument.
+	enterExecutableDocument(ctx) {
+	}
+
+	// Exit a parse tree produced by GraphQLParser#executableDocument.
+	exitExecutableDocument(ctx) {
 	}
 
 
@@ -320,12 +329,30 @@ export default class GraphQLListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by GraphQLParser#typeSystemDocument.
+	enterTypeSystemDocument(ctx) {
+	}
+
+	// Exit a parse tree produced by GraphQLParser#typeSystemDocument.
+	exitTypeSystemDocument(ctx) {
+	}
+
+
 	// Enter a parse tree produced by GraphQLParser#typeSystemDefinition.
 	enterTypeSystemDefinition(ctx) {
 	}
 
 	// Exit a parse tree produced by GraphQLParser#typeSystemDefinition.
 	exitTypeSystemDefinition(ctx) {
+	}
+
+
+	// Enter a parse tree produced by GraphQLParser#typeSystemExtensionDocument.
+	enterTypeSystemExtensionDocument(ctx) {
+	}
+
+	// Exit a parse tree produced by GraphQLParser#typeSystemExtensionDocument.
+	exitTypeSystemExtensionDocument(ctx) {
 	}
 
 
@@ -362,15 +389,6 @@ export default class GraphQLListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by GraphQLParser#schemaExtension.
 	exitSchemaExtension(ctx) {
-	}
-
-
-	// Enter a parse tree produced by GraphQLParser#operationTypeDefinition.
-	enterOperationTypeDefinition(ctx) {
-	}
-
-	// Exit a parse tree produced by GraphQLParser#operationTypeDefinition.
-	exitOperationTypeDefinition(ctx) {
 	}
 
 

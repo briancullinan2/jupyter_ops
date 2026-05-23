@@ -1,4 +1,4 @@
-// Generated from ./nanofuck/nanofuck.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/nanofuck/nanofuck.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import nanofuckListener from './nanofuckListener.js';
@@ -31,10 +31,6 @@ export default class nanofuckParser extends antlr4.Parser {
         this.symbolicNames = nanofuckParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 0:
@@ -65,23 +61,23 @@ export default class nanofuckParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 0;
 	    this.enterRecursionRule(localctx, 0, nanofuckParser.RULE_exp, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 9;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case nanofuckParser.T__0:
+	        case 1:
 	            this.state = 3;
 	            this.match(nanofuckParser.T__0);
 	            break;
-	        case nanofuckParser.T__1:
+	        case 2:
 	            this.state = 4;
 	            this.match(nanofuckParser.T__1);
 	            this.state = 6;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===nanofuckParser.T__0 || _la===nanofuckParser.T__1) {
+	            if(_la===1 || _la===2) {
 	                this.state = 5;
 	                this.exp(0);
 	            }

@@ -1,21 +1,21 @@
-// Generated from ./cookie/cookie.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cookie/cookie.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import cookieListener from './cookieListener.js';
-const serializedATN = [4,1,6,52,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,1,0,5,0,20,8,0,10,0,12,0,23,9,0,1,1,1,1,
-1,2,1,2,1,2,5,2,30,8,2,10,2,12,2,33,9,2,1,3,1,3,1,3,3,3,38,8,3,1,4,1,4,1,
-5,1,5,1,6,1,6,3,6,46,8,6,1,7,1,7,1,8,1,8,1,8,0,0,9,0,2,4,6,8,10,12,14,16,
-0,0,46,0,21,1,0,0,0,2,24,1,0,0,0,4,26,1,0,0,0,6,34,1,0,0,0,8,39,1,0,0,0,
-10,41,1,0,0,0,12,45,1,0,0,0,14,47,1,0,0,0,16,49,1,0,0,0,18,20,3,4,2,0,19,
-18,1,0,0,0,20,23,1,0,0,0,21,19,1,0,0,0,21,22,1,0,0,0,22,1,1,0,0,0,23,21,
-1,0,0,0,24,25,3,8,4,0,25,3,1,0,0,0,26,31,3,6,3,0,27,28,5,1,0,0,28,30,3,6,
-3,0,29,27,1,0,0,0,30,33,1,0,0,0,31,29,1,0,0,0,31,32,1,0,0,0,32,5,1,0,0,0,
-33,31,1,0,0,0,34,37,3,8,4,0,35,36,5,2,0,0,36,38,3,10,5,0,37,35,1,0,0,0,37,
-38,1,0,0,0,38,7,1,0,0,0,39,40,3,14,7,0,40,9,1,0,0,0,41,42,3,12,6,0,42,11,
-1,0,0,0,43,46,3,14,7,0,44,46,3,16,8,0,45,43,1,0,0,0,45,44,1,0,0,0,46,13,
-1,0,0,0,47,48,5,4,0,0,48,15,1,0,0,0,49,50,5,3,0,0,50,17,1,0,0,0,4,21,31,
-37,45];
+const serializedATN = [4,1,6,54,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,1,0,5,0,20,8,0,10,0,12,0,23,9,0,1,0,1,0,
+1,1,1,1,1,2,1,2,1,2,5,2,32,8,2,10,2,12,2,35,9,2,1,3,1,3,1,3,3,3,40,8,3,1,
+4,1,4,1,5,1,5,1,6,1,6,3,6,48,8,6,1,7,1,7,1,8,1,8,1,8,0,0,9,0,2,4,6,8,10,
+12,14,16,0,0,48,0,21,1,0,0,0,2,26,1,0,0,0,4,28,1,0,0,0,6,36,1,0,0,0,8,41,
+1,0,0,0,10,43,1,0,0,0,12,47,1,0,0,0,14,49,1,0,0,0,16,51,1,0,0,0,18,20,3,
+4,2,0,19,18,1,0,0,0,20,23,1,0,0,0,21,19,1,0,0,0,21,22,1,0,0,0,22,24,1,0,
+0,0,23,21,1,0,0,0,24,25,5,0,0,1,25,1,1,0,0,0,26,27,3,8,4,0,27,3,1,0,0,0,
+28,33,3,6,3,0,29,30,5,1,0,0,30,32,3,6,3,0,31,29,1,0,0,0,32,35,1,0,0,0,33,
+31,1,0,0,0,33,34,1,0,0,0,34,5,1,0,0,0,35,33,1,0,0,0,36,39,3,8,4,0,37,38,
+5,2,0,0,38,40,3,10,5,0,39,37,1,0,0,0,39,40,1,0,0,0,40,7,1,0,0,0,41,42,3,
+14,7,0,42,9,1,0,0,0,43,44,3,12,6,0,44,11,1,0,0,0,45,48,3,14,7,0,46,48,3,
+16,8,0,47,45,1,0,0,0,47,46,1,0,0,0,48,13,1,0,0,0,49,50,5,4,0,0,50,15,1,0,
+0,0,51,52,5,3,0,0,52,17,1,0,0,0,4,21,33,39,47];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -41,28 +41,26 @@ export default class cookieParser extends antlr4.Parser {
         this.symbolicNames = cookieParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	cookie() {
 	    let localctx = new CookieContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, cookieParser.RULE_cookie);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 21;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===cookieParser.TOKEN) {
+	        while(_la===4) {
 	            this.state = 18;
 	            this.av_pairs();
 	            this.state = 23;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 24;
+	        this.match(cookieParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -84,7 +82,7 @@ export default class cookieParser extends antlr4.Parser {
 	    this.enterRule(localctx, 2, cookieParser.RULE_name);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 24;
+	        this.state = 26;
 	        this.attr();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -105,20 +103,20 @@ export default class cookieParser extends antlr4.Parser {
 	av_pairs() {
 	    let localctx = new Av_pairsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, cookieParser.RULE_av_pairs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 26;
+	        this.state = 28;
 	        this.av_pair();
-	        this.state = 31;
+	        this.state = 33;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===cookieParser.T__0) {
-	            this.state = 27;
+	        while(_la===1) {
+	            this.state = 29;
 	            this.match(cookieParser.T__0);
-	            this.state = 28;
+	            this.state = 30;
 	            this.av_pair();
-	            this.state = 33;
+	            this.state = 35;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -141,18 +139,18 @@ export default class cookieParser extends antlr4.Parser {
 	av_pair() {
 	    let localctx = new Av_pairContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, cookieParser.RULE_av_pair);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 34;
+	        this.state = 36;
 	        this.attr();
-	        this.state = 37;
+	        this.state = 39;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===cookieParser.T__1) {
-	            this.state = 35;
+	        if(_la===2) {
+	            this.state = 37;
 	            this.match(cookieParser.T__1);
-	            this.state = 36;
+	            this.state = 38;
 	            this.value();
 	        }
 
@@ -177,7 +175,7 @@ export default class cookieParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, cookieParser.RULE_attr);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 39;
+	        this.state = 41;
 	        this.token();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -200,7 +198,7 @@ export default class cookieParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, cookieParser.RULE_value);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 41;
+	        this.state = 43;
 	        this.word();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -222,17 +220,17 @@ export default class cookieParser extends antlr4.Parser {
 	    let localctx = new WordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, cookieParser.RULE_word);
 	    try {
-	        this.state = 45;
+	        this.state = 47;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case cookieParser.TOKEN:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 43;
+	            this.state = 45;
 	            this.token();
 	            break;
-	        case cookieParser.STRING:
+	        case 3:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 44;
+	            this.state = 46;
 	            this.quoted_string();
 	            break;
 	        default:
@@ -259,7 +257,7 @@ export default class cookieParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, cookieParser.RULE_token);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 47;
+	        this.state = 49;
 	        this.match(cookieParser.TOKEN);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -282,7 +280,7 @@ export default class cookieParser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, cookieParser.RULE_quoted_string);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 49;
+	        this.state = 51;
 	        this.match(cookieParser.STRING);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -332,6 +330,10 @@ class CookieContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = cookieParser.RULE_cookie;
     }
+
+	EOF() {
+	    return this.getToken(cookieParser.EOF, 0);
+	};
 
 	av_pairs = function(i) {
 	    if(i===undefined) {
@@ -666,3 +668,12 @@ cookieParser.ValueContext = ValueContext;
 cookieParser.WordContext = WordContext; 
 cookieParser.TokenContext = TokenContext; 
 cookieParser.Quoted_stringContext = Quoted_stringContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

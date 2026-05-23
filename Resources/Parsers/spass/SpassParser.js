@@ -1,4 +1,4 @@
-// Generated from ./spass/SpassParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/spass/SpassParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import SpassParserListener from './SpassParserListener.js';
@@ -305,16 +305,12 @@ export default class SpassParser extends antlr4.Parser {
         this.symbolicNames = SpassParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	problem() {
 	    let localctx = new ProblemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, SpassParser.RULE_problem);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 104;
@@ -334,7 +330,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 114;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.List_of_general_settings || _la===SpassParser.List_of_settings) {
+	        while(_la===46 || _la===48) {
 	            this.state = 111;
 	            this.settings();
 	            this.state = 116;
@@ -366,7 +362,7 @@ export default class SpassParser extends antlr4.Parser {
 	description() {
 	    let localctx = new DescriptionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, SpassParser.RULE_description);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 121;
@@ -380,7 +376,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 129;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Open) {
+	        if(_la===94) {
 	            this.state = 125;
 	            this.match(SpassParser.Open);
 	            this.state = 126;
@@ -400,7 +396,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 139;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Open) {
+	        if(_la===94) {
 	            this.state = 135;
 	            this.match(SpassParser.Open);
 	            this.state = 136;
@@ -416,7 +412,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 153;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Version) {
+	        if(_la===92) {
 	            this.state = 143;
 	            this.match(SpassParser.Version);
 	            this.state = 144;
@@ -424,7 +420,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 149;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Open) {
+	            if(_la===94) {
 	                this.state = 145;
 	                this.match(SpassParser.Open);
 	                this.state = 146;
@@ -442,7 +438,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 165;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Logic) {
+	        if(_la===50) {
 	            this.state = 155;
 	            this.match(SpassParser.Logic);
 	            this.state = 156;
@@ -450,7 +446,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 161;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Open) {
+	            if(_la===94) {
 	                this.state = 157;
 	                this.match(SpassParser.Open);
 	                this.state = 158;
@@ -482,7 +478,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 178;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Open) {
+	        if(_la===94) {
 	            this.state = 174;
 	            this.match(SpassParser.Open);
 	            this.state = 175;
@@ -498,7 +494,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 192;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Date) {
+	        if(_la===16) {
 	            this.state = 182;
 	            this.match(SpassParser.Date);
 	            this.state = 183;
@@ -506,7 +502,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 188;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Open) {
+	            if(_la===94) {
 	                this.state = 184;
 	                this.match(SpassParser.Open);
 	                this.state = 185;
@@ -544,12 +540,12 @@ export default class SpassParser extends antlr4.Parser {
 	log_state() {
 	    let localctx = new Log_stateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, SpassParser.RULE_log_state);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 197;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (SpassParser.Satisfiable - 68)) | (1 << (SpassParser.Unknown - 68)) | (1 << (SpassParser.Unsatisfiable - 68)))) !== 0))) {
+	        if(!(((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 6291457) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -575,13 +571,13 @@ export default class SpassParser extends antlr4.Parser {
 	logical_part() {
 	    let localctx = new Logical_partContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, SpassParser.RULE_logical_part);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 200;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.List_of_symbols) {
+	        if(_la===49) {
 	            this.state = 199;
 	            this.symbol_list();
 	        }
@@ -589,7 +585,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 203;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.List_of_declarations) {
+	        if(_la===43) {
 	            this.state = 202;
 	            this.declaration_list();
 	        }
@@ -597,7 +593,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 208;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.List_of_formulae) {
+	        while(_la===45) {
 	            this.state = 205;
 	            this.formula_list();
 	            this.state = 210;
@@ -607,7 +603,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 214;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.List_of_clauses) {
+	        while(_la===42) {
 	            this.state = 211;
 	            this.clause_list();
 	            this.state = 216;
@@ -617,7 +613,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 220;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.List_of_proof) {
+	        while(_la===47) {
 	            this.state = 217;
 	            this.proof_list();
 	            this.state = 222;
@@ -643,7 +639,7 @@ export default class SpassParser extends antlr4.Parser {
 	symbol_list() {
 	    let localctx = new Symbol_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, SpassParser.RULE_symbol_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 223;
@@ -653,7 +649,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 254;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Functions) {
+	        if(_la===33) {
 	            this.state = 225;
 	            this.match(SpassParser.Functions);
 	            this.state = 226;
@@ -661,11 +657,11 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 234;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case SpassParser.Identifier:
+	            case 95:
 	                this.state = 227;
 	                this.fun_sym();
 	                break;
-	            case SpassParser.OpenP:
+	            case 59:
 	                this.state = 228;
 	                this.match(SpassParser.OpenP);
 	                this.state = 229;
@@ -683,17 +679,17 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 248;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SpassParser.Comma) {
+	            while(_la===13) {
 	                this.state = 236;
 	                this.match(SpassParser.Comma);
 	                this.state = 244;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case SpassParser.Identifier:
+	                case 95:
 	                    this.state = 237;
 	                    this.fun_sym();
 	                    break;
-	                case SpassParser.OpenP:
+	                case 59:
 	                    this.state = 238;
 	                    this.match(SpassParser.OpenP);
 	                    this.state = 239;
@@ -721,7 +717,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 285;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Predicates) {
+	        if(_la===64) {
 	            this.state = 256;
 	            this.match(SpassParser.Predicates);
 	            this.state = 257;
@@ -729,11 +725,11 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 265;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case SpassParser.Identifier:
+	            case 95:
 	                this.state = 258;
 	                this.pred_sym();
 	                break;
-	            case SpassParser.OpenP:
+	            case 59:
 	                this.state = 259;
 	                this.match(SpassParser.OpenP);
 	                this.state = 260;
@@ -751,17 +747,17 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 279;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SpassParser.Comma) {
+	            while(_la===13) {
 	                this.state = 267;
 	                this.match(SpassParser.Comma);
 	                this.state = 275;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case SpassParser.Identifier:
+	                case 95:
 	                    this.state = 268;
 	                    this.pred_sym();
 	                    break;
-	                case SpassParser.OpenP:
+	                case 59:
 	                    this.state = 269;
 	                    this.match(SpassParser.OpenP);
 	                    this.state = 270;
@@ -789,7 +785,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 300;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Sorts) {
+	        if(_la===74) {
 	            this.state = 287;
 	            this.match(SpassParser.Sorts);
 	            this.state = 288;
@@ -799,7 +795,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 294;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SpassParser.Comma) {
+	            while(_la===13) {
 	                this.state = 290;
 	                this.match(SpassParser.Comma);
 	                this.state = 291;
@@ -837,7 +833,7 @@ export default class SpassParser extends antlr4.Parser {
 	declaration_list() {
 	    let localctx = new Declaration_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, SpassParser.RULE_declaration_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 305;
@@ -847,7 +843,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 310;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SpassParser.And) | (1 << SpassParser.Equal) | (1 << SpassParser.Equiv) | (1 << SpassParser.Exists) | (1 << SpassParser.False_) | (1 << SpassParser.Forall))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (SpassParser.Implied - 37)) | (1 << (SpassParser.Implies - 37)) | (1 << (SpassParser.Not - 37)) | (1 << (SpassParser.Or - 37)) | (1 << (SpassParser.Predicate - 37)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (SpassParser.Sort - 73)) | (1 << (SpassParser.Subsort - 73)) | (1 << (SpassParser.True_ - 73)) | (1 << (SpassParser.Identifier - 73)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1845493764) !== 0) || ((((_la - 37)) & ~0x1f) === 0 && ((1 << (_la - 37)) & 84017155) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 4212737) !== 0)) {
 	            this.state = 307;
 	            this.declaration();
 	            this.state = 312;
@@ -881,33 +877,33 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 320;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.Subsort:
+	        case 84:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 316;
 	            this.subsort_decl();
 	            break;
-	        case SpassParser.And:
-	        case SpassParser.Equal:
-	        case SpassParser.Equiv:
-	        case SpassParser.Exists:
-	        case SpassParser.False_:
-	        case SpassParser.Forall:
-	        case SpassParser.Implied:
-	        case SpassParser.Implies:
-	        case SpassParser.Not:
-	        case SpassParser.Or:
-	        case SpassParser.True_:
-	        case SpassParser.Identifier:
+	        case 2:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 29:
+	        case 30:
+	        case 37:
+	        case 38:
+	        case 54:
+	        case 61:
+	        case 87:
+	        case 95:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 317;
 	            this.term_decl();
 	            break;
-	        case SpassParser.Predicate:
+	        case 63:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 318;
 	            this.pred_decl();
 	            break;
-	        case SpassParser.Sort:
+	        case 73:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 319;
 	            this.gen_decl();
@@ -934,7 +930,7 @@ export default class SpassParser extends antlr4.Parser {
 	gen_decl() {
 	    let localctx = new Gen_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, SpassParser.RULE_gen_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 322;
@@ -944,7 +940,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 325;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.Freely) {
+	        if(_la===32) {
 	            this.state = 324;
 	            this.match(SpassParser.Freely);
 	        }
@@ -974,7 +970,7 @@ export default class SpassParser extends antlr4.Parser {
 	func_list() {
 	    let localctx = new Func_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, SpassParser.RULE_func_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 331;
@@ -984,7 +980,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 337;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Comma) {
+	        while(_la===13) {
 	            this.state = 333;
 	            this.match(SpassParser.Comma);
 	            this.state = 334;
@@ -1100,7 +1096,7 @@ export default class SpassParser extends antlr4.Parser {
 	pred_decl() {
 	    let localctx = new Pred_declContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, SpassParser.RULE_pred_decl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 363;
@@ -1120,7 +1116,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 370; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SpassParser.Comma);
+	        } while(_la===13);
 	        this.state = 372;
 	        this.match(SpassParser.CloseP);
 	        this.state = 373;
@@ -1213,7 +1209,7 @@ export default class SpassParser extends antlr4.Parser {
 	formula_list() {
 	    let localctx = new Formula_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, SpassParser.RULE_formula_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 381;
@@ -1229,7 +1225,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 399;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Formula) {
+	        while(_la===31) {
 	            this.state = 386;
 	            this.match(SpassParser.Formula);
 	            this.state = 387;
@@ -1237,7 +1233,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 389;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SpassParser.And) | (1 << SpassParser.Equal) | (1 << SpassParser.Equiv) | (1 << SpassParser.Exists) | (1 << SpassParser.False_) | (1 << SpassParser.Forall))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (SpassParser.Implied - 37)) | (1 << (SpassParser.Implies - 37)) | (1 << (SpassParser.Not - 37)) | (1 << (SpassParser.Or - 37)))) !== 0) || _la===SpassParser.True_ || _la===SpassParser.Identifier) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1845493764) !== 0) || ((((_la - 37)) & ~0x1f) === 0 && ((1 << (_la - 37)) & 16908291) !== 0) || _la===87 || _la===95) {
 	                this.state = 388;
 	                this.term();
 	            }
@@ -1245,7 +1241,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 393;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Comma) {
+	            if(_la===13) {
 	                this.state = 391;
 	                this.match(SpassParser.Comma);
 	                this.state = 392;
@@ -1283,12 +1279,12 @@ export default class SpassParser extends antlr4.Parser {
 	origin_type() {
 	    let localctx = new Origin_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, SpassParser.RULE_origin_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 405;
 	        _la = this._input.LA(1);
-	        if(!(_la===SpassParser.Axioms || _la===SpassParser.Conjectures)) {
+	        if(!(_la===4 || _la===15)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1318,12 +1314,12 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 409;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.Identifier:
+	        case 95:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 407;
 	            this.identifier();
 	            break;
-	        case SpassParser.Digit:
+	        case 97:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 408;
 	            this.number();
@@ -1350,7 +1346,7 @@ export default class SpassParser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, SpassParser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 431;
 	        this._errHandler.sync(this);
@@ -1389,7 +1385,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 426;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SpassParser.Comma) {
+	            while(_la===13) {
 	                this.state = 422;
 	                this.match(SpassParser.Comma);
 	                this.state = 423;
@@ -1422,7 +1418,7 @@ export default class SpassParser extends antlr4.Parser {
 	term_list() {
 	    let localctx = new Term_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, SpassParser.RULE_term_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 433;
@@ -1432,7 +1428,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 439;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Comma) {
+	        while(_la===13) {
 	            this.state = 435;
 	            this.match(SpassParser.Comma);
 	            this.state = 436;
@@ -1466,17 +1462,17 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 447;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.Forall:
+	        case 30:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 444;
 	            this.match(SpassParser.Forall);
 	            break;
-	        case SpassParser.Exists:
+	        case 27:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 445;
 	            this.match(SpassParser.Exists);
 	            break;
-	        case SpassParser.Identifier:
+	        case 95:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 446;
 	            this.identifier();
@@ -1507,52 +1503,52 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 459;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.Equal:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 449;
 	            this.match(SpassParser.Equal);
 	            break;
-	        case SpassParser.True_:
+	        case 87:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 450;
 	            this.match(SpassParser.True_);
 	            break;
-	        case SpassParser.False_:
+	        case 29:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 451;
 	            this.match(SpassParser.False_);
 	            break;
-	        case SpassParser.Or:
+	        case 61:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 452;
 	            this.match(SpassParser.Or);
 	            break;
-	        case SpassParser.And:
+	        case 2:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 453;
 	            this.match(SpassParser.And);
 	            break;
-	        case SpassParser.Not:
+	        case 54:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 454;
 	            this.match(SpassParser.Not);
 	            break;
-	        case SpassParser.Implies:
+	        case 38:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 455;
 	            this.match(SpassParser.Implies);
 	            break;
-	        case SpassParser.Implied:
+	        case 37:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 456;
 	            this.match(SpassParser.Implied);
 	            break;
-	        case SpassParser.Equiv:
+	        case 26:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 457;
 	            this.match(SpassParser.Equiv);
 	            break;
-	        case SpassParser.Identifier:
+	        case 95:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 458;
 	            this.identifier();
@@ -1579,7 +1575,7 @@ export default class SpassParser extends antlr4.Parser {
 	clause_list() {
 	    let localctx = new Clause_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, SpassParser.RULE_clause_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 461;
@@ -1599,7 +1595,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 482;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Clause) {
+	        while(_la===6) {
 	            this.state = 468;
 	            this.match(SpassParser.Clause);
 	            this.state = 469;
@@ -1607,18 +1603,18 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 472;
 	            this._errHandler.sync(this);
 	            switch (this._input.LA(1)) {
-	            case SpassParser.Forall:
-	            case SpassParser.Or:
+	            case 30:
+	            case 61:
 	            	this.state = 470;
 	            	this.cnf_clause();
 	            	break;
-	            case SpassParser.And:
-	            case SpassParser.Exists:
+	            case 2:
+	            case 27:
 	            	this.state = 471;
 	            	this.dnf_clause();
 	            	break;
-	            case SpassParser.CloseP:
-	            case SpassParser.Comma:
+	            case 9:
+	            case 13:
 	            	break;
 	            default:
 	            	break;
@@ -1626,7 +1622,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 476;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Comma) {
+	            if(_la===13) {
 	                this.state = 474;
 	                this.match(SpassParser.Comma);
 	                this.state = 475;
@@ -1664,12 +1660,12 @@ export default class SpassParser extends antlr4.Parser {
 	clause_type() {
 	    let localctx = new Clause_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, SpassParser.RULE_clause_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 488;
 	        _la = this._input.LA(1);
-	        if(!(_la===SpassParser.Cnf || _la===SpassParser.Dnf)) {
+	        if(!(_la===11 || _la===18)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1699,7 +1695,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 498;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.Forall:
+	        case 30:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 490;
 	            this.match(SpassParser.Forall);
@@ -1714,7 +1710,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 495;
 	            this.match(SpassParser.CloseP);
 	            break;
-	        case SpassParser.Or:
+	        case 61:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 497;
 	            this.cnf_clause_body();
@@ -1745,7 +1741,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 508;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.Exists:
+	        case 27:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 500;
 	            this.match(SpassParser.Exists);
@@ -1760,7 +1756,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 505;
 	            this.match(SpassParser.CloseP);
 	            break;
-	        case SpassParser.And:
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 507;
 	            this.dnf_clause_body();
@@ -1787,7 +1783,7 @@ export default class SpassParser extends antlr4.Parser {
 	cnf_clause_body() {
 	    let localctx = new Cnf_clause_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, SpassParser.RULE_cnf_clause_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 510;
@@ -1799,7 +1795,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 517;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Comma) {
+	        while(_la===13) {
 	            this.state = 513;
 	            this.match(SpassParser.Comma);
 	            this.state = 514;
@@ -1829,7 +1825,7 @@ export default class SpassParser extends antlr4.Parser {
 	dnf_clause_body() {
 	    let localctx = new Dnf_clause_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, SpassParser.RULE_dnf_clause_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 522;
@@ -1841,7 +1837,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 529;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Comma) {
+	        while(_la===13) {
 	            this.state = 525;
 	            this.match(SpassParser.Comma);
 	            this.state = 526;
@@ -1871,7 +1867,7 @@ export default class SpassParser extends antlr4.Parser {
 	proof_list() {
 	    let localctx = new Proof_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, SpassParser.RULE_proof_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 534;
@@ -1879,7 +1875,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 543;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SpassParser.OpenP) {
+	        if(_la===59) {
 	            this.state = 535;
 	            this.match(SpassParser.OpenP);
 	            this.state = 536;
@@ -1887,7 +1883,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 539;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Comma) {
+	            if(_la===13) {
 	                this.state = 537;
 	                this.match(SpassParser.Comma);
 	                this.state = 538;
@@ -1903,7 +1899,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 564;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Step) {
+	        while(_la===83) {
 	            this.state = 546;
 	            this.match(SpassParser.Step);
 	            this.state = 547;
@@ -1925,7 +1921,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 557;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Comma) {
+	            if(_la===13) {
 	                this.state = 555;
 	                this.match(SpassParser.Comma);
 	                this.state = 556;
@@ -2086,7 +2082,7 @@ export default class SpassParser extends antlr4.Parser {
 	parent_list() {
 	    let localctx = new Parent_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, SpassParser.RULE_parent_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 584;
@@ -2096,7 +2092,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 590;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Comma) {
+	        while(_la===13) {
 	            this.state = 586;
 	            this.match(SpassParser.Comma);
 	            this.state = 587;
@@ -2169,7 +2165,7 @@ export default class SpassParser extends antlr4.Parser {
 	assoc_list() {
 	    let localctx = new Assoc_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, SpassParser.RULE_assoc_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 600;
@@ -2183,7 +2179,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 611;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Comma) {
+	        while(_la===13) {
 	            this.state = 604;
 	            this.match(SpassParser.Comma);
 	            this.state = 605;
@@ -2307,12 +2303,12 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 628;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.Identifier:
+	        case 95:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 626;
 	            this.identifier();
 	            break;
-	        case SpassParser.SPASS:
+	        case 75:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 627;
 	            this.user_proof_type();
@@ -2385,12 +2381,12 @@ export default class SpassParser extends antlr4.Parser {
 	user_rule_appl() {
 	    let localctx = new User_rule_applContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, SpassParser.RULE_user_rule_appl);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 634;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SpassParser.ClR) | (1 << SpassParser.Con) | (1 << SpassParser.EmS) | (1 << SpassParser.EqF) | (1 << SpassParser.EqR) | (1 << SpassParser.Fac))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (SpassParser.GeR - 35)) | (1 << (SpassParser.Inp - 35)) | (1 << (SpassParser.MPm - 35)) | (1 << (SpassParser.Obv - 35)) | (1 << (SpassParser.OHy - 35)) | (1 << (SpassParser.OPm - 35)) | (1 << (SpassParser.Rew - 35)))) !== 0) || ((((_la - 67)) & ~0x1f) == 0 && ((1 << (_la - 67)) & ((1 << (SpassParser.RRE - 67)) | (1 << (SpassParser.SHy - 67)) | (1 << (SpassParser.SoR - 67)) | (1 << (SpassParser.SpL - 67)) | (1 << (SpassParser.SPm - 67)) | (1 << (SpassParser.SpR - 67)) | (1 << (SpassParser.Spt - 67)) | (1 << (SpassParser.SSi - 67)) | (1 << (SpassParser.Ter - 67)) | (1 << (SpassParser.UnC - 67)) | (1 << (SpassParser.URR - 67)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 294667264) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 2184314897) !== 0) || ((((_la - 67)) & ~0x1f) === 0 && ((1 << (_la - 67)) & 19167793) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2508,12 +2504,12 @@ export default class SpassParser extends antlr4.Parser {
 	settings() {
 	    let localctx = new SettingsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, SpassParser.RULE_settings);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 667;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.List_of_general_settings:
+	        case 46:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 644;
 	            this.match(SpassParser.List_of_general_settings);
@@ -2526,13 +2522,13 @@ export default class SpassParser extends antlr4.Parser {
 	                this.state = 648; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SpassParser.Hypothesis);
+	            } while(_la===36);
 	            this.state = 650;
 	            this.match(SpassParser.End_of_list);
 	            this.state = 651;
 	            this.match(SpassParser.Dot);
 	            break;
-	        case SpassParser.List_of_settings:
+	        case 48:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 653;
 	            this.match(SpassParser.List_of_settings);
@@ -2547,7 +2543,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 662;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===SpassParser.Open) {
+	            if(_la===94) {
 	                this.state = 658;
 	                this.match(SpassParser.Open);
 	                this.state = 659;
@@ -2583,7 +2579,7 @@ export default class SpassParser extends antlr4.Parser {
 	setting_entry() {
 	    let localctx = new Setting_entryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, SpassParser.RULE_setting_entry);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 669;
@@ -2595,7 +2591,7 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 676;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===SpassParser.Comma) {
+	        while(_la===13) {
 	            this.state = 672;
 	            this.match(SpassParser.Comma);
 	            this.state = 673;
@@ -2627,12 +2623,12 @@ export default class SpassParser extends antlr4.Parser {
 	setting_label() {
 	    let localctx = new Setting_labelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, SpassParser.RULE_setting_label);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 682;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (SpassParser.KIV - 40)) | (1 << (SpassParser.LEM - 40)) | (1 << (SpassParser.OTTER - 40)) | (1 << (SpassParser.PROTEIN - 40)) | (1 << (SpassParser.SATURATE - 40)) | (1 << (SpassParser.SETHEO - 40)))) !== 0) || _la===SpassParser.SPASS || _la===SpassParser.ThreeTAP)) {
+	        if(!(((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 1648361475) !== 0) || _la===75 || _la===86)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2685,12 +2681,12 @@ export default class SpassParser extends antlr4.Parser {
 	        this.state = 688;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SpassParser.MOne:
+	        case 51:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 686;
 	            this.match(SpassParser.MOne);
 	            break;
-	        case SpassParser.Digit:
+	        case 97:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 687;
 	            this.number();
@@ -2717,7 +2713,7 @@ export default class SpassParser extends antlr4.Parser {
 	number() {
 	    let localctx = new NumberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, SpassParser.RULE_number);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 691; 
@@ -2729,7 +2725,7 @@ export default class SpassParser extends antlr4.Parser {
 	            this.state = 693; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SpassParser.Digit);
+	        } while(_la===97);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -6197,3 +6193,12 @@ SpassParser.IdentifierContext = IdentifierContext;
 SpassParser.ArityContext = ArityContext; 
 SpassParser.NumberContext = NumberContext; 
 SpassParser.Text_Context = Text_Context; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./brainflak/brainflak.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/brainflak/brainflak.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import brainflakListener from './brainflakListener.js';
@@ -45,16 +45,12 @@ export default class brainflakParser extends antlr4.Parser {
         this.symbolicNames = brainflakParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	file_() {
 	    let localctx = new File_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, brainflakParser.RULE_file_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 13; 
@@ -66,7 +62,7 @@ export default class brainflakParser extends antlr4.Parser {
 	            this.state = 15; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainflakParser.LPAREN) | (1 << brainflakParser.LT) | (1 << brainflakParser.LBRACE) | (1 << brainflakParser.LBRACK))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 178) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -90,22 +86,22 @@ export default class brainflakParser extends antlr4.Parser {
 	        this.state = 21;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case brainflakParser.LPAREN:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 17;
 	            this.parenstmt();
 	            break;
-	        case brainflakParser.LBRACE:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 18;
 	            this.bracestmt();
 	            break;
-	        case brainflakParser.LBRACK:
+	        case 7:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 19;
 	            this.bracketstmt();
 	            break;
-	        case brainflakParser.LT:
+	        case 4:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 20;
 	            this.gtltstmt();
@@ -132,7 +128,7 @@ export default class brainflakParser extends antlr4.Parser {
 	parenstmt() {
 	    let localctx = new ParenstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, brainflakParser.RULE_parenstmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 23;
@@ -140,7 +136,7 @@ export default class brainflakParser extends antlr4.Parser {
 	        this.state = 27;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainflakParser.LPAREN) | (1 << brainflakParser.LT) | (1 << brainflakParser.LBRACE) | (1 << brainflakParser.LBRACK))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 178) !== 0)) {
 	            this.state = 24;
 	            this.statement();
 	            this.state = 29;
@@ -168,7 +164,7 @@ export default class brainflakParser extends antlr4.Parser {
 	bracestmt() {
 	    let localctx = new BracestmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, brainflakParser.RULE_bracestmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 32;
@@ -176,7 +172,7 @@ export default class brainflakParser extends antlr4.Parser {
 	        this.state = 36;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainflakParser.LPAREN) | (1 << brainflakParser.LT) | (1 << brainflakParser.LBRACE) | (1 << brainflakParser.LBRACK))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 178) !== 0)) {
 	            this.state = 33;
 	            this.statement();
 	            this.state = 38;
@@ -204,7 +200,7 @@ export default class brainflakParser extends antlr4.Parser {
 	bracketstmt() {
 	    let localctx = new BracketstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, brainflakParser.RULE_bracketstmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 41;
@@ -212,7 +208,7 @@ export default class brainflakParser extends antlr4.Parser {
 	        this.state = 45;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainflakParser.LPAREN) | (1 << brainflakParser.LT) | (1 << brainflakParser.LBRACE) | (1 << brainflakParser.LBRACK))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 178) !== 0)) {
 	            this.state = 42;
 	            this.statement();
 	            this.state = 47;
@@ -240,7 +236,7 @@ export default class brainflakParser extends antlr4.Parser {
 	gtltstmt() {
 	    let localctx = new GtltstmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, brainflakParser.RULE_gtltstmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 50;
@@ -248,7 +244,7 @@ export default class brainflakParser extends antlr4.Parser {
 	        this.state = 54;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << brainflakParser.LPAREN) | (1 << brainflakParser.LT) | (1 << brainflakParser.LBRACE) | (1 << brainflakParser.LBRACK))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 178) !== 0)) {
 	            this.state = 51;
 	            this.statement();
 	            this.state = 56;

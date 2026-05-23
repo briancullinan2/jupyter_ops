@@ -1,4 +1,4 @@
-// Generated from ./kuka/krl.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/kuka/krl.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import krlListener from './krlListener.js';
@@ -336,10 +336,6 @@ export default class krlParser extends antlr4.Parser {
         this.symbolicNames = krlParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	module() {
@@ -350,13 +346,13 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 128;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.DEFDAT:
+	        case 49:
 	            this.state = 126;
 	            this.moduleData();
 	            break;
-	        case krlParser.DEF:
-	        case krlParser.DEFFCT:
-	        case krlParser.GLOBAL:
+	        case 47:
+	        case 50:
+	        case 67:
 	            this.state = 127;
 	            this.moduleRoutines();
 	            break;
@@ -384,7 +380,7 @@ export default class krlParser extends antlr4.Parser {
 	moduleRoutines() {
 	    let localctx = new ModuleRoutinesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, krlParser.RULE_moduleRoutines);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 132;
@@ -392,17 +388,17 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 137;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 47)) & ~0x1f) == 0 && ((1 << (_la - 47)) & ((1 << (krlParser.DEF - 47)) | (1 << (krlParser.DEFFCT - 47)) | (1 << (krlParser.GLOBAL - 47)))) !== 0) || _la===krlParser.NEWLINE) {
+	        while(((((_la - 47)) & ~0x1f) === 0 && ((1 << (_la - 47)) & 1048585) !== 0) || _la===104) {
 	            this.state = 135;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case krlParser.DEF:
-	            case krlParser.DEFFCT:
-	            case krlParser.GLOBAL:
+	            case 47:
+	            case 50:
+	            case 67:
 	                this.state = 133;
 	                this.subRoutine();
 	                break;
-	            case krlParser.NEWLINE:
+	            case 104:
 	                this.state = 134;
 	                this.match(krlParser.NEWLINE);
 	                break;
@@ -506,13 +502,13 @@ export default class krlParser extends antlr4.Parser {
 	procedureDefinition() {
 	    let localctx = new ProcedureDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, krlParser.RULE_procedureDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 149;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.GLOBAL) {
+	        if(_la===67) {
 	            this.state = 148;
 	            this.match(krlParser.GLOBAL);
 	        }
@@ -571,13 +567,13 @@ export default class krlParser extends antlr4.Parser {
 	functionDefinition() {
 	    let localctx = new FunctionDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, krlParser.RULE_functionDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 161;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.GLOBAL) {
+	        if(_la===67) {
 	            this.state = 160;
 	            this.match(krlParser.GLOBAL);
 	        }
@@ -638,7 +634,7 @@ export default class krlParser extends antlr4.Parser {
 	moduleData() {
 	    let localctx = new ModuleDataContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, krlParser.RULE_moduleData);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 173;
@@ -648,7 +644,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 176;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.PUBLIC) {
+	        if(_la===85) {
 	            this.state = 175;
 	            this.match(krlParser.PUBLIC);
 	        }
@@ -662,7 +658,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 184;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.NEWLINE) {
+	        while(_la===104) {
 	            this.state = 181;
 	            this.match(krlParser.NEWLINE);
 	            this.state = 186;
@@ -711,13 +707,13 @@ export default class krlParser extends antlr4.Parser {
 	dataList() {
 	    let localctx = new DataListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, krlParser.RULE_dataList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 207;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (krlParser.BOOL - 31)) | (1 << (krlParser.CHAR - 31)) | (1 << (krlParser.CONST - 31)) | (1 << (krlParser.DECL - 31)) | (1 << (krlParser.ENUM - 31)))) !== 0) || ((((_la - 63)) & ~0x1f) == 0 && ((1 << (_la - 63)) & ((1 << (krlParser.EXT - 63)) | (1 << (krlParser.EXTFCT - 63)) | (1 << (krlParser.GLOBAL - 63)) | (1 << (krlParser.IMPORT - 63)) | (1 << (krlParser.INT - 63)) | (1 << (krlParser.REAL - 63)) | (1 << (krlParser.SIGNAL - 63)) | (1 << (krlParser.STRUC - 63)))) !== 0) || _la===krlParser.NEWLINE || _la===krlParser.IDENTIFIER) {
+	        while(((((_la - 31)) & ~0x1f) === 0 && ((1 << (_la - 31)) & 1073779201) !== 0) || ((((_la - 63)) & ~0x1f) === 0 && ((1 << (_la - 63)) & 411043091) !== 0) || _la===104 || _la===110) {
 	            this.state = 205;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
@@ -852,13 +848,13 @@ export default class krlParser extends antlr4.Parser {
 	structureDefinition() {
 	    let localctx = new StructureDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, krlParser.RULE_structureDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 220;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.GLOBAL) {
+	        if(_la===67) {
 	            this.state = 219;
 	            this.match(krlParser.GLOBAL);
 	        }
@@ -876,7 +872,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 234;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__1) {
+	        while(_la===2) {
 	            this.state = 227;
 	            this.match(krlParser.T__1);
 	            this.state = 228;
@@ -908,13 +904,13 @@ export default class krlParser extends antlr4.Parser {
 	enumDefinition() {
 	    let localctx = new EnumDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, krlParser.RULE_enumDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 238;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.GLOBAL) {
+	        if(_la===67) {
 	            this.state = 237;
 	            this.match(krlParser.GLOBAL);
 	        }
@@ -928,7 +924,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 247;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__1) {
+	        while(_la===2) {
 	            this.state = 243;
 	            this.match(krlParser.T__1);
 	            this.state = 244;
@@ -979,13 +975,13 @@ export default class krlParser extends antlr4.Parser {
 	variableDeclaration() {
 	    let localctx = new VariableDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, krlParser.RULE_variableDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 253;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.DECL) {
+	        if(_la===46) {
 	            this.state = 252;
 	            this.match(krlParser.DECL);
 	        }
@@ -993,11 +989,11 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 260;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.BOOL:
-	        case krlParser.CHAR:
-	        case krlParser.INT:
-	        case krlParser.REAL:
-	        case krlParser.IDENTIFIER:
+	        case 31:
+	        case 40:
+	        case 73:
+	        case 86:
+	        case 110:
 	            this.state = 255;
 	            this.type_();
 	            this.state = 256;
@@ -1005,7 +1001,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 257;
 	            this.variableListRest();
 	            break;
-	        case krlParser.SIGNAL:
+	        case 90:
 	            this.state = 259;
 	            this.signalDeclaration();
 	            break;
@@ -1031,7 +1027,7 @@ export default class krlParser extends antlr4.Parser {
 	signalDeclaration() {
 	    let localctx = new SignalDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, krlParser.RULE_signalDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 262;
@@ -1043,7 +1039,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 267;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.TO) {
+	        if(_la===94) {
 	            this.state = 265;
 	            this.match(krlParser.TO);
 	            this.state = 266;
@@ -1069,13 +1065,13 @@ export default class krlParser extends antlr4.Parser {
 	variableDeclarationInDataList() {
 	    let localctx = new VariableDeclarationInDataListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, krlParser.RULE_variableDeclarationInDataList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 270;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.DECL) {
+	        if(_la===46) {
 	            this.state = 269;
 	            this.match(krlParser.DECL);
 	        }
@@ -1083,7 +1079,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 273;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.GLOBAL) {
+	        if(_la===67) {
 	            this.state = 272;
 	            this.match(krlParser.GLOBAL);
 	        }
@@ -1091,7 +1087,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 276;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.CONST) {
+	        if(_la===43) {
 	            this.state = 275;
 	            this.match(krlParser.CONST);
 	        }
@@ -1099,11 +1095,11 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 285;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.BOOL:
-	        case krlParser.CHAR:
-	        case krlParser.INT:
-	        case krlParser.REAL:
-	        case krlParser.IDENTIFIER:
+	        case 31:
+	        case 40:
+	        case 73:
+	        case 86:
+	        case 110:
 	            this.state = 278;
 	            this.type_();
 	            this.state = 279;
@@ -1111,12 +1107,12 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 282;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case krlParser.T__1:
-	            case krlParser.NEWLINE:
+	            case 2:
+	            case 104:
 	                this.state = 280;
 	                this.variableListRest();
 	                break;
-	            case krlParser.T__0:
+	            case 1:
 	                this.state = 281;
 	                this.variableInitialisation();
 	                break;
@@ -1124,7 +1120,7 @@ export default class krlParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case krlParser.SIGNAL:
+	        case 90:
 	            this.state = 284;
 	            this.signalDeclaration();
 	            break;
@@ -1248,7 +1244,7 @@ export default class krlParser extends antlr4.Parser {
 	structElementList() {
 	    let localctx = new StructElementListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, krlParser.RULE_structElementList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 306;
@@ -1256,7 +1252,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 311;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__1) {
+	        while(_la===2) {
 	            this.state = 307;
 	            this.match(krlParser.T__1);
 	            this.state = 308;
@@ -1309,7 +1305,7 @@ export default class krlParser extends antlr4.Parser {
 	formalParameters() {
 	    let localctx = new FormalParametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, krlParser.RULE_formalParameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 317;
@@ -1317,13 +1313,13 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 326;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.IDENTIFIER) {
+	        if(_la===110) {
 	            this.state = 318;
 	            this.parameter();
 	            this.state = 323;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===krlParser.T__1) {
+	            while(_la===2) {
 	                this.state = 319;
 	                this.match(krlParser.T__1);
 	                this.state = 320;
@@ -1355,7 +1351,7 @@ export default class krlParser extends antlr4.Parser {
 	parameter() {
 	    let localctx = new ParameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, krlParser.RULE_parameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 330;
@@ -1363,7 +1359,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 332;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.T__3) {
+	        if(_la===4) {
 	            this.state = 331;
 	            this.parameterCallType();
 	        }
@@ -1422,32 +1418,32 @@ export default class krlParser extends antlr4.Parser {
 	                this.state = 348;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case krlParser.EXT:
-	                case krlParser.EXTFCT:
+	                case 63:
+	                case 64:
 	                    this.state = 337;
 	                    this.forwardDeclaration();
 	                    this.state = 338;
 	                    this.match(krlParser.NEWLINE);
 	                    break;
-	                case krlParser.BOOL:
-	                case krlParser.CHAR:
-	                case krlParser.DECL:
-	                case krlParser.INT:
-	                case krlParser.REAL:
-	                case krlParser.SIGNAL:
-	                case krlParser.IDENTIFIER:
+	                case 31:
+	                case 40:
+	                case 46:
+	                case 73:
+	                case 86:
+	                case 90:
+	                case 110:
 	                    this.state = 340;
 	                    this.variableDeclaration();
 	                    this.state = 341;
 	                    this.match(krlParser.NEWLINE);
 	                    break;
-	                case krlParser.NEWLINE:
+	                case 104:
 	                    this.state = 343;
 	                    this.match(krlParser.NEWLINE);
 	                    this.state = 344;
 	                    this.match(krlParser.NEWLINE);
 	                    break;
-	                case krlParser.IMPORT:
+	                case 71:
 	                    this.state = 345;
 	                    this.importStatement();
 	                    this.state = 346;
@@ -1485,7 +1481,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 362;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.EXT:
+	        case 63:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 353;
 	            this.match(krlParser.EXT);
@@ -1494,7 +1490,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 355;
 	            this.formalParametersWithType();
 	            break;
-	        case krlParser.EXTFCT:
+	        case 64:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 357;
 	            this.match(krlParser.EXTFCT);
@@ -1527,7 +1523,7 @@ export default class krlParser extends antlr4.Parser {
 	formalParametersWithType() {
 	    let localctx = new FormalParametersWithTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, krlParser.RULE_formalParametersWithType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 364;
@@ -1535,13 +1531,13 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 373;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.BOOL || _la===krlParser.CHAR || _la===krlParser.INT || _la===krlParser.REAL || _la===krlParser.IDENTIFIER) {
+	        if(_la===31 || _la===40 || _la===73 || _la===86 || _la===110) {
 	            this.state = 365;
 	            this.parameterWithType();
 	            this.state = 370;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===krlParser.T__1) {
+	            while(_la===2) {
 	                this.state = 366;
 	                this.match(krlParser.T__1);
 	                this.state = 367;
@@ -1573,7 +1569,7 @@ export default class krlParser extends antlr4.Parser {
 	parameterWithType() {
 	    let localctx = new ParameterWithTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, krlParser.RULE_parameterWithType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 377;
@@ -1581,7 +1577,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 379;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.T__3) {
+	        if(_la===4) {
 	            this.state = 378;
 	            this.parameterCallType();
 	        }
@@ -1667,7 +1663,7 @@ export default class krlParser extends antlr4.Parser {
 	variableName() {
 	    let localctx = new VariableNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, krlParser.RULE_variableName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 393;
@@ -1675,7 +1671,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 395;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.T__9) {
+	        if(_la===10) {
 	            this.state = 394;
 	            this.arrayVariableSuffix();
 	        }
@@ -1699,7 +1695,7 @@ export default class krlParser extends antlr4.Parser {
 	arrayVariableSuffix() {
 	    let localctx = new ArrayVariableSuffixContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, krlParser.RULE_arrayVariableSuffix);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 397;
@@ -1707,31 +1703,31 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 411;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__2) | (1 << krlParser.T__5) | (1 << krlParser.T__17) | (1 << krlParser.T__18) | (1 << krlParser.T__22) | (1 << krlParser.B_NOT))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (krlParser.FALSE - 65)) | (1 << (krlParser.NOT - 65)) | (1 << (krlParser.TRUE - 65)))) !== 0) || ((((_la - 106)) & ~0x1f) == 0 && ((1 << (_la - 106)) & ((1 << (krlParser.CHARLITERAL - 106)) | (1 << (krlParser.STRINGLITERAL - 106)) | (1 << (krlParser.FLOATLITERAL - 106)) | (1 << (krlParser.INTLITERAL - 106)) | (1 << (krlParser.IDENTIFIER - 106)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 277610568) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 2147516417) !== 0) || ((((_la - 106)) & ~0x1f) === 0 && ((1 << (_la - 106)) & 31) !== 0)) {
 	            this.state = 398;
 	            this.expression();
 	            this.state = 409;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.T__1) {
+	            if(_la===2) {
 	                this.state = 399;
 	                this.match(krlParser.T__1);
 	                this.state = 407;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__2) | (1 << krlParser.T__5) | (1 << krlParser.T__17) | (1 << krlParser.T__18) | (1 << krlParser.T__22) | (1 << krlParser.B_NOT))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (krlParser.FALSE - 65)) | (1 << (krlParser.NOT - 65)) | (1 << (krlParser.TRUE - 65)))) !== 0) || ((((_la - 106)) & ~0x1f) == 0 && ((1 << (_la - 106)) & ((1 << (krlParser.CHARLITERAL - 106)) | (1 << (krlParser.STRINGLITERAL - 106)) | (1 << (krlParser.FLOATLITERAL - 106)) | (1 << (krlParser.INTLITERAL - 106)) | (1 << (krlParser.IDENTIFIER - 106)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 277610568) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 2147516417) !== 0) || ((((_la - 106)) & ~0x1f) === 0 && ((1 << (_la - 106)) & 31) !== 0)) {
 	                    this.state = 400;
 	                    this.expression();
 	                    this.state = 405;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(_la===krlParser.T__1) {
+	                    if(_la===2) {
 	                        this.state = 401;
 	                        this.match(krlParser.T__1);
 	                        this.state = 403;
 	                        this._errHandler.sync(this);
 	                        _la = this._input.LA(1);
-	                        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__2) | (1 << krlParser.T__5) | (1 << krlParser.T__17) | (1 << krlParser.T__18) | (1 << krlParser.T__22) | (1 << krlParser.B_NOT))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (krlParser.FALSE - 65)) | (1 << (krlParser.NOT - 65)) | (1 << (krlParser.TRUE - 65)))) !== 0) || ((((_la - 106)) & ~0x1f) == 0 && ((1 << (_la - 106)) & ((1 << (krlParser.CHARLITERAL - 106)) | (1 << (krlParser.STRINGLITERAL - 106)) | (1 << (krlParser.FLOATLITERAL - 106)) | (1 << (krlParser.INTLITERAL - 106)) | (1 << (krlParser.IDENTIFIER - 106)))) !== 0)) {
+	                        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 277610568) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 2147516417) !== 0) || ((((_la - 106)) & ~0x1f) === 0 && ((1 << (_la - 106)) & 31) !== 0)) {
 	                            this.state = 402;
 	                            this.expression();
 	                        }
@@ -1788,13 +1784,13 @@ export default class krlParser extends antlr4.Parser {
 	statementList() {
 	    let localctx = new StatementListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, krlParser.RULE_statementList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 420;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__2) | (1 << krlParser.T__5) | (1 << krlParser.T__17) | (1 << krlParser.T__18) | (1 << krlParser.T__22) | (1 << krlParser.ANIN) | (1 << krlParser.ANOUT) | (1 << krlParser.B_NOT))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (krlParser.BRAKE - 32)) | (1 << (krlParser.CIRC_REL - 32)) | (1 << (krlParser.CIRC - 32)) | (1 << (krlParser.CONTINUE - 32)) | (1 << (krlParser.EXIT - 32)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (krlParser.FALSE - 65)) | (1 << (krlParser.FOR - 65)) | (1 << (krlParser.GLOBAL - 65)) | (1 << (krlParser.GOTO - 65)) | (1 << (krlParser.HALT - 65)) | (1 << (krlParser.IF - 65)) | (1 << (krlParser.INTERRUPT - 65)) | (1 << (krlParser.LIN_REL - 65)) | (1 << (krlParser.LIN - 65)) | (1 << (krlParser.LOOP - 65)) | (1 << (krlParser.NOT - 65)) | (1 << (krlParser.PTP_REL - 65)) | (1 << (krlParser.PTP - 65)) | (1 << (krlParser.REPEAT - 65)) | (1 << (krlParser.RETURN - 65)) | (1 << (krlParser.SWITCH - 65)) | (1 << (krlParser.TRIGGER - 65)) | (1 << (krlParser.TRUE - 65)))) !== 0) || ((((_la - 98)) & ~0x1f) == 0 && ((1 << (_la - 98)) & ((1 << (krlParser.WAIT - 98)) | (1 << (krlParser.WHILE - 98)) | (1 << (krlParser.NEWLINE - 98)) | (1 << (krlParser.CHARLITERAL - 98)) | (1 << (krlParser.STRINGLITERAL - 98)) | (1 << (krlParser.FLOATLITERAL - 98)) | (1 << (krlParser.INTLITERAL - 98)) | (1 << (krlParser.IDENTIFIER - 98)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 378273864) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 1073747457) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 3368852671) !== 0) || ((((_la - 98)) & ~0x1f) === 0 && ((1 << (_la - 98)) & 8005) !== 0)) {
 	            this.state = 417;
 	            this.statement();
 	            this.state = 422;
@@ -1820,7 +1816,7 @@ export default class krlParser extends antlr4.Parser {
 	statement() {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, krlParser.RULE_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 595;
 	        this._errHandler.sync(this);
@@ -1859,7 +1855,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 435;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.IDENTIFIER) {
+	            if(_la===110) {
 	                this.state = 433;
 	                this.match(krlParser.IDENTIFIER);
 	                this.state = 434;
@@ -1907,7 +1903,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 454;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.ELSE) {
+	            if(_la===52) {
 	                this.state = 451;
 	                this.match(krlParser.ELSE);
 	                this.state = 452;
@@ -2015,7 +2011,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 498;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__2) | (1 << krlParser.T__5) | (1 << krlParser.T__17) | (1 << krlParser.T__18) | (1 << krlParser.T__22) | (1 << krlParser.B_NOT))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (krlParser.FALSE - 65)) | (1 << (krlParser.NOT - 65)) | (1 << (krlParser.TRUE - 65)))) !== 0) || ((((_la - 106)) & ~0x1f) == 0 && ((1 << (_la - 106)) & ((1 << (krlParser.CHARLITERAL - 106)) | (1 << (krlParser.STRINGLITERAL - 106)) | (1 << (krlParser.FLOATLITERAL - 106)) | (1 << (krlParser.INTLITERAL - 106)) | (1 << (krlParser.IDENTIFIER - 106)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 277610568) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 2147516417) !== 0) || ((((_la - 106)) & ~0x1f) === 0 && ((1 << (_la - 106)) & 31) !== 0)) {
 	                this.state = 497;
 	                this.assignmentExpression();
 	            }
@@ -2031,7 +2027,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 503;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.IDENTIFIER) {
+	            if(_la===110) {
 	                this.state = 502;
 	                this.match(krlParser.IDENTIFIER);
 	            }
@@ -2069,7 +2065,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 514;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.GLOBAL) {
+	            if(_la===67) {
 	                this.state = 513;
 	                this.match(krlParser.GLOBAL);
 	            }
@@ -2101,7 +2097,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 528;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__2) | (1 << krlParser.T__5) | (1 << krlParser.T__22))) !== 0) || _la===krlParser.FALSE || _la===krlParser.TRUE || ((((_la - 106)) & ~0x1f) == 0 && ((1 << (_la - 106)) & ((1 << (krlParser.CHARLITERAL - 106)) | (1 << (krlParser.STRINGLITERAL - 106)) | (1 << (krlParser.FLOATLITERAL - 106)) | (1 << (krlParser.INTLITERAL - 106)) | (1 << (krlParser.IDENTIFIER - 106)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 8388680) !== 0) || _la===65 || _la===96 || ((((_la - 106)) & ~0x1f) === 0 && ((1 << (_la - 106)) & 31) !== 0)) {
 	                this.state = 527;
 	                this.primary();
 	            }
@@ -2114,7 +2110,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 20);
 	            this.state = 531;
 	            _la = this._input.LA(1);
-	            if(!(_la===krlParser.PTP_REL || _la===krlParser.PTP)) {
+	            if(!(_la===83 || _la===84)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2126,16 +2122,16 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 537;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.C_PTP) {
+	            if(_la===35) {
 	                this.state = 533;
 	                this.match(krlParser.C_PTP);
 	                this.state = 535;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0)) {
+	                if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0)) {
 	                    this.state = 534;
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0))) {
+	                    if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2159,10 +2155,10 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 544;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0)) {
+	            if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0)) {
 	                this.state = 543;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0))) {
+	                if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2184,10 +2180,10 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 551;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0)) {
+	            if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0)) {
 	                this.state = 550;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0))) {
+	                if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2199,7 +2195,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 554;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.T__22) {
+	            if(_la===23) {
 	                this.state = 553;
 	                this.enumElement();
 	            }
@@ -2212,7 +2208,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 23);
 	            this.state = 558;
 	            _la = this._input.LA(1);
-	            if(!(_la===krlParser.CIRC_REL || _la===krlParser.CIRC)) {
+	            if(!(_la===41 || _la===42)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2228,7 +2224,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 565;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.T__1) {
+	            if(_la===2) {
 	                this.state = 562;
 	                this.match(krlParser.T__1);
 	                this.state = 563;
@@ -2240,10 +2236,10 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 568;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0)) {
+	            if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0)) {
 	                this.state = 567;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (krlParser.C_DIS - 33)) | (1 << (krlParser.C_ORI - 33)) | (1 << (krlParser.C_VEL - 33)))) !== 0))) {
+	                if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 11) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2282,7 +2278,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 585;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.PRIO) {
+	            if(_la===82) {
 	                this.state = 582;
 	                this.match(krlParser.PRIO);
 	                this.state = 583;
@@ -2331,7 +2327,7 @@ export default class krlParser extends antlr4.Parser {
 	analogOutputStatement() {
 	    let localctx = new AnalogOutputStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, krlParser.RULE_analogOutputStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 597;
@@ -2348,7 +2344,7 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 605;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===krlParser.IDENTIFIER) {
+	            while(_la===110) {
 	                this.state = 600;
 	                this.match(krlParser.IDENTIFIER);
 	                this.state = 601;
@@ -2430,13 +2426,13 @@ export default class krlParser extends antlr4.Parser {
 	switchBlockStatementGroups() {
 	    let localctx = new SwitchBlockStatementGroupsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, krlParser.RULE_switchBlockStatementGroups);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 622;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.NEWLINE) {
+	        while(_la===104) {
 	            this.state = 619;
 	            this.match(krlParser.NEWLINE);
 	            this.state = 624;
@@ -2454,11 +2450,11 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 630; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===krlParser.CASE);
+	        } while(_la===37);
 	        this.state = 635;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===krlParser.DEFAULT) {
+	        if(_la===48) {
 	            this.state = 632;
 	            this.defaultLabel();
 	            this.state = 633;
@@ -2484,7 +2480,7 @@ export default class krlParser extends antlr4.Parser {
 	caseLabel() {
 	    let localctx = new CaseLabelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, krlParser.RULE_caseLabel);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 637;
@@ -2494,7 +2490,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 643;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__1) {
+	        while(_la===2) {
 	            this.state = 639;
 	            this.match(krlParser.T__1);
 	            this.state = 640;
@@ -2549,7 +2545,7 @@ export default class krlParser extends antlr4.Parser {
 	expressionList() {
 	    let localctx = new ExpressionListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, krlParser.RULE_expressionList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 651;
@@ -2557,7 +2553,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 656;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__1) {
+	        while(_la===2) {
 	            this.state = 652;
 	            this.match(krlParser.T__1);
 	            this.state = 653;
@@ -2585,7 +2581,7 @@ export default class krlParser extends antlr4.Parser {
 	assignmentExpression() {
 	    let localctx = new AssignmentExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, krlParser.RULE_assignmentExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 659;
@@ -2593,7 +2589,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 664;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__0) {
+	        while(_la===1) {
 	            this.state = 660;
 	            this.match(krlParser.T__0);
 	            this.state = 661;
@@ -2621,7 +2617,7 @@ export default class krlParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, krlParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 667;
@@ -2629,7 +2625,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 673;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__11) | (1 << krlParser.T__12) | (1 << krlParser.T__13) | (1 << krlParser.T__14) | (1 << krlParser.T__15) | (1 << krlParser.T__16))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 258048) !== 0)) {
 	            this.state = 668;
 	            this.relationalOp();
 	            this.state = 669;
@@ -2657,12 +2653,12 @@ export default class krlParser extends antlr4.Parser {
 	relationalOp() {
 	    let localctx = new RelationalOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, krlParser.RULE_relationalOp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 676;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__11) | (1 << krlParser.T__12) | (1 << krlParser.T__13) | (1 << krlParser.T__14) | (1 << krlParser.T__15) | (1 << krlParser.T__16))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 258048) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2688,7 +2684,7 @@ export default class krlParser extends antlr4.Parser {
 	conditionalOrExpression() {
 	    let localctx = new ConditionalOrExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, krlParser.RULE_conditionalOrExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 678;
@@ -2696,10 +2692,10 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 683;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.B_OR || _la===krlParser.OR) {
+	        while(_la===29 || _la===81) {
 	            this.state = 679;
 	            _la = this._input.LA(1);
-	            if(!(_la===krlParser.B_OR || _la===krlParser.OR)) {
+	            if(!(_la===29 || _la===81)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2731,7 +2727,7 @@ export default class krlParser extends antlr4.Parser {
 	exclusiveOrExpression() {
 	    let localctx = new ExclusiveOrExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, krlParser.RULE_exclusiveOrExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 686;
@@ -2739,10 +2735,10 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 691;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.B_EXOR || _la===krlParser.EXOR) {
+	        while(_la===30 || _la===101) {
 	            this.state = 687;
 	            _la = this._input.LA(1);
-	            if(!(_la===krlParser.B_EXOR || _la===krlParser.EXOR)) {
+	            if(!(_la===30 || _la===101)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2774,7 +2770,7 @@ export default class krlParser extends antlr4.Parser {
 	conditionalAndExpression() {
 	    let localctx = new ConditionalAndExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, krlParser.RULE_conditionalAndExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 694;
@@ -2782,10 +2778,10 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 699;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.AND || _la===krlParser.B_AND) {
+	        while(_la===24 || _la===27) {
 	            this.state = 695;
 	            _la = this._input.LA(1);
-	            if(!(_la===krlParser.AND || _la===krlParser.B_AND)) {
+	            if(!(_la===24 || _la===27)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2817,7 +2813,7 @@ export default class krlParser extends antlr4.Parser {
 	additiveExpression() {
 	    let localctx = new AdditiveExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, krlParser.RULE_additiveExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 702;
@@ -2825,10 +2821,10 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 707;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__17 || _la===krlParser.T__18) {
+	        while(_la===18 || _la===19) {
 	            this.state = 703;
 	            _la = this._input.LA(1);
-	            if(!(_la===krlParser.T__17 || _la===krlParser.T__18)) {
+	            if(!(_la===18 || _la===19)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2860,7 +2856,7 @@ export default class krlParser extends antlr4.Parser {
 	multiplicativeExpression() {
 	    let localctx = new MultiplicativeExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, krlParser.RULE_multiplicativeExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 710;
@@ -2868,10 +2864,10 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 715;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__19 || _la===krlParser.T__20) {
+	        while(_la===20 || _la===21) {
 	            this.state = 711;
 	            _la = this._input.LA(1);
-	            if(!(_la===krlParser.T__19 || _la===krlParser.T__20)) {
+	            if(!(_la===20 || _la===21)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2903,7 +2899,7 @@ export default class krlParser extends antlr4.Parser {
 	geometricExpression() {
 	    let localctx = new GeometricExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 104, krlParser.RULE_geometricExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 718;
@@ -2911,7 +2907,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 723;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===krlParser.T__3) {
+	        while(_la===4) {
 	            this.state = 719;
 	            this.match(krlParser.T__3);
 	            this.state = 720;
@@ -2943,32 +2939,32 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 731;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.NOT:
+	        case 80:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 726;
 	            this.match(krlParser.NOT);
 	            this.state = 727;
 	            this.unaryNotExpression();
 	            break;
-	        case krlParser.B_NOT:
+	        case 28:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 728;
 	            this.match(krlParser.B_NOT);
 	            this.state = 729;
 	            this.unaryNotExpression();
 	            break;
-	        case krlParser.T__2:
-	        case krlParser.T__5:
-	        case krlParser.T__17:
-	        case krlParser.T__18:
-	        case krlParser.T__22:
-	        case krlParser.FALSE:
-	        case krlParser.TRUE:
-	        case krlParser.CHARLITERAL:
-	        case krlParser.STRINGLITERAL:
-	        case krlParser.FLOATLITERAL:
-	        case krlParser.INTLITERAL:
-	        case krlParser.IDENTIFIER:
+	        case 3:
+	        case 6:
+	        case 18:
+	        case 19:
+	        case 23:
+	        case 65:
+	        case 96:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 730;
 	            this.unaryPlusMinuxExpression();
@@ -2999,30 +2995,30 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 738;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.T__17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 733;
 	            this.match(krlParser.T__17);
 	            this.state = 734;
 	            this.unaryPlusMinuxExpression();
 	            break;
-	        case krlParser.T__18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 735;
 	            this.match(krlParser.T__18);
 	            this.state = 736;
 	            this.unaryPlusMinuxExpression();
 	            break;
-	        case krlParser.T__2:
-	        case krlParser.T__5:
-	        case krlParser.T__22:
-	        case krlParser.FALSE:
-	        case krlParser.TRUE:
-	        case krlParser.CHARLITERAL:
-	        case krlParser.STRINGLITERAL:
-	        case krlParser.FLOATLITERAL:
-	        case krlParser.INTLITERAL:
-	        case krlParser.IDENTIFIER:
+	        case 3:
+	        case 6:
+	        case 23:
+	        case 65:
+	        case 96:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 737;
 	            this.primary();
@@ -3049,24 +3045,24 @@ export default class krlParser extends antlr4.Parser {
 	primary() {
 	    let localctx = new PrimaryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, krlParser.RULE_primary);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 753;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 740;
 	            this.parExpression();
 	            break;
-	        case krlParser.IDENTIFIER:
+	        case 110:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 741;
 	            this.variableName();
 	            this.state = 746;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===krlParser.T__21) {
+	            while(_la===22) {
 	                this.state = 742;
 	                this.match(krlParser.T__21);
 	                this.state = 743;
@@ -3078,20 +3074,20 @@ export default class krlParser extends antlr4.Parser {
 	            this.state = 750;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.T__5) {
+	            if(_la===6) {
 	                this.state = 749;
 	                this.arguments();
 	            }
 
 	            break;
-	        case krlParser.T__2:
-	        case krlParser.T__22:
-	        case krlParser.FALSE:
-	        case krlParser.TRUE:
-	        case krlParser.CHARLITERAL:
-	        case krlParser.STRINGLITERAL:
-	        case krlParser.FLOATLITERAL:
-	        case krlParser.INTLITERAL:
+	        case 3:
+	        case 23:
+	        case 65:
+	        case 96:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 752;
 	            this.literal();
@@ -3145,28 +3141,28 @@ export default class krlParser extends antlr4.Parser {
 	type_() {
 	    let localctx = new Type_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, krlParser.RULE_type_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 775;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.BOOL:
-	        case krlParser.CHAR:
-	        case krlParser.INT:
-	        case krlParser.REAL:
+	        case 31:
+	        case 40:
+	        case 73:
+	        case 86:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 759;
 	            this.primitiveType();
 	            this.state = 765;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.T__9) {
+	            if(_la===10) {
 	                this.state = 760;
 	                this.match(krlParser.T__9);
 	                this.state = 762;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===krlParser.INTLITERAL) {
+	                if(_la===109) {
 	                    this.state = 761;
 	                    this.match(krlParser.INTLITERAL);
 	                }
@@ -3176,20 +3172,20 @@ export default class krlParser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case krlParser.IDENTIFIER:
+	        case 110:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 767;
 	            this.typeName();
 	            this.state = 773;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===krlParser.T__9) {
+	            if(_la===10) {
 	                this.state = 768;
 	                this.match(krlParser.T__9);
 	                this.state = 770;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===krlParser.INTLITERAL) {
+	                if(_la===109) {
 	                    this.state = 769;
 	                    this.match(krlParser.INTLITERAL);
 	                }
@@ -3244,12 +3240,12 @@ export default class krlParser extends antlr4.Parser {
 	primitiveType() {
 	    let localctx = new PrimitiveTypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, krlParser.RULE_primitiveType);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 779;
 	        _la = this._input.LA(1);
-	        if(!(_la===krlParser.BOOL || _la===krlParser.CHAR || _la===krlParser.INT || _la===krlParser.REAL)) {
+	        if(!(_la===31 || _la===40 || _la===73 || _la===86)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3275,7 +3271,7 @@ export default class krlParser extends antlr4.Parser {
 	arguments() {
 	    let localctx = new ArgumentsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 120, krlParser.RULE_arguments);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 781;
@@ -3283,7 +3279,7 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 783;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << krlParser.T__2) | (1 << krlParser.T__5) | (1 << krlParser.T__17) | (1 << krlParser.T__18) | (1 << krlParser.T__22) | (1 << krlParser.B_NOT))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (krlParser.FALSE - 65)) | (1 << (krlParser.NOT - 65)) | (1 << (krlParser.TRUE - 65)))) !== 0) || ((((_la - 106)) & ~0x1f) == 0 && ((1 << (_la - 106)) & ((1 << (krlParser.CHARLITERAL - 106)) | (1 << (krlParser.STRINGLITERAL - 106)) | (1 << (krlParser.FLOATLITERAL - 106)) | (1 << (krlParser.INTLITERAL - 106)) | (1 << (krlParser.IDENTIFIER - 106)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 277610568) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 2147516417) !== 0) || ((((_la - 106)) & ~0x1f) === 0 && ((1 << (_la - 106)) & 31) !== 0)) {
 	            this.state = 782;
 	            this.expressionList();
 	        }
@@ -3313,42 +3309,42 @@ export default class krlParser extends antlr4.Parser {
 	        this.state = 795;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case krlParser.INTLITERAL:
+	        case 109:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 787;
 	            this.match(krlParser.INTLITERAL);
 	            break;
-	        case krlParser.FLOATLITERAL:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 788;
 	            this.match(krlParser.FLOATLITERAL);
 	            break;
-	        case krlParser.CHARLITERAL:
+	        case 106:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 789;
 	            this.match(krlParser.CHARLITERAL);
 	            break;
-	        case krlParser.STRINGLITERAL:
+	        case 107:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 790;
 	            this.match(krlParser.STRINGLITERAL);
 	            break;
-	        case krlParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 791;
 	            this.structLiteral();
 	            break;
-	        case krlParser.TRUE:
+	        case 96:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 792;
 	            this.match(krlParser.TRUE);
 	            break;
-	        case krlParser.FALSE:
+	        case 65:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 793;
 	            this.match(krlParser.FALSE);
 	            break;
-	        case krlParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 794;
 	            this.enumElement();
@@ -6873,3 +6869,12 @@ krlParser.PrimitiveTypeContext = PrimitiveTypeContext;
 krlParser.ArgumentsContext = ArgumentsContext; 
 krlParser.LiteralContext = LiteralContext; 
 krlParser.EnumElementContext = EnumElementContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,41 +1,41 @@
-// Generated from ./gedcom/gedcom.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/gedcom/gedcom.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import gedcomListener from './gedcomListener.js';
-const serializedATN = [4,1,20,114,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,20,116,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
-2,13,7,13,2,14,7,14,2,15,7,15,1,0,4,0,34,8,0,11,0,12,0,35,1,1,1,1,3,1,40,
-8,1,1,1,1,1,3,1,44,8,1,1,1,1,1,1,2,4,2,49,8,2,11,2,12,2,50,1,3,1,3,1,4,4,
-4,56,8,4,11,4,12,4,57,1,5,4,5,61,8,5,11,5,12,5,62,1,6,1,6,1,6,3,6,68,8,6,
-1,7,1,7,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,3,8,80,8,8,1,9,4,9,83,8,9,11,9,12,
-9,84,1,10,1,10,1,10,1,10,1,10,1,11,4,11,93,8,11,11,11,12,11,94,1,12,1,12,
-1,12,1,12,3,12,101,8,12,1,13,1,13,1,14,1,14,1,14,1,14,1,14,3,14,110,8,14,
-1,15,1,15,1,15,0,0,16,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,0,2,1,0,
-17,18,1,0,4,16,117,0,33,1,0,0,0,2,37,1,0,0,0,4,48,1,0,0,0,6,52,1,0,0,0,8,
-55,1,0,0,0,10,60,1,0,0,0,12,67,1,0,0,0,14,69,1,0,0,0,16,79,1,0,0,0,18,82,
-1,0,0,0,20,86,1,0,0,0,22,92,1,0,0,0,24,100,1,0,0,0,26,102,1,0,0,0,28,109,
-1,0,0,0,30,111,1,0,0,0,32,34,3,2,1,0,33,32,1,0,0,0,34,35,1,0,0,0,35,33,1,
-0,0,0,35,36,1,0,0,0,36,1,1,0,0,0,37,39,3,4,2,0,38,40,3,6,3,0,39,38,1,0,0,
-0,39,40,1,0,0,0,40,41,1,0,0,0,41,43,3,8,4,0,42,44,3,10,5,0,43,42,1,0,0,0,
-43,44,1,0,0,0,44,45,1,0,0,0,45,46,5,19,0,0,46,3,1,0,0,0,47,49,5,18,0,0,48,
-47,1,0,0,0,49,50,1,0,0,0,50,48,1,0,0,0,50,51,1,0,0,0,51,5,1,0,0,0,52,53,
-3,20,10,0,53,7,1,0,0,0,54,56,3,26,13,0,55,54,1,0,0,0,56,57,1,0,0,0,57,55,
-1,0,0,0,57,58,1,0,0,0,58,9,1,0,0,0,59,61,3,12,6,0,60,59,1,0,0,0,61,62,1,
-0,0,0,62,60,1,0,0,0,62,63,1,0,0,0,63,11,1,0,0,0,64,68,3,20,10,0,65,68,3,
-14,7,0,66,68,3,28,14,0,67,64,1,0,0,0,67,65,1,0,0,0,67,66,1,0,0,0,68,13,1,
-0,0,0,69,70,5,1,0,0,70,71,5,2,0,0,71,72,3,18,9,0,72,73,5,1,0,0,73,74,3,16,
-8,0,74,15,1,0,0,0,75,80,5,17,0,0,76,80,5,18,0,0,77,80,3,30,15,0,78,80,5,
-2,0,0,79,75,1,0,0,0,79,76,1,0,0,0,79,77,1,0,0,0,79,78,1,0,0,0,80,17,1,0,
-0,0,81,83,3,28,14,0,82,81,1,0,0,0,83,84,1,0,0,0,84,82,1,0,0,0,84,85,1,0,
-0,0,85,19,1,0,0,0,86,87,5,1,0,0,87,88,3,26,13,0,88,89,3,22,11,0,89,90,5,
-1,0,0,90,21,1,0,0,0,91,93,3,24,12,0,92,91,1,0,0,0,93,94,1,0,0,0,94,92,1,
-0,0,0,94,95,1,0,0,0,95,23,1,0,0,0,96,101,5,17,0,0,97,101,5,18,0,0,98,101,
-3,30,15,0,99,101,5,2,0,0,100,96,1,0,0,0,100,97,1,0,0,0,100,98,1,0,0,0,100,
-99,1,0,0,0,101,25,1,0,0,0,102,103,7,0,0,0,103,27,1,0,0,0,104,110,5,17,0,
-0,105,110,5,18,0,0,106,110,3,30,15,0,107,110,5,2,0,0,108,110,5,3,0,0,109,
-104,1,0,0,0,109,105,1,0,0,0,109,106,1,0,0,0,109,107,1,0,0,0,109,108,1,0,
-0,0,110,29,1,0,0,0,111,112,7,1,0,0,112,31,1,0,0,0,12,35,39,43,50,57,62,67,
-79,84,94,100,109];
+2,13,7,13,2,14,7,14,2,15,7,15,1,0,4,0,34,8,0,11,0,12,0,35,1,0,1,0,1,1,1,
+1,3,1,42,8,1,1,1,1,1,3,1,46,8,1,1,1,1,1,1,2,4,2,51,8,2,11,2,12,2,52,1,3,
+1,3,1,4,4,4,58,8,4,11,4,12,4,59,1,5,4,5,63,8,5,11,5,12,5,64,1,6,1,6,1,6,
+3,6,70,8,6,1,7,1,7,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,3,8,82,8,8,1,9,4,9,85,
+8,9,11,9,12,9,86,1,10,1,10,1,10,1,10,1,10,1,11,4,11,95,8,11,11,11,12,11,
+96,1,12,1,12,1,12,1,12,3,12,103,8,12,1,13,1,13,1,14,1,14,1,14,1,14,1,14,
+3,14,112,8,14,1,15,1,15,1,15,0,0,16,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
+28,30,0,2,1,0,17,18,1,0,4,16,119,0,33,1,0,0,0,2,39,1,0,0,0,4,50,1,0,0,0,
+6,54,1,0,0,0,8,57,1,0,0,0,10,62,1,0,0,0,12,69,1,0,0,0,14,71,1,0,0,0,16,81,
+1,0,0,0,18,84,1,0,0,0,20,88,1,0,0,0,22,94,1,0,0,0,24,102,1,0,0,0,26,104,
+1,0,0,0,28,111,1,0,0,0,30,113,1,0,0,0,32,34,3,2,1,0,33,32,1,0,0,0,34,35,
+1,0,0,0,35,33,1,0,0,0,35,36,1,0,0,0,36,37,1,0,0,0,37,38,5,0,0,1,38,1,1,0,
+0,0,39,41,3,4,2,0,40,42,3,6,3,0,41,40,1,0,0,0,41,42,1,0,0,0,42,43,1,0,0,
+0,43,45,3,8,4,0,44,46,3,10,5,0,45,44,1,0,0,0,45,46,1,0,0,0,46,47,1,0,0,0,
+47,48,5,19,0,0,48,3,1,0,0,0,49,51,5,18,0,0,50,49,1,0,0,0,51,52,1,0,0,0,52,
+50,1,0,0,0,52,53,1,0,0,0,53,5,1,0,0,0,54,55,3,20,10,0,55,7,1,0,0,0,56,58,
+3,26,13,0,57,56,1,0,0,0,58,59,1,0,0,0,59,57,1,0,0,0,59,60,1,0,0,0,60,9,1,
+0,0,0,61,63,3,12,6,0,62,61,1,0,0,0,63,64,1,0,0,0,64,62,1,0,0,0,64,65,1,0,
+0,0,65,11,1,0,0,0,66,70,3,20,10,0,67,70,3,14,7,0,68,70,3,28,14,0,69,66,1,
+0,0,0,69,67,1,0,0,0,69,68,1,0,0,0,70,13,1,0,0,0,71,72,5,1,0,0,72,73,5,2,
+0,0,73,74,3,18,9,0,74,75,5,1,0,0,75,76,3,16,8,0,76,15,1,0,0,0,77,82,5,17,
+0,0,78,82,5,18,0,0,79,82,3,30,15,0,80,82,5,2,0,0,81,77,1,0,0,0,81,78,1,0,
+0,0,81,79,1,0,0,0,81,80,1,0,0,0,82,17,1,0,0,0,83,85,3,28,14,0,84,83,1,0,
+0,0,85,86,1,0,0,0,86,84,1,0,0,0,86,87,1,0,0,0,87,19,1,0,0,0,88,89,5,1,0,
+0,89,90,3,26,13,0,90,91,3,22,11,0,91,92,5,1,0,0,92,21,1,0,0,0,93,95,3,24,
+12,0,94,93,1,0,0,0,95,96,1,0,0,0,96,94,1,0,0,0,96,97,1,0,0,0,97,23,1,0,0,
+0,98,103,5,17,0,0,99,103,5,18,0,0,100,103,3,30,15,0,101,103,5,2,0,0,102,
+98,1,0,0,0,102,99,1,0,0,0,102,100,1,0,0,0,102,101,1,0,0,0,103,25,1,0,0,0,
+104,105,7,0,0,0,105,27,1,0,0,0,106,112,5,17,0,0,107,112,5,18,0,0,108,112,
+3,30,15,0,109,112,5,2,0,0,110,112,5,3,0,0,111,106,1,0,0,0,111,107,1,0,0,
+0,111,108,1,0,0,0,111,109,1,0,0,0,111,110,1,0,0,0,112,29,1,0,0,0,113,114,
+7,1,0,0,114,31,1,0,0,0,12,35,41,45,52,59,64,69,81,86,96,102,111];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -66,16 +66,12 @@ export default class gedcomParser extends antlr4.Parser {
         this.symbolicNames = gedcomParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	gedcom() {
 	    let localctx = new GedcomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, gedcomParser.RULE_gedcom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 33; 
@@ -87,7 +83,9 @@ export default class gedcomParser extends antlr4.Parser {
 	            this.state = 35; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===gedcomParser.DIGIT);
+	        } while(_la===18);
+	        this.state = 37;
+	        this.match(gedcomParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -107,30 +105,30 @@ export default class gedcomParser extends antlr4.Parser {
 	line() {
 	    let localctx = new LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, gedcomParser.RULE_line);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 37;
-	        this.level();
 	        this.state = 39;
+	        this.level();
+	        this.state = 41;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===gedcomParser.T__0) {
-	            this.state = 38;
+	        if(_la===1) {
+	            this.state = 40;
 	            this.opt_xref_id();
 	        }
 
-	        this.state = 41;
-	        this.tag();
 	        this.state = 43;
+	        this.tag();
+	        this.state = 45;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gedcomParser.T__0) | (1 << gedcomParser.T__1) | (1 << gedcomParser.T__2) | (1 << gedcomParser.T__3) | (1 << gedcomParser.T__4) | (1 << gedcomParser.T__5) | (1 << gedcomParser.T__6) | (1 << gedcomParser.T__7) | (1 << gedcomParser.T__8) | (1 << gedcomParser.T__9) | (1 << gedcomParser.T__10) | (1 << gedcomParser.T__11) | (1 << gedcomParser.T__12) | (1 << gedcomParser.T__13) | (1 << gedcomParser.T__14) | (1 << gedcomParser.T__15) | (1 << gedcomParser.ALPHA) | (1 << gedcomParser.DIGIT))) !== 0)) {
-	            this.state = 42;
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524286) !== 0)) {
+	            this.state = 44;
 	            this.line_value();
 	        }
 
-	        this.state = 45;
+	        this.state = 47;
 	        this.match(gedcomParser.EOL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -153,19 +151,19 @@ export default class gedcomParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, gedcomParser.RULE_level);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 48; 
+	        this.state = 50; 
 	        this._errHandler.sync(this);
 	        var _alt = 1;
 	        do {
 	        	switch (_alt) {
 	        	case 1:
-	        		this.state = 47;
+	        		this.state = 49;
 	        		this.match(gedcomParser.DIGIT);
 	        		break;
 	        	default:
 	        		throw new antlr4.error.NoViableAltException(this);
 	        	}
-	        	this.state = 50; 
+	        	this.state = 52; 
 	        	this._errHandler.sync(this);
 	        	_alt = this._interp.adaptivePredict(this._input,3, this._ctx);
 	        } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
@@ -190,7 +188,7 @@ export default class gedcomParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, gedcomParser.RULE_opt_xref_id);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 52;
+	        this.state = 54;
 	        this.pointer();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -213,19 +211,19 @@ export default class gedcomParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, gedcomParser.RULE_tag);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 55; 
+	        this.state = 57; 
 	        this._errHandler.sync(this);
 	        var _alt = 1;
 	        do {
 	        	switch (_alt) {
 	        	case 1:
-	        		this.state = 54;
+	        		this.state = 56;
 	        		this.alphanum();
 	        		break;
 	        	default:
 	        		throw new antlr4.error.NoViableAltException(this);
 	        	}
-	        	this.state = 57; 
+	        	this.state = 59; 
 	        	this._errHandler.sync(this);
 	        	_alt = this._interp.adaptivePredict(this._input,4, this._ctx);
 	        } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
@@ -248,19 +246,19 @@ export default class gedcomParser extends antlr4.Parser {
 	line_value() {
 	    let localctx = new Line_valueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, gedcomParser.RULE_line_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 60; 
+	        this.state = 62; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 59;
+	            this.state = 61;
 	            this.line_item();
-	            this.state = 62; 
+	            this.state = 64; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gedcomParser.T__0) | (1 << gedcomParser.T__1) | (1 << gedcomParser.T__2) | (1 << gedcomParser.T__3) | (1 << gedcomParser.T__4) | (1 << gedcomParser.T__5) | (1 << gedcomParser.T__6) | (1 << gedcomParser.T__7) | (1 << gedcomParser.T__8) | (1 << gedcomParser.T__9) | (1 << gedcomParser.T__10) | (1 << gedcomParser.T__11) | (1 << gedcomParser.T__12) | (1 << gedcomParser.T__13) | (1 << gedcomParser.T__14) | (1 << gedcomParser.T__15) | (1 << gedcomParser.ALPHA) | (1 << gedcomParser.DIGIT))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 524286) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -281,25 +279,25 @@ export default class gedcomParser extends antlr4.Parser {
 	    let localctx = new Line_itemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, gedcomParser.RULE_line_item);
 	    try {
-	        this.state = 67;
+	        this.state = 69;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 64;
+	            this.state = 66;
 	            this.pointer();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 65;
+	            this.state = 67;
 	            this.escape();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 66;
+	            this.state = 68;
 	            this.anychar();
 	            break;
 
@@ -325,15 +323,15 @@ export default class gedcomParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, gedcomParser.RULE_escape);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 69;
-	        this.match(gedcomParser.T__0);
-	        this.state = 70;
-	        this.match(gedcomParser.T__1);
 	        this.state = 71;
-	        this.escape_text();
-	        this.state = 72;
 	        this.match(gedcomParser.T__0);
+	        this.state = 72;
+	        this.match(gedcomParser.T__1);
 	        this.state = 73;
+	        this.escape_text();
+	        this.state = 74;
+	        this.match(gedcomParser.T__0);
+	        this.state = 75;
 	        this.non_at();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -355,39 +353,39 @@ export default class gedcomParser extends antlr4.Parser {
 	    let localctx = new Non_atContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, gedcomParser.RULE_non_at);
 	    try {
-	        this.state = 79;
+	        this.state = 81;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case gedcomParser.ALPHA:
+	        case 17:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 75;
+	            this.state = 77;
 	            this.match(gedcomParser.ALPHA);
 	            break;
-	        case gedcomParser.DIGIT:
+	        case 18:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 76;
+	            this.state = 78;
 	            this.match(gedcomParser.DIGIT);
 	            break;
-	        case gedcomParser.T__3:
-	        case gedcomParser.T__4:
-	        case gedcomParser.T__5:
-	        case gedcomParser.T__6:
-	        case gedcomParser.T__7:
-	        case gedcomParser.T__8:
-	        case gedcomParser.T__9:
-	        case gedcomParser.T__10:
-	        case gedcomParser.T__11:
-	        case gedcomParser.T__12:
-	        case gedcomParser.T__13:
-	        case gedcomParser.T__14:
-	        case gedcomParser.T__15:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 77;
+	            this.state = 79;
 	            this.otherchar();
 	            break;
-	        case gedcomParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 78;
+	            this.state = 80;
 	            this.match(gedcomParser.T__1);
 	            break;
 	        default:
@@ -412,19 +410,19 @@ export default class gedcomParser extends antlr4.Parser {
 	escape_text() {
 	    let localctx = new Escape_textContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, gedcomParser.RULE_escape_text);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 82; 
+	        this.state = 84; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 81;
+	            this.state = 83;
 	            this.anychar();
-	            this.state = 84; 
+	            this.state = 86; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gedcomParser.T__1) | (1 << gedcomParser.T__2) | (1 << gedcomParser.T__3) | (1 << gedcomParser.T__4) | (1 << gedcomParser.T__5) | (1 << gedcomParser.T__6) | (1 << gedcomParser.T__7) | (1 << gedcomParser.T__8) | (1 << gedcomParser.T__9) | (1 << gedcomParser.T__10) | (1 << gedcomParser.T__11) | (1 << gedcomParser.T__12) | (1 << gedcomParser.T__13) | (1 << gedcomParser.T__14) | (1 << gedcomParser.T__15) | (1 << gedcomParser.ALPHA) | (1 << gedcomParser.DIGIT))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 524284) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -446,13 +444,13 @@ export default class gedcomParser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, gedcomParser.RULE_pointer);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 86;
-	        this.match(gedcomParser.T__0);
-	        this.state = 87;
-	        this.alphanum();
 	        this.state = 88;
-	        this.pointer_string();
+	        this.match(gedcomParser.T__0);
 	        this.state = 89;
+	        this.alphanum();
+	        this.state = 90;
+	        this.pointer_string();
+	        this.state = 91;
 	        this.match(gedcomParser.T__0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -473,19 +471,19 @@ export default class gedcomParser extends antlr4.Parser {
 	pointer_string() {
 	    let localctx = new Pointer_stringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, gedcomParser.RULE_pointer_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 92; 
+	        this.state = 94; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 91;
+	            this.state = 93;
 	            this.pointer_char();
-	            this.state = 94; 
+	            this.state = 96; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gedcomParser.T__1) | (1 << gedcomParser.T__3) | (1 << gedcomParser.T__4) | (1 << gedcomParser.T__5) | (1 << gedcomParser.T__6) | (1 << gedcomParser.T__7) | (1 << gedcomParser.T__8) | (1 << gedcomParser.T__9) | (1 << gedcomParser.T__10) | (1 << gedcomParser.T__11) | (1 << gedcomParser.T__12) | (1 << gedcomParser.T__13) | (1 << gedcomParser.T__14) | (1 << gedcomParser.T__15) | (1 << gedcomParser.ALPHA) | (1 << gedcomParser.DIGIT))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 524276) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -506,39 +504,39 @@ export default class gedcomParser extends antlr4.Parser {
 	    let localctx = new Pointer_charContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, gedcomParser.RULE_pointer_char);
 	    try {
-	        this.state = 100;
+	        this.state = 102;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case gedcomParser.ALPHA:
+	        case 17:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 96;
+	            this.state = 98;
 	            this.match(gedcomParser.ALPHA);
 	            break;
-	        case gedcomParser.DIGIT:
+	        case 18:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 97;
+	            this.state = 99;
 	            this.match(gedcomParser.DIGIT);
 	            break;
-	        case gedcomParser.T__3:
-	        case gedcomParser.T__4:
-	        case gedcomParser.T__5:
-	        case gedcomParser.T__6:
-	        case gedcomParser.T__7:
-	        case gedcomParser.T__8:
-	        case gedcomParser.T__9:
-	        case gedcomParser.T__10:
-	        case gedcomParser.T__11:
-	        case gedcomParser.T__12:
-	        case gedcomParser.T__13:
-	        case gedcomParser.T__14:
-	        case gedcomParser.T__15:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 98;
+	            this.state = 100;
 	            this.otherchar();
 	            break;
-	        case gedcomParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 99;
+	            this.state = 101;
 	            this.match(gedcomParser.T__1);
 	            break;
 	        default:
@@ -563,12 +561,12 @@ export default class gedcomParser extends antlr4.Parser {
 	alphanum() {
 	    let localctx = new AlphanumContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, gedcomParser.RULE_alphanum);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 102;
+	        this.state = 104;
 	        _la = this._input.LA(1);
-	        if(!(_la===gedcomParser.ALPHA || _la===gedcomParser.DIGIT)) {
+	        if(!(_la===17 || _la===18)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -595,44 +593,44 @@ export default class gedcomParser extends antlr4.Parser {
 	    let localctx = new AnycharContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, gedcomParser.RULE_anychar);
 	    try {
-	        this.state = 109;
+	        this.state = 111;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case gedcomParser.ALPHA:
+	        case 17:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 104;
+	            this.state = 106;
 	            this.match(gedcomParser.ALPHA);
 	            break;
-	        case gedcomParser.DIGIT:
+	        case 18:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 105;
+	            this.state = 107;
 	            this.match(gedcomParser.DIGIT);
 	            break;
-	        case gedcomParser.T__3:
-	        case gedcomParser.T__4:
-	        case gedcomParser.T__5:
-	        case gedcomParser.T__6:
-	        case gedcomParser.T__7:
-	        case gedcomParser.T__8:
-	        case gedcomParser.T__9:
-	        case gedcomParser.T__10:
-	        case gedcomParser.T__11:
-	        case gedcomParser.T__12:
-	        case gedcomParser.T__13:
-	        case gedcomParser.T__14:
-	        case gedcomParser.T__15:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 106;
+	            this.state = 108;
 	            this.otherchar();
 	            break;
-	        case gedcomParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 107;
+	            this.state = 109;
 	            this.match(gedcomParser.T__1);
 	            break;
-	        case gedcomParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 108;
+	            this.state = 110;
 	            this.match(gedcomParser.T__2);
 	            break;
 	        default:
@@ -657,12 +655,12 @@ export default class gedcomParser extends antlr4.Parser {
 	otherchar() {
 	    let localctx = new OthercharContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, gedcomParser.RULE_otherchar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 111;
+	        this.state = 113;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gedcomParser.T__3) | (1 << gedcomParser.T__4) | (1 << gedcomParser.T__5) | (1 << gedcomParser.T__6) | (1 << gedcomParser.T__7) | (1 << gedcomParser.T__8) | (1 << gedcomParser.T__9) | (1 << gedcomParser.T__10) | (1 << gedcomParser.T__11) | (1 << gedcomParser.T__12) | (1 << gedcomParser.T__13) | (1 << gedcomParser.T__14) | (1 << gedcomParser.T__15))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 131056) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -738,6 +736,10 @@ class GedcomContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = gedcomParser.RULE_gedcom;
     }
+
+	EOF() {
+	    return this.getToken(gedcomParser.EOF, 0);
+	};
 
 	line = function(i) {
 	    if(i===undefined) {
@@ -1402,3 +1404,12 @@ gedcomParser.Pointer_charContext = Pointer_charContext;
 gedcomParser.AlphanumContext = AlphanumContext; 
 gedcomParser.AnycharContext = AnycharContext; 
 gedcomParser.OthercharContext = OthercharContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

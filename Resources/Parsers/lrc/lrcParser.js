@@ -1,4 +1,4 @@
-// Generated from ./lrc/lrcParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/lrc/lrcParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import lrcParserListener from './lrcParserListener.js';
@@ -31,22 +31,18 @@ export default class lrcParser extends antlr4.Parser {
         this.symbolicNames = lrcParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	lrc() {
 	    let localctx = new LrcContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, lrcParser.RULE_lrc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 7;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===lrcParser.LB) {
+	        while(_la===1) {
 	            this.state = 4;
 	            this.line();
 	            this.state = 9;
@@ -209,3 +205,12 @@ class LineContext extends antlr4.ParserRuleContext {
 
 lrcParser.LrcContext = LrcContext; 
 lrcParser.LineContext = LineContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

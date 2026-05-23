@@ -1,4 +1,4 @@
-// Generated from ./dif/dif.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/dif/dif.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import difListener from './difListener.js';
@@ -46,10 +46,6 @@ export default class difParser extends antlr4.Parser {
         this.ruleNames = difParser.ruleNames;
         this.literalNames = difParser.literalNames;
         this.symbolicNames = difParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
 
@@ -221,7 +217,7 @@ export default class difParser extends antlr4.Parser {
 	data() {
 	    let localctx = new DataContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, difParser.RULE_data);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 50; 
@@ -233,7 +229,7 @@ export default class difParser extends antlr4.Parser {
 	            this.state = 52; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===difParser.NUM);
+	        } while(_la===9);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -296,14 +292,14 @@ export default class difParser extends antlr4.Parser {
 	directive() {
 	    let localctx = new DirectiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, difParser.RULE_directive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 59;
 	        this.pair();
 	        this.state = 60;
 	        _la = this._input.LA(1);
-	        if(!(_la===difParser.T__4 || _la===difParser.T__5)) {
+	        if(!(_la===5 || _la===6)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -926,3 +922,12 @@ difParser.DirectiveContext = DirectiveContext;
 difParser.String_Context = String_Context; 
 difParser.NumericContext = NumericContext; 
 difParser.PairContext = PairContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

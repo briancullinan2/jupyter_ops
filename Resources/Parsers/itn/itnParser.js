@@ -1,4 +1,4 @@
-// Generated from ./itn/itn.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/itn/itn.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import itnListener from './itnListener.js';
@@ -36,22 +36,18 @@ export default class itnParser extends antlr4.Parser {
         this.symbolicNames = itnParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	itinerary() {
 	    let localctx = new ItineraryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, itnParser.RULE_itinerary);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 15;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===itnParser.NUM) {
+	        while(_la===2) {
 	            this.state = 12;
 	            this.line();
 	            this.state = 17;
@@ -459,3 +455,12 @@ itnParser.LongitudeContext = LongitudeContext;
 itnParser.LatitudeContext = LatitudeContext; 
 itnParser.DescrContext = DescrContext; 
 itnParser.FlagContext = FlagContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

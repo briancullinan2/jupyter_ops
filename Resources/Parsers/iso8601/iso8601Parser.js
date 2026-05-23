@@ -1,4 +1,4 @@
-// Generated from ./iso8601/iso8601.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/iso8601/iso8601.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import iso8601Listener from './iso8601Listener.js';
@@ -278,16 +278,12 @@ export default class iso8601Parser extends antlr4.Parser {
         this.symbolicNames = iso8601Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	int_() {
 	    let localctx = new Int_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, iso8601Parser.RULE_int_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 189; 
@@ -299,7 +295,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 191; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===iso8601Parser.Digit);
+	        } while(_la===16);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -319,7 +315,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	dec() {
 	    let localctx = new DecContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, iso8601Parser.RULE_dec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 194; 
@@ -331,11 +327,11 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 196; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===iso8601Parser.Digit);
+	        } while(_la===16);
 	        this.state = 199;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===iso8601Parser.Fraction) {
+	        if(_la===17) {
 	            this.state = 198;
 	            this.match(iso8601Parser.Fraction);
 	        }
@@ -440,12 +436,12 @@ export default class iso8601Parser extends antlr4.Parser {
 	sint2p() {
 	    let localctx = new Sint2pContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, iso8601Parser.RULE_sint2p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 213;
 	        _la = this._input.LA(1);
-	        if(!(_la===iso8601Parser.T__0 || _la===iso8601Parser.T__1)) {
+	        if(!(_la===1 || _la===2)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -463,7 +459,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 218; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===iso8601Parser.Digit);
+	        } while(_la===16);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -483,12 +479,12 @@ export default class iso8601Parser extends antlr4.Parser {
 	sint4p() {
 	    let localctx = new Sint4pContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, iso8601Parser.RULE_sint4p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 220;
 	        _la = this._input.LA(1);
-	        if(!(_la===iso8601Parser.T__0 || _la===iso8601Parser.T__1)) {
+	        if(!(_la===1 || _la===2)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -536,7 +532,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	dec2() {
 	    let localctx = new Dec2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, iso8601Parser.RULE_dec2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 229;
@@ -546,7 +542,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===iso8601Parser.Fraction) {
+	        if(_la===17) {
 	            this.state = 231;
 	            this.match(iso8601Parser.Fraction);
 	        }
@@ -574,14 +570,14 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 236;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case iso8601Parser.Digit:
+	        case 16:
 	            localctx = new CompleteCenturyContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 234;
 	            this.int2();
 	            break;
-	        case iso8601Parser.T__0:
-	        case iso8601Parser.T__1:
+	        case 1:
+	        case 2:
 	            localctx = new ExpandedCenturyContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 235;
@@ -613,14 +609,14 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 240;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case iso8601Parser.Digit:
+	        case 16:
 	            localctx = new CompleteYearContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 238;
 	            this.int4();
 	            break;
-	        case iso8601Parser.T__0:
-	        case iso8601Parser.T__1:
+	        case 1:
+	        case 2:
 	            localctx = new ExpandedYearContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 239;
@@ -2010,17 +2006,17 @@ export default class iso8601Parser extends antlr4.Parser {
 	timeZoneBasic() {
 	    let localctx = new TimeZoneBasicContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, iso8601Parser.RULE_timeZoneBasic);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 411;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case iso8601Parser.T__0:
-	        case iso8601Parser.T__1:
+	        case 1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 405;
 	            _la = this._input.LA(1);
-	            if(!(_la===iso8601Parser.T__0 || _la===iso8601Parser.T__1)) {
+	            if(!(_la===1 || _la===2)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2032,13 +2028,13 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 408;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===iso8601Parser.Digit) {
+	            if(_la===16) {
 	                this.state = 407;
 	                this.minute();
 	            }
 
 	            break;
-	        case iso8601Parser.Z:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 410;
 	            this.timeZoneUtc();
@@ -2065,17 +2061,17 @@ export default class iso8601Parser extends antlr4.Parser {
 	timeZoneExtended() {
 	    let localctx = new TimeZoneExtendedContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, iso8601Parser.RULE_timeZoneExtended);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 420;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case iso8601Parser.T__0:
-	        case iso8601Parser.T__1:
+	        case 1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 413;
 	            _la = this._input.LA(1);
-	            if(!(_la===iso8601Parser.T__0 || _la===iso8601Parser.T__1)) {
+	            if(!(_la===1 || _la===2)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2087,7 +2083,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 417;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===iso8601Parser.T__2) {
+	            if(_la===3) {
 	                this.state = 415;
 	                this.match(iso8601Parser.T__2);
 	                this.state = 416;
@@ -2095,7 +2091,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case iso8601Parser.Z:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 419;
 	            this.timeZoneUtc();
@@ -2209,13 +2205,13 @@ export default class iso8601Parser extends antlr4.Parser {
 	time() {
 	    let localctx = new TimeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 118, iso8601Parser.RULE_time);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 433;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===iso8601Parser.T) {
+	        if(_la===6) {
 	            this.state = 432;
 	            this.match(iso8601Parser.T);
 	        }
@@ -2225,7 +2221,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 437;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << iso8601Parser.T__0) | (1 << iso8601Parser.T__1) | (1 << iso8601Parser.Z))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 134) !== 0)) {
 	            this.state = 436;
 	            this.timeZone();
 	        }
@@ -2286,7 +2282,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	datetimePreciseBasic() {
 	    let localctx = new DatetimePreciseBasicContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 122, iso8601Parser.RULE_datetimePreciseBasic);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 443;
@@ -2298,7 +2294,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 447;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << iso8601Parser.T__0) | (1 << iso8601Parser.T__1) | (1 << iso8601Parser.Z))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 134) !== 0)) {
 	            this.state = 446;
 	            this.timeZoneBasic();
 	        }
@@ -2322,7 +2318,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	datetimePreciseExtended() {
 	    let localctx = new DatetimePreciseExtendedContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, iso8601Parser.RULE_datetimePreciseExtended);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 449;
@@ -2334,7 +2330,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 453;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << iso8601Parser.T__0) | (1 << iso8601Parser.T__1) | (1 << iso8601Parser.Z))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 134) !== 0)) {
 	            this.state = 452;
 	            this.timeZoneExtended();
 	        }
@@ -2395,7 +2391,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	datetimeBasic() {
 	    let localctx = new DatetimeBasicContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 128, iso8601Parser.RULE_datetimeBasic);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 459;
@@ -2407,7 +2403,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 463;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << iso8601Parser.T__0) | (1 << iso8601Parser.T__1) | (1 << iso8601Parser.Z))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 134) !== 0)) {
 	            this.state = 462;
 	            this.timeZoneBasic();
 	        }
@@ -2431,7 +2427,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	datetimeExtended() {
 	    let localctx = new DatetimeExtendedContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 130, iso8601Parser.RULE_datetimeExtended);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 465;
@@ -2443,7 +2439,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 469;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << iso8601Parser.T__0) | (1 << iso8601Parser.T__1) | (1 << iso8601Parser.Z))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 134) !== 0)) {
 	            this.state = 468;
 	            this.timeZoneExtended();
 	        }
@@ -2578,7 +2574,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	intervalT() {
 	    let localctx = new IntervalTContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 138, iso8601Parser.RULE_intervalT);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 589;
 	        this._errHandler.sync(this);
@@ -2611,7 +2607,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 497;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===iso8601Parser.Digit) {
+	            if(_la===16) {
 	                this.state = 494;
 	                this.int_();
 	                this.state = 495;
@@ -2673,7 +2669,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 527;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===iso8601Parser.Digit) {
+	            if(_la===16) {
 	                this.state = 524;
 	                this.int_();
 	                this.state = 525;
@@ -2725,7 +2721,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	            this.state = 552;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===iso8601Parser.Digit) {
+	            if(_la===16) {
 	                this.state = 549;
 	                this.int_();
 	                this.state = 550;
@@ -3493,7 +3489,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	recurringCount() {
 	    let localctx = new RecurringCountContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 178, iso8601Parser.RULE_recurringCount);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 675;
@@ -3501,7 +3497,7 @@ export default class iso8601Parser extends antlr4.Parser {
 	        this.state = 677;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===iso8601Parser.Digit) {
+	        if(_la===16) {
 	            this.state = 676;
 	            this.int_();
 	        }
@@ -7835,3 +7831,12 @@ iso8601Parser.RecurringContext = RecurringContext;
 iso8601Parser.RecurringBasicContext = RecurringBasicContext; 
 iso8601Parser.RecurringExtendedContext = RecurringExtendedContext; 
 iso8601Parser.IsoContext = IsoContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

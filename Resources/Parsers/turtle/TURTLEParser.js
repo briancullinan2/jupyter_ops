@@ -1,51 +1,51 @@
-// Generated from ./turtle/TURTLE.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/turtle/TURTLE.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import TURTLEListener from './TURTLEListener.js';
-const serializedATN = [4,1,45,147,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,46,149,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,1,0,5,0,40,8,
-0,10,0,12,0,43,9,0,1,1,1,1,1,1,1,1,3,1,49,8,1,1,2,1,2,1,2,1,2,3,2,55,8,2,
-1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,
-1,7,1,7,1,7,3,7,78,8,7,3,7,80,8,7,1,8,1,8,1,8,1,8,1,8,1,8,3,8,88,8,8,5,8,
-90,8,8,10,8,12,8,93,9,8,1,9,1,9,1,9,5,9,98,8,9,10,9,12,9,101,9,9,1,10,1,
-10,3,10,105,8,10,1,11,1,11,1,11,3,11,110,8,11,1,12,1,12,1,13,1,13,1,13,1,
-13,1,13,3,13,119,8,13,1,14,1,14,1,14,3,14,124,8,14,1,15,1,15,1,15,1,15,1,
-16,1,16,5,16,132,8,16,10,16,12,16,135,9,16,1,16,1,16,1,17,1,17,1,17,1,17,
-3,17,143,8,17,1,18,1,18,1,18,0,0,19,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
-28,30,32,34,36,0,1,2,0,20,20,22,22,149,0,41,1,0,0,0,2,48,1,0,0,0,4,54,1,
-0,0,0,6,56,1,0,0,0,8,61,1,0,0,0,10,65,1,0,0,0,12,68,1,0,0,0,14,79,1,0,0,
-0,16,81,1,0,0,0,18,94,1,0,0,0,20,104,1,0,0,0,22,109,1,0,0,0,24,111,1,0,0,
-0,26,118,1,0,0,0,28,123,1,0,0,0,30,125,1,0,0,0,32,129,1,0,0,0,34,138,1,0,
-0,0,36,144,1,0,0,0,38,40,3,2,1,0,39,38,1,0,0,0,40,43,1,0,0,0,41,39,1,0,0,
-0,41,42,1,0,0,0,42,1,1,0,0,0,43,41,1,0,0,0,44,49,3,4,2,0,45,46,3,14,7,0,
-46,47,5,1,0,0,47,49,1,0,0,0,48,44,1,0,0,0,48,45,1,0,0,0,49,3,1,0,0,0,50,
-55,3,6,3,0,51,55,3,8,4,0,52,55,3,12,6,0,53,55,3,10,5,0,54,50,1,0,0,0,54,
-51,1,0,0,0,54,52,1,0,0,0,54,53,1,0,0,0,55,5,1,0,0,0,56,57,5,2,0,0,57,58,
-5,21,0,0,58,59,5,20,0,0,59,60,5,1,0,0,60,7,1,0,0,0,61,62,5,3,0,0,62,63,5,
-20,0,0,63,64,5,1,0,0,64,9,1,0,0,0,65,66,5,4,0,0,66,67,5,20,0,0,67,11,1,0,
-0,0,68,69,5,5,0,0,69,70,5,21,0,0,70,71,5,20,0,0,71,13,1,0,0,0,72,73,3,22,
-11,0,73,74,3,16,8,0,74,80,1,0,0,0,75,77,3,30,15,0,76,78,3,16,8,0,77,76,1,
-0,0,0,77,78,1,0,0,0,78,80,1,0,0,0,79,72,1,0,0,0,79,75,1,0,0,0,80,15,1,0,
-0,0,81,82,3,20,10,0,82,91,3,18,9,0,83,87,5,6,0,0,84,85,3,20,10,0,85,86,3,
-18,9,0,86,88,1,0,0,0,87,84,1,0,0,0,87,88,1,0,0,0,88,90,1,0,0,0,89,83,1,0,
-0,0,90,93,1,0,0,0,91,89,1,0,0,0,91,92,1,0,0,0,92,17,1,0,0,0,93,91,1,0,0,
-0,94,99,3,26,13,0,95,96,5,7,0,0,96,98,3,26,13,0,97,95,1,0,0,0,98,101,1,0,
-0,0,99,97,1,0,0,0,99,100,1,0,0,0,100,19,1,0,0,0,101,99,1,0,0,0,102,105,3,
-24,12,0,103,105,5,8,0,0,104,102,1,0,0,0,104,103,1,0,0,0,105,21,1,0,0,0,106,
-110,3,36,18,0,107,110,5,17,0,0,108,110,3,32,16,0,109,106,1,0,0,0,109,107,
-1,0,0,0,109,108,1,0,0,0,110,23,1,0,0,0,111,112,3,36,18,0,112,25,1,0,0,0,
-113,119,3,36,18,0,114,119,5,17,0,0,115,119,3,32,16,0,116,119,3,30,15,0,117,
-119,3,28,14,0,118,113,1,0,0,0,118,114,1,0,0,0,118,115,1,0,0,0,118,116,1,
-0,0,0,118,117,1,0,0,0,119,27,1,0,0,0,120,124,3,34,17,0,121,124,5,14,0,0,
-122,124,5,15,0,0,123,120,1,0,0,0,123,121,1,0,0,0,123,122,1,0,0,0,124,29,
-1,0,0,0,125,126,5,9,0,0,126,127,3,16,8,0,127,128,5,10,0,0,128,31,1,0,0,0,
-129,133,5,11,0,0,130,132,3,26,13,0,131,130,1,0,0,0,132,135,1,0,0,0,133,131,
-1,0,0,0,133,134,1,0,0,0,134,136,1,0,0,0,135,133,1,0,0,0,136,137,5,12,0,0,
-137,33,1,0,0,0,138,142,5,16,0,0,139,143,5,25,0,0,140,141,5,13,0,0,141,143,
-3,36,18,0,142,139,1,0,0,0,142,140,1,0,0,0,142,143,1,0,0,0,143,35,1,0,0,0,
-144,145,7,0,0,0,145,37,1,0,0,0,14,41,48,54,77,79,87,91,99,104,109,118,123,
-133,142];
+0,10,0,12,0,43,9,0,1,0,1,0,1,1,1,1,1,1,1,1,3,1,51,8,1,1,2,1,2,1,2,1,2,3,
+2,57,8,2,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,5,1,5,1,5,1,6,1,6,1,6,1,6,
+1,7,1,7,1,7,1,7,1,7,3,7,80,8,7,3,7,82,8,7,1,8,1,8,1,8,1,8,1,8,1,8,3,8,90,
+8,8,5,8,92,8,8,10,8,12,8,95,9,8,1,9,1,9,1,9,5,9,100,8,9,10,9,12,9,103,9,
+9,1,10,1,10,3,10,107,8,10,1,11,1,11,1,11,3,11,112,8,11,1,12,1,12,1,13,1,
+13,1,13,1,13,1,13,3,13,121,8,13,1,14,1,14,1,14,3,14,126,8,14,1,15,1,15,1,
+15,1,15,1,16,1,16,5,16,134,8,16,10,16,12,16,137,9,16,1,16,1,16,1,17,1,17,
+1,17,1,17,3,17,145,8,17,1,18,1,18,1,18,0,0,19,0,2,4,6,8,10,12,14,16,18,20,
+22,24,26,28,30,32,34,36,0,1,2,0,20,20,22,22,151,0,41,1,0,0,0,2,50,1,0,0,
+0,4,56,1,0,0,0,6,58,1,0,0,0,8,63,1,0,0,0,10,67,1,0,0,0,12,70,1,0,0,0,14,
+81,1,0,0,0,16,83,1,0,0,0,18,96,1,0,0,0,20,106,1,0,0,0,22,111,1,0,0,0,24,
+113,1,0,0,0,26,120,1,0,0,0,28,125,1,0,0,0,30,127,1,0,0,0,32,131,1,0,0,0,
+34,140,1,0,0,0,36,146,1,0,0,0,38,40,3,2,1,0,39,38,1,0,0,0,40,43,1,0,0,0,
+41,39,1,0,0,0,41,42,1,0,0,0,42,44,1,0,0,0,43,41,1,0,0,0,44,45,5,0,0,1,45,
+1,1,0,0,0,46,51,3,4,2,0,47,48,3,14,7,0,48,49,5,1,0,0,49,51,1,0,0,0,50,46,
+1,0,0,0,50,47,1,0,0,0,51,3,1,0,0,0,52,57,3,6,3,0,53,57,3,8,4,0,54,57,3,12,
+6,0,55,57,3,10,5,0,56,52,1,0,0,0,56,53,1,0,0,0,56,54,1,0,0,0,56,55,1,0,0,
+0,57,5,1,0,0,0,58,59,5,2,0,0,59,60,5,21,0,0,60,61,5,20,0,0,61,62,5,1,0,0,
+62,7,1,0,0,0,63,64,5,3,0,0,64,65,5,20,0,0,65,66,5,1,0,0,66,9,1,0,0,0,67,
+68,5,4,0,0,68,69,5,20,0,0,69,11,1,0,0,0,70,71,5,5,0,0,71,72,5,21,0,0,72,
+73,5,20,0,0,73,13,1,0,0,0,74,75,3,22,11,0,75,76,3,16,8,0,76,82,1,0,0,0,77,
+79,3,30,15,0,78,80,3,16,8,0,79,78,1,0,0,0,79,80,1,0,0,0,80,82,1,0,0,0,81,
+74,1,0,0,0,81,77,1,0,0,0,82,15,1,0,0,0,83,84,3,20,10,0,84,93,3,18,9,0,85,
+89,5,6,0,0,86,87,3,20,10,0,87,88,3,18,9,0,88,90,1,0,0,0,89,86,1,0,0,0,89,
+90,1,0,0,0,90,92,1,0,0,0,91,85,1,0,0,0,92,95,1,0,0,0,93,91,1,0,0,0,93,94,
+1,0,0,0,94,17,1,0,0,0,95,93,1,0,0,0,96,101,3,26,13,0,97,98,5,7,0,0,98,100,
+3,26,13,0,99,97,1,0,0,0,100,103,1,0,0,0,101,99,1,0,0,0,101,102,1,0,0,0,102,
+19,1,0,0,0,103,101,1,0,0,0,104,107,3,24,12,0,105,107,5,8,0,0,106,104,1,0,
+0,0,106,105,1,0,0,0,107,21,1,0,0,0,108,112,3,36,18,0,109,112,5,17,0,0,110,
+112,3,32,16,0,111,108,1,0,0,0,111,109,1,0,0,0,111,110,1,0,0,0,112,23,1,0,
+0,0,113,114,3,36,18,0,114,25,1,0,0,0,115,121,3,36,18,0,116,121,5,17,0,0,
+117,121,3,32,16,0,118,121,3,30,15,0,119,121,3,28,14,0,120,115,1,0,0,0,120,
+116,1,0,0,0,120,117,1,0,0,0,120,118,1,0,0,0,120,119,1,0,0,0,121,27,1,0,0,
+0,122,126,3,34,17,0,123,126,5,14,0,0,124,126,5,15,0,0,125,122,1,0,0,0,125,
+123,1,0,0,0,125,124,1,0,0,0,126,29,1,0,0,0,127,128,5,9,0,0,128,129,3,16,
+8,0,129,130,5,10,0,0,130,31,1,0,0,0,131,135,5,11,0,0,132,134,3,26,13,0,133,
+132,1,0,0,0,134,137,1,0,0,0,135,133,1,0,0,0,135,136,1,0,0,0,136,138,1,0,
+0,0,137,135,1,0,0,0,138,139,5,12,0,0,139,33,1,0,0,0,140,144,5,16,0,0,141,
+145,5,25,0,0,142,143,5,13,0,0,143,145,3,36,18,0,144,141,1,0,0,0,144,142,
+1,0,0,0,144,145,1,0,0,0,145,35,1,0,0,0,146,147,7,0,0,0,147,37,1,0,0,0,14,
+41,50,56,79,81,89,93,101,106,111,120,125,135,144];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -70,7 +70,7 @@ export default class TURTLEParser extends antlr4.Parser {
                              "STRING_LITERAL_QUOTE", "STRING_LITERAL_SINGLE_QUOTE", 
                              "UCHAR", "ECHAR", "ANON_WS", "ANON", "PN_CHARS_BASE", 
                              "PN_CHARS_U", "PN_CHARS", "PN_LOCAL", "PLX", 
-                             "PERCENT", "HEX", "PN_LOCAL_ESC" ];
+                             "PERCENT", "HEX", "PN_LOCAL_ESC", "LC" ];
     static ruleNames = [ "turtleDoc", "statement", "directive", "prefixID", 
                          "base", "sparqlBase", "sparqlPrefix", "triples", 
                          "predicateObjectList", "objectList", "verb", "subject", 
@@ -85,28 +85,26 @@ export default class TURTLEParser extends antlr4.Parser {
         this.symbolicNames = TURTLEParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	turtleDoc() {
 	    let localctx = new TurtleDocContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, TURTLEParser.RULE_turtleDoc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 41;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TURTLEParser.T__1) | (1 << TURTLEParser.T__2) | (1 << TURTLEParser.T__3) | (1 << TURTLEParser.T__4) | (1 << TURTLEParser.T__8) | (1 << TURTLEParser.T__10) | (1 << TURTLEParser.BlankNode) | (1 << TURTLEParser.IRIREF) | (1 << TURTLEParser.PrefixedName))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 5376572) !== 0)) {
 	            this.state = 38;
 	            this.statement();
 	            this.state = 43;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 44;
+	        this.match(TURTLEParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -127,26 +125,26 @@ export default class TURTLEParser extends antlr4.Parser {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, TURTLEParser.RULE_statement);
 	    try {
-	        this.state = 48;
+	        this.state = 50;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TURTLEParser.T__1:
-	        case TURTLEParser.T__2:
-	        case TURTLEParser.T__3:
-	        case TURTLEParser.T__4:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 44;
+	            this.state = 46;
 	            this.directive();
 	            break;
-	        case TURTLEParser.T__8:
-	        case TURTLEParser.T__10:
-	        case TURTLEParser.BlankNode:
-	        case TURTLEParser.IRIREF:
-	        case TURTLEParser.PrefixedName:
+	        case 9:
+	        case 11:
+	        case 17:
+	        case 20:
+	        case 22:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 45;
+	            this.state = 47;
 	            this.triples();
-	            this.state = 46;
+	            this.state = 48;
 	            this.match(TURTLEParser.T__0);
 	            break;
 	        default:
@@ -172,27 +170,27 @@ export default class TURTLEParser extends antlr4.Parser {
 	    let localctx = new DirectiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, TURTLEParser.RULE_directive);
 	    try {
-	        this.state = 54;
+	        this.state = 56;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TURTLEParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 50;
+	            this.state = 52;
 	            this.prefixID();
 	            break;
-	        case TURTLEParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 51;
+	            this.state = 53;
 	            this.base();
 	            break;
-	        case TURTLEParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 52;
+	            this.state = 54;
 	            this.sparqlPrefix();
 	            break;
-	        case TURTLEParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 53;
+	            this.state = 55;
 	            this.sparqlBase();
 	            break;
 	        default:
@@ -219,13 +217,13 @@ export default class TURTLEParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, TURTLEParser.RULE_prefixID);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 56;
-	        this.match(TURTLEParser.T__1);
-	        this.state = 57;
-	        this.match(TURTLEParser.PNAME_NS);
 	        this.state = 58;
-	        this.match(TURTLEParser.IRIREF);
+	        this.match(TURTLEParser.T__1);
 	        this.state = 59;
+	        this.match(TURTLEParser.PNAME_NS);
+	        this.state = 60;
+	        this.match(TURTLEParser.IRIREF);
+	        this.state = 61;
 	        this.match(TURTLEParser.T__0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -248,11 +246,11 @@ export default class TURTLEParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, TURTLEParser.RULE_base);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 61;
-	        this.match(TURTLEParser.T__2);
-	        this.state = 62;
-	        this.match(TURTLEParser.IRIREF);
 	        this.state = 63;
+	        this.match(TURTLEParser.T__2);
+	        this.state = 64;
+	        this.match(TURTLEParser.IRIREF);
+	        this.state = 65;
 	        this.match(TURTLEParser.T__0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -275,9 +273,9 @@ export default class TURTLEParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, TURTLEParser.RULE_sparqlBase);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 65;
+	        this.state = 67;
 	        this.match(TURTLEParser.T__3);
-	        this.state = 66;
+	        this.state = 68;
 	        this.match(TURTLEParser.IRIREF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -300,11 +298,11 @@ export default class TURTLEParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, TURTLEParser.RULE_sparqlPrefix);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 68;
-	        this.match(TURTLEParser.T__4);
-	        this.state = 69;
-	        this.match(TURTLEParser.PNAME_NS);
 	        this.state = 70;
+	        this.match(TURTLEParser.T__4);
+	        this.state = 71;
+	        this.match(TURTLEParser.PNAME_NS);
+	        this.state = 72;
 	        this.match(TURTLEParser.IRIREF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -325,30 +323,30 @@ export default class TURTLEParser extends antlr4.Parser {
 	triples() {
 	    let localctx = new TriplesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, TURTLEParser.RULE_triples);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 79;
+	        this.state = 81;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TURTLEParser.T__10:
-	        case TURTLEParser.BlankNode:
-	        case TURTLEParser.IRIREF:
-	        case TURTLEParser.PrefixedName:
+	        case 11:
+	        case 17:
+	        case 20:
+	        case 22:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 72;
+	            this.state = 74;
 	            this.subject();
-	            this.state = 73;
+	            this.state = 75;
 	            this.predicateObjectList();
 	            break;
-	        case TURTLEParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 75;
-	            this.blankNodePropertyList();
 	            this.state = 77;
+	            this.blankNodePropertyList();
+	            this.state = 79;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TURTLEParser.T__7) | (1 << TURTLEParser.IRIREF) | (1 << TURTLEParser.PrefixedName))) !== 0)) {
-	                this.state = 76;
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 5243136) !== 0)) {
+	                this.state = 78;
 	                this.predicateObjectList();
 	            }
 
@@ -375,30 +373,30 @@ export default class TURTLEParser extends antlr4.Parser {
 	predicateObjectList() {
 	    let localctx = new PredicateObjectListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, TURTLEParser.RULE_predicateObjectList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 81;
+	        this.state = 83;
 	        this.verb();
-	        this.state = 82;
+	        this.state = 84;
 	        this.objectList();
-	        this.state = 91;
+	        this.state = 93;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TURTLEParser.T__5) {
-	            this.state = 83;
+	        while(_la===6) {
+	            this.state = 85;
 	            this.match(TURTLEParser.T__5);
-	            this.state = 87;
+	            this.state = 89;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TURTLEParser.T__7) | (1 << TURTLEParser.IRIREF) | (1 << TURTLEParser.PrefixedName))) !== 0)) {
-	                this.state = 84;
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 5243136) !== 0)) {
+	                this.state = 86;
 	                this.verb();
-	                this.state = 85;
+	                this.state = 87;
 	                this.objectList();
 	            }
 
-	            this.state = 93;
+	            this.state = 95;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -421,20 +419,20 @@ export default class TURTLEParser extends antlr4.Parser {
 	objectList() {
 	    let localctx = new ObjectListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, TURTLEParser.RULE_objectList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 94;
+	        this.state = 96;
 	        this.object_();
-	        this.state = 99;
+	        this.state = 101;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===TURTLEParser.T__6) {
-	            this.state = 95;
+	        while(_la===7) {
+	            this.state = 97;
 	            this.match(TURTLEParser.T__6);
-	            this.state = 96;
+	            this.state = 98;
 	            this.object_();
-	            this.state = 101;
+	            this.state = 103;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -458,18 +456,18 @@ export default class TURTLEParser extends antlr4.Parser {
 	    let localctx = new VerbContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, TURTLEParser.RULE_verb);
 	    try {
-	        this.state = 104;
+	        this.state = 106;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TURTLEParser.IRIREF:
-	        case TURTLEParser.PrefixedName:
+	        case 20:
+	        case 22:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 102;
+	            this.state = 104;
 	            this.predicate();
 	            break;
-	        case TURTLEParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 103;
+	            this.state = 105;
 	            this.match(TURTLEParser.T__7);
 	            break;
 	        default:
@@ -495,23 +493,23 @@ export default class TURTLEParser extends antlr4.Parser {
 	    let localctx = new SubjectContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, TURTLEParser.RULE_subject);
 	    try {
-	        this.state = 109;
+	        this.state = 111;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TURTLEParser.IRIREF:
-	        case TURTLEParser.PrefixedName:
+	        case 20:
+	        case 22:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 106;
+	            this.state = 108;
 	            this.iri();
 	            break;
-	        case TURTLEParser.BlankNode:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 107;
+	            this.state = 109;
 	            this.match(TURTLEParser.BlankNode);
 	            break;
-	        case TURTLEParser.T__10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 108;
+	            this.state = 110;
 	            this.collection();
 	            break;
 	        default:
@@ -538,7 +536,7 @@ export default class TURTLEParser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, TURTLEParser.RULE_predicate);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 111;
+	        this.state = 113;
 	        this.iri();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -560,35 +558,35 @@ export default class TURTLEParser extends antlr4.Parser {
 	    let localctx = new Object_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, TURTLEParser.RULE_object_);
 	    try {
-	        this.state = 118;
+	        this.state = 120;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TURTLEParser.IRIREF:
-	        case TURTLEParser.PrefixedName:
+	        case 20:
+	        case 22:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 113;
+	            this.state = 115;
 	            this.iri();
 	            break;
-	        case TURTLEParser.BlankNode:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 114;
+	            this.state = 116;
 	            this.match(TURTLEParser.BlankNode);
 	            break;
-	        case TURTLEParser.T__10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 115;
+	            this.state = 117;
 	            this.collection();
 	            break;
-	        case TURTLEParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 116;
+	            this.state = 118;
 	            this.blankNodePropertyList();
 	            break;
-	        case TURTLEParser.NumericLiteral:
-	        case TURTLEParser.BooleanLiteral:
-	        case TURTLEParser.String:
+	        case 14:
+	        case 15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 117;
+	            this.state = 119;
 	            this.literal();
 	            break;
 	        default:
@@ -614,22 +612,22 @@ export default class TURTLEParser extends antlr4.Parser {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, TURTLEParser.RULE_literal);
 	    try {
-	        this.state = 123;
+	        this.state = 125;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case TURTLEParser.String:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 120;
+	            this.state = 122;
 	            this.rdfLiteral();
 	            break;
-	        case TURTLEParser.NumericLiteral:
+	        case 14:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 121;
+	            this.state = 123;
 	            this.match(TURTLEParser.NumericLiteral);
 	            break;
-	        case TURTLEParser.BooleanLiteral:
+	        case 15:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 122;
+	            this.state = 124;
 	            this.match(TURTLEParser.BooleanLiteral);
 	            break;
 	        default:
@@ -656,11 +654,11 @@ export default class TURTLEParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, TURTLEParser.RULE_blankNodePropertyList);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 125;
-	        this.match(TURTLEParser.T__8);
-	        this.state = 126;
-	        this.predicateObjectList();
 	        this.state = 127;
+	        this.match(TURTLEParser.T__8);
+	        this.state = 128;
+	        this.predicateObjectList();
+	        this.state = 129;
 	        this.match(TURTLEParser.T__9);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -681,22 +679,22 @@ export default class TURTLEParser extends antlr4.Parser {
 	collection() {
 	    let localctx = new CollectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, TURTLEParser.RULE_collection);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 129;
+	        this.state = 131;
 	        this.match(TURTLEParser.T__10);
-	        this.state = 133;
+	        this.state = 135;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TURTLEParser.T__8) | (1 << TURTLEParser.T__10) | (1 << TURTLEParser.NumericLiteral) | (1 << TURTLEParser.BooleanLiteral) | (1 << TURTLEParser.String) | (1 << TURTLEParser.BlankNode) | (1 << TURTLEParser.IRIREF) | (1 << TURTLEParser.PrefixedName))) !== 0)) {
-	            this.state = 130;
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 5491200) !== 0)) {
+	            this.state = 132;
 	            this.object_();
-	            this.state = 135;
+	            this.state = 137;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 136;
+	        this.state = 138;
 	        this.match(TURTLEParser.T__11);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -719,34 +717,34 @@ export default class TURTLEParser extends antlr4.Parser {
 	    this.enterRule(localctx, 34, TURTLEParser.RULE_rdfLiteral);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 138;
+	        this.state = 140;
 	        this.match(TURTLEParser.String);
-	        this.state = 142;
+	        this.state = 144;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case TURTLEParser.LANGTAG:
-	        	this.state = 139;
+	        case 25:
+	        	this.state = 141;
 	        	this.match(TURTLEParser.LANGTAG);
 	        	break;
-	        case TURTLEParser.T__12:
-	        	this.state = 140;
+	        case 13:
+	        	this.state = 142;
 	        	this.match(TURTLEParser.T__12);
-	        	this.state = 141;
+	        	this.state = 143;
 	        	this.iri();
 	        	break;
-	        case TURTLEParser.T__0:
-	        case TURTLEParser.T__5:
-	        case TURTLEParser.T__6:
-	        case TURTLEParser.T__8:
-	        case TURTLEParser.T__9:
-	        case TURTLEParser.T__10:
-	        case TURTLEParser.T__11:
-	        case TURTLEParser.NumericLiteral:
-	        case TURTLEParser.BooleanLiteral:
-	        case TURTLEParser.String:
-	        case TURTLEParser.BlankNode:
-	        case TURTLEParser.IRIREF:
-	        case TURTLEParser.PrefixedName:
+	        case 1:
+	        case 6:
+	        case 7:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 20:
+	        case 22:
 	        	break;
 	        default:
 	        	break;
@@ -770,12 +768,12 @@ export default class TURTLEParser extends antlr4.Parser {
 	iri() {
 	    let localctx = new IriContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, TURTLEParser.RULE_iri);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 144;
+	        this.state = 146;
 	        _la = this._input.LA(1);
-	        if(!(_la===TURTLEParser.IRIREF || _la===TURTLEParser.PrefixedName)) {
+	        if(!(_la===20 || _la===22)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -845,6 +843,7 @@ TURTLEParser.PLX = 42;
 TURTLEParser.PERCENT = 43;
 TURTLEParser.HEX = 44;
 TURTLEParser.PN_LOCAL_ESC = 45;
+TURTLEParser.LC = 46;
 
 TURTLEParser.RULE_turtleDoc = 0;
 TURTLEParser.RULE_statement = 1;
@@ -879,6 +878,10 @@ class TurtleDocContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = TURTLEParser.RULE_turtleDoc;
     }
+
+	EOF() {
+	    return this.getToken(TURTLEParser.EOF, 0);
+	};
 
 	statement = function(i) {
 	    if(i===undefined) {
@@ -1666,3 +1669,12 @@ TURTLEParser.BlankNodePropertyListContext = BlankNodePropertyListContext;
 TURTLEParser.CollectionContext = CollectionContext; 
 TURTLEParser.RdfLiteralContext = RdfLiteralContext; 
 TURTLEParser.IriContext = IriContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

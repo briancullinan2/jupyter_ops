@@ -1,74 +1,74 @@
-// Generated from ./guido/guido.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/guido/guido.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import guidoListener from './guidoListener.js';
-const serializedATN = [4,1,34,217,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,34,219,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
-7,27,2,28,7,28,1,0,4,0,60,8,0,11,0,12,0,61,1,0,3,0,65,8,0,1,1,1,1,4,1,69,
-8,1,11,1,12,1,70,1,1,1,1,1,2,1,2,1,2,5,2,78,8,2,10,2,12,2,81,9,2,1,3,1,3,
-1,3,1,3,4,3,87,8,3,11,3,12,3,88,1,3,1,3,1,4,1,4,1,4,3,4,96,8,4,1,4,3,4,99,
-8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,111,8,5,1,6,1,6,1,6,1,6,
-5,6,117,8,6,10,6,12,6,120,9,6,1,6,1,6,1,7,1,7,1,7,3,7,127,8,7,1,8,1,8,1,
-8,4,8,132,8,8,11,8,12,8,133,1,9,1,9,1,9,4,9,139,8,9,11,9,12,9,140,1,9,1,
-9,1,10,1,10,3,10,147,8,10,1,10,3,10,150,8,10,1,10,3,10,153,8,10,1,10,3,10,
-156,8,10,1,11,1,11,1,11,1,11,5,11,162,8,11,10,11,12,11,165,9,11,1,11,1,11,
-1,12,1,12,1,13,1,13,1,14,3,14,174,8,14,1,14,1,14,1,15,1,15,1,16,3,16,181,
-8,16,1,16,1,16,3,16,185,8,16,1,17,3,17,188,8,17,1,17,1,17,1,18,4,18,193,
-8,18,11,18,12,18,194,1,19,1,19,1,20,1,20,1,21,1,21,1,22,1,22,1,23,1,23,1,
-24,1,24,1,25,1,25,1,26,1,26,1,27,1,27,1,28,1,28,1,28,0,0,29,0,2,4,6,8,10,
-12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,0,4,
-1,0,30,31,2,0,29,29,31,31,1,0,11,12,1,0,13,14,221,0,64,1,0,0,0,2,66,1,0,
-0,0,4,74,1,0,0,0,6,82,1,0,0,0,8,92,1,0,0,0,10,110,1,0,0,0,12,112,1,0,0,0,
-14,126,1,0,0,0,16,128,1,0,0,0,18,135,1,0,0,0,20,144,1,0,0,0,22,157,1,0,0,
-0,24,168,1,0,0,0,26,170,1,0,0,0,28,173,1,0,0,0,30,177,1,0,0,0,32,180,1,0,
-0,0,34,187,1,0,0,0,36,192,1,0,0,0,38,196,1,0,0,0,40,198,1,0,0,0,42,200,1,
-0,0,0,44,202,1,0,0,0,46,204,1,0,0,0,48,206,1,0,0,0,50,208,1,0,0,0,52,210,
-1,0,0,0,54,212,1,0,0,0,56,214,1,0,0,0,58,60,3,2,1,0,59,58,1,0,0,0,60,61,
-1,0,0,0,61,59,1,0,0,0,61,62,1,0,0,0,62,65,1,0,0,0,63,65,3,4,2,0,64,59,1,
-0,0,0,64,63,1,0,0,0,65,1,1,0,0,0,66,68,5,1,0,0,67,69,3,4,2,0,68,67,1,0,0,
-0,69,70,1,0,0,0,70,68,1,0,0,0,70,71,1,0,0,0,71,72,1,0,0,0,72,73,5,2,0,0,
-73,3,1,0,0,0,74,79,3,6,3,0,75,76,5,3,0,0,76,78,3,6,3,0,77,75,1,0,0,0,78,
-81,1,0,0,0,79,77,1,0,0,0,79,80,1,0,0,0,80,5,1,0,0,0,81,79,1,0,0,0,82,86,
-5,4,0,0,83,87,3,8,4,0,84,87,3,20,10,0,85,87,3,22,11,0,86,83,1,0,0,0,86,84,
-1,0,0,0,86,85,1,0,0,0,87,88,1,0,0,0,88,86,1,0,0,0,88,89,1,0,0,0,89,90,1,
-0,0,0,90,91,5,5,0,0,91,7,1,0,0,0,92,93,5,28,0,0,93,95,3,10,5,0,94,96,3,12,
-6,0,95,94,1,0,0,0,95,96,1,0,0,0,96,98,1,0,0,0,97,99,3,18,9,0,98,97,1,0,0,
-0,98,99,1,0,0,0,99,9,1,0,0,0,100,111,3,38,19,0,101,111,3,40,20,0,102,111,
-3,42,21,0,103,111,3,44,22,0,104,111,3,46,23,0,105,111,3,48,24,0,106,111,
-3,50,25,0,107,111,3,52,26,0,108,111,3,56,28,0,109,111,3,54,27,0,110,100,
-1,0,0,0,110,101,1,0,0,0,110,102,1,0,0,0,110,103,1,0,0,0,110,104,1,0,0,0,
-110,105,1,0,0,0,110,106,1,0,0,0,110,107,1,0,0,0,110,108,1,0,0,0,110,109,
-1,0,0,0,111,11,1,0,0,0,112,113,5,6,0,0,113,118,3,14,7,0,114,115,5,3,0,0,
-115,117,3,14,7,0,116,114,1,0,0,0,117,120,1,0,0,0,118,116,1,0,0,0,118,119,
-1,0,0,0,119,121,1,0,0,0,120,118,1,0,0,0,121,122,5,7,0,0,122,13,1,0,0,0,123,
-127,5,32,0,0,124,127,3,28,14,0,125,127,3,16,8,0,126,123,1,0,0,0,126,124,
-1,0,0,0,126,125,1,0,0,0,127,15,1,0,0,0,128,129,5,31,0,0,129,131,5,8,0,0,
-130,132,7,0,0,0,131,130,1,0,0,0,132,133,1,0,0,0,133,131,1,0,0,0,133,134,
-1,0,0,0,134,17,1,0,0,0,135,138,5,9,0,0,136,139,3,20,10,0,137,139,3,22,11,
-0,138,136,1,0,0,0,138,137,1,0,0,0,139,140,1,0,0,0,140,138,1,0,0,0,140,141,
-1,0,0,0,141,142,1,0,0,0,142,143,5,10,0,0,143,19,1,0,0,0,144,146,3,24,12,
-0,145,147,3,26,13,0,146,145,1,0,0,0,146,147,1,0,0,0,147,149,1,0,0,0,148,
-150,3,30,15,0,149,148,1,0,0,0,149,150,1,0,0,0,150,152,1,0,0,0,151,153,3,
-34,17,0,152,151,1,0,0,0,152,153,1,0,0,0,153,155,1,0,0,0,154,156,3,36,18,
-0,155,154,1,0,0,0,155,156,1,0,0,0,156,21,1,0,0,0,157,158,5,1,0,0,158,163,
-3,20,10,0,159,160,5,3,0,0,160,162,3,20,10,0,161,159,1,0,0,0,162,165,1,0,
-0,0,163,161,1,0,0,0,163,164,1,0,0,0,164,166,1,0,0,0,165,163,1,0,0,0,166,
-167,5,2,0,0,167,23,1,0,0,0,168,169,7,1,0,0,169,25,1,0,0,0,170,171,7,2,0,
-0,171,27,1,0,0,0,172,174,7,3,0,0,173,172,1,0,0,0,173,174,1,0,0,0,174,175,
-1,0,0,0,175,176,5,30,0,0,176,29,1,0,0,0,177,178,3,28,14,0,178,31,1,0,0,0,
-179,181,3,28,14,0,180,179,1,0,0,0,180,181,1,0,0,0,181,184,1,0,0,0,182,183,
-5,15,0,0,183,185,3,28,14,0,184,182,1,0,0,0,184,185,1,0,0,0,185,33,1,0,0,
-0,186,188,5,16,0,0,187,186,1,0,0,0,187,188,1,0,0,0,188,189,1,0,0,0,189,190,
-3,32,16,0,190,35,1,0,0,0,191,193,5,17,0,0,192,191,1,0,0,0,193,194,1,0,0,
-0,194,192,1,0,0,0,194,195,1,0,0,0,195,37,1,0,0,0,196,197,5,18,0,0,197,39,
-1,0,0,0,198,199,5,19,0,0,199,41,1,0,0,0,200,201,5,20,0,0,201,43,1,0,0,0,
-202,203,5,21,0,0,203,45,1,0,0,0,204,205,5,22,0,0,205,47,1,0,0,0,206,207,
-5,23,0,0,207,49,1,0,0,0,208,209,5,24,0,0,209,51,1,0,0,0,210,211,5,25,0,0,
-211,53,1,0,0,0,212,213,5,26,0,0,213,55,1,0,0,0,214,215,5,27,0,0,215,57,1,
-0,0,0,24,61,64,70,79,86,88,95,98,110,118,126,133,138,140,146,149,152,155,
-163,173,180,184,187,194];
+7,27,2,28,7,28,1,0,4,0,60,8,0,11,0,12,0,61,1,0,3,0,65,8,0,1,0,1,0,1,1,1,
+1,4,1,71,8,1,11,1,12,1,72,1,1,1,1,1,2,1,2,1,2,5,2,80,8,2,10,2,12,2,83,9,
+2,1,3,1,3,1,3,1,3,4,3,89,8,3,11,3,12,3,90,1,3,1,3,1,4,1,4,1,4,3,4,98,8,4,
+1,4,3,4,101,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,113,8,5,1,6,
+1,6,1,6,1,6,5,6,119,8,6,10,6,12,6,122,9,6,1,6,1,6,1,7,1,7,1,7,3,7,129,8,
+7,1,8,1,8,1,8,4,8,134,8,8,11,8,12,8,135,1,9,1,9,1,9,4,9,141,8,9,11,9,12,
+9,142,1,9,1,9,1,10,1,10,3,10,149,8,10,1,10,3,10,152,8,10,1,10,3,10,155,8,
+10,1,10,3,10,158,8,10,1,11,1,11,1,11,1,11,5,11,164,8,11,10,11,12,11,167,
+9,11,1,11,1,11,1,12,1,12,1,13,1,13,1,14,3,14,176,8,14,1,14,1,14,1,15,1,15,
+1,16,3,16,183,8,16,1,16,1,16,3,16,187,8,16,1,17,3,17,190,8,17,1,17,1,17,
+1,18,4,18,195,8,18,11,18,12,18,196,1,19,1,19,1,20,1,20,1,21,1,21,1,22,1,
+22,1,23,1,23,1,24,1,24,1,25,1,25,1,26,1,26,1,27,1,27,1,28,1,28,1,28,0,0,
+29,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,
+50,52,54,56,0,4,1,0,30,31,2,0,29,29,31,31,1,0,11,12,1,0,13,14,223,0,64,1,
+0,0,0,2,68,1,0,0,0,4,76,1,0,0,0,6,84,1,0,0,0,8,94,1,0,0,0,10,112,1,0,0,0,
+12,114,1,0,0,0,14,128,1,0,0,0,16,130,1,0,0,0,18,137,1,0,0,0,20,146,1,0,0,
+0,22,159,1,0,0,0,24,170,1,0,0,0,26,172,1,0,0,0,28,175,1,0,0,0,30,179,1,0,
+0,0,32,182,1,0,0,0,34,189,1,0,0,0,36,194,1,0,0,0,38,198,1,0,0,0,40,200,1,
+0,0,0,42,202,1,0,0,0,44,204,1,0,0,0,46,206,1,0,0,0,48,208,1,0,0,0,50,210,
+1,0,0,0,52,212,1,0,0,0,54,214,1,0,0,0,56,216,1,0,0,0,58,60,3,2,1,0,59,58,
+1,0,0,0,60,61,1,0,0,0,61,59,1,0,0,0,61,62,1,0,0,0,62,65,1,0,0,0,63,65,3,
+4,2,0,64,59,1,0,0,0,64,63,1,0,0,0,65,66,1,0,0,0,66,67,5,0,0,1,67,1,1,0,0,
+0,68,70,5,1,0,0,69,71,3,4,2,0,70,69,1,0,0,0,71,72,1,0,0,0,72,70,1,0,0,0,
+72,73,1,0,0,0,73,74,1,0,0,0,74,75,5,2,0,0,75,3,1,0,0,0,76,81,3,6,3,0,77,
+78,5,3,0,0,78,80,3,6,3,0,79,77,1,0,0,0,80,83,1,0,0,0,81,79,1,0,0,0,81,82,
+1,0,0,0,82,5,1,0,0,0,83,81,1,0,0,0,84,88,5,4,0,0,85,89,3,8,4,0,86,89,3,20,
+10,0,87,89,3,22,11,0,88,85,1,0,0,0,88,86,1,0,0,0,88,87,1,0,0,0,89,90,1,0,
+0,0,90,88,1,0,0,0,90,91,1,0,0,0,91,92,1,0,0,0,92,93,5,5,0,0,93,7,1,0,0,0,
+94,95,5,28,0,0,95,97,3,10,5,0,96,98,3,12,6,0,97,96,1,0,0,0,97,98,1,0,0,0,
+98,100,1,0,0,0,99,101,3,18,9,0,100,99,1,0,0,0,100,101,1,0,0,0,101,9,1,0,
+0,0,102,113,3,38,19,0,103,113,3,40,20,0,104,113,3,42,21,0,105,113,3,44,22,
+0,106,113,3,46,23,0,107,113,3,48,24,0,108,113,3,50,25,0,109,113,3,52,26,
+0,110,113,3,56,28,0,111,113,3,54,27,0,112,102,1,0,0,0,112,103,1,0,0,0,112,
+104,1,0,0,0,112,105,1,0,0,0,112,106,1,0,0,0,112,107,1,0,0,0,112,108,1,0,
+0,0,112,109,1,0,0,0,112,110,1,0,0,0,112,111,1,0,0,0,113,11,1,0,0,0,114,115,
+5,6,0,0,115,120,3,14,7,0,116,117,5,3,0,0,117,119,3,14,7,0,118,116,1,0,0,
+0,119,122,1,0,0,0,120,118,1,0,0,0,120,121,1,0,0,0,121,123,1,0,0,0,122,120,
+1,0,0,0,123,124,5,7,0,0,124,13,1,0,0,0,125,129,5,32,0,0,126,129,3,28,14,
+0,127,129,3,16,8,0,128,125,1,0,0,0,128,126,1,0,0,0,128,127,1,0,0,0,129,15,
+1,0,0,0,130,131,5,31,0,0,131,133,5,8,0,0,132,134,7,0,0,0,133,132,1,0,0,0,
+134,135,1,0,0,0,135,133,1,0,0,0,135,136,1,0,0,0,136,17,1,0,0,0,137,140,5,
+9,0,0,138,141,3,20,10,0,139,141,3,22,11,0,140,138,1,0,0,0,140,139,1,0,0,
+0,141,142,1,0,0,0,142,140,1,0,0,0,142,143,1,0,0,0,143,144,1,0,0,0,144,145,
+5,10,0,0,145,19,1,0,0,0,146,148,3,24,12,0,147,149,3,26,13,0,148,147,1,0,
+0,0,148,149,1,0,0,0,149,151,1,0,0,0,150,152,3,30,15,0,151,150,1,0,0,0,151,
+152,1,0,0,0,152,154,1,0,0,0,153,155,3,34,17,0,154,153,1,0,0,0,154,155,1,
+0,0,0,155,157,1,0,0,0,156,158,3,36,18,0,157,156,1,0,0,0,157,158,1,0,0,0,
+158,21,1,0,0,0,159,160,5,1,0,0,160,165,3,20,10,0,161,162,5,3,0,0,162,164,
+3,20,10,0,163,161,1,0,0,0,164,167,1,0,0,0,165,163,1,0,0,0,165,166,1,0,0,
+0,166,168,1,0,0,0,167,165,1,0,0,0,168,169,5,2,0,0,169,23,1,0,0,0,170,171,
+7,1,0,0,171,25,1,0,0,0,172,173,7,2,0,0,173,27,1,0,0,0,174,176,7,3,0,0,175,
+174,1,0,0,0,175,176,1,0,0,0,176,177,1,0,0,0,177,178,5,30,0,0,178,29,1,0,
+0,0,179,180,3,28,14,0,180,31,1,0,0,0,181,183,3,28,14,0,182,181,1,0,0,0,182,
+183,1,0,0,0,183,186,1,0,0,0,184,185,5,15,0,0,185,187,3,28,14,0,186,184,1,
+0,0,0,186,187,1,0,0,0,187,33,1,0,0,0,188,190,5,16,0,0,189,188,1,0,0,0,189,
+190,1,0,0,0,190,191,1,0,0,0,191,192,3,32,16,0,192,35,1,0,0,0,193,195,5,17,
+0,0,194,193,1,0,0,0,195,196,1,0,0,0,196,194,1,0,0,0,196,197,1,0,0,0,197,
+37,1,0,0,0,198,199,5,18,0,0,199,39,1,0,0,0,200,201,5,19,0,0,201,41,1,0,0,
+0,202,203,5,20,0,0,203,43,1,0,0,0,204,205,5,21,0,0,205,45,1,0,0,0,206,207,
+5,22,0,0,207,47,1,0,0,0,208,209,5,23,0,0,209,49,1,0,0,0,210,211,5,24,0,0,
+211,51,1,0,0,0,212,213,5,25,0,0,213,53,1,0,0,0,214,215,5,26,0,0,215,55,1,
+0,0,0,216,217,5,27,0,0,217,57,1,0,0,0,24,61,64,72,81,88,90,97,100,112,120,
+128,135,140,142,148,151,154,157,165,175,182,186,189,196];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -106,22 +106,18 @@ export default class guidoParser extends antlr4.Parser {
         this.symbolicNames = guidoParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	prog() {
 	    let localctx = new ProgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, guidoParser.RULE_prog);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
+	        this.enterOuterAlt(localctx, 1);
 	        this.state = 64;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case guidoParser.T__0:
-	            this.enterOuterAlt(localctx, 1);
+	        case 1:
 	            this.state = 59; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -131,16 +127,17 @@ export default class guidoParser extends antlr4.Parser {
 	                this.state = 61; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===guidoParser.T__0);
+	            } while(_la===1);
 	            break;
-	        case guidoParser.T__3:
-	            this.enterOuterAlt(localctx, 2);
+	        case 4:
 	            this.state = 63;
 	            this.sequencelist();
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
+	        this.state = 66;
+	        this.match(guidoParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -160,22 +157,22 @@ export default class guidoParser extends antlr4.Parser {
 	segment() {
 	    let localctx = new SegmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, guidoParser.RULE_segment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 66;
+	        this.state = 68;
 	        this.match(guidoParser.T__0);
-	        this.state = 68; 
+	        this.state = 70; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 67;
+	            this.state = 69;
 	            this.sequencelist();
-	            this.state = 70; 
+	            this.state = 72; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===guidoParser.T__3);
-	        this.state = 72;
+	        } while(_la===4);
+	        this.state = 74;
 	        this.match(guidoParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -196,20 +193,20 @@ export default class guidoParser extends antlr4.Parser {
 	sequencelist() {
 	    let localctx = new SequencelistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, guidoParser.RULE_sequencelist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 74;
+	        this.state = 76;
 	        this.sequence();
-	        this.state = 79;
+	        this.state = 81;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===guidoParser.T__2) {
-	            this.state = 75;
+	        while(_la===3) {
+	            this.state = 77;
 	            this.match(guidoParser.T__2);
-	            this.state = 76;
+	            this.state = 78;
 	            this.sequence();
-	            this.state = 81;
+	            this.state = 83;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -232,39 +229,39 @@ export default class guidoParser extends antlr4.Parser {
 	sequence() {
 	    let localctx = new SequenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, guidoParser.RULE_sequence);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 82;
+	        this.state = 84;
 	        this.match(guidoParser.T__3);
-	        this.state = 86; 
+	        this.state = 88; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 86;
+	            this.state = 88;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case guidoParser.TAGSTART:
-	                this.state = 83;
+	            case 28:
+	                this.state = 85;
 	                this.tag();
 	                break;
-	            case guidoParser.REST:
-	            case guidoParser.STRING:
-	                this.state = 84;
+	            case 29:
+	            case 31:
+	                this.state = 86;
 	                this.note();
 	                break;
-	            case guidoParser.T__0:
-	                this.state = 85;
+	            case 1:
+	                this.state = 87;
 	                this.chord();
 	                break;
 	            default:
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
-	            this.state = 88; 
+	            this.state = 90; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << guidoParser.T__0) | (1 << guidoParser.TAGSTART) | (1 << guidoParser.REST) | (1 << guidoParser.STRING))) !== 0));
-	        this.state = 90;
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2952790018) !== 0));
+	        this.state = 92;
 	        this.match(guidoParser.T__4);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -285,26 +282,26 @@ export default class guidoParser extends antlr4.Parser {
 	tag() {
 	    let localctx = new TagContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, guidoParser.RULE_tag);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 92;
+	        this.state = 94;
 	        this.match(guidoParser.TAGSTART);
-	        this.state = 93;
-	        this.tagname();
 	        this.state = 95;
+	        this.tagname();
+	        this.state = 97;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===guidoParser.T__5) {
-	            this.state = 94;
+	        if(_la===6) {
+	            this.state = 96;
 	            this.parameters();
 	        }
 
-	        this.state = 98;
+	        this.state = 100;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===guidoParser.T__8) {
-	            this.state = 97;
+	        if(_la===9) {
+	            this.state = 99;
 	            this.notes();
 	        }
 
@@ -328,57 +325,57 @@ export default class guidoParser extends antlr4.Parser {
 	    let localctx = new TagnameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, guidoParser.RULE_tagname);
 	    try {
-	        this.state = 110;
+	        this.state = 112;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case guidoParser.T__17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 100;
+	            this.state = 102;
 	            this.title();
 	            break;
-	        case guidoParser.T__18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 101;
+	            this.state = 103;
 	            this.tempo();
 	            break;
-	        case guidoParser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 102;
+	            this.state = 104;
 	            this.clef();
 	            break;
-	        case guidoParser.T__20:
+	        case 21:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 103;
+	            this.state = 105;
 	            this.meter();
 	            break;
-	        case guidoParser.T__21:
+	        case 22:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 104;
+	            this.state = 106;
 	            this.slur();
 	            break;
-	        case guidoParser.T__22:
+	        case 23:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 105;
+	            this.state = 107;
 	            this.key();
 	            break;
-	        case guidoParser.T__23:
+	        case 24:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 106;
+	            this.state = 108;
 	            this.barformat();
 	            break;
-	        case guidoParser.T__24:
+	        case 25:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 107;
+	            this.state = 109;
 	            this.staff();
 	            break;
-	        case guidoParser.T__26:
+	        case 27:
 	            this.enterOuterAlt(localctx, 9);
-	            this.state = 108;
+	            this.state = 110;
 	            this.t();
 	            break;
-	        case guidoParser.T__25:
+	        case 26:
 	            this.enterOuterAlt(localctx, 10);
-	            this.state = 109;
+	            this.state = 111;
 	            this.repeatEnd();
 	            break;
 	        default:
@@ -403,26 +400,26 @@ export default class guidoParser extends antlr4.Parser {
 	parameters() {
 	    let localctx = new ParametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, guidoParser.RULE_parameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 112;
+	        this.state = 114;
 	        this.match(guidoParser.T__5);
-	        this.state = 113;
+	        this.state = 115;
 	        this.parameter();
-	        this.state = 118;
+	        this.state = 120;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===guidoParser.T__2) {
-	            this.state = 114;
+	        while(_la===3) {
+	            this.state = 116;
 	            this.match(guidoParser.T__2);
-	            this.state = 115;
+	            this.state = 117;
 	            this.parameter();
-	            this.state = 120;
+	            this.state = 122;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 121;
+	        this.state = 123;
 	        this.match(guidoParser.T__6);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -444,24 +441,24 @@ export default class guidoParser extends antlr4.Parser {
 	    let localctx = new ParameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, guidoParser.RULE_parameter);
 	    try {
-	        this.state = 126;
+	        this.state = 128;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case guidoParser.STRINGLITERAL:
+	        case 32:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 123;
+	            this.state = 125;
 	            this.match(guidoParser.STRINGLITERAL);
 	            break;
-	        case guidoParser.T__12:
-	        case guidoParser.T__13:
-	        case guidoParser.NUMBER:
+	        case 13:
+	        case 14:
+	        case 30:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 124;
+	            this.state = 126;
 	            this.number();
 	            break;
-	        case guidoParser.STRING:
+	        case 31:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 125;
+	            this.state = 127;
 	            this.kvpair();
 	            break;
 	        default:
@@ -486,30 +483,30 @@ export default class guidoParser extends antlr4.Parser {
 	kvpair() {
 	    let localctx = new KvpairContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, guidoParser.RULE_kvpair);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 128;
+	        this.state = 130;
 	        this.match(guidoParser.STRING);
-	        this.state = 129;
+	        this.state = 131;
 	        this.match(guidoParser.T__7);
-	        this.state = 131; 
+	        this.state = 133; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 130;
+	            this.state = 132;
 	            _la = this._input.LA(1);
-	            if(!(_la===guidoParser.NUMBER || _la===guidoParser.STRING)) {
+	            if(!(_la===30 || _la===31)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 133; 
+	            this.state = 135; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===guidoParser.NUMBER || _la===guidoParser.STRING);
+	        } while(_la===30 || _la===31);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -529,35 +526,35 @@ export default class guidoParser extends antlr4.Parser {
 	notes() {
 	    let localctx = new NotesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, guidoParser.RULE_notes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 135;
+	        this.state = 137;
 	        this.match(guidoParser.T__8);
-	        this.state = 138; 
+	        this.state = 140; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 138;
+	            this.state = 140;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case guidoParser.REST:
-	            case guidoParser.STRING:
-	                this.state = 136;
+	            case 29:
+	            case 31:
+	                this.state = 138;
 	                this.note();
 	                break;
-	            case guidoParser.T__0:
-	                this.state = 137;
+	            case 1:
+	                this.state = 139;
 	                this.chord();
 	                break;
 	            default:
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
-	            this.state = 140; 
+	            this.state = 142; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << guidoParser.T__0) | (1 << guidoParser.REST) | (1 << guidoParser.STRING))) !== 0));
-	        this.state = 142;
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2684354562) !== 0));
+	        this.state = 144;
 	        this.match(guidoParser.T__9);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -578,40 +575,40 @@ export default class guidoParser extends antlr4.Parser {
 	note() {
 	    let localctx = new NoteContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, guidoParser.RULE_note);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 144;
-	        this.notename();
 	        this.state = 146;
+	        this.notename();
+	        this.state = 148;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===guidoParser.T__10 || _la===guidoParser.T__11) {
-	            this.state = 145;
+	        if(_la===11 || _la===12) {
+	            this.state = 147;
 	            this.accidental();
 	        }
 
-	        this.state = 149;
+	        this.state = 151;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,15,this._ctx);
 	        if(la_===1) {
-	            this.state = 148;
+	            this.state = 150;
 	            this.octave();
 
 	        }
-	        this.state = 152;
+	        this.state = 154;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,16,this._ctx);
 	        if(la_===1) {
-	            this.state = 151;
+	            this.state = 153;
 	            this.duration();
 
 	        }
-	        this.state = 155;
+	        this.state = 157;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===guidoParser.T__16) {
-	            this.state = 154;
+	        if(_la===17) {
+	            this.state = 156;
 	            this.dotting();
 	        }
 
@@ -634,26 +631,26 @@ export default class guidoParser extends antlr4.Parser {
 	chord() {
 	    let localctx = new ChordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, guidoParser.RULE_chord);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 157;
+	        this.state = 159;
 	        this.match(guidoParser.T__0);
-	        this.state = 158;
+	        this.state = 160;
 	        this.note();
-	        this.state = 163;
+	        this.state = 165;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===guidoParser.T__2) {
-	            this.state = 159;
+	        while(_la===3) {
+	            this.state = 161;
 	            this.match(guidoParser.T__2);
-	            this.state = 160;
+	            this.state = 162;
 	            this.note();
-	            this.state = 165;
+	            this.state = 167;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 166;
+	        this.state = 168;
 	        this.match(guidoParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -674,12 +671,12 @@ export default class guidoParser extends antlr4.Parser {
 	notename() {
 	    let localctx = new NotenameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, guidoParser.RULE_notename);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 168;
+	        this.state = 170;
 	        _la = this._input.LA(1);
-	        if(!(_la===guidoParser.REST || _la===guidoParser.STRING)) {
+	        if(!(_la===29 || _la===31)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -705,12 +702,12 @@ export default class guidoParser extends antlr4.Parser {
 	accidental() {
 	    let localctx = new AccidentalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, guidoParser.RULE_accidental);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 170;
+	        this.state = 172;
 	        _la = this._input.LA(1);
-	        if(!(_la===guidoParser.T__10 || _la===guidoParser.T__11)) {
+	        if(!(_la===11 || _la===12)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -736,16 +733,16 @@ export default class guidoParser extends antlr4.Parser {
 	number() {
 	    let localctx = new NumberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, guidoParser.RULE_number);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 173;
+	        this.state = 175;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===guidoParser.T__12 || _la===guidoParser.T__13) {
-	            this.state = 172;
+	        if(_la===13 || _la===14) {
+	            this.state = 174;
 	            _la = this._input.LA(1);
-	            if(!(_la===guidoParser.T__12 || _la===guidoParser.T__13)) {
+	            if(!(_la===13 || _la===14)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -754,7 +751,7 @@ export default class guidoParser extends antlr4.Parser {
 	            }
 	        }
 
-	        this.state = 175;
+	        this.state = 177;
 	        this.match(guidoParser.NUMBER);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -777,7 +774,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, guidoParser.RULE_octave);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 177;
+	        this.state = 179;
 	        this.number();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -798,24 +795,24 @@ export default class guidoParser extends antlr4.Parser {
 	fraction() {
 	    let localctx = new FractionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, guidoParser.RULE_fraction);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 180;
+	        this.state = 182;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << guidoParser.T__12) | (1 << guidoParser.T__13) | (1 << guidoParser.NUMBER))) !== 0)) {
-	            this.state = 179;
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1073766400) !== 0)) {
+	            this.state = 181;
 	            this.number();
 	        }
 
-	        this.state = 184;
+	        this.state = 186;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===guidoParser.T__14) {
-	            this.state = 182;
+	        if(_la===15) {
+	            this.state = 184;
 	            this.match(guidoParser.T__14);
-	            this.state = 183;
+	            this.state = 185;
 	            this.number();
 	        }
 
@@ -838,18 +835,18 @@ export default class guidoParser extends antlr4.Parser {
 	duration() {
 	    let localctx = new DurationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, guidoParser.RULE_duration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 187;
+	        this.state = 189;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===guidoParser.T__15) {
-	            this.state = 186;
+	        if(_la===16) {
+	            this.state = 188;
 	            this.match(guidoParser.T__15);
 	        }
 
-	        this.state = 189;
+	        this.state = 191;
 	        this.fraction();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -870,19 +867,19 @@ export default class guidoParser extends antlr4.Parser {
 	dotting() {
 	    let localctx = new DottingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, guidoParser.RULE_dotting);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 192; 
+	        this.state = 194; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 191;
+	            this.state = 193;
 	            this.match(guidoParser.T__16);
-	            this.state = 194; 
+	            this.state = 196; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===guidoParser.T__16);
+	        } while(_la===17);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -904,7 +901,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 38, guidoParser.RULE_title);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 196;
+	        this.state = 198;
 	        this.match(guidoParser.T__17);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -927,7 +924,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 40, guidoParser.RULE_tempo);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 198;
+	        this.state = 200;
 	        this.match(guidoParser.T__18);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -950,7 +947,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 42, guidoParser.RULE_clef);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 200;
+	        this.state = 202;
 	        this.match(guidoParser.T__19);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -973,7 +970,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 44, guidoParser.RULE_meter);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 202;
+	        this.state = 204;
 	        this.match(guidoParser.T__20);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -996,7 +993,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 46, guidoParser.RULE_slur);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 204;
+	        this.state = 206;
 	        this.match(guidoParser.T__21);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1019,7 +1016,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 48, guidoParser.RULE_key);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 206;
+	        this.state = 208;
 	        this.match(guidoParser.T__22);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1042,7 +1039,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 50, guidoParser.RULE_barformat);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 208;
+	        this.state = 210;
 	        this.match(guidoParser.T__23);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1065,7 +1062,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 52, guidoParser.RULE_staff);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 210;
+	        this.state = 212;
 	        this.match(guidoParser.T__24);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1088,7 +1085,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 54, guidoParser.RULE_repeatEnd);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 212;
+	        this.state = 214;
 	        this.match(guidoParser.T__25);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1111,7 +1108,7 @@ export default class guidoParser extends antlr4.Parser {
 	    this.enterRule(localctx, 56, guidoParser.RULE_t);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 214;
+	        this.state = 216;
 	        this.match(guidoParser.T__26);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1210,6 +1207,14 @@ class ProgContext extends antlr4.ParserRuleContext {
         this.ruleIndex = guidoParser.RULE_prog;
     }
 
+	EOF() {
+	    return this.getToken(guidoParser.EOF, 0);
+	};
+
+	sequencelist() {
+	    return this.getTypedRuleContext(SequencelistContext,0);
+	};
+
 	segment = function(i) {
 	    if(i===undefined) {
 	        i = null;
@@ -1219,10 +1224,6 @@ class ProgContext extends antlr4.ParserRuleContext {
 	    } else {
 	        return this.getTypedRuleContext(SegmentContext,i);
 	    }
-	};
-
-	sequencelist() {
-	    return this.getTypedRuleContext(SequencelistContext,0);
 	};
 
 	enterRule(listener) {
@@ -2394,3 +2395,12 @@ guidoParser.BarformatContext = BarformatContext;
 guidoParser.StaffContext = StaffContext; 
 guidoParser.RepeatEndContext = RepeatEndContext; 
 guidoParser.TContext = TContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

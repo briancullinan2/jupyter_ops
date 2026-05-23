@@ -1,4 +1,4 @@
-// Generated from ./html/HTMLParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/html/HTMLParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import HTMLParserListener from './HTMLParserListener.js';
@@ -75,16 +75,12 @@ export default class HTMLParser extends antlr4.Parser {
         this.symbolicNames = HTMLParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	htmlDocument() {
 	    let localctx = new HtmlDocumentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, HTMLParser.RULE_htmlDocument);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 25;
@@ -103,7 +99,7 @@ export default class HTMLParser extends antlr4.Parser {
 	        this.state = 29;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HTMLParser.XML) {
+	        if(_la===3) {
 	            this.state = 28;
 	            this.match(HTMLParser.XML);
 	        }
@@ -124,7 +120,7 @@ export default class HTMLParser extends antlr4.Parser {
 	        this.state = 38;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HTMLParser.DTD) {
+	        if(_la===5) {
 	            this.state = 37;
 	            this.match(HTMLParser.DTD);
 	        }
@@ -145,7 +141,7 @@ export default class HTMLParser extends antlr4.Parser {
 	        this.state = 49;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HTMLParser.HTML_COMMENT) | (1 << HTMLParser.HTML_CONDITIONAL_COMMENT) | (1 << HTMLParser.SCRIPTLET) | (1 << HTMLParser.SEA_WS) | (1 << HTMLParser.SCRIPT_OPEN) | (1 << HTMLParser.STYLE_OPEN) | (1 << HTMLParser.TAG_OPEN))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1990) !== 0)) {
 	            this.state = 46;
 	            this.htmlElements();
 	            this.state = 51;
@@ -171,12 +167,12 @@ export default class HTMLParser extends antlr4.Parser {
 	scriptletOrSeaWs() {
 	    let localctx = new ScriptletOrSeaWsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, HTMLParser.RULE_scriptletOrSeaWs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 52;
 	        _la = this._input.LA(1);
-	        if(!(_la===HTMLParser.SCRIPTLET || _la===HTMLParser.SEA_WS)) {
+	        if(!(_la===6 || _la===7)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -202,13 +198,13 @@ export default class HTMLParser extends antlr4.Parser {
 	htmlElements() {
 	    let localctx = new HtmlElementsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, HTMLParser.RULE_htmlElements);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 57;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << HTMLParser.HTML_COMMENT) | (1 << HTMLParser.HTML_CONDITIONAL_COMMENT) | (1 << HTMLParser.SEA_WS))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 134) !== 0)) {
 	            this.state = 54;
 	            this.htmlMisc();
 	            this.state = 59;
@@ -249,12 +245,12 @@ export default class HTMLParser extends antlr4.Parser {
 	htmlElement() {
 	    let localctx = new HtmlElementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, HTMLParser.RULE_htmlElement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 90;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HTMLParser.TAG_OPEN:
+	        case 10:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 67;
 	            this.match(HTMLParser.TAG_OPEN);
@@ -263,7 +259,7 @@ export default class HTMLParser extends antlr4.Parser {
 	            this.state = 72;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===HTMLParser.TAG_NAME) {
+	            while(_la===16) {
 	                this.state = 69;
 	                this.htmlAttribute();
 	                this.state = 74;
@@ -273,7 +269,7 @@ export default class HTMLParser extends antlr4.Parser {
 	            this.state = 85;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case HTMLParser.TAG_CLOSE:
+	            case 12:
 	                this.state = 75;
 	                this.match(HTMLParser.TAG_CLOSE);
 	                this.state = 82;
@@ -293,7 +289,7 @@ export default class HTMLParser extends antlr4.Parser {
 
 	                }
 	                break;
-	            case HTMLParser.TAG_SLASH_CLOSE:
+	            case 13:
 	                this.state = 84;
 	                this.match(HTMLParser.TAG_SLASH_CLOSE);
 	                break;
@@ -301,17 +297,17 @@ export default class HTMLParser extends antlr4.Parser {
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
 	            break;
-	        case HTMLParser.SCRIPTLET:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 87;
 	            this.match(HTMLParser.SCRIPTLET);
 	            break;
-	        case HTMLParser.SCRIPT_OPEN:
+	        case 8:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 88;
 	            this.script();
 	            break;
-	        case HTMLParser.STYLE_OPEN:
+	        case 9:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 89;
 	            this.style();
@@ -338,13 +334,13 @@ export default class HTMLParser extends antlr4.Parser {
 	htmlContent() {
 	    let localctx = new HtmlContentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, HTMLParser.RULE_htmlContent);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 93;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HTMLParser.SEA_WS || _la===HTMLParser.HTML_TEXT) {
+	        if(_la===7 || _la===11) {
 	            this.state = 92;
 	            this.htmlChardata();
 	        }
@@ -357,19 +353,19 @@ export default class HTMLParser extends antlr4.Parser {
 	                this.state = 98;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case HTMLParser.SCRIPTLET:
-	                case HTMLParser.SCRIPT_OPEN:
-	                case HTMLParser.STYLE_OPEN:
-	                case HTMLParser.TAG_OPEN:
+	                case 6:
+	                case 8:
+	                case 9:
+	                case 10:
 	                    this.state = 95;
 	                    this.htmlElement();
 	                    break;
-	                case HTMLParser.CDATA:
+	                case 4:
 	                    this.state = 96;
 	                    this.match(HTMLParser.CDATA);
 	                    break;
-	                case HTMLParser.HTML_COMMENT:
-	                case HTMLParser.HTML_CONDITIONAL_COMMENT:
+	                case 1:
+	                case 2:
 	                    this.state = 97;
 	                    this.htmlComment();
 	                    break;
@@ -379,7 +375,7 @@ export default class HTMLParser extends antlr4.Parser {
 	                this.state = 101;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===HTMLParser.SEA_WS || _la===HTMLParser.HTML_TEXT) {
+	                if(_la===7 || _la===11) {
 	                    this.state = 100;
 	                    this.htmlChardata();
 	                }
@@ -409,7 +405,7 @@ export default class HTMLParser extends antlr4.Parser {
 	htmlAttribute() {
 	    let localctx = new HtmlAttributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, HTMLParser.RULE_htmlAttribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 108;
@@ -417,7 +413,7 @@ export default class HTMLParser extends antlr4.Parser {
 	        this.state = 111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===HTMLParser.TAG_EQUALS) {
+	        if(_la===15) {
 	            this.state = 109;
 	            this.match(HTMLParser.TAG_EQUALS);
 	            this.state = 110;
@@ -443,12 +439,12 @@ export default class HTMLParser extends antlr4.Parser {
 	htmlChardata() {
 	    let localctx = new HtmlChardataContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, HTMLParser.RULE_htmlChardata);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 113;
 	        _la = this._input.LA(1);
-	        if(!(_la===HTMLParser.SEA_WS || _la===HTMLParser.HTML_TEXT)) {
+	        if(!(_la===7 || _la===11)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -478,13 +474,13 @@ export default class HTMLParser extends antlr4.Parser {
 	        this.state = 117;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case HTMLParser.HTML_COMMENT:
-	        case HTMLParser.HTML_CONDITIONAL_COMMENT:
+	        case 1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 115;
 	            this.htmlComment();
 	            break;
-	        case HTMLParser.SEA_WS:
+	        case 7:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 116;
 	            this.match(HTMLParser.SEA_WS);
@@ -511,12 +507,12 @@ export default class HTMLParser extends antlr4.Parser {
 	htmlComment() {
 	    let localctx = new HtmlCommentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, HTMLParser.RULE_htmlComment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 119;
 	        _la = this._input.LA(1);
-	        if(!(_la===HTMLParser.HTML_COMMENT || _la===HTMLParser.HTML_CONDITIONAL_COMMENT)) {
+	        if(!(_la===1 || _la===2)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -542,14 +538,14 @@ export default class HTMLParser extends antlr4.Parser {
 	script() {
 	    let localctx = new ScriptContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, HTMLParser.RULE_script);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 121;
 	        this.match(HTMLParser.SCRIPT_OPEN);
 	        this.state = 122;
 	        _la = this._input.LA(1);
-	        if(!(_la===HTMLParser.SCRIPT_BODY || _la===HTMLParser.SCRIPT_SHORT_BODY)) {
+	        if(!(_la===18 || _la===19)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -575,14 +571,14 @@ export default class HTMLParser extends antlr4.Parser {
 	style() {
 	    let localctx = new StyleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, HTMLParser.RULE_style);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 124;
 	        this.match(HTMLParser.STYLE_OPEN);
 	        this.state = 125;
 	        _la = this._input.LA(1);
-	        if(!(_la===HTMLParser.STYLE_BODY || _la===HTMLParser.STYLE_SHORT_BODY)) {
+	        if(!(_la===20 || _la===21)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1225,3 +1221,12 @@ HTMLParser.HtmlMiscContext = HtmlMiscContext;
 HTMLParser.HtmlCommentContext = HtmlCommentContext; 
 HTMLParser.ScriptContext = ScriptContext; 
 HTMLParser.StyleContext = StyleContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

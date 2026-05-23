@@ -1,4 +1,4 @@
-// Generated from ./cto/CtoParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cto/CtoParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CtoParserListener from './CtoParserListener.js';
@@ -176,16 +176,12 @@ export default class CtoParser extends antlr4.Parser {
         this.symbolicNames = CtoParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	modelUnit() {
 	    let localctx = new ModelUnitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, CtoParser.RULE_modelUnit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 82;
@@ -193,7 +189,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 86;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.IMPORT) {
+	        while(_la===9) {
 	            this.state = 83;
 	            this.importDeclaration();
 	            this.state = 88;
@@ -203,7 +199,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 92;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CtoParser.ABSTRACT) | (1 << CtoParser.ASSET) | (1 << CtoParser.CONCEPT) | (1 << CtoParser.ENUM) | (1 << CtoParser.EVENT) | (1 << CtoParser.PARTICIPANT) | (1 << CtoParser.TRANSACTION))) !== 0) || _la===CtoParser.AT) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 36974) !== 0) || _la===34) {
 	            this.state = 89;
 	            this.typeDeclaration();
 	            this.state = 94;
@@ -256,7 +252,7 @@ export default class CtoParser extends antlr4.Parser {
 	importDeclaration() {
 	    let localctx = new ImportDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, CtoParser.RULE_importDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 100;
@@ -266,7 +262,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 104;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CtoParser.DOT) {
+	        if(_la===30) {
 	            this.state = 102;
 	            this.match(CtoParser.DOT);
 	            this.state = 103;
@@ -293,37 +289,42 @@ export default class CtoParser extends antlr4.Parser {
 	    let localctx = new TypeDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, CtoParser.RULE_typeDeclaration);
 	    try {
-	        this.enterOuterAlt(localctx, 1);
 	        this.state = 112;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        switch(la_) {
 	        case 1:
+	            this.enterOuterAlt(localctx, 1);
 	            this.state = 106;
 	            this.assetDeclaration();
 	            break;
 
 	        case 2:
+	            this.enterOuterAlt(localctx, 2);
 	            this.state = 107;
 	            this.conceptDeclaration();
 	            break;
 
 	        case 3:
+	            this.enterOuterAlt(localctx, 3);
 	            this.state = 108;
 	            this.enumDeclaration();
 	            break;
 
 	        case 4:
+	            this.enterOuterAlt(localctx, 4);
 	            this.state = 109;
 	            this.participantDeclaration();
 	            break;
 
 	        case 5:
+	            this.enterOuterAlt(localctx, 5);
 	            this.state = 110;
 	            this.transactionDeclaration();
 	            break;
 
 	        case 6:
+	            this.enterOuterAlt(localctx, 6);
 	            this.state = 111;
 	            this.eventDeclaration();
 	            break;
@@ -352,12 +353,12 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 116;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CtoParser.AT:
+	        case 34:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 114;
 	            this.decorator();
 	            break;
-	        case CtoParser.ABSTRACT:
+	        case 1:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 115;
 	            this.match(CtoParser.ABSTRACT);
@@ -384,13 +385,13 @@ export default class CtoParser extends antlr4.Parser {
 	assetDeclaration() {
 	    let localctx = new AssetDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, CtoParser.RULE_assetDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 121;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.ABSTRACT || _la===CtoParser.AT) {
+	        while(_la===1 || _la===34) {
 	            this.state = 118;
 	            this.classModifier();
 	            this.state = 123;
@@ -424,13 +425,13 @@ export default class CtoParser extends antlr4.Parser {
 	conceptDeclaration() {
 	    let localctx = new ConceptDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, CtoParser.RULE_conceptDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 132;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.ABSTRACT || _la===CtoParser.AT) {
+	        while(_la===1 || _la===34) {
 	            this.state = 129;
 	            this.classModifier();
 	            this.state = 134;
@@ -444,7 +445,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 139;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CtoParser.EXTENDS) {
+	        if(_la===7) {
 	            this.state = 137;
 	            this.match(CtoParser.EXTENDS);
 	            this.state = 138;
@@ -472,7 +473,7 @@ export default class CtoParser extends antlr4.Parser {
 	enumDeclaration() {
 	    let localctx = new EnumDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, CtoParser.RULE_enumDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 143;
@@ -484,7 +485,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 149;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.VAR) {
+	        while(_la===37) {
 	            this.state = 146;
 	            this.enumConstant();
 	            this.state = 151;
@@ -564,13 +565,13 @@ export default class CtoParser extends antlr4.Parser {
 	participantDeclaration() {
 	    let localctx = new ParticipantDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, CtoParser.RULE_participantDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 164;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.ABSTRACT || _la===CtoParser.AT) {
+	        while(_la===1 || _la===34) {
 	            this.state = 161;
 	            this.classModifier();
 	            this.state = 166;
@@ -604,13 +605,13 @@ export default class CtoParser extends antlr4.Parser {
 	transactionDeclaration() {
 	    let localctx = new TransactionDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, CtoParser.RULE_transactionDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 175;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.ABSTRACT || _la===CtoParser.AT) {
+	        while(_la===1 || _la===34) {
 	            this.state = 172;
 	            this.classModifier();
 	            this.state = 177;
@@ -643,17 +644,18 @@ export default class CtoParser extends antlr4.Parser {
 	    let localctx = new ExtendsOrIdentifiedContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, CtoParser.RULE_extendsOrIdentified);
 	    try {
-	        this.enterOuterAlt(localctx, 1);
 	        this.state = 185;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CtoParser.EXTENDS:
+	        case 7:
+	            this.enterOuterAlt(localctx, 1);
 	            this.state = 182;
 	            this.match(CtoParser.EXTENDS);
 	            this.state = 183;
 	            this.match(CtoParser.IDENTIFIER);
 	            break;
-	        case CtoParser.IDENTIFIED:
+	        case 8:
+	            this.enterOuterAlt(localctx, 2);
 	            this.state = 184;
 	            this.identified();
 	            break;
@@ -704,7 +706,7 @@ export default class CtoParser extends antlr4.Parser {
 	classBody() {
 	    let localctx = new ClassBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, CtoParser.RULE_classBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 190;
@@ -712,7 +714,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 194;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 28)) & ~0x1f) == 0 && ((1 << (_la - 28)) & ((1 << (CtoParser.SEMI - 28)) | (1 << (CtoParser.REF - 28)) | (1 << (CtoParser.VAR - 28)))) !== 0)) {
+	        while(((((_la - 28)) & ~0x1f) === 0 && ((1 << (_la - 28)) & 769) !== 0)) {
 	            this.state = 191;
 	            this.classBodyDeclaration();
 	            this.state = 196;
@@ -744,13 +746,13 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 201;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CtoParser.SEMI:
+	        case 28:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 199;
 	            this.match(CtoParser.SEMI);
 	            break;
-	        case CtoParser.REF:
-	        case CtoParser.VAR:
+	        case 36:
+	        case 37:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 200;
 	            this.fieldDeclaration();
@@ -777,7 +779,7 @@ export default class CtoParser extends antlr4.Parser {
 	fieldDeclaration() {
 	    let localctx = new FieldDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, CtoParser.RULE_fieldDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 247;
 	        this._errHandler.sync(this);
@@ -792,7 +794,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 206;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.DEFAULT) {
+	            if(_la===4) {
 	                this.state = 205;
 	                this.defaultString();
 	            }
@@ -800,7 +802,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 209;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.REGEX) {
+	            if(_la===14) {
 	                this.state = 208;
 	                this.regexDeclaration();
 	            }
@@ -808,7 +810,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 212;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.OPTIONAL) {
+	            if(_la===11) {
 	                this.state = 211;
 	                this.match(CtoParser.OPTIONAL);
 	            }
@@ -824,7 +826,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 217;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.DEFAULT) {
+	            if(_la===4) {
 	                this.state = 216;
 	                this.defaultBoolean();
 	            }
@@ -832,7 +834,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 220;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.OPTIONAL) {
+	            if(_la===11) {
 	                this.state = 219;
 	                this.match(CtoParser.OPTIONAL);
 	            }
@@ -848,7 +850,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 225;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.DEFAULT) {
+	            if(_la===4) {
 	                this.state = 224;
 	                this.defaultNumber();
 	            }
@@ -856,7 +858,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 228;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.RANGE) {
+	            if(_la===13) {
 	                this.state = 227;
 	                this.rangeValidation();
 	            }
@@ -864,7 +866,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 231;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.OPTIONAL) {
+	            if(_la===11) {
 	                this.state = 230;
 	                this.match(CtoParser.OPTIONAL);
 	            }
@@ -880,7 +882,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 236;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.DEFAULT) {
+	            if(_la===4) {
 	                this.state = 235;
 	                this.defaultDate();
 	            }
@@ -888,7 +890,7 @@ export default class CtoParser extends antlr4.Parser {
 	            this.state = 239;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CtoParser.OPTIONAL) {
+	            if(_la===11) {
 	                this.state = 238;
 	                this.match(CtoParser.OPTIONAL);
 	            }
@@ -931,7 +933,7 @@ export default class CtoParser extends antlr4.Parser {
 	identifierField() {
 	    let localctx = new IdentifierFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, CtoParser.RULE_identifierField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 249;
@@ -941,7 +943,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 254;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.LBRACK) {
+	        while(_la===26) {
 	            this.state = 251;
 	            this.square();
 	            this.state = 256;
@@ -967,7 +969,7 @@ export default class CtoParser extends antlr4.Parser {
 	numericField() {
 	    let localctx = new NumericFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, CtoParser.RULE_numericField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 257;
@@ -977,7 +979,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 262;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.LBRACK) {
+	        while(_la===26) {
 	            this.state = 259;
 	            this.square();
 	            this.state = 264;
@@ -1003,12 +1005,12 @@ export default class CtoParser extends antlr4.Parser {
 	numericPrimitive() {
 	    let localctx = new NumericPrimitiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, CtoParser.RULE_numericPrimitive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 265;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CtoParser.DOUBLE) | (1 << CtoParser.INTEGER) | (1 << CtoParser.LONG))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1835008) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1034,7 +1036,7 @@ export default class CtoParser extends antlr4.Parser {
 	booleanField() {
 	    let localctx = new BooleanFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, CtoParser.RULE_booleanField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 267;
@@ -1044,7 +1046,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 272;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.LBRACK) {
+	        while(_la===26) {
 	            this.state = 269;
 	            this.square();
 	            this.state = 274;
@@ -1070,7 +1072,7 @@ export default class CtoParser extends antlr4.Parser {
 	dateField() {
 	    let localctx = new DateFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, CtoParser.RULE_dateField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 275;
@@ -1080,7 +1082,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 280;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.LBRACK) {
+	        while(_la===26) {
 	            this.state = 277;
 	            this.square();
 	            this.state = 282;
@@ -1160,7 +1162,7 @@ export default class CtoParser extends antlr4.Parser {
 	stringField() {
 	    let localctx = new StringFieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, CtoParser.RULE_stringField);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 291;
@@ -1170,7 +1172,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 296;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.LBRACK) {
+	        while(_la===26) {
 	            this.state = 293;
 	            this.square();
 	            this.state = 298;
@@ -1196,7 +1198,7 @@ export default class CtoParser extends antlr4.Parser {
 	reference() {
 	    let localctx = new ReferenceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, CtoParser.RULE_reference);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 299;
@@ -1206,7 +1208,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 304;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.LBRACK) {
+	        while(_la===26) {
 	            this.state = 301;
 	            this.square();
 	            this.state = 306;
@@ -1441,12 +1443,12 @@ export default class CtoParser extends antlr4.Parser {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, CtoParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 349;
 	        _la = this._input.LA(1);
-	        if(!(_la===CtoParser.ASSET || _la===CtoParser.PARTICIPANT || _la===CtoParser.IDENTIFIER)) {
+	        if(!(_la===2 || _la===12 || _la===47)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1476,20 +1478,20 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 354;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CtoParser.DECIMAL_LITERAL:
-	        case CtoParser.OCT_LITERAL:
-	        case CtoParser.FLOAT_LITERAL:
+	        case 38:
+	        case 39:
+	        case 40:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 351;
 	            this.numberLiteral();
 	            break;
-	        case CtoParser.CHAR_LITERAL:
-	        case CtoParser.STRING_LITERAL:
+	        case 48:
+	        case 49:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 352;
 	            this.stringLiteral();
 	            break;
-	        case CtoParser.BOOL_LITERAL:
+	        case 41:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 353;
 	            this.match(CtoParser.BOOL_LITERAL);
@@ -1520,13 +1522,13 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 358;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CtoParser.DECIMAL_LITERAL:
-	        case CtoParser.OCT_LITERAL:
+	        case 38:
+	        case 39:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 356;
 	            this.integerLiteral();
 	            break;
-	        case CtoParser.FLOAT_LITERAL:
+	        case 40:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 357;
 	            this.floatLiteral();
@@ -1553,12 +1555,12 @@ export default class CtoParser extends antlr4.Parser {
 	stringLiteral() {
 	    let localctx = new StringLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, CtoParser.RULE_stringLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 360;
 	        _la = this._input.LA(1);
-	        if(!(_la===CtoParser.CHAR_LITERAL || _la===CtoParser.STRING_LITERAL)) {
+	        if(!(_la===48 || _la===49)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1584,12 +1586,12 @@ export default class CtoParser extends antlr4.Parser {
 	integerLiteral() {
 	    let localctx = new IntegerLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, CtoParser.RULE_integerLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 362;
 	        _la = this._input.LA(1);
-	        if(!(_la===CtoParser.DECIMAL_LITERAL || _la===CtoParser.OCT_LITERAL)) {
+	        if(!(_la===38 || _la===39)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1638,7 +1640,7 @@ export default class CtoParser extends antlr4.Parser {
 	decorator() {
 	    let localctx = new DecoratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, CtoParser.RULE_decorator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 366;
@@ -1648,7 +1650,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 372;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CtoParser.LPAREN) {
+	        if(_la===22) {
 	            this.state = 368;
 	            this.match(CtoParser.LPAREN);
 	            this.state = 369;
@@ -1676,7 +1678,7 @@ export default class CtoParser extends antlr4.Parser {
 	elementValuePair() {
 	    let localctx = new ElementValuePairContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, CtoParser.RULE_elementValuePair);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 374;
@@ -1684,7 +1686,7 @@ export default class CtoParser extends antlr4.Parser {
 	        this.state = 379;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CtoParser.COMMA) {
+	        while(_la===29) {
 	            this.state = 375;
 	            this.match(CtoParser.COMMA);
 	            this.state = 376;
@@ -2459,16 +2461,16 @@ class ExtendsOrIdentifiedContext extends antlr4.ParserRuleContext {
         this.ruleIndex = CtoParser.RULE_extendsOrIdentified;
     }
 
-	identified() {
-	    return this.getTypedRuleContext(IdentifiedContext,0);
-	};
-
 	EXTENDS() {
 	    return this.getToken(CtoParser.EXTENDS, 0);
 	};
 
 	IDENTIFIER() {
 	    return this.getToken(CtoParser.IDENTIFIER, 0);
+	};
+
+	identified() {
+	    return this.getTypedRuleContext(IdentifiedContext,0);
 	};
 
 	enterRule(listener) {
@@ -3837,3 +3839,12 @@ CtoParser.FloatLiteralContext = FloatLiteralContext;
 CtoParser.DecoratorContext = DecoratorContext; 
 CtoParser.ElementValuePairContext = ElementValuePairContext; 
 CtoParser.SquareContext = SquareContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

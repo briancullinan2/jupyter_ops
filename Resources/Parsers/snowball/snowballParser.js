@@ -1,4 +1,4 @@
-// Generated from ./snowball/snowball.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/snowball/snowball.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import snowballListener from './snowballListener.js';
@@ -171,10 +171,6 @@ export default class snowballParser extends antlr4.Parser {
         this.symbolicNames = snowballParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 5:
@@ -218,13 +214,13 @@ export default class snowballParser extends antlr4.Parser {
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, snowballParser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 35;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << snowballParser.T__0) | (1 << snowballParser.T__3) | (1 << snowballParser.T__4) | (1 << snowballParser.T__5) | (1 << snowballParser.T__6) | (1 << snowballParser.T__7) | (1 << snowballParser.T__8) | (1 << snowballParser.T__9))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2034) !== 0)) {
 	            this.state = 32;
 	            this.p();
 	            this.state = 37;
@@ -305,12 +301,12 @@ export default class snowballParser extends antlr4.Parser {
 	declaration() {
 	    let localctx = new DeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, snowballParser.RULE_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 102;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case snowballParser.T__3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 48;
 	            this.match(snowballParser.T__3);
@@ -319,7 +315,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 53;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snowballParser.NAME) {
+	            while(_la===76) {
 	                this.state = 50;
 	                this.s_name();
 	                this.state = 55;
@@ -329,7 +325,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 56;
 	            this.match(snowballParser.T__2);
 	            break;
-	        case snowballParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 57;
 	            this.match(snowballParser.T__4);
@@ -338,7 +334,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 62;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snowballParser.NAME) {
+	            while(_la===76) {
 	                this.state = 59;
 	                this.i_name();
 	                this.state = 64;
@@ -348,7 +344,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 65;
 	            this.match(snowballParser.T__2);
 	            break;
-	        case snowballParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 66;
 	            this.match(snowballParser.T__5);
@@ -357,7 +353,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 71;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snowballParser.NAME) {
+	            while(_la===76) {
 	                this.state = 68;
 	                this.b_name();
 	                this.state = 73;
@@ -367,7 +363,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 74;
 	            this.match(snowballParser.T__2);
 	            break;
-	        case snowballParser.T__6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 75;
 	            this.match(snowballParser.T__6);
@@ -376,7 +372,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 80;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snowballParser.NAME) {
+	            while(_la===76) {
 	                this.state = 77;
 	                this.r_name();
 	                this.state = 82;
@@ -386,7 +382,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 83;
 	            this.match(snowballParser.T__2);
 	            break;
-	        case snowballParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 84;
 	            this.match(snowballParser.T__7);
@@ -395,7 +391,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 89;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snowballParser.NAME) {
+	            while(_la===76) {
 	                this.state = 86;
 	                this.r_name();
 	                this.state = 91;
@@ -405,7 +401,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 92;
 	            this.match(snowballParser.T__2);
 	            break;
-	        case snowballParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 93;
 	            this.match(snowballParser.T__8);
@@ -414,7 +410,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 98;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===snowballParser.NAME) {
+	            while(_la===76) {
 	                this.state = 95;
 	                this.g_name();
 	                this.state = 100;
@@ -475,7 +471,7 @@ export default class snowballParser extends antlr4.Parser {
 	g_definition() {
 	    let localctx = new G_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, snowballParser.RULE_g_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 109;
@@ -487,7 +483,7 @@ export default class snowballParser extends antlr4.Parser {
 	        this.state = 116;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===snowballParser.PLUS_OR_MINUS) {
+	        while(_la===75) {
 	            this.state = 112;
 	            this.match(snowballParser.PLUS_OR_MINUS);
 	            this.state = 113;
@@ -521,7 +517,7 @@ export default class snowballParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 10;
 	    this.enterRecursionRule(localctx, 10, snowballParser.RULE_c, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 219;
@@ -534,7 +530,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 124;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << snowballParser.T__1) | (1 << snowballParser.T__13) | (1 << snowballParser.T__14) | (1 << snowballParser.T__15) | (1 << snowballParser.T__16) | (1 << snowballParser.T__17) | (1 << snowballParser.T__18) | (1 << snowballParser.T__19) | (1 << snowballParser.T__20) | (1 << snowballParser.T__21) | (1 << snowballParser.T__22) | (1 << snowballParser.T__23) | (1 << snowballParser.T__24) | (1 << snowballParser.T__25) | (1 << snowballParser.T__26) | (1 << snowballParser.T__27) | (1 << snowballParser.T__28) | (1 << snowballParser.T__29) | (1 << snowballParser.T__30))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (snowballParser.T__31 - 32)) | (1 << (snowballParser.T__32 - 32)) | (1 << (snowballParser.T__33 - 32)) | (1 << (snowballParser.T__34 - 32)) | (1 << (snowballParser.T__35 - 32)) | (1 << (snowballParser.T__36 - 32)) | (1 << (snowballParser.T__37 - 32)) | (1 << (snowballParser.T__38 - 32)) | (1 << (snowballParser.T__39 - 32)) | (1 << (snowballParser.T__41 - 32)) | (1 << (snowballParser.T__42 - 32)) | (1 << (snowballParser.T__43 - 32)) | (1 << (snowballParser.T__44 - 32)) | (1 << (snowballParser.T__45 - 32)) | (1 << (snowballParser.T__46 - 32)) | (1 << (snowballParser.T__47 - 32)) | (1 << (snowballParser.T__49 - 32)) | (1 << (snowballParser.T__50 - 32)) | (1 << (snowballParser.T__51 - 32)) | (1 << (snowballParser.T__52 - 32)))) !== 0) || _la===snowballParser.LITERAL_STRING || _la===snowballParser.NAME) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294950916) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4062719) !== 0) || _la===73 || _la===76) {
 	                this.state = 121;
 	                this.c(0);
 	                this.state = 126;
@@ -772,7 +768,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 200;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << snowballParser.T__1) | (1 << snowballParser.T__13) | (1 << snowballParser.T__14) | (1 << snowballParser.T__15) | (1 << snowballParser.T__16) | (1 << snowballParser.T__17) | (1 << snowballParser.T__18) | (1 << snowballParser.T__19) | (1 << snowballParser.T__20) | (1 << snowballParser.T__21) | (1 << snowballParser.T__22) | (1 << snowballParser.T__23) | (1 << snowballParser.T__24) | (1 << snowballParser.T__25) | (1 << snowballParser.T__26) | (1 << snowballParser.T__27) | (1 << snowballParser.T__28) | (1 << snowballParser.T__29) | (1 << snowballParser.T__30))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (snowballParser.T__31 - 32)) | (1 << (snowballParser.T__32 - 32)) | (1 << (snowballParser.T__33 - 32)) | (1 << (snowballParser.T__34 - 32)) | (1 << (snowballParser.T__35 - 32)) | (1 << (snowballParser.T__36 - 32)) | (1 << (snowballParser.T__37 - 32)) | (1 << (snowballParser.T__38 - 32)) | (1 << (snowballParser.T__39 - 32)) | (1 << (snowballParser.T__41 - 32)) | (1 << (snowballParser.T__42 - 32)) | (1 << (snowballParser.T__43 - 32)) | (1 << (snowballParser.T__44 - 32)) | (1 << (snowballParser.T__45 - 32)) | (1 << (snowballParser.T__46 - 32)) | (1 << (snowballParser.T__47 - 32)) | (1 << (snowballParser.T__49 - 32)) | (1 << (snowballParser.T__50 - 32)) | (1 << (snowballParser.T__51 - 32)) | (1 << (snowballParser.T__52 - 32)))) !== 0) || _la===snowballParser.LITERAL_STRING || _la===snowballParser.NAME) {
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294950916) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4062719) !== 0) || _la===73 || _la===76) {
 	                this.state = 198;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
@@ -839,7 +835,7 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 213;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===snowballParser.T__48) {
+	            if(_la===49) {
 	                this.state = 212;
 	                this.match(snowballParser.T__48);
 	            }
@@ -1118,12 +1114,12 @@ export default class snowballParser extends antlr4.Parser {
 	        this.state = 295;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case snowballParser.NAME:
+	        case 76:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 293;
 	            this.s_name();
 	            break;
-	        case snowballParser.LITERAL_STRING:
+	        case 73:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 294;
 	            this.match(snowballParser.LITERAL_STRING);
@@ -1154,12 +1150,12 @@ export default class snowballParser extends antlr4.Parser {
 	        this.state = 299;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case snowballParser.NAME:
+	        case 76:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 297;
 	            this.g_name();
 	            break;
-	        case snowballParser.LITERAL_STRING:
+	        case 73:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 298;
 	            this.match(snowballParser.LITERAL_STRING);
@@ -1312,7 +1308,7 @@ export default class snowballParser extends antlr4.Parser {
 	        this.state = 327;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case snowballParser.T__1:
+	        case 2:
 	            this.state = 312;
 	            this.match(snowballParser.T__1);
 	            this.state = 313;
@@ -1320,43 +1316,43 @@ export default class snowballParser extends antlr4.Parser {
 	            this.state = 314;
 	            this.match(snowballParser.T__2);
 	            break;
-	        case snowballParser.T__48:
+	        case 49:
 	            this.state = 316;
 	            this.match(snowballParser.T__48);
 	            this.state = 317;
 	            this.ae(9);
 	            break;
-	        case snowballParser.T__66:
+	        case 67:
 	            this.state = 318;
 	            this.match(snowballParser.T__66);
 	            break;
-	        case snowballParser.T__67:
+	        case 68:
 	            this.state = 319;
 	            this.match(snowballParser.T__67);
 	            break;
-	        case snowballParser.T__68:
+	        case 69:
 	            this.state = 320;
 	            this.match(snowballParser.T__68);
 	            break;
-	        case snowballParser.T__69:
+	        case 70:
 	            this.state = 321;
 	            this.match(snowballParser.T__69);
 	            break;
-	        case snowballParser.T__70:
+	        case 71:
 	            this.state = 322;
 	            this.match(snowballParser.T__70);
 	            break;
-	        case snowballParser.T__71:
+	        case 72:
 	            this.state = 323;
 	            this.match(snowballParser.T__71);
 	            this.state = 324;
 	            this.s_name();
 	            break;
-	        case snowballParser.NAME:
+	        case 76:
 	            this.state = 325;
 	            this.i_name();
 	            break;
-	        case snowballParser.NUMBER:
+	        case 74:
 	            this.state = 326;
 	            this.match(snowballParser.NUMBER);
 	            break;

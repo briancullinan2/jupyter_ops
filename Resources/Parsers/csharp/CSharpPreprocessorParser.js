@@ -1,4 +1,4 @@
-// Generated from ./csharp/CSharpPreprocessorParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/csharp/CSharpPreprocessorParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CSharpPreprocessorParserListener from './CSharpPreprocessorParserListener.js';
@@ -155,10 +155,6 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
         this.symbolicNames = CSharpPreprocessorParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 2:
@@ -189,12 +185,12 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	preprocessor_directive() {
 	    let localctx = new Preprocessor_directiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, CSharpPreprocessorParser.RULE_preprocessor_directive);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 80;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpPreprocessorParser.DEFINE:
+	        case 183:
 	            localctx = new PreprocessorDeclarationContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 6;
@@ -205,7 +201,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveDefine(); 
 	            break;
-	        case CSharpPreprocessorParser.UNDEF:
+	        case 184:
 	            localctx = new PreprocessorDeclarationContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 11;
@@ -216,7 +212,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveUndef(); 
 	            break;
-	        case CSharpPreprocessorParser.IF:
+	        case 52:
 	            localctx = new PreprocessorConditionalContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 16;
@@ -227,7 +223,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveIf(); 
 	            break;
-	        case CSharpPreprocessorParser.ELIF:
+	        case 185:
 	            localctx = new PreprocessorConditionalContext(this, localctx);
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 21;
@@ -238,7 +234,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveElif(); 
 	            break;
-	        case CSharpPreprocessorParser.ELSE:
+	        case 36:
 	            localctx = new PreprocessorConditionalContext(this, localctx);
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 26;
@@ -247,7 +243,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveElse(); 
 	            break;
-	        case CSharpPreprocessorParser.ENDIF:
+	        case 186:
 	            localctx = new PreprocessorConditionalContext(this, localctx);
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 30;
@@ -256,7 +252,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveEndif(); 
 	            break;
-	        case CSharpPreprocessorParser.LINE:
+	        case 187:
 	            localctx = new PreprocessorLineContext(this, localctx);
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 34;
@@ -264,23 +260,23 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.state = 41;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpPreprocessorParser.DIGITS:
+	            case 182:
 	                this.state = 35;
 	                this.match(CSharpPreprocessorParser.DIGITS);
 	                this.state = 37;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpPreprocessorParser.STRING) {
+	                if(_la===91) {
 	                    this.state = 36;
 	                    this.match(CSharpPreprocessorParser.STRING);
 	                }
 
 	                break;
-	            case CSharpPreprocessorParser.DEFAULT:
+	            case 30:
 	                this.state = 39;
 	                this.match(CSharpPreprocessorParser.DEFAULT);
 	                break;
-	            case CSharpPreprocessorParser.DIRECTIVE_HIDDEN:
+	            case 194:
 	                this.state = 40;
 	                this.match(CSharpPreprocessorParser.DIRECTIVE_HIDDEN);
 	                break;
@@ -291,7 +287,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveLine(); 
 	            break;
-	        case CSharpPreprocessorParser.ERROR:
+	        case 188:
 	            localctx = new PreprocessorDiagnosticContext(this, localctx);
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 46;
@@ -302,7 +298,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveError(); 
 	            break;
-	        case CSharpPreprocessorParser.WARNING:
+	        case 189:
 	            localctx = new PreprocessorDiagnosticContext(this, localctx);
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 51;
@@ -313,7 +309,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveWarning(); 
 	            break;
-	        case CSharpPreprocessorParser.REGION:
+	        case 190:
 	            localctx = new PreprocessorRegionContext(this, localctx);
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 56;
@@ -321,7 +317,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.state = 58;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpPreprocessorParser.TEXT) {
+	            if(_la===197) {
 	                this.state = 57;
 	                this.match(CSharpPreprocessorParser.TEXT);
 	            }
@@ -330,7 +326,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveRegion(); 
 	            break;
-	        case CSharpPreprocessorParser.ENDREGION:
+	        case 191:
 	            localctx = new PreprocessorRegionContext(this, localctx);
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 63;
@@ -338,7 +334,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.state = 65;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpPreprocessorParser.TEXT) {
+	            if(_la===197) {
 	                this.state = 64;
 	                this.match(CSharpPreprocessorParser.TEXT);
 	            }
@@ -347,7 +343,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectiveEndregion(); 
 	            break;
-	        case CSharpPreprocessorParser.PRAGMA:
+	        case 192:
 	            localctx = new PreprocessorPragmaContext(this, localctx);
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 70;
@@ -358,7 +354,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.directive_new_line_or_sharp();
 	             this.OnPreprocessorDirectivePragma(); 
 	            break;
-	        case CSharpPreprocessorParser.NULLABLE:
+	        case 193:
 	            localctx = new PreprocessorNullableContext(this, localctx);
 	            this.enterOuterAlt(localctx, 13);
 	            this.state = 75;
@@ -391,12 +387,12 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	directive_new_line_or_sharp() {
 	    let localctx = new Directive_new_line_or_sharpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, CSharpPreprocessorParser.RULE_directive_new_line_or_sharp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 82;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpPreprocessorParser.EOF || _la===CSharpPreprocessorParser.DIRECTIVE_NEW_LINE)) {
+	        if(!(_la===-1 || _la===196)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -433,22 +429,22 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	        this.state = 100;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpPreprocessorParser.TRUE:
+	        case 96:
 	            this.state = 85;
 	            this.match(CSharpPreprocessorParser.TRUE);
 	             this.OnPreprocessorExpressionTrue(); 
 	            break;
-	        case CSharpPreprocessorParser.FALSE:
+	        case 42:
 	            this.state = 87;
 	            this.match(CSharpPreprocessorParser.FALSE);
 	             this.OnPreprocessorExpressionFalse(); 
 	            break;
-	        case CSharpPreprocessorParser.CONDITIONAL_SYMBOL:
+	        case 195:
 	            this.state = 89;
 	            this.match(CSharpPreprocessorParser.CONDITIONAL_SYMBOL);
 	             this.OnPreprocessorExpressionConditionalSymbol(); 
 	            break;
-	        case CSharpPreprocessorParser.OPEN_PARENS:
+	        case 129:
 	            this.state = 91;
 	            this.match(CSharpPreprocessorParser.OPEN_PARENS);
 	            this.state = 92;
@@ -457,7 +453,7 @@ export default class CSharpPreprocessorParser extends CSharpPreprocessorParserBa
 	            this.match(CSharpPreprocessorParser.CLOSE_PARENS);
 	             this.OnPreprocessorExpressionConditionalOpenParens(); 
 	            break;
-	        case CSharpPreprocessorParser.BANG:
+	        case 143:
 	            this.state = 96;
 	            this.match(CSharpPreprocessorParser.BANG);
 	            this.state = 97;
@@ -954,7 +950,7 @@ class PreprocessorConditionalContext extends Preprocessor_directiveContext {
 
     constructor(parser, ctx) {
         super(parser);
-        this.expr = null; // Preprocessor_expressionContext;
+        this.expr = null;;
         super.copyFrom(ctx);
     }
 
@@ -1135,9 +1131,9 @@ class Preprocessor_expressionContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = CSharpPreprocessorParser.RULE_preprocessor_expression;
         this.value = null
-        this.expr1 = null; // Preprocessor_expressionContext
-        this.expr = null; // Preprocessor_expressionContext
-        this.expr2 = null; // Preprocessor_expressionContext
+        this.expr1 = null;
+        this.expr = null;
+        this.expr2 = null;
     }
 
 	TRUE() {

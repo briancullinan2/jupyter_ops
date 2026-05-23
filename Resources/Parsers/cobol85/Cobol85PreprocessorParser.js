@@ -1,4 +1,4 @@
-// Generated from ./cobol85/Cobol85Preprocessor.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cobol85/Cobol85Preprocessor.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import Cobol85PreprocessorListener from './Cobol85PreprocessorListener.js';
@@ -402,22 +402,18 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
         this.symbolicNames = Cobol85PreprocessorParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	startRule() {
 	    let localctx = new StartRuleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, Cobol85PreprocessorParser.RULE_startRule);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 74;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Cobol85PreprocessorParser.ADATA) | (1 << Cobol85PreprocessorParser.ADV) | (1 << Cobol85PreprocessorParser.ALIAS) | (1 << Cobol85PreprocessorParser.ANSI) | (1 << Cobol85PreprocessorParser.ANY) | (1 << Cobol85PreprocessorParser.APOST) | (1 << Cobol85PreprocessorParser.AR) | (1 << Cobol85PreprocessorParser.ARITH) | (1 << Cobol85PreprocessorParser.AUTO) | (1 << Cobol85PreprocessorParser.AWO) | (1 << Cobol85PreprocessorParser.BIN) | (1 << Cobol85PreprocessorParser.BLOCK0) | (1 << Cobol85PreprocessorParser.BUF) | (1 << Cobol85PreprocessorParser.BUFSIZE) | (1 << Cobol85PreprocessorParser.BY) | (1 << Cobol85PreprocessorParser.CBL) | (1 << Cobol85PreprocessorParser.CBLCARD) | (1 << Cobol85PreprocessorParser.CO) | (1 << Cobol85PreprocessorParser.COBOL2) | (1 << Cobol85PreprocessorParser.COBOL3) | (1 << Cobol85PreprocessorParser.CODEPAGE) | (1 << Cobol85PreprocessorParser.COMPAT) | (1 << Cobol85PreprocessorParser.COMPILE) | (1 << Cobol85PreprocessorParser.COPY) | (1 << Cobol85PreprocessorParser.CP) | (1 << Cobol85PreprocessorParser.CPP) | (1 << Cobol85PreprocessorParser.CPSM) | (1 << Cobol85PreprocessorParser.CS) | (1 << Cobol85PreprocessorParser.CURR) | (1 << Cobol85PreprocessorParser.CURRENCY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Cobol85PreprocessorParser.DATA - 32)) | (1 << (Cobol85PreprocessorParser.DATEPROC - 32)) | (1 << (Cobol85PreprocessorParser.DBCS - 32)) | (1 << (Cobol85PreprocessorParser.DD - 32)) | (1 << (Cobol85PreprocessorParser.DEBUG - 32)) | (1 << (Cobol85PreprocessorParser.DECK - 32)) | (1 << (Cobol85PreprocessorParser.DIAGTRUNC - 32)) | (1 << (Cobol85PreprocessorParser.DLI - 32)) | (1 << (Cobol85PreprocessorParser.DLL - 32)) | (1 << (Cobol85PreprocessorParser.DP - 32)) | (1 << (Cobol85PreprocessorParser.DTR - 32)) | (1 << (Cobol85PreprocessorParser.DU - 32)) | (1 << (Cobol85PreprocessorParser.DUMP - 32)) | (1 << (Cobol85PreprocessorParser.DYN - 32)) | (1 << (Cobol85PreprocessorParser.DYNAM - 32)) | (1 << (Cobol85PreprocessorParser.EDF - 32)) | (1 << (Cobol85PreprocessorParser.EJECT - 32)) | (1 << (Cobol85PreprocessorParser.EJPD - 32)) | (1 << (Cobol85PreprocessorParser.EN - 32)) | (1 << (Cobol85PreprocessorParser.ENGLISH - 32)) | (1 << (Cobol85PreprocessorParser.EPILOG - 32)) | (1 << (Cobol85PreprocessorParser.EXCI - 32)) | (1 << (Cobol85PreprocessorParser.EXEC - 32)) | (1 << (Cobol85PreprocessorParser.EXIT - 32)) | (1 << (Cobol85PreprocessorParser.EXP - 32)) | (1 << (Cobol85PreprocessorParser.EXPORTALL - 32)) | (1 << (Cobol85PreprocessorParser.EXTEND - 32)) | (1 << (Cobol85PreprocessorParser.FASTSRT - 32)) | (1 << (Cobol85PreprocessorParser.FLAG - 32)) | (1 << (Cobol85PreprocessorParser.FLAGSTD - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Cobol85PreprocessorParser.FSRT - 64)) | (1 << (Cobol85PreprocessorParser.FULL - 64)) | (1 << (Cobol85PreprocessorParser.GDS - 64)) | (1 << (Cobol85PreprocessorParser.GRAPHIC - 64)) | (1 << (Cobol85PreprocessorParser.HOOK - 64)) | (1 << (Cobol85PreprocessorParser.IN - 64)) | (1 << (Cobol85PreprocessorParser.INTDATE - 64)) | (1 << (Cobol85PreprocessorParser.JA - 64)) | (1 << (Cobol85PreprocessorParser.JP - 64)) | (1 << (Cobol85PreprocessorParser.KA - 64)) | (1 << (Cobol85PreprocessorParser.LANG - 64)) | (1 << (Cobol85PreprocessorParser.LANGUAGE - 64)) | (1 << (Cobol85PreprocessorParser.LC - 64)) | (1 << (Cobol85PreprocessorParser.LENGTH - 64)) | (1 << (Cobol85PreprocessorParser.LIB - 64)) | (1 << (Cobol85PreprocessorParser.LILIAN - 64)) | (1 << (Cobol85PreprocessorParser.LIN - 64)) | (1 << (Cobol85PreprocessorParser.LINECOUNT - 64)) | (1 << (Cobol85PreprocessorParser.LINKAGE - 64)) | (1 << (Cobol85PreprocessorParser.LIST - 64)) | (1 << (Cobol85PreprocessorParser.LM - 64)) | (1 << (Cobol85PreprocessorParser.LONGMIXED - 64)) | (1 << (Cobol85PreprocessorParser.LONGUPPER - 64)) | (1 << (Cobol85PreprocessorParser.LPARENCHAR - 64)) | (1 << (Cobol85PreprocessorParser.LU - 64)) | (1 << (Cobol85PreprocessorParser.MAP - 64)) | (1 << (Cobol85PreprocessorParser.MARGINS - 64)) | (1 << (Cobol85PreprocessorParser.MAX - 64)) | (1 << (Cobol85PreprocessorParser.MD - 64)) | (1 << (Cobol85PreprocessorParser.MDECK - 64)) | (1 << (Cobol85PreprocessorParser.MIG - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (Cobol85PreprocessorParser.MIXED - 96)) | (1 << (Cobol85PreprocessorParser.NAME - 96)) | (1 << (Cobol85PreprocessorParser.NAT - 96)) | (1 << (Cobol85PreprocessorParser.NATIONAL - 96)) | (1 << (Cobol85PreprocessorParser.NATLANG - 96)) | (1 << (Cobol85PreprocessorParser.NN - 96)) | (1 << (Cobol85PreprocessorParser.NO - 96)) | (1 << (Cobol85PreprocessorParser.NOADATA - 96)) | (1 << (Cobol85PreprocessorParser.NOADV - 96)) | (1 << (Cobol85PreprocessorParser.NOALIAS - 96)) | (1 << (Cobol85PreprocessorParser.NOAWO - 96)) | (1 << (Cobol85PreprocessorParser.NOBLOCK0 - 96)) | (1 << (Cobol85PreprocessorParser.NOC - 96)) | (1 << (Cobol85PreprocessorParser.NOCBLCARD - 96)) | (1 << (Cobol85PreprocessorParser.NOCICS - 96)) | (1 << (Cobol85PreprocessorParser.NOCMPR2 - 96)) | (1 << (Cobol85PreprocessorParser.NOCOMPILE - 96)) | (1 << (Cobol85PreprocessorParser.NOCPSM - 96)) | (1 << (Cobol85PreprocessorParser.NOCURR - 96)) | (1 << (Cobol85PreprocessorParser.NOCURRENCY - 96)) | (1 << (Cobol85PreprocessorParser.NOD - 96)) | (1 << (Cobol85PreprocessorParser.NODATEPROC - 96)) | (1 << (Cobol85PreprocessorParser.NODBCS - 96)) | (1 << (Cobol85PreprocessorParser.NODE - 96)) | (1 << (Cobol85PreprocessorParser.NODEBUG - 96)) | (1 << (Cobol85PreprocessorParser.NODECK - 96)) | (1 << (Cobol85PreprocessorParser.NODIAGTRUNC - 96)) | (1 << (Cobol85PreprocessorParser.NODLL - 96)) | (1 << (Cobol85PreprocessorParser.NODU - 96)) | (1 << (Cobol85PreprocessorParser.NODUMP - 96)) | (1 << (Cobol85PreprocessorParser.NODP - 96)) | (1 << (Cobol85PreprocessorParser.NODTR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (Cobol85PreprocessorParser.NODYN - 128)) | (1 << (Cobol85PreprocessorParser.NODYNAM - 128)) | (1 << (Cobol85PreprocessorParser.NOEDF - 128)) | (1 << (Cobol85PreprocessorParser.NOEJPD - 128)) | (1 << (Cobol85PreprocessorParser.NOEPILOG - 128)) | (1 << (Cobol85PreprocessorParser.NOEXIT - 128)) | (1 << (Cobol85PreprocessorParser.NOEXP - 128)) | (1 << (Cobol85PreprocessorParser.NOEXPORTALL - 128)) | (1 << (Cobol85PreprocessorParser.NOF - 128)) | (1 << (Cobol85PreprocessorParser.NOFASTSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOFEPI - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGMIG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGSTD - 128)) | (1 << (Cobol85PreprocessorParser.NOFSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOGRAPHIC - 128)) | (1 << (Cobol85PreprocessorParser.NOHOOK - 128)) | (1 << (Cobol85PreprocessorParser.NOLENGTH - 128)) | (1 << (Cobol85PreprocessorParser.NOLIB - 128)) | (1 << (Cobol85PreprocessorParser.NOLINKAGE - 128)) | (1 << (Cobol85PreprocessorParser.NOLIST - 128)) | (1 << (Cobol85PreprocessorParser.NOMAP - 128)) | (1 << (Cobol85PreprocessorParser.NOMD - 128)) | (1 << (Cobol85PreprocessorParser.NOMDECK - 128)) | (1 << (Cobol85PreprocessorParser.NONAME - 128)) | (1 << (Cobol85PreprocessorParser.NONUM - 128)) | (1 << (Cobol85PreprocessorParser.NONUMBER - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJ - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJECT - 128)) | (1 << (Cobol85PreprocessorParser.NOOFF - 128)) | (1 << (Cobol85PreprocessorParser.NOOFFSET - 128)) | (1 << (Cobol85PreprocessorParser.NOOPSEQUENCE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (Cobol85PreprocessorParser.NOOPT - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIMIZE - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIONS - 160)) | (1 << (Cobol85PreprocessorParser.NOP - 160)) | (1 << (Cobol85PreprocessorParser.NOPFD - 160)) | (1 << (Cobol85PreprocessorParser.NOPROLOG - 160)) | (1 << (Cobol85PreprocessorParser.NORENT - 160)) | (1 << (Cobol85PreprocessorParser.NOS - 160)) | (1 << (Cobol85PreprocessorParser.NOSEP - 160)) | (1 << (Cobol85PreprocessorParser.NOSEPARATE - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQ - 160)) | (1 << (Cobol85PreprocessorParser.NOSOURCE - 160)) | (1 << (Cobol85PreprocessorParser.NOSPIE - 160)) | (1 << (Cobol85PreprocessorParser.NOSQL - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLC - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLCCSID - 160)) | (1 << (Cobol85PreprocessorParser.NOSSR - 160)) | (1 << (Cobol85PreprocessorParser.NOSSRANGE - 160)) | (1 << (Cobol85PreprocessorParser.NOSTDTRUNC - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQUENCE - 160)) | (1 << (Cobol85PreprocessorParser.NOTERM - 160)) | (1 << (Cobol85PreprocessorParser.NOTERMINAL - 160)) | (1 << (Cobol85PreprocessorParser.NOTEST - 160)) | (1 << (Cobol85PreprocessorParser.NOTHREAD - 160)) | (1 << (Cobol85PreprocessorParser.NOTRIG - 160)) | (1 << (Cobol85PreprocessorParser.NOVBREF - 160)) | (1 << (Cobol85PreprocessorParser.NOWORD - 160)) | (1 << (Cobol85PreprocessorParser.NOX - 160)) | (1 << (Cobol85PreprocessorParser.NOXREF - 160)) | (1 << (Cobol85PreprocessorParser.NOZWB - 160)) | (1 << (Cobol85PreprocessorParser.NS - 160)))) !== 0) || ((((_la - 192)) & ~0x1f) == 0 && ((1 << (_la - 192)) & ((1 << (Cobol85PreprocessorParser.NSEQ - 192)) | (1 << (Cobol85PreprocessorParser.NSYMBOL - 192)) | (1 << (Cobol85PreprocessorParser.NUM - 192)) | (1 << (Cobol85PreprocessorParser.NUMBER - 192)) | (1 << (Cobol85PreprocessorParser.NUMPROC - 192)) | (1 << (Cobol85PreprocessorParser.OBJ - 192)) | (1 << (Cobol85PreprocessorParser.OBJECT - 192)) | (1 << (Cobol85PreprocessorParser.OF - 192)) | (1 << (Cobol85PreprocessorParser.OFF - 192)) | (1 << (Cobol85PreprocessorParser.OFFSET - 192)) | (1 << (Cobol85PreprocessorParser.ON - 192)) | (1 << (Cobol85PreprocessorParser.OP - 192)) | (1 << (Cobol85PreprocessorParser.OPMARGINS - 192)) | (1 << (Cobol85PreprocessorParser.OPSEQUENCE - 192)) | (1 << (Cobol85PreprocessorParser.OPT - 192)) | (1 << (Cobol85PreprocessorParser.OPTFILE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIMIZE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIONS - 192)) | (1 << (Cobol85PreprocessorParser.OUT - 192)) | (1 << (Cobol85PreprocessorParser.OUTDD - 192)) | (1 << (Cobol85PreprocessorParser.PFD - 192)) | (1 << (Cobol85PreprocessorParser.PPTDBG - 192)) | (1 << (Cobol85PreprocessorParser.PGMN - 192)) | (1 << (Cobol85PreprocessorParser.PGMNAME - 192)) | (1 << (Cobol85PreprocessorParser.PROCESS - 192)) | (1 << (Cobol85PreprocessorParser.PROLOG - 192)) | (1 << (Cobol85PreprocessorParser.QUOTE - 192)) | (1 << (Cobol85PreprocessorParser.RENT - 192)) | (1 << (Cobol85PreprocessorParser.REPLACE - 192)) | (1 << (Cobol85PreprocessorParser.REPLACING - 192)) | (1 << (Cobol85PreprocessorParser.RMODE - 192)) | (1 << (Cobol85PreprocessorParser.RPARENCHAR - 192)))) !== 0) || ((((_la - 224)) & ~0x1f) == 0 && ((1 << (_la - 224)) & ((1 << (Cobol85PreprocessorParser.SEP - 224)) | (1 << (Cobol85PreprocessorParser.SEPARATE - 224)) | (1 << (Cobol85PreprocessorParser.SEQ - 224)) | (1 << (Cobol85PreprocessorParser.SEQUENCE - 224)) | (1 << (Cobol85PreprocessorParser.SHORT - 224)) | (1 << (Cobol85PreprocessorParser.SIZE - 224)) | (1 << (Cobol85PreprocessorParser.SOURCE - 224)) | (1 << (Cobol85PreprocessorParser.SP - 224)) | (1 << (Cobol85PreprocessorParser.SPACE - 224)) | (1 << (Cobol85PreprocessorParser.SPIE - 224)) | (1 << (Cobol85PreprocessorParser.SQL - 224)) | (1 << (Cobol85PreprocessorParser.SQLC - 224)) | (1 << (Cobol85PreprocessorParser.SQLCCSID - 224)) | (1 << (Cobol85PreprocessorParser.SKIP1 - 224)) | (1 << (Cobol85PreprocessorParser.SKIP2 - 224)) | (1 << (Cobol85PreprocessorParser.SKIP3 - 224)) | (1 << (Cobol85PreprocessorParser.SS - 224)) | (1 << (Cobol85PreprocessorParser.SSR - 224)) | (1 << (Cobol85PreprocessorParser.SSRANGE - 224)) | (1 << (Cobol85PreprocessorParser.STD - 224)) | (1 << (Cobol85PreprocessorParser.SYSEIB - 224)) | (1 << (Cobol85PreprocessorParser.SZ - 224)) | (1 << (Cobol85PreprocessorParser.TERM - 224)) | (1 << (Cobol85PreprocessorParser.TERMINAL - 224)) | (1 << (Cobol85PreprocessorParser.TEST - 224)) | (1 << (Cobol85PreprocessorParser.THREAD - 224)) | (1 << (Cobol85PreprocessorParser.TITLE - 224)) | (1 << (Cobol85PreprocessorParser.TRIG - 224)) | (1 << (Cobol85PreprocessorParser.TRUNC - 224)) | (1 << (Cobol85PreprocessorParser.UE - 224)))) !== 0) || ((((_la - 256)) & ~0x1f) == 0 && ((1 << (_la - 256)) & ((1 << (Cobol85PreprocessorParser.UPPER - 256)) | (1 << (Cobol85PreprocessorParser.VBREF - 256)) | (1 << (Cobol85PreprocessorParser.WD - 256)) | (1 << (Cobol85PreprocessorParser.XMLPARSE - 256)) | (1 << (Cobol85PreprocessorParser.XMLSS - 256)) | (1 << (Cobol85PreprocessorParser.XOPTS - 256)) | (1 << (Cobol85PreprocessorParser.XREF - 256)) | (1 << (Cobol85PreprocessorParser.YEARWINDOW - 256)) | (1 << (Cobol85PreprocessorParser.YW - 256)) | (1 << (Cobol85PreprocessorParser.ZWB - 256)) | (1 << (Cobol85PreprocessorParser.C_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.D_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.E_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.F_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.H_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.I_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.M_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.N_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.Q_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.U_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.W_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.X_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.COMMACHAR - 256)) | (1 << (Cobol85PreprocessorParser.DOT - 256)) | (1 << (Cobol85PreprocessorParser.NONNUMERICLITERAL - 256)) | (1 << (Cobol85PreprocessorParser.NUMERICLITERAL - 256)) | (1 << (Cobol85PreprocessorParser.IDENTIFIER - 256)))) !== 0) || ((((_la - 288)) & ~0x1f) == 0 && ((1 << (_la - 288)) & ((1 << (Cobol85PreprocessorParser.FILENAME - 288)) | (1 << (Cobol85PreprocessorParser.NEWLINE - 288)) | (1 << (Cobol85PreprocessorParser.TEXT - 288)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294705150) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3757047807) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294959103) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294967295) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294967295) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 4227858431) !== 0) || ((((_la - 192)) & ~0x1f) === 0 && ((1 << (_la - 192)) & 4294967295) !== 0) || ((((_la - 224)) & ~0x1f) === 0 && ((1 << (_la - 224)) & 4292861951) !== 0) || ((((_la - 256)) & ~0x1f) === 0 && ((1 << (_la - 256)) & 3992977271) !== 0) || ((((_la - 288)) & ~0x1f) === 0 && ((1 << (_la - 288)) & 19) !== 0)) {
 	            this.state = 72;
 	            this._errHandler.sync(this);
 	            var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
@@ -508,12 +504,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	compilerOptions() {
 	    let localctx = new CompilerOptionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, Cobol85PreprocessorParser.RULE_compilerOptions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 79;
 	        _la = this._input.LA(1);
-	        if(!(_la===Cobol85PreprocessorParser.CBL || _la===Cobol85PreprocessorParser.PROCESS)) {
+	        if(!(_la===16 || _la===216)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -529,213 +525,213 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        		this.state = 85;
 	        		this._errHandler.sync(this);
 	        		switch(this._input.LA(1)) {
-	        		case Cobol85PreprocessorParser.ADATA:
-	        		case Cobol85PreprocessorParser.ADV:
-	        		case Cobol85PreprocessorParser.APOST:
-	        		case Cobol85PreprocessorParser.AR:
-	        		case Cobol85PreprocessorParser.ARITH:
-	        		case Cobol85PreprocessorParser.AWO:
-	        		case Cobol85PreprocessorParser.BLOCK0:
-	        		case Cobol85PreprocessorParser.BUF:
-	        		case Cobol85PreprocessorParser.BUFSIZE:
-	        		case Cobol85PreprocessorParser.CBLCARD:
-	        		case Cobol85PreprocessorParser.CICS:
-	        		case Cobol85PreprocessorParser.COBOL2:
-	        		case Cobol85PreprocessorParser.COBOL3:
-	        		case Cobol85PreprocessorParser.CODEPAGE:
-	        		case Cobol85PreprocessorParser.COMPILE:
-	        		case Cobol85PreprocessorParser.CP:
-	        		case Cobol85PreprocessorParser.CPP:
-	        		case Cobol85PreprocessorParser.CPSM:
-	        		case Cobol85PreprocessorParser.CURR:
-	        		case Cobol85PreprocessorParser.CURRENCY:
-	        		case Cobol85PreprocessorParser.DATA:
-	        		case Cobol85PreprocessorParser.DATEPROC:
-	        		case Cobol85PreprocessorParser.DBCS:
-	        		case Cobol85PreprocessorParser.DEBUG:
-	        		case Cobol85PreprocessorParser.DECK:
-	        		case Cobol85PreprocessorParser.DIAGTRUNC:
-	        		case Cobol85PreprocessorParser.DLL:
-	        		case Cobol85PreprocessorParser.DP:
-	        		case Cobol85PreprocessorParser.DTR:
-	        		case Cobol85PreprocessorParser.DU:
-	        		case Cobol85PreprocessorParser.DUMP:
-	        		case Cobol85PreprocessorParser.DYN:
-	        		case Cobol85PreprocessorParser.DYNAM:
-	        		case Cobol85PreprocessorParser.EDF:
-	        		case Cobol85PreprocessorParser.EPILOG:
-	        		case Cobol85PreprocessorParser.EXIT:
-	        		case Cobol85PreprocessorParser.EXP:
-	        		case Cobol85PreprocessorParser.EXPORTALL:
-	        		case Cobol85PreprocessorParser.FASTSRT:
-	        		case Cobol85PreprocessorParser.FEPI:
-	        		case Cobol85PreprocessorParser.FLAG:
-	        		case Cobol85PreprocessorParser.FLAGSTD:
-	        		case Cobol85PreprocessorParser.FSRT:
-	        		case Cobol85PreprocessorParser.GDS:
-	        		case Cobol85PreprocessorParser.GRAPHIC:
-	        		case Cobol85PreprocessorParser.INTDATE:
-	        		case Cobol85PreprocessorParser.LANG:
-	        		case Cobol85PreprocessorParser.LANGUAGE:
-	        		case Cobol85PreprocessorParser.LC:
-	        		case Cobol85PreprocessorParser.LEASM:
-	        		case Cobol85PreprocessorParser.LENGTH:
-	        		case Cobol85PreprocessorParser.LIB:
-	        		case Cobol85PreprocessorParser.LIN:
-	        		case Cobol85PreprocessorParser.LINECOUNT:
-	        		case Cobol85PreprocessorParser.LINKAGE:
-	        		case Cobol85PreprocessorParser.LIST:
-	        		case Cobol85PreprocessorParser.MAP:
-	        		case Cobol85PreprocessorParser.MARGINS:
-	        		case Cobol85PreprocessorParser.MD:
-	        		case Cobol85PreprocessorParser.MDECK:
-	        		case Cobol85PreprocessorParser.NAME:
-	        		case Cobol85PreprocessorParser.NATLANG:
-	        		case Cobol85PreprocessorParser.NOADATA:
-	        		case Cobol85PreprocessorParser.NOADV:
-	        		case Cobol85PreprocessorParser.NOAWO:
-	        		case Cobol85PreprocessorParser.NOBLOCK0:
-	        		case Cobol85PreprocessorParser.NOC:
-	        		case Cobol85PreprocessorParser.NOCBLCARD:
-	        		case Cobol85PreprocessorParser.NOCICS:
-	        		case Cobol85PreprocessorParser.NOCMPR2:
-	        		case Cobol85PreprocessorParser.NOCOMPILE:
-	        		case Cobol85PreprocessorParser.NOCPSM:
-	        		case Cobol85PreprocessorParser.NOCURR:
-	        		case Cobol85PreprocessorParser.NOCURRENCY:
-	        		case Cobol85PreprocessorParser.NOD:
-	        		case Cobol85PreprocessorParser.NODATEPROC:
-	        		case Cobol85PreprocessorParser.NODBCS:
-	        		case Cobol85PreprocessorParser.NODE:
-	        		case Cobol85PreprocessorParser.NODEBUG:
-	        		case Cobol85PreprocessorParser.NODECK:
-	        		case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        		case Cobol85PreprocessorParser.NODLL:
-	        		case Cobol85PreprocessorParser.NODU:
-	        		case Cobol85PreprocessorParser.NODUMP:
-	        		case Cobol85PreprocessorParser.NODP:
-	        		case Cobol85PreprocessorParser.NODTR:
-	        		case Cobol85PreprocessorParser.NODYN:
-	        		case Cobol85PreprocessorParser.NODYNAM:
-	        		case Cobol85PreprocessorParser.NOEDF:
-	        		case Cobol85PreprocessorParser.NOEPILOG:
-	        		case Cobol85PreprocessorParser.NOEXIT:
-	        		case Cobol85PreprocessorParser.NOEXP:
-	        		case Cobol85PreprocessorParser.NOEXPORTALL:
-	        		case Cobol85PreprocessorParser.NOF:
-	        		case Cobol85PreprocessorParser.NOFASTSRT:
-	        		case Cobol85PreprocessorParser.NOFEPI:
-	        		case Cobol85PreprocessorParser.NOFLAG:
-	        		case Cobol85PreprocessorParser.NOFLAGMIG:
-	        		case Cobol85PreprocessorParser.NOFLAGSTD:
-	        		case Cobol85PreprocessorParser.NOFSRT:
-	        		case Cobol85PreprocessorParser.NOGRAPHIC:
-	        		case Cobol85PreprocessorParser.NOLENGTH:
-	        		case Cobol85PreprocessorParser.NOLIB:
-	        		case Cobol85PreprocessorParser.NOLINKAGE:
-	        		case Cobol85PreprocessorParser.NOLIST:
-	        		case Cobol85PreprocessorParser.NOMAP:
-	        		case Cobol85PreprocessorParser.NOMD:
-	        		case Cobol85PreprocessorParser.NOMDECK:
-	        		case Cobol85PreprocessorParser.NONAME:
-	        		case Cobol85PreprocessorParser.NONUM:
-	        		case Cobol85PreprocessorParser.NONUMBER:
-	        		case Cobol85PreprocessorParser.NOOBJ:
-	        		case Cobol85PreprocessorParser.NOOBJECT:
-	        		case Cobol85PreprocessorParser.NOOFF:
-	        		case Cobol85PreprocessorParser.NOOFFSET:
-	        		case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        		case Cobol85PreprocessorParser.NOOPT:
-	        		case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        		case Cobol85PreprocessorParser.NOOPTIONS:
-	        		case Cobol85PreprocessorParser.NOP:
-	        		case Cobol85PreprocessorParser.NOPROLOG:
-	        		case Cobol85PreprocessorParser.NORENT:
-	        		case Cobol85PreprocessorParser.NOS:
-	        		case Cobol85PreprocessorParser.NOSEQ:
-	        		case Cobol85PreprocessorParser.NOSOURCE:
-	        		case Cobol85PreprocessorParser.NOSPIE:
-	        		case Cobol85PreprocessorParser.NOSQL:
-	        		case Cobol85PreprocessorParser.NOSQLC:
-	        		case Cobol85PreprocessorParser.NOSQLCCSID:
-	        		case Cobol85PreprocessorParser.NOSSR:
-	        		case Cobol85PreprocessorParser.NOSSRANGE:
-	        		case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        		case Cobol85PreprocessorParser.NOSEQUENCE:
-	        		case Cobol85PreprocessorParser.NOTERM:
-	        		case Cobol85PreprocessorParser.NOTERMINAL:
-	        		case Cobol85PreprocessorParser.NOTEST:
-	        		case Cobol85PreprocessorParser.NOTHREAD:
-	        		case Cobol85PreprocessorParser.NOVBREF:
-	        		case Cobol85PreprocessorParser.NOWD:
-	        		case Cobol85PreprocessorParser.NOWORD:
-	        		case Cobol85PreprocessorParser.NOX:
-	        		case Cobol85PreprocessorParser.NOXREF:
-	        		case Cobol85PreprocessorParser.NOZWB:
-	        		case Cobol85PreprocessorParser.NS:
-	        		case Cobol85PreprocessorParser.NSEQ:
-	        		case Cobol85PreprocessorParser.NSYMBOL:
-	        		case Cobol85PreprocessorParser.NUM:
-	        		case Cobol85PreprocessorParser.NUMBER:
-	        		case Cobol85PreprocessorParser.NUMPROC:
-	        		case Cobol85PreprocessorParser.OBJ:
-	        		case Cobol85PreprocessorParser.OBJECT:
-	        		case Cobol85PreprocessorParser.OFF:
-	        		case Cobol85PreprocessorParser.OFFSET:
-	        		case Cobol85PreprocessorParser.OP:
-	        		case Cobol85PreprocessorParser.OPMARGINS:
-	        		case Cobol85PreprocessorParser.OPSEQUENCE:
-	        		case Cobol85PreprocessorParser.OPT:
-	        		case Cobol85PreprocessorParser.OPTFILE:
-	        		case Cobol85PreprocessorParser.OPTIMIZE:
-	        		case Cobol85PreprocessorParser.OPTIONS:
-	        		case Cobol85PreprocessorParser.OUT:
-	        		case Cobol85PreprocessorParser.OUTDD:
-	        		case Cobol85PreprocessorParser.PGMN:
-	        		case Cobol85PreprocessorParser.PGMNAME:
-	        		case Cobol85PreprocessorParser.PROLOG:
-	        		case Cobol85PreprocessorParser.QUOTE:
-	        		case Cobol85PreprocessorParser.RENT:
-	        		case Cobol85PreprocessorParser.RMODE:
-	        		case Cobol85PreprocessorParser.SEQ:
-	        		case Cobol85PreprocessorParser.SEQUENCE:
-	        		case Cobol85PreprocessorParser.SIZE:
-	        		case Cobol85PreprocessorParser.SOURCE:
-	        		case Cobol85PreprocessorParser.SP:
-	        		case Cobol85PreprocessorParser.SPACE:
-	        		case Cobol85PreprocessorParser.SPIE:
-	        		case Cobol85PreprocessorParser.SQL:
-	        		case Cobol85PreprocessorParser.SQLC:
-	        		case Cobol85PreprocessorParser.SQLCCSID:
-	        		case Cobol85PreprocessorParser.SSR:
-	        		case Cobol85PreprocessorParser.SSRANGE:
-	        		case Cobol85PreprocessorParser.SYSEIB:
-	        		case Cobol85PreprocessorParser.SZ:
-	        		case Cobol85PreprocessorParser.TERM:
-	        		case Cobol85PreprocessorParser.TERMINAL:
-	        		case Cobol85PreprocessorParser.TEST:
-	        		case Cobol85PreprocessorParser.THREAD:
-	        		case Cobol85PreprocessorParser.TRUNC:
-	        		case Cobol85PreprocessorParser.VBREF:
-	        		case Cobol85PreprocessorParser.WD:
-	        		case Cobol85PreprocessorParser.WORD:
-	        		case Cobol85PreprocessorParser.XMLPARSE:
-	        		case Cobol85PreprocessorParser.XP:
-	        		case Cobol85PreprocessorParser.XREF:
-	        		case Cobol85PreprocessorParser.YEARWINDOW:
-	        		case Cobol85PreprocessorParser.YW:
-	        		case Cobol85PreprocessorParser.ZWB:
-	        		case Cobol85PreprocessorParser.C_CHAR:
-	        		case Cobol85PreprocessorParser.D_CHAR:
-	        		case Cobol85PreprocessorParser.F_CHAR:
-	        		case Cobol85PreprocessorParser.Q_CHAR:
-	        		case Cobol85PreprocessorParser.S_CHAR:
-	        		case Cobol85PreprocessorParser.X_CHAR:
-	        		case Cobol85PreprocessorParser.COMMACHAR:
+	        		case 1:
+	        		case 2:
+	        		case 6:
+	        		case 7:
+	        		case 8:
+	        		case 10:
+	        		case 12:
+	        		case 13:
+	        		case 14:
+	        		case 17:
+	        		case 18:
+	        		case 20:
+	        		case 21:
+	        		case 22:
+	        		case 24:
+	        		case 26:
+	        		case 27:
+	        		case 28:
+	        		case 30:
+	        		case 31:
+	        		case 32:
+	        		case 33:
+	        		case 34:
+	        		case 36:
+	        		case 37:
+	        		case 38:
+	        		case 40:
+	        		case 41:
+	        		case 42:
+	        		case 43:
+	        		case 44:
+	        		case 45:
+	        		case 46:
+	        		case 47:
+	        		case 53:
+	        		case 56:
+	        		case 57:
+	        		case 58:
+	        		case 60:
+	        		case 61:
+	        		case 62:
+	        		case 63:
+	        		case 64:
+	        		case 66:
+	        		case 67:
+	        		case 70:
+	        		case 74:
+	        		case 75:
+	        		case 76:
+	        		case 77:
+	        		case 78:
+	        		case 79:
+	        		case 81:
+	        		case 82:
+	        		case 83:
+	        		case 84:
+	        		case 90:
+	        		case 91:
+	        		case 93:
+	        		case 94:
+	        		case 97:
+	        		case 100:
+	        		case 103:
+	        		case 104:
+	        		case 106:
+	        		case 107:
+	        		case 108:
+	        		case 109:
+	        		case 110:
+	        		case 111:
+	        		case 112:
+	        		case 113:
+	        		case 114:
+	        		case 115:
+	        		case 116:
+	        		case 117:
+	        		case 118:
+	        		case 119:
+	        		case 120:
+	        		case 121:
+	        		case 122:
+	        		case 123:
+	        		case 124:
+	        		case 125:
+	        		case 126:
+	        		case 127:
+	        		case 128:
+	        		case 129:
+	        		case 130:
+	        		case 132:
+	        		case 133:
+	        		case 134:
+	        		case 135:
+	        		case 136:
+	        		case 137:
+	        		case 138:
+	        		case 139:
+	        		case 140:
+	        		case 141:
+	        		case 142:
+	        		case 143:
+	        		case 145:
+	        		case 146:
+	        		case 147:
+	        		case 148:
+	        		case 149:
+	        		case 150:
+	        		case 151:
+	        		case 152:
+	        		case 153:
+	        		case 154:
+	        		case 155:
+	        		case 156:
+	        		case 157:
+	        		case 158:
+	        		case 159:
+	        		case 160:
+	        		case 161:
+	        		case 162:
+	        		case 163:
+	        		case 165:
+	        		case 166:
+	        		case 167:
+	        		case 170:
+	        		case 171:
+	        		case 172:
+	        		case 173:
+	        		case 174:
+	        		case 175:
+	        		case 176:
+	        		case 177:
+	        		case 178:
+	        		case 179:
+	        		case 180:
+	        		case 181:
+	        		case 182:
+	        		case 183:
+	        		case 185:
+	        		case 186:
+	        		case 187:
+	        		case 188:
+	        		case 189:
+	        		case 190:
+	        		case 191:
+	        		case 192:
+	        		case 193:
+	        		case 194:
+	        		case 195:
+	        		case 196:
+	        		case 197:
+	        		case 198:
+	        		case 200:
+	        		case 201:
+	        		case 203:
+	        		case 204:
+	        		case 205:
+	        		case 206:
+	        		case 207:
+	        		case 208:
+	        		case 209:
+	        		case 210:
+	        		case 211:
+	        		case 214:
+	        		case 215:
+	        		case 217:
+	        		case 218:
+	        		case 219:
+	        		case 222:
+	        		case 226:
+	        		case 227:
+	        		case 229:
+	        		case 230:
+	        		case 231:
+	        		case 232:
+	        		case 233:
+	        		case 234:
+	        		case 235:
+	        		case 236:
+	        		case 242:
+	        		case 243:
+	        		case 246:
+	        		case 247:
+	        		case 248:
+	        		case 249:
+	        		case 250:
+	        		case 251:
+	        		case 254:
+	        		case 257:
+	        		case 258:
+	        		case 259:
+	        		case 260:
+	        		case 263:
+	        		case 264:
+	        		case 265:
+	        		case 266:
+	        		case 267:
+	        		case 268:
+	        		case 269:
+	        		case 271:
+	        		case 276:
+	        		case 277:
+	        		case 280:
+	        		case 282:
 	        		    this.state = 81;
 	        		    this._errHandler.sync(this);
 	        		    _la = this._input.LA(1);
-	        		    if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	        		    if(_la===282) {
 	        		        this.state = 80;
 	        		        this.match(Cobol85PreprocessorParser.COMMACHAR);
 	        		    }
@@ -743,7 +739,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        		    this.state = 83;
 	        		    this.compilerOption();
 	        		    break;
-	        		case Cobol85PreprocessorParser.XOPTS:
+	        		case 262:
 	        		    this.state = 84;
 	        		    this.compilerXOpts();
 	        		    break;
@@ -777,7 +773,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	compilerXOpts() {
 	    let localctx = new CompilerXOptsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, Cobol85PreprocessorParser.RULE_compilerXOpts);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 89;
@@ -789,11 +785,11 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 98;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Cobol85PreprocessorParser.ADATA) | (1 << Cobol85PreprocessorParser.ADV) | (1 << Cobol85PreprocessorParser.APOST) | (1 << Cobol85PreprocessorParser.AR) | (1 << Cobol85PreprocessorParser.ARITH) | (1 << Cobol85PreprocessorParser.AWO) | (1 << Cobol85PreprocessorParser.BLOCK0) | (1 << Cobol85PreprocessorParser.BUF) | (1 << Cobol85PreprocessorParser.BUFSIZE) | (1 << Cobol85PreprocessorParser.CBLCARD) | (1 << Cobol85PreprocessorParser.CICS) | (1 << Cobol85PreprocessorParser.COBOL2) | (1 << Cobol85PreprocessorParser.COBOL3) | (1 << Cobol85PreprocessorParser.CODEPAGE) | (1 << Cobol85PreprocessorParser.COMPILE) | (1 << Cobol85PreprocessorParser.CP) | (1 << Cobol85PreprocessorParser.CPP) | (1 << Cobol85PreprocessorParser.CPSM) | (1 << Cobol85PreprocessorParser.CURR) | (1 << Cobol85PreprocessorParser.CURRENCY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Cobol85PreprocessorParser.DATA - 32)) | (1 << (Cobol85PreprocessorParser.DATEPROC - 32)) | (1 << (Cobol85PreprocessorParser.DBCS - 32)) | (1 << (Cobol85PreprocessorParser.DEBUG - 32)) | (1 << (Cobol85PreprocessorParser.DECK - 32)) | (1 << (Cobol85PreprocessorParser.DIAGTRUNC - 32)) | (1 << (Cobol85PreprocessorParser.DLL - 32)) | (1 << (Cobol85PreprocessorParser.DP - 32)) | (1 << (Cobol85PreprocessorParser.DTR - 32)) | (1 << (Cobol85PreprocessorParser.DU - 32)) | (1 << (Cobol85PreprocessorParser.DUMP - 32)) | (1 << (Cobol85PreprocessorParser.DYN - 32)) | (1 << (Cobol85PreprocessorParser.DYNAM - 32)) | (1 << (Cobol85PreprocessorParser.EDF - 32)) | (1 << (Cobol85PreprocessorParser.EPILOG - 32)) | (1 << (Cobol85PreprocessorParser.EXIT - 32)) | (1 << (Cobol85PreprocessorParser.EXP - 32)) | (1 << (Cobol85PreprocessorParser.EXPORTALL - 32)) | (1 << (Cobol85PreprocessorParser.FASTSRT - 32)) | (1 << (Cobol85PreprocessorParser.FEPI - 32)) | (1 << (Cobol85PreprocessorParser.FLAG - 32)) | (1 << (Cobol85PreprocessorParser.FLAGSTD - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Cobol85PreprocessorParser.FSRT - 64)) | (1 << (Cobol85PreprocessorParser.GDS - 64)) | (1 << (Cobol85PreprocessorParser.GRAPHIC - 64)) | (1 << (Cobol85PreprocessorParser.INTDATE - 64)) | (1 << (Cobol85PreprocessorParser.LANG - 64)) | (1 << (Cobol85PreprocessorParser.LANGUAGE - 64)) | (1 << (Cobol85PreprocessorParser.LC - 64)) | (1 << (Cobol85PreprocessorParser.LEASM - 64)) | (1 << (Cobol85PreprocessorParser.LENGTH - 64)) | (1 << (Cobol85PreprocessorParser.LIB - 64)) | (1 << (Cobol85PreprocessorParser.LIN - 64)) | (1 << (Cobol85PreprocessorParser.LINECOUNT - 64)) | (1 << (Cobol85PreprocessorParser.LINKAGE - 64)) | (1 << (Cobol85PreprocessorParser.LIST - 64)) | (1 << (Cobol85PreprocessorParser.MAP - 64)) | (1 << (Cobol85PreprocessorParser.MARGINS - 64)) | (1 << (Cobol85PreprocessorParser.MD - 64)) | (1 << (Cobol85PreprocessorParser.MDECK - 64)))) !== 0) || ((((_la - 97)) & ~0x1f) == 0 && ((1 << (_la - 97)) & ((1 << (Cobol85PreprocessorParser.NAME - 97)) | (1 << (Cobol85PreprocessorParser.NATLANG - 97)) | (1 << (Cobol85PreprocessorParser.NOADATA - 97)) | (1 << (Cobol85PreprocessorParser.NOADV - 97)) | (1 << (Cobol85PreprocessorParser.NOAWO - 97)) | (1 << (Cobol85PreprocessorParser.NOBLOCK0 - 97)) | (1 << (Cobol85PreprocessorParser.NOC - 97)) | (1 << (Cobol85PreprocessorParser.NOCBLCARD - 97)) | (1 << (Cobol85PreprocessorParser.NOCICS - 97)) | (1 << (Cobol85PreprocessorParser.NOCMPR2 - 97)) | (1 << (Cobol85PreprocessorParser.NOCOMPILE - 97)) | (1 << (Cobol85PreprocessorParser.NOCPSM - 97)) | (1 << (Cobol85PreprocessorParser.NOCURR - 97)) | (1 << (Cobol85PreprocessorParser.NOCURRENCY - 97)) | (1 << (Cobol85PreprocessorParser.NOD - 97)) | (1 << (Cobol85PreprocessorParser.NODATEPROC - 97)) | (1 << (Cobol85PreprocessorParser.NODBCS - 97)) | (1 << (Cobol85PreprocessorParser.NODE - 97)) | (1 << (Cobol85PreprocessorParser.NODEBUG - 97)) | (1 << (Cobol85PreprocessorParser.NODECK - 97)) | (1 << (Cobol85PreprocessorParser.NODIAGTRUNC - 97)) | (1 << (Cobol85PreprocessorParser.NODLL - 97)) | (1 << (Cobol85PreprocessorParser.NODU - 97)) | (1 << (Cobol85PreprocessorParser.NODUMP - 97)) | (1 << (Cobol85PreprocessorParser.NODP - 97)) | (1 << (Cobol85PreprocessorParser.NODTR - 97)) | (1 << (Cobol85PreprocessorParser.NODYN - 97)))) !== 0) || ((((_la - 129)) & ~0x1f) == 0 && ((1 << (_la - 129)) & ((1 << (Cobol85PreprocessorParser.NODYNAM - 129)) | (1 << (Cobol85PreprocessorParser.NOEDF - 129)) | (1 << (Cobol85PreprocessorParser.NOEPILOG - 129)) | (1 << (Cobol85PreprocessorParser.NOEXIT - 129)) | (1 << (Cobol85PreprocessorParser.NOEXP - 129)) | (1 << (Cobol85PreprocessorParser.NOEXPORTALL - 129)) | (1 << (Cobol85PreprocessorParser.NOF - 129)) | (1 << (Cobol85PreprocessorParser.NOFASTSRT - 129)) | (1 << (Cobol85PreprocessorParser.NOFEPI - 129)) | (1 << (Cobol85PreprocessorParser.NOFLAG - 129)) | (1 << (Cobol85PreprocessorParser.NOFLAGMIG - 129)) | (1 << (Cobol85PreprocessorParser.NOFLAGSTD - 129)) | (1 << (Cobol85PreprocessorParser.NOFSRT - 129)) | (1 << (Cobol85PreprocessorParser.NOGRAPHIC - 129)) | (1 << (Cobol85PreprocessorParser.NOLENGTH - 129)) | (1 << (Cobol85PreprocessorParser.NOLIB - 129)) | (1 << (Cobol85PreprocessorParser.NOLINKAGE - 129)) | (1 << (Cobol85PreprocessorParser.NOLIST - 129)) | (1 << (Cobol85PreprocessorParser.NOMAP - 129)) | (1 << (Cobol85PreprocessorParser.NOMD - 129)) | (1 << (Cobol85PreprocessorParser.NOMDECK - 129)) | (1 << (Cobol85PreprocessorParser.NONAME - 129)) | (1 << (Cobol85PreprocessorParser.NONUM - 129)) | (1 << (Cobol85PreprocessorParser.NONUMBER - 129)) | (1 << (Cobol85PreprocessorParser.NOOBJ - 129)) | (1 << (Cobol85PreprocessorParser.NOOBJECT - 129)) | (1 << (Cobol85PreprocessorParser.NOOFF - 129)) | (1 << (Cobol85PreprocessorParser.NOOFFSET - 129)) | (1 << (Cobol85PreprocessorParser.NOOPSEQUENCE - 129)) | (1 << (Cobol85PreprocessorParser.NOOPT - 129)))) !== 0) || ((((_la - 161)) & ~0x1f) == 0 && ((1 << (_la - 161)) & ((1 << (Cobol85PreprocessorParser.NOOPTIMIZE - 161)) | (1 << (Cobol85PreprocessorParser.NOOPTIONS - 161)) | (1 << (Cobol85PreprocessorParser.NOP - 161)) | (1 << (Cobol85PreprocessorParser.NOPROLOG - 161)) | (1 << (Cobol85PreprocessorParser.NORENT - 161)) | (1 << (Cobol85PreprocessorParser.NOS - 161)) | (1 << (Cobol85PreprocessorParser.NOSEQ - 161)) | (1 << (Cobol85PreprocessorParser.NOSOURCE - 161)) | (1 << (Cobol85PreprocessorParser.NOSPIE - 161)) | (1 << (Cobol85PreprocessorParser.NOSQL - 161)) | (1 << (Cobol85PreprocessorParser.NOSQLC - 161)) | (1 << (Cobol85PreprocessorParser.NOSQLCCSID - 161)) | (1 << (Cobol85PreprocessorParser.NOSSR - 161)) | (1 << (Cobol85PreprocessorParser.NOSSRANGE - 161)) | (1 << (Cobol85PreprocessorParser.NOSTDTRUNC - 161)) | (1 << (Cobol85PreprocessorParser.NOSEQUENCE - 161)) | (1 << (Cobol85PreprocessorParser.NOTERM - 161)) | (1 << (Cobol85PreprocessorParser.NOTERMINAL - 161)) | (1 << (Cobol85PreprocessorParser.NOTEST - 161)) | (1 << (Cobol85PreprocessorParser.NOTHREAD - 161)) | (1 << (Cobol85PreprocessorParser.NOVBREF - 161)) | (1 << (Cobol85PreprocessorParser.NOWD - 161)) | (1 << (Cobol85PreprocessorParser.NOWORD - 161)) | (1 << (Cobol85PreprocessorParser.NOX - 161)) | (1 << (Cobol85PreprocessorParser.NOXREF - 161)) | (1 << (Cobol85PreprocessorParser.NOZWB - 161)) | (1 << (Cobol85PreprocessorParser.NS - 161)) | (1 << (Cobol85PreprocessorParser.NSEQ - 161)))) !== 0) || ((((_la - 193)) & ~0x1f) == 0 && ((1 << (_la - 193)) & ((1 << (Cobol85PreprocessorParser.NSYMBOL - 193)) | (1 << (Cobol85PreprocessorParser.NUM - 193)) | (1 << (Cobol85PreprocessorParser.NUMBER - 193)) | (1 << (Cobol85PreprocessorParser.NUMPROC - 193)) | (1 << (Cobol85PreprocessorParser.OBJ - 193)) | (1 << (Cobol85PreprocessorParser.OBJECT - 193)) | (1 << (Cobol85PreprocessorParser.OFF - 193)) | (1 << (Cobol85PreprocessorParser.OFFSET - 193)) | (1 << (Cobol85PreprocessorParser.OP - 193)) | (1 << (Cobol85PreprocessorParser.OPMARGINS - 193)) | (1 << (Cobol85PreprocessorParser.OPSEQUENCE - 193)) | (1 << (Cobol85PreprocessorParser.OPT - 193)) | (1 << (Cobol85PreprocessorParser.OPTFILE - 193)) | (1 << (Cobol85PreprocessorParser.OPTIMIZE - 193)) | (1 << (Cobol85PreprocessorParser.OPTIONS - 193)) | (1 << (Cobol85PreprocessorParser.OUT - 193)) | (1 << (Cobol85PreprocessorParser.OUTDD - 193)) | (1 << (Cobol85PreprocessorParser.PGMN - 193)) | (1 << (Cobol85PreprocessorParser.PGMNAME - 193)) | (1 << (Cobol85PreprocessorParser.PROLOG - 193)) | (1 << (Cobol85PreprocessorParser.QUOTE - 193)) | (1 << (Cobol85PreprocessorParser.RENT - 193)) | (1 << (Cobol85PreprocessorParser.RMODE - 193)))) !== 0) || ((((_la - 226)) & ~0x1f) == 0 && ((1 << (_la - 226)) & ((1 << (Cobol85PreprocessorParser.SEQ - 226)) | (1 << (Cobol85PreprocessorParser.SEQUENCE - 226)) | (1 << (Cobol85PreprocessorParser.SIZE - 226)) | (1 << (Cobol85PreprocessorParser.SOURCE - 226)) | (1 << (Cobol85PreprocessorParser.SP - 226)) | (1 << (Cobol85PreprocessorParser.SPACE - 226)) | (1 << (Cobol85PreprocessorParser.SPIE - 226)) | (1 << (Cobol85PreprocessorParser.SQL - 226)) | (1 << (Cobol85PreprocessorParser.SQLC - 226)) | (1 << (Cobol85PreprocessorParser.SQLCCSID - 226)) | (1 << (Cobol85PreprocessorParser.SSR - 226)) | (1 << (Cobol85PreprocessorParser.SSRANGE - 226)) | (1 << (Cobol85PreprocessorParser.SYSEIB - 226)) | (1 << (Cobol85PreprocessorParser.SZ - 226)) | (1 << (Cobol85PreprocessorParser.TERM - 226)) | (1 << (Cobol85PreprocessorParser.TERMINAL - 226)) | (1 << (Cobol85PreprocessorParser.TEST - 226)) | (1 << (Cobol85PreprocessorParser.THREAD - 226)) | (1 << (Cobol85PreprocessorParser.TRUNC - 226)) | (1 << (Cobol85PreprocessorParser.VBREF - 226)))) !== 0) || ((((_la - 258)) & ~0x1f) == 0 && ((1 << (_la - 258)) & ((1 << (Cobol85PreprocessorParser.WD - 258)) | (1 << (Cobol85PreprocessorParser.WORD - 258)) | (1 << (Cobol85PreprocessorParser.XMLPARSE - 258)) | (1 << (Cobol85PreprocessorParser.XP - 258)) | (1 << (Cobol85PreprocessorParser.XREF - 258)) | (1 << (Cobol85PreprocessorParser.YEARWINDOW - 258)) | (1 << (Cobol85PreprocessorParser.YW - 258)) | (1 << (Cobol85PreprocessorParser.ZWB - 258)) | (1 << (Cobol85PreprocessorParser.C_CHAR - 258)) | (1 << (Cobol85PreprocessorParser.D_CHAR - 258)) | (1 << (Cobol85PreprocessorParser.F_CHAR - 258)) | (1 << (Cobol85PreprocessorParser.Q_CHAR - 258)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 258)) | (1 << (Cobol85PreprocessorParser.X_CHAR - 258)) | (1 << (Cobol85PreprocessorParser.COMMACHAR - 258)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3715528134) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4146134903) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1813969997) !== 0) || ((((_la - 97)) & ~0x1f) === 0 && ((1 << (_la - 97)) & 4294966985) !== 0) || ((((_la - 129)) & ~0x1f) === 0 && ((1 << (_la - 129)) & 4294934523) !== 0) || ((((_la - 161)) & ~0x1f) === 0 && ((1 << (_la - 161)) & 4286578295) !== 0) || ((((_la - 193)) & ~0x1f) === 0 && ((1 << (_la - 193)) & 661126591) !== 0) || ((((_la - 226)) & ~0x1f) === 0 && ((1 << (_la - 226)) & 2482178043) !== 0) || ((((_la - 258)) & ~0x1f) === 0 && ((1 << (_la - 258)) & 21770215) !== 0)) {
 	            this.state = 93;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	            if(_la===282) {
 	                this.state = 92;
 	                this.match(Cobol85PreprocessorParser.COMMACHAR);
 	            }
@@ -825,7 +821,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	compilerOption() {
 	    let localctx = new CompilerOptionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, Cobol85PreprocessorParser.RULE_compilerOption);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 445;
 	        this._errHandler.sync(this);
@@ -853,7 +849,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 106;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.AR || _la===Cobol85PreprocessorParser.ARITH)) {
+	            if(!(_la===7 || _la===8)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -864,7 +860,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 108;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.COMPAT || _la===Cobol85PreprocessorParser.EXTEND || _la===Cobol85PreprocessorParser.C_CHAR || _la===Cobol85PreprocessorParser.E_CHAR)) {
+	            if(!(_la===23 || _la===59 || _la===268 || _la===270)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -891,7 +887,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 112;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.BUF || _la===Cobol85PreprocessorParser.BUFSIZE)) {
+	            if(!(_la===13 || _la===14)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -946,7 +942,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 12);
 	            this.state = 127;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.CODEPAGE || _la===Cobol85PreprocessorParser.CP)) {
+	            if(!(_la===22 || _la===26)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -965,7 +961,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 13);
 	            this.state = 132;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.COMPILE || _la===Cobol85PreprocessorParser.C_CHAR)) {
+	            if(!(_la===24 || _la===268)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -990,7 +986,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 16);
 	            this.state = 135;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.CURR || _la===Cobol85PreprocessorParser.CURRENCY)) {
+	            if(!(_la===30 || _la===31)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1021,7 +1017,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 18);
 	            this.state = 145;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.DATEPROC || _la===Cobol85PreprocessorParser.DP)) {
+	            if(!(_la===33 || _la===41)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1037,10 +1033,10 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 148;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.FLAG || _la===Cobol85PreprocessorParser.NOFLAG) {
+	                if(_la===62 || _la===139) {
 	                    this.state = 147;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===Cobol85PreprocessorParser.FLAG || _la===Cobol85PreprocessorParser.NOFLAG)) {
+	                    if(!(_la===62 || _la===139)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1052,7 +1048,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 151;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	                if(_la===282) {
 	                    this.state = 150;
 	                    this.match(Cobol85PreprocessorParser.COMMACHAR);
 	                }
@@ -1060,10 +1056,10 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 154;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.NOTRIG || _la===Cobol85PreprocessorParser.TRIG) {
+	                if(_la===184 || _la===253) {
 	                    this.state = 153;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===Cobol85PreprocessorParser.NOTRIG || _la===Cobol85PreprocessorParser.TRIG)) {
+	                    if(!(_la===184 || _la===253)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -1088,7 +1084,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 20);
 	            this.state = 160;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.DECK || _la===Cobol85PreprocessorParser.D_CHAR)) {
+	            if(!(_la===37 || _la===269)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1107,7 +1103,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 22);
 	            this.state = 162;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.DIAGTRUNC || _la===Cobol85PreprocessorParser.DTR)) {
+	            if(!(_la===38 || _la===42)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1126,7 +1122,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 24);
 	            this.state = 164;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.DU || _la===Cobol85PreprocessorParser.DUMP)) {
+	            if(!(_la===43 || _la===44)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1139,7 +1135,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 25);
 	            this.state = 165;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.DYN || _la===Cobol85PreprocessorParser.DYNAM)) {
+	            if(!(_la===45 || _la===46)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1170,7 +1166,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 29);
 	            this.state = 169;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.EXP || _la===Cobol85PreprocessorParser.EXPORTALL)) {
+	            if(!(_la===57 || _la===58)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1183,7 +1179,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 30);
 	            this.state = 170;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.FASTSRT || _la===Cobol85PreprocessorParser.FSRT)) {
+	            if(!(_la===60 || _la===64)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1202,7 +1198,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 32);
 	            this.state = 172;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.FLAG || _la===Cobol85PreprocessorParser.F_CHAR)) {
+	            if(!(_la===62 || _la===271)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1213,7 +1209,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 174;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 270)) & ~0x1f) == 0 && ((1 << (_la - 270)) & ((1 << (Cobol85PreprocessorParser.E_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.I_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.U_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.W_CHAR - 270)))) !== 0))) {
+	            if(!(((((_la - 270)) & ~0x1f) === 0 && ((1 << (_la - 270)) & 905) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1223,12 +1219,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 177;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	            if(_la===282) {
 	                this.state = 175;
 	                this.match(Cobol85PreprocessorParser.COMMACHAR);
 	                this.state = 176;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 270)) & ~0x1f) == 0 && ((1 << (_la - 270)) & ((1 << (Cobol85PreprocessorParser.E_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.I_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.U_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.W_CHAR - 270)))) !== 0))) {
+	                if(!(((((_la - 270)) & ~0x1f) === 0 && ((1 << (_la - 270)) & 905) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1249,7 +1245,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 182;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 272)) & ~0x1f) == 0 && ((1 << (_la - 272)) & ((1 << (Cobol85PreprocessorParser.H_CHAR - 272)) | (1 << (Cobol85PreprocessorParser.I_CHAR - 272)) | (1 << (Cobol85PreprocessorParser.M_CHAR - 272)))) !== 0))) {
+	            if(!(((((_la - 272)) & ~0x1f) === 0 && ((1 << (_la - 272)) & 7) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1259,12 +1255,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 185;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	            if(_la===282) {
 	                this.state = 183;
 	                this.match(Cobol85PreprocessorParser.COMMACHAR);
 	                this.state = 184;
 	                _la = this._input.LA(1);
-	                if(!(_la===Cobol85PreprocessorParser.DD || _la===Cobol85PreprocessorParser.NN || _la===Cobol85PreprocessorParser.SS || _la===Cobol85PreprocessorParser.D_CHAR || _la===Cobol85PreprocessorParser.N_CHAR || _la===Cobol85PreprocessorParser.S_CHAR)) {
+	                if(!(_la===35 || _la===101 || _la===241 || _la===269 || _la===275 || _la===277)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1297,7 +1293,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 192;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.ANSI || _la===Cobol85PreprocessorParser.LILIAN)) {
+	            if(!(_la===4 || _la===80)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1312,7 +1308,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 37);
 	            this.state = 194;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.LANG || _la===Cobol85PreprocessorParser.LANGUAGE)) {
+	            if(!(_la===74 || _la===75)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1323,7 +1319,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 196;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.CS || ((((_la - 50)) & ~0x1f) == 0 && ((1 << (_la - 50)) & ((1 << (Cobol85PreprocessorParser.EN - 50)) | (1 << (Cobol85PreprocessorParser.ENGLISH - 50)) | (1 << (Cobol85PreprocessorParser.JA - 50)) | (1 << (Cobol85PreprocessorParser.JP - 50)) | (1 << (Cobol85PreprocessorParser.KA - 50)))) !== 0) || _la===Cobol85PreprocessorParser.UE)) {
+	            if(!(_la===29 || ((((_la - 50)) & ~0x1f) === 0 && ((1 << (_la - 50)) & 14680067) !== 0) || _la===255)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1362,7 +1358,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 42);
 	            this.state = 202;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.LC || _la===Cobol85PreprocessorParser.LINECOUNT)) {
+	            if(!(_la===76 || _la===82)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1410,7 +1406,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 217;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	            if(_la===282) {
 	                this.state = 215;
 	                this.match(Cobol85PreprocessorParser.COMMACHAR);
 	                this.state = 216;
@@ -1425,7 +1421,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 47);
 	            this.state = 221;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.MD || _la===Cobol85PreprocessorParser.MDECK)) {
+	            if(!(_la===93 || _la===94)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1440,7 +1436,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	                this.state = 223;
 	                _la = this._input.LA(1);
-	                if(!(_la===Cobol85PreprocessorParser.COMPILE || _la===Cobol85PreprocessorParser.NOC || _la===Cobol85PreprocessorParser.NOCOMPILE || _la===Cobol85PreprocessorParser.C_CHAR)) {
+	                if(!(_la===24 || _la===108 || _la===112 || _la===268)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1465,7 +1461,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	                this.state = 229;
 	                _la = this._input.LA(1);
-	                if(!(_la===Cobol85PreprocessorParser.ALIAS || _la===Cobol85PreprocessorParser.NOALIAS)) {
+	                if(!(_la===3 || _la===105)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1486,7 +1482,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 235;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.CS || _la===Cobol85PreprocessorParser.EN || _la===Cobol85PreprocessorParser.KA)) {
+	            if(!(_la===29 || _la===50 || _la===73)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1543,7 +1539,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 57);
 	            this.state = 244;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOC || _la===Cobol85PreprocessorParser.NOCOMPILE)) {
+	            if(!(_la===108 || _la===112)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1558,7 +1554,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	                this.state = 246;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 270)) & ~0x1f) == 0 && ((1 << (_la - 270)) & ((1 << (Cobol85PreprocessorParser.E_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 270)) | (1 << (Cobol85PreprocessorParser.W_CHAR - 270)))) !== 0))) {
+	                if(!(((((_la - 270)) & ~0x1f) === 0 && ((1 << (_la - 270)) & 641) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1581,7 +1577,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 59);
 	            this.state = 251;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOCURR || _la===Cobol85PreprocessorParser.NOCURRENCY)) {
+	            if(!(_la===114 || _la===115)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1594,7 +1590,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 60);
 	            this.state = 252;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NODATEPROC || _la===Cobol85PreprocessorParser.NODP)) {
+	            if(!(_la===117 || _la===126)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1619,7 +1615,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 63);
 	            this.state = 255;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOD || _la===Cobol85PreprocessorParser.NODECK)) {
+	            if(!(_la===116 || _la===121)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1644,7 +1640,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 66);
 	            this.state = 258;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NODU || _la===Cobol85PreprocessorParser.NODUMP)) {
+	            if(!(_la===124 || _la===125)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1657,7 +1653,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 67);
 	            this.state = 259;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NODIAGTRUNC || _la===Cobol85PreprocessorParser.NODTR)) {
+	            if(!(_la===122 || _la===127)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1670,7 +1666,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 68);
 	            this.state = 260;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NODYN || _la===Cobol85PreprocessorParser.NODYNAM)) {
+	            if(!(_la===128 || _la===129)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1701,7 +1697,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 72);
 	            this.state = 264;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOEXP || _la===Cobol85PreprocessorParser.NOEXPORTALL)) {
+	            if(!(_la===134 || _la===135)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1714,7 +1710,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 73);
 	            this.state = 265;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOFASTSRT || _la===Cobol85PreprocessorParser.NOFSRT)) {
+	            if(!(_la===137 || _la===142)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1733,7 +1729,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 75);
 	            this.state = 267;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOF || _la===Cobol85PreprocessorParser.NOFLAG)) {
+	            if(!(_la===136 || _la===139)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1794,7 +1790,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 84);
 	            this.state = 276;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOMD || _la===Cobol85PreprocessorParser.NOMDECK)) {
+	            if(!(_la===150 || _la===151)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1813,7 +1809,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 86);
 	            this.state = 278;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NONUM || _la===Cobol85PreprocessorParser.NONUMBER)) {
+	            if(!(_la===153 || _la===154)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1826,7 +1822,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 87);
 	            this.state = 279;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOOBJ || _la===Cobol85PreprocessorParser.NOOBJECT)) {
+	            if(!(_la===155 || _la===156)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1839,7 +1835,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 88);
 	            this.state = 280;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOOFF || _la===Cobol85PreprocessorParser.NOOFFSET)) {
+	            if(!(_la===157 || _la===158)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1858,7 +1854,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 90);
 	            this.state = 282;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOOPT || _la===Cobol85PreprocessorParser.NOOPTIMIZE)) {
+	            if(!(_la===160 || _la===161)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1895,7 +1891,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 95);
 	            this.state = 287;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOSEQ || _la===Cobol85PreprocessorParser.NOSEQUENCE)) {
+	            if(!(_la===170 || _la===179)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1908,7 +1904,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 96);
 	            this.state = 288;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOS || _la===Cobol85PreprocessorParser.NOSOURCE)) {
+	            if(!(_la===167 || _la===171)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1933,7 +1929,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 99);
 	            this.state = 291;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOSQLC || _la===Cobol85PreprocessorParser.NOSQLCCSID)) {
+	            if(!(_la===174 || _la===175)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1946,7 +1942,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 100);
 	            this.state = 292;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOSSR || _la===Cobol85PreprocessorParser.NOSSRANGE)) {
+	            if(!(_la===176 || _la===177)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1965,7 +1961,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 102);
 	            this.state = 294;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOTERM || _la===Cobol85PreprocessorParser.NOTERMINAL)) {
+	            if(!(_la===180 || _la===181)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1996,7 +1992,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 106);
 	            this.state = 298;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOWD || _la===Cobol85PreprocessorParser.NOWORD)) {
+	            if(!(_la===186 || _la===187)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2015,7 +2011,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 108);
 	            this.state = 300;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NS || _la===Cobol85PreprocessorParser.NSYMBOL)) {
+	            if(!(_la===191 || _la===193)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2026,7 +2022,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 302;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.DBCS || _la===Cobol85PreprocessorParser.NAT || _la===Cobol85PreprocessorParser.NATIONAL)) {
+	            if(!(_la===34 || _la===98 || _la===99)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2047,7 +2043,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 110);
 	            this.state = 305;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NOX || _la===Cobol85PreprocessorParser.NOXREF)) {
+	            if(!(_la===188 || _la===189)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2066,7 +2062,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 112);
 	            this.state = 307;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.NUM || _la===Cobol85PreprocessorParser.NUMBER)) {
+	            if(!(_la===194 || _la===195)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2083,7 +2079,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 310;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.MIG || _la===Cobol85PreprocessorParser.NOPFD || _la===Cobol85PreprocessorParser.PFD)) {
+	            if(!(_la===95 || _la===164 || _la===212)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2098,7 +2094,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 114);
 	            this.state = 312;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.OBJ || _la===Cobol85PreprocessorParser.OBJECT)) {
+	            if(!(_la===197 || _la===198)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2111,7 +2107,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 115);
 	            this.state = 313;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.OFF || _la===Cobol85PreprocessorParser.OFFSET)) {
+	            if(!(_la===200 || _la===201)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2135,7 +2131,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 321;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	            if(_la===282) {
 	                this.state = 319;
 	                this.match(Cobol85PreprocessorParser.COMMACHAR);
 	                this.state = 320;
@@ -2166,7 +2162,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 118);
 	            this.state = 332;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.OPT || _la===Cobol85PreprocessorParser.OPTIMIZE)) {
+	            if(!(_la===206 || _la===208)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2181,7 +2177,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	                this.state = 334;
 	                _la = this._input.LA(1);
-	                if(!(_la===Cobol85PreprocessorParser.FULL || _la===Cobol85PreprocessorParser.STD)) {
+	                if(!(_la===65 || _la===244)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2216,7 +2212,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 122);
 	            this.state = 341;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.OUT || _la===Cobol85PreprocessorParser.OUTDD)) {
+	            if(!(_la===210 || _la===211)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2235,7 +2231,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 123);
 	            this.state = 346;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.PGMN || _la===Cobol85PreprocessorParser.PGMNAME)) {
+	            if(!(_la===214 || _la===215)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2246,7 +2242,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 348;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.CO || _la===Cobol85PreprocessorParser.COMPAT || ((((_la - 85)) & ~0x1f) == 0 && ((1 << (_la - 85)) & ((1 << (Cobol85PreprocessorParser.LM - 85)) | (1 << (Cobol85PreprocessorParser.LONGMIXED - 85)) | (1 << (Cobol85PreprocessorParser.LONGUPPER - 85)) | (1 << (Cobol85PreprocessorParser.LU - 85)) | (1 << (Cobol85PreprocessorParser.MIXED - 85)))) !== 0) || ((((_la - 256)) & ~0x1f) == 0 && ((1 << (_la - 256)) & ((1 << (Cobol85PreprocessorParser.UPPER - 256)) | (1 << (Cobol85PreprocessorParser.M_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.U_CHAR - 256)))) !== 0))) {
+	            if(!(_la===19 || _la===23 || ((((_la - 85)) & ~0x1f) === 0 && ((1 << (_la - 85)) & 2071) !== 0) || ((((_la - 256)) & ~0x1f) === 0 && ((1 << (_la - 256)) & 4456449) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2267,7 +2263,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 125);
 	            this.state = 351;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.QUOTE || _la===Cobol85PreprocessorParser.Q_CHAR)) {
+	            if(!(_la===218 || _la===276)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2291,16 +2287,16 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 358;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case Cobol85PreprocessorParser.ANY:
+	            case 5:
 	                this.state = 355;
 	                this.match(Cobol85PreprocessorParser.ANY);
 	                break;
-	            case Cobol85PreprocessorParser.AUTO:
+	            case 9:
 	                this.state = 356;
 	                this.match(Cobol85PreprocessorParser.AUTO);
 	                break;
-	            case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	            case Cobol85PreprocessorParser.NUMERICLITERAL:
+	            case 285:
+	            case 286:
 	                this.state = 357;
 	                this.literal();
 	                break;
@@ -2315,7 +2311,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 128);
 	            this.state = 361;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.SEQ || _la===Cobol85PreprocessorParser.SEQUENCE)) {
+	            if(!(_la===226 || _la===227)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2344,7 +2340,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 129);
 	            this.state = 370;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.SIZE || _la===Cobol85PreprocessorParser.SZ)) {
+	            if(!(_la===229 || _la===247)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2356,12 +2352,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 374;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case Cobol85PreprocessorParser.MAX:
+	            case 92:
 	                this.state = 372;
 	                this.match(Cobol85PreprocessorParser.MAX);
 	                break;
-	            case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	            case Cobol85PreprocessorParser.NUMERICLITERAL:
+	            case 285:
+	            case 286:
 	                this.state = 373;
 	                this.literal();
 	                break;
@@ -2376,7 +2372,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 130);
 	            this.state = 377;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.SOURCE || _la===Cobol85PreprocessorParser.S_CHAR)) {
+	            if(!(_la===230 || _la===277)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2431,7 +2427,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 135);
 	            this.state = 392;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.SQLC || _la===Cobol85PreprocessorParser.SQLCCSID)) {
+	            if(!(_la===235 || _la===236)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2444,7 +2440,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 136);
 	            this.state = 393;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.SSR || _la===Cobol85PreprocessorParser.SSRANGE)) {
+	            if(!(_la===242 || _la===243)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2463,7 +2459,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 138);
 	            this.state = 395;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.TERM || _la===Cobol85PreprocessorParser.TERMINAL)) {
+	            if(!(_la===248 || _la===249)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2485,10 +2481,10 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 399;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.HOOK || _la===Cobol85PreprocessorParser.NOHOOK) {
+	                if(_la===68 || _la===144) {
 	                    this.state = 398;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===Cobol85PreprocessorParser.HOOK || _la===Cobol85PreprocessorParser.NOHOOK)) {
+	                    if(!(_la===68 || _la===144)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2508,10 +2504,10 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 405;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.NOSEP || _la===Cobol85PreprocessorParser.NOSEPARATE || _la===Cobol85PreprocessorParser.SEP || _la===Cobol85PreprocessorParser.SEPARATE) {
+	                if(_la===168 || _la===169 || _la===224 || _la===225) {
 	                    this.state = 404;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===Cobol85PreprocessorParser.NOSEP || _la===Cobol85PreprocessorParser.NOSEPARATE || _la===Cobol85PreprocessorParser.SEP || _la===Cobol85PreprocessorParser.SEPARATE)) {
+	                    if(!(_la===168 || _la===169 || _la===224 || _la===225)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2523,7 +2519,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 408;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.COMMACHAR) {
+	                if(_la===282) {
 	                    this.state = 407;
 	                    this.match(Cobol85PreprocessorParser.COMMACHAR);
 	                }
@@ -2531,10 +2527,10 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 411;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.EJPD || _la===Cobol85PreprocessorParser.NOEJPD) {
+	                if(_la===49 || _la===131) {
 	                    this.state = 410;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===Cobol85PreprocessorParser.EJPD || _la===Cobol85PreprocessorParser.NOEJPD)) {
+	                    if(!(_la===49 || _la===131)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2563,7 +2559,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 419;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.BIN || _la===Cobol85PreprocessorParser.OPT || _la===Cobol85PreprocessorParser.STD)) {
+	            if(!(_la===11 || _la===206 || _la===244)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2584,7 +2580,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 143);
 	            this.state = 422;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.WD || _la===Cobol85PreprocessorParser.WORD)) {
+	            if(!(_la===258 || _la===259)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2603,7 +2599,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 144);
 	            this.state = 427;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.XMLPARSE || _la===Cobol85PreprocessorParser.XP)) {
+	            if(!(_la===260 || _la===263)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2614,7 +2610,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	            this.state = 429;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.COMPAT || ((((_la - 261)) & ~0x1f) == 0 && ((1 << (_la - 261)) & ((1 << (Cobol85PreprocessorParser.XMLSS - 261)) | (1 << (Cobol85PreprocessorParser.C_CHAR - 261)) | (1 << (Cobol85PreprocessorParser.X_CHAR - 261)))) !== 0))) {
+	            if(!(_la===23 || ((((_la - 261)) & ~0x1f) === 0 && ((1 << (_la - 261)) & 524417) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2629,7 +2625,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 145);
 	            this.state = 431;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.XREF || _la===Cobol85PreprocessorParser.X_CHAR)) {
+	            if(!(_la===264 || _la===280)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2645,10 +2641,10 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 434;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Cobol85PreprocessorParser.FULL || _la===Cobol85PreprocessorParser.SHORT) {
+	                if(_la===65 || _la===228) {
 	                    this.state = 433;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===Cobol85PreprocessorParser.FULL || _la===Cobol85PreprocessorParser.SHORT)) {
+	                    if(!(_la===65 || _la===228)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2667,7 +2663,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 146);
 	            this.state = 439;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.YEARWINDOW || _la===Cobol85PreprocessorParser.YW)) {
+	            if(!(_la===265 || _la===266)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2819,7 +2815,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	copyStatement() {
 	    let localctx = new CopyStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, Cobol85PreprocessorParser.RULE_copyStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 468;
@@ -2834,7 +2830,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 473;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	                while(_la===289) {
 	                    this.state = 470;
 	                    this.match(Cobol85PreprocessorParser.NEWLINE);
 	                    this.state = 475;
@@ -2844,20 +2840,20 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 480;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case Cobol85PreprocessorParser.IN:
-	                case Cobol85PreprocessorParser.OF:
+	                case 69:
+	                case 199:
 	                    this.state = 476;
 	                    this.directoryPhrase();
 	                    break;
-	                case Cobol85PreprocessorParser.ON:
+	                case 202:
 	                    this.state = 477;
 	                    this.familyPhrase();
 	                    break;
-	                case Cobol85PreprocessorParser.REPLACING:
+	                case 221:
 	                    this.state = 478;
 	                    this.replacingPhrase();
 	                    break;
-	                case Cobol85PreprocessorParser.SUPPRESS:
+	                case 245:
 	                    this.state = 479;
 	                    this.match(Cobol85PreprocessorParser.SUPPRESS);
 	                    break;
@@ -2873,7 +2869,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 490;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	        while(_la===289) {
 	            this.state = 487;
 	            this.match(Cobol85PreprocessorParser.NEWLINE);
 	            this.state = 492;
@@ -2901,286 +2897,286 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	copySource() {
 	    let localctx = new CopySourceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, Cobol85PreprocessorParser.RULE_copySource);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 498;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	        case Cobol85PreprocessorParser.NUMERICLITERAL:
+	        case 285:
+	        case 286:
 	            this.state = 495;
 	            this.literal();
 	            break;
-	        case Cobol85PreprocessorParser.ADATA:
-	        case Cobol85PreprocessorParser.ADV:
-	        case Cobol85PreprocessorParser.ALIAS:
-	        case Cobol85PreprocessorParser.ANSI:
-	        case Cobol85PreprocessorParser.ANY:
-	        case Cobol85PreprocessorParser.APOST:
-	        case Cobol85PreprocessorParser.AR:
-	        case Cobol85PreprocessorParser.ARITH:
-	        case Cobol85PreprocessorParser.AUTO:
-	        case Cobol85PreprocessorParser.AWO:
-	        case Cobol85PreprocessorParser.BIN:
-	        case Cobol85PreprocessorParser.BLOCK0:
-	        case Cobol85PreprocessorParser.BUF:
-	        case Cobol85PreprocessorParser.BUFSIZE:
-	        case Cobol85PreprocessorParser.BY:
-	        case Cobol85PreprocessorParser.CBL:
-	        case Cobol85PreprocessorParser.CBLCARD:
-	        case Cobol85PreprocessorParser.CO:
-	        case Cobol85PreprocessorParser.COBOL2:
-	        case Cobol85PreprocessorParser.COBOL3:
-	        case Cobol85PreprocessorParser.CODEPAGE:
-	        case Cobol85PreprocessorParser.COMPAT:
-	        case Cobol85PreprocessorParser.COMPILE:
-	        case Cobol85PreprocessorParser.CP:
-	        case Cobol85PreprocessorParser.CPP:
-	        case Cobol85PreprocessorParser.CPSM:
-	        case Cobol85PreprocessorParser.CS:
-	        case Cobol85PreprocessorParser.CURR:
-	        case Cobol85PreprocessorParser.CURRENCY:
-	        case Cobol85PreprocessorParser.DATA:
-	        case Cobol85PreprocessorParser.DATEPROC:
-	        case Cobol85PreprocessorParser.DBCS:
-	        case Cobol85PreprocessorParser.DD:
-	        case Cobol85PreprocessorParser.DEBUG:
-	        case Cobol85PreprocessorParser.DECK:
-	        case Cobol85PreprocessorParser.DIAGTRUNC:
-	        case Cobol85PreprocessorParser.DLI:
-	        case Cobol85PreprocessorParser.DLL:
-	        case Cobol85PreprocessorParser.DP:
-	        case Cobol85PreprocessorParser.DTR:
-	        case Cobol85PreprocessorParser.DU:
-	        case Cobol85PreprocessorParser.DUMP:
-	        case Cobol85PreprocessorParser.DYN:
-	        case Cobol85PreprocessorParser.DYNAM:
-	        case Cobol85PreprocessorParser.EDF:
-	        case Cobol85PreprocessorParser.EJECT:
-	        case Cobol85PreprocessorParser.EJPD:
-	        case Cobol85PreprocessorParser.EN:
-	        case Cobol85PreprocessorParser.ENGLISH:
-	        case Cobol85PreprocessorParser.EPILOG:
-	        case Cobol85PreprocessorParser.EXCI:
-	        case Cobol85PreprocessorParser.EXIT:
-	        case Cobol85PreprocessorParser.EXP:
-	        case Cobol85PreprocessorParser.EXPORTALL:
-	        case Cobol85PreprocessorParser.EXTEND:
-	        case Cobol85PreprocessorParser.FASTSRT:
-	        case Cobol85PreprocessorParser.FLAG:
-	        case Cobol85PreprocessorParser.FLAGSTD:
-	        case Cobol85PreprocessorParser.FSRT:
-	        case Cobol85PreprocessorParser.FULL:
-	        case Cobol85PreprocessorParser.GDS:
-	        case Cobol85PreprocessorParser.GRAPHIC:
-	        case Cobol85PreprocessorParser.HOOK:
-	        case Cobol85PreprocessorParser.IN:
-	        case Cobol85PreprocessorParser.INTDATE:
-	        case Cobol85PreprocessorParser.JA:
-	        case Cobol85PreprocessorParser.JP:
-	        case Cobol85PreprocessorParser.KA:
-	        case Cobol85PreprocessorParser.LANG:
-	        case Cobol85PreprocessorParser.LANGUAGE:
-	        case Cobol85PreprocessorParser.LC:
-	        case Cobol85PreprocessorParser.LENGTH:
-	        case Cobol85PreprocessorParser.LIB:
-	        case Cobol85PreprocessorParser.LILIAN:
-	        case Cobol85PreprocessorParser.LIN:
-	        case Cobol85PreprocessorParser.LINECOUNT:
-	        case Cobol85PreprocessorParser.LINKAGE:
-	        case Cobol85PreprocessorParser.LIST:
-	        case Cobol85PreprocessorParser.LM:
-	        case Cobol85PreprocessorParser.LONGMIXED:
-	        case Cobol85PreprocessorParser.LONGUPPER:
-	        case Cobol85PreprocessorParser.LU:
-	        case Cobol85PreprocessorParser.MAP:
-	        case Cobol85PreprocessorParser.MARGINS:
-	        case Cobol85PreprocessorParser.MAX:
-	        case Cobol85PreprocessorParser.MD:
-	        case Cobol85PreprocessorParser.MDECK:
-	        case Cobol85PreprocessorParser.MIG:
-	        case Cobol85PreprocessorParser.MIXED:
-	        case Cobol85PreprocessorParser.NAME:
-	        case Cobol85PreprocessorParser.NAT:
-	        case Cobol85PreprocessorParser.NATIONAL:
-	        case Cobol85PreprocessorParser.NATLANG:
-	        case Cobol85PreprocessorParser.NN:
-	        case Cobol85PreprocessorParser.NO:
-	        case Cobol85PreprocessorParser.NOADATA:
-	        case Cobol85PreprocessorParser.NOADV:
-	        case Cobol85PreprocessorParser.NOALIAS:
-	        case Cobol85PreprocessorParser.NOAWO:
-	        case Cobol85PreprocessorParser.NOBLOCK0:
-	        case Cobol85PreprocessorParser.NOC:
-	        case Cobol85PreprocessorParser.NOCBLCARD:
-	        case Cobol85PreprocessorParser.NOCICS:
-	        case Cobol85PreprocessorParser.NOCMPR2:
-	        case Cobol85PreprocessorParser.NOCOMPILE:
-	        case Cobol85PreprocessorParser.NOCPSM:
-	        case Cobol85PreprocessorParser.NOCURR:
-	        case Cobol85PreprocessorParser.NOCURRENCY:
-	        case Cobol85PreprocessorParser.NOD:
-	        case Cobol85PreprocessorParser.NODATEPROC:
-	        case Cobol85PreprocessorParser.NODBCS:
-	        case Cobol85PreprocessorParser.NODE:
-	        case Cobol85PreprocessorParser.NODEBUG:
-	        case Cobol85PreprocessorParser.NODECK:
-	        case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        case Cobol85PreprocessorParser.NODLL:
-	        case Cobol85PreprocessorParser.NODU:
-	        case Cobol85PreprocessorParser.NODUMP:
-	        case Cobol85PreprocessorParser.NODP:
-	        case Cobol85PreprocessorParser.NODTR:
-	        case Cobol85PreprocessorParser.NODYN:
-	        case Cobol85PreprocessorParser.NODYNAM:
-	        case Cobol85PreprocessorParser.NOEDF:
-	        case Cobol85PreprocessorParser.NOEJPD:
-	        case Cobol85PreprocessorParser.NOEPILOG:
-	        case Cobol85PreprocessorParser.NOEXIT:
-	        case Cobol85PreprocessorParser.NOEXP:
-	        case Cobol85PreprocessorParser.NOEXPORTALL:
-	        case Cobol85PreprocessorParser.NOF:
-	        case Cobol85PreprocessorParser.NOFASTSRT:
-	        case Cobol85PreprocessorParser.NOFEPI:
-	        case Cobol85PreprocessorParser.NOFLAG:
-	        case Cobol85PreprocessorParser.NOFLAGMIG:
-	        case Cobol85PreprocessorParser.NOFLAGSTD:
-	        case Cobol85PreprocessorParser.NOFSRT:
-	        case Cobol85PreprocessorParser.NOGRAPHIC:
-	        case Cobol85PreprocessorParser.NOHOOK:
-	        case Cobol85PreprocessorParser.NOLENGTH:
-	        case Cobol85PreprocessorParser.NOLIB:
-	        case Cobol85PreprocessorParser.NOLINKAGE:
-	        case Cobol85PreprocessorParser.NOLIST:
-	        case Cobol85PreprocessorParser.NOMAP:
-	        case Cobol85PreprocessorParser.NOMD:
-	        case Cobol85PreprocessorParser.NOMDECK:
-	        case Cobol85PreprocessorParser.NONAME:
-	        case Cobol85PreprocessorParser.NONUM:
-	        case Cobol85PreprocessorParser.NONUMBER:
-	        case Cobol85PreprocessorParser.NOOBJ:
-	        case Cobol85PreprocessorParser.NOOBJECT:
-	        case Cobol85PreprocessorParser.NOOFF:
-	        case Cobol85PreprocessorParser.NOOFFSET:
-	        case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        case Cobol85PreprocessorParser.NOOPT:
-	        case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        case Cobol85PreprocessorParser.NOOPTIONS:
-	        case Cobol85PreprocessorParser.NOP:
-	        case Cobol85PreprocessorParser.NOPFD:
-	        case Cobol85PreprocessorParser.NOPROLOG:
-	        case Cobol85PreprocessorParser.NORENT:
-	        case Cobol85PreprocessorParser.NOS:
-	        case Cobol85PreprocessorParser.NOSEP:
-	        case Cobol85PreprocessorParser.NOSEPARATE:
-	        case Cobol85PreprocessorParser.NOSEQ:
-	        case Cobol85PreprocessorParser.NOSOURCE:
-	        case Cobol85PreprocessorParser.NOSPIE:
-	        case Cobol85PreprocessorParser.NOSQL:
-	        case Cobol85PreprocessorParser.NOSQLC:
-	        case Cobol85PreprocessorParser.NOSQLCCSID:
-	        case Cobol85PreprocessorParser.NOSSR:
-	        case Cobol85PreprocessorParser.NOSSRANGE:
-	        case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        case Cobol85PreprocessorParser.NOSEQUENCE:
-	        case Cobol85PreprocessorParser.NOTERM:
-	        case Cobol85PreprocessorParser.NOTERMINAL:
-	        case Cobol85PreprocessorParser.NOTEST:
-	        case Cobol85PreprocessorParser.NOTHREAD:
-	        case Cobol85PreprocessorParser.NOTRIG:
-	        case Cobol85PreprocessorParser.NOVBREF:
-	        case Cobol85PreprocessorParser.NOWORD:
-	        case Cobol85PreprocessorParser.NOX:
-	        case Cobol85PreprocessorParser.NOXREF:
-	        case Cobol85PreprocessorParser.NOZWB:
-	        case Cobol85PreprocessorParser.NS:
-	        case Cobol85PreprocessorParser.NSEQ:
-	        case Cobol85PreprocessorParser.NSYMBOL:
-	        case Cobol85PreprocessorParser.NUM:
-	        case Cobol85PreprocessorParser.NUMBER:
-	        case Cobol85PreprocessorParser.NUMPROC:
-	        case Cobol85PreprocessorParser.OBJ:
-	        case Cobol85PreprocessorParser.OBJECT:
-	        case Cobol85PreprocessorParser.OF:
-	        case Cobol85PreprocessorParser.OFF:
-	        case Cobol85PreprocessorParser.OFFSET:
-	        case Cobol85PreprocessorParser.ON:
-	        case Cobol85PreprocessorParser.OP:
-	        case Cobol85PreprocessorParser.OPMARGINS:
-	        case Cobol85PreprocessorParser.OPSEQUENCE:
-	        case Cobol85PreprocessorParser.OPT:
-	        case Cobol85PreprocessorParser.OPTFILE:
-	        case Cobol85PreprocessorParser.OPTIMIZE:
-	        case Cobol85PreprocessorParser.OPTIONS:
-	        case Cobol85PreprocessorParser.OUT:
-	        case Cobol85PreprocessorParser.OUTDD:
-	        case Cobol85PreprocessorParser.PFD:
-	        case Cobol85PreprocessorParser.PPTDBG:
-	        case Cobol85PreprocessorParser.PGMN:
-	        case Cobol85PreprocessorParser.PGMNAME:
-	        case Cobol85PreprocessorParser.PROCESS:
-	        case Cobol85PreprocessorParser.PROLOG:
-	        case Cobol85PreprocessorParser.QUOTE:
-	        case Cobol85PreprocessorParser.RENT:
-	        case Cobol85PreprocessorParser.REPLACING:
-	        case Cobol85PreprocessorParser.RMODE:
-	        case Cobol85PreprocessorParser.SEP:
-	        case Cobol85PreprocessorParser.SEPARATE:
-	        case Cobol85PreprocessorParser.SEQ:
-	        case Cobol85PreprocessorParser.SEQUENCE:
-	        case Cobol85PreprocessorParser.SHORT:
-	        case Cobol85PreprocessorParser.SIZE:
-	        case Cobol85PreprocessorParser.SOURCE:
-	        case Cobol85PreprocessorParser.SP:
-	        case Cobol85PreprocessorParser.SPACE:
-	        case Cobol85PreprocessorParser.SPIE:
-	        case Cobol85PreprocessorParser.SQL:
-	        case Cobol85PreprocessorParser.SQLC:
-	        case Cobol85PreprocessorParser.SQLCCSID:
-	        case Cobol85PreprocessorParser.SS:
-	        case Cobol85PreprocessorParser.SSR:
-	        case Cobol85PreprocessorParser.SSRANGE:
-	        case Cobol85PreprocessorParser.STD:
-	        case Cobol85PreprocessorParser.SYSEIB:
-	        case Cobol85PreprocessorParser.SZ:
-	        case Cobol85PreprocessorParser.TERM:
-	        case Cobol85PreprocessorParser.TERMINAL:
-	        case Cobol85PreprocessorParser.TEST:
-	        case Cobol85PreprocessorParser.THREAD:
-	        case Cobol85PreprocessorParser.TITLE:
-	        case Cobol85PreprocessorParser.TRIG:
-	        case Cobol85PreprocessorParser.TRUNC:
-	        case Cobol85PreprocessorParser.UE:
-	        case Cobol85PreprocessorParser.UPPER:
-	        case Cobol85PreprocessorParser.VBREF:
-	        case Cobol85PreprocessorParser.WD:
-	        case Cobol85PreprocessorParser.XMLPARSE:
-	        case Cobol85PreprocessorParser.XMLSS:
-	        case Cobol85PreprocessorParser.XOPTS:
-	        case Cobol85PreprocessorParser.XREF:
-	        case Cobol85PreprocessorParser.YEARWINDOW:
-	        case Cobol85PreprocessorParser.YW:
-	        case Cobol85PreprocessorParser.ZWB:
-	        case Cobol85PreprocessorParser.C_CHAR:
-	        case Cobol85PreprocessorParser.D_CHAR:
-	        case Cobol85PreprocessorParser.E_CHAR:
-	        case Cobol85PreprocessorParser.F_CHAR:
-	        case Cobol85PreprocessorParser.H_CHAR:
-	        case Cobol85PreprocessorParser.I_CHAR:
-	        case Cobol85PreprocessorParser.M_CHAR:
-	        case Cobol85PreprocessorParser.N_CHAR:
-	        case Cobol85PreprocessorParser.Q_CHAR:
-	        case Cobol85PreprocessorParser.S_CHAR:
-	        case Cobol85PreprocessorParser.U_CHAR:
-	        case Cobol85PreprocessorParser.W_CHAR:
-	        case Cobol85PreprocessorParser.X_CHAR:
-	        case Cobol85PreprocessorParser.COMMACHAR:
-	        case Cobol85PreprocessorParser.IDENTIFIER:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 53:
+	        case 54:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 129:
+	        case 130:
+	        case 131:
+	        case 132:
+	        case 133:
+	        case 134:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 145:
+	        case 146:
+	        case 147:
+	        case 148:
+	        case 149:
+	        case 150:
+	        case 151:
+	        case 152:
+	        case 153:
+	        case 154:
+	        case 155:
+	        case 156:
+	        case 157:
+	        case 158:
+	        case 159:
+	        case 160:
+	        case 161:
+	        case 162:
+	        case 163:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 167:
+	        case 168:
+	        case 169:
+	        case 170:
+	        case 171:
+	        case 172:
+	        case 173:
+	        case 174:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 178:
+	        case 179:
+	        case 180:
+	        case 181:
+	        case 182:
+	        case 183:
+	        case 184:
+	        case 185:
+	        case 187:
+	        case 188:
+	        case 189:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 193:
+	        case 194:
+	        case 195:
+	        case 196:
+	        case 197:
+	        case 198:
+	        case 199:
+	        case 200:
+	        case 201:
+	        case 202:
+	        case 203:
+	        case 204:
+	        case 205:
+	        case 206:
+	        case 207:
+	        case 208:
+	        case 209:
+	        case 210:
+	        case 211:
+	        case 212:
+	        case 213:
+	        case 214:
+	        case 215:
+	        case 216:
+	        case 217:
+	        case 218:
+	        case 219:
+	        case 221:
+	        case 222:
+	        case 224:
+	        case 225:
+	        case 226:
+	        case 227:
+	        case 228:
+	        case 229:
+	        case 230:
+	        case 231:
+	        case 232:
+	        case 233:
+	        case 234:
+	        case 235:
+	        case 236:
+	        case 241:
+	        case 242:
+	        case 243:
+	        case 244:
+	        case 246:
+	        case 247:
+	        case 248:
+	        case 249:
+	        case 250:
+	        case 251:
+	        case 252:
+	        case 253:
+	        case 254:
+	        case 255:
+	        case 256:
+	        case 257:
+	        case 258:
+	        case 260:
+	        case 261:
+	        case 262:
+	        case 264:
+	        case 265:
+	        case 266:
+	        case 267:
+	        case 268:
+	        case 269:
+	        case 270:
+	        case 271:
+	        case 272:
+	        case 273:
+	        case 274:
+	        case 275:
+	        case 276:
+	        case 277:
+	        case 278:
+	        case 279:
+	        case 280:
+	        case 282:
+	        case 287:
 	            this.state = 496;
 	            this.cobolWord();
 	            break;
-	        case Cobol85PreprocessorParser.FILENAME:
+	        case 288:
 	            this.state = 497;
 	            this.filename();
 	            break;
@@ -3193,7 +3189,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        if(la_===1) {
 	            this.state = 500;
 	            _la = this._input.LA(1);
-	            if(!(_la===Cobol85PreprocessorParser.IN || _la===Cobol85PreprocessorParser.OF)) {
+	            if(!(_la===69 || _la===199)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3227,277 +3223,277 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 506;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	        case Cobol85PreprocessorParser.NUMERICLITERAL:
+	        case 285:
+	        case 286:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 504;
 	            this.literal();
 	            break;
-	        case Cobol85PreprocessorParser.ADATA:
-	        case Cobol85PreprocessorParser.ADV:
-	        case Cobol85PreprocessorParser.ALIAS:
-	        case Cobol85PreprocessorParser.ANSI:
-	        case Cobol85PreprocessorParser.ANY:
-	        case Cobol85PreprocessorParser.APOST:
-	        case Cobol85PreprocessorParser.AR:
-	        case Cobol85PreprocessorParser.ARITH:
-	        case Cobol85PreprocessorParser.AUTO:
-	        case Cobol85PreprocessorParser.AWO:
-	        case Cobol85PreprocessorParser.BIN:
-	        case Cobol85PreprocessorParser.BLOCK0:
-	        case Cobol85PreprocessorParser.BUF:
-	        case Cobol85PreprocessorParser.BUFSIZE:
-	        case Cobol85PreprocessorParser.BY:
-	        case Cobol85PreprocessorParser.CBL:
-	        case Cobol85PreprocessorParser.CBLCARD:
-	        case Cobol85PreprocessorParser.CO:
-	        case Cobol85PreprocessorParser.COBOL2:
-	        case Cobol85PreprocessorParser.COBOL3:
-	        case Cobol85PreprocessorParser.CODEPAGE:
-	        case Cobol85PreprocessorParser.COMPAT:
-	        case Cobol85PreprocessorParser.COMPILE:
-	        case Cobol85PreprocessorParser.CP:
-	        case Cobol85PreprocessorParser.CPP:
-	        case Cobol85PreprocessorParser.CPSM:
-	        case Cobol85PreprocessorParser.CS:
-	        case Cobol85PreprocessorParser.CURR:
-	        case Cobol85PreprocessorParser.CURRENCY:
-	        case Cobol85PreprocessorParser.DATA:
-	        case Cobol85PreprocessorParser.DATEPROC:
-	        case Cobol85PreprocessorParser.DBCS:
-	        case Cobol85PreprocessorParser.DD:
-	        case Cobol85PreprocessorParser.DEBUG:
-	        case Cobol85PreprocessorParser.DECK:
-	        case Cobol85PreprocessorParser.DIAGTRUNC:
-	        case Cobol85PreprocessorParser.DLI:
-	        case Cobol85PreprocessorParser.DLL:
-	        case Cobol85PreprocessorParser.DP:
-	        case Cobol85PreprocessorParser.DTR:
-	        case Cobol85PreprocessorParser.DU:
-	        case Cobol85PreprocessorParser.DUMP:
-	        case Cobol85PreprocessorParser.DYN:
-	        case Cobol85PreprocessorParser.DYNAM:
-	        case Cobol85PreprocessorParser.EDF:
-	        case Cobol85PreprocessorParser.EJECT:
-	        case Cobol85PreprocessorParser.EJPD:
-	        case Cobol85PreprocessorParser.EN:
-	        case Cobol85PreprocessorParser.ENGLISH:
-	        case Cobol85PreprocessorParser.EPILOG:
-	        case Cobol85PreprocessorParser.EXCI:
-	        case Cobol85PreprocessorParser.EXIT:
-	        case Cobol85PreprocessorParser.EXP:
-	        case Cobol85PreprocessorParser.EXPORTALL:
-	        case Cobol85PreprocessorParser.EXTEND:
-	        case Cobol85PreprocessorParser.FASTSRT:
-	        case Cobol85PreprocessorParser.FLAG:
-	        case Cobol85PreprocessorParser.FLAGSTD:
-	        case Cobol85PreprocessorParser.FSRT:
-	        case Cobol85PreprocessorParser.FULL:
-	        case Cobol85PreprocessorParser.GDS:
-	        case Cobol85PreprocessorParser.GRAPHIC:
-	        case Cobol85PreprocessorParser.HOOK:
-	        case Cobol85PreprocessorParser.IN:
-	        case Cobol85PreprocessorParser.INTDATE:
-	        case Cobol85PreprocessorParser.JA:
-	        case Cobol85PreprocessorParser.JP:
-	        case Cobol85PreprocessorParser.KA:
-	        case Cobol85PreprocessorParser.LANG:
-	        case Cobol85PreprocessorParser.LANGUAGE:
-	        case Cobol85PreprocessorParser.LC:
-	        case Cobol85PreprocessorParser.LENGTH:
-	        case Cobol85PreprocessorParser.LIB:
-	        case Cobol85PreprocessorParser.LILIAN:
-	        case Cobol85PreprocessorParser.LIN:
-	        case Cobol85PreprocessorParser.LINECOUNT:
-	        case Cobol85PreprocessorParser.LINKAGE:
-	        case Cobol85PreprocessorParser.LIST:
-	        case Cobol85PreprocessorParser.LM:
-	        case Cobol85PreprocessorParser.LONGMIXED:
-	        case Cobol85PreprocessorParser.LONGUPPER:
-	        case Cobol85PreprocessorParser.LU:
-	        case Cobol85PreprocessorParser.MAP:
-	        case Cobol85PreprocessorParser.MARGINS:
-	        case Cobol85PreprocessorParser.MAX:
-	        case Cobol85PreprocessorParser.MD:
-	        case Cobol85PreprocessorParser.MDECK:
-	        case Cobol85PreprocessorParser.MIG:
-	        case Cobol85PreprocessorParser.MIXED:
-	        case Cobol85PreprocessorParser.NAME:
-	        case Cobol85PreprocessorParser.NAT:
-	        case Cobol85PreprocessorParser.NATIONAL:
-	        case Cobol85PreprocessorParser.NATLANG:
-	        case Cobol85PreprocessorParser.NN:
-	        case Cobol85PreprocessorParser.NO:
-	        case Cobol85PreprocessorParser.NOADATA:
-	        case Cobol85PreprocessorParser.NOADV:
-	        case Cobol85PreprocessorParser.NOALIAS:
-	        case Cobol85PreprocessorParser.NOAWO:
-	        case Cobol85PreprocessorParser.NOBLOCK0:
-	        case Cobol85PreprocessorParser.NOC:
-	        case Cobol85PreprocessorParser.NOCBLCARD:
-	        case Cobol85PreprocessorParser.NOCICS:
-	        case Cobol85PreprocessorParser.NOCMPR2:
-	        case Cobol85PreprocessorParser.NOCOMPILE:
-	        case Cobol85PreprocessorParser.NOCPSM:
-	        case Cobol85PreprocessorParser.NOCURR:
-	        case Cobol85PreprocessorParser.NOCURRENCY:
-	        case Cobol85PreprocessorParser.NOD:
-	        case Cobol85PreprocessorParser.NODATEPROC:
-	        case Cobol85PreprocessorParser.NODBCS:
-	        case Cobol85PreprocessorParser.NODE:
-	        case Cobol85PreprocessorParser.NODEBUG:
-	        case Cobol85PreprocessorParser.NODECK:
-	        case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        case Cobol85PreprocessorParser.NODLL:
-	        case Cobol85PreprocessorParser.NODU:
-	        case Cobol85PreprocessorParser.NODUMP:
-	        case Cobol85PreprocessorParser.NODP:
-	        case Cobol85PreprocessorParser.NODTR:
-	        case Cobol85PreprocessorParser.NODYN:
-	        case Cobol85PreprocessorParser.NODYNAM:
-	        case Cobol85PreprocessorParser.NOEDF:
-	        case Cobol85PreprocessorParser.NOEJPD:
-	        case Cobol85PreprocessorParser.NOEPILOG:
-	        case Cobol85PreprocessorParser.NOEXIT:
-	        case Cobol85PreprocessorParser.NOEXP:
-	        case Cobol85PreprocessorParser.NOEXPORTALL:
-	        case Cobol85PreprocessorParser.NOF:
-	        case Cobol85PreprocessorParser.NOFASTSRT:
-	        case Cobol85PreprocessorParser.NOFEPI:
-	        case Cobol85PreprocessorParser.NOFLAG:
-	        case Cobol85PreprocessorParser.NOFLAGMIG:
-	        case Cobol85PreprocessorParser.NOFLAGSTD:
-	        case Cobol85PreprocessorParser.NOFSRT:
-	        case Cobol85PreprocessorParser.NOGRAPHIC:
-	        case Cobol85PreprocessorParser.NOHOOK:
-	        case Cobol85PreprocessorParser.NOLENGTH:
-	        case Cobol85PreprocessorParser.NOLIB:
-	        case Cobol85PreprocessorParser.NOLINKAGE:
-	        case Cobol85PreprocessorParser.NOLIST:
-	        case Cobol85PreprocessorParser.NOMAP:
-	        case Cobol85PreprocessorParser.NOMD:
-	        case Cobol85PreprocessorParser.NOMDECK:
-	        case Cobol85PreprocessorParser.NONAME:
-	        case Cobol85PreprocessorParser.NONUM:
-	        case Cobol85PreprocessorParser.NONUMBER:
-	        case Cobol85PreprocessorParser.NOOBJ:
-	        case Cobol85PreprocessorParser.NOOBJECT:
-	        case Cobol85PreprocessorParser.NOOFF:
-	        case Cobol85PreprocessorParser.NOOFFSET:
-	        case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        case Cobol85PreprocessorParser.NOOPT:
-	        case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        case Cobol85PreprocessorParser.NOOPTIONS:
-	        case Cobol85PreprocessorParser.NOP:
-	        case Cobol85PreprocessorParser.NOPFD:
-	        case Cobol85PreprocessorParser.NOPROLOG:
-	        case Cobol85PreprocessorParser.NORENT:
-	        case Cobol85PreprocessorParser.NOS:
-	        case Cobol85PreprocessorParser.NOSEP:
-	        case Cobol85PreprocessorParser.NOSEPARATE:
-	        case Cobol85PreprocessorParser.NOSEQ:
-	        case Cobol85PreprocessorParser.NOSOURCE:
-	        case Cobol85PreprocessorParser.NOSPIE:
-	        case Cobol85PreprocessorParser.NOSQL:
-	        case Cobol85PreprocessorParser.NOSQLC:
-	        case Cobol85PreprocessorParser.NOSQLCCSID:
-	        case Cobol85PreprocessorParser.NOSSR:
-	        case Cobol85PreprocessorParser.NOSSRANGE:
-	        case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        case Cobol85PreprocessorParser.NOSEQUENCE:
-	        case Cobol85PreprocessorParser.NOTERM:
-	        case Cobol85PreprocessorParser.NOTERMINAL:
-	        case Cobol85PreprocessorParser.NOTEST:
-	        case Cobol85PreprocessorParser.NOTHREAD:
-	        case Cobol85PreprocessorParser.NOTRIG:
-	        case Cobol85PreprocessorParser.NOVBREF:
-	        case Cobol85PreprocessorParser.NOWORD:
-	        case Cobol85PreprocessorParser.NOX:
-	        case Cobol85PreprocessorParser.NOXREF:
-	        case Cobol85PreprocessorParser.NOZWB:
-	        case Cobol85PreprocessorParser.NS:
-	        case Cobol85PreprocessorParser.NSEQ:
-	        case Cobol85PreprocessorParser.NSYMBOL:
-	        case Cobol85PreprocessorParser.NUM:
-	        case Cobol85PreprocessorParser.NUMBER:
-	        case Cobol85PreprocessorParser.NUMPROC:
-	        case Cobol85PreprocessorParser.OBJ:
-	        case Cobol85PreprocessorParser.OBJECT:
-	        case Cobol85PreprocessorParser.OF:
-	        case Cobol85PreprocessorParser.OFF:
-	        case Cobol85PreprocessorParser.OFFSET:
-	        case Cobol85PreprocessorParser.ON:
-	        case Cobol85PreprocessorParser.OP:
-	        case Cobol85PreprocessorParser.OPMARGINS:
-	        case Cobol85PreprocessorParser.OPSEQUENCE:
-	        case Cobol85PreprocessorParser.OPT:
-	        case Cobol85PreprocessorParser.OPTFILE:
-	        case Cobol85PreprocessorParser.OPTIMIZE:
-	        case Cobol85PreprocessorParser.OPTIONS:
-	        case Cobol85PreprocessorParser.OUT:
-	        case Cobol85PreprocessorParser.OUTDD:
-	        case Cobol85PreprocessorParser.PFD:
-	        case Cobol85PreprocessorParser.PPTDBG:
-	        case Cobol85PreprocessorParser.PGMN:
-	        case Cobol85PreprocessorParser.PGMNAME:
-	        case Cobol85PreprocessorParser.PROCESS:
-	        case Cobol85PreprocessorParser.PROLOG:
-	        case Cobol85PreprocessorParser.QUOTE:
-	        case Cobol85PreprocessorParser.RENT:
-	        case Cobol85PreprocessorParser.REPLACING:
-	        case Cobol85PreprocessorParser.RMODE:
-	        case Cobol85PreprocessorParser.SEP:
-	        case Cobol85PreprocessorParser.SEPARATE:
-	        case Cobol85PreprocessorParser.SEQ:
-	        case Cobol85PreprocessorParser.SEQUENCE:
-	        case Cobol85PreprocessorParser.SHORT:
-	        case Cobol85PreprocessorParser.SIZE:
-	        case Cobol85PreprocessorParser.SOURCE:
-	        case Cobol85PreprocessorParser.SP:
-	        case Cobol85PreprocessorParser.SPACE:
-	        case Cobol85PreprocessorParser.SPIE:
-	        case Cobol85PreprocessorParser.SQL:
-	        case Cobol85PreprocessorParser.SQLC:
-	        case Cobol85PreprocessorParser.SQLCCSID:
-	        case Cobol85PreprocessorParser.SS:
-	        case Cobol85PreprocessorParser.SSR:
-	        case Cobol85PreprocessorParser.SSRANGE:
-	        case Cobol85PreprocessorParser.STD:
-	        case Cobol85PreprocessorParser.SYSEIB:
-	        case Cobol85PreprocessorParser.SZ:
-	        case Cobol85PreprocessorParser.TERM:
-	        case Cobol85PreprocessorParser.TERMINAL:
-	        case Cobol85PreprocessorParser.TEST:
-	        case Cobol85PreprocessorParser.THREAD:
-	        case Cobol85PreprocessorParser.TITLE:
-	        case Cobol85PreprocessorParser.TRIG:
-	        case Cobol85PreprocessorParser.TRUNC:
-	        case Cobol85PreprocessorParser.UE:
-	        case Cobol85PreprocessorParser.UPPER:
-	        case Cobol85PreprocessorParser.VBREF:
-	        case Cobol85PreprocessorParser.WD:
-	        case Cobol85PreprocessorParser.XMLPARSE:
-	        case Cobol85PreprocessorParser.XMLSS:
-	        case Cobol85PreprocessorParser.XOPTS:
-	        case Cobol85PreprocessorParser.XREF:
-	        case Cobol85PreprocessorParser.YEARWINDOW:
-	        case Cobol85PreprocessorParser.YW:
-	        case Cobol85PreprocessorParser.ZWB:
-	        case Cobol85PreprocessorParser.C_CHAR:
-	        case Cobol85PreprocessorParser.D_CHAR:
-	        case Cobol85PreprocessorParser.E_CHAR:
-	        case Cobol85PreprocessorParser.F_CHAR:
-	        case Cobol85PreprocessorParser.H_CHAR:
-	        case Cobol85PreprocessorParser.I_CHAR:
-	        case Cobol85PreprocessorParser.M_CHAR:
-	        case Cobol85PreprocessorParser.N_CHAR:
-	        case Cobol85PreprocessorParser.Q_CHAR:
-	        case Cobol85PreprocessorParser.S_CHAR:
-	        case Cobol85PreprocessorParser.U_CHAR:
-	        case Cobol85PreprocessorParser.W_CHAR:
-	        case Cobol85PreprocessorParser.X_CHAR:
-	        case Cobol85PreprocessorParser.COMMACHAR:
-	        case Cobol85PreprocessorParser.IDENTIFIER:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 53:
+	        case 54:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 129:
+	        case 130:
+	        case 131:
+	        case 132:
+	        case 133:
+	        case 134:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 145:
+	        case 146:
+	        case 147:
+	        case 148:
+	        case 149:
+	        case 150:
+	        case 151:
+	        case 152:
+	        case 153:
+	        case 154:
+	        case 155:
+	        case 156:
+	        case 157:
+	        case 158:
+	        case 159:
+	        case 160:
+	        case 161:
+	        case 162:
+	        case 163:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 167:
+	        case 168:
+	        case 169:
+	        case 170:
+	        case 171:
+	        case 172:
+	        case 173:
+	        case 174:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 178:
+	        case 179:
+	        case 180:
+	        case 181:
+	        case 182:
+	        case 183:
+	        case 184:
+	        case 185:
+	        case 187:
+	        case 188:
+	        case 189:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 193:
+	        case 194:
+	        case 195:
+	        case 196:
+	        case 197:
+	        case 198:
+	        case 199:
+	        case 200:
+	        case 201:
+	        case 202:
+	        case 203:
+	        case 204:
+	        case 205:
+	        case 206:
+	        case 207:
+	        case 208:
+	        case 209:
+	        case 210:
+	        case 211:
+	        case 212:
+	        case 213:
+	        case 214:
+	        case 215:
+	        case 216:
+	        case 217:
+	        case 218:
+	        case 219:
+	        case 221:
+	        case 222:
+	        case 224:
+	        case 225:
+	        case 226:
+	        case 227:
+	        case 228:
+	        case 229:
+	        case 230:
+	        case 231:
+	        case 232:
+	        case 233:
+	        case 234:
+	        case 235:
+	        case 236:
+	        case 241:
+	        case 242:
+	        case 243:
+	        case 244:
+	        case 246:
+	        case 247:
+	        case 248:
+	        case 249:
+	        case 250:
+	        case 251:
+	        case 252:
+	        case 253:
+	        case 254:
+	        case 255:
+	        case 256:
+	        case 257:
+	        case 258:
+	        case 260:
+	        case 261:
+	        case 262:
+	        case 264:
+	        case 265:
+	        case 266:
+	        case 267:
+	        case 268:
+	        case 269:
+	        case 270:
+	        case 271:
+	        case 272:
+	        case 273:
+	        case 274:
+	        case 275:
+	        case 276:
+	        case 277:
+	        case 278:
+	        case 279:
+	        case 280:
+	        case 282:
+	        case 287:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 505;
 	            this.cobolWord();
@@ -3524,7 +3520,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	replacingPhrase() {
 	    let localctx = new ReplacingPhraseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, Cobol85PreprocessorParser.RULE_replacingPhrase);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 508;
@@ -3532,7 +3528,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 512;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	        while(_la===289) {
 	            this.state = 509;
 	            this.match(Cobol85PreprocessorParser.NEWLINE);
 	            this.state = 514;
@@ -3555,7 +3551,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                    this.state = 519; 
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                } while(_la===Cobol85PreprocessorParser.NEWLINE);
+	                } while(_la===289);
 	                this.state = 521;
 	                this.replaceClause(); 
 	            }
@@ -3595,283 +3591,283 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	                this.state = 530;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case Cobol85PreprocessorParser.COPY:
+	                case 25:
 	                    this.state = 528;
 	                    this.copyStatement();
 	                    break;
-	                case Cobol85PreprocessorParser.ADATA:
-	                case Cobol85PreprocessorParser.ADV:
-	                case Cobol85PreprocessorParser.ALIAS:
-	                case Cobol85PreprocessorParser.ANSI:
-	                case Cobol85PreprocessorParser.ANY:
-	                case Cobol85PreprocessorParser.APOST:
-	                case Cobol85PreprocessorParser.AR:
-	                case Cobol85PreprocessorParser.ARITH:
-	                case Cobol85PreprocessorParser.AUTO:
-	                case Cobol85PreprocessorParser.AWO:
-	                case Cobol85PreprocessorParser.BIN:
-	                case Cobol85PreprocessorParser.BLOCK0:
-	                case Cobol85PreprocessorParser.BUF:
-	                case Cobol85PreprocessorParser.BUFSIZE:
-	                case Cobol85PreprocessorParser.BY:
-	                case Cobol85PreprocessorParser.CBL:
-	                case Cobol85PreprocessorParser.CBLCARD:
-	                case Cobol85PreprocessorParser.CO:
-	                case Cobol85PreprocessorParser.COBOL2:
-	                case Cobol85PreprocessorParser.COBOL3:
-	                case Cobol85PreprocessorParser.CODEPAGE:
-	                case Cobol85PreprocessorParser.COMPAT:
-	                case Cobol85PreprocessorParser.COMPILE:
-	                case Cobol85PreprocessorParser.CP:
-	                case Cobol85PreprocessorParser.CPP:
-	                case Cobol85PreprocessorParser.CPSM:
-	                case Cobol85PreprocessorParser.CS:
-	                case Cobol85PreprocessorParser.CURR:
-	                case Cobol85PreprocessorParser.CURRENCY:
-	                case Cobol85PreprocessorParser.DATA:
-	                case Cobol85PreprocessorParser.DATEPROC:
-	                case Cobol85PreprocessorParser.DBCS:
-	                case Cobol85PreprocessorParser.DD:
-	                case Cobol85PreprocessorParser.DEBUG:
-	                case Cobol85PreprocessorParser.DECK:
-	                case Cobol85PreprocessorParser.DIAGTRUNC:
-	                case Cobol85PreprocessorParser.DLI:
-	                case Cobol85PreprocessorParser.DLL:
-	                case Cobol85PreprocessorParser.DP:
-	                case Cobol85PreprocessorParser.DTR:
-	                case Cobol85PreprocessorParser.DU:
-	                case Cobol85PreprocessorParser.DUMP:
-	                case Cobol85PreprocessorParser.DYN:
-	                case Cobol85PreprocessorParser.DYNAM:
-	                case Cobol85PreprocessorParser.EDF:
-	                case Cobol85PreprocessorParser.EJECT:
-	                case Cobol85PreprocessorParser.EJPD:
-	                case Cobol85PreprocessorParser.EN:
-	                case Cobol85PreprocessorParser.ENGLISH:
-	                case Cobol85PreprocessorParser.EPILOG:
-	                case Cobol85PreprocessorParser.EXCI:
-	                case Cobol85PreprocessorParser.EXIT:
-	                case Cobol85PreprocessorParser.EXP:
-	                case Cobol85PreprocessorParser.EXPORTALL:
-	                case Cobol85PreprocessorParser.EXTEND:
-	                case Cobol85PreprocessorParser.FASTSRT:
-	                case Cobol85PreprocessorParser.FLAG:
-	                case Cobol85PreprocessorParser.FLAGSTD:
-	                case Cobol85PreprocessorParser.FSRT:
-	                case Cobol85PreprocessorParser.FULL:
-	                case Cobol85PreprocessorParser.GDS:
-	                case Cobol85PreprocessorParser.GRAPHIC:
-	                case Cobol85PreprocessorParser.HOOK:
-	                case Cobol85PreprocessorParser.IN:
-	                case Cobol85PreprocessorParser.INTDATE:
-	                case Cobol85PreprocessorParser.JA:
-	                case Cobol85PreprocessorParser.JP:
-	                case Cobol85PreprocessorParser.KA:
-	                case Cobol85PreprocessorParser.LANG:
-	                case Cobol85PreprocessorParser.LANGUAGE:
-	                case Cobol85PreprocessorParser.LC:
-	                case Cobol85PreprocessorParser.LENGTH:
-	                case Cobol85PreprocessorParser.LIB:
-	                case Cobol85PreprocessorParser.LILIAN:
-	                case Cobol85PreprocessorParser.LIN:
-	                case Cobol85PreprocessorParser.LINECOUNT:
-	                case Cobol85PreprocessorParser.LINKAGE:
-	                case Cobol85PreprocessorParser.LIST:
-	                case Cobol85PreprocessorParser.LM:
-	                case Cobol85PreprocessorParser.LONGMIXED:
-	                case Cobol85PreprocessorParser.LONGUPPER:
-	                case Cobol85PreprocessorParser.LPARENCHAR:
-	                case Cobol85PreprocessorParser.LU:
-	                case Cobol85PreprocessorParser.MAP:
-	                case Cobol85PreprocessorParser.MARGINS:
-	                case Cobol85PreprocessorParser.MAX:
-	                case Cobol85PreprocessorParser.MD:
-	                case Cobol85PreprocessorParser.MDECK:
-	                case Cobol85PreprocessorParser.MIG:
-	                case Cobol85PreprocessorParser.MIXED:
-	                case Cobol85PreprocessorParser.NAME:
-	                case Cobol85PreprocessorParser.NAT:
-	                case Cobol85PreprocessorParser.NATIONAL:
-	                case Cobol85PreprocessorParser.NATLANG:
-	                case Cobol85PreprocessorParser.NN:
-	                case Cobol85PreprocessorParser.NO:
-	                case Cobol85PreprocessorParser.NOADATA:
-	                case Cobol85PreprocessorParser.NOADV:
-	                case Cobol85PreprocessorParser.NOALIAS:
-	                case Cobol85PreprocessorParser.NOAWO:
-	                case Cobol85PreprocessorParser.NOBLOCK0:
-	                case Cobol85PreprocessorParser.NOC:
-	                case Cobol85PreprocessorParser.NOCBLCARD:
-	                case Cobol85PreprocessorParser.NOCICS:
-	                case Cobol85PreprocessorParser.NOCMPR2:
-	                case Cobol85PreprocessorParser.NOCOMPILE:
-	                case Cobol85PreprocessorParser.NOCPSM:
-	                case Cobol85PreprocessorParser.NOCURR:
-	                case Cobol85PreprocessorParser.NOCURRENCY:
-	                case Cobol85PreprocessorParser.NOD:
-	                case Cobol85PreprocessorParser.NODATEPROC:
-	                case Cobol85PreprocessorParser.NODBCS:
-	                case Cobol85PreprocessorParser.NODE:
-	                case Cobol85PreprocessorParser.NODEBUG:
-	                case Cobol85PreprocessorParser.NODECK:
-	                case Cobol85PreprocessorParser.NODIAGTRUNC:
-	                case Cobol85PreprocessorParser.NODLL:
-	                case Cobol85PreprocessorParser.NODU:
-	                case Cobol85PreprocessorParser.NODUMP:
-	                case Cobol85PreprocessorParser.NODP:
-	                case Cobol85PreprocessorParser.NODTR:
-	                case Cobol85PreprocessorParser.NODYN:
-	                case Cobol85PreprocessorParser.NODYNAM:
-	                case Cobol85PreprocessorParser.NOEDF:
-	                case Cobol85PreprocessorParser.NOEJPD:
-	                case Cobol85PreprocessorParser.NOEPILOG:
-	                case Cobol85PreprocessorParser.NOEXIT:
-	                case Cobol85PreprocessorParser.NOEXP:
-	                case Cobol85PreprocessorParser.NOEXPORTALL:
-	                case Cobol85PreprocessorParser.NOF:
-	                case Cobol85PreprocessorParser.NOFASTSRT:
-	                case Cobol85PreprocessorParser.NOFEPI:
-	                case Cobol85PreprocessorParser.NOFLAG:
-	                case Cobol85PreprocessorParser.NOFLAGMIG:
-	                case Cobol85PreprocessorParser.NOFLAGSTD:
-	                case Cobol85PreprocessorParser.NOFSRT:
-	                case Cobol85PreprocessorParser.NOGRAPHIC:
-	                case Cobol85PreprocessorParser.NOHOOK:
-	                case Cobol85PreprocessorParser.NOLENGTH:
-	                case Cobol85PreprocessorParser.NOLIB:
-	                case Cobol85PreprocessorParser.NOLINKAGE:
-	                case Cobol85PreprocessorParser.NOLIST:
-	                case Cobol85PreprocessorParser.NOMAP:
-	                case Cobol85PreprocessorParser.NOMD:
-	                case Cobol85PreprocessorParser.NOMDECK:
-	                case Cobol85PreprocessorParser.NONAME:
-	                case Cobol85PreprocessorParser.NONUM:
-	                case Cobol85PreprocessorParser.NONUMBER:
-	                case Cobol85PreprocessorParser.NOOBJ:
-	                case Cobol85PreprocessorParser.NOOBJECT:
-	                case Cobol85PreprocessorParser.NOOFF:
-	                case Cobol85PreprocessorParser.NOOFFSET:
-	                case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	                case Cobol85PreprocessorParser.NOOPT:
-	                case Cobol85PreprocessorParser.NOOPTIMIZE:
-	                case Cobol85PreprocessorParser.NOOPTIONS:
-	                case Cobol85PreprocessorParser.NOP:
-	                case Cobol85PreprocessorParser.NOPFD:
-	                case Cobol85PreprocessorParser.NOPROLOG:
-	                case Cobol85PreprocessorParser.NORENT:
-	                case Cobol85PreprocessorParser.NOS:
-	                case Cobol85PreprocessorParser.NOSEP:
-	                case Cobol85PreprocessorParser.NOSEPARATE:
-	                case Cobol85PreprocessorParser.NOSEQ:
-	                case Cobol85PreprocessorParser.NOSOURCE:
-	                case Cobol85PreprocessorParser.NOSPIE:
-	                case Cobol85PreprocessorParser.NOSQL:
-	                case Cobol85PreprocessorParser.NOSQLC:
-	                case Cobol85PreprocessorParser.NOSQLCCSID:
-	                case Cobol85PreprocessorParser.NOSSR:
-	                case Cobol85PreprocessorParser.NOSSRANGE:
-	                case Cobol85PreprocessorParser.NOSTDTRUNC:
-	                case Cobol85PreprocessorParser.NOSEQUENCE:
-	                case Cobol85PreprocessorParser.NOTERM:
-	                case Cobol85PreprocessorParser.NOTERMINAL:
-	                case Cobol85PreprocessorParser.NOTEST:
-	                case Cobol85PreprocessorParser.NOTHREAD:
-	                case Cobol85PreprocessorParser.NOTRIG:
-	                case Cobol85PreprocessorParser.NOVBREF:
-	                case Cobol85PreprocessorParser.NOWORD:
-	                case Cobol85PreprocessorParser.NOX:
-	                case Cobol85PreprocessorParser.NOXREF:
-	                case Cobol85PreprocessorParser.NOZWB:
-	                case Cobol85PreprocessorParser.NS:
-	                case Cobol85PreprocessorParser.NSEQ:
-	                case Cobol85PreprocessorParser.NSYMBOL:
-	                case Cobol85PreprocessorParser.NUM:
-	                case Cobol85PreprocessorParser.NUMBER:
-	                case Cobol85PreprocessorParser.NUMPROC:
-	                case Cobol85PreprocessorParser.OBJ:
-	                case Cobol85PreprocessorParser.OBJECT:
-	                case Cobol85PreprocessorParser.OF:
-	                case Cobol85PreprocessorParser.OFF:
-	                case Cobol85PreprocessorParser.OFFSET:
-	                case Cobol85PreprocessorParser.ON:
-	                case Cobol85PreprocessorParser.OP:
-	                case Cobol85PreprocessorParser.OPMARGINS:
-	                case Cobol85PreprocessorParser.OPSEQUENCE:
-	                case Cobol85PreprocessorParser.OPT:
-	                case Cobol85PreprocessorParser.OPTFILE:
-	                case Cobol85PreprocessorParser.OPTIMIZE:
-	                case Cobol85PreprocessorParser.OPTIONS:
-	                case Cobol85PreprocessorParser.OUT:
-	                case Cobol85PreprocessorParser.OUTDD:
-	                case Cobol85PreprocessorParser.PFD:
-	                case Cobol85PreprocessorParser.PPTDBG:
-	                case Cobol85PreprocessorParser.PGMN:
-	                case Cobol85PreprocessorParser.PGMNAME:
-	                case Cobol85PreprocessorParser.PROCESS:
-	                case Cobol85PreprocessorParser.PROLOG:
-	                case Cobol85PreprocessorParser.QUOTE:
-	                case Cobol85PreprocessorParser.RENT:
-	                case Cobol85PreprocessorParser.REPLACING:
-	                case Cobol85PreprocessorParser.RMODE:
-	                case Cobol85PreprocessorParser.RPARENCHAR:
-	                case Cobol85PreprocessorParser.SEP:
-	                case Cobol85PreprocessorParser.SEPARATE:
-	                case Cobol85PreprocessorParser.SEQ:
-	                case Cobol85PreprocessorParser.SEQUENCE:
-	                case Cobol85PreprocessorParser.SHORT:
-	                case Cobol85PreprocessorParser.SIZE:
-	                case Cobol85PreprocessorParser.SOURCE:
-	                case Cobol85PreprocessorParser.SP:
-	                case Cobol85PreprocessorParser.SPACE:
-	                case Cobol85PreprocessorParser.SPIE:
-	                case Cobol85PreprocessorParser.SQL:
-	                case Cobol85PreprocessorParser.SQLC:
-	                case Cobol85PreprocessorParser.SQLCCSID:
-	                case Cobol85PreprocessorParser.SS:
-	                case Cobol85PreprocessorParser.SSR:
-	                case Cobol85PreprocessorParser.SSRANGE:
-	                case Cobol85PreprocessorParser.STD:
-	                case Cobol85PreprocessorParser.SYSEIB:
-	                case Cobol85PreprocessorParser.SZ:
-	                case Cobol85PreprocessorParser.TERM:
-	                case Cobol85PreprocessorParser.TERMINAL:
-	                case Cobol85PreprocessorParser.TEST:
-	                case Cobol85PreprocessorParser.THREAD:
-	                case Cobol85PreprocessorParser.TITLE:
-	                case Cobol85PreprocessorParser.TRIG:
-	                case Cobol85PreprocessorParser.TRUNC:
-	                case Cobol85PreprocessorParser.UE:
-	                case Cobol85PreprocessorParser.UPPER:
-	                case Cobol85PreprocessorParser.VBREF:
-	                case Cobol85PreprocessorParser.WD:
-	                case Cobol85PreprocessorParser.XMLPARSE:
-	                case Cobol85PreprocessorParser.XMLSS:
-	                case Cobol85PreprocessorParser.XOPTS:
-	                case Cobol85PreprocessorParser.XREF:
-	                case Cobol85PreprocessorParser.YEARWINDOW:
-	                case Cobol85PreprocessorParser.YW:
-	                case Cobol85PreprocessorParser.ZWB:
-	                case Cobol85PreprocessorParser.C_CHAR:
-	                case Cobol85PreprocessorParser.D_CHAR:
-	                case Cobol85PreprocessorParser.E_CHAR:
-	                case Cobol85PreprocessorParser.F_CHAR:
-	                case Cobol85PreprocessorParser.H_CHAR:
-	                case Cobol85PreprocessorParser.I_CHAR:
-	                case Cobol85PreprocessorParser.M_CHAR:
-	                case Cobol85PreprocessorParser.N_CHAR:
-	                case Cobol85PreprocessorParser.Q_CHAR:
-	                case Cobol85PreprocessorParser.S_CHAR:
-	                case Cobol85PreprocessorParser.U_CHAR:
-	                case Cobol85PreprocessorParser.W_CHAR:
-	                case Cobol85PreprocessorParser.X_CHAR:
-	                case Cobol85PreprocessorParser.COMMACHAR:
-	                case Cobol85PreprocessorParser.DOT:
-	                case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	                case Cobol85PreprocessorParser.NUMERICLITERAL:
-	                case Cobol85PreprocessorParser.IDENTIFIER:
-	                case Cobol85PreprocessorParser.FILENAME:
-	                case Cobol85PreprocessorParser.NEWLINE:
-	                case Cobol85PreprocessorParser.TEXT:
+	                case 1:
+	                case 2:
+	                case 3:
+	                case 4:
+	                case 5:
+	                case 6:
+	                case 7:
+	                case 8:
+	                case 9:
+	                case 10:
+	                case 11:
+	                case 12:
+	                case 13:
+	                case 14:
+	                case 15:
+	                case 16:
+	                case 17:
+	                case 19:
+	                case 20:
+	                case 21:
+	                case 22:
+	                case 23:
+	                case 24:
+	                case 26:
+	                case 27:
+	                case 28:
+	                case 29:
+	                case 30:
+	                case 31:
+	                case 32:
+	                case 33:
+	                case 34:
+	                case 35:
+	                case 36:
+	                case 37:
+	                case 38:
+	                case 39:
+	                case 40:
+	                case 41:
+	                case 42:
+	                case 43:
+	                case 44:
+	                case 45:
+	                case 46:
+	                case 47:
+	                case 48:
+	                case 49:
+	                case 50:
+	                case 51:
+	                case 53:
+	                case 54:
+	                case 56:
+	                case 57:
+	                case 58:
+	                case 59:
+	                case 60:
+	                case 62:
+	                case 63:
+	                case 64:
+	                case 65:
+	                case 66:
+	                case 67:
+	                case 68:
+	                case 69:
+	                case 70:
+	                case 71:
+	                case 72:
+	                case 73:
+	                case 74:
+	                case 75:
+	                case 76:
+	                case 78:
+	                case 79:
+	                case 80:
+	                case 81:
+	                case 82:
+	                case 83:
+	                case 84:
+	                case 85:
+	                case 86:
+	                case 87:
+	                case 88:
+	                case 89:
+	                case 90:
+	                case 91:
+	                case 92:
+	                case 93:
+	                case 94:
+	                case 95:
+	                case 96:
+	                case 97:
+	                case 98:
+	                case 99:
+	                case 100:
+	                case 101:
+	                case 102:
+	                case 103:
+	                case 104:
+	                case 105:
+	                case 106:
+	                case 107:
+	                case 108:
+	                case 109:
+	                case 110:
+	                case 111:
+	                case 112:
+	                case 113:
+	                case 114:
+	                case 115:
+	                case 116:
+	                case 117:
+	                case 118:
+	                case 119:
+	                case 120:
+	                case 121:
+	                case 122:
+	                case 123:
+	                case 124:
+	                case 125:
+	                case 126:
+	                case 127:
+	                case 128:
+	                case 129:
+	                case 130:
+	                case 131:
+	                case 132:
+	                case 133:
+	                case 134:
+	                case 135:
+	                case 136:
+	                case 137:
+	                case 138:
+	                case 139:
+	                case 140:
+	                case 141:
+	                case 142:
+	                case 143:
+	                case 144:
+	                case 145:
+	                case 146:
+	                case 147:
+	                case 148:
+	                case 149:
+	                case 150:
+	                case 151:
+	                case 152:
+	                case 153:
+	                case 154:
+	                case 155:
+	                case 156:
+	                case 157:
+	                case 158:
+	                case 159:
+	                case 160:
+	                case 161:
+	                case 162:
+	                case 163:
+	                case 164:
+	                case 165:
+	                case 166:
+	                case 167:
+	                case 168:
+	                case 169:
+	                case 170:
+	                case 171:
+	                case 172:
+	                case 173:
+	                case 174:
+	                case 175:
+	                case 176:
+	                case 177:
+	                case 178:
+	                case 179:
+	                case 180:
+	                case 181:
+	                case 182:
+	                case 183:
+	                case 184:
+	                case 185:
+	                case 187:
+	                case 188:
+	                case 189:
+	                case 190:
+	                case 191:
+	                case 192:
+	                case 193:
+	                case 194:
+	                case 195:
+	                case 196:
+	                case 197:
+	                case 198:
+	                case 199:
+	                case 200:
+	                case 201:
+	                case 202:
+	                case 203:
+	                case 204:
+	                case 205:
+	                case 206:
+	                case 207:
+	                case 208:
+	                case 209:
+	                case 210:
+	                case 211:
+	                case 212:
+	                case 213:
+	                case 214:
+	                case 215:
+	                case 216:
+	                case 217:
+	                case 218:
+	                case 219:
+	                case 221:
+	                case 222:
+	                case 223:
+	                case 224:
+	                case 225:
+	                case 226:
+	                case 227:
+	                case 228:
+	                case 229:
+	                case 230:
+	                case 231:
+	                case 232:
+	                case 233:
+	                case 234:
+	                case 235:
+	                case 236:
+	                case 241:
+	                case 242:
+	                case 243:
+	                case 244:
+	                case 246:
+	                case 247:
+	                case 248:
+	                case 249:
+	                case 250:
+	                case 251:
+	                case 252:
+	                case 253:
+	                case 254:
+	                case 255:
+	                case 256:
+	                case 257:
+	                case 258:
+	                case 260:
+	                case 261:
+	                case 262:
+	                case 264:
+	                case 265:
+	                case 266:
+	                case 267:
+	                case 268:
+	                case 269:
+	                case 270:
+	                case 271:
+	                case 272:
+	                case 273:
+	                case 274:
+	                case 275:
+	                case 276:
+	                case 277:
+	                case 278:
+	                case 279:
+	                case 280:
+	                case 282:
+	                case 283:
+	                case 285:
+	                case 286:
+	                case 287:
+	                case 288:
+	                case 289:
+	                case 292:
 	                    this.state = 529;
 	                    this.charData();
 	                    break;
@@ -3911,7 +3907,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	replaceByStatement() {
 	    let localctx = new ReplaceByStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, Cobol85PreprocessorParser.RULE_replaceByStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 538;
@@ -3925,7 +3921,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        		this.state = 542;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	        		while(_la===289) {
 	        		    this.state = 539;
 	        		    this.match(Cobol85PreprocessorParser.NEWLINE);
 	        		    this.state = 544;
@@ -3990,7 +3986,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	replaceClause() {
 	    let localctx = new ReplaceClauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, Cobol85PreprocessorParser.RULE_replaceClause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 556;
@@ -3998,7 +3994,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 560;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	        while(_la===289) {
 	            this.state = 557;
 	            this.match(Cobol85PreprocessorParser.NEWLINE);
 	            this.state = 562;
@@ -4010,7 +4006,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 567;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	        while(_la===289) {
 	            this.state = 564;
 	            this.match(Cobol85PreprocessorParser.NEWLINE);
 	            this.state = 569;
@@ -4026,7 +4022,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 574;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	            while(_la===289) {
 	                this.state = 571;
 	                this.match(Cobol85PreprocessorParser.NEWLINE);
 	                this.state = 576;
@@ -4044,7 +4040,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 583;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	            while(_la===289) {
 	                this.state = 580;
 	                this.match(Cobol85PreprocessorParser.NEWLINE);
 	                this.state = 585;
@@ -4074,12 +4070,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	directoryPhrase() {
 	    let localctx = new DirectoryPhraseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, Cobol85PreprocessorParser.RULE_directoryPhrase);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 589;
 	        _la = this._input.LA(1);
-	        if(!(_la===Cobol85PreprocessorParser.IN || _la===Cobol85PreprocessorParser.OF)) {
+	        if(!(_la===69 || _la===199)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4089,7 +4085,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 593;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	        while(_la===289) {
 	            this.state = 590;
 	            this.match(Cobol85PreprocessorParser.NEWLINE);
 	            this.state = 595;
@@ -4099,276 +4095,276 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 598;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	        case Cobol85PreprocessorParser.NUMERICLITERAL:
+	        case 285:
+	        case 286:
 	            this.state = 596;
 	            this.literal();
 	            break;
-	        case Cobol85PreprocessorParser.ADATA:
-	        case Cobol85PreprocessorParser.ADV:
-	        case Cobol85PreprocessorParser.ALIAS:
-	        case Cobol85PreprocessorParser.ANSI:
-	        case Cobol85PreprocessorParser.ANY:
-	        case Cobol85PreprocessorParser.APOST:
-	        case Cobol85PreprocessorParser.AR:
-	        case Cobol85PreprocessorParser.ARITH:
-	        case Cobol85PreprocessorParser.AUTO:
-	        case Cobol85PreprocessorParser.AWO:
-	        case Cobol85PreprocessorParser.BIN:
-	        case Cobol85PreprocessorParser.BLOCK0:
-	        case Cobol85PreprocessorParser.BUF:
-	        case Cobol85PreprocessorParser.BUFSIZE:
-	        case Cobol85PreprocessorParser.BY:
-	        case Cobol85PreprocessorParser.CBL:
-	        case Cobol85PreprocessorParser.CBLCARD:
-	        case Cobol85PreprocessorParser.CO:
-	        case Cobol85PreprocessorParser.COBOL2:
-	        case Cobol85PreprocessorParser.COBOL3:
-	        case Cobol85PreprocessorParser.CODEPAGE:
-	        case Cobol85PreprocessorParser.COMPAT:
-	        case Cobol85PreprocessorParser.COMPILE:
-	        case Cobol85PreprocessorParser.CP:
-	        case Cobol85PreprocessorParser.CPP:
-	        case Cobol85PreprocessorParser.CPSM:
-	        case Cobol85PreprocessorParser.CS:
-	        case Cobol85PreprocessorParser.CURR:
-	        case Cobol85PreprocessorParser.CURRENCY:
-	        case Cobol85PreprocessorParser.DATA:
-	        case Cobol85PreprocessorParser.DATEPROC:
-	        case Cobol85PreprocessorParser.DBCS:
-	        case Cobol85PreprocessorParser.DD:
-	        case Cobol85PreprocessorParser.DEBUG:
-	        case Cobol85PreprocessorParser.DECK:
-	        case Cobol85PreprocessorParser.DIAGTRUNC:
-	        case Cobol85PreprocessorParser.DLI:
-	        case Cobol85PreprocessorParser.DLL:
-	        case Cobol85PreprocessorParser.DP:
-	        case Cobol85PreprocessorParser.DTR:
-	        case Cobol85PreprocessorParser.DU:
-	        case Cobol85PreprocessorParser.DUMP:
-	        case Cobol85PreprocessorParser.DYN:
-	        case Cobol85PreprocessorParser.DYNAM:
-	        case Cobol85PreprocessorParser.EDF:
-	        case Cobol85PreprocessorParser.EJECT:
-	        case Cobol85PreprocessorParser.EJPD:
-	        case Cobol85PreprocessorParser.EN:
-	        case Cobol85PreprocessorParser.ENGLISH:
-	        case Cobol85PreprocessorParser.EPILOG:
-	        case Cobol85PreprocessorParser.EXCI:
-	        case Cobol85PreprocessorParser.EXIT:
-	        case Cobol85PreprocessorParser.EXP:
-	        case Cobol85PreprocessorParser.EXPORTALL:
-	        case Cobol85PreprocessorParser.EXTEND:
-	        case Cobol85PreprocessorParser.FASTSRT:
-	        case Cobol85PreprocessorParser.FLAG:
-	        case Cobol85PreprocessorParser.FLAGSTD:
-	        case Cobol85PreprocessorParser.FSRT:
-	        case Cobol85PreprocessorParser.FULL:
-	        case Cobol85PreprocessorParser.GDS:
-	        case Cobol85PreprocessorParser.GRAPHIC:
-	        case Cobol85PreprocessorParser.HOOK:
-	        case Cobol85PreprocessorParser.IN:
-	        case Cobol85PreprocessorParser.INTDATE:
-	        case Cobol85PreprocessorParser.JA:
-	        case Cobol85PreprocessorParser.JP:
-	        case Cobol85PreprocessorParser.KA:
-	        case Cobol85PreprocessorParser.LANG:
-	        case Cobol85PreprocessorParser.LANGUAGE:
-	        case Cobol85PreprocessorParser.LC:
-	        case Cobol85PreprocessorParser.LENGTH:
-	        case Cobol85PreprocessorParser.LIB:
-	        case Cobol85PreprocessorParser.LILIAN:
-	        case Cobol85PreprocessorParser.LIN:
-	        case Cobol85PreprocessorParser.LINECOUNT:
-	        case Cobol85PreprocessorParser.LINKAGE:
-	        case Cobol85PreprocessorParser.LIST:
-	        case Cobol85PreprocessorParser.LM:
-	        case Cobol85PreprocessorParser.LONGMIXED:
-	        case Cobol85PreprocessorParser.LONGUPPER:
-	        case Cobol85PreprocessorParser.LU:
-	        case Cobol85PreprocessorParser.MAP:
-	        case Cobol85PreprocessorParser.MARGINS:
-	        case Cobol85PreprocessorParser.MAX:
-	        case Cobol85PreprocessorParser.MD:
-	        case Cobol85PreprocessorParser.MDECK:
-	        case Cobol85PreprocessorParser.MIG:
-	        case Cobol85PreprocessorParser.MIXED:
-	        case Cobol85PreprocessorParser.NAME:
-	        case Cobol85PreprocessorParser.NAT:
-	        case Cobol85PreprocessorParser.NATIONAL:
-	        case Cobol85PreprocessorParser.NATLANG:
-	        case Cobol85PreprocessorParser.NN:
-	        case Cobol85PreprocessorParser.NO:
-	        case Cobol85PreprocessorParser.NOADATA:
-	        case Cobol85PreprocessorParser.NOADV:
-	        case Cobol85PreprocessorParser.NOALIAS:
-	        case Cobol85PreprocessorParser.NOAWO:
-	        case Cobol85PreprocessorParser.NOBLOCK0:
-	        case Cobol85PreprocessorParser.NOC:
-	        case Cobol85PreprocessorParser.NOCBLCARD:
-	        case Cobol85PreprocessorParser.NOCICS:
-	        case Cobol85PreprocessorParser.NOCMPR2:
-	        case Cobol85PreprocessorParser.NOCOMPILE:
-	        case Cobol85PreprocessorParser.NOCPSM:
-	        case Cobol85PreprocessorParser.NOCURR:
-	        case Cobol85PreprocessorParser.NOCURRENCY:
-	        case Cobol85PreprocessorParser.NOD:
-	        case Cobol85PreprocessorParser.NODATEPROC:
-	        case Cobol85PreprocessorParser.NODBCS:
-	        case Cobol85PreprocessorParser.NODE:
-	        case Cobol85PreprocessorParser.NODEBUG:
-	        case Cobol85PreprocessorParser.NODECK:
-	        case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        case Cobol85PreprocessorParser.NODLL:
-	        case Cobol85PreprocessorParser.NODU:
-	        case Cobol85PreprocessorParser.NODUMP:
-	        case Cobol85PreprocessorParser.NODP:
-	        case Cobol85PreprocessorParser.NODTR:
-	        case Cobol85PreprocessorParser.NODYN:
-	        case Cobol85PreprocessorParser.NODYNAM:
-	        case Cobol85PreprocessorParser.NOEDF:
-	        case Cobol85PreprocessorParser.NOEJPD:
-	        case Cobol85PreprocessorParser.NOEPILOG:
-	        case Cobol85PreprocessorParser.NOEXIT:
-	        case Cobol85PreprocessorParser.NOEXP:
-	        case Cobol85PreprocessorParser.NOEXPORTALL:
-	        case Cobol85PreprocessorParser.NOF:
-	        case Cobol85PreprocessorParser.NOFASTSRT:
-	        case Cobol85PreprocessorParser.NOFEPI:
-	        case Cobol85PreprocessorParser.NOFLAG:
-	        case Cobol85PreprocessorParser.NOFLAGMIG:
-	        case Cobol85PreprocessorParser.NOFLAGSTD:
-	        case Cobol85PreprocessorParser.NOFSRT:
-	        case Cobol85PreprocessorParser.NOGRAPHIC:
-	        case Cobol85PreprocessorParser.NOHOOK:
-	        case Cobol85PreprocessorParser.NOLENGTH:
-	        case Cobol85PreprocessorParser.NOLIB:
-	        case Cobol85PreprocessorParser.NOLINKAGE:
-	        case Cobol85PreprocessorParser.NOLIST:
-	        case Cobol85PreprocessorParser.NOMAP:
-	        case Cobol85PreprocessorParser.NOMD:
-	        case Cobol85PreprocessorParser.NOMDECK:
-	        case Cobol85PreprocessorParser.NONAME:
-	        case Cobol85PreprocessorParser.NONUM:
-	        case Cobol85PreprocessorParser.NONUMBER:
-	        case Cobol85PreprocessorParser.NOOBJ:
-	        case Cobol85PreprocessorParser.NOOBJECT:
-	        case Cobol85PreprocessorParser.NOOFF:
-	        case Cobol85PreprocessorParser.NOOFFSET:
-	        case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        case Cobol85PreprocessorParser.NOOPT:
-	        case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        case Cobol85PreprocessorParser.NOOPTIONS:
-	        case Cobol85PreprocessorParser.NOP:
-	        case Cobol85PreprocessorParser.NOPFD:
-	        case Cobol85PreprocessorParser.NOPROLOG:
-	        case Cobol85PreprocessorParser.NORENT:
-	        case Cobol85PreprocessorParser.NOS:
-	        case Cobol85PreprocessorParser.NOSEP:
-	        case Cobol85PreprocessorParser.NOSEPARATE:
-	        case Cobol85PreprocessorParser.NOSEQ:
-	        case Cobol85PreprocessorParser.NOSOURCE:
-	        case Cobol85PreprocessorParser.NOSPIE:
-	        case Cobol85PreprocessorParser.NOSQL:
-	        case Cobol85PreprocessorParser.NOSQLC:
-	        case Cobol85PreprocessorParser.NOSQLCCSID:
-	        case Cobol85PreprocessorParser.NOSSR:
-	        case Cobol85PreprocessorParser.NOSSRANGE:
-	        case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        case Cobol85PreprocessorParser.NOSEQUENCE:
-	        case Cobol85PreprocessorParser.NOTERM:
-	        case Cobol85PreprocessorParser.NOTERMINAL:
-	        case Cobol85PreprocessorParser.NOTEST:
-	        case Cobol85PreprocessorParser.NOTHREAD:
-	        case Cobol85PreprocessorParser.NOTRIG:
-	        case Cobol85PreprocessorParser.NOVBREF:
-	        case Cobol85PreprocessorParser.NOWORD:
-	        case Cobol85PreprocessorParser.NOX:
-	        case Cobol85PreprocessorParser.NOXREF:
-	        case Cobol85PreprocessorParser.NOZWB:
-	        case Cobol85PreprocessorParser.NS:
-	        case Cobol85PreprocessorParser.NSEQ:
-	        case Cobol85PreprocessorParser.NSYMBOL:
-	        case Cobol85PreprocessorParser.NUM:
-	        case Cobol85PreprocessorParser.NUMBER:
-	        case Cobol85PreprocessorParser.NUMPROC:
-	        case Cobol85PreprocessorParser.OBJ:
-	        case Cobol85PreprocessorParser.OBJECT:
-	        case Cobol85PreprocessorParser.OF:
-	        case Cobol85PreprocessorParser.OFF:
-	        case Cobol85PreprocessorParser.OFFSET:
-	        case Cobol85PreprocessorParser.ON:
-	        case Cobol85PreprocessorParser.OP:
-	        case Cobol85PreprocessorParser.OPMARGINS:
-	        case Cobol85PreprocessorParser.OPSEQUENCE:
-	        case Cobol85PreprocessorParser.OPT:
-	        case Cobol85PreprocessorParser.OPTFILE:
-	        case Cobol85PreprocessorParser.OPTIMIZE:
-	        case Cobol85PreprocessorParser.OPTIONS:
-	        case Cobol85PreprocessorParser.OUT:
-	        case Cobol85PreprocessorParser.OUTDD:
-	        case Cobol85PreprocessorParser.PFD:
-	        case Cobol85PreprocessorParser.PPTDBG:
-	        case Cobol85PreprocessorParser.PGMN:
-	        case Cobol85PreprocessorParser.PGMNAME:
-	        case Cobol85PreprocessorParser.PROCESS:
-	        case Cobol85PreprocessorParser.PROLOG:
-	        case Cobol85PreprocessorParser.QUOTE:
-	        case Cobol85PreprocessorParser.RENT:
-	        case Cobol85PreprocessorParser.REPLACING:
-	        case Cobol85PreprocessorParser.RMODE:
-	        case Cobol85PreprocessorParser.SEP:
-	        case Cobol85PreprocessorParser.SEPARATE:
-	        case Cobol85PreprocessorParser.SEQ:
-	        case Cobol85PreprocessorParser.SEQUENCE:
-	        case Cobol85PreprocessorParser.SHORT:
-	        case Cobol85PreprocessorParser.SIZE:
-	        case Cobol85PreprocessorParser.SOURCE:
-	        case Cobol85PreprocessorParser.SP:
-	        case Cobol85PreprocessorParser.SPACE:
-	        case Cobol85PreprocessorParser.SPIE:
-	        case Cobol85PreprocessorParser.SQL:
-	        case Cobol85PreprocessorParser.SQLC:
-	        case Cobol85PreprocessorParser.SQLCCSID:
-	        case Cobol85PreprocessorParser.SS:
-	        case Cobol85PreprocessorParser.SSR:
-	        case Cobol85PreprocessorParser.SSRANGE:
-	        case Cobol85PreprocessorParser.STD:
-	        case Cobol85PreprocessorParser.SYSEIB:
-	        case Cobol85PreprocessorParser.SZ:
-	        case Cobol85PreprocessorParser.TERM:
-	        case Cobol85PreprocessorParser.TERMINAL:
-	        case Cobol85PreprocessorParser.TEST:
-	        case Cobol85PreprocessorParser.THREAD:
-	        case Cobol85PreprocessorParser.TITLE:
-	        case Cobol85PreprocessorParser.TRIG:
-	        case Cobol85PreprocessorParser.TRUNC:
-	        case Cobol85PreprocessorParser.UE:
-	        case Cobol85PreprocessorParser.UPPER:
-	        case Cobol85PreprocessorParser.VBREF:
-	        case Cobol85PreprocessorParser.WD:
-	        case Cobol85PreprocessorParser.XMLPARSE:
-	        case Cobol85PreprocessorParser.XMLSS:
-	        case Cobol85PreprocessorParser.XOPTS:
-	        case Cobol85PreprocessorParser.XREF:
-	        case Cobol85PreprocessorParser.YEARWINDOW:
-	        case Cobol85PreprocessorParser.YW:
-	        case Cobol85PreprocessorParser.ZWB:
-	        case Cobol85PreprocessorParser.C_CHAR:
-	        case Cobol85PreprocessorParser.D_CHAR:
-	        case Cobol85PreprocessorParser.E_CHAR:
-	        case Cobol85PreprocessorParser.F_CHAR:
-	        case Cobol85PreprocessorParser.H_CHAR:
-	        case Cobol85PreprocessorParser.I_CHAR:
-	        case Cobol85PreprocessorParser.M_CHAR:
-	        case Cobol85PreprocessorParser.N_CHAR:
-	        case Cobol85PreprocessorParser.Q_CHAR:
-	        case Cobol85PreprocessorParser.S_CHAR:
-	        case Cobol85PreprocessorParser.U_CHAR:
-	        case Cobol85PreprocessorParser.W_CHAR:
-	        case Cobol85PreprocessorParser.X_CHAR:
-	        case Cobol85PreprocessorParser.COMMACHAR:
-	        case Cobol85PreprocessorParser.IDENTIFIER:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 53:
+	        case 54:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 129:
+	        case 130:
+	        case 131:
+	        case 132:
+	        case 133:
+	        case 134:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 145:
+	        case 146:
+	        case 147:
+	        case 148:
+	        case 149:
+	        case 150:
+	        case 151:
+	        case 152:
+	        case 153:
+	        case 154:
+	        case 155:
+	        case 156:
+	        case 157:
+	        case 158:
+	        case 159:
+	        case 160:
+	        case 161:
+	        case 162:
+	        case 163:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 167:
+	        case 168:
+	        case 169:
+	        case 170:
+	        case 171:
+	        case 172:
+	        case 173:
+	        case 174:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 178:
+	        case 179:
+	        case 180:
+	        case 181:
+	        case 182:
+	        case 183:
+	        case 184:
+	        case 185:
+	        case 187:
+	        case 188:
+	        case 189:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 193:
+	        case 194:
+	        case 195:
+	        case 196:
+	        case 197:
+	        case 198:
+	        case 199:
+	        case 200:
+	        case 201:
+	        case 202:
+	        case 203:
+	        case 204:
+	        case 205:
+	        case 206:
+	        case 207:
+	        case 208:
+	        case 209:
+	        case 210:
+	        case 211:
+	        case 212:
+	        case 213:
+	        case 214:
+	        case 215:
+	        case 216:
+	        case 217:
+	        case 218:
+	        case 219:
+	        case 221:
+	        case 222:
+	        case 224:
+	        case 225:
+	        case 226:
+	        case 227:
+	        case 228:
+	        case 229:
+	        case 230:
+	        case 231:
+	        case 232:
+	        case 233:
+	        case 234:
+	        case 235:
+	        case 236:
+	        case 241:
+	        case 242:
+	        case 243:
+	        case 244:
+	        case 246:
+	        case 247:
+	        case 248:
+	        case 249:
+	        case 250:
+	        case 251:
+	        case 252:
+	        case 253:
+	        case 254:
+	        case 255:
+	        case 256:
+	        case 257:
+	        case 258:
+	        case 260:
+	        case 261:
+	        case 262:
+	        case 264:
+	        case 265:
+	        case 266:
+	        case 267:
+	        case 268:
+	        case 269:
+	        case 270:
+	        case 271:
+	        case 272:
+	        case 273:
+	        case 274:
+	        case 275:
+	        case 276:
+	        case 277:
+	        case 278:
+	        case 279:
+	        case 280:
+	        case 282:
+	        case 287:
 	            this.state = 597;
 	            this.cobolWord();
 	            break;
@@ -4394,7 +4390,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	familyPhrase() {
 	    let localctx = new FamilyPhraseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, Cobol85PreprocessorParser.RULE_familyPhrase);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 600;
@@ -4402,7 +4398,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 604;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Cobol85PreprocessorParser.NEWLINE) {
+	        while(_la===289) {
 	            this.state = 601;
 	            this.match(Cobol85PreprocessorParser.NEWLINE);
 	            this.state = 606;
@@ -4412,276 +4408,276 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 609;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	        case Cobol85PreprocessorParser.NUMERICLITERAL:
+	        case 285:
+	        case 286:
 	            this.state = 607;
 	            this.literal();
 	            break;
-	        case Cobol85PreprocessorParser.ADATA:
-	        case Cobol85PreprocessorParser.ADV:
-	        case Cobol85PreprocessorParser.ALIAS:
-	        case Cobol85PreprocessorParser.ANSI:
-	        case Cobol85PreprocessorParser.ANY:
-	        case Cobol85PreprocessorParser.APOST:
-	        case Cobol85PreprocessorParser.AR:
-	        case Cobol85PreprocessorParser.ARITH:
-	        case Cobol85PreprocessorParser.AUTO:
-	        case Cobol85PreprocessorParser.AWO:
-	        case Cobol85PreprocessorParser.BIN:
-	        case Cobol85PreprocessorParser.BLOCK0:
-	        case Cobol85PreprocessorParser.BUF:
-	        case Cobol85PreprocessorParser.BUFSIZE:
-	        case Cobol85PreprocessorParser.BY:
-	        case Cobol85PreprocessorParser.CBL:
-	        case Cobol85PreprocessorParser.CBLCARD:
-	        case Cobol85PreprocessorParser.CO:
-	        case Cobol85PreprocessorParser.COBOL2:
-	        case Cobol85PreprocessorParser.COBOL3:
-	        case Cobol85PreprocessorParser.CODEPAGE:
-	        case Cobol85PreprocessorParser.COMPAT:
-	        case Cobol85PreprocessorParser.COMPILE:
-	        case Cobol85PreprocessorParser.CP:
-	        case Cobol85PreprocessorParser.CPP:
-	        case Cobol85PreprocessorParser.CPSM:
-	        case Cobol85PreprocessorParser.CS:
-	        case Cobol85PreprocessorParser.CURR:
-	        case Cobol85PreprocessorParser.CURRENCY:
-	        case Cobol85PreprocessorParser.DATA:
-	        case Cobol85PreprocessorParser.DATEPROC:
-	        case Cobol85PreprocessorParser.DBCS:
-	        case Cobol85PreprocessorParser.DD:
-	        case Cobol85PreprocessorParser.DEBUG:
-	        case Cobol85PreprocessorParser.DECK:
-	        case Cobol85PreprocessorParser.DIAGTRUNC:
-	        case Cobol85PreprocessorParser.DLI:
-	        case Cobol85PreprocessorParser.DLL:
-	        case Cobol85PreprocessorParser.DP:
-	        case Cobol85PreprocessorParser.DTR:
-	        case Cobol85PreprocessorParser.DU:
-	        case Cobol85PreprocessorParser.DUMP:
-	        case Cobol85PreprocessorParser.DYN:
-	        case Cobol85PreprocessorParser.DYNAM:
-	        case Cobol85PreprocessorParser.EDF:
-	        case Cobol85PreprocessorParser.EJECT:
-	        case Cobol85PreprocessorParser.EJPD:
-	        case Cobol85PreprocessorParser.EN:
-	        case Cobol85PreprocessorParser.ENGLISH:
-	        case Cobol85PreprocessorParser.EPILOG:
-	        case Cobol85PreprocessorParser.EXCI:
-	        case Cobol85PreprocessorParser.EXIT:
-	        case Cobol85PreprocessorParser.EXP:
-	        case Cobol85PreprocessorParser.EXPORTALL:
-	        case Cobol85PreprocessorParser.EXTEND:
-	        case Cobol85PreprocessorParser.FASTSRT:
-	        case Cobol85PreprocessorParser.FLAG:
-	        case Cobol85PreprocessorParser.FLAGSTD:
-	        case Cobol85PreprocessorParser.FSRT:
-	        case Cobol85PreprocessorParser.FULL:
-	        case Cobol85PreprocessorParser.GDS:
-	        case Cobol85PreprocessorParser.GRAPHIC:
-	        case Cobol85PreprocessorParser.HOOK:
-	        case Cobol85PreprocessorParser.IN:
-	        case Cobol85PreprocessorParser.INTDATE:
-	        case Cobol85PreprocessorParser.JA:
-	        case Cobol85PreprocessorParser.JP:
-	        case Cobol85PreprocessorParser.KA:
-	        case Cobol85PreprocessorParser.LANG:
-	        case Cobol85PreprocessorParser.LANGUAGE:
-	        case Cobol85PreprocessorParser.LC:
-	        case Cobol85PreprocessorParser.LENGTH:
-	        case Cobol85PreprocessorParser.LIB:
-	        case Cobol85PreprocessorParser.LILIAN:
-	        case Cobol85PreprocessorParser.LIN:
-	        case Cobol85PreprocessorParser.LINECOUNT:
-	        case Cobol85PreprocessorParser.LINKAGE:
-	        case Cobol85PreprocessorParser.LIST:
-	        case Cobol85PreprocessorParser.LM:
-	        case Cobol85PreprocessorParser.LONGMIXED:
-	        case Cobol85PreprocessorParser.LONGUPPER:
-	        case Cobol85PreprocessorParser.LU:
-	        case Cobol85PreprocessorParser.MAP:
-	        case Cobol85PreprocessorParser.MARGINS:
-	        case Cobol85PreprocessorParser.MAX:
-	        case Cobol85PreprocessorParser.MD:
-	        case Cobol85PreprocessorParser.MDECK:
-	        case Cobol85PreprocessorParser.MIG:
-	        case Cobol85PreprocessorParser.MIXED:
-	        case Cobol85PreprocessorParser.NAME:
-	        case Cobol85PreprocessorParser.NAT:
-	        case Cobol85PreprocessorParser.NATIONAL:
-	        case Cobol85PreprocessorParser.NATLANG:
-	        case Cobol85PreprocessorParser.NN:
-	        case Cobol85PreprocessorParser.NO:
-	        case Cobol85PreprocessorParser.NOADATA:
-	        case Cobol85PreprocessorParser.NOADV:
-	        case Cobol85PreprocessorParser.NOALIAS:
-	        case Cobol85PreprocessorParser.NOAWO:
-	        case Cobol85PreprocessorParser.NOBLOCK0:
-	        case Cobol85PreprocessorParser.NOC:
-	        case Cobol85PreprocessorParser.NOCBLCARD:
-	        case Cobol85PreprocessorParser.NOCICS:
-	        case Cobol85PreprocessorParser.NOCMPR2:
-	        case Cobol85PreprocessorParser.NOCOMPILE:
-	        case Cobol85PreprocessorParser.NOCPSM:
-	        case Cobol85PreprocessorParser.NOCURR:
-	        case Cobol85PreprocessorParser.NOCURRENCY:
-	        case Cobol85PreprocessorParser.NOD:
-	        case Cobol85PreprocessorParser.NODATEPROC:
-	        case Cobol85PreprocessorParser.NODBCS:
-	        case Cobol85PreprocessorParser.NODE:
-	        case Cobol85PreprocessorParser.NODEBUG:
-	        case Cobol85PreprocessorParser.NODECK:
-	        case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        case Cobol85PreprocessorParser.NODLL:
-	        case Cobol85PreprocessorParser.NODU:
-	        case Cobol85PreprocessorParser.NODUMP:
-	        case Cobol85PreprocessorParser.NODP:
-	        case Cobol85PreprocessorParser.NODTR:
-	        case Cobol85PreprocessorParser.NODYN:
-	        case Cobol85PreprocessorParser.NODYNAM:
-	        case Cobol85PreprocessorParser.NOEDF:
-	        case Cobol85PreprocessorParser.NOEJPD:
-	        case Cobol85PreprocessorParser.NOEPILOG:
-	        case Cobol85PreprocessorParser.NOEXIT:
-	        case Cobol85PreprocessorParser.NOEXP:
-	        case Cobol85PreprocessorParser.NOEXPORTALL:
-	        case Cobol85PreprocessorParser.NOF:
-	        case Cobol85PreprocessorParser.NOFASTSRT:
-	        case Cobol85PreprocessorParser.NOFEPI:
-	        case Cobol85PreprocessorParser.NOFLAG:
-	        case Cobol85PreprocessorParser.NOFLAGMIG:
-	        case Cobol85PreprocessorParser.NOFLAGSTD:
-	        case Cobol85PreprocessorParser.NOFSRT:
-	        case Cobol85PreprocessorParser.NOGRAPHIC:
-	        case Cobol85PreprocessorParser.NOHOOK:
-	        case Cobol85PreprocessorParser.NOLENGTH:
-	        case Cobol85PreprocessorParser.NOLIB:
-	        case Cobol85PreprocessorParser.NOLINKAGE:
-	        case Cobol85PreprocessorParser.NOLIST:
-	        case Cobol85PreprocessorParser.NOMAP:
-	        case Cobol85PreprocessorParser.NOMD:
-	        case Cobol85PreprocessorParser.NOMDECK:
-	        case Cobol85PreprocessorParser.NONAME:
-	        case Cobol85PreprocessorParser.NONUM:
-	        case Cobol85PreprocessorParser.NONUMBER:
-	        case Cobol85PreprocessorParser.NOOBJ:
-	        case Cobol85PreprocessorParser.NOOBJECT:
-	        case Cobol85PreprocessorParser.NOOFF:
-	        case Cobol85PreprocessorParser.NOOFFSET:
-	        case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        case Cobol85PreprocessorParser.NOOPT:
-	        case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        case Cobol85PreprocessorParser.NOOPTIONS:
-	        case Cobol85PreprocessorParser.NOP:
-	        case Cobol85PreprocessorParser.NOPFD:
-	        case Cobol85PreprocessorParser.NOPROLOG:
-	        case Cobol85PreprocessorParser.NORENT:
-	        case Cobol85PreprocessorParser.NOS:
-	        case Cobol85PreprocessorParser.NOSEP:
-	        case Cobol85PreprocessorParser.NOSEPARATE:
-	        case Cobol85PreprocessorParser.NOSEQ:
-	        case Cobol85PreprocessorParser.NOSOURCE:
-	        case Cobol85PreprocessorParser.NOSPIE:
-	        case Cobol85PreprocessorParser.NOSQL:
-	        case Cobol85PreprocessorParser.NOSQLC:
-	        case Cobol85PreprocessorParser.NOSQLCCSID:
-	        case Cobol85PreprocessorParser.NOSSR:
-	        case Cobol85PreprocessorParser.NOSSRANGE:
-	        case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        case Cobol85PreprocessorParser.NOSEQUENCE:
-	        case Cobol85PreprocessorParser.NOTERM:
-	        case Cobol85PreprocessorParser.NOTERMINAL:
-	        case Cobol85PreprocessorParser.NOTEST:
-	        case Cobol85PreprocessorParser.NOTHREAD:
-	        case Cobol85PreprocessorParser.NOTRIG:
-	        case Cobol85PreprocessorParser.NOVBREF:
-	        case Cobol85PreprocessorParser.NOWORD:
-	        case Cobol85PreprocessorParser.NOX:
-	        case Cobol85PreprocessorParser.NOXREF:
-	        case Cobol85PreprocessorParser.NOZWB:
-	        case Cobol85PreprocessorParser.NS:
-	        case Cobol85PreprocessorParser.NSEQ:
-	        case Cobol85PreprocessorParser.NSYMBOL:
-	        case Cobol85PreprocessorParser.NUM:
-	        case Cobol85PreprocessorParser.NUMBER:
-	        case Cobol85PreprocessorParser.NUMPROC:
-	        case Cobol85PreprocessorParser.OBJ:
-	        case Cobol85PreprocessorParser.OBJECT:
-	        case Cobol85PreprocessorParser.OF:
-	        case Cobol85PreprocessorParser.OFF:
-	        case Cobol85PreprocessorParser.OFFSET:
-	        case Cobol85PreprocessorParser.ON:
-	        case Cobol85PreprocessorParser.OP:
-	        case Cobol85PreprocessorParser.OPMARGINS:
-	        case Cobol85PreprocessorParser.OPSEQUENCE:
-	        case Cobol85PreprocessorParser.OPT:
-	        case Cobol85PreprocessorParser.OPTFILE:
-	        case Cobol85PreprocessorParser.OPTIMIZE:
-	        case Cobol85PreprocessorParser.OPTIONS:
-	        case Cobol85PreprocessorParser.OUT:
-	        case Cobol85PreprocessorParser.OUTDD:
-	        case Cobol85PreprocessorParser.PFD:
-	        case Cobol85PreprocessorParser.PPTDBG:
-	        case Cobol85PreprocessorParser.PGMN:
-	        case Cobol85PreprocessorParser.PGMNAME:
-	        case Cobol85PreprocessorParser.PROCESS:
-	        case Cobol85PreprocessorParser.PROLOG:
-	        case Cobol85PreprocessorParser.QUOTE:
-	        case Cobol85PreprocessorParser.RENT:
-	        case Cobol85PreprocessorParser.REPLACING:
-	        case Cobol85PreprocessorParser.RMODE:
-	        case Cobol85PreprocessorParser.SEP:
-	        case Cobol85PreprocessorParser.SEPARATE:
-	        case Cobol85PreprocessorParser.SEQ:
-	        case Cobol85PreprocessorParser.SEQUENCE:
-	        case Cobol85PreprocessorParser.SHORT:
-	        case Cobol85PreprocessorParser.SIZE:
-	        case Cobol85PreprocessorParser.SOURCE:
-	        case Cobol85PreprocessorParser.SP:
-	        case Cobol85PreprocessorParser.SPACE:
-	        case Cobol85PreprocessorParser.SPIE:
-	        case Cobol85PreprocessorParser.SQL:
-	        case Cobol85PreprocessorParser.SQLC:
-	        case Cobol85PreprocessorParser.SQLCCSID:
-	        case Cobol85PreprocessorParser.SS:
-	        case Cobol85PreprocessorParser.SSR:
-	        case Cobol85PreprocessorParser.SSRANGE:
-	        case Cobol85PreprocessorParser.STD:
-	        case Cobol85PreprocessorParser.SYSEIB:
-	        case Cobol85PreprocessorParser.SZ:
-	        case Cobol85PreprocessorParser.TERM:
-	        case Cobol85PreprocessorParser.TERMINAL:
-	        case Cobol85PreprocessorParser.TEST:
-	        case Cobol85PreprocessorParser.THREAD:
-	        case Cobol85PreprocessorParser.TITLE:
-	        case Cobol85PreprocessorParser.TRIG:
-	        case Cobol85PreprocessorParser.TRUNC:
-	        case Cobol85PreprocessorParser.UE:
-	        case Cobol85PreprocessorParser.UPPER:
-	        case Cobol85PreprocessorParser.VBREF:
-	        case Cobol85PreprocessorParser.WD:
-	        case Cobol85PreprocessorParser.XMLPARSE:
-	        case Cobol85PreprocessorParser.XMLSS:
-	        case Cobol85PreprocessorParser.XOPTS:
-	        case Cobol85PreprocessorParser.XREF:
-	        case Cobol85PreprocessorParser.YEARWINDOW:
-	        case Cobol85PreprocessorParser.YW:
-	        case Cobol85PreprocessorParser.ZWB:
-	        case Cobol85PreprocessorParser.C_CHAR:
-	        case Cobol85PreprocessorParser.D_CHAR:
-	        case Cobol85PreprocessorParser.E_CHAR:
-	        case Cobol85PreprocessorParser.F_CHAR:
-	        case Cobol85PreprocessorParser.H_CHAR:
-	        case Cobol85PreprocessorParser.I_CHAR:
-	        case Cobol85PreprocessorParser.M_CHAR:
-	        case Cobol85PreprocessorParser.N_CHAR:
-	        case Cobol85PreprocessorParser.Q_CHAR:
-	        case Cobol85PreprocessorParser.S_CHAR:
-	        case Cobol85PreprocessorParser.U_CHAR:
-	        case Cobol85PreprocessorParser.W_CHAR:
-	        case Cobol85PreprocessorParser.X_CHAR:
-	        case Cobol85PreprocessorParser.COMMACHAR:
-	        case Cobol85PreprocessorParser.IDENTIFIER:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 53:
+	        case 54:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 129:
+	        case 130:
+	        case 131:
+	        case 132:
+	        case 133:
+	        case 134:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 145:
+	        case 146:
+	        case 147:
+	        case 148:
+	        case 149:
+	        case 150:
+	        case 151:
+	        case 152:
+	        case 153:
+	        case 154:
+	        case 155:
+	        case 156:
+	        case 157:
+	        case 158:
+	        case 159:
+	        case 160:
+	        case 161:
+	        case 162:
+	        case 163:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 167:
+	        case 168:
+	        case 169:
+	        case 170:
+	        case 171:
+	        case 172:
+	        case 173:
+	        case 174:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 178:
+	        case 179:
+	        case 180:
+	        case 181:
+	        case 182:
+	        case 183:
+	        case 184:
+	        case 185:
+	        case 187:
+	        case 188:
+	        case 189:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 193:
+	        case 194:
+	        case 195:
+	        case 196:
+	        case 197:
+	        case 198:
+	        case 199:
+	        case 200:
+	        case 201:
+	        case 202:
+	        case 203:
+	        case 204:
+	        case 205:
+	        case 206:
+	        case 207:
+	        case 208:
+	        case 209:
+	        case 210:
+	        case 211:
+	        case 212:
+	        case 213:
+	        case 214:
+	        case 215:
+	        case 216:
+	        case 217:
+	        case 218:
+	        case 219:
+	        case 221:
+	        case 222:
+	        case 224:
+	        case 225:
+	        case 226:
+	        case 227:
+	        case 228:
+	        case 229:
+	        case 230:
+	        case 231:
+	        case 232:
+	        case 233:
+	        case 234:
+	        case 235:
+	        case 236:
+	        case 241:
+	        case 242:
+	        case 243:
+	        case 244:
+	        case 246:
+	        case 247:
+	        case 248:
+	        case 249:
+	        case 250:
+	        case 251:
+	        case 252:
+	        case 253:
+	        case 254:
+	        case 255:
+	        case 256:
+	        case 257:
+	        case 258:
+	        case 260:
+	        case 261:
+	        case 262:
+	        case 264:
+	        case 265:
+	        case 266:
+	        case 267:
+	        case 268:
+	        case 269:
+	        case 270:
+	        case 271:
+	        case 272:
+	        case 273:
+	        case 274:
+	        case 275:
+	        case 276:
+	        case 277:
+	        case 278:
+	        case 279:
+	        case 280:
+	        case 282:
+	        case 287:
 	            this.state = 608;
 	            this.cobolWord();
 	            break;
@@ -4836,12 +4832,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	skipStatement() {
 	    let localctx = new SkipStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, Cobol85PreprocessorParser.RULE_skipStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 627;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 238)) & ~0x1f) == 0 && ((1 << (_la - 238)) & ((1 << (Cobol85PreprocessorParser.SKIP1 - 238)) | (1 << (Cobol85PreprocessorParser.SKIP2 - 238)) | (1 << (Cobol85PreprocessorParser.SKIP3 - 238)))) !== 0))) {
+	        if(!(((((_la - 238)) & ~0x1f) === 0 && ((1 << (_la - 238)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4908,7 +4904,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	pseudoText() {
 	    let localctx = new PseudoTextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, Cobol85PreprocessorParser.RULE_pseudoText);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 636;
@@ -4916,7 +4912,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 638;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Cobol85PreprocessorParser.ADATA) | (1 << Cobol85PreprocessorParser.ADV) | (1 << Cobol85PreprocessorParser.ALIAS) | (1 << Cobol85PreprocessorParser.ANSI) | (1 << Cobol85PreprocessorParser.ANY) | (1 << Cobol85PreprocessorParser.APOST) | (1 << Cobol85PreprocessorParser.AR) | (1 << Cobol85PreprocessorParser.ARITH) | (1 << Cobol85PreprocessorParser.AUTO) | (1 << Cobol85PreprocessorParser.AWO) | (1 << Cobol85PreprocessorParser.BIN) | (1 << Cobol85PreprocessorParser.BLOCK0) | (1 << Cobol85PreprocessorParser.BUF) | (1 << Cobol85PreprocessorParser.BUFSIZE) | (1 << Cobol85PreprocessorParser.BY) | (1 << Cobol85PreprocessorParser.CBL) | (1 << Cobol85PreprocessorParser.CBLCARD) | (1 << Cobol85PreprocessorParser.CO) | (1 << Cobol85PreprocessorParser.COBOL2) | (1 << Cobol85PreprocessorParser.COBOL3) | (1 << Cobol85PreprocessorParser.CODEPAGE) | (1 << Cobol85PreprocessorParser.COMPAT) | (1 << Cobol85PreprocessorParser.COMPILE) | (1 << Cobol85PreprocessorParser.CP) | (1 << Cobol85PreprocessorParser.CPP) | (1 << Cobol85PreprocessorParser.CPSM) | (1 << Cobol85PreprocessorParser.CS) | (1 << Cobol85PreprocessorParser.CURR) | (1 << Cobol85PreprocessorParser.CURRENCY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Cobol85PreprocessorParser.DATA - 32)) | (1 << (Cobol85PreprocessorParser.DATEPROC - 32)) | (1 << (Cobol85PreprocessorParser.DBCS - 32)) | (1 << (Cobol85PreprocessorParser.DD - 32)) | (1 << (Cobol85PreprocessorParser.DEBUG - 32)) | (1 << (Cobol85PreprocessorParser.DECK - 32)) | (1 << (Cobol85PreprocessorParser.DIAGTRUNC - 32)) | (1 << (Cobol85PreprocessorParser.DLI - 32)) | (1 << (Cobol85PreprocessorParser.DLL - 32)) | (1 << (Cobol85PreprocessorParser.DP - 32)) | (1 << (Cobol85PreprocessorParser.DTR - 32)) | (1 << (Cobol85PreprocessorParser.DU - 32)) | (1 << (Cobol85PreprocessorParser.DUMP - 32)) | (1 << (Cobol85PreprocessorParser.DYN - 32)) | (1 << (Cobol85PreprocessorParser.DYNAM - 32)) | (1 << (Cobol85PreprocessorParser.EDF - 32)) | (1 << (Cobol85PreprocessorParser.EJECT - 32)) | (1 << (Cobol85PreprocessorParser.EJPD - 32)) | (1 << (Cobol85PreprocessorParser.EN - 32)) | (1 << (Cobol85PreprocessorParser.ENGLISH - 32)) | (1 << (Cobol85PreprocessorParser.EPILOG - 32)) | (1 << (Cobol85PreprocessorParser.EXCI - 32)) | (1 << (Cobol85PreprocessorParser.EXIT - 32)) | (1 << (Cobol85PreprocessorParser.EXP - 32)) | (1 << (Cobol85PreprocessorParser.EXPORTALL - 32)) | (1 << (Cobol85PreprocessorParser.EXTEND - 32)) | (1 << (Cobol85PreprocessorParser.FASTSRT - 32)) | (1 << (Cobol85PreprocessorParser.FLAG - 32)) | (1 << (Cobol85PreprocessorParser.FLAGSTD - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Cobol85PreprocessorParser.FSRT - 64)) | (1 << (Cobol85PreprocessorParser.FULL - 64)) | (1 << (Cobol85PreprocessorParser.GDS - 64)) | (1 << (Cobol85PreprocessorParser.GRAPHIC - 64)) | (1 << (Cobol85PreprocessorParser.HOOK - 64)) | (1 << (Cobol85PreprocessorParser.IN - 64)) | (1 << (Cobol85PreprocessorParser.INTDATE - 64)) | (1 << (Cobol85PreprocessorParser.JA - 64)) | (1 << (Cobol85PreprocessorParser.JP - 64)) | (1 << (Cobol85PreprocessorParser.KA - 64)) | (1 << (Cobol85PreprocessorParser.LANG - 64)) | (1 << (Cobol85PreprocessorParser.LANGUAGE - 64)) | (1 << (Cobol85PreprocessorParser.LC - 64)) | (1 << (Cobol85PreprocessorParser.LENGTH - 64)) | (1 << (Cobol85PreprocessorParser.LIB - 64)) | (1 << (Cobol85PreprocessorParser.LILIAN - 64)) | (1 << (Cobol85PreprocessorParser.LIN - 64)) | (1 << (Cobol85PreprocessorParser.LINECOUNT - 64)) | (1 << (Cobol85PreprocessorParser.LINKAGE - 64)) | (1 << (Cobol85PreprocessorParser.LIST - 64)) | (1 << (Cobol85PreprocessorParser.LM - 64)) | (1 << (Cobol85PreprocessorParser.LONGMIXED - 64)) | (1 << (Cobol85PreprocessorParser.LONGUPPER - 64)) | (1 << (Cobol85PreprocessorParser.LPARENCHAR - 64)) | (1 << (Cobol85PreprocessorParser.LU - 64)) | (1 << (Cobol85PreprocessorParser.MAP - 64)) | (1 << (Cobol85PreprocessorParser.MARGINS - 64)) | (1 << (Cobol85PreprocessorParser.MAX - 64)) | (1 << (Cobol85PreprocessorParser.MD - 64)) | (1 << (Cobol85PreprocessorParser.MDECK - 64)) | (1 << (Cobol85PreprocessorParser.MIG - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (Cobol85PreprocessorParser.MIXED - 96)) | (1 << (Cobol85PreprocessorParser.NAME - 96)) | (1 << (Cobol85PreprocessorParser.NAT - 96)) | (1 << (Cobol85PreprocessorParser.NATIONAL - 96)) | (1 << (Cobol85PreprocessorParser.NATLANG - 96)) | (1 << (Cobol85PreprocessorParser.NN - 96)) | (1 << (Cobol85PreprocessorParser.NO - 96)) | (1 << (Cobol85PreprocessorParser.NOADATA - 96)) | (1 << (Cobol85PreprocessorParser.NOADV - 96)) | (1 << (Cobol85PreprocessorParser.NOALIAS - 96)) | (1 << (Cobol85PreprocessorParser.NOAWO - 96)) | (1 << (Cobol85PreprocessorParser.NOBLOCK0 - 96)) | (1 << (Cobol85PreprocessorParser.NOC - 96)) | (1 << (Cobol85PreprocessorParser.NOCBLCARD - 96)) | (1 << (Cobol85PreprocessorParser.NOCICS - 96)) | (1 << (Cobol85PreprocessorParser.NOCMPR2 - 96)) | (1 << (Cobol85PreprocessorParser.NOCOMPILE - 96)) | (1 << (Cobol85PreprocessorParser.NOCPSM - 96)) | (1 << (Cobol85PreprocessorParser.NOCURR - 96)) | (1 << (Cobol85PreprocessorParser.NOCURRENCY - 96)) | (1 << (Cobol85PreprocessorParser.NOD - 96)) | (1 << (Cobol85PreprocessorParser.NODATEPROC - 96)) | (1 << (Cobol85PreprocessorParser.NODBCS - 96)) | (1 << (Cobol85PreprocessorParser.NODE - 96)) | (1 << (Cobol85PreprocessorParser.NODEBUG - 96)) | (1 << (Cobol85PreprocessorParser.NODECK - 96)) | (1 << (Cobol85PreprocessorParser.NODIAGTRUNC - 96)) | (1 << (Cobol85PreprocessorParser.NODLL - 96)) | (1 << (Cobol85PreprocessorParser.NODU - 96)) | (1 << (Cobol85PreprocessorParser.NODUMP - 96)) | (1 << (Cobol85PreprocessorParser.NODP - 96)) | (1 << (Cobol85PreprocessorParser.NODTR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (Cobol85PreprocessorParser.NODYN - 128)) | (1 << (Cobol85PreprocessorParser.NODYNAM - 128)) | (1 << (Cobol85PreprocessorParser.NOEDF - 128)) | (1 << (Cobol85PreprocessorParser.NOEJPD - 128)) | (1 << (Cobol85PreprocessorParser.NOEPILOG - 128)) | (1 << (Cobol85PreprocessorParser.NOEXIT - 128)) | (1 << (Cobol85PreprocessorParser.NOEXP - 128)) | (1 << (Cobol85PreprocessorParser.NOEXPORTALL - 128)) | (1 << (Cobol85PreprocessorParser.NOF - 128)) | (1 << (Cobol85PreprocessorParser.NOFASTSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOFEPI - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGMIG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGSTD - 128)) | (1 << (Cobol85PreprocessorParser.NOFSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOGRAPHIC - 128)) | (1 << (Cobol85PreprocessorParser.NOHOOK - 128)) | (1 << (Cobol85PreprocessorParser.NOLENGTH - 128)) | (1 << (Cobol85PreprocessorParser.NOLIB - 128)) | (1 << (Cobol85PreprocessorParser.NOLINKAGE - 128)) | (1 << (Cobol85PreprocessorParser.NOLIST - 128)) | (1 << (Cobol85PreprocessorParser.NOMAP - 128)) | (1 << (Cobol85PreprocessorParser.NOMD - 128)) | (1 << (Cobol85PreprocessorParser.NOMDECK - 128)) | (1 << (Cobol85PreprocessorParser.NONAME - 128)) | (1 << (Cobol85PreprocessorParser.NONUM - 128)) | (1 << (Cobol85PreprocessorParser.NONUMBER - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJ - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJECT - 128)) | (1 << (Cobol85PreprocessorParser.NOOFF - 128)) | (1 << (Cobol85PreprocessorParser.NOOFFSET - 128)) | (1 << (Cobol85PreprocessorParser.NOOPSEQUENCE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (Cobol85PreprocessorParser.NOOPT - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIMIZE - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIONS - 160)) | (1 << (Cobol85PreprocessorParser.NOP - 160)) | (1 << (Cobol85PreprocessorParser.NOPFD - 160)) | (1 << (Cobol85PreprocessorParser.NOPROLOG - 160)) | (1 << (Cobol85PreprocessorParser.NORENT - 160)) | (1 << (Cobol85PreprocessorParser.NOS - 160)) | (1 << (Cobol85PreprocessorParser.NOSEP - 160)) | (1 << (Cobol85PreprocessorParser.NOSEPARATE - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQ - 160)) | (1 << (Cobol85PreprocessorParser.NOSOURCE - 160)) | (1 << (Cobol85PreprocessorParser.NOSPIE - 160)) | (1 << (Cobol85PreprocessorParser.NOSQL - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLC - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLCCSID - 160)) | (1 << (Cobol85PreprocessorParser.NOSSR - 160)) | (1 << (Cobol85PreprocessorParser.NOSSRANGE - 160)) | (1 << (Cobol85PreprocessorParser.NOSTDTRUNC - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQUENCE - 160)) | (1 << (Cobol85PreprocessorParser.NOTERM - 160)) | (1 << (Cobol85PreprocessorParser.NOTERMINAL - 160)) | (1 << (Cobol85PreprocessorParser.NOTEST - 160)) | (1 << (Cobol85PreprocessorParser.NOTHREAD - 160)) | (1 << (Cobol85PreprocessorParser.NOTRIG - 160)) | (1 << (Cobol85PreprocessorParser.NOVBREF - 160)) | (1 << (Cobol85PreprocessorParser.NOWORD - 160)) | (1 << (Cobol85PreprocessorParser.NOX - 160)) | (1 << (Cobol85PreprocessorParser.NOXREF - 160)) | (1 << (Cobol85PreprocessorParser.NOZWB - 160)) | (1 << (Cobol85PreprocessorParser.NS - 160)))) !== 0) || ((((_la - 192)) & ~0x1f) == 0 && ((1 << (_la - 192)) & ((1 << (Cobol85PreprocessorParser.NSEQ - 192)) | (1 << (Cobol85PreprocessorParser.NSYMBOL - 192)) | (1 << (Cobol85PreprocessorParser.NUM - 192)) | (1 << (Cobol85PreprocessorParser.NUMBER - 192)) | (1 << (Cobol85PreprocessorParser.NUMPROC - 192)) | (1 << (Cobol85PreprocessorParser.OBJ - 192)) | (1 << (Cobol85PreprocessorParser.OBJECT - 192)) | (1 << (Cobol85PreprocessorParser.OF - 192)) | (1 << (Cobol85PreprocessorParser.OFF - 192)) | (1 << (Cobol85PreprocessorParser.OFFSET - 192)) | (1 << (Cobol85PreprocessorParser.ON - 192)) | (1 << (Cobol85PreprocessorParser.OP - 192)) | (1 << (Cobol85PreprocessorParser.OPMARGINS - 192)) | (1 << (Cobol85PreprocessorParser.OPSEQUENCE - 192)) | (1 << (Cobol85PreprocessorParser.OPT - 192)) | (1 << (Cobol85PreprocessorParser.OPTFILE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIMIZE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIONS - 192)) | (1 << (Cobol85PreprocessorParser.OUT - 192)) | (1 << (Cobol85PreprocessorParser.OUTDD - 192)) | (1 << (Cobol85PreprocessorParser.PFD - 192)) | (1 << (Cobol85PreprocessorParser.PPTDBG - 192)) | (1 << (Cobol85PreprocessorParser.PGMN - 192)) | (1 << (Cobol85PreprocessorParser.PGMNAME - 192)) | (1 << (Cobol85PreprocessorParser.PROCESS - 192)) | (1 << (Cobol85PreprocessorParser.PROLOG - 192)) | (1 << (Cobol85PreprocessorParser.QUOTE - 192)) | (1 << (Cobol85PreprocessorParser.RENT - 192)) | (1 << (Cobol85PreprocessorParser.REPLACING - 192)) | (1 << (Cobol85PreprocessorParser.RMODE - 192)) | (1 << (Cobol85PreprocessorParser.RPARENCHAR - 192)))) !== 0) || ((((_la - 224)) & ~0x1f) == 0 && ((1 << (_la - 224)) & ((1 << (Cobol85PreprocessorParser.SEP - 224)) | (1 << (Cobol85PreprocessorParser.SEPARATE - 224)) | (1 << (Cobol85PreprocessorParser.SEQ - 224)) | (1 << (Cobol85PreprocessorParser.SEQUENCE - 224)) | (1 << (Cobol85PreprocessorParser.SHORT - 224)) | (1 << (Cobol85PreprocessorParser.SIZE - 224)) | (1 << (Cobol85PreprocessorParser.SOURCE - 224)) | (1 << (Cobol85PreprocessorParser.SP - 224)) | (1 << (Cobol85PreprocessorParser.SPACE - 224)) | (1 << (Cobol85PreprocessorParser.SPIE - 224)) | (1 << (Cobol85PreprocessorParser.SQL - 224)) | (1 << (Cobol85PreprocessorParser.SQLC - 224)) | (1 << (Cobol85PreprocessorParser.SQLCCSID - 224)) | (1 << (Cobol85PreprocessorParser.SS - 224)) | (1 << (Cobol85PreprocessorParser.SSR - 224)) | (1 << (Cobol85PreprocessorParser.SSRANGE - 224)) | (1 << (Cobol85PreprocessorParser.STD - 224)) | (1 << (Cobol85PreprocessorParser.SYSEIB - 224)) | (1 << (Cobol85PreprocessorParser.SZ - 224)) | (1 << (Cobol85PreprocessorParser.TERM - 224)) | (1 << (Cobol85PreprocessorParser.TERMINAL - 224)) | (1 << (Cobol85PreprocessorParser.TEST - 224)) | (1 << (Cobol85PreprocessorParser.THREAD - 224)) | (1 << (Cobol85PreprocessorParser.TITLE - 224)) | (1 << (Cobol85PreprocessorParser.TRIG - 224)) | (1 << (Cobol85PreprocessorParser.TRUNC - 224)) | (1 << (Cobol85PreprocessorParser.UE - 224)))) !== 0) || ((((_la - 256)) & ~0x1f) == 0 && ((1 << (_la - 256)) & ((1 << (Cobol85PreprocessorParser.UPPER - 256)) | (1 << (Cobol85PreprocessorParser.VBREF - 256)) | (1 << (Cobol85PreprocessorParser.WD - 256)) | (1 << (Cobol85PreprocessorParser.XMLPARSE - 256)) | (1 << (Cobol85PreprocessorParser.XMLSS - 256)) | (1 << (Cobol85PreprocessorParser.XOPTS - 256)) | (1 << (Cobol85PreprocessorParser.XREF - 256)) | (1 << (Cobol85PreprocessorParser.YEARWINDOW - 256)) | (1 << (Cobol85PreprocessorParser.YW - 256)) | (1 << (Cobol85PreprocessorParser.ZWB - 256)) | (1 << (Cobol85PreprocessorParser.C_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.D_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.E_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.F_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.H_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.I_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.M_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.N_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.Q_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.U_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.W_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.X_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.COMMACHAR - 256)) | (1 << (Cobol85PreprocessorParser.DOT - 256)) | (1 << (Cobol85PreprocessorParser.NONNUMERICLITERAL - 256)) | (1 << (Cobol85PreprocessorParser.NUMERICLITERAL - 256)) | (1 << (Cobol85PreprocessorParser.IDENTIFIER - 256)))) !== 0) || ((((_la - 288)) & ~0x1f) == 0 && ((1 << (_la - 288)) & ((1 << (Cobol85PreprocessorParser.FILENAME - 288)) | (1 << (Cobol85PreprocessorParser.NEWLINE - 288)) | (1 << (Cobol85PreprocessorParser.TEXT - 288)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4261150718) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3748659199) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294959103) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294967295) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294967295) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 4227858431) !== 0) || ((((_la - 192)) & ~0x1f) === 0 && ((1 << (_la - 192)) & 4026531839) !== 0) || ((((_la - 224)) & ~0x1f) === 0 && ((1 << (_la - 224)) & 4292747263) !== 0) || ((((_la - 256)) & ~0x1f) === 0 && ((1 << (_la - 256)) & 3992977271) !== 0) || ((((_la - 288)) & ~0x1f) === 0 && ((1 << (_la - 288)) & 19) !== 0)) {
 	            this.state = 637;
 	            this.charData();
 	        }
@@ -4953,282 +4949,282 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        		this.state = 644;
 	        		this._errHandler.sync(this);
 	        		switch(this._input.LA(1)) {
-	        		case Cobol85PreprocessorParser.ADATA:
-	        		case Cobol85PreprocessorParser.ADV:
-	        		case Cobol85PreprocessorParser.ALIAS:
-	        		case Cobol85PreprocessorParser.ANSI:
-	        		case Cobol85PreprocessorParser.ANY:
-	        		case Cobol85PreprocessorParser.APOST:
-	        		case Cobol85PreprocessorParser.AR:
-	        		case Cobol85PreprocessorParser.ARITH:
-	        		case Cobol85PreprocessorParser.AUTO:
-	        		case Cobol85PreprocessorParser.AWO:
-	        		case Cobol85PreprocessorParser.BIN:
-	        		case Cobol85PreprocessorParser.BLOCK0:
-	        		case Cobol85PreprocessorParser.BUF:
-	        		case Cobol85PreprocessorParser.BUFSIZE:
-	        		case Cobol85PreprocessorParser.BY:
-	        		case Cobol85PreprocessorParser.CBL:
-	        		case Cobol85PreprocessorParser.CBLCARD:
-	        		case Cobol85PreprocessorParser.CO:
-	        		case Cobol85PreprocessorParser.COBOL2:
-	        		case Cobol85PreprocessorParser.COBOL3:
-	        		case Cobol85PreprocessorParser.CODEPAGE:
-	        		case Cobol85PreprocessorParser.COMPAT:
-	        		case Cobol85PreprocessorParser.COMPILE:
-	        		case Cobol85PreprocessorParser.CP:
-	        		case Cobol85PreprocessorParser.CPP:
-	        		case Cobol85PreprocessorParser.CPSM:
-	        		case Cobol85PreprocessorParser.CS:
-	        		case Cobol85PreprocessorParser.CURR:
-	        		case Cobol85PreprocessorParser.CURRENCY:
-	        		case Cobol85PreprocessorParser.DATA:
-	        		case Cobol85PreprocessorParser.DATEPROC:
-	        		case Cobol85PreprocessorParser.DBCS:
-	        		case Cobol85PreprocessorParser.DD:
-	        		case Cobol85PreprocessorParser.DEBUG:
-	        		case Cobol85PreprocessorParser.DECK:
-	        		case Cobol85PreprocessorParser.DIAGTRUNC:
-	        		case Cobol85PreprocessorParser.DLI:
-	        		case Cobol85PreprocessorParser.DLL:
-	        		case Cobol85PreprocessorParser.DP:
-	        		case Cobol85PreprocessorParser.DTR:
-	        		case Cobol85PreprocessorParser.DU:
-	        		case Cobol85PreprocessorParser.DUMP:
-	        		case Cobol85PreprocessorParser.DYN:
-	        		case Cobol85PreprocessorParser.DYNAM:
-	        		case Cobol85PreprocessorParser.EDF:
-	        		case Cobol85PreprocessorParser.EJECT:
-	        		case Cobol85PreprocessorParser.EJPD:
-	        		case Cobol85PreprocessorParser.EN:
-	        		case Cobol85PreprocessorParser.ENGLISH:
-	        		case Cobol85PreprocessorParser.EPILOG:
-	        		case Cobol85PreprocessorParser.EXCI:
-	        		case Cobol85PreprocessorParser.EXIT:
-	        		case Cobol85PreprocessorParser.EXP:
-	        		case Cobol85PreprocessorParser.EXPORTALL:
-	        		case Cobol85PreprocessorParser.EXTEND:
-	        		case Cobol85PreprocessorParser.FASTSRT:
-	        		case Cobol85PreprocessorParser.FLAG:
-	        		case Cobol85PreprocessorParser.FLAGSTD:
-	        		case Cobol85PreprocessorParser.FSRT:
-	        		case Cobol85PreprocessorParser.FULL:
-	        		case Cobol85PreprocessorParser.GDS:
-	        		case Cobol85PreprocessorParser.GRAPHIC:
-	        		case Cobol85PreprocessorParser.HOOK:
-	        		case Cobol85PreprocessorParser.IN:
-	        		case Cobol85PreprocessorParser.INTDATE:
-	        		case Cobol85PreprocessorParser.JA:
-	        		case Cobol85PreprocessorParser.JP:
-	        		case Cobol85PreprocessorParser.KA:
-	        		case Cobol85PreprocessorParser.LANG:
-	        		case Cobol85PreprocessorParser.LANGUAGE:
-	        		case Cobol85PreprocessorParser.LC:
-	        		case Cobol85PreprocessorParser.LENGTH:
-	        		case Cobol85PreprocessorParser.LIB:
-	        		case Cobol85PreprocessorParser.LILIAN:
-	        		case Cobol85PreprocessorParser.LIN:
-	        		case Cobol85PreprocessorParser.LINECOUNT:
-	        		case Cobol85PreprocessorParser.LINKAGE:
-	        		case Cobol85PreprocessorParser.LIST:
-	        		case Cobol85PreprocessorParser.LM:
-	        		case Cobol85PreprocessorParser.LONGMIXED:
-	        		case Cobol85PreprocessorParser.LONGUPPER:
-	        		case Cobol85PreprocessorParser.LPARENCHAR:
-	        		case Cobol85PreprocessorParser.LU:
-	        		case Cobol85PreprocessorParser.MAP:
-	        		case Cobol85PreprocessorParser.MARGINS:
-	        		case Cobol85PreprocessorParser.MAX:
-	        		case Cobol85PreprocessorParser.MD:
-	        		case Cobol85PreprocessorParser.MDECK:
-	        		case Cobol85PreprocessorParser.MIG:
-	        		case Cobol85PreprocessorParser.MIXED:
-	        		case Cobol85PreprocessorParser.NAME:
-	        		case Cobol85PreprocessorParser.NAT:
-	        		case Cobol85PreprocessorParser.NATIONAL:
-	        		case Cobol85PreprocessorParser.NATLANG:
-	        		case Cobol85PreprocessorParser.NN:
-	        		case Cobol85PreprocessorParser.NO:
-	        		case Cobol85PreprocessorParser.NOADATA:
-	        		case Cobol85PreprocessorParser.NOADV:
-	        		case Cobol85PreprocessorParser.NOALIAS:
-	        		case Cobol85PreprocessorParser.NOAWO:
-	        		case Cobol85PreprocessorParser.NOBLOCK0:
-	        		case Cobol85PreprocessorParser.NOC:
-	        		case Cobol85PreprocessorParser.NOCBLCARD:
-	        		case Cobol85PreprocessorParser.NOCICS:
-	        		case Cobol85PreprocessorParser.NOCMPR2:
-	        		case Cobol85PreprocessorParser.NOCOMPILE:
-	        		case Cobol85PreprocessorParser.NOCPSM:
-	        		case Cobol85PreprocessorParser.NOCURR:
-	        		case Cobol85PreprocessorParser.NOCURRENCY:
-	        		case Cobol85PreprocessorParser.NOD:
-	        		case Cobol85PreprocessorParser.NODATEPROC:
-	        		case Cobol85PreprocessorParser.NODBCS:
-	        		case Cobol85PreprocessorParser.NODE:
-	        		case Cobol85PreprocessorParser.NODEBUG:
-	        		case Cobol85PreprocessorParser.NODECK:
-	        		case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        		case Cobol85PreprocessorParser.NODLL:
-	        		case Cobol85PreprocessorParser.NODU:
-	        		case Cobol85PreprocessorParser.NODUMP:
-	        		case Cobol85PreprocessorParser.NODP:
-	        		case Cobol85PreprocessorParser.NODTR:
-	        		case Cobol85PreprocessorParser.NODYN:
-	        		case Cobol85PreprocessorParser.NODYNAM:
-	        		case Cobol85PreprocessorParser.NOEDF:
-	        		case Cobol85PreprocessorParser.NOEJPD:
-	        		case Cobol85PreprocessorParser.NOEPILOG:
-	        		case Cobol85PreprocessorParser.NOEXIT:
-	        		case Cobol85PreprocessorParser.NOEXP:
-	        		case Cobol85PreprocessorParser.NOEXPORTALL:
-	        		case Cobol85PreprocessorParser.NOF:
-	        		case Cobol85PreprocessorParser.NOFASTSRT:
-	        		case Cobol85PreprocessorParser.NOFEPI:
-	        		case Cobol85PreprocessorParser.NOFLAG:
-	        		case Cobol85PreprocessorParser.NOFLAGMIG:
-	        		case Cobol85PreprocessorParser.NOFLAGSTD:
-	        		case Cobol85PreprocessorParser.NOFSRT:
-	        		case Cobol85PreprocessorParser.NOGRAPHIC:
-	        		case Cobol85PreprocessorParser.NOHOOK:
-	        		case Cobol85PreprocessorParser.NOLENGTH:
-	        		case Cobol85PreprocessorParser.NOLIB:
-	        		case Cobol85PreprocessorParser.NOLINKAGE:
-	        		case Cobol85PreprocessorParser.NOLIST:
-	        		case Cobol85PreprocessorParser.NOMAP:
-	        		case Cobol85PreprocessorParser.NOMD:
-	        		case Cobol85PreprocessorParser.NOMDECK:
-	        		case Cobol85PreprocessorParser.NONAME:
-	        		case Cobol85PreprocessorParser.NONUM:
-	        		case Cobol85PreprocessorParser.NONUMBER:
-	        		case Cobol85PreprocessorParser.NOOBJ:
-	        		case Cobol85PreprocessorParser.NOOBJECT:
-	        		case Cobol85PreprocessorParser.NOOFF:
-	        		case Cobol85PreprocessorParser.NOOFFSET:
-	        		case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        		case Cobol85PreprocessorParser.NOOPT:
-	        		case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        		case Cobol85PreprocessorParser.NOOPTIONS:
-	        		case Cobol85PreprocessorParser.NOP:
-	        		case Cobol85PreprocessorParser.NOPFD:
-	        		case Cobol85PreprocessorParser.NOPROLOG:
-	        		case Cobol85PreprocessorParser.NORENT:
-	        		case Cobol85PreprocessorParser.NOS:
-	        		case Cobol85PreprocessorParser.NOSEP:
-	        		case Cobol85PreprocessorParser.NOSEPARATE:
-	        		case Cobol85PreprocessorParser.NOSEQ:
-	        		case Cobol85PreprocessorParser.NOSOURCE:
-	        		case Cobol85PreprocessorParser.NOSPIE:
-	        		case Cobol85PreprocessorParser.NOSQL:
-	        		case Cobol85PreprocessorParser.NOSQLC:
-	        		case Cobol85PreprocessorParser.NOSQLCCSID:
-	        		case Cobol85PreprocessorParser.NOSSR:
-	        		case Cobol85PreprocessorParser.NOSSRANGE:
-	        		case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        		case Cobol85PreprocessorParser.NOSEQUENCE:
-	        		case Cobol85PreprocessorParser.NOTERM:
-	        		case Cobol85PreprocessorParser.NOTERMINAL:
-	        		case Cobol85PreprocessorParser.NOTEST:
-	        		case Cobol85PreprocessorParser.NOTHREAD:
-	        		case Cobol85PreprocessorParser.NOTRIG:
-	        		case Cobol85PreprocessorParser.NOVBREF:
-	        		case Cobol85PreprocessorParser.NOWORD:
-	        		case Cobol85PreprocessorParser.NOX:
-	        		case Cobol85PreprocessorParser.NOXREF:
-	        		case Cobol85PreprocessorParser.NOZWB:
-	        		case Cobol85PreprocessorParser.NS:
-	        		case Cobol85PreprocessorParser.NSEQ:
-	        		case Cobol85PreprocessorParser.NSYMBOL:
-	        		case Cobol85PreprocessorParser.NUM:
-	        		case Cobol85PreprocessorParser.NUMBER:
-	        		case Cobol85PreprocessorParser.NUMPROC:
-	        		case Cobol85PreprocessorParser.OBJ:
-	        		case Cobol85PreprocessorParser.OBJECT:
-	        		case Cobol85PreprocessorParser.OF:
-	        		case Cobol85PreprocessorParser.OFF:
-	        		case Cobol85PreprocessorParser.OFFSET:
-	        		case Cobol85PreprocessorParser.ON:
-	        		case Cobol85PreprocessorParser.OP:
-	        		case Cobol85PreprocessorParser.OPMARGINS:
-	        		case Cobol85PreprocessorParser.OPSEQUENCE:
-	        		case Cobol85PreprocessorParser.OPT:
-	        		case Cobol85PreprocessorParser.OPTFILE:
-	        		case Cobol85PreprocessorParser.OPTIMIZE:
-	        		case Cobol85PreprocessorParser.OPTIONS:
-	        		case Cobol85PreprocessorParser.OUT:
-	        		case Cobol85PreprocessorParser.OUTDD:
-	        		case Cobol85PreprocessorParser.PFD:
-	        		case Cobol85PreprocessorParser.PPTDBG:
-	        		case Cobol85PreprocessorParser.PGMN:
-	        		case Cobol85PreprocessorParser.PGMNAME:
-	        		case Cobol85PreprocessorParser.PROCESS:
-	        		case Cobol85PreprocessorParser.PROLOG:
-	        		case Cobol85PreprocessorParser.QUOTE:
-	        		case Cobol85PreprocessorParser.RENT:
-	        		case Cobol85PreprocessorParser.REPLACING:
-	        		case Cobol85PreprocessorParser.RMODE:
-	        		case Cobol85PreprocessorParser.RPARENCHAR:
-	        		case Cobol85PreprocessorParser.SEP:
-	        		case Cobol85PreprocessorParser.SEPARATE:
-	        		case Cobol85PreprocessorParser.SEQ:
-	        		case Cobol85PreprocessorParser.SEQUENCE:
-	        		case Cobol85PreprocessorParser.SHORT:
-	        		case Cobol85PreprocessorParser.SIZE:
-	        		case Cobol85PreprocessorParser.SOURCE:
-	        		case Cobol85PreprocessorParser.SP:
-	        		case Cobol85PreprocessorParser.SPACE:
-	        		case Cobol85PreprocessorParser.SPIE:
-	        		case Cobol85PreprocessorParser.SQL:
-	        		case Cobol85PreprocessorParser.SQLC:
-	        		case Cobol85PreprocessorParser.SQLCCSID:
-	        		case Cobol85PreprocessorParser.SS:
-	        		case Cobol85PreprocessorParser.SSR:
-	        		case Cobol85PreprocessorParser.SSRANGE:
-	        		case Cobol85PreprocessorParser.STD:
-	        		case Cobol85PreprocessorParser.SYSEIB:
-	        		case Cobol85PreprocessorParser.SZ:
-	        		case Cobol85PreprocessorParser.TERM:
-	        		case Cobol85PreprocessorParser.TERMINAL:
-	        		case Cobol85PreprocessorParser.TEST:
-	        		case Cobol85PreprocessorParser.THREAD:
-	        		case Cobol85PreprocessorParser.TITLE:
-	        		case Cobol85PreprocessorParser.TRIG:
-	        		case Cobol85PreprocessorParser.TRUNC:
-	        		case Cobol85PreprocessorParser.UE:
-	        		case Cobol85PreprocessorParser.UPPER:
-	        		case Cobol85PreprocessorParser.VBREF:
-	        		case Cobol85PreprocessorParser.WD:
-	        		case Cobol85PreprocessorParser.XMLPARSE:
-	        		case Cobol85PreprocessorParser.XMLSS:
-	        		case Cobol85PreprocessorParser.XOPTS:
-	        		case Cobol85PreprocessorParser.XREF:
-	        		case Cobol85PreprocessorParser.YEARWINDOW:
-	        		case Cobol85PreprocessorParser.YW:
-	        		case Cobol85PreprocessorParser.ZWB:
-	        		case Cobol85PreprocessorParser.C_CHAR:
-	        		case Cobol85PreprocessorParser.D_CHAR:
-	        		case Cobol85PreprocessorParser.E_CHAR:
-	        		case Cobol85PreprocessorParser.F_CHAR:
-	        		case Cobol85PreprocessorParser.H_CHAR:
-	        		case Cobol85PreprocessorParser.I_CHAR:
-	        		case Cobol85PreprocessorParser.M_CHAR:
-	        		case Cobol85PreprocessorParser.N_CHAR:
-	        		case Cobol85PreprocessorParser.Q_CHAR:
-	        		case Cobol85PreprocessorParser.S_CHAR:
-	        		case Cobol85PreprocessorParser.U_CHAR:
-	        		case Cobol85PreprocessorParser.W_CHAR:
-	        		case Cobol85PreprocessorParser.X_CHAR:
-	        		case Cobol85PreprocessorParser.COMMACHAR:
-	        		case Cobol85PreprocessorParser.DOT:
-	        		case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	        		case Cobol85PreprocessorParser.NUMERICLITERAL:
-	        		case Cobol85PreprocessorParser.IDENTIFIER:
-	        		case Cobol85PreprocessorParser.FILENAME:
-	        		case Cobol85PreprocessorParser.TEXT:
+	        		case 1:
+	        		case 2:
+	        		case 3:
+	        		case 4:
+	        		case 5:
+	        		case 6:
+	        		case 7:
+	        		case 8:
+	        		case 9:
+	        		case 10:
+	        		case 11:
+	        		case 12:
+	        		case 13:
+	        		case 14:
+	        		case 15:
+	        		case 16:
+	        		case 17:
+	        		case 19:
+	        		case 20:
+	        		case 21:
+	        		case 22:
+	        		case 23:
+	        		case 24:
+	        		case 26:
+	        		case 27:
+	        		case 28:
+	        		case 29:
+	        		case 30:
+	        		case 31:
+	        		case 32:
+	        		case 33:
+	        		case 34:
+	        		case 35:
+	        		case 36:
+	        		case 37:
+	        		case 38:
+	        		case 39:
+	        		case 40:
+	        		case 41:
+	        		case 42:
+	        		case 43:
+	        		case 44:
+	        		case 45:
+	        		case 46:
+	        		case 47:
+	        		case 48:
+	        		case 49:
+	        		case 50:
+	        		case 51:
+	        		case 53:
+	        		case 54:
+	        		case 56:
+	        		case 57:
+	        		case 58:
+	        		case 59:
+	        		case 60:
+	        		case 62:
+	        		case 63:
+	        		case 64:
+	        		case 65:
+	        		case 66:
+	        		case 67:
+	        		case 68:
+	        		case 69:
+	        		case 70:
+	        		case 71:
+	        		case 72:
+	        		case 73:
+	        		case 74:
+	        		case 75:
+	        		case 76:
+	        		case 78:
+	        		case 79:
+	        		case 80:
+	        		case 81:
+	        		case 82:
+	        		case 83:
+	        		case 84:
+	        		case 85:
+	        		case 86:
+	        		case 87:
+	        		case 88:
+	        		case 89:
+	        		case 90:
+	        		case 91:
+	        		case 92:
+	        		case 93:
+	        		case 94:
+	        		case 95:
+	        		case 96:
+	        		case 97:
+	        		case 98:
+	        		case 99:
+	        		case 100:
+	        		case 101:
+	        		case 102:
+	        		case 103:
+	        		case 104:
+	        		case 105:
+	        		case 106:
+	        		case 107:
+	        		case 108:
+	        		case 109:
+	        		case 110:
+	        		case 111:
+	        		case 112:
+	        		case 113:
+	        		case 114:
+	        		case 115:
+	        		case 116:
+	        		case 117:
+	        		case 118:
+	        		case 119:
+	        		case 120:
+	        		case 121:
+	        		case 122:
+	        		case 123:
+	        		case 124:
+	        		case 125:
+	        		case 126:
+	        		case 127:
+	        		case 128:
+	        		case 129:
+	        		case 130:
+	        		case 131:
+	        		case 132:
+	        		case 133:
+	        		case 134:
+	        		case 135:
+	        		case 136:
+	        		case 137:
+	        		case 138:
+	        		case 139:
+	        		case 140:
+	        		case 141:
+	        		case 142:
+	        		case 143:
+	        		case 144:
+	        		case 145:
+	        		case 146:
+	        		case 147:
+	        		case 148:
+	        		case 149:
+	        		case 150:
+	        		case 151:
+	        		case 152:
+	        		case 153:
+	        		case 154:
+	        		case 155:
+	        		case 156:
+	        		case 157:
+	        		case 158:
+	        		case 159:
+	        		case 160:
+	        		case 161:
+	        		case 162:
+	        		case 163:
+	        		case 164:
+	        		case 165:
+	        		case 166:
+	        		case 167:
+	        		case 168:
+	        		case 169:
+	        		case 170:
+	        		case 171:
+	        		case 172:
+	        		case 173:
+	        		case 174:
+	        		case 175:
+	        		case 176:
+	        		case 177:
+	        		case 178:
+	        		case 179:
+	        		case 180:
+	        		case 181:
+	        		case 182:
+	        		case 183:
+	        		case 184:
+	        		case 185:
+	        		case 187:
+	        		case 188:
+	        		case 189:
+	        		case 190:
+	        		case 191:
+	        		case 192:
+	        		case 193:
+	        		case 194:
+	        		case 195:
+	        		case 196:
+	        		case 197:
+	        		case 198:
+	        		case 199:
+	        		case 200:
+	        		case 201:
+	        		case 202:
+	        		case 203:
+	        		case 204:
+	        		case 205:
+	        		case 206:
+	        		case 207:
+	        		case 208:
+	        		case 209:
+	        		case 210:
+	        		case 211:
+	        		case 212:
+	        		case 213:
+	        		case 214:
+	        		case 215:
+	        		case 216:
+	        		case 217:
+	        		case 218:
+	        		case 219:
+	        		case 221:
+	        		case 222:
+	        		case 223:
+	        		case 224:
+	        		case 225:
+	        		case 226:
+	        		case 227:
+	        		case 228:
+	        		case 229:
+	        		case 230:
+	        		case 231:
+	        		case 232:
+	        		case 233:
+	        		case 234:
+	        		case 235:
+	        		case 236:
+	        		case 241:
+	        		case 242:
+	        		case 243:
+	        		case 244:
+	        		case 246:
+	        		case 247:
+	        		case 248:
+	        		case 249:
+	        		case 250:
+	        		case 251:
+	        		case 252:
+	        		case 253:
+	        		case 254:
+	        		case 255:
+	        		case 256:
+	        		case 257:
+	        		case 258:
+	        		case 260:
+	        		case 261:
+	        		case 262:
+	        		case 264:
+	        		case 265:
+	        		case 266:
+	        		case 267:
+	        		case 268:
+	        		case 269:
+	        		case 270:
+	        		case 271:
+	        		case 272:
+	        		case 273:
+	        		case 274:
+	        		case 275:
+	        		case 276:
+	        		case 277:
+	        		case 278:
+	        		case 279:
+	        		case 280:
+	        		case 282:
+	        		case 283:
+	        		case 285:
+	        		case 286:
+	        		case 287:
+	        		case 288:
+	        		case 292:
 	        		    this.state = 642;
 	        		    this.charDataLine();
 	        		    break;
-	        		case Cobol85PreprocessorParser.NEWLINE:
+	        		case 289:
 	        		    this.state = 643;
 	        		    this.match(Cobol85PreprocessorParser.NEWLINE);
 	        		    break;
@@ -5262,7 +5258,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	charDataSql() {
 	    let localctx = new CharDataSqlContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, Cobol85PreprocessorParser.RULE_charDataSql);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 652; 
@@ -5272,290 +5268,290 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 652;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case Cobol85PreprocessorParser.ADATA:
-	            case Cobol85PreprocessorParser.ADV:
-	            case Cobol85PreprocessorParser.ALIAS:
-	            case Cobol85PreprocessorParser.ANSI:
-	            case Cobol85PreprocessorParser.ANY:
-	            case Cobol85PreprocessorParser.APOST:
-	            case Cobol85PreprocessorParser.AR:
-	            case Cobol85PreprocessorParser.ARITH:
-	            case Cobol85PreprocessorParser.AUTO:
-	            case Cobol85PreprocessorParser.AWO:
-	            case Cobol85PreprocessorParser.BIN:
-	            case Cobol85PreprocessorParser.BLOCK0:
-	            case Cobol85PreprocessorParser.BUF:
-	            case Cobol85PreprocessorParser.BUFSIZE:
-	            case Cobol85PreprocessorParser.BY:
-	            case Cobol85PreprocessorParser.CBL:
-	            case Cobol85PreprocessorParser.CBLCARD:
-	            case Cobol85PreprocessorParser.CO:
-	            case Cobol85PreprocessorParser.COBOL2:
-	            case Cobol85PreprocessorParser.COBOL3:
-	            case Cobol85PreprocessorParser.CODEPAGE:
-	            case Cobol85PreprocessorParser.COMPAT:
-	            case Cobol85PreprocessorParser.COMPILE:
-	            case Cobol85PreprocessorParser.CP:
-	            case Cobol85PreprocessorParser.CPP:
-	            case Cobol85PreprocessorParser.CPSM:
-	            case Cobol85PreprocessorParser.CS:
-	            case Cobol85PreprocessorParser.CURR:
-	            case Cobol85PreprocessorParser.CURRENCY:
-	            case Cobol85PreprocessorParser.DATA:
-	            case Cobol85PreprocessorParser.DATEPROC:
-	            case Cobol85PreprocessorParser.DBCS:
-	            case Cobol85PreprocessorParser.DD:
-	            case Cobol85PreprocessorParser.DEBUG:
-	            case Cobol85PreprocessorParser.DECK:
-	            case Cobol85PreprocessorParser.DIAGTRUNC:
-	            case Cobol85PreprocessorParser.DLI:
-	            case Cobol85PreprocessorParser.DLL:
-	            case Cobol85PreprocessorParser.DP:
-	            case Cobol85PreprocessorParser.DTR:
-	            case Cobol85PreprocessorParser.DU:
-	            case Cobol85PreprocessorParser.DUMP:
-	            case Cobol85PreprocessorParser.DYN:
-	            case Cobol85PreprocessorParser.DYNAM:
-	            case Cobol85PreprocessorParser.EDF:
-	            case Cobol85PreprocessorParser.EJECT:
-	            case Cobol85PreprocessorParser.EJPD:
-	            case Cobol85PreprocessorParser.EN:
-	            case Cobol85PreprocessorParser.ENGLISH:
-	            case Cobol85PreprocessorParser.EPILOG:
-	            case Cobol85PreprocessorParser.EXCI:
-	            case Cobol85PreprocessorParser.EXIT:
-	            case Cobol85PreprocessorParser.EXP:
-	            case Cobol85PreprocessorParser.EXPORTALL:
-	            case Cobol85PreprocessorParser.EXTEND:
-	            case Cobol85PreprocessorParser.FASTSRT:
-	            case Cobol85PreprocessorParser.FLAG:
-	            case Cobol85PreprocessorParser.FLAGSTD:
-	            case Cobol85PreprocessorParser.FSRT:
-	            case Cobol85PreprocessorParser.FULL:
-	            case Cobol85PreprocessorParser.GDS:
-	            case Cobol85PreprocessorParser.GRAPHIC:
-	            case Cobol85PreprocessorParser.HOOK:
-	            case Cobol85PreprocessorParser.IN:
-	            case Cobol85PreprocessorParser.INTDATE:
-	            case Cobol85PreprocessorParser.JA:
-	            case Cobol85PreprocessorParser.JP:
-	            case Cobol85PreprocessorParser.KA:
-	            case Cobol85PreprocessorParser.LANG:
-	            case Cobol85PreprocessorParser.LANGUAGE:
-	            case Cobol85PreprocessorParser.LC:
-	            case Cobol85PreprocessorParser.LENGTH:
-	            case Cobol85PreprocessorParser.LIB:
-	            case Cobol85PreprocessorParser.LILIAN:
-	            case Cobol85PreprocessorParser.LIN:
-	            case Cobol85PreprocessorParser.LINECOUNT:
-	            case Cobol85PreprocessorParser.LINKAGE:
-	            case Cobol85PreprocessorParser.LIST:
-	            case Cobol85PreprocessorParser.LM:
-	            case Cobol85PreprocessorParser.LONGMIXED:
-	            case Cobol85PreprocessorParser.LONGUPPER:
-	            case Cobol85PreprocessorParser.LPARENCHAR:
-	            case Cobol85PreprocessorParser.LU:
-	            case Cobol85PreprocessorParser.MAP:
-	            case Cobol85PreprocessorParser.MARGINS:
-	            case Cobol85PreprocessorParser.MAX:
-	            case Cobol85PreprocessorParser.MD:
-	            case Cobol85PreprocessorParser.MDECK:
-	            case Cobol85PreprocessorParser.MIG:
-	            case Cobol85PreprocessorParser.MIXED:
-	            case Cobol85PreprocessorParser.NAME:
-	            case Cobol85PreprocessorParser.NAT:
-	            case Cobol85PreprocessorParser.NATIONAL:
-	            case Cobol85PreprocessorParser.NATLANG:
-	            case Cobol85PreprocessorParser.NN:
-	            case Cobol85PreprocessorParser.NO:
-	            case Cobol85PreprocessorParser.NOADATA:
-	            case Cobol85PreprocessorParser.NOADV:
-	            case Cobol85PreprocessorParser.NOALIAS:
-	            case Cobol85PreprocessorParser.NOAWO:
-	            case Cobol85PreprocessorParser.NOBLOCK0:
-	            case Cobol85PreprocessorParser.NOC:
-	            case Cobol85PreprocessorParser.NOCBLCARD:
-	            case Cobol85PreprocessorParser.NOCICS:
-	            case Cobol85PreprocessorParser.NOCMPR2:
-	            case Cobol85PreprocessorParser.NOCOMPILE:
-	            case Cobol85PreprocessorParser.NOCPSM:
-	            case Cobol85PreprocessorParser.NOCURR:
-	            case Cobol85PreprocessorParser.NOCURRENCY:
-	            case Cobol85PreprocessorParser.NOD:
-	            case Cobol85PreprocessorParser.NODATEPROC:
-	            case Cobol85PreprocessorParser.NODBCS:
-	            case Cobol85PreprocessorParser.NODE:
-	            case Cobol85PreprocessorParser.NODEBUG:
-	            case Cobol85PreprocessorParser.NODECK:
-	            case Cobol85PreprocessorParser.NODIAGTRUNC:
-	            case Cobol85PreprocessorParser.NODLL:
-	            case Cobol85PreprocessorParser.NODU:
-	            case Cobol85PreprocessorParser.NODUMP:
-	            case Cobol85PreprocessorParser.NODP:
-	            case Cobol85PreprocessorParser.NODTR:
-	            case Cobol85PreprocessorParser.NODYN:
-	            case Cobol85PreprocessorParser.NODYNAM:
-	            case Cobol85PreprocessorParser.NOEDF:
-	            case Cobol85PreprocessorParser.NOEJPD:
-	            case Cobol85PreprocessorParser.NOEPILOG:
-	            case Cobol85PreprocessorParser.NOEXIT:
-	            case Cobol85PreprocessorParser.NOEXP:
-	            case Cobol85PreprocessorParser.NOEXPORTALL:
-	            case Cobol85PreprocessorParser.NOF:
-	            case Cobol85PreprocessorParser.NOFASTSRT:
-	            case Cobol85PreprocessorParser.NOFEPI:
-	            case Cobol85PreprocessorParser.NOFLAG:
-	            case Cobol85PreprocessorParser.NOFLAGMIG:
-	            case Cobol85PreprocessorParser.NOFLAGSTD:
-	            case Cobol85PreprocessorParser.NOFSRT:
-	            case Cobol85PreprocessorParser.NOGRAPHIC:
-	            case Cobol85PreprocessorParser.NOHOOK:
-	            case Cobol85PreprocessorParser.NOLENGTH:
-	            case Cobol85PreprocessorParser.NOLIB:
-	            case Cobol85PreprocessorParser.NOLINKAGE:
-	            case Cobol85PreprocessorParser.NOLIST:
-	            case Cobol85PreprocessorParser.NOMAP:
-	            case Cobol85PreprocessorParser.NOMD:
-	            case Cobol85PreprocessorParser.NOMDECK:
-	            case Cobol85PreprocessorParser.NONAME:
-	            case Cobol85PreprocessorParser.NONUM:
-	            case Cobol85PreprocessorParser.NONUMBER:
-	            case Cobol85PreprocessorParser.NOOBJ:
-	            case Cobol85PreprocessorParser.NOOBJECT:
-	            case Cobol85PreprocessorParser.NOOFF:
-	            case Cobol85PreprocessorParser.NOOFFSET:
-	            case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	            case Cobol85PreprocessorParser.NOOPT:
-	            case Cobol85PreprocessorParser.NOOPTIMIZE:
-	            case Cobol85PreprocessorParser.NOOPTIONS:
-	            case Cobol85PreprocessorParser.NOP:
-	            case Cobol85PreprocessorParser.NOPFD:
-	            case Cobol85PreprocessorParser.NOPROLOG:
-	            case Cobol85PreprocessorParser.NORENT:
-	            case Cobol85PreprocessorParser.NOS:
-	            case Cobol85PreprocessorParser.NOSEP:
-	            case Cobol85PreprocessorParser.NOSEPARATE:
-	            case Cobol85PreprocessorParser.NOSEQ:
-	            case Cobol85PreprocessorParser.NOSOURCE:
-	            case Cobol85PreprocessorParser.NOSPIE:
-	            case Cobol85PreprocessorParser.NOSQL:
-	            case Cobol85PreprocessorParser.NOSQLC:
-	            case Cobol85PreprocessorParser.NOSQLCCSID:
-	            case Cobol85PreprocessorParser.NOSSR:
-	            case Cobol85PreprocessorParser.NOSSRANGE:
-	            case Cobol85PreprocessorParser.NOSTDTRUNC:
-	            case Cobol85PreprocessorParser.NOSEQUENCE:
-	            case Cobol85PreprocessorParser.NOTERM:
-	            case Cobol85PreprocessorParser.NOTERMINAL:
-	            case Cobol85PreprocessorParser.NOTEST:
-	            case Cobol85PreprocessorParser.NOTHREAD:
-	            case Cobol85PreprocessorParser.NOTRIG:
-	            case Cobol85PreprocessorParser.NOVBREF:
-	            case Cobol85PreprocessorParser.NOWORD:
-	            case Cobol85PreprocessorParser.NOX:
-	            case Cobol85PreprocessorParser.NOXREF:
-	            case Cobol85PreprocessorParser.NOZWB:
-	            case Cobol85PreprocessorParser.NS:
-	            case Cobol85PreprocessorParser.NSEQ:
-	            case Cobol85PreprocessorParser.NSYMBOL:
-	            case Cobol85PreprocessorParser.NUM:
-	            case Cobol85PreprocessorParser.NUMBER:
-	            case Cobol85PreprocessorParser.NUMPROC:
-	            case Cobol85PreprocessorParser.OBJ:
-	            case Cobol85PreprocessorParser.OBJECT:
-	            case Cobol85PreprocessorParser.OF:
-	            case Cobol85PreprocessorParser.OFF:
-	            case Cobol85PreprocessorParser.OFFSET:
-	            case Cobol85PreprocessorParser.ON:
-	            case Cobol85PreprocessorParser.OP:
-	            case Cobol85PreprocessorParser.OPMARGINS:
-	            case Cobol85PreprocessorParser.OPSEQUENCE:
-	            case Cobol85PreprocessorParser.OPT:
-	            case Cobol85PreprocessorParser.OPTFILE:
-	            case Cobol85PreprocessorParser.OPTIMIZE:
-	            case Cobol85PreprocessorParser.OPTIONS:
-	            case Cobol85PreprocessorParser.OUT:
-	            case Cobol85PreprocessorParser.OUTDD:
-	            case Cobol85PreprocessorParser.PFD:
-	            case Cobol85PreprocessorParser.PPTDBG:
-	            case Cobol85PreprocessorParser.PGMN:
-	            case Cobol85PreprocessorParser.PGMNAME:
-	            case Cobol85PreprocessorParser.PROCESS:
-	            case Cobol85PreprocessorParser.PROLOG:
-	            case Cobol85PreprocessorParser.QUOTE:
-	            case Cobol85PreprocessorParser.RENT:
-	            case Cobol85PreprocessorParser.REPLACING:
-	            case Cobol85PreprocessorParser.RMODE:
-	            case Cobol85PreprocessorParser.RPARENCHAR:
-	            case Cobol85PreprocessorParser.SEP:
-	            case Cobol85PreprocessorParser.SEPARATE:
-	            case Cobol85PreprocessorParser.SEQ:
-	            case Cobol85PreprocessorParser.SEQUENCE:
-	            case Cobol85PreprocessorParser.SHORT:
-	            case Cobol85PreprocessorParser.SIZE:
-	            case Cobol85PreprocessorParser.SOURCE:
-	            case Cobol85PreprocessorParser.SP:
-	            case Cobol85PreprocessorParser.SPACE:
-	            case Cobol85PreprocessorParser.SPIE:
-	            case Cobol85PreprocessorParser.SQL:
-	            case Cobol85PreprocessorParser.SQLC:
-	            case Cobol85PreprocessorParser.SQLCCSID:
-	            case Cobol85PreprocessorParser.SS:
-	            case Cobol85PreprocessorParser.SSR:
-	            case Cobol85PreprocessorParser.SSRANGE:
-	            case Cobol85PreprocessorParser.STD:
-	            case Cobol85PreprocessorParser.SYSEIB:
-	            case Cobol85PreprocessorParser.SZ:
-	            case Cobol85PreprocessorParser.TERM:
-	            case Cobol85PreprocessorParser.TERMINAL:
-	            case Cobol85PreprocessorParser.TEST:
-	            case Cobol85PreprocessorParser.THREAD:
-	            case Cobol85PreprocessorParser.TITLE:
-	            case Cobol85PreprocessorParser.TRIG:
-	            case Cobol85PreprocessorParser.TRUNC:
-	            case Cobol85PreprocessorParser.UE:
-	            case Cobol85PreprocessorParser.UPPER:
-	            case Cobol85PreprocessorParser.VBREF:
-	            case Cobol85PreprocessorParser.WD:
-	            case Cobol85PreprocessorParser.XMLPARSE:
-	            case Cobol85PreprocessorParser.XMLSS:
-	            case Cobol85PreprocessorParser.XOPTS:
-	            case Cobol85PreprocessorParser.XREF:
-	            case Cobol85PreprocessorParser.YEARWINDOW:
-	            case Cobol85PreprocessorParser.YW:
-	            case Cobol85PreprocessorParser.ZWB:
-	            case Cobol85PreprocessorParser.C_CHAR:
-	            case Cobol85PreprocessorParser.D_CHAR:
-	            case Cobol85PreprocessorParser.E_CHAR:
-	            case Cobol85PreprocessorParser.F_CHAR:
-	            case Cobol85PreprocessorParser.H_CHAR:
-	            case Cobol85PreprocessorParser.I_CHAR:
-	            case Cobol85PreprocessorParser.M_CHAR:
-	            case Cobol85PreprocessorParser.N_CHAR:
-	            case Cobol85PreprocessorParser.Q_CHAR:
-	            case Cobol85PreprocessorParser.S_CHAR:
-	            case Cobol85PreprocessorParser.U_CHAR:
-	            case Cobol85PreprocessorParser.W_CHAR:
-	            case Cobol85PreprocessorParser.X_CHAR:
-	            case Cobol85PreprocessorParser.COMMACHAR:
-	            case Cobol85PreprocessorParser.DOT:
-	            case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	            case Cobol85PreprocessorParser.NUMERICLITERAL:
-	            case Cobol85PreprocessorParser.IDENTIFIER:
-	            case Cobol85PreprocessorParser.FILENAME:
-	            case Cobol85PreprocessorParser.TEXT:
+	            case 1:
+	            case 2:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
+	            case 39:
+	            case 40:
+	            case 41:
+	            case 42:
+	            case 43:
+	            case 44:
+	            case 45:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 53:
+	            case 54:
+	            case 56:
+	            case 57:
+	            case 58:
+	            case 59:
+	            case 60:
+	            case 62:
+	            case 63:
+	            case 64:
+	            case 65:
+	            case 66:
+	            case 67:
+	            case 68:
+	            case 69:
+	            case 70:
+	            case 71:
+	            case 72:
+	            case 73:
+	            case 74:
+	            case 75:
+	            case 76:
+	            case 78:
+	            case 79:
+	            case 80:
+	            case 81:
+	            case 82:
+	            case 83:
+	            case 84:
+	            case 85:
+	            case 86:
+	            case 87:
+	            case 88:
+	            case 89:
+	            case 90:
+	            case 91:
+	            case 92:
+	            case 93:
+	            case 94:
+	            case 95:
+	            case 96:
+	            case 97:
+	            case 98:
+	            case 99:
+	            case 100:
+	            case 101:
+	            case 102:
+	            case 103:
+	            case 104:
+	            case 105:
+	            case 106:
+	            case 107:
+	            case 108:
+	            case 109:
+	            case 110:
+	            case 111:
+	            case 112:
+	            case 113:
+	            case 114:
+	            case 115:
+	            case 116:
+	            case 117:
+	            case 118:
+	            case 119:
+	            case 120:
+	            case 121:
+	            case 122:
+	            case 123:
+	            case 124:
+	            case 125:
+	            case 126:
+	            case 127:
+	            case 128:
+	            case 129:
+	            case 130:
+	            case 131:
+	            case 132:
+	            case 133:
+	            case 134:
+	            case 135:
+	            case 136:
+	            case 137:
+	            case 138:
+	            case 139:
+	            case 140:
+	            case 141:
+	            case 142:
+	            case 143:
+	            case 144:
+	            case 145:
+	            case 146:
+	            case 147:
+	            case 148:
+	            case 149:
+	            case 150:
+	            case 151:
+	            case 152:
+	            case 153:
+	            case 154:
+	            case 155:
+	            case 156:
+	            case 157:
+	            case 158:
+	            case 159:
+	            case 160:
+	            case 161:
+	            case 162:
+	            case 163:
+	            case 164:
+	            case 165:
+	            case 166:
+	            case 167:
+	            case 168:
+	            case 169:
+	            case 170:
+	            case 171:
+	            case 172:
+	            case 173:
+	            case 174:
+	            case 175:
+	            case 176:
+	            case 177:
+	            case 178:
+	            case 179:
+	            case 180:
+	            case 181:
+	            case 182:
+	            case 183:
+	            case 184:
+	            case 185:
+	            case 187:
+	            case 188:
+	            case 189:
+	            case 190:
+	            case 191:
+	            case 192:
+	            case 193:
+	            case 194:
+	            case 195:
+	            case 196:
+	            case 197:
+	            case 198:
+	            case 199:
+	            case 200:
+	            case 201:
+	            case 202:
+	            case 203:
+	            case 204:
+	            case 205:
+	            case 206:
+	            case 207:
+	            case 208:
+	            case 209:
+	            case 210:
+	            case 211:
+	            case 212:
+	            case 213:
+	            case 214:
+	            case 215:
+	            case 216:
+	            case 217:
+	            case 218:
+	            case 219:
+	            case 221:
+	            case 222:
+	            case 223:
+	            case 224:
+	            case 225:
+	            case 226:
+	            case 227:
+	            case 228:
+	            case 229:
+	            case 230:
+	            case 231:
+	            case 232:
+	            case 233:
+	            case 234:
+	            case 235:
+	            case 236:
+	            case 241:
+	            case 242:
+	            case 243:
+	            case 244:
+	            case 246:
+	            case 247:
+	            case 248:
+	            case 249:
+	            case 250:
+	            case 251:
+	            case 252:
+	            case 253:
+	            case 254:
+	            case 255:
+	            case 256:
+	            case 257:
+	            case 258:
+	            case 260:
+	            case 261:
+	            case 262:
+	            case 264:
+	            case 265:
+	            case 266:
+	            case 267:
+	            case 268:
+	            case 269:
+	            case 270:
+	            case 271:
+	            case 272:
+	            case 273:
+	            case 274:
+	            case 275:
+	            case 276:
+	            case 277:
+	            case 278:
+	            case 279:
+	            case 280:
+	            case 282:
+	            case 283:
+	            case 285:
+	            case 286:
+	            case 287:
+	            case 288:
+	            case 292:
 	                this.state = 648;
 	                this.charDataLine();
 	                break;
-	            case Cobol85PreprocessorParser.COPY:
+	            case 25:
 	                this.state = 649;
 	                this.match(Cobol85PreprocessorParser.COPY);
 	                break;
-	            case Cobol85PreprocessorParser.REPLACE:
+	            case 220:
 	                this.state = 650;
 	                this.match(Cobol85PreprocessorParser.REPLACE);
 	                break;
-	            case Cobol85PreprocessorParser.NEWLINE:
+	            case 289:
 	                this.state = 651;
 	                this.match(Cobol85PreprocessorParser.NEWLINE);
 	                break;
@@ -5565,7 +5561,7 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	            this.state = 654; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Cobol85PreprocessorParser.ADATA) | (1 << Cobol85PreprocessorParser.ADV) | (1 << Cobol85PreprocessorParser.ALIAS) | (1 << Cobol85PreprocessorParser.ANSI) | (1 << Cobol85PreprocessorParser.ANY) | (1 << Cobol85PreprocessorParser.APOST) | (1 << Cobol85PreprocessorParser.AR) | (1 << Cobol85PreprocessorParser.ARITH) | (1 << Cobol85PreprocessorParser.AUTO) | (1 << Cobol85PreprocessorParser.AWO) | (1 << Cobol85PreprocessorParser.BIN) | (1 << Cobol85PreprocessorParser.BLOCK0) | (1 << Cobol85PreprocessorParser.BUF) | (1 << Cobol85PreprocessorParser.BUFSIZE) | (1 << Cobol85PreprocessorParser.BY) | (1 << Cobol85PreprocessorParser.CBL) | (1 << Cobol85PreprocessorParser.CBLCARD) | (1 << Cobol85PreprocessorParser.CO) | (1 << Cobol85PreprocessorParser.COBOL2) | (1 << Cobol85PreprocessorParser.COBOL3) | (1 << Cobol85PreprocessorParser.CODEPAGE) | (1 << Cobol85PreprocessorParser.COMPAT) | (1 << Cobol85PreprocessorParser.COMPILE) | (1 << Cobol85PreprocessorParser.COPY) | (1 << Cobol85PreprocessorParser.CP) | (1 << Cobol85PreprocessorParser.CPP) | (1 << Cobol85PreprocessorParser.CPSM) | (1 << Cobol85PreprocessorParser.CS) | (1 << Cobol85PreprocessorParser.CURR) | (1 << Cobol85PreprocessorParser.CURRENCY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Cobol85PreprocessorParser.DATA - 32)) | (1 << (Cobol85PreprocessorParser.DATEPROC - 32)) | (1 << (Cobol85PreprocessorParser.DBCS - 32)) | (1 << (Cobol85PreprocessorParser.DD - 32)) | (1 << (Cobol85PreprocessorParser.DEBUG - 32)) | (1 << (Cobol85PreprocessorParser.DECK - 32)) | (1 << (Cobol85PreprocessorParser.DIAGTRUNC - 32)) | (1 << (Cobol85PreprocessorParser.DLI - 32)) | (1 << (Cobol85PreprocessorParser.DLL - 32)) | (1 << (Cobol85PreprocessorParser.DP - 32)) | (1 << (Cobol85PreprocessorParser.DTR - 32)) | (1 << (Cobol85PreprocessorParser.DU - 32)) | (1 << (Cobol85PreprocessorParser.DUMP - 32)) | (1 << (Cobol85PreprocessorParser.DYN - 32)) | (1 << (Cobol85PreprocessorParser.DYNAM - 32)) | (1 << (Cobol85PreprocessorParser.EDF - 32)) | (1 << (Cobol85PreprocessorParser.EJECT - 32)) | (1 << (Cobol85PreprocessorParser.EJPD - 32)) | (1 << (Cobol85PreprocessorParser.EN - 32)) | (1 << (Cobol85PreprocessorParser.ENGLISH - 32)) | (1 << (Cobol85PreprocessorParser.EPILOG - 32)) | (1 << (Cobol85PreprocessorParser.EXCI - 32)) | (1 << (Cobol85PreprocessorParser.EXIT - 32)) | (1 << (Cobol85PreprocessorParser.EXP - 32)) | (1 << (Cobol85PreprocessorParser.EXPORTALL - 32)) | (1 << (Cobol85PreprocessorParser.EXTEND - 32)) | (1 << (Cobol85PreprocessorParser.FASTSRT - 32)) | (1 << (Cobol85PreprocessorParser.FLAG - 32)) | (1 << (Cobol85PreprocessorParser.FLAGSTD - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Cobol85PreprocessorParser.FSRT - 64)) | (1 << (Cobol85PreprocessorParser.FULL - 64)) | (1 << (Cobol85PreprocessorParser.GDS - 64)) | (1 << (Cobol85PreprocessorParser.GRAPHIC - 64)) | (1 << (Cobol85PreprocessorParser.HOOK - 64)) | (1 << (Cobol85PreprocessorParser.IN - 64)) | (1 << (Cobol85PreprocessorParser.INTDATE - 64)) | (1 << (Cobol85PreprocessorParser.JA - 64)) | (1 << (Cobol85PreprocessorParser.JP - 64)) | (1 << (Cobol85PreprocessorParser.KA - 64)) | (1 << (Cobol85PreprocessorParser.LANG - 64)) | (1 << (Cobol85PreprocessorParser.LANGUAGE - 64)) | (1 << (Cobol85PreprocessorParser.LC - 64)) | (1 << (Cobol85PreprocessorParser.LENGTH - 64)) | (1 << (Cobol85PreprocessorParser.LIB - 64)) | (1 << (Cobol85PreprocessorParser.LILIAN - 64)) | (1 << (Cobol85PreprocessorParser.LIN - 64)) | (1 << (Cobol85PreprocessorParser.LINECOUNT - 64)) | (1 << (Cobol85PreprocessorParser.LINKAGE - 64)) | (1 << (Cobol85PreprocessorParser.LIST - 64)) | (1 << (Cobol85PreprocessorParser.LM - 64)) | (1 << (Cobol85PreprocessorParser.LONGMIXED - 64)) | (1 << (Cobol85PreprocessorParser.LONGUPPER - 64)) | (1 << (Cobol85PreprocessorParser.LPARENCHAR - 64)) | (1 << (Cobol85PreprocessorParser.LU - 64)) | (1 << (Cobol85PreprocessorParser.MAP - 64)) | (1 << (Cobol85PreprocessorParser.MARGINS - 64)) | (1 << (Cobol85PreprocessorParser.MAX - 64)) | (1 << (Cobol85PreprocessorParser.MD - 64)) | (1 << (Cobol85PreprocessorParser.MDECK - 64)) | (1 << (Cobol85PreprocessorParser.MIG - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (Cobol85PreprocessorParser.MIXED - 96)) | (1 << (Cobol85PreprocessorParser.NAME - 96)) | (1 << (Cobol85PreprocessorParser.NAT - 96)) | (1 << (Cobol85PreprocessorParser.NATIONAL - 96)) | (1 << (Cobol85PreprocessorParser.NATLANG - 96)) | (1 << (Cobol85PreprocessorParser.NN - 96)) | (1 << (Cobol85PreprocessorParser.NO - 96)) | (1 << (Cobol85PreprocessorParser.NOADATA - 96)) | (1 << (Cobol85PreprocessorParser.NOADV - 96)) | (1 << (Cobol85PreprocessorParser.NOALIAS - 96)) | (1 << (Cobol85PreprocessorParser.NOAWO - 96)) | (1 << (Cobol85PreprocessorParser.NOBLOCK0 - 96)) | (1 << (Cobol85PreprocessorParser.NOC - 96)) | (1 << (Cobol85PreprocessorParser.NOCBLCARD - 96)) | (1 << (Cobol85PreprocessorParser.NOCICS - 96)) | (1 << (Cobol85PreprocessorParser.NOCMPR2 - 96)) | (1 << (Cobol85PreprocessorParser.NOCOMPILE - 96)) | (1 << (Cobol85PreprocessorParser.NOCPSM - 96)) | (1 << (Cobol85PreprocessorParser.NOCURR - 96)) | (1 << (Cobol85PreprocessorParser.NOCURRENCY - 96)) | (1 << (Cobol85PreprocessorParser.NOD - 96)) | (1 << (Cobol85PreprocessorParser.NODATEPROC - 96)) | (1 << (Cobol85PreprocessorParser.NODBCS - 96)) | (1 << (Cobol85PreprocessorParser.NODE - 96)) | (1 << (Cobol85PreprocessorParser.NODEBUG - 96)) | (1 << (Cobol85PreprocessorParser.NODECK - 96)) | (1 << (Cobol85PreprocessorParser.NODIAGTRUNC - 96)) | (1 << (Cobol85PreprocessorParser.NODLL - 96)) | (1 << (Cobol85PreprocessorParser.NODU - 96)) | (1 << (Cobol85PreprocessorParser.NODUMP - 96)) | (1 << (Cobol85PreprocessorParser.NODP - 96)) | (1 << (Cobol85PreprocessorParser.NODTR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (Cobol85PreprocessorParser.NODYN - 128)) | (1 << (Cobol85PreprocessorParser.NODYNAM - 128)) | (1 << (Cobol85PreprocessorParser.NOEDF - 128)) | (1 << (Cobol85PreprocessorParser.NOEJPD - 128)) | (1 << (Cobol85PreprocessorParser.NOEPILOG - 128)) | (1 << (Cobol85PreprocessorParser.NOEXIT - 128)) | (1 << (Cobol85PreprocessorParser.NOEXP - 128)) | (1 << (Cobol85PreprocessorParser.NOEXPORTALL - 128)) | (1 << (Cobol85PreprocessorParser.NOF - 128)) | (1 << (Cobol85PreprocessorParser.NOFASTSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOFEPI - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGMIG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGSTD - 128)) | (1 << (Cobol85PreprocessorParser.NOFSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOGRAPHIC - 128)) | (1 << (Cobol85PreprocessorParser.NOHOOK - 128)) | (1 << (Cobol85PreprocessorParser.NOLENGTH - 128)) | (1 << (Cobol85PreprocessorParser.NOLIB - 128)) | (1 << (Cobol85PreprocessorParser.NOLINKAGE - 128)) | (1 << (Cobol85PreprocessorParser.NOLIST - 128)) | (1 << (Cobol85PreprocessorParser.NOMAP - 128)) | (1 << (Cobol85PreprocessorParser.NOMD - 128)) | (1 << (Cobol85PreprocessorParser.NOMDECK - 128)) | (1 << (Cobol85PreprocessorParser.NONAME - 128)) | (1 << (Cobol85PreprocessorParser.NONUM - 128)) | (1 << (Cobol85PreprocessorParser.NONUMBER - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJ - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJECT - 128)) | (1 << (Cobol85PreprocessorParser.NOOFF - 128)) | (1 << (Cobol85PreprocessorParser.NOOFFSET - 128)) | (1 << (Cobol85PreprocessorParser.NOOPSEQUENCE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (Cobol85PreprocessorParser.NOOPT - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIMIZE - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIONS - 160)) | (1 << (Cobol85PreprocessorParser.NOP - 160)) | (1 << (Cobol85PreprocessorParser.NOPFD - 160)) | (1 << (Cobol85PreprocessorParser.NOPROLOG - 160)) | (1 << (Cobol85PreprocessorParser.NORENT - 160)) | (1 << (Cobol85PreprocessorParser.NOS - 160)) | (1 << (Cobol85PreprocessorParser.NOSEP - 160)) | (1 << (Cobol85PreprocessorParser.NOSEPARATE - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQ - 160)) | (1 << (Cobol85PreprocessorParser.NOSOURCE - 160)) | (1 << (Cobol85PreprocessorParser.NOSPIE - 160)) | (1 << (Cobol85PreprocessorParser.NOSQL - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLC - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLCCSID - 160)) | (1 << (Cobol85PreprocessorParser.NOSSR - 160)) | (1 << (Cobol85PreprocessorParser.NOSSRANGE - 160)) | (1 << (Cobol85PreprocessorParser.NOSTDTRUNC - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQUENCE - 160)) | (1 << (Cobol85PreprocessorParser.NOTERM - 160)) | (1 << (Cobol85PreprocessorParser.NOTERMINAL - 160)) | (1 << (Cobol85PreprocessorParser.NOTEST - 160)) | (1 << (Cobol85PreprocessorParser.NOTHREAD - 160)) | (1 << (Cobol85PreprocessorParser.NOTRIG - 160)) | (1 << (Cobol85PreprocessorParser.NOVBREF - 160)) | (1 << (Cobol85PreprocessorParser.NOWORD - 160)) | (1 << (Cobol85PreprocessorParser.NOX - 160)) | (1 << (Cobol85PreprocessorParser.NOXREF - 160)) | (1 << (Cobol85PreprocessorParser.NOZWB - 160)) | (1 << (Cobol85PreprocessorParser.NS - 160)))) !== 0) || ((((_la - 192)) & ~0x1f) == 0 && ((1 << (_la - 192)) & ((1 << (Cobol85PreprocessorParser.NSEQ - 192)) | (1 << (Cobol85PreprocessorParser.NSYMBOL - 192)) | (1 << (Cobol85PreprocessorParser.NUM - 192)) | (1 << (Cobol85PreprocessorParser.NUMBER - 192)) | (1 << (Cobol85PreprocessorParser.NUMPROC - 192)) | (1 << (Cobol85PreprocessorParser.OBJ - 192)) | (1 << (Cobol85PreprocessorParser.OBJECT - 192)) | (1 << (Cobol85PreprocessorParser.OF - 192)) | (1 << (Cobol85PreprocessorParser.OFF - 192)) | (1 << (Cobol85PreprocessorParser.OFFSET - 192)) | (1 << (Cobol85PreprocessorParser.ON - 192)) | (1 << (Cobol85PreprocessorParser.OP - 192)) | (1 << (Cobol85PreprocessorParser.OPMARGINS - 192)) | (1 << (Cobol85PreprocessorParser.OPSEQUENCE - 192)) | (1 << (Cobol85PreprocessorParser.OPT - 192)) | (1 << (Cobol85PreprocessorParser.OPTFILE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIMIZE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIONS - 192)) | (1 << (Cobol85PreprocessorParser.OUT - 192)) | (1 << (Cobol85PreprocessorParser.OUTDD - 192)) | (1 << (Cobol85PreprocessorParser.PFD - 192)) | (1 << (Cobol85PreprocessorParser.PPTDBG - 192)) | (1 << (Cobol85PreprocessorParser.PGMN - 192)) | (1 << (Cobol85PreprocessorParser.PGMNAME - 192)) | (1 << (Cobol85PreprocessorParser.PROCESS - 192)) | (1 << (Cobol85PreprocessorParser.PROLOG - 192)) | (1 << (Cobol85PreprocessorParser.QUOTE - 192)) | (1 << (Cobol85PreprocessorParser.RENT - 192)) | (1 << (Cobol85PreprocessorParser.REPLACE - 192)) | (1 << (Cobol85PreprocessorParser.REPLACING - 192)) | (1 << (Cobol85PreprocessorParser.RMODE - 192)) | (1 << (Cobol85PreprocessorParser.RPARENCHAR - 192)))) !== 0) || ((((_la - 224)) & ~0x1f) == 0 && ((1 << (_la - 224)) & ((1 << (Cobol85PreprocessorParser.SEP - 224)) | (1 << (Cobol85PreprocessorParser.SEPARATE - 224)) | (1 << (Cobol85PreprocessorParser.SEQ - 224)) | (1 << (Cobol85PreprocessorParser.SEQUENCE - 224)) | (1 << (Cobol85PreprocessorParser.SHORT - 224)) | (1 << (Cobol85PreprocessorParser.SIZE - 224)) | (1 << (Cobol85PreprocessorParser.SOURCE - 224)) | (1 << (Cobol85PreprocessorParser.SP - 224)) | (1 << (Cobol85PreprocessorParser.SPACE - 224)) | (1 << (Cobol85PreprocessorParser.SPIE - 224)) | (1 << (Cobol85PreprocessorParser.SQL - 224)) | (1 << (Cobol85PreprocessorParser.SQLC - 224)) | (1 << (Cobol85PreprocessorParser.SQLCCSID - 224)) | (1 << (Cobol85PreprocessorParser.SS - 224)) | (1 << (Cobol85PreprocessorParser.SSR - 224)) | (1 << (Cobol85PreprocessorParser.SSRANGE - 224)) | (1 << (Cobol85PreprocessorParser.STD - 224)) | (1 << (Cobol85PreprocessorParser.SYSEIB - 224)) | (1 << (Cobol85PreprocessorParser.SZ - 224)) | (1 << (Cobol85PreprocessorParser.TERM - 224)) | (1 << (Cobol85PreprocessorParser.TERMINAL - 224)) | (1 << (Cobol85PreprocessorParser.TEST - 224)) | (1 << (Cobol85PreprocessorParser.THREAD - 224)) | (1 << (Cobol85PreprocessorParser.TITLE - 224)) | (1 << (Cobol85PreprocessorParser.TRIG - 224)) | (1 << (Cobol85PreprocessorParser.TRUNC - 224)) | (1 << (Cobol85PreprocessorParser.UE - 224)))) !== 0) || ((((_la - 256)) & ~0x1f) == 0 && ((1 << (_la - 256)) & ((1 << (Cobol85PreprocessorParser.UPPER - 256)) | (1 << (Cobol85PreprocessorParser.VBREF - 256)) | (1 << (Cobol85PreprocessorParser.WD - 256)) | (1 << (Cobol85PreprocessorParser.XMLPARSE - 256)) | (1 << (Cobol85PreprocessorParser.XMLSS - 256)) | (1 << (Cobol85PreprocessorParser.XOPTS - 256)) | (1 << (Cobol85PreprocessorParser.XREF - 256)) | (1 << (Cobol85PreprocessorParser.YEARWINDOW - 256)) | (1 << (Cobol85PreprocessorParser.YW - 256)) | (1 << (Cobol85PreprocessorParser.ZWB - 256)) | (1 << (Cobol85PreprocessorParser.C_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.D_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.E_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.F_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.H_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.I_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.M_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.N_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.Q_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.U_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.W_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.X_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.COMMACHAR - 256)) | (1 << (Cobol85PreprocessorParser.DOT - 256)) | (1 << (Cobol85PreprocessorParser.NONNUMERICLITERAL - 256)) | (1 << (Cobol85PreprocessorParser.NUMERICLITERAL - 256)) | (1 << (Cobol85PreprocessorParser.IDENTIFIER - 256)))) !== 0) || ((((_la - 288)) & ~0x1f) == 0 && ((1 << (_la - 288)) & ((1 << (Cobol85PreprocessorParser.FILENAME - 288)) | (1 << (Cobol85PreprocessorParser.NEWLINE - 288)) | (1 << (Cobol85PreprocessorParser.TEXT - 288)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294705150) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3748659199) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294959103) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294967295) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294967295) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 4227858431) !== 0) || ((((_la - 192)) & ~0x1f) === 0 && ((1 << (_la - 192)) & 4294967295) !== 0) || ((((_la - 224)) & ~0x1f) === 0 && ((1 << (_la - 224)) & 4292747263) !== 0) || ((((_la - 256)) & ~0x1f) === 0 && ((1 << (_la - 256)) & 3992977271) !== 0) || ((((_la - 288)) & ~0x1f) === 0 && ((1 << (_la - 288)) & 19) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -5596,296 +5592,296 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        		this.state = 663;
 	        		this._errHandler.sync(this);
 	        		switch(this._input.LA(1)) {
-	        		case Cobol85PreprocessorParser.ADATA:
-	        		case Cobol85PreprocessorParser.ADV:
-	        		case Cobol85PreprocessorParser.ALIAS:
-	        		case Cobol85PreprocessorParser.ANSI:
-	        		case Cobol85PreprocessorParser.ANY:
-	        		case Cobol85PreprocessorParser.APOST:
-	        		case Cobol85PreprocessorParser.AR:
-	        		case Cobol85PreprocessorParser.ARITH:
-	        		case Cobol85PreprocessorParser.AUTO:
-	        		case Cobol85PreprocessorParser.AWO:
-	        		case Cobol85PreprocessorParser.BIN:
-	        		case Cobol85PreprocessorParser.BLOCK0:
-	        		case Cobol85PreprocessorParser.BUF:
-	        		case Cobol85PreprocessorParser.BUFSIZE:
-	        		case Cobol85PreprocessorParser.BY:
-	        		case Cobol85PreprocessorParser.CBL:
-	        		case Cobol85PreprocessorParser.CBLCARD:
-	        		case Cobol85PreprocessorParser.CO:
-	        		case Cobol85PreprocessorParser.COBOL2:
-	        		case Cobol85PreprocessorParser.COBOL3:
-	        		case Cobol85PreprocessorParser.CODEPAGE:
-	        		case Cobol85PreprocessorParser.COMPAT:
-	        		case Cobol85PreprocessorParser.COMPILE:
-	        		case Cobol85PreprocessorParser.CP:
-	        		case Cobol85PreprocessorParser.CPP:
-	        		case Cobol85PreprocessorParser.CPSM:
-	        		case Cobol85PreprocessorParser.CS:
-	        		case Cobol85PreprocessorParser.CURR:
-	        		case Cobol85PreprocessorParser.CURRENCY:
-	        		case Cobol85PreprocessorParser.DATA:
-	        		case Cobol85PreprocessorParser.DATEPROC:
-	        		case Cobol85PreprocessorParser.DBCS:
-	        		case Cobol85PreprocessorParser.DD:
-	        		case Cobol85PreprocessorParser.DEBUG:
-	        		case Cobol85PreprocessorParser.DECK:
-	        		case Cobol85PreprocessorParser.DIAGTRUNC:
-	        		case Cobol85PreprocessorParser.DLI:
-	        		case Cobol85PreprocessorParser.DLL:
-	        		case Cobol85PreprocessorParser.DP:
-	        		case Cobol85PreprocessorParser.DTR:
-	        		case Cobol85PreprocessorParser.DU:
-	        		case Cobol85PreprocessorParser.DUMP:
-	        		case Cobol85PreprocessorParser.DYN:
-	        		case Cobol85PreprocessorParser.DYNAM:
-	        		case Cobol85PreprocessorParser.EDF:
-	        		case Cobol85PreprocessorParser.EJECT:
-	        		case Cobol85PreprocessorParser.EJPD:
-	        		case Cobol85PreprocessorParser.EN:
-	        		case Cobol85PreprocessorParser.ENGLISH:
-	        		case Cobol85PreprocessorParser.EPILOG:
-	        		case Cobol85PreprocessorParser.EXCI:
-	        		case Cobol85PreprocessorParser.EXIT:
-	        		case Cobol85PreprocessorParser.EXP:
-	        		case Cobol85PreprocessorParser.EXPORTALL:
-	        		case Cobol85PreprocessorParser.EXTEND:
-	        		case Cobol85PreprocessorParser.FASTSRT:
-	        		case Cobol85PreprocessorParser.FLAG:
-	        		case Cobol85PreprocessorParser.FLAGSTD:
-	        		case Cobol85PreprocessorParser.FSRT:
-	        		case Cobol85PreprocessorParser.FULL:
-	        		case Cobol85PreprocessorParser.GDS:
-	        		case Cobol85PreprocessorParser.GRAPHIC:
-	        		case Cobol85PreprocessorParser.HOOK:
-	        		case Cobol85PreprocessorParser.IN:
-	        		case Cobol85PreprocessorParser.INTDATE:
-	        		case Cobol85PreprocessorParser.JA:
-	        		case Cobol85PreprocessorParser.JP:
-	        		case Cobol85PreprocessorParser.KA:
-	        		case Cobol85PreprocessorParser.LANG:
-	        		case Cobol85PreprocessorParser.LANGUAGE:
-	        		case Cobol85PreprocessorParser.LC:
-	        		case Cobol85PreprocessorParser.LENGTH:
-	        		case Cobol85PreprocessorParser.LIB:
-	        		case Cobol85PreprocessorParser.LILIAN:
-	        		case Cobol85PreprocessorParser.LIN:
-	        		case Cobol85PreprocessorParser.LINECOUNT:
-	        		case Cobol85PreprocessorParser.LINKAGE:
-	        		case Cobol85PreprocessorParser.LIST:
-	        		case Cobol85PreprocessorParser.LM:
-	        		case Cobol85PreprocessorParser.LONGMIXED:
-	        		case Cobol85PreprocessorParser.LONGUPPER:
-	        		case Cobol85PreprocessorParser.LU:
-	        		case Cobol85PreprocessorParser.MAP:
-	        		case Cobol85PreprocessorParser.MARGINS:
-	        		case Cobol85PreprocessorParser.MAX:
-	        		case Cobol85PreprocessorParser.MD:
-	        		case Cobol85PreprocessorParser.MDECK:
-	        		case Cobol85PreprocessorParser.MIG:
-	        		case Cobol85PreprocessorParser.MIXED:
-	        		case Cobol85PreprocessorParser.NAME:
-	        		case Cobol85PreprocessorParser.NAT:
-	        		case Cobol85PreprocessorParser.NATIONAL:
-	        		case Cobol85PreprocessorParser.NATLANG:
-	        		case Cobol85PreprocessorParser.NN:
-	        		case Cobol85PreprocessorParser.NO:
-	        		case Cobol85PreprocessorParser.NOADATA:
-	        		case Cobol85PreprocessorParser.NOADV:
-	        		case Cobol85PreprocessorParser.NOALIAS:
-	        		case Cobol85PreprocessorParser.NOAWO:
-	        		case Cobol85PreprocessorParser.NOBLOCK0:
-	        		case Cobol85PreprocessorParser.NOC:
-	        		case Cobol85PreprocessorParser.NOCBLCARD:
-	        		case Cobol85PreprocessorParser.NOCICS:
-	        		case Cobol85PreprocessorParser.NOCMPR2:
-	        		case Cobol85PreprocessorParser.NOCOMPILE:
-	        		case Cobol85PreprocessorParser.NOCPSM:
-	        		case Cobol85PreprocessorParser.NOCURR:
-	        		case Cobol85PreprocessorParser.NOCURRENCY:
-	        		case Cobol85PreprocessorParser.NOD:
-	        		case Cobol85PreprocessorParser.NODATEPROC:
-	        		case Cobol85PreprocessorParser.NODBCS:
-	        		case Cobol85PreprocessorParser.NODE:
-	        		case Cobol85PreprocessorParser.NODEBUG:
-	        		case Cobol85PreprocessorParser.NODECK:
-	        		case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        		case Cobol85PreprocessorParser.NODLL:
-	        		case Cobol85PreprocessorParser.NODU:
-	        		case Cobol85PreprocessorParser.NODUMP:
-	        		case Cobol85PreprocessorParser.NODP:
-	        		case Cobol85PreprocessorParser.NODTR:
-	        		case Cobol85PreprocessorParser.NODYN:
-	        		case Cobol85PreprocessorParser.NODYNAM:
-	        		case Cobol85PreprocessorParser.NOEDF:
-	        		case Cobol85PreprocessorParser.NOEJPD:
-	        		case Cobol85PreprocessorParser.NOEPILOG:
-	        		case Cobol85PreprocessorParser.NOEXIT:
-	        		case Cobol85PreprocessorParser.NOEXP:
-	        		case Cobol85PreprocessorParser.NOEXPORTALL:
-	        		case Cobol85PreprocessorParser.NOF:
-	        		case Cobol85PreprocessorParser.NOFASTSRT:
-	        		case Cobol85PreprocessorParser.NOFEPI:
-	        		case Cobol85PreprocessorParser.NOFLAG:
-	        		case Cobol85PreprocessorParser.NOFLAGMIG:
-	        		case Cobol85PreprocessorParser.NOFLAGSTD:
-	        		case Cobol85PreprocessorParser.NOFSRT:
-	        		case Cobol85PreprocessorParser.NOGRAPHIC:
-	        		case Cobol85PreprocessorParser.NOHOOK:
-	        		case Cobol85PreprocessorParser.NOLENGTH:
-	        		case Cobol85PreprocessorParser.NOLIB:
-	        		case Cobol85PreprocessorParser.NOLINKAGE:
-	        		case Cobol85PreprocessorParser.NOLIST:
-	        		case Cobol85PreprocessorParser.NOMAP:
-	        		case Cobol85PreprocessorParser.NOMD:
-	        		case Cobol85PreprocessorParser.NOMDECK:
-	        		case Cobol85PreprocessorParser.NONAME:
-	        		case Cobol85PreprocessorParser.NONUM:
-	        		case Cobol85PreprocessorParser.NONUMBER:
-	        		case Cobol85PreprocessorParser.NOOBJ:
-	        		case Cobol85PreprocessorParser.NOOBJECT:
-	        		case Cobol85PreprocessorParser.NOOFF:
-	        		case Cobol85PreprocessorParser.NOOFFSET:
-	        		case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        		case Cobol85PreprocessorParser.NOOPT:
-	        		case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        		case Cobol85PreprocessorParser.NOOPTIONS:
-	        		case Cobol85PreprocessorParser.NOP:
-	        		case Cobol85PreprocessorParser.NOPFD:
-	        		case Cobol85PreprocessorParser.NOPROLOG:
-	        		case Cobol85PreprocessorParser.NORENT:
-	        		case Cobol85PreprocessorParser.NOS:
-	        		case Cobol85PreprocessorParser.NOSEP:
-	        		case Cobol85PreprocessorParser.NOSEPARATE:
-	        		case Cobol85PreprocessorParser.NOSEQ:
-	        		case Cobol85PreprocessorParser.NOSOURCE:
-	        		case Cobol85PreprocessorParser.NOSPIE:
-	        		case Cobol85PreprocessorParser.NOSQL:
-	        		case Cobol85PreprocessorParser.NOSQLC:
-	        		case Cobol85PreprocessorParser.NOSQLCCSID:
-	        		case Cobol85PreprocessorParser.NOSSR:
-	        		case Cobol85PreprocessorParser.NOSSRANGE:
-	        		case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        		case Cobol85PreprocessorParser.NOSEQUENCE:
-	        		case Cobol85PreprocessorParser.NOTERM:
-	        		case Cobol85PreprocessorParser.NOTERMINAL:
-	        		case Cobol85PreprocessorParser.NOTEST:
-	        		case Cobol85PreprocessorParser.NOTHREAD:
-	        		case Cobol85PreprocessorParser.NOTRIG:
-	        		case Cobol85PreprocessorParser.NOVBREF:
-	        		case Cobol85PreprocessorParser.NOWORD:
-	        		case Cobol85PreprocessorParser.NOX:
-	        		case Cobol85PreprocessorParser.NOXREF:
-	        		case Cobol85PreprocessorParser.NOZWB:
-	        		case Cobol85PreprocessorParser.NS:
-	        		case Cobol85PreprocessorParser.NSEQ:
-	        		case Cobol85PreprocessorParser.NSYMBOL:
-	        		case Cobol85PreprocessorParser.NUM:
-	        		case Cobol85PreprocessorParser.NUMBER:
-	        		case Cobol85PreprocessorParser.NUMPROC:
-	        		case Cobol85PreprocessorParser.OBJ:
-	        		case Cobol85PreprocessorParser.OBJECT:
-	        		case Cobol85PreprocessorParser.OF:
-	        		case Cobol85PreprocessorParser.OFF:
-	        		case Cobol85PreprocessorParser.OFFSET:
-	        		case Cobol85PreprocessorParser.ON:
-	        		case Cobol85PreprocessorParser.OP:
-	        		case Cobol85PreprocessorParser.OPMARGINS:
-	        		case Cobol85PreprocessorParser.OPSEQUENCE:
-	        		case Cobol85PreprocessorParser.OPT:
-	        		case Cobol85PreprocessorParser.OPTFILE:
-	        		case Cobol85PreprocessorParser.OPTIMIZE:
-	        		case Cobol85PreprocessorParser.OPTIONS:
-	        		case Cobol85PreprocessorParser.OUT:
-	        		case Cobol85PreprocessorParser.OUTDD:
-	        		case Cobol85PreprocessorParser.PFD:
-	        		case Cobol85PreprocessorParser.PPTDBG:
-	        		case Cobol85PreprocessorParser.PGMN:
-	        		case Cobol85PreprocessorParser.PGMNAME:
-	        		case Cobol85PreprocessorParser.PROCESS:
-	        		case Cobol85PreprocessorParser.PROLOG:
-	        		case Cobol85PreprocessorParser.QUOTE:
-	        		case Cobol85PreprocessorParser.RENT:
-	        		case Cobol85PreprocessorParser.REPLACING:
-	        		case Cobol85PreprocessorParser.RMODE:
-	        		case Cobol85PreprocessorParser.SEP:
-	        		case Cobol85PreprocessorParser.SEPARATE:
-	        		case Cobol85PreprocessorParser.SEQ:
-	        		case Cobol85PreprocessorParser.SEQUENCE:
-	        		case Cobol85PreprocessorParser.SHORT:
-	        		case Cobol85PreprocessorParser.SIZE:
-	        		case Cobol85PreprocessorParser.SOURCE:
-	        		case Cobol85PreprocessorParser.SP:
-	        		case Cobol85PreprocessorParser.SPACE:
-	        		case Cobol85PreprocessorParser.SPIE:
-	        		case Cobol85PreprocessorParser.SQL:
-	        		case Cobol85PreprocessorParser.SQLC:
-	        		case Cobol85PreprocessorParser.SQLCCSID:
-	        		case Cobol85PreprocessorParser.SS:
-	        		case Cobol85PreprocessorParser.SSR:
-	        		case Cobol85PreprocessorParser.SSRANGE:
-	        		case Cobol85PreprocessorParser.STD:
-	        		case Cobol85PreprocessorParser.SYSEIB:
-	        		case Cobol85PreprocessorParser.SZ:
-	        		case Cobol85PreprocessorParser.TERM:
-	        		case Cobol85PreprocessorParser.TERMINAL:
-	        		case Cobol85PreprocessorParser.TEST:
-	        		case Cobol85PreprocessorParser.THREAD:
-	        		case Cobol85PreprocessorParser.TITLE:
-	        		case Cobol85PreprocessorParser.TRIG:
-	        		case Cobol85PreprocessorParser.TRUNC:
-	        		case Cobol85PreprocessorParser.UE:
-	        		case Cobol85PreprocessorParser.UPPER:
-	        		case Cobol85PreprocessorParser.VBREF:
-	        		case Cobol85PreprocessorParser.WD:
-	        		case Cobol85PreprocessorParser.XMLPARSE:
-	        		case Cobol85PreprocessorParser.XMLSS:
-	        		case Cobol85PreprocessorParser.XOPTS:
-	        		case Cobol85PreprocessorParser.XREF:
-	        		case Cobol85PreprocessorParser.YEARWINDOW:
-	        		case Cobol85PreprocessorParser.YW:
-	        		case Cobol85PreprocessorParser.ZWB:
-	        		case Cobol85PreprocessorParser.C_CHAR:
-	        		case Cobol85PreprocessorParser.D_CHAR:
-	        		case Cobol85PreprocessorParser.E_CHAR:
-	        		case Cobol85PreprocessorParser.F_CHAR:
-	        		case Cobol85PreprocessorParser.H_CHAR:
-	        		case Cobol85PreprocessorParser.I_CHAR:
-	        		case Cobol85PreprocessorParser.M_CHAR:
-	        		case Cobol85PreprocessorParser.N_CHAR:
-	        		case Cobol85PreprocessorParser.Q_CHAR:
-	        		case Cobol85PreprocessorParser.S_CHAR:
-	        		case Cobol85PreprocessorParser.U_CHAR:
-	        		case Cobol85PreprocessorParser.W_CHAR:
-	        		case Cobol85PreprocessorParser.X_CHAR:
-	        		case Cobol85PreprocessorParser.COMMACHAR:
-	        		case Cobol85PreprocessorParser.IDENTIFIER:
+	        		case 1:
+	        		case 2:
+	        		case 3:
+	        		case 4:
+	        		case 5:
+	        		case 6:
+	        		case 7:
+	        		case 8:
+	        		case 9:
+	        		case 10:
+	        		case 11:
+	        		case 12:
+	        		case 13:
+	        		case 14:
+	        		case 15:
+	        		case 16:
+	        		case 17:
+	        		case 19:
+	        		case 20:
+	        		case 21:
+	        		case 22:
+	        		case 23:
+	        		case 24:
+	        		case 26:
+	        		case 27:
+	        		case 28:
+	        		case 29:
+	        		case 30:
+	        		case 31:
+	        		case 32:
+	        		case 33:
+	        		case 34:
+	        		case 35:
+	        		case 36:
+	        		case 37:
+	        		case 38:
+	        		case 39:
+	        		case 40:
+	        		case 41:
+	        		case 42:
+	        		case 43:
+	        		case 44:
+	        		case 45:
+	        		case 46:
+	        		case 47:
+	        		case 48:
+	        		case 49:
+	        		case 50:
+	        		case 51:
+	        		case 53:
+	        		case 54:
+	        		case 56:
+	        		case 57:
+	        		case 58:
+	        		case 59:
+	        		case 60:
+	        		case 62:
+	        		case 63:
+	        		case 64:
+	        		case 65:
+	        		case 66:
+	        		case 67:
+	        		case 68:
+	        		case 69:
+	        		case 70:
+	        		case 71:
+	        		case 72:
+	        		case 73:
+	        		case 74:
+	        		case 75:
+	        		case 76:
+	        		case 78:
+	        		case 79:
+	        		case 80:
+	        		case 81:
+	        		case 82:
+	        		case 83:
+	        		case 84:
+	        		case 85:
+	        		case 86:
+	        		case 87:
+	        		case 89:
+	        		case 90:
+	        		case 91:
+	        		case 92:
+	        		case 93:
+	        		case 94:
+	        		case 95:
+	        		case 96:
+	        		case 97:
+	        		case 98:
+	        		case 99:
+	        		case 100:
+	        		case 101:
+	        		case 102:
+	        		case 103:
+	        		case 104:
+	        		case 105:
+	        		case 106:
+	        		case 107:
+	        		case 108:
+	        		case 109:
+	        		case 110:
+	        		case 111:
+	        		case 112:
+	        		case 113:
+	        		case 114:
+	        		case 115:
+	        		case 116:
+	        		case 117:
+	        		case 118:
+	        		case 119:
+	        		case 120:
+	        		case 121:
+	        		case 122:
+	        		case 123:
+	        		case 124:
+	        		case 125:
+	        		case 126:
+	        		case 127:
+	        		case 128:
+	        		case 129:
+	        		case 130:
+	        		case 131:
+	        		case 132:
+	        		case 133:
+	        		case 134:
+	        		case 135:
+	        		case 136:
+	        		case 137:
+	        		case 138:
+	        		case 139:
+	        		case 140:
+	        		case 141:
+	        		case 142:
+	        		case 143:
+	        		case 144:
+	        		case 145:
+	        		case 146:
+	        		case 147:
+	        		case 148:
+	        		case 149:
+	        		case 150:
+	        		case 151:
+	        		case 152:
+	        		case 153:
+	        		case 154:
+	        		case 155:
+	        		case 156:
+	        		case 157:
+	        		case 158:
+	        		case 159:
+	        		case 160:
+	        		case 161:
+	        		case 162:
+	        		case 163:
+	        		case 164:
+	        		case 165:
+	        		case 166:
+	        		case 167:
+	        		case 168:
+	        		case 169:
+	        		case 170:
+	        		case 171:
+	        		case 172:
+	        		case 173:
+	        		case 174:
+	        		case 175:
+	        		case 176:
+	        		case 177:
+	        		case 178:
+	        		case 179:
+	        		case 180:
+	        		case 181:
+	        		case 182:
+	        		case 183:
+	        		case 184:
+	        		case 185:
+	        		case 187:
+	        		case 188:
+	        		case 189:
+	        		case 190:
+	        		case 191:
+	        		case 192:
+	        		case 193:
+	        		case 194:
+	        		case 195:
+	        		case 196:
+	        		case 197:
+	        		case 198:
+	        		case 199:
+	        		case 200:
+	        		case 201:
+	        		case 202:
+	        		case 203:
+	        		case 204:
+	        		case 205:
+	        		case 206:
+	        		case 207:
+	        		case 208:
+	        		case 209:
+	        		case 210:
+	        		case 211:
+	        		case 212:
+	        		case 213:
+	        		case 214:
+	        		case 215:
+	        		case 216:
+	        		case 217:
+	        		case 218:
+	        		case 219:
+	        		case 221:
+	        		case 222:
+	        		case 224:
+	        		case 225:
+	        		case 226:
+	        		case 227:
+	        		case 228:
+	        		case 229:
+	        		case 230:
+	        		case 231:
+	        		case 232:
+	        		case 233:
+	        		case 234:
+	        		case 235:
+	        		case 236:
+	        		case 241:
+	        		case 242:
+	        		case 243:
+	        		case 244:
+	        		case 246:
+	        		case 247:
+	        		case 248:
+	        		case 249:
+	        		case 250:
+	        		case 251:
+	        		case 252:
+	        		case 253:
+	        		case 254:
+	        		case 255:
+	        		case 256:
+	        		case 257:
+	        		case 258:
+	        		case 260:
+	        		case 261:
+	        		case 262:
+	        		case 264:
+	        		case 265:
+	        		case 266:
+	        		case 267:
+	        		case 268:
+	        		case 269:
+	        		case 270:
+	        		case 271:
+	        		case 272:
+	        		case 273:
+	        		case 274:
+	        		case 275:
+	        		case 276:
+	        		case 277:
+	        		case 278:
+	        		case 279:
+	        		case 280:
+	        		case 282:
+	        		case 287:
 	        		    this.state = 656;
 	        		    this.cobolWord();
 	        		    break;
-	        		case Cobol85PreprocessorParser.NONNUMERICLITERAL:
-	        		case Cobol85PreprocessorParser.NUMERICLITERAL:
+	        		case 285:
+	        		case 286:
 	        		    this.state = 657;
 	        		    this.literal();
 	        		    break;
-	        		case Cobol85PreprocessorParser.FILENAME:
+	        		case 288:
 	        		    this.state = 658;
 	        		    this.filename();
 	        		    break;
-	        		case Cobol85PreprocessorParser.TEXT:
+	        		case 292:
 	        		    this.state = 659;
 	        		    this.match(Cobol85PreprocessorParser.TEXT);
 	        		    break;
-	        		case Cobol85PreprocessorParser.DOT:
+	        		case 283:
 	        		    this.state = 660;
 	        		    this.match(Cobol85PreprocessorParser.DOT);
 	        		    break;
-	        		case Cobol85PreprocessorParser.LPARENCHAR:
+	        		case 88:
 	        		    this.state = 661;
 	        		    this.match(Cobol85PreprocessorParser.LPARENCHAR);
 	        		    break;
-	        		case Cobol85PreprocessorParser.RPARENCHAR:
+	        		case 223:
 	        		    this.state = 662;
 	        		    this.match(Cobol85PreprocessorParser.RPARENCHAR);
 	        		    break;
@@ -5923,275 +5919,275 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	        this.state = 669;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Cobol85PreprocessorParser.IDENTIFIER:
+	        case 287:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 667;
 	            this.match(Cobol85PreprocessorParser.IDENTIFIER);
 	            break;
-	        case Cobol85PreprocessorParser.ADATA:
-	        case Cobol85PreprocessorParser.ADV:
-	        case Cobol85PreprocessorParser.ALIAS:
-	        case Cobol85PreprocessorParser.ANSI:
-	        case Cobol85PreprocessorParser.ANY:
-	        case Cobol85PreprocessorParser.APOST:
-	        case Cobol85PreprocessorParser.AR:
-	        case Cobol85PreprocessorParser.ARITH:
-	        case Cobol85PreprocessorParser.AUTO:
-	        case Cobol85PreprocessorParser.AWO:
-	        case Cobol85PreprocessorParser.BIN:
-	        case Cobol85PreprocessorParser.BLOCK0:
-	        case Cobol85PreprocessorParser.BUF:
-	        case Cobol85PreprocessorParser.BUFSIZE:
-	        case Cobol85PreprocessorParser.BY:
-	        case Cobol85PreprocessorParser.CBL:
-	        case Cobol85PreprocessorParser.CBLCARD:
-	        case Cobol85PreprocessorParser.CO:
-	        case Cobol85PreprocessorParser.COBOL2:
-	        case Cobol85PreprocessorParser.COBOL3:
-	        case Cobol85PreprocessorParser.CODEPAGE:
-	        case Cobol85PreprocessorParser.COMPAT:
-	        case Cobol85PreprocessorParser.COMPILE:
-	        case Cobol85PreprocessorParser.CP:
-	        case Cobol85PreprocessorParser.CPP:
-	        case Cobol85PreprocessorParser.CPSM:
-	        case Cobol85PreprocessorParser.CS:
-	        case Cobol85PreprocessorParser.CURR:
-	        case Cobol85PreprocessorParser.CURRENCY:
-	        case Cobol85PreprocessorParser.DATA:
-	        case Cobol85PreprocessorParser.DATEPROC:
-	        case Cobol85PreprocessorParser.DBCS:
-	        case Cobol85PreprocessorParser.DD:
-	        case Cobol85PreprocessorParser.DEBUG:
-	        case Cobol85PreprocessorParser.DECK:
-	        case Cobol85PreprocessorParser.DIAGTRUNC:
-	        case Cobol85PreprocessorParser.DLI:
-	        case Cobol85PreprocessorParser.DLL:
-	        case Cobol85PreprocessorParser.DP:
-	        case Cobol85PreprocessorParser.DTR:
-	        case Cobol85PreprocessorParser.DU:
-	        case Cobol85PreprocessorParser.DUMP:
-	        case Cobol85PreprocessorParser.DYN:
-	        case Cobol85PreprocessorParser.DYNAM:
-	        case Cobol85PreprocessorParser.EDF:
-	        case Cobol85PreprocessorParser.EJECT:
-	        case Cobol85PreprocessorParser.EJPD:
-	        case Cobol85PreprocessorParser.EN:
-	        case Cobol85PreprocessorParser.ENGLISH:
-	        case Cobol85PreprocessorParser.EPILOG:
-	        case Cobol85PreprocessorParser.EXCI:
-	        case Cobol85PreprocessorParser.EXIT:
-	        case Cobol85PreprocessorParser.EXP:
-	        case Cobol85PreprocessorParser.EXPORTALL:
-	        case Cobol85PreprocessorParser.EXTEND:
-	        case Cobol85PreprocessorParser.FASTSRT:
-	        case Cobol85PreprocessorParser.FLAG:
-	        case Cobol85PreprocessorParser.FLAGSTD:
-	        case Cobol85PreprocessorParser.FSRT:
-	        case Cobol85PreprocessorParser.FULL:
-	        case Cobol85PreprocessorParser.GDS:
-	        case Cobol85PreprocessorParser.GRAPHIC:
-	        case Cobol85PreprocessorParser.HOOK:
-	        case Cobol85PreprocessorParser.IN:
-	        case Cobol85PreprocessorParser.INTDATE:
-	        case Cobol85PreprocessorParser.JA:
-	        case Cobol85PreprocessorParser.JP:
-	        case Cobol85PreprocessorParser.KA:
-	        case Cobol85PreprocessorParser.LANG:
-	        case Cobol85PreprocessorParser.LANGUAGE:
-	        case Cobol85PreprocessorParser.LC:
-	        case Cobol85PreprocessorParser.LENGTH:
-	        case Cobol85PreprocessorParser.LIB:
-	        case Cobol85PreprocessorParser.LILIAN:
-	        case Cobol85PreprocessorParser.LIN:
-	        case Cobol85PreprocessorParser.LINECOUNT:
-	        case Cobol85PreprocessorParser.LINKAGE:
-	        case Cobol85PreprocessorParser.LIST:
-	        case Cobol85PreprocessorParser.LM:
-	        case Cobol85PreprocessorParser.LONGMIXED:
-	        case Cobol85PreprocessorParser.LONGUPPER:
-	        case Cobol85PreprocessorParser.LU:
-	        case Cobol85PreprocessorParser.MAP:
-	        case Cobol85PreprocessorParser.MARGINS:
-	        case Cobol85PreprocessorParser.MAX:
-	        case Cobol85PreprocessorParser.MD:
-	        case Cobol85PreprocessorParser.MDECK:
-	        case Cobol85PreprocessorParser.MIG:
-	        case Cobol85PreprocessorParser.MIXED:
-	        case Cobol85PreprocessorParser.NAME:
-	        case Cobol85PreprocessorParser.NAT:
-	        case Cobol85PreprocessorParser.NATIONAL:
-	        case Cobol85PreprocessorParser.NATLANG:
-	        case Cobol85PreprocessorParser.NN:
-	        case Cobol85PreprocessorParser.NO:
-	        case Cobol85PreprocessorParser.NOADATA:
-	        case Cobol85PreprocessorParser.NOADV:
-	        case Cobol85PreprocessorParser.NOALIAS:
-	        case Cobol85PreprocessorParser.NOAWO:
-	        case Cobol85PreprocessorParser.NOBLOCK0:
-	        case Cobol85PreprocessorParser.NOC:
-	        case Cobol85PreprocessorParser.NOCBLCARD:
-	        case Cobol85PreprocessorParser.NOCICS:
-	        case Cobol85PreprocessorParser.NOCMPR2:
-	        case Cobol85PreprocessorParser.NOCOMPILE:
-	        case Cobol85PreprocessorParser.NOCPSM:
-	        case Cobol85PreprocessorParser.NOCURR:
-	        case Cobol85PreprocessorParser.NOCURRENCY:
-	        case Cobol85PreprocessorParser.NOD:
-	        case Cobol85PreprocessorParser.NODATEPROC:
-	        case Cobol85PreprocessorParser.NODBCS:
-	        case Cobol85PreprocessorParser.NODE:
-	        case Cobol85PreprocessorParser.NODEBUG:
-	        case Cobol85PreprocessorParser.NODECK:
-	        case Cobol85PreprocessorParser.NODIAGTRUNC:
-	        case Cobol85PreprocessorParser.NODLL:
-	        case Cobol85PreprocessorParser.NODU:
-	        case Cobol85PreprocessorParser.NODUMP:
-	        case Cobol85PreprocessorParser.NODP:
-	        case Cobol85PreprocessorParser.NODTR:
-	        case Cobol85PreprocessorParser.NODYN:
-	        case Cobol85PreprocessorParser.NODYNAM:
-	        case Cobol85PreprocessorParser.NOEDF:
-	        case Cobol85PreprocessorParser.NOEJPD:
-	        case Cobol85PreprocessorParser.NOEPILOG:
-	        case Cobol85PreprocessorParser.NOEXIT:
-	        case Cobol85PreprocessorParser.NOEXP:
-	        case Cobol85PreprocessorParser.NOEXPORTALL:
-	        case Cobol85PreprocessorParser.NOF:
-	        case Cobol85PreprocessorParser.NOFASTSRT:
-	        case Cobol85PreprocessorParser.NOFEPI:
-	        case Cobol85PreprocessorParser.NOFLAG:
-	        case Cobol85PreprocessorParser.NOFLAGMIG:
-	        case Cobol85PreprocessorParser.NOFLAGSTD:
-	        case Cobol85PreprocessorParser.NOFSRT:
-	        case Cobol85PreprocessorParser.NOGRAPHIC:
-	        case Cobol85PreprocessorParser.NOHOOK:
-	        case Cobol85PreprocessorParser.NOLENGTH:
-	        case Cobol85PreprocessorParser.NOLIB:
-	        case Cobol85PreprocessorParser.NOLINKAGE:
-	        case Cobol85PreprocessorParser.NOLIST:
-	        case Cobol85PreprocessorParser.NOMAP:
-	        case Cobol85PreprocessorParser.NOMD:
-	        case Cobol85PreprocessorParser.NOMDECK:
-	        case Cobol85PreprocessorParser.NONAME:
-	        case Cobol85PreprocessorParser.NONUM:
-	        case Cobol85PreprocessorParser.NONUMBER:
-	        case Cobol85PreprocessorParser.NOOBJ:
-	        case Cobol85PreprocessorParser.NOOBJECT:
-	        case Cobol85PreprocessorParser.NOOFF:
-	        case Cobol85PreprocessorParser.NOOFFSET:
-	        case Cobol85PreprocessorParser.NOOPSEQUENCE:
-	        case Cobol85PreprocessorParser.NOOPT:
-	        case Cobol85PreprocessorParser.NOOPTIMIZE:
-	        case Cobol85PreprocessorParser.NOOPTIONS:
-	        case Cobol85PreprocessorParser.NOP:
-	        case Cobol85PreprocessorParser.NOPFD:
-	        case Cobol85PreprocessorParser.NOPROLOG:
-	        case Cobol85PreprocessorParser.NORENT:
-	        case Cobol85PreprocessorParser.NOS:
-	        case Cobol85PreprocessorParser.NOSEP:
-	        case Cobol85PreprocessorParser.NOSEPARATE:
-	        case Cobol85PreprocessorParser.NOSEQ:
-	        case Cobol85PreprocessorParser.NOSOURCE:
-	        case Cobol85PreprocessorParser.NOSPIE:
-	        case Cobol85PreprocessorParser.NOSQL:
-	        case Cobol85PreprocessorParser.NOSQLC:
-	        case Cobol85PreprocessorParser.NOSQLCCSID:
-	        case Cobol85PreprocessorParser.NOSSR:
-	        case Cobol85PreprocessorParser.NOSSRANGE:
-	        case Cobol85PreprocessorParser.NOSTDTRUNC:
-	        case Cobol85PreprocessorParser.NOSEQUENCE:
-	        case Cobol85PreprocessorParser.NOTERM:
-	        case Cobol85PreprocessorParser.NOTERMINAL:
-	        case Cobol85PreprocessorParser.NOTEST:
-	        case Cobol85PreprocessorParser.NOTHREAD:
-	        case Cobol85PreprocessorParser.NOTRIG:
-	        case Cobol85PreprocessorParser.NOVBREF:
-	        case Cobol85PreprocessorParser.NOWORD:
-	        case Cobol85PreprocessorParser.NOX:
-	        case Cobol85PreprocessorParser.NOXREF:
-	        case Cobol85PreprocessorParser.NOZWB:
-	        case Cobol85PreprocessorParser.NS:
-	        case Cobol85PreprocessorParser.NSEQ:
-	        case Cobol85PreprocessorParser.NSYMBOL:
-	        case Cobol85PreprocessorParser.NUM:
-	        case Cobol85PreprocessorParser.NUMBER:
-	        case Cobol85PreprocessorParser.NUMPROC:
-	        case Cobol85PreprocessorParser.OBJ:
-	        case Cobol85PreprocessorParser.OBJECT:
-	        case Cobol85PreprocessorParser.OF:
-	        case Cobol85PreprocessorParser.OFF:
-	        case Cobol85PreprocessorParser.OFFSET:
-	        case Cobol85PreprocessorParser.ON:
-	        case Cobol85PreprocessorParser.OP:
-	        case Cobol85PreprocessorParser.OPMARGINS:
-	        case Cobol85PreprocessorParser.OPSEQUENCE:
-	        case Cobol85PreprocessorParser.OPT:
-	        case Cobol85PreprocessorParser.OPTFILE:
-	        case Cobol85PreprocessorParser.OPTIMIZE:
-	        case Cobol85PreprocessorParser.OPTIONS:
-	        case Cobol85PreprocessorParser.OUT:
-	        case Cobol85PreprocessorParser.OUTDD:
-	        case Cobol85PreprocessorParser.PFD:
-	        case Cobol85PreprocessorParser.PPTDBG:
-	        case Cobol85PreprocessorParser.PGMN:
-	        case Cobol85PreprocessorParser.PGMNAME:
-	        case Cobol85PreprocessorParser.PROCESS:
-	        case Cobol85PreprocessorParser.PROLOG:
-	        case Cobol85PreprocessorParser.QUOTE:
-	        case Cobol85PreprocessorParser.RENT:
-	        case Cobol85PreprocessorParser.REPLACING:
-	        case Cobol85PreprocessorParser.RMODE:
-	        case Cobol85PreprocessorParser.SEP:
-	        case Cobol85PreprocessorParser.SEPARATE:
-	        case Cobol85PreprocessorParser.SEQ:
-	        case Cobol85PreprocessorParser.SEQUENCE:
-	        case Cobol85PreprocessorParser.SHORT:
-	        case Cobol85PreprocessorParser.SIZE:
-	        case Cobol85PreprocessorParser.SOURCE:
-	        case Cobol85PreprocessorParser.SP:
-	        case Cobol85PreprocessorParser.SPACE:
-	        case Cobol85PreprocessorParser.SPIE:
-	        case Cobol85PreprocessorParser.SQL:
-	        case Cobol85PreprocessorParser.SQLC:
-	        case Cobol85PreprocessorParser.SQLCCSID:
-	        case Cobol85PreprocessorParser.SS:
-	        case Cobol85PreprocessorParser.SSR:
-	        case Cobol85PreprocessorParser.SSRANGE:
-	        case Cobol85PreprocessorParser.STD:
-	        case Cobol85PreprocessorParser.SYSEIB:
-	        case Cobol85PreprocessorParser.SZ:
-	        case Cobol85PreprocessorParser.TERM:
-	        case Cobol85PreprocessorParser.TERMINAL:
-	        case Cobol85PreprocessorParser.TEST:
-	        case Cobol85PreprocessorParser.THREAD:
-	        case Cobol85PreprocessorParser.TITLE:
-	        case Cobol85PreprocessorParser.TRIG:
-	        case Cobol85PreprocessorParser.TRUNC:
-	        case Cobol85PreprocessorParser.UE:
-	        case Cobol85PreprocessorParser.UPPER:
-	        case Cobol85PreprocessorParser.VBREF:
-	        case Cobol85PreprocessorParser.WD:
-	        case Cobol85PreprocessorParser.XMLPARSE:
-	        case Cobol85PreprocessorParser.XMLSS:
-	        case Cobol85PreprocessorParser.XOPTS:
-	        case Cobol85PreprocessorParser.XREF:
-	        case Cobol85PreprocessorParser.YEARWINDOW:
-	        case Cobol85PreprocessorParser.YW:
-	        case Cobol85PreprocessorParser.ZWB:
-	        case Cobol85PreprocessorParser.C_CHAR:
-	        case Cobol85PreprocessorParser.D_CHAR:
-	        case Cobol85PreprocessorParser.E_CHAR:
-	        case Cobol85PreprocessorParser.F_CHAR:
-	        case Cobol85PreprocessorParser.H_CHAR:
-	        case Cobol85PreprocessorParser.I_CHAR:
-	        case Cobol85PreprocessorParser.M_CHAR:
-	        case Cobol85PreprocessorParser.N_CHAR:
-	        case Cobol85PreprocessorParser.Q_CHAR:
-	        case Cobol85PreprocessorParser.S_CHAR:
-	        case Cobol85PreprocessorParser.U_CHAR:
-	        case Cobol85PreprocessorParser.W_CHAR:
-	        case Cobol85PreprocessorParser.X_CHAR:
-	        case Cobol85PreprocessorParser.COMMACHAR:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 53:
+	        case 54:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 107:
+	        case 108:
+	        case 109:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 125:
+	        case 126:
+	        case 127:
+	        case 128:
+	        case 129:
+	        case 130:
+	        case 131:
+	        case 132:
+	        case 133:
+	        case 134:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 138:
+	        case 139:
+	        case 140:
+	        case 141:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 145:
+	        case 146:
+	        case 147:
+	        case 148:
+	        case 149:
+	        case 150:
+	        case 151:
+	        case 152:
+	        case 153:
+	        case 154:
+	        case 155:
+	        case 156:
+	        case 157:
+	        case 158:
+	        case 159:
+	        case 160:
+	        case 161:
+	        case 162:
+	        case 163:
+	        case 164:
+	        case 165:
+	        case 166:
+	        case 167:
+	        case 168:
+	        case 169:
+	        case 170:
+	        case 171:
+	        case 172:
+	        case 173:
+	        case 174:
+	        case 175:
+	        case 176:
+	        case 177:
+	        case 178:
+	        case 179:
+	        case 180:
+	        case 181:
+	        case 182:
+	        case 183:
+	        case 184:
+	        case 185:
+	        case 187:
+	        case 188:
+	        case 189:
+	        case 190:
+	        case 191:
+	        case 192:
+	        case 193:
+	        case 194:
+	        case 195:
+	        case 196:
+	        case 197:
+	        case 198:
+	        case 199:
+	        case 200:
+	        case 201:
+	        case 202:
+	        case 203:
+	        case 204:
+	        case 205:
+	        case 206:
+	        case 207:
+	        case 208:
+	        case 209:
+	        case 210:
+	        case 211:
+	        case 212:
+	        case 213:
+	        case 214:
+	        case 215:
+	        case 216:
+	        case 217:
+	        case 218:
+	        case 219:
+	        case 221:
+	        case 222:
+	        case 224:
+	        case 225:
+	        case 226:
+	        case 227:
+	        case 228:
+	        case 229:
+	        case 230:
+	        case 231:
+	        case 232:
+	        case 233:
+	        case 234:
+	        case 235:
+	        case 236:
+	        case 241:
+	        case 242:
+	        case 243:
+	        case 244:
+	        case 246:
+	        case 247:
+	        case 248:
+	        case 249:
+	        case 250:
+	        case 251:
+	        case 252:
+	        case 253:
+	        case 254:
+	        case 255:
+	        case 256:
+	        case 257:
+	        case 258:
+	        case 260:
+	        case 261:
+	        case 262:
+	        case 264:
+	        case 265:
+	        case 266:
+	        case 267:
+	        case 268:
+	        case 269:
+	        case 270:
+	        case 271:
+	        case 272:
+	        case 273:
+	        case 274:
+	        case 275:
+	        case 276:
+	        case 277:
+	        case 278:
+	        case 279:
+	        case 280:
+	        case 282:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 668;
 	            this.charDataKeyword();
@@ -6218,12 +6214,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, Cobol85PreprocessorParser.RULE_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 671;
 	        _la = this._input.LA(1);
-	        if(!(_la===Cobol85PreprocessorParser.NONNUMERICLITERAL || _la===Cobol85PreprocessorParser.NUMERICLITERAL)) {
+	        if(!(_la===285 || _la===286)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6272,12 +6268,12 @@ export default class Cobol85PreprocessorParser extends antlr4.Parser {
 	charDataKeyword() {
 	    let localctx = new CharDataKeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, Cobol85PreprocessorParser.RULE_charDataKeyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 675;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Cobol85PreprocessorParser.ADATA) | (1 << Cobol85PreprocessorParser.ADV) | (1 << Cobol85PreprocessorParser.ALIAS) | (1 << Cobol85PreprocessorParser.ANSI) | (1 << Cobol85PreprocessorParser.ANY) | (1 << Cobol85PreprocessorParser.APOST) | (1 << Cobol85PreprocessorParser.AR) | (1 << Cobol85PreprocessorParser.ARITH) | (1 << Cobol85PreprocessorParser.AUTO) | (1 << Cobol85PreprocessorParser.AWO) | (1 << Cobol85PreprocessorParser.BIN) | (1 << Cobol85PreprocessorParser.BLOCK0) | (1 << Cobol85PreprocessorParser.BUF) | (1 << Cobol85PreprocessorParser.BUFSIZE) | (1 << Cobol85PreprocessorParser.BY) | (1 << Cobol85PreprocessorParser.CBL) | (1 << Cobol85PreprocessorParser.CBLCARD) | (1 << Cobol85PreprocessorParser.CO) | (1 << Cobol85PreprocessorParser.COBOL2) | (1 << Cobol85PreprocessorParser.COBOL3) | (1 << Cobol85PreprocessorParser.CODEPAGE) | (1 << Cobol85PreprocessorParser.COMPAT) | (1 << Cobol85PreprocessorParser.COMPILE) | (1 << Cobol85PreprocessorParser.CP) | (1 << Cobol85PreprocessorParser.CPP) | (1 << Cobol85PreprocessorParser.CPSM) | (1 << Cobol85PreprocessorParser.CS) | (1 << Cobol85PreprocessorParser.CURR) | (1 << Cobol85PreprocessorParser.CURRENCY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Cobol85PreprocessorParser.DATA - 32)) | (1 << (Cobol85PreprocessorParser.DATEPROC - 32)) | (1 << (Cobol85PreprocessorParser.DBCS - 32)) | (1 << (Cobol85PreprocessorParser.DD - 32)) | (1 << (Cobol85PreprocessorParser.DEBUG - 32)) | (1 << (Cobol85PreprocessorParser.DECK - 32)) | (1 << (Cobol85PreprocessorParser.DIAGTRUNC - 32)) | (1 << (Cobol85PreprocessorParser.DLI - 32)) | (1 << (Cobol85PreprocessorParser.DLL - 32)) | (1 << (Cobol85PreprocessorParser.DP - 32)) | (1 << (Cobol85PreprocessorParser.DTR - 32)) | (1 << (Cobol85PreprocessorParser.DU - 32)) | (1 << (Cobol85PreprocessorParser.DUMP - 32)) | (1 << (Cobol85PreprocessorParser.DYN - 32)) | (1 << (Cobol85PreprocessorParser.DYNAM - 32)) | (1 << (Cobol85PreprocessorParser.EDF - 32)) | (1 << (Cobol85PreprocessorParser.EJECT - 32)) | (1 << (Cobol85PreprocessorParser.EJPD - 32)) | (1 << (Cobol85PreprocessorParser.EN - 32)) | (1 << (Cobol85PreprocessorParser.ENGLISH - 32)) | (1 << (Cobol85PreprocessorParser.EPILOG - 32)) | (1 << (Cobol85PreprocessorParser.EXCI - 32)) | (1 << (Cobol85PreprocessorParser.EXIT - 32)) | (1 << (Cobol85PreprocessorParser.EXP - 32)) | (1 << (Cobol85PreprocessorParser.EXPORTALL - 32)) | (1 << (Cobol85PreprocessorParser.EXTEND - 32)) | (1 << (Cobol85PreprocessorParser.FASTSRT - 32)) | (1 << (Cobol85PreprocessorParser.FLAG - 32)) | (1 << (Cobol85PreprocessorParser.FLAGSTD - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Cobol85PreprocessorParser.FSRT - 64)) | (1 << (Cobol85PreprocessorParser.FULL - 64)) | (1 << (Cobol85PreprocessorParser.GDS - 64)) | (1 << (Cobol85PreprocessorParser.GRAPHIC - 64)) | (1 << (Cobol85PreprocessorParser.HOOK - 64)) | (1 << (Cobol85PreprocessorParser.IN - 64)) | (1 << (Cobol85PreprocessorParser.INTDATE - 64)) | (1 << (Cobol85PreprocessorParser.JA - 64)) | (1 << (Cobol85PreprocessorParser.JP - 64)) | (1 << (Cobol85PreprocessorParser.KA - 64)) | (1 << (Cobol85PreprocessorParser.LANG - 64)) | (1 << (Cobol85PreprocessorParser.LANGUAGE - 64)) | (1 << (Cobol85PreprocessorParser.LC - 64)) | (1 << (Cobol85PreprocessorParser.LENGTH - 64)) | (1 << (Cobol85PreprocessorParser.LIB - 64)) | (1 << (Cobol85PreprocessorParser.LILIAN - 64)) | (1 << (Cobol85PreprocessorParser.LIN - 64)) | (1 << (Cobol85PreprocessorParser.LINECOUNT - 64)) | (1 << (Cobol85PreprocessorParser.LINKAGE - 64)) | (1 << (Cobol85PreprocessorParser.LIST - 64)) | (1 << (Cobol85PreprocessorParser.LM - 64)) | (1 << (Cobol85PreprocessorParser.LONGMIXED - 64)) | (1 << (Cobol85PreprocessorParser.LONGUPPER - 64)) | (1 << (Cobol85PreprocessorParser.LU - 64)) | (1 << (Cobol85PreprocessorParser.MAP - 64)) | (1 << (Cobol85PreprocessorParser.MARGINS - 64)) | (1 << (Cobol85PreprocessorParser.MAX - 64)) | (1 << (Cobol85PreprocessorParser.MD - 64)) | (1 << (Cobol85PreprocessorParser.MDECK - 64)) | (1 << (Cobol85PreprocessorParser.MIG - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (Cobol85PreprocessorParser.MIXED - 96)) | (1 << (Cobol85PreprocessorParser.NAME - 96)) | (1 << (Cobol85PreprocessorParser.NAT - 96)) | (1 << (Cobol85PreprocessorParser.NATIONAL - 96)) | (1 << (Cobol85PreprocessorParser.NATLANG - 96)) | (1 << (Cobol85PreprocessorParser.NN - 96)) | (1 << (Cobol85PreprocessorParser.NO - 96)) | (1 << (Cobol85PreprocessorParser.NOADATA - 96)) | (1 << (Cobol85PreprocessorParser.NOADV - 96)) | (1 << (Cobol85PreprocessorParser.NOALIAS - 96)) | (1 << (Cobol85PreprocessorParser.NOAWO - 96)) | (1 << (Cobol85PreprocessorParser.NOBLOCK0 - 96)) | (1 << (Cobol85PreprocessorParser.NOC - 96)) | (1 << (Cobol85PreprocessorParser.NOCBLCARD - 96)) | (1 << (Cobol85PreprocessorParser.NOCICS - 96)) | (1 << (Cobol85PreprocessorParser.NOCMPR2 - 96)) | (1 << (Cobol85PreprocessorParser.NOCOMPILE - 96)) | (1 << (Cobol85PreprocessorParser.NOCPSM - 96)) | (1 << (Cobol85PreprocessorParser.NOCURR - 96)) | (1 << (Cobol85PreprocessorParser.NOCURRENCY - 96)) | (1 << (Cobol85PreprocessorParser.NOD - 96)) | (1 << (Cobol85PreprocessorParser.NODATEPROC - 96)) | (1 << (Cobol85PreprocessorParser.NODBCS - 96)) | (1 << (Cobol85PreprocessorParser.NODE - 96)) | (1 << (Cobol85PreprocessorParser.NODEBUG - 96)) | (1 << (Cobol85PreprocessorParser.NODECK - 96)) | (1 << (Cobol85PreprocessorParser.NODIAGTRUNC - 96)) | (1 << (Cobol85PreprocessorParser.NODLL - 96)) | (1 << (Cobol85PreprocessorParser.NODU - 96)) | (1 << (Cobol85PreprocessorParser.NODUMP - 96)) | (1 << (Cobol85PreprocessorParser.NODP - 96)) | (1 << (Cobol85PreprocessorParser.NODTR - 96)))) !== 0) || ((((_la - 128)) & ~0x1f) == 0 && ((1 << (_la - 128)) & ((1 << (Cobol85PreprocessorParser.NODYN - 128)) | (1 << (Cobol85PreprocessorParser.NODYNAM - 128)) | (1 << (Cobol85PreprocessorParser.NOEDF - 128)) | (1 << (Cobol85PreprocessorParser.NOEJPD - 128)) | (1 << (Cobol85PreprocessorParser.NOEPILOG - 128)) | (1 << (Cobol85PreprocessorParser.NOEXIT - 128)) | (1 << (Cobol85PreprocessorParser.NOEXP - 128)) | (1 << (Cobol85PreprocessorParser.NOEXPORTALL - 128)) | (1 << (Cobol85PreprocessorParser.NOF - 128)) | (1 << (Cobol85PreprocessorParser.NOFASTSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOFEPI - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGMIG - 128)) | (1 << (Cobol85PreprocessorParser.NOFLAGSTD - 128)) | (1 << (Cobol85PreprocessorParser.NOFSRT - 128)) | (1 << (Cobol85PreprocessorParser.NOGRAPHIC - 128)) | (1 << (Cobol85PreprocessorParser.NOHOOK - 128)) | (1 << (Cobol85PreprocessorParser.NOLENGTH - 128)) | (1 << (Cobol85PreprocessorParser.NOLIB - 128)) | (1 << (Cobol85PreprocessorParser.NOLINKAGE - 128)) | (1 << (Cobol85PreprocessorParser.NOLIST - 128)) | (1 << (Cobol85PreprocessorParser.NOMAP - 128)) | (1 << (Cobol85PreprocessorParser.NOMD - 128)) | (1 << (Cobol85PreprocessorParser.NOMDECK - 128)) | (1 << (Cobol85PreprocessorParser.NONAME - 128)) | (1 << (Cobol85PreprocessorParser.NONUM - 128)) | (1 << (Cobol85PreprocessorParser.NONUMBER - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJ - 128)) | (1 << (Cobol85PreprocessorParser.NOOBJECT - 128)) | (1 << (Cobol85PreprocessorParser.NOOFF - 128)) | (1 << (Cobol85PreprocessorParser.NOOFFSET - 128)) | (1 << (Cobol85PreprocessorParser.NOOPSEQUENCE - 128)))) !== 0) || ((((_la - 160)) & ~0x1f) == 0 && ((1 << (_la - 160)) & ((1 << (Cobol85PreprocessorParser.NOOPT - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIMIZE - 160)) | (1 << (Cobol85PreprocessorParser.NOOPTIONS - 160)) | (1 << (Cobol85PreprocessorParser.NOP - 160)) | (1 << (Cobol85PreprocessorParser.NOPFD - 160)) | (1 << (Cobol85PreprocessorParser.NOPROLOG - 160)) | (1 << (Cobol85PreprocessorParser.NORENT - 160)) | (1 << (Cobol85PreprocessorParser.NOS - 160)) | (1 << (Cobol85PreprocessorParser.NOSEP - 160)) | (1 << (Cobol85PreprocessorParser.NOSEPARATE - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQ - 160)) | (1 << (Cobol85PreprocessorParser.NOSOURCE - 160)) | (1 << (Cobol85PreprocessorParser.NOSPIE - 160)) | (1 << (Cobol85PreprocessorParser.NOSQL - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLC - 160)) | (1 << (Cobol85PreprocessorParser.NOSQLCCSID - 160)) | (1 << (Cobol85PreprocessorParser.NOSSR - 160)) | (1 << (Cobol85PreprocessorParser.NOSSRANGE - 160)) | (1 << (Cobol85PreprocessorParser.NOSTDTRUNC - 160)) | (1 << (Cobol85PreprocessorParser.NOSEQUENCE - 160)) | (1 << (Cobol85PreprocessorParser.NOTERM - 160)) | (1 << (Cobol85PreprocessorParser.NOTERMINAL - 160)) | (1 << (Cobol85PreprocessorParser.NOTEST - 160)) | (1 << (Cobol85PreprocessorParser.NOTHREAD - 160)) | (1 << (Cobol85PreprocessorParser.NOTRIG - 160)) | (1 << (Cobol85PreprocessorParser.NOVBREF - 160)) | (1 << (Cobol85PreprocessorParser.NOWORD - 160)) | (1 << (Cobol85PreprocessorParser.NOX - 160)) | (1 << (Cobol85PreprocessorParser.NOXREF - 160)) | (1 << (Cobol85PreprocessorParser.NOZWB - 160)) | (1 << (Cobol85PreprocessorParser.NS - 160)))) !== 0) || ((((_la - 192)) & ~0x1f) == 0 && ((1 << (_la - 192)) & ((1 << (Cobol85PreprocessorParser.NSEQ - 192)) | (1 << (Cobol85PreprocessorParser.NSYMBOL - 192)) | (1 << (Cobol85PreprocessorParser.NUM - 192)) | (1 << (Cobol85PreprocessorParser.NUMBER - 192)) | (1 << (Cobol85PreprocessorParser.NUMPROC - 192)) | (1 << (Cobol85PreprocessorParser.OBJ - 192)) | (1 << (Cobol85PreprocessorParser.OBJECT - 192)) | (1 << (Cobol85PreprocessorParser.OF - 192)) | (1 << (Cobol85PreprocessorParser.OFF - 192)) | (1 << (Cobol85PreprocessorParser.OFFSET - 192)) | (1 << (Cobol85PreprocessorParser.ON - 192)) | (1 << (Cobol85PreprocessorParser.OP - 192)) | (1 << (Cobol85PreprocessorParser.OPMARGINS - 192)) | (1 << (Cobol85PreprocessorParser.OPSEQUENCE - 192)) | (1 << (Cobol85PreprocessorParser.OPT - 192)) | (1 << (Cobol85PreprocessorParser.OPTFILE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIMIZE - 192)) | (1 << (Cobol85PreprocessorParser.OPTIONS - 192)) | (1 << (Cobol85PreprocessorParser.OUT - 192)) | (1 << (Cobol85PreprocessorParser.OUTDD - 192)) | (1 << (Cobol85PreprocessorParser.PFD - 192)) | (1 << (Cobol85PreprocessorParser.PPTDBG - 192)) | (1 << (Cobol85PreprocessorParser.PGMN - 192)) | (1 << (Cobol85PreprocessorParser.PGMNAME - 192)) | (1 << (Cobol85PreprocessorParser.PROCESS - 192)) | (1 << (Cobol85PreprocessorParser.PROLOG - 192)) | (1 << (Cobol85PreprocessorParser.QUOTE - 192)) | (1 << (Cobol85PreprocessorParser.RENT - 192)) | (1 << (Cobol85PreprocessorParser.REPLACING - 192)) | (1 << (Cobol85PreprocessorParser.RMODE - 192)))) !== 0) || ((((_la - 224)) & ~0x1f) == 0 && ((1 << (_la - 224)) & ((1 << (Cobol85PreprocessorParser.SEP - 224)) | (1 << (Cobol85PreprocessorParser.SEPARATE - 224)) | (1 << (Cobol85PreprocessorParser.SEQ - 224)) | (1 << (Cobol85PreprocessorParser.SEQUENCE - 224)) | (1 << (Cobol85PreprocessorParser.SHORT - 224)) | (1 << (Cobol85PreprocessorParser.SIZE - 224)) | (1 << (Cobol85PreprocessorParser.SOURCE - 224)) | (1 << (Cobol85PreprocessorParser.SP - 224)) | (1 << (Cobol85PreprocessorParser.SPACE - 224)) | (1 << (Cobol85PreprocessorParser.SPIE - 224)) | (1 << (Cobol85PreprocessorParser.SQL - 224)) | (1 << (Cobol85PreprocessorParser.SQLC - 224)) | (1 << (Cobol85PreprocessorParser.SQLCCSID - 224)) | (1 << (Cobol85PreprocessorParser.SS - 224)) | (1 << (Cobol85PreprocessorParser.SSR - 224)) | (1 << (Cobol85PreprocessorParser.SSRANGE - 224)) | (1 << (Cobol85PreprocessorParser.STD - 224)) | (1 << (Cobol85PreprocessorParser.SYSEIB - 224)) | (1 << (Cobol85PreprocessorParser.SZ - 224)) | (1 << (Cobol85PreprocessorParser.TERM - 224)) | (1 << (Cobol85PreprocessorParser.TERMINAL - 224)) | (1 << (Cobol85PreprocessorParser.TEST - 224)) | (1 << (Cobol85PreprocessorParser.THREAD - 224)) | (1 << (Cobol85PreprocessorParser.TITLE - 224)) | (1 << (Cobol85PreprocessorParser.TRIG - 224)) | (1 << (Cobol85PreprocessorParser.TRUNC - 224)) | (1 << (Cobol85PreprocessorParser.UE - 224)))) !== 0) || ((((_la - 256)) & ~0x1f) == 0 && ((1 << (_la - 256)) & ((1 << (Cobol85PreprocessorParser.UPPER - 256)) | (1 << (Cobol85PreprocessorParser.VBREF - 256)) | (1 << (Cobol85PreprocessorParser.WD - 256)) | (1 << (Cobol85PreprocessorParser.XMLPARSE - 256)) | (1 << (Cobol85PreprocessorParser.XMLSS - 256)) | (1 << (Cobol85PreprocessorParser.XOPTS - 256)) | (1 << (Cobol85PreprocessorParser.XREF - 256)) | (1 << (Cobol85PreprocessorParser.YEARWINDOW - 256)) | (1 << (Cobol85PreprocessorParser.YW - 256)) | (1 << (Cobol85PreprocessorParser.ZWB - 256)) | (1 << (Cobol85PreprocessorParser.C_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.D_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.E_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.F_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.H_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.I_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.M_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.N_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.Q_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.S_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.U_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.W_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.X_CHAR - 256)) | (1 << (Cobol85PreprocessorParser.COMMACHAR - 256)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4261150718) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3748659199) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4278181887) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294967295) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294967295) !== 0) || ((((_la - 160)) & ~0x1f) === 0 && ((1 << (_la - 160)) & 4227858431) !== 0) || ((((_la - 192)) & ~0x1f) === 0 && ((1 << (_la - 192)) & 1879048191) !== 0) || ((((_la - 224)) & ~0x1f) === 0 && ((1 << (_la - 224)) & 4292747263) !== 0) || ((((_la - 256)) & ~0x1f) === 0 && ((1 << (_la - 256)) & 100663159) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -10552,3 +10548,12 @@ Cobol85PreprocessorParser.CobolWordContext = CobolWordContext;
 Cobol85PreprocessorParser.LiteralContext = LiteralContext; 
 Cobol85PreprocessorParser.FilenameContext = FilenameContext; 
 Cobol85PreprocessorParser.CharDataKeywordContext = CharDataKeywordContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

@@ -1,4 +1,4 @@
-// Generated from ./sickbay/sickbay.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/sickbay/sickbay.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import sickbayListener from './sickbayListener.js';
@@ -55,22 +55,18 @@ export default class sickbayParser extends antlr4.Parser {
         this.symbolicNames = sickbayParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	sickbay() {
 	    let localctx = new SickbayContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, sickbayParser.RULE_sickbay);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 13;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << sickbayParser.T__12) | (1 << sickbayParser.T__16) | (1 << sickbayParser.IINTID) | (1 << sickbayParser.INTCONST))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1712128) !== 0)) {
 	            this.state = 10;
 	            this.line();
 	            this.state = 15;
@@ -96,7 +92,7 @@ export default class sickbayParser extends antlr4.Parser {
 	line() {
 	    let localctx = new LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, sickbayParser.RULE_line);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 16;
@@ -106,7 +102,7 @@ export default class sickbayParser extends antlr4.Parser {
 	        this.state = 22;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===sickbayParser.T__0) {
+	        while(_la===1) {
 	            this.state = 18;
 	            this.match(sickbayParser.T__0);
 	            this.state = 19;
@@ -136,19 +132,19 @@ export default class sickbayParser extends antlr4.Parser {
 	stmt() {
 	    let localctx = new StmtContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, sickbayParser.RULE_stmt);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 54;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case sickbayParser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 27;
 	            this.match(sickbayParser.T__1);
 	            this.state = 28;
 	            this.match(sickbayParser.ARBTEXT);
 	            break;
-	        case sickbayParser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 29;
 	            this.match(sickbayParser.T__2);
@@ -159,26 +155,26 @@ export default class sickbayParser extends antlr4.Parser {
 	            this.state = 32;
 	            this.intExpr();
 	            break;
-	        case sickbayParser.T__4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 34;
 	            this.match(sickbayParser.T__4);
 	            this.state = 35;
 	            this.match(sickbayParser.INTCONST);
 	            break;
-	        case sickbayParser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 36;
 	            this.match(sickbayParser.T__5);
 	            this.state = 37;
 	            this.match(sickbayParser.INTCONST);
 	            break;
-	        case sickbayParser.T__6:
-	        case sickbayParser.T__7:
+	        case 7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 38;
 	            _la = this._input.LA(1);
-	            if(!(_la===sickbayParser.T__6 || _la===sickbayParser.T__7)) {
+	            if(!(_la===7 || _la===8)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -186,19 +182,19 @@ export default class sickbayParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case sickbayParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 39;
 	            this.match(sickbayParser.T__8);
 	            this.state = 40;
 	            this.match(sickbayParser.INTCONST);
 	            break;
-	        case sickbayParser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 41;
 	            this.match(sickbayParser.T__9);
 	            break;
-	        case sickbayParser.T__10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 42;
 	            this.match(sickbayParser.T__10);
@@ -211,18 +207,18 @@ export default class sickbayParser extends antlr4.Parser {
 	            this.state = 46;
 	            this.match(sickbayParser.T__13);
 	            break;
-	        case sickbayParser.T__14:
+	        case 15:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 48;
 	            this.match(sickbayParser.T__14);
 	            this.state = 52;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case sickbayParser.IINTID:
+	            case 19:
 	                this.state = 49;
 	                this.intVar();
 	                break;
-	            case sickbayParser.T__15:
+	            case 16:
 	                this.state = 50;
 	                this.match(sickbayParser.T__15);
 	                this.state = 51;
@@ -258,17 +254,17 @@ export default class sickbayParser extends antlr4.Parser {
 	        this.state = 69;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case sickbayParser.IINTID:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 56;
 	            this.intVar();
 	            break;
-	        case sickbayParser.INTCONST:
+	        case 20:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 57;
 	            this.match(sickbayParser.INTCONST);
 	            break;
-	        case sickbayParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 58;
 	            this.match(sickbayParser.T__16);
@@ -279,7 +275,7 @@ export default class sickbayParser extends antlr4.Parser {
 	            this.state = 61;
 	            this.match(sickbayParser.T__13);
 	            break;
-	        case sickbayParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 63;
 	            this.match(sickbayParser.T__12);
@@ -314,7 +310,7 @@ export default class sickbayParser extends antlr4.Parser {
 	intVar() {
 	    let localctx = new IntVarContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, sickbayParser.RULE_intVar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 71;
@@ -322,7 +318,7 @@ export default class sickbayParser extends antlr4.Parser {
 	        this.state = 76;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===sickbayParser.T__12) {
+	        if(_la===13) {
 	            this.state = 72;
 	            this.match(sickbayParser.T__12);
 	            this.state = 73;

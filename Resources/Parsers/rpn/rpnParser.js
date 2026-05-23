@@ -1,18 +1,18 @@
-// Generated from ./rpn/rpn.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/rpn/rpn.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import rpnListener from './rpnListener.js';
-const serializedATN = [4,1,17,38,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,1,0,1,0,5,0,15,8,0,10,0,12,0,18,9,0,1,1,1,1,3,1,22,8,1,1,2,1,2,1,
-3,1,3,1,3,1,3,1,3,1,3,3,3,32,8,3,1,4,1,4,1,5,1,5,1,5,0,0,6,0,2,4,6,8,10,
-0,1,1,0,3,15,36,0,12,1,0,0,0,2,21,1,0,0,0,4,23,1,0,0,0,6,31,1,0,0,0,8,33,
-1,0,0,0,10,35,1,0,0,0,12,16,3,6,3,0,13,15,3,2,1,0,14,13,1,0,0,0,15,18,1,
-0,0,0,16,14,1,0,0,0,16,17,1,0,0,0,17,1,1,0,0,0,18,16,1,0,0,0,19,22,3,6,3,
-0,20,22,3,4,2,0,21,19,1,0,0,0,21,20,1,0,0,0,22,3,1,0,0,0,23,24,7,0,0,0,24,
-5,1,0,0,0,25,26,5,4,0,0,26,32,3,6,3,0,27,28,5,5,0,0,28,32,3,6,3,0,29,32,
-3,10,5,0,30,32,3,8,4,0,31,25,1,0,0,0,31,27,1,0,0,0,31,29,1,0,0,0,31,30,1,
-0,0,0,32,7,1,0,0,0,33,34,5,2,0,0,34,9,1,0,0,0,35,36,5,1,0,0,36,11,1,0,0,
-0,3,16,21,31];
+const serializedATN = [4,1,17,40,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,1,0,1,0,5,0,15,8,0,10,0,12,0,18,9,0,1,0,1,0,1,1,1,1,3,1,24,8,1,1,
+2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,3,3,34,8,3,1,4,1,4,1,5,1,5,1,5,0,0,6,0,2,4,
+6,8,10,0,1,1,0,3,15,38,0,12,1,0,0,0,2,23,1,0,0,0,4,25,1,0,0,0,6,33,1,0,0,
+0,8,35,1,0,0,0,10,37,1,0,0,0,12,16,3,6,3,0,13,15,3,2,1,0,14,13,1,0,0,0,15,
+18,1,0,0,0,16,14,1,0,0,0,16,17,1,0,0,0,17,19,1,0,0,0,18,16,1,0,0,0,19,20,
+5,0,0,1,20,1,1,0,0,0,21,24,3,6,3,0,22,24,3,4,2,0,23,21,1,0,0,0,23,22,1,0,
+0,0,24,3,1,0,0,0,25,26,7,0,0,0,26,5,1,0,0,0,27,28,5,4,0,0,28,34,3,6,3,0,
+29,30,5,5,0,0,30,34,3,6,3,0,31,34,3,10,5,0,32,34,3,8,4,0,33,27,1,0,0,0,33,
+29,1,0,0,0,33,31,1,0,0,0,33,32,1,0,0,0,34,7,1,0,0,0,35,36,5,2,0,0,36,9,1,
+0,0,0,37,38,5,1,0,0,38,11,1,0,0,0,3,16,23,33];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -42,16 +42,12 @@ export default class rpnParser extends antlr4.Parser {
         this.symbolicNames = rpnParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, rpnParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 12;
@@ -59,13 +55,15 @@ export default class rpnParser extends antlr4.Parser {
 	        this.state = 16;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << rpnParser.SCIENTIFIC_NUMBER) | (1 << rpnParser.VARIABLE) | (1 << rpnParser.POW) | (1 << rpnParser.PLUS) | (1 << rpnParser.MINUS) | (1 << rpnParser.TIMES) | (1 << rpnParser.DIV) | (1 << rpnParser.COS) | (1 << rpnParser.SIN) | (1 << rpnParser.TAN) | (1 << rpnParser.ACOS) | (1 << rpnParser.ASIN) | (1 << rpnParser.ATAN) | (1 << rpnParser.LN) | (1 << rpnParser.LOG))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 65534) !== 0)) {
 	            this.state = 13;
 	            this.term();
 	            this.state = 18;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 19;
+	        this.match(rpnParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -86,19 +84,19 @@ export default class rpnParser extends antlr4.Parser {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, rpnParser.RULE_term);
 	    try {
-	        this.state = 21;
+	        this.state = 23;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 19;
+	            this.state = 21;
 	            this.signedAtom();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 20;
+	            this.state = 22;
 	            this.oper();
 	            break;
 
@@ -122,12 +120,12 @@ export default class rpnParser extends antlr4.Parser {
 	oper() {
 	    let localctx = new OperContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, rpnParser.RULE_oper);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 23;
+	        this.state = 25;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << rpnParser.POW) | (1 << rpnParser.PLUS) | (1 << rpnParser.MINUS) | (1 << rpnParser.TIMES) | (1 << rpnParser.DIV) | (1 << rpnParser.COS) | (1 << rpnParser.SIN) | (1 << rpnParser.TAN) | (1 << rpnParser.ACOS) | (1 << rpnParser.ASIN) | (1 << rpnParser.ATAN) | (1 << rpnParser.LN) | (1 << rpnParser.LOG))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 65528) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -154,31 +152,31 @@ export default class rpnParser extends antlr4.Parser {
 	    let localctx = new SignedAtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, rpnParser.RULE_signedAtom);
 	    try {
-	        this.state = 31;
+	        this.state = 33;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case rpnParser.PLUS:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 25;
-	            this.match(rpnParser.PLUS);
-	            this.state = 26;
-	            this.signedAtom();
-	            break;
-	        case rpnParser.MINUS:
-	            this.enterOuterAlt(localctx, 2);
 	            this.state = 27;
-	            this.match(rpnParser.MINUS);
+	            this.match(rpnParser.PLUS);
 	            this.state = 28;
 	            this.signedAtom();
 	            break;
-	        case rpnParser.SCIENTIFIC_NUMBER:
-	            this.enterOuterAlt(localctx, 3);
+	        case 5:
+	            this.enterOuterAlt(localctx, 2);
 	            this.state = 29;
+	            this.match(rpnParser.MINUS);
+	            this.state = 30;
+	            this.signedAtom();
+	            break;
+	        case 1:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 31;
 	            this.scientific();
 	            break;
-	        case rpnParser.VARIABLE:
+	        case 2:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 30;
+	            this.state = 32;
 	            this.variable();
 	            break;
 	        default:
@@ -205,7 +203,7 @@ export default class rpnParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, rpnParser.RULE_variable);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 33;
+	        this.state = 35;
 	        this.match(rpnParser.VARIABLE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -228,7 +226,7 @@ export default class rpnParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, rpnParser.RULE_scientific);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 35;
+	        this.state = 37;
 	        this.match(rpnParser.SCIENTIFIC_NUMBER);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -289,6 +287,10 @@ class ExpressionContext extends antlr4.ParserRuleContext {
 
 	signedAtom() {
 	    return this.getTypedRuleContext(SignedAtomContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(rpnParser.EOF, 0);
 	};
 
 	term = function(i) {
@@ -569,3 +571,12 @@ rpnParser.OperContext = OperContext;
 rpnParser.SignedAtomContext = SignedAtomContext; 
 rpnParser.VariableContext = VariableContext; 
 rpnParser.ScientificContext = ScientificContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

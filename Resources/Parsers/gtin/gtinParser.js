@@ -1,4 +1,4 @@
-// Generated from ./gtin/gtin.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/gtin/gtin.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import gtinListener from './gtinListener.js';
@@ -106,10 +106,6 @@ export default class gtinParser extends antlr4.Parser {
         this.ruleNames = gtinParser.ruleNames;
         this.literalNames = gtinParser.literalNames;
         this.symbolicNames = gtinParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
 
@@ -879,7 +875,7 @@ export default class gtinParser extends antlr4.Parser {
 	gs1_prefix_bookland_1() {
 	    let localctx = new Gs1_prefix_bookland_1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, gtinParser.RULE_gs1_prefix_bookland_1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 189;
@@ -890,7 +886,7 @@ export default class gtinParser extends antlr4.Parser {
 	        this.match(gtinParser.DIGIT_9);
 	        this.state = 192;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gtinParser.DIGIT_1) | (1 << gtinParser.DIGIT_2) | (1 << gtinParser.DIGIT_3) | (1 << gtinParser.DIGIT_4) | (1 << gtinParser.DIGIT_5) | (1 << gtinParser.DIGIT_6) | (1 << gtinParser.DIGIT_7) | (1 << gtinParser.DIGIT_8) | (1 << gtinParser.DIGIT_9))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2044) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1156,12 +1152,12 @@ export default class gtinParser extends antlr4.Parser {
 	ean14_packaging() {
 	    let localctx = new Ean14_packagingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, gtinParser.RULE_ean14_packaging);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 238;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gtinParser.DIGIT_0) | (1 << gtinParser.DIGIT_1) | (1 << gtinParser.DIGIT_2) | (1 << gtinParser.DIGIT_3) | (1 << gtinParser.DIGIT_4) | (1 << gtinParser.DIGIT_5) | (1 << gtinParser.DIGIT_6) | (1 << gtinParser.DIGIT_7) | (1 << gtinParser.DIGIT_8))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1022) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1232,12 +1228,12 @@ export default class gtinParser extends antlr4.Parser {
 	any_digit() {
 	    let localctx = new Any_digitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, gtinParser.RULE_any_digit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 253;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gtinParser.DIGIT_0) | (1 << gtinParser.DIGIT_1) | (1 << gtinParser.DIGIT_2) | (1 << gtinParser.DIGIT_3) | (1 << gtinParser.DIGIT_4) | (1 << gtinParser.DIGIT_5) | (1 << gtinParser.DIGIT_6) | (1 << gtinParser.DIGIT_7) | (1 << gtinParser.DIGIT_8) | (1 << gtinParser.DIGIT_9))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2046) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2989,3 +2985,12 @@ gtinParser.Ean14_appidContext = Ean14_appidContext;
 gtinParser.Ean14_packagingContext = Ean14_packagingContext; 
 gtinParser.Ean14_productContext = Ean14_productContext; 
 gtinParser.Any_digitContext = Any_digitContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

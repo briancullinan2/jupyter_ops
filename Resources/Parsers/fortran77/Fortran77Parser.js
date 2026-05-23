@@ -1,4 +1,4 @@
-// Generated from ./fortran77/Fortran77Parser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/fortran77/Fortran77Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import Fortran77ParserListener from './Fortran77ParserListener.js';
@@ -732,10 +732,6 @@ export default class Fortran77Parser extends antlr4.Parser {
         this.symbolicNames = Fortran77Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	commentStatement() {
@@ -778,7 +774,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, Fortran77Parser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 396;
@@ -816,11 +812,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 408; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Fortran77Parser.PROGRAM) | (1 << Fortran77Parser.ENTRY) | (1 << Fortran77Parser.FUNCTION) | (1 << Fortran77Parser.BLOCK) | (1 << Fortran77Parser.SUBROUTINE) | (1 << Fortran77Parser.DIMENSION) | (1 << Fortran77Parser.REAL) | (1 << Fortran77Parser.EQUIVALENCE) | (1 << Fortran77Parser.COMMON) | (1 << Fortran77Parser.POINTER) | (1 << Fortran77Parser.IMPLICIT) | (1 << Fortran77Parser.CHARACTER) | (1 << Fortran77Parser.PARAMETER) | (1 << Fortran77Parser.EXTERNAL) | (1 << Fortran77Parser.INTRINSIC) | (1 << Fortran77Parser.SAVE) | (1 << Fortran77Parser.DATA) | (1 << Fortran77Parser.GO) | (1 << Fortran77Parser.GOTO) | (1 << Fortran77Parser.IF) | (1 << Fortran77Parser.DO) | (1 << Fortran77Parser.CONTINUE) | (1 << Fortran77Parser.STOP) | (1 << Fortran77Parser.PAUSE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Fortran77Parser.WRITE - 32)) | (1 << (Fortran77Parser.READ - 32)) | (1 << (Fortran77Parser.PRINT - 32)) | (1 << (Fortran77Parser.OPEN - 32)) | (1 << (Fortran77Parser.LET - 32)) | (1 << (Fortran77Parser.CALL - 32)) | (1 << (Fortran77Parser.RETURN - 32)) | (1 << (Fortran77Parser.CLOSE - 32)) | (1 << (Fortran77Parser.DOUBLE - 32)) | (1 << (Fortran77Parser.LABEL - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Fortran77Parser.INQUIRE - 64)) | (1 << (Fortran77Parser.BACKSPACE - 64)) | (1 << (Fortran77Parser.ENDFILE - 64)) | (1 << (Fortran77Parser.REWIND - 64)) | (1 << (Fortran77Parser.LPAREN - 64)) | (1 << (Fortran77Parser.MINUS - 64)) | (1 << (Fortran77Parser.PLUS - 64)) | (1 << (Fortran77Parser.LNOT - 64)) | (1 << (Fortran77Parser.TRUE - 64)) | (1 << (Fortran77Parser.FALSE - 64)))) !== 0) || ((((_la - 97)) & ~0x1f) == 0 && ((1 << (_la - 97)) & ((1 << (Fortran77Parser.HOLLERITH - 97)) | (1 << (Fortran77Parser.COMPLEX - 97)) | (1 << (Fortran77Parser.INTEGER - 97)) | (1 << (Fortran77Parser.LOGICAL - 97)) | (1 << (Fortran77Parser.SCON - 97)) | (1 << (Fortran77Parser.RCON - 97)) | (1 << (Fortran77Parser.ICON - 97)) | (1 << (Fortran77Parser.NAME - 97)) | (1 << (Fortran77Parser.COMMENT - 97)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3095388094) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 81423) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 402672719) !== 0) || ((((_la - 97)) & ~0x1f) === 0 && ((1 << (_la - 97)) & 1042433) !== 0));
 	        this.state = 413;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.EOL) {
+	        while(_la===119) {
 	            this.state = 410;
 	            this.match(Fortran77Parser.EOL);
 	            this.state = 415;
@@ -895,13 +891,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	mainProgram() {
 	    let localctx = new MainProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, Fortran77Parser.RULE_mainProgram);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 423;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.PROGRAM) {
+	        if(_la===1) {
 	            this.state = 422;
 	            this.programStatement();
 	        }
@@ -1006,22 +1002,22 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 440;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.DIMENSION:
+	        case 7:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 436;
 	            this.dimensionStatement();
 	            break;
-	        case Fortran77Parser.EQUIVALENCE:
+	        case 9:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 437;
 	            this.equivalenceStatement();
 	            break;
-	        case Fortran77Parser.INTRINSIC:
+	        case 17:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 438;
 	            this.intrinsicStatement();
 	            break;
-	        case Fortran77Parser.SAVE:
+	        case 18:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 439;
 	            this.saveStatement();
@@ -1053,78 +1049,78 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 460;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 115:
 	            this.state = 442;
 	            this.assignmentStatement();
 	            break;
-	        case Fortran77Parser.GO:
-	        case Fortran77Parser.GOTO:
+	        case 20:
+	        case 21:
 	            this.state = 443;
 	            this.gotoStatement();
 	            break;
-	        case Fortran77Parser.IF:
+	        case 22:
 	            this.state = 444;
 	            this.ifStatement();
 	            break;
-	        case Fortran77Parser.DO:
+	        case 27:
 	            this.state = 445;
 	            this.doStatement();
 	            break;
-	        case Fortran77Parser.CONTINUE:
-	        case Fortran77Parser.ICON:
+	        case 28:
+	        case 114:
 	            this.state = 446;
 	            this.continueStatement();
 	            break;
-	        case Fortran77Parser.STOP:
+	        case 29:
 	            this.state = 447;
 	            this.stopStatement();
 	            break;
-	        case Fortran77Parser.PAUSE:
+	        case 31:
 	            this.state = 448;
 	            this.pauseStatement();
 	            break;
-	        case Fortran77Parser.READ:
+	        case 33:
 	            this.state = 449;
 	            this.readStatement();
 	            break;
-	        case Fortran77Parser.WRITE:
+	        case 32:
 	            this.state = 450;
 	            this.writeStatement();
 	            break;
-	        case Fortran77Parser.PRINT:
+	        case 34:
 	            this.state = 451;
 	            this.printStatement();
 	            break;
-	        case Fortran77Parser.REWIND:
+	        case 67:
 	            this.state = 452;
 	            this.rewindStatement();
 	            break;
-	        case Fortran77Parser.BACKSPACE:
+	        case 65:
 	            this.state = 453;
 	            this.backspaceStatement();
 	            break;
-	        case Fortran77Parser.OPEN:
+	        case 35:
 	            this.state = 454;
 	            this.openStatement();
 	            break;
-	        case Fortran77Parser.CLOSE:
+	        case 44:
 	            this.state = 455;
 	            this.closeStatement();
 	            break;
-	        case Fortran77Parser.ENDFILE:
+	        case 66:
 	            this.state = 456;
 	            this.endfileStatement();
 	            break;
-	        case Fortran77Parser.INQUIRE:
+	        case 64:
 	            this.state = 457;
 	            this.inquireStatement();
 	            break;
-	        case Fortran77Parser.CALL:
+	        case 42:
 	            this.state = 458;
 	            this.callStatement();
 	            break;
-	        case Fortran77Parser.RETURN:
+	        case 43:
 	            this.state = 459;
 	            this.returnStatement();
 	            break;
@@ -1177,7 +1173,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	entryStatement() {
 	    let localctx = new EntryStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, Fortran77Parser.RULE_entryStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 466;
@@ -1187,7 +1183,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 472;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.LPAREN) {
+	        if(_la===70) {
 	            this.state = 468;
 	            this.match(Fortran77Parser.LPAREN);
 	            this.state = 469;
@@ -1215,13 +1211,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	functionStatement() {
 	    let localctx = new FunctionStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, Fortran77Parser.RULE_functionStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 475;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.REAL || _la===Fortran77Parser.CHARACTER || ((((_la - 45)) & ~0x1f) == 0 && ((1 << (_la - 45)) & ((1 << (Fortran77Parser.DOUBLE - 45)) | (1 << (Fortran77Parser.LPAREN - 45)) | (1 << (Fortran77Parser.MINUS - 45)) | (1 << (Fortran77Parser.PLUS - 45)))) !== 0) || ((((_la - 78)) & ~0x1f) == 0 && ((1 << (_la - 78)) & ((1 << (Fortran77Parser.LNOT - 78)) | (1 << (Fortran77Parser.TRUE - 78)) | (1 << (Fortran77Parser.FALSE - 78)) | (1 << (Fortran77Parser.HOLLERITH - 78)) | (1 << (Fortran77Parser.COMPLEX - 78)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (Fortran77Parser.INTEGER - 110)) | (1 << (Fortran77Parser.LOGICAL - 110)) | (1 << (Fortran77Parser.SCON - 110)) | (1 << (Fortran77Parser.RCON - 110)) | (1 << (Fortran77Parser.ICON - 110)) | (1 << (Fortran77Parser.NAME - 110)))) !== 0)) {
+	        if(_la===8 || _la===14 || ((((_la - 45)) & ~0x1f) === 0 && ((1 << (_la - 45)) & 1644167169) !== 0) || ((((_la - 78)) & ~0x1f) === 0 && ((1 << (_la - 78)) & 1074290689) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 63) !== 0)) {
 	            this.state = 474;
 	            this.type_();
 	        }
@@ -1235,7 +1231,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 481;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.REAL || _la===Fortran77Parser.NAME) {
+	        if(_la===8 || _la===115) {
 	            this.state = 480;
 	            this.namelist();
 	        }
@@ -1245,7 +1241,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 485;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 484;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -1294,7 +1290,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	subroutineStatement() {
 	    let localctx = new SubroutineStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, Fortran77Parser.RULE_subroutineStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 490;
@@ -1310,7 +1306,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 494;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.REAL || _la===Fortran77Parser.NAME) {
+	            if(_la===8 || _la===115) {
 	                this.state = 493;
 	                this.namelist();
 	            }
@@ -1322,7 +1318,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 500;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 499;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -1346,7 +1342,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	namelist() {
 	    let localctx = new NamelistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, Fortran77Parser.RULE_namelist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 502;
@@ -1354,7 +1350,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 507;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 503;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 504;
@@ -1475,13 +1471,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	subprogramBody() {
 	    let localctx = new SubprogramBodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, Fortran77Parser.RULE_subprogramBody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 528;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMENT) {
+	        while(_la===116) {
 	            this.state = 525;
 	            this.commentStatement();
 	            this.state = 530;
@@ -1499,7 +1495,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        		this.state = 535;
 	        		this._errHandler.sync(this);
 	        		_la = this._input.LA(1);
-	        		while(_la===Fortran77Parser.COMMENT) {
+	        		while(_la===116) {
 	        		    this.state = 532;
 	        		    this.commentStatement();
 	        		    this.state = 537;
@@ -1535,13 +1531,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	wholeStatement() {
 	    let localctx = new WholeStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, Fortran77Parser.RULE_wholeStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 545;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.LABEL) {
+	        if(_la===48) {
 	            this.state = 544;
 	            this.match(Fortran77Parser.LABEL);
 	        }
@@ -1569,13 +1565,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	endStatement() {
 	    let localctx = new EndStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, Fortran77Parser.RULE_endStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 551;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.LABEL) {
+	        if(_la===48) {
 	            this.state = 550;
 	            this.match(Fortran77Parser.LABEL);
 	        }
@@ -1626,12 +1622,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	arrayDeclarator() {
 	    let localctx = new ArrayDeclaratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, Fortran77Parser.RULE_arrayDeclarator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 558;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.REAL || _la===Fortran77Parser.NAME)) {
+	        if(!(_la===8 || _la===115)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1663,7 +1659,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	arrayDeclarators() {
 	    let localctx = new ArrayDeclaratorsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, Fortran77Parser.RULE_arrayDeclarators);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 563;
@@ -1671,7 +1667,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 568;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 564;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 565;
@@ -1699,7 +1695,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	arrayDeclaratorExtents() {
 	    let localctx = new ArrayDeclaratorExtentsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, Fortran77Parser.RULE_arrayDeclaratorExtents);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 571;
@@ -1707,7 +1703,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 576;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 572;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 573;
@@ -1735,37 +1731,37 @@ export default class Fortran77Parser extends antlr4.Parser {
 	arrayDeclaratorExtent() {
 	    let localctx = new ArrayDeclaratorExtentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, Fortran77Parser.RULE_arrayDeclaratorExtent);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 588;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 114:
+	        case 115:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 579;
 	            this.iexprCode();
 	            this.state = 585;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.COLON) {
+	            if(_la===72) {
 	                this.state = 580;
 	                this.match(Fortran77Parser.COLON);
 	                this.state = 583;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case Fortran77Parser.LPAREN:
-	                case Fortran77Parser.MINUS:
-	                case Fortran77Parser.PLUS:
-	                case Fortran77Parser.ICON:
-	                case Fortran77Parser.NAME:
+	                case 70:
+	                case 74:
+	                case 75:
+	                case 114:
+	                case 115:
 	                    this.state = 581;
 	                    this.iexprCode();
 	                    break;
-	                case Fortran77Parser.STAR:
+	                case 117:
 	                    this.state = 582;
 	                    this.match(Fortran77Parser.STAR);
 	                    break;
@@ -1775,7 +1771,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case Fortran77Parser.STAR:
+	        case 117:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 587;
 	            this.match(Fortran77Parser.STAR);
@@ -1802,7 +1798,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	equivalenceStatement() {
 	    let localctx = new EquivalenceStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, Fortran77Parser.RULE_equivalenceStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 590;
@@ -1812,7 +1808,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 596;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 592;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 593;
@@ -1840,7 +1836,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	equivEntityGroup() {
 	    let localctx = new EquivEntityGroupContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, Fortran77Parser.RULE_equivEntityGroup);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 599;
@@ -1850,7 +1846,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 605;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 601;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 602;
@@ -1903,7 +1899,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	commonStatement() {
 	    let localctx = new CommonStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, Fortran77Parser.RULE_commonStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 612;
@@ -1911,13 +1907,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 622;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.DIV:
+	        case 76:
 	            this.state = 613;
 	            this.commonBlock();
 	            this.state = 618;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Fortran77Parser.COMMA) {
+	            while(_la===69) {
 	                this.state = 614;
 	                this.match(Fortran77Parser.COMMA);
 	                this.state = 615;
@@ -1927,8 +1923,8 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 115:
 	            this.state = 621;
 	            this.commonItems();
 	            break;
@@ -1961,13 +1957,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 628;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.NAME:
+	        case 115:
 	            this.state = 625;
 	            this.match(Fortran77Parser.NAME);
 	            this.state = 626;
 	            this.match(Fortran77Parser.DIV);
 	            break;
-	        case Fortran77Parser.DIV:
+	        case 76:
 	            this.state = 627;
 	            this.match(Fortran77Parser.DIV);
 	            break;
@@ -2134,7 +2130,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	typeStatementNameList() {
 	    let localctx = new TypeStatementNameListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, Fortran77Parser.RULE_typeStatementNameList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 653;
@@ -2142,7 +2138,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 658;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 654;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 655;
@@ -2207,7 +2203,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	typeStatementNameCharList() {
 	    let localctx = new TypeStatementNameCharListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, Fortran77Parser.RULE_typeStatementNameCharList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 665;
@@ -2215,7 +2211,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 670;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 666;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 667;
@@ -2243,7 +2239,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	typeStatementNameChar() {
 	    let localctx = new TypeStatementNameCharContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, Fortran77Parser.RULE_typeStatementNameChar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 673;
@@ -2251,7 +2247,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 675;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.STAR) {
+	        if(_la===117) {
 	            this.state = 674;
 	            this.typeStatementLenSpec();
 	        }
@@ -2300,7 +2296,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	typename_() {
 	    let localctx = new Typename_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, Fortran77Parser.RULE_typename_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 695;
@@ -2318,13 +2314,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 686;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.STAR) {
+	            if(_la===117) {
 	                this.state = 682;
 	                this.match(Fortran77Parser.STAR);
 	                this.state = 684;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Fortran77Parser.ICON) {
+	                if(_la===114) {
 	                    this.state = 683;
 	                    this.match(Fortran77Parser.ICON);
 	                }
@@ -2444,7 +2440,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	pointerStatement() {
 	    let localctx = new PointerStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, Fortran77Parser.RULE_pointerStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 704;
@@ -2454,7 +2450,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 710;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 706;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 707;
@@ -2520,27 +2516,27 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 722;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.NONE:
+	        case 13:
 	            this.state = 720;
 	            this.implicitNone();
 	            break;
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.CHARACTER:
-	        case Fortran77Parser.DOUBLE:
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.LNOT:
-	        case Fortran77Parser.TRUE:
-	        case Fortran77Parser.FALSE:
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.COMPLEX:
-	        case Fortran77Parser.INTEGER:
-	        case Fortran77Parser.LOGICAL:
-	        case Fortran77Parser.SCON:
-	        case Fortran77Parser.RCON:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 14:
+	        case 45:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 78:
+	        case 91:
+	        case 92:
+	        case 97:
+	        case 108:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
 	            this.state = 721;
 	            this.implicitSpecs();
 	            break;
@@ -2595,7 +2591,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	implicitSpecs() {
 	    let localctx = new ImplicitSpecsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, Fortran77Parser.RULE_implicitSpecs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 729;
@@ -2603,7 +2599,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 734;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 730;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 731;
@@ -2677,7 +2673,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	implicitRange() {
 	    let localctx = new ImplicitRangeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, Fortran77Parser.RULE_implicitRange);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 741;
@@ -2685,7 +2681,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 744;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.MINUS) {
+	        if(_la===74) {
 	            this.state = 742;
 	            this.match(Fortran77Parser.MINUS);
 	            this.state = 743;
@@ -2711,7 +2707,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	implicitLetters() {
 	    let localctx = new ImplicitLettersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, Fortran77Parser.RULE_implicitLetters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 746;
@@ -2719,7 +2715,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 751;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 747;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 748;
@@ -2804,7 +2800,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	characterWithLen() {
 	    let localctx = new CharacterWithLenContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, Fortran77Parser.RULE_characterWithLen);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 768;
@@ -2812,7 +2808,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 770;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.STAR) {
+	        if(_la===117) {
 	            this.state = 769;
 	            this.cwlLen();
 	        }
@@ -2890,7 +2886,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	paramlist() {
 	    let localctx = new ParamlistContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, Fortran77Parser.RULE_paramlist);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 780;
@@ -2898,7 +2894,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 785;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 781;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 782;
@@ -3003,7 +2999,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	saveStatement() {
 	    let localctx = new SaveStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 116, Fortran77Parser.RULE_saveStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 798;
@@ -3011,13 +3007,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 807;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.DIV || _la===Fortran77Parser.NAME) {
+	        if(_la===76 || _la===115) {
 	            this.state = 799;
 	            this.saveEntity();
 	            this.state = 804;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Fortran77Parser.COMMA) {
+	            while(_la===69) {
 	                this.state = 800;
 	                this.match(Fortran77Parser.COMMA);
 	                this.state = 801;
@@ -3052,11 +3048,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 813;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.NAME:
+	        case 115:
 	            this.state = 809;
 	            this.match(Fortran77Parser.NAME);
 	            break;
-	        case Fortran77Parser.DIV:
+	        case 76:
 	            this.state = 810;
 	            this.match(Fortran77Parser.DIV);
 	            this.state = 811;
@@ -3086,7 +3082,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	dataStatement() {
 	    let localctx = new DataStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 120, Fortran77Parser.RULE_dataStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 815;
@@ -3096,11 +3092,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 823;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.REAL || _la===Fortran77Parser.COMMA || _la===Fortran77Parser.LPAREN || _la===Fortran77Parser.NAME) {
+	        while(_la===8 || _la===69 || _la===70 || _la===115) {
 	            this.state = 818;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.COMMA) {
+	            if(_la===69) {
 	                this.state = 817;
 	                this.match(Fortran77Parser.COMMA);
 	            }
@@ -3134,13 +3130,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 828;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 115:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 826;
 	            this.varRef();
 	            break;
-	        case Fortran77Parser.LPAREN:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 827;
 	            this.dataImpliedDo();
@@ -3167,7 +3163,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	dataStatementMultiple() {
 	    let localctx = new DataStatementMultipleContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, Fortran77Parser.RULE_dataStatementMultiple);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 832;
@@ -3176,7 +3172,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        if(la_===1) {
 	            this.state = 830;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.ICON || _la===Fortran77Parser.NAME)) {
+	            if(!(_la===114 || _la===115)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3190,19 +3186,19 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 836;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.TRUE:
-	        case Fortran77Parser.FALSE:
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
-	        case Fortran77Parser.RCON:
-	        case Fortran77Parser.ICON:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 91:
+	        case 92:
+	        case 97:
+	        case 112:
+	        case 113:
+	        case 114:
 	            this.state = 834;
 	            this.constant();
 	            break;
-	        case Fortran77Parser.NAME:
+	        case 115:
 	            this.state = 835;
 	            this.match(Fortran77Parser.NAME);
 	            break;
@@ -3253,7 +3249,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	dse1() {
 	    let localctx = new Dse1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 128, Fortran77Parser.RULE_dse1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 841;
@@ -3261,7 +3257,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 846;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 842;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 843;
@@ -3291,7 +3287,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	dse2() {
 	    let localctx = new Dse2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 130, Fortran77Parser.RULE_dse2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 851;
@@ -3299,7 +3295,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 856;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 852;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 853;
@@ -3360,7 +3356,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	dataImpliedDoRange() {
 	    let localctx = new DataImpliedDoRangeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 134, Fortran77Parser.RULE_dataImpliedDoRange);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 867;
@@ -3376,7 +3372,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 874;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA) {
+	        if(_la===69) {
 	            this.state = 872;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 873;
@@ -3406,14 +3402,14 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 879;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 70:
+	        case 115:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 876;
 	            this.dataImpliedDoListWhat();
 	            break;
-	        case Fortran77Parser.COMMA:
+	        case 69:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 877;
 	            this.match(Fortran77Parser.COMMA);
@@ -3447,12 +3443,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 883;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 115:
 	            this.state = 881;
 	            this.varRef();
 	            break;
-	        case Fortran77Parser.LPAREN:
+	        case 70:
 	            this.state = 882;
 	            this.dataImpliedDo();
 	            break;
@@ -3478,12 +3474,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	gotoStatement() {
 	    let localctx = new GotoStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 140, Fortran77Parser.RULE_gotoStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 885;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.GO || _la===Fortran77Parser.GOTO)) {
+	        if(!(_la===20 || _la===21)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3495,15 +3491,15 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 891;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.ICON:
+	        case 114:
 	            this.state = 888;
 	            this.unconditionalGoto();
 	            break;
-	        case Fortran77Parser.LPAREN:
+	        case 70:
 	            this.state = 889;
 	            this.computedGoto();
 	            break;
-	        case Fortran77Parser.NAME:
+	        case 115:
 	            this.state = 890;
 	            this.assignedGoto();
 	            break;
@@ -3552,7 +3548,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	computedGoto() {
 	    let localctx = new ComputedGotoContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 144, Fortran77Parser.RULE_computedGoto);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 895;
@@ -3564,7 +3560,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 899;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA) {
+	        if(_la===69) {
 	            this.state = 898;
 	            this.match(Fortran77Parser.COMMA);
 	        }
@@ -3613,7 +3609,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	labelList() {
 	    let localctx = new LabelListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 148, Fortran77Parser.RULE_labelList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 905;
@@ -3621,7 +3617,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 910;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 906;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 907;
@@ -3649,7 +3645,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	assignedGoto() {
 	    let localctx = new AssignedGotoContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 150, Fortran77Parser.RULE_assignedGoto);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 913;
@@ -3657,11 +3653,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 921;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA || _la===Fortran77Parser.LPAREN) {
+	        if(_la===69 || _la===70) {
 	            this.state = 915;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.COMMA) {
+	            if(_la===69) {
 	                this.state = 914;
 	                this.match(Fortran77Parser.COMMA);
 	            }
@@ -3796,7 +3792,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	blockIfStatement() {
 	    let localctx = new BlockIfStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 158, Fortran77Parser.RULE_blockIfStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 940;
@@ -3817,7 +3813,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 948;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.ELSE) {
+	        if(_la===24) {
 	            this.state = 947;
 	            this.elseStatement();
 	        }
@@ -3843,7 +3839,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	firstIfBlock() {
 	    let localctx = new FirstIfBlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 160, Fortran77Parser.RULE_firstIfBlock);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 952;
@@ -3851,7 +3847,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 954;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 953;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -3859,7 +3855,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 959;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMENT) {
+	        while(_la===116) {
 	            this.state = 956;
 	            this.commentStatement();
 	            this.state = 961;
@@ -3875,7 +3871,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 966;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Fortran77Parser.COMMENT) {
+	            while(_la===116) {
 	                this.state = 963;
 	                this.commentStatement();
 	                this.state = 968;
@@ -3885,7 +3881,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 971; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Fortran77Parser.ENTRY) | (1 << Fortran77Parser.DIMENSION) | (1 << Fortran77Parser.REAL) | (1 << Fortran77Parser.EQUIVALENCE) | (1 << Fortran77Parser.COMMON) | (1 << Fortran77Parser.POINTER) | (1 << Fortran77Parser.IMPLICIT) | (1 << Fortran77Parser.CHARACTER) | (1 << Fortran77Parser.PARAMETER) | (1 << Fortran77Parser.EXTERNAL) | (1 << Fortran77Parser.INTRINSIC) | (1 << Fortran77Parser.SAVE) | (1 << Fortran77Parser.DATA) | (1 << Fortran77Parser.GO) | (1 << Fortran77Parser.GOTO) | (1 << Fortran77Parser.IF) | (1 << Fortran77Parser.DO) | (1 << Fortran77Parser.CONTINUE) | (1 << Fortran77Parser.STOP) | (1 << Fortran77Parser.PAUSE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Fortran77Parser.WRITE - 32)) | (1 << (Fortran77Parser.READ - 32)) | (1 << (Fortran77Parser.PRINT - 32)) | (1 << (Fortran77Parser.OPEN - 32)) | (1 << (Fortran77Parser.LET - 32)) | (1 << (Fortran77Parser.CALL - 32)) | (1 << (Fortran77Parser.RETURN - 32)) | (1 << (Fortran77Parser.CLOSE - 32)) | (1 << (Fortran77Parser.DOUBLE - 32)) | (1 << (Fortran77Parser.LABEL - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Fortran77Parser.INQUIRE - 64)) | (1 << (Fortran77Parser.BACKSPACE - 64)) | (1 << (Fortran77Parser.ENDFILE - 64)) | (1 << (Fortran77Parser.REWIND - 64)) | (1 << (Fortran77Parser.LPAREN - 64)) | (1 << (Fortran77Parser.MINUS - 64)) | (1 << (Fortran77Parser.PLUS - 64)) | (1 << (Fortran77Parser.LNOT - 64)) | (1 << (Fortran77Parser.TRUE - 64)) | (1 << (Fortran77Parser.FALSE - 64)))) !== 0) || ((((_la - 97)) & ~0x1f) == 0 && ((1 << (_la - 97)) & ((1 << (Fortran77Parser.HOLLERITH - 97)) | (1 << (Fortran77Parser.COMPLEX - 97)) | (1 << (Fortran77Parser.INTEGER - 97)) | (1 << (Fortran77Parser.LOGICAL - 97)) | (1 << (Fortran77Parser.SCON - 97)) | (1 << (Fortran77Parser.RCON - 97)) | (1 << (Fortran77Parser.ICON - 97)) | (1 << (Fortran77Parser.NAME - 97)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3095388036) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 81423) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 402672719) !== 0) || ((((_la - 97)) & ~0x1f) === 0 && ((1 << (_la - 97)) & 518145) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -3905,17 +3901,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	elseIfStatement() {
 	    let localctx = new ElseIfStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 162, Fortran77Parser.RULE_elseIfStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 976;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.ELSEIF:
+	        case 26:
 	            this.state = 973;
 	            this.match(Fortran77Parser.ELSEIF);
 	            break;
-	        case Fortran77Parser.ELSE:
+	        case 24:
 	            this.state = 974;
 	            this.match(Fortran77Parser.ELSE);
 	            this.state = 975;
@@ -3935,7 +3931,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 983;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 982;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -3949,7 +3945,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 988; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Fortran77Parser.ENTRY) | (1 << Fortran77Parser.DIMENSION) | (1 << Fortran77Parser.REAL) | (1 << Fortran77Parser.EQUIVALENCE) | (1 << Fortran77Parser.COMMON) | (1 << Fortran77Parser.POINTER) | (1 << Fortran77Parser.IMPLICIT) | (1 << Fortran77Parser.CHARACTER) | (1 << Fortran77Parser.PARAMETER) | (1 << Fortran77Parser.EXTERNAL) | (1 << Fortran77Parser.INTRINSIC) | (1 << Fortran77Parser.SAVE) | (1 << Fortran77Parser.DATA) | (1 << Fortran77Parser.GO) | (1 << Fortran77Parser.GOTO) | (1 << Fortran77Parser.IF) | (1 << Fortran77Parser.DO) | (1 << Fortran77Parser.CONTINUE) | (1 << Fortran77Parser.STOP) | (1 << Fortran77Parser.PAUSE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Fortran77Parser.WRITE - 32)) | (1 << (Fortran77Parser.READ - 32)) | (1 << (Fortran77Parser.PRINT - 32)) | (1 << (Fortran77Parser.OPEN - 32)) | (1 << (Fortran77Parser.LET - 32)) | (1 << (Fortran77Parser.CALL - 32)) | (1 << (Fortran77Parser.RETURN - 32)) | (1 << (Fortran77Parser.CLOSE - 32)) | (1 << (Fortran77Parser.DOUBLE - 32)) | (1 << (Fortran77Parser.LABEL - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Fortran77Parser.INQUIRE - 64)) | (1 << (Fortran77Parser.BACKSPACE - 64)) | (1 << (Fortran77Parser.ENDFILE - 64)) | (1 << (Fortran77Parser.REWIND - 64)) | (1 << (Fortran77Parser.LPAREN - 64)) | (1 << (Fortran77Parser.MINUS - 64)) | (1 << (Fortran77Parser.PLUS - 64)) | (1 << (Fortran77Parser.LNOT - 64)) | (1 << (Fortran77Parser.TRUE - 64)) | (1 << (Fortran77Parser.FALSE - 64)))) !== 0) || ((((_la - 97)) & ~0x1f) == 0 && ((1 << (_la - 97)) & ((1 << (Fortran77Parser.HOLLERITH - 97)) | (1 << (Fortran77Parser.COMPLEX - 97)) | (1 << (Fortran77Parser.INTEGER - 97)) | (1 << (Fortran77Parser.LOGICAL - 97)) | (1 << (Fortran77Parser.SCON - 97)) | (1 << (Fortran77Parser.RCON - 97)) | (1 << (Fortran77Parser.ICON - 97)) | (1 << (Fortran77Parser.NAME - 97)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3095388036) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 81423) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 402672719) !== 0) || ((((_la - 97)) & ~0x1f) === 0 && ((1 << (_la - 97)) & 518145) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -3969,7 +3965,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	elseStatement() {
 	    let localctx = new ElseStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 164, Fortran77Parser.RULE_elseStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 990;
@@ -3977,7 +3973,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 992;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 991;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -3985,7 +3981,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 997;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMENT) {
+	        while(_la===116) {
 	            this.state = 994;
 	            this.commentStatement();
 	            this.state = 999;
@@ -4001,7 +3997,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1004;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Fortran77Parser.COMMENT) {
+	            while(_la===116) {
 	                this.state = 1001;
 	                this.commentStatement();
 	                this.state = 1006;
@@ -4011,7 +4007,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1009; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << Fortran77Parser.ENTRY) | (1 << Fortran77Parser.DIMENSION) | (1 << Fortran77Parser.REAL) | (1 << Fortran77Parser.EQUIVALENCE) | (1 << Fortran77Parser.COMMON) | (1 << Fortran77Parser.POINTER) | (1 << Fortran77Parser.IMPLICIT) | (1 << Fortran77Parser.CHARACTER) | (1 << Fortran77Parser.PARAMETER) | (1 << Fortran77Parser.EXTERNAL) | (1 << Fortran77Parser.INTRINSIC) | (1 << Fortran77Parser.SAVE) | (1 << Fortran77Parser.DATA) | (1 << Fortran77Parser.GO) | (1 << Fortran77Parser.GOTO) | (1 << Fortran77Parser.IF) | (1 << Fortran77Parser.DO) | (1 << Fortran77Parser.CONTINUE) | (1 << Fortran77Parser.STOP) | (1 << Fortran77Parser.PAUSE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (Fortran77Parser.WRITE - 32)) | (1 << (Fortran77Parser.READ - 32)) | (1 << (Fortran77Parser.PRINT - 32)) | (1 << (Fortran77Parser.OPEN - 32)) | (1 << (Fortran77Parser.LET - 32)) | (1 << (Fortran77Parser.CALL - 32)) | (1 << (Fortran77Parser.RETURN - 32)) | (1 << (Fortran77Parser.CLOSE - 32)) | (1 << (Fortran77Parser.DOUBLE - 32)) | (1 << (Fortran77Parser.LABEL - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (Fortran77Parser.INQUIRE - 64)) | (1 << (Fortran77Parser.BACKSPACE - 64)) | (1 << (Fortran77Parser.ENDFILE - 64)) | (1 << (Fortran77Parser.REWIND - 64)) | (1 << (Fortran77Parser.LPAREN - 64)) | (1 << (Fortran77Parser.MINUS - 64)) | (1 << (Fortran77Parser.PLUS - 64)) | (1 << (Fortran77Parser.LNOT - 64)) | (1 << (Fortran77Parser.TRUE - 64)) | (1 << (Fortran77Parser.FALSE - 64)))) !== 0) || ((((_la - 97)) & ~0x1f) == 0 && ((1 << (_la - 97)) & ((1 << (Fortran77Parser.HOLLERITH - 97)) | (1 << (Fortran77Parser.COMPLEX - 97)) | (1 << (Fortran77Parser.INTEGER - 97)) | (1 << (Fortran77Parser.LOGICAL - 97)) | (1 << (Fortran77Parser.SCON - 97)) | (1 << (Fortran77Parser.RCON - 97)) | (1 << (Fortran77Parser.ICON - 97)) | (1 << (Fortran77Parser.NAME - 97)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3095388036) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 81423) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 402672719) !== 0) || ((((_la - 97)) & ~0x1f) === 0 && ((1 << (_la - 97)) & 518145) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -4036,11 +4032,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1014;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.ENDIF:
+	        case 25:
 	            this.state = 1011;
 	            this.match(Fortran77Parser.ENDIF);
 	            break;
-	        case Fortran77Parser.END:
+	        case 6:
 	            this.state = 1012;
 	            this.match(Fortran77Parser.END);
 	            this.state = 1013;
@@ -4075,11 +4071,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1019;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.ICON:
+	        case 114:
 	            this.state = 1017;
 	            this.doWithLabel();
 	            break;
-	        case Fortran77Parser.NAME:
+	        case 115:
 	            this.state = 1018;
 	            this.doWithEndDo();
 	            break;
@@ -4105,7 +4101,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	doVarArgs() {
 	    let localctx = new DoVarArgsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 170, Fortran77Parser.RULE_doVarArgs);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1021;
@@ -4121,7 +4117,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1028;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA) {
+	        if(_la===69) {
 	            this.state = 1026;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1027;
@@ -4147,7 +4143,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	doWithLabel() {
 	    let localctx = new DoWithLabelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 172, Fortran77Parser.RULE_doWithLabel);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1030;
@@ -4155,7 +4151,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1032;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA) {
+	        if(_la===69) {
 	            this.state = 1031;
 	            this.match(Fortran77Parser.COMMA);
 	        }
@@ -4165,7 +4161,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1036;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 1035;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -4175,7 +4171,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1040;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 1039;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -4238,7 +4234,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	doWithEndDo() {
 	    let localctx = new DoWithEndDoContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 176, Fortran77Parser.RULE_doWithEndDo);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1049;
@@ -4246,7 +4242,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1051;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 1050;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -4256,7 +4252,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1055;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.EOL) {
+	        if(_la===119) {
 	            this.state = 1054;
 	            this.match(Fortran77Parser.EOL);
 	        }
@@ -4287,11 +4283,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1062;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.ENDDO:
+	        case 30:
 	            this.state = 1059;
 	            this.match(Fortran77Parser.ENDDO);
 	            break;
-	        case Fortran77Parser.END:
+	        case 6:
 	            this.state = 1060;
 	            this.match(Fortran77Parser.END);
 	            this.state = 1061;
@@ -4319,13 +4315,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	continueStatement() {
 	    let localctx = new ContinueStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 180, Fortran77Parser.RULE_continueStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1067;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.ICON) {
+	        while(_la===114) {
 	            this.state = 1064;
 	            this.lblRef();
 	            this.state = 1069;
@@ -4353,7 +4349,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	stopStatement() {
 	    let localctx = new StopStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 182, Fortran77Parser.RULE_stopStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1072;
@@ -4361,10 +4357,10 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1074;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.HOLLERITH || _la===Fortran77Parser.ICON) {
+	        if(_la===97 || _la===114) {
 	            this.state = 1073;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.HOLLERITH || _la===Fortran77Parser.ICON)) {
+	            if(!(_la===97 || _la===114)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -4392,14 +4388,14 @@ export default class Fortran77Parser extends antlr4.Parser {
 	pauseStatement() {
 	    let localctx = new PauseStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 184, Fortran77Parser.RULE_pauseStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1076;
 	        this.match(Fortran77Parser.PAUSE);
 	        this.state = 1077;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.HOLLERITH || _la===Fortran77Parser.ICON)) {
+	        if(!(_la===97 || _la===114)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4425,7 +4421,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	writeStatement() {
 	    let localctx = new WriteStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 186, Fortran77Parser.RULE_writeStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1079;
@@ -4439,7 +4435,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1091;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.REAL || ((((_la - 69)) & ~0x1f) == 0 && ((1 << (_la - 69)) & ((1 << (Fortran77Parser.COMMA - 69)) | (1 << (Fortran77Parser.LPAREN - 69)) | (1 << (Fortran77Parser.MINUS - 69)) | (1 << (Fortran77Parser.PLUS - 69)) | (1 << (Fortran77Parser.LNOT - 69)) | (1 << (Fortran77Parser.TRUE - 69)) | (1 << (Fortran77Parser.FALSE - 69)) | (1 << (Fortran77Parser.HOLLERITH - 69)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.RCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	        if(_la===8 || ((((_la - 69)) & ~0x1f) === 0 && ((1 << (_la - 69)) & 281018979) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 15) !== 0)) {
 	            this.state = 1087; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -4447,7 +4443,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.state = 1084;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Fortran77Parser.COMMA) {
+	                if(_la===69) {
 	                    this.state = 1083;
 	                    this.match(Fortran77Parser.COMMA);
 	                }
@@ -4457,7 +4453,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.state = 1089; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===Fortran77Parser.REAL || ((((_la - 69)) & ~0x1f) == 0 && ((1 << (_la - 69)) & ((1 << (Fortran77Parser.COMMA - 69)) | (1 << (Fortran77Parser.LPAREN - 69)) | (1 << (Fortran77Parser.MINUS - 69)) | (1 << (Fortran77Parser.PLUS - 69)) | (1 << (Fortran77Parser.LNOT - 69)) | (1 << (Fortran77Parser.TRUE - 69)) | (1 << (Fortran77Parser.FALSE - 69)) | (1 << (Fortran77Parser.HOLLERITH - 69)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.RCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0));
+	            } while(_la===8 || ((((_la - 69)) & ~0x1f) === 0 && ((1 << (_la - 69)) & 281018979) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 15) !== 0));
 	        }
 
 	    } catch (re) {
@@ -4479,7 +4475,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	readStatement() {
 	    let localctx = new ReadStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 188, Fortran77Parser.RULE_readStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1093;
@@ -4490,7 +4486,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1101;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA) {
+	        if(_la===69) {
 	            this.state = 1097; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -4502,7 +4498,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.state = 1099; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===Fortran77Parser.COMMA);
+	            } while(_la===69);
 	        }
 
 	    } catch (re) {
@@ -4524,7 +4520,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	printStatement() {
 	    let localctx = new PrintStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 190, Fortran77Parser.RULE_printStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1103;
@@ -4535,7 +4531,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA) {
+	        if(_la===69) {
 	            this.state = 1107; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -4547,7 +4543,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.state = 1109; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===Fortran77Parser.COMMA);
+	            } while(_la===69);
 	        }
 
 	    } catch (re) {
@@ -4596,7 +4592,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	controlInfoList() {
 	    let localctx = new ControlInfoListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 194, Fortran77Parser.RULE_controlInfoList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1117;
@@ -4604,7 +4600,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1122;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 1118;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1119;
@@ -4641,11 +4637,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1129;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.ICON:
+	        case 114:
 	            this.state = 1127;
 	            this.lblRef();
 	            break;
-	        case Fortran77Parser.NAME:
+	        case 115:
 	            this.state = 1128;
 	            this.match(Fortran77Parser.NAME);
 	            break;
@@ -4671,7 +4667,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	controlInfoListItem() {
 	    let localctx = new ControlInfoListItemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 198, Fortran77Parser.RULE_controlInfoListItem);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1154;
 	        this._errHandler.sync(this);
@@ -4687,7 +4683,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1132;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.HOLLERITH || _la===Fortran77Parser.SCON)) {
+	            if(!(_la===97 || _la===112)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -4880,7 +4876,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	ioImpliedDoList() {
 	    let localctx = new IoImpliedDoListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 204, Fortran77Parser.RULE_ioImpliedDoList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1185;
@@ -4902,7 +4898,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1195;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COMMA) {
+	        if(_la===69) {
 	            this.state = 1193;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1194;
@@ -4930,7 +4926,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	openStatement() {
 	    let localctx = new OpenStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 206, Fortran77Parser.RULE_openStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1199;
@@ -4942,7 +4938,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1206;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 1202;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1203;
@@ -4976,17 +4972,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1248;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
-	        case Fortran77Parser.STAR:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 114:
+	        case 115:
+	        case 117:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1211;
 	            this.unitIdentifier();
 	            break;
-	        case Fortran77Parser.UNIT:
+	        case 37:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1212;
 	            this.controlUnit();
@@ -4995,12 +4991,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1214;
 	            this.unitIdentifier();
 	            break;
-	        case Fortran77Parser.ERR:
+	        case 38:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1216;
 	            this.controlErrSpec();
 	            break;
-	        case Fortran77Parser.FILE:
+	        case 49:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1217;
 	            this.controlFile();
@@ -5009,7 +5005,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1219;
 	            this.characterExpression();
 	            break;
-	        case Fortran77Parser.STATUS:
+	        case 50:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1221;
 	            this.controlStatus();
@@ -5018,17 +5014,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1223;
 	            this.characterExpression();
 	            break;
-	        case Fortran77Parser.ACCESS:
-	        case Fortran77Parser.POSITION:
+	        case 51:
+	        case 52:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 1227;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case Fortran77Parser.ACCESS:
+	            case 51:
 	                this.state = 1225;
 	                this.controlAccess();
 	                break;
-	            case Fortran77Parser.POSITION:
+	            case 52:
 	                this.state = 1226;
 	                this.controlPosition();
 	                break;
@@ -5040,7 +5036,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1230;
 	            this.characterExpression();
 	            break;
-	        case Fortran77Parser.FORM:
+	        case 53:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 1232;
 	            this.controlForm();
@@ -5049,7 +5045,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1234;
 	            this.characterExpression();
 	            break;
-	        case Fortran77Parser.RECL:
+	        case 54:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 1236;
 	            this.controlRecl();
@@ -5058,7 +5054,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1238;
 	            this.integerExpr();
 	            break;
-	        case Fortran77Parser.BLANK:
+	        case 55:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 1240;
 	            this.controlBlank();
@@ -5067,7 +5063,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1242;
 	            this.characterExpression();
 	            break;
-	        case Fortran77Parser.IOSTART:
+	        case 46:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 1244;
 	            this.controlIostat();
@@ -5627,7 +5623,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	closeStatement() {
 	    let localctx = new CloseStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 256, Fortran77Parser.RULE_closeStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1296;
@@ -5639,7 +5635,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1303;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 1299;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1300;
@@ -5673,17 +5669,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1322;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
-	        case Fortran77Parser.STAR:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 114:
+	        case 115:
+	        case 117:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1308;
 	            this.unitIdentifier();
 	            break;
-	        case Fortran77Parser.UNIT:
+	        case 37:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1309;
 	            this.controlUnit();
@@ -5692,12 +5688,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1311;
 	            this.unitIdentifier();
 	            break;
-	        case Fortran77Parser.ERR:
+	        case 38:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1313;
 	            this.controlErrSpec();
 	            break;
-	        case Fortran77Parser.STATUS:
+	        case 50:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1314;
 	            this.controlStatus();
@@ -5706,7 +5702,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1316;
 	            this.characterExpression();
 	            break;
-	        case Fortran77Parser.IOSTART:
+	        case 46:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1318;
 	            this.controlIostat();
@@ -5737,7 +5733,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	inquireStatement() {
 	    let localctx = new InquireStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 260, Fortran77Parser.RULE_inquireStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1324;
@@ -5749,7 +5745,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1331;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 1327;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1328;
@@ -5999,7 +5995,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	berFinish() {
 	    let localctx = new BerFinishContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 270, Fortran77Parser.RULE_berFinish);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1391;
@@ -6022,7 +6018,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1386;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Fortran77Parser.COMMA) {
+	            while(_la===69) {
 	                this.state = 1382;
 	                this.match(Fortran77Parser.COMMA);
 	                this.state = 1383;
@@ -6059,17 +6055,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1403;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
-	        case Fortran77Parser.STAR:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 114:
+	        case 115:
+	        case 117:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1393;
 	            this.unitIdentifier();
 	            break;
-	        case Fortran77Parser.UNIT:
+	        case 37:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1394;
 	            this.controlUnit();
@@ -6078,12 +6074,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1396;
 	            this.unitIdentifier();
 	            break;
-	        case Fortran77Parser.ERR:
+	        case 38:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1398;
 	            this.controlErrSpec();
 	            break;
-	        case Fortran77Parser.IOSTART:
+	        case 46:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1399;
 	            this.controlIostat();
@@ -6118,16 +6114,16 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1407;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 114:
+	        case 115:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1405;
 	            this.iexpr();
 	            break;
-	        case Fortran77Parser.STAR:
+	        case 117:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1406;
 	            this.match(Fortran77Parser.STAR);
@@ -6154,17 +6150,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	formatIdentifier() {
 	    let localctx = new FormatIdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 276, Fortran77Parser.RULE_formatIdentifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1412;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
+	        case 97:
+	        case 112:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1409;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.HOLLERITH || _la===Fortran77Parser.SCON)) {
+	            if(!(_la===97 || _la===112)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -6172,16 +6168,16 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 114:
+	        case 115:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1410;
 	            this.iexpr();
 	            break;
-	        case Fortran77Parser.STAR:
+	        case 117:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1411;
 	            this.match(Fortran77Parser.STAR);
@@ -6237,34 +6233,34 @@ export default class Fortran77Parser extends antlr4.Parser {
 	fmtSpec() {
 	    let localctx = new FmtSpecContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 280, Fortran77Parser.RULE_fmtSpec);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1424;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.XCON:
-	        case Fortran77Parser.PCON:
-	        case Fortran77Parser.FCON:
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 97:
+	        case 112:
+	        case 114:
+	        case 115:
 	            this.state = 1419;
 	            this.formatedit();
 	            break;
-	        case Fortran77Parser.DOLLAR:
-	        case Fortran77Parser.COLON:
-	        case Fortran77Parser.DIV:
+	        case 68:
+	        case 72:
+	        case 76:
 	            this.state = 1420;
 	            this.formatsep();
 	            this.state = 1422;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)) | (1 << (Fortran77Parser.XCON - 70)) | (1 << (Fortran77Parser.PCON - 70)) | (1 << (Fortran77Parser.FCON - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	            if(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 192938033) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 13) !== 0)) {
 	                this.state = 1421;
 	                this.formatedit();
 	            }
@@ -6276,52 +6272,52 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1440;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (Fortran77Parser.DOLLAR - 68)) | (1 << (Fortran77Parser.COMMA - 68)) | (1 << (Fortran77Parser.COLON - 68)) | (1 << (Fortran77Parser.DIV - 68)))) !== 0)) {
+	        while(((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 275) !== 0)) {
 	            this.state = 1438;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case Fortran77Parser.DOLLAR:
-	            case Fortran77Parser.COLON:
-	            case Fortran77Parser.DIV:
+	            case 68:
+	            case 72:
+	            case 76:
 	                this.state = 1426;
 	                this.formatsep();
 	                this.state = 1428;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)) | (1 << (Fortran77Parser.XCON - 70)) | (1 << (Fortran77Parser.PCON - 70)) | (1 << (Fortran77Parser.FCON - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	                if(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 192938033) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 13) !== 0)) {
 	                    this.state = 1427;
 	                    this.formatedit();
 	                }
 
 	                break;
-	            case Fortran77Parser.COMMA:
+	            case 69:
 	                this.state = 1430;
 	                this.match(Fortran77Parser.COMMA);
 	                this.state = 1436;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case Fortran77Parser.LPAREN:
-	                case Fortran77Parser.MINUS:
-	                case Fortran77Parser.PLUS:
-	                case Fortran77Parser.XCON:
-	                case Fortran77Parser.PCON:
-	                case Fortran77Parser.FCON:
-	                case Fortran77Parser.HOLLERITH:
-	                case Fortran77Parser.SCON:
-	                case Fortran77Parser.ICON:
-	                case Fortran77Parser.NAME:
+	                case 70:
+	                case 74:
+	                case 75:
+	                case 93:
+	                case 94:
+	                case 95:
+	                case 97:
+	                case 112:
+	                case 114:
+	                case 115:
 	                    this.state = 1431;
 	                    this.formatedit();
 	                    break;
-	                case Fortran77Parser.DOLLAR:
-	                case Fortran77Parser.COLON:
-	                case Fortran77Parser.DIV:
+	                case 68:
+	                case 72:
+	                case 76:
 	                    this.state = 1432;
 	                    this.formatsep();
 	                    this.state = 1434;
 	                    this._errHandler.sync(this);
 	                    _la = this._input.LA(1);
-	                    if(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)) | (1 << (Fortran77Parser.XCON - 70)) | (1 << (Fortran77Parser.PCON - 70)) | (1 << (Fortran77Parser.FCON - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	                    if(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 192938033) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 13) !== 0)) {
 	                        this.state = 1433;
 	                        this.formatedit();
 	                    }
@@ -6357,12 +6353,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	formatsep() {
 	    let localctx = new FormatsepContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 282, Fortran77Parser.RULE_formatsep);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1443;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 68)) & ~0x1f) == 0 && ((1 << (_la - 68)) & ((1 << (Fortran77Parser.DOLLAR - 68)) | (1 << (Fortran77Parser.COLON - 68)) | (1 << (Fortran77Parser.DIV - 68)))) !== 0))) {
+	        if(!(((((_la - 68)) & ~0x1f) === 0 && ((1 << (_la - 68)) & 273) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -6388,43 +6384,43 @@ export default class Fortran77Parser extends antlr4.Parser {
 	formatedit() {
 	    let localctx = new FormateditContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 284, Fortran77Parser.RULE_formatedit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1459;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.XCON:
+	        case 93:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1445;
 	            this.match(Fortran77Parser.XCON);
 	            break;
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.FCON:
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
-	        case Fortran77Parser.NAME:
+	        case 70:
+	        case 95:
+	        case 97:
+	        case 112:
+	        case 115:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1446;
 	            this.editElement();
 	            break;
-	        case Fortran77Parser.ICON:
+	        case 114:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1447;
 	            this.match(Fortran77Parser.ICON);
 	            this.state = 1448;
 	            this.editElement();
 	            break;
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.PCON:
+	        case 74:
+	        case 75:
+	        case 94:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1450;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS) {
+	            if(_la===74 || _la===75) {
 	                this.state = 1449;
 	                _la = this._input.LA(1);
-	                if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	                if(!(_la===74 || _la===75)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -6438,11 +6434,11 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1457;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.FCON - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	            if(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 167772161) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 13) !== 0)) {
 	                this.state = 1454;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===Fortran77Parser.ICON) {
+	                if(_la===114) {
 	                    this.state = 1453;
 	                    this.match(Fortran77Parser.ICON);
 	                }
@@ -6474,19 +6470,19 @@ export default class Fortran77Parser extends antlr4.Parser {
 	editElement() {
 	    let localctx = new EditElementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 286, Fortran77Parser.RULE_editElement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1466;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.FCON:
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
-	        case Fortran77Parser.NAME:
+	        case 95:
+	        case 97:
+	        case 112:
+	        case 115:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1461;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 95)) & ~0x1f) == 0 && ((1 << (_la - 95)) & ((1 << (Fortran77Parser.FCON - 95)) | (1 << (Fortran77Parser.HOLLERITH - 95)) | (1 << (Fortran77Parser.SCON - 95)) | (1 << (Fortran77Parser.NAME - 95)))) !== 0))) {
+	            if(!(((((_la - 95)) & ~0x1f) === 0 && ((1 << (_la - 95)) & 1179653) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -6494,7 +6490,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case Fortran77Parser.LPAREN:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1462;
 	            this.match(Fortran77Parser.LPAREN);
@@ -6608,7 +6604,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	subroutineCall() {
 	    let localctx = new SubroutineCallContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 294, Fortran77Parser.RULE_subroutineCall);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1481;
@@ -6616,13 +6612,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1487;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.LPAREN) {
+	        if(_la===70) {
 	            this.state = 1482;
 	            this.match(Fortran77Parser.LPAREN);
 	            this.state = 1484;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.REAL || ((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)) | (1 << (Fortran77Parser.LNOT - 70)) | (1 << (Fortran77Parser.TRUE - 70)) | (1 << (Fortran77Parser.FALSE - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.RCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)) | (1 << (Fortran77Parser.STAR - 112)))) !== 0)) {
+	            if(_la===8 || ((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 140509489) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 47) !== 0)) {
 	                this.state = 1483;
 	                this.callArgumentList();
 	            }
@@ -6650,7 +6646,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	callArgumentList() {
 	    let localctx = new CallArgumentListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 296, Fortran77Parser.RULE_callArgumentList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1489;
@@ -6658,7 +6654,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1494;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 1490;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1491;
@@ -6690,23 +6686,23 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1500;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.LNOT:
-	        case Fortran77Parser.TRUE:
-	        case Fortran77Parser.FALSE:
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
-	        case Fortran77Parser.RCON:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 78:
+	        case 91:
+	        case 92:
+	        case 97:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1497;
 	            this.expression();
 	            break;
-	        case Fortran77Parser.STAR:
+	        case 117:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1498;
 	            this.match(Fortran77Parser.STAR);
@@ -6735,7 +6731,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	returnStatement() {
 	    let localctx = new ReturnStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 300, Fortran77Parser.RULE_returnStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1502;
@@ -6743,7 +6739,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1504;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)))) !== 0) || _la===Fortran77Parser.ICON || _la===Fortran77Parser.NAME) {
+	        if(((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 49) !== 0) || _la===114 || _la===115) {
 	            this.state = 1503;
 	            this.integerExpr();
 	        }
@@ -6767,7 +6763,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 302, Fortran77Parser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1506;
@@ -6775,7 +6771,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1509;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.COLON) {
+	        if(_la===72) {
 	            this.state = 1507;
 	            this.match(Fortran77Parser.COLON);
 	            this.state = 1508;
@@ -6801,7 +6797,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	ncExpr() {
 	    let localctx = new NcExprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 304, Fortran77Parser.RULE_ncExpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1511;
@@ -6809,7 +6805,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1517;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.DIV) {
+	        while(_la===76) {
 	            this.state = 1512;
 	            this.concatOp();
 	            this.state = 1513;
@@ -6837,7 +6833,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	lexpr0() {
 	    let localctx = new Lexpr0Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 306, Fortran77Parser.RULE_lexpr0);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1520;
@@ -6845,10 +6841,10 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1525;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.EQV || _la===Fortran77Parser.NEQV) {
+	        while(_la===81 || _la===82) {
 	            this.state = 1521;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.EQV || _la===Fortran77Parser.NEQV)) {
+	            if(!(_la===81 || _la===82)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -6880,7 +6876,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	lexpr1() {
 	    let localctx = new Lexpr1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 308, Fortran77Parser.RULE_lexpr1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1528;
@@ -6888,7 +6884,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1533;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.LOR) {
+	        while(_la===80) {
 	            this.state = 1529;
 	            this.match(Fortran77Parser.LOR);
 	            this.state = 1530;
@@ -6916,7 +6912,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	lexpr2() {
 	    let localctx = new Lexpr2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 310, Fortran77Parser.RULE_lexpr2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1536;
@@ -6924,7 +6920,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1541;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.LAND) {
+	        while(_la===79) {
 	            this.state = 1537;
 	            this.match(Fortran77Parser.LAND);
 	            this.state = 1538;
@@ -6956,24 +6952,24 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1547;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LNOT:
+	        case 78:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1544;
 	            this.match(Fortran77Parser.LNOT);
 	            this.state = 1545;
 	            this.lexpr3();
 	            break;
-	        case Fortran77Parser.REAL:
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.TRUE:
-	        case Fortran77Parser.FALSE:
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
-	        case Fortran77Parser.RCON:
-	        case Fortran77Parser.ICON:
-	        case Fortran77Parser.NAME:
+	        case 8:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 91:
+	        case 92:
+	        case 97:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1546;
 	            this.lexpr4();
@@ -7000,7 +6996,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	lexpr4() {
 	    let localctx = new Lexpr4Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 314, Fortran77Parser.RULE_lexpr4);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1549;
@@ -7008,10 +7004,10 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1552;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 85)) & ~0x1f) == 0 && ((1 << (_la - 85)) & ((1 << (Fortran77Parser.LT - 85)) | (1 << (Fortran77Parser.LE - 85)) | (1 << (Fortran77Parser.GT - 85)) | (1 << (Fortran77Parser.GE - 85)) | (1 << (Fortran77Parser.NE - 85)) | (1 << (Fortran77Parser.EQ - 85)))) !== 0)) {
+	        if(((((_la - 85)) & ~0x1f) === 0 && ((1 << (_la - 85)) & 63) !== 0)) {
 	            this.state = 1550;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 85)) & ~0x1f) == 0 && ((1 << (_la - 85)) & ((1 << (Fortran77Parser.LT - 85)) | (1 << (Fortran77Parser.LE - 85)) | (1 << (Fortran77Parser.GT - 85)) | (1 << (Fortran77Parser.GE - 85)) | (1 << (Fortran77Parser.NE - 85)) | (1 << (Fortran77Parser.EQ - 85)))) !== 0))) {
+	            if(!(((((_la - 85)) & ~0x1f) === 0 && ((1 << (_la - 85)) & 63) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -7041,7 +7037,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	aexpr0() {
 	    let localctx = new Aexpr0Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 316, Fortran77Parser.RULE_aexpr0);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1554;
@@ -7053,7 +7049,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 1555;
 	                _la = this._input.LA(1);
-	                if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	                if(!(_la===74 || _la===75)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -7087,7 +7083,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	aexpr1() {
 	    let localctx = new Aexpr1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 318, Fortran77Parser.RULE_aexpr1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1562;
@@ -7099,7 +7095,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 1563;
 	                _la = this._input.LA(1);
-	                if(!(_la===Fortran77Parser.DIV || _la===Fortran77Parser.STAR)) {
+	                if(!(_la===76 || _la===117)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -7133,16 +7129,16 @@ export default class Fortran77Parser extends antlr4.Parser {
 	aexpr2() {
 	    let localctx = new Aexpr2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 320, Fortran77Parser.RULE_aexpr2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1573;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS) {
+	        while(_la===74 || _la===75) {
 	            this.state = 1570;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	            if(!(_la===74 || _la===75)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -7174,7 +7170,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	aexpr3() {
 	    let localctx = new Aexpr3Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 322, Fortran77Parser.RULE_aexpr3);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1578;
@@ -7182,7 +7178,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1583;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.POWER) {
+	        while(_la===77) {
 	            this.state = 1579;
 	            this.match(Fortran77Parser.POWER);
 	            this.state = 1580;
@@ -7210,7 +7206,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	aexpr4() {
 	    let localctx = new Aexpr4Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 324, Fortran77Parser.RULE_aexpr4);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1594;
 	        this._errHandler.sync(this);
@@ -7226,7 +7222,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1587;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.HOLLERITH || _la===Fortran77Parser.SCON)) {
+	            if(!(_la===97 || _la===112)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -7277,7 +7273,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	iexpr() {
 	    let localctx = new IexprContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 326, Fortran77Parser.RULE_iexpr);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1596;
@@ -7289,7 +7285,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 1597;
 	                _la = this._input.LA(1);
-	                if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	                if(!(_la===74 || _la===75)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -7323,7 +7319,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	iexprCode() {
 	    let localctx = new IexprCodeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 328, Fortran77Parser.RULE_iexprCode);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1604;
@@ -7331,10 +7327,10 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1609;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS) {
+	        while(_la===74 || _la===75) {
 	            this.state = 1605;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	            if(!(_la===74 || _la===75)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -7366,7 +7362,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	iexpr1() {
 	    let localctx = new Iexpr1Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 330, Fortran77Parser.RULE_iexpr1);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1612;
@@ -7378,7 +7374,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 1613;
 	                _la = this._input.LA(1);
-	                if(!(_la===Fortran77Parser.DIV || _la===Fortran77Parser.STAR)) {
+	                if(!(_la===76 || _la===117)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -7412,16 +7408,16 @@ export default class Fortran77Parser extends antlr4.Parser {
 	iexpr2() {
 	    let localctx = new Iexpr2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 332, Fortran77Parser.RULE_iexpr2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1623;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS) {
+	        while(_la===74 || _la===75) {
 	            this.state = 1620;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	            if(!(_la===74 || _la===75)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -7453,7 +7449,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	iexpr3() {
 	    let localctx = new Iexpr3Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 334, Fortran77Parser.RULE_iexpr3);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1628;
@@ -7461,7 +7457,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1631;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.POWER) {
+	        if(_la===77) {
 	            this.state = 1629;
 	            this.match(Fortran77Parser.POWER);
 	            this.state = 1630;
@@ -7491,17 +7487,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1639;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.ICON:
+	        case 114:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1633;
 	            this.match(Fortran77Parser.ICON);
 	            break;
-	        case Fortran77Parser.NAME:
+	        case 115:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1634;
 	            this.varRefCode();
 	            break;
-	        case Fortran77Parser.LPAREN:
+	        case 70:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1635;
 	            this.match(Fortran77Parser.LPAREN);
@@ -7764,7 +7760,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	arrayElementName() {
 	    let localctx = new ArrayElementNameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 358, Fortran77Parser.RULE_arrayElementName);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1662;
@@ -7776,7 +7772,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1669;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===Fortran77Parser.COMMA) {
+	        while(_la===69) {
 	            this.state = 1665;
 	            this.match(Fortran77Parser.COMMA);
 	            this.state = 1666;
@@ -7806,7 +7802,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	subscripts() {
 	    let localctx = new SubscriptsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 360, Fortran77Parser.RULE_subscripts);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1674;
@@ -7814,13 +7810,13 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1683;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.REAL || ((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)) | (1 << (Fortran77Parser.LNOT - 70)) | (1 << (Fortran77Parser.TRUE - 70)) | (1 << (Fortran77Parser.FALSE - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.RCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	        if(_la===8 || ((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 140509489) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 15) !== 0)) {
 	            this.state = 1675;
 	            this.expression();
 	            this.state = 1680;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===Fortran77Parser.COMMA) {
+	            while(_la===69) {
 	                this.state = 1676;
 	                this.match(Fortran77Parser.COMMA);
 	                this.state = 1677;
@@ -7852,12 +7848,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	varRef() {
 	    let localctx = new VarRefContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 362, Fortran77Parser.RULE_varRef);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1687;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.REAL || _la===Fortran77Parser.NAME)) {
+	        if(!(_la===8 || _la===115)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -7938,7 +7934,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	substringApp() {
 	    let localctx = new SubstringAppContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 366, Fortran77Parser.RULE_substringApp);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1701;
@@ -7946,7 +7942,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1703;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.REAL || ((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)) | (1 << (Fortran77Parser.LNOT - 70)) | (1 << (Fortran77Parser.TRUE - 70)) | (1 << (Fortran77Parser.FALSE - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.RCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	        if(_la===8 || ((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 140509489) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 15) !== 0)) {
 	            this.state = 1702;
 	            this.ncExpr();
 	        }
@@ -7956,7 +7952,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1707;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.REAL || ((((_la - 70)) & ~0x1f) == 0 && ((1 << (_la - 70)) & ((1 << (Fortran77Parser.LPAREN - 70)) | (1 << (Fortran77Parser.MINUS - 70)) | (1 << (Fortran77Parser.PLUS - 70)) | (1 << (Fortran77Parser.LNOT - 70)) | (1 << (Fortran77Parser.TRUE - 70)) | (1 << (Fortran77Parser.FALSE - 70)) | (1 << (Fortran77Parser.HOLLERITH - 70)))) !== 0) || ((((_la - 112)) & ~0x1f) == 0 && ((1 << (_la - 112)) & ((1 << (Fortran77Parser.SCON - 112)) | (1 << (Fortran77Parser.RCON - 112)) | (1 << (Fortran77Parser.ICON - 112)) | (1 << (Fortran77Parser.NAME - 112)))) !== 0)) {
+	        if(_la===8 || ((((_la - 70)) & ~0x1f) === 0 && ((1 << (_la - 70)) & 140509489) !== 0) || ((((_la - 112)) & ~0x1f) === 0 && ((1 << (_la - 112)) & 15) !== 0)) {
 	            this.state = 1706;
 	            this.ncExpr();
 	        }
@@ -8074,24 +8070,24 @@ export default class Fortran77Parser extends antlr4.Parser {
 	constant() {
 	    let localctx = new ConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 376, Fortran77Parser.RULE_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1725;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.LPAREN:
-	        case Fortran77Parser.MINUS:
-	        case Fortran77Parser.PLUS:
-	        case Fortran77Parser.RCON:
-	        case Fortran77Parser.ICON:
+	        case 70:
+	        case 74:
+	        case 75:
+	        case 113:
+	        case 114:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1720;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS) {
+	            if(_la===74 || _la===75) {
 	                this.state = 1719;
 	                _la = this._input.LA(1);
-	                if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	                if(!(_la===74 || _la===75)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -8103,12 +8099,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	            this.state = 1722;
 	            this.unsignedArithmeticConstant();
 	            break;
-	        case Fortran77Parser.HOLLERITH:
-	        case Fortran77Parser.SCON:
+	        case 97:
+	        case 112:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1723;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.HOLLERITH || _la===Fortran77Parser.SCON)) {
+	            if(!(_la===97 || _la===112)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -8116,8 +8112,8 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case Fortran77Parser.TRUE:
-	        case Fortran77Parser.FALSE:
+	        case 91:
+	        case 92:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1724;
 	            this.logicalConstant();
@@ -8144,17 +8140,17 @@ export default class Fortran77Parser extends antlr4.Parser {
 	unsignedArithmeticConstant() {
 	    let localctx = new UnsignedArithmeticConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 378, Fortran77Parser.RULE_unsignedArithmeticConstant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1729;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case Fortran77Parser.RCON:
-	        case Fortran77Parser.ICON:
+	        case 113:
+	        case 114:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1727;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.RCON || _la===Fortran77Parser.ICON)) {
+	            if(!(_la===113 || _la===114)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -8162,7 +8158,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case Fortran77Parser.LPAREN:
+	        case 70:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1728;
 	            this.complexConstant();
@@ -8189,7 +8185,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 	complexConstant() {
 	    let localctx = new ComplexConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 380, Fortran77Parser.RULE_complexConstant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1731;
@@ -8197,10 +8193,10 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1733;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS) {
+	        if(_la===74 || _la===75) {
 	            this.state = 1732;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	            if(!(_la===74 || _la===75)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -8211,7 +8207,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 
 	        this.state = 1735;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.RCON || _la===Fortran77Parser.ICON)) {
+	        if(!(_la===113 || _la===114)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8223,10 +8219,10 @@ export default class Fortran77Parser extends antlr4.Parser {
 	        this.state = 1738;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS) {
+	        if(_la===74 || _la===75) {
 	            this.state = 1737;
 	            _la = this._input.LA(1);
-	            if(!(_la===Fortran77Parser.MINUS || _la===Fortran77Parser.PLUS)) {
+	            if(!(_la===74 || _la===75)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -8237,7 +8233,7 @@ export default class Fortran77Parser extends antlr4.Parser {
 
 	        this.state = 1740;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.RCON || _la===Fortran77Parser.ICON)) {
+	        if(!(_la===113 || _la===114)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8265,12 +8261,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	logicalConstant() {
 	    let localctx = new LogicalConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 382, Fortran77Parser.RULE_logicalConstant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1743;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.TRUE || _la===Fortran77Parser.FALSE)) {
+	        if(!(_la===91 || _la===92)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8296,12 +8292,12 @@ export default class Fortran77Parser extends antlr4.Parser {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 384, Fortran77Parser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1745;
 	        _la = this._input.LA(1);
-	        if(!(_la===Fortran77Parser.REAL || _la===Fortran77Parser.NAME)) {
+	        if(!(_la===8 || _la===115)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {

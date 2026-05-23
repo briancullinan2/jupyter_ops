@@ -1,16 +1,16 @@
-// Generated from ./lark/LarkParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/lark/LarkParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
 // This class defines a complete listener for a parse tree produced by LarkParser.
 export default class LarkParserListener extends antlr4.tree.ParseTreeListener {
 
-	// Enter a parse tree produced by LarkParser#start.
-	enterStart(ctx) {
+	// Enter a parse tree produced by LarkParser#start_.
+	enterStart_(ctx) {
 	}
 
-	// Exit a parse tree produced by LarkParser#start.
-	exitStart(ctx) {
+	// Exit a parse tree produced by LarkParser#start_.
+	exitStart_(ctx) {
 	}
 
 

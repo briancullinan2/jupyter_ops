@@ -1,4 +1,4 @@
-// Generated from ./swift-fin/SwiftFinParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/swift-fin/SwiftFinParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import SwiftFinParserListener from './SwiftFinParserListener.js';
@@ -84,16 +84,12 @@ export default class SwiftFinParser extends antlr4.Parser {
         this.symbolicNames = SwiftFinParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	messages() {
 	    let localctx = new MessagesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, SwiftFinParser.RULE_messages);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 31; 
@@ -105,7 +101,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	            this.state = 33; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SwiftFinParser.BLOCK1);
+	        } while(_la===1);
 	        this.state = 35;
 	        this.match(SwiftFinParser.EOF);
 	    } catch (re) {
@@ -127,7 +123,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	message() {
 	    let localctx = new MessageContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, SwiftFinParser.RULE_message);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 37;
@@ -135,7 +131,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	        this.state = 39;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SwiftFinParser.BLOCK2) {
+	        if(_la===2) {
 	            this.state = 38;
 	            this.block2();
 	        }
@@ -143,7 +139,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	        this.state = 42;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SwiftFinParser.BLOCK3) {
+	        if(_la===3) {
 	            this.state = 41;
 	            this.block3();
 	        }
@@ -151,7 +147,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	        this.state = 45;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SwiftFinParser.BLOCK4_A || _la===SwiftFinParser.BLOCK4_B) {
+	        if(_la===4 || _la===5) {
 	            this.state = 44;
 	            this.block4();
 	        }
@@ -159,7 +155,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	        this.state = 48;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SwiftFinParser.BLOCK5) {
+	        if(_la===6) {
 	            this.state = 47;
 	            this.block5();
 	        }
@@ -264,12 +260,12 @@ export default class SwiftFinParser extends antlr4.Parser {
 	block4() {
 	    let localctx = new Block4Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, SwiftFinParser.RULE_block4);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 74;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case SwiftFinParser.BLOCK4_A:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 62;
 	            this.match(SwiftFinParser.BLOCK4_A);
@@ -282,11 +278,11 @@ export default class SwiftFinParser extends antlr4.Parser {
 	                this.state = 66; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SwiftFinParser.B4_COLON);
+	            } while(_la===14);
 	            this.state = 68;
 	            this.match(SwiftFinParser.B4_END);
 	            break;
-	        case SwiftFinParser.BLOCK4_B:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 70;
 	            this.match(SwiftFinParser.BLOCK4_B);
@@ -360,7 +356,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	block4Field() {
 	    let localctx = new Block4FieldContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, SwiftFinParser.RULE_block4Field);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 85; 
@@ -372,7 +368,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	            this.state = 87; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SwiftFinParser.B4_VALUE);
+	        } while(_la===16);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -392,7 +388,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	block4Line() {
 	    let localctx = new Block4LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, SwiftFinParser.RULE_block4Line);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 138;
 	        this._errHandler.sync(this);
@@ -409,7 +405,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	                this.state = 92; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SwiftFinParser.B4_VALUE);
+	            } while(_la===16);
 	            this.state = 94;
 	            this.match(SwiftFinParser.B4_CRLF);
 	            break;
@@ -425,16 +421,16 @@ export default class SwiftFinParser extends antlr4.Parser {
 	                this.state = 98; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SwiftFinParser.B4_VALUE);
+	            } while(_la===16);
 	            this.state = 100;
 	            this.match(SwiftFinParser.B4_COLON);
 	            this.state = 104;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SwiftFinParser.B4_COLON || _la===SwiftFinParser.B4_VALUE) {
+	            while(_la===14 || _la===16) {
 	                this.state = 101;
 	                _la = this._input.LA(1);
-	                if(!(_la===SwiftFinParser.B4_COLON || _la===SwiftFinParser.B4_VALUE)) {
+	                if(!(_la===14 || _la===16)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -472,10 +468,10 @@ export default class SwiftFinParser extends antlr4.Parser {
 	            this.state = 117;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SwiftFinParser.B4_COLON || _la===SwiftFinParser.B4_VALUE) {
+	            while(_la===14 || _la===16) {
 	                this.state = 114;
 	                _la = this._input.LA(1);
-	                if(!(_la===SwiftFinParser.B4_COLON || _la===SwiftFinParser.B4_VALUE)) {
+	                if(!(_la===14 || _la===16)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -501,7 +497,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	                this.state = 124; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SwiftFinParser.B4_COLON);
+	            } while(_la===14);
 	            this.state = 127; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -511,11 +507,11 @@ export default class SwiftFinParser extends antlr4.Parser {
 	                this.state = 129; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===SwiftFinParser.B4_VALUE);
+	            } while(_la===16);
 	            this.state = 134;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===SwiftFinParser.B4_COLON) {
+	            while(_la===14) {
 	                this.state = 131;
 	                this.match(SwiftFinParser.B4_COLON);
 	                this.state = 136;
@@ -573,7 +569,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	value() {
 	    let localctx = new ValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, SwiftFinParser.RULE_value);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 145; 
@@ -585,7 +581,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	            this.state = 147; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SwiftFinParser.V_VALUE);
+	        } while(_la===18);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -605,7 +601,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	map_() {
 	    let localctx = new Map_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, SwiftFinParser.RULE_map_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 150; 
@@ -617,7 +613,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	            this.state = 152; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SwiftFinParser.LBRACE);
+	        } while(_la===7);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -637,7 +633,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	keyValue() {
 	    let localctx = new KeyValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, SwiftFinParser.RULE_keyValue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 154;
@@ -649,7 +645,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	        this.state = 158;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===SwiftFinParser.M_COLON || _la===SwiftFinParser.M_VALUE) {
+	        if(_la===11 || _la===12) {
 	            this.state = 157;
 	            this.mValue();
 	        }
@@ -675,7 +671,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	mKey() {
 	    let localctx = new MKeyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, SwiftFinParser.RULE_mKey);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 163; 
@@ -687,7 +683,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	            this.state = 165; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SwiftFinParser.M_VALUE);
+	        } while(_la===12);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -707,7 +703,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	mValue() {
 	    let localctx = new MValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, SwiftFinParser.RULE_mValue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 168; 
@@ -716,7 +712,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	        do {
 	            this.state = 167;
 	            _la = this._input.LA(1);
-	            if(!(_la===SwiftFinParser.M_COLON || _la===SwiftFinParser.M_VALUE)) {
+	            if(!(_la===11 || _la===12)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -726,7 +722,7 @@ export default class SwiftFinParser extends antlr4.Parser {
 	            this.state = 170; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===SwiftFinParser.M_COLON || _la===SwiftFinParser.M_VALUE);
+	        } while(_la===11 || _la===12);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1521,3 +1517,12 @@ SwiftFinParser.Map_Context = Map_Context;
 SwiftFinParser.KeyValueContext = KeyValueContext; 
 SwiftFinParser.MKeyContext = MKeyContext; 
 SwiftFinParser.MValueContext = MValueContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

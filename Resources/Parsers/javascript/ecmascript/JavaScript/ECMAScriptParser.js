@@ -1,4 +1,4 @@
-// Generated from ./javascript/ecmascript/JavaScript/ECMAScript.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/javascript/ecmascript/JavaScript/ECMAScript.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ECMAScriptListener from './ECMAScriptListener.js';
@@ -297,6 +297,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
          */
         ECMAScriptParser.prototype.here = function(type) {
             var possibleIndexEosToken = antlr4.Parser.prototype.getCurrentToken.call(this).tokenIndex - 1;
+            if (possibleIndexEosToken < 0) return false;
             var ahead = this._input.get(possibleIndexEosToken);
             return (ahead.channel == antlr4.Lexer.HIDDEN) && (ahead.type == type);
         };
@@ -310,7 +311,9 @@ export default class ECMAScriptParser extends antlr4.Parser {
          */
         ECMAScriptParser.prototype.lineTerminatorAhead = function() {
             var possibleIndexEosToken = antlr4.Parser.prototype.getCurrentToken.call(this).tokenIndex - 1;
+            if (possibleIndexEosToken < 0) return false;
             var ahead = this._input.get(possibleIndexEosToken);
+            if (possibleIndexEosToken < 0) return false;
 
             if (ahead.channel != antlr4.Lexer.HIDDEN)
                 return false;
@@ -322,10 +325,6 @@ export default class ECMAScriptParser extends antlr4.Parser {
                     (type == ECMAScriptParser.LineTerminator);
         };
 
-    }
-
-    get atn() {
-        return atn;
     }
 
     sempred(localctx, ruleIndex, predIndex) {
@@ -1001,7 +1000,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	iterationStatement() {
 	    let localctx = new IterationStatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, ECMAScriptParser.RULE_iterationStatement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 247;
 	        this._errHandler.sync(this);
@@ -1051,7 +1050,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 203;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ECMAScriptParser.NullLiteral - 51)) | (1 << (ECMAScriptParser.BooleanLiteral - 51)) | (1 << (ECMAScriptParser.DecimalLiteral - 51)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 51)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 51)) | (1 << (ECMAScriptParser.Typeof - 51)) | (1 << (ECMAScriptParser.New - 51)) | (1 << (ECMAScriptParser.Void - 51)) | (1 << (ECMAScriptParser.Function - 51)) | (1 << (ECMAScriptParser.This - 51)) | (1 << (ECMAScriptParser.Delete - 51)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2064554) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 281086239) !== 0) || _la===98 || _la===99) {
 	                this.state = 202;
 	                this.expressionSequence();
 	            }
@@ -1061,7 +1060,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 207;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ECMAScriptParser.NullLiteral - 51)) | (1 << (ECMAScriptParser.BooleanLiteral - 51)) | (1 << (ECMAScriptParser.DecimalLiteral - 51)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 51)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 51)) | (1 << (ECMAScriptParser.Typeof - 51)) | (1 << (ECMAScriptParser.New - 51)) | (1 << (ECMAScriptParser.Void - 51)) | (1 << (ECMAScriptParser.Function - 51)) | (1 << (ECMAScriptParser.This - 51)) | (1 << (ECMAScriptParser.Delete - 51)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2064554) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 281086239) !== 0) || _la===98 || _la===99) {
 	                this.state = 206;
 	                this.expressionSequence();
 	            }
@@ -1071,7 +1070,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 211;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ECMAScriptParser.NullLiteral - 51)) | (1 << (ECMAScriptParser.BooleanLiteral - 51)) | (1 << (ECMAScriptParser.DecimalLiteral - 51)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 51)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 51)) | (1 << (ECMAScriptParser.Typeof - 51)) | (1 << (ECMAScriptParser.New - 51)) | (1 << (ECMAScriptParser.Void - 51)) | (1 << (ECMAScriptParser.Function - 51)) | (1 << (ECMAScriptParser.This - 51)) | (1 << (ECMAScriptParser.Delete - 51)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2064554) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 281086239) !== 0) || _la===98 || _la===99) {
 	                this.state = 210;
 	                this.expressionSequence();
 	            }
@@ -1098,7 +1097,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 221;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ECMAScriptParser.NullLiteral - 51)) | (1 << (ECMAScriptParser.BooleanLiteral - 51)) | (1 << (ECMAScriptParser.DecimalLiteral - 51)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 51)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 51)) | (1 << (ECMAScriptParser.Typeof - 51)) | (1 << (ECMAScriptParser.New - 51)) | (1 << (ECMAScriptParser.Void - 51)) | (1 << (ECMAScriptParser.Function - 51)) | (1 << (ECMAScriptParser.This - 51)) | (1 << (ECMAScriptParser.Delete - 51)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2064554) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 281086239) !== 0) || _la===98 || _la===99) {
 	                this.state = 220;
 	                this.expressionSequence();
 	            }
@@ -1108,7 +1107,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 225;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ECMAScriptParser.NullLiteral - 51)) | (1 << (ECMAScriptParser.BooleanLiteral - 51)) | (1 << (ECMAScriptParser.DecimalLiteral - 51)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 51)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 51)) | (1 << (ECMAScriptParser.Typeof - 51)) | (1 << (ECMAScriptParser.New - 51)) | (1 << (ECMAScriptParser.Void - 51)) | (1 << (ECMAScriptParser.Function - 51)) | (1 << (ECMAScriptParser.This - 51)) | (1 << (ECMAScriptParser.Delete - 51)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2064554) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 281086239) !== 0) || _la===98 || _la===99) {
 	                this.state = 224;
 	                this.expressionSequence();
 	            }
@@ -1352,7 +1351,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	caseBlock() {
 	    let localctx = new CaseBlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, ECMAScriptParser.RULE_caseBlock);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 282;
@@ -1360,7 +1359,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 284;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ECMAScriptParser.Case) {
+	        if(_la===60) {
 	            this.state = 283;
 	            this.caseClauses();
 	        }
@@ -1368,13 +1367,13 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 290;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ECMAScriptParser.Default) {
+	        if(_la===76) {
 	            this.state = 286;
 	            this.defaultClause();
 	            this.state = 288;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ECMAScriptParser.Case) {
+	            if(_la===60) {
 	                this.state = 287;
 	                this.caseClauses();
 	            }
@@ -1402,7 +1401,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	caseClauses() {
 	    let localctx = new CaseClausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, ECMAScriptParser.RULE_caseClauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 295; 
@@ -1414,7 +1413,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 297; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ECMAScriptParser.Case);
+	        } while(_la===60);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1698,7 +1697,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	functionDeclaration() {
 	    let localctx = new FunctionDeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, ECMAScriptParser.RULE_functionDeclaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 346;
@@ -1710,7 +1709,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 350;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ECMAScriptParser.Identifier) {
+	        if(_la===98) {
 	            this.state = 349;
 	            this.formalParameterList();
 	        }
@@ -1742,7 +1741,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	formalParameterList() {
 	    let localctx = new FormalParameterListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, ECMAScriptParser.RULE_formalParameterList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 357;
@@ -1750,7 +1749,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 362;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ECMAScriptParser.Comma) {
+	        while(_la===10) {
 	            this.state = 358;
 	            this.match(ECMAScriptParser.Comma);
 	            this.state = 359;
@@ -1807,7 +1806,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	arrayLiteral() {
 	    let localctx = new ArrayLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, ECMAScriptParser.RULE_arrayLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 368;
@@ -1831,7 +1830,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 376;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ECMAScriptParser.Comma) {
+	        if(_la===10) {
 	            this.state = 375;
 	            this.elision();
 	        }
@@ -1857,13 +1856,13 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	elementList() {
 	    let localctx = new ElementListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, ECMAScriptParser.RULE_elementList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 381;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===ECMAScriptParser.Comma) {
+	        if(_la===10) {
 	            this.state = 380;
 	            this.elision();
 	        }
@@ -1880,7 +1879,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	                this.state = 386;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===ECMAScriptParser.Comma) {
+	                if(_la===10) {
 	                    this.state = 385;
 	                    this.elision();
 	                }
@@ -1912,7 +1911,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	elision() {
 	    let localctx = new ElisionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, ECMAScriptParser.RULE_elision);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 395; 
@@ -1924,7 +1923,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 397; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===ECMAScriptParser.Comma);
+	        } while(_la===10);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1944,7 +1943,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	objectLiteral() {
 	    let localctx = new ObjectLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, ECMAScriptParser.RULE_objectLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 408;
 	        this._errHandler.sync(this);
@@ -1967,7 +1966,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 404;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ECMAScriptParser.Comma) {
+	            if(_la===10) {
 	                this.state = 403;
 	                this.match(ECMAScriptParser.Comma);
 	            }
@@ -2110,63 +2109,63 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 442;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ECMAScriptParser.NullLiteral:
-	        case ECMAScriptParser.BooleanLiteral:
-	        case ECMAScriptParser.Break:
-	        case ECMAScriptParser.Do:
-	        case ECMAScriptParser.Instanceof:
-	        case ECMAScriptParser.Typeof:
-	        case ECMAScriptParser.Case:
-	        case ECMAScriptParser.Else:
-	        case ECMAScriptParser.New:
-	        case ECMAScriptParser.Var:
-	        case ECMAScriptParser.Catch:
-	        case ECMAScriptParser.Finally:
-	        case ECMAScriptParser.Return:
-	        case ECMAScriptParser.Void:
-	        case ECMAScriptParser.Continue:
-	        case ECMAScriptParser.For:
-	        case ECMAScriptParser.Switch:
-	        case ECMAScriptParser.While:
-	        case ECMAScriptParser.Debugger:
-	        case ECMAScriptParser.Function:
-	        case ECMAScriptParser.This:
-	        case ECMAScriptParser.With:
-	        case ECMAScriptParser.Default:
-	        case ECMAScriptParser.If:
-	        case ECMAScriptParser.Throw:
-	        case ECMAScriptParser.Delete:
-	        case ECMAScriptParser.In:
-	        case ECMAScriptParser.Try:
-	        case ECMAScriptParser.Class:
-	        case ECMAScriptParser.Enum:
-	        case ECMAScriptParser.Extends:
-	        case ECMAScriptParser.Super:
-	        case ECMAScriptParser.Const:
-	        case ECMAScriptParser.Export:
-	        case ECMAScriptParser.Import:
-	        case ECMAScriptParser.Implements:
-	        case ECMAScriptParser.Let:
-	        case ECMAScriptParser.Private:
-	        case ECMAScriptParser.Public:
-	        case ECMAScriptParser.Interface:
-	        case ECMAScriptParser.Package:
-	        case ECMAScriptParser.Protected:
-	        case ECMAScriptParser.Static:
-	        case ECMAScriptParser.Yield:
-	        case ECMAScriptParser.Identifier:
+	        case 51:
+	        case 52:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 439;
 	            this.identifierName();
 	            break;
-	        case ECMAScriptParser.StringLiteral:
+	        case 99:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 440;
 	            this.match(ECMAScriptParser.StringLiteral);
 	            break;
-	        case ECMAScriptParser.DecimalLiteral:
-	        case ECMAScriptParser.HexIntegerLiteral:
-	        case ECMAScriptParser.OctalIntegerLiteral:
+	        case 53:
+	        case 54:
+	        case 55:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 441;
 	            this.numericLiteral();
@@ -2216,7 +2215,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	arguments() {
 	    let localctx = new ArgumentsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, ECMAScriptParser.RULE_arguments);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 446;
@@ -2224,7 +2223,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 448;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 51)) & ~0x1f) == 0 && ((1 << (_la - 51)) & ((1 << (ECMAScriptParser.NullLiteral - 51)) | (1 << (ECMAScriptParser.BooleanLiteral - 51)) | (1 << (ECMAScriptParser.DecimalLiteral - 51)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 51)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 51)) | (1 << (ECMAScriptParser.Typeof - 51)) | (1 << (ECMAScriptParser.New - 51)) | (1 << (ECMAScriptParser.Void - 51)) | (1 << (ECMAScriptParser.Function - 51)) | (1 << (ECMAScriptParser.This - 51)) | (1 << (ECMAScriptParser.Delete - 51)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2064554) !== 0) || ((((_la - 51)) & ~0x1f) === 0 && ((1 << (_la - 51)) & 281086239) !== 0) || _la===98 || _la===99) {
 	            this.state = 447;
 	            this.argumentList();
 	        }
@@ -2250,7 +2249,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	argumentList() {
 	    let localctx = new ArgumentListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, ECMAScriptParser.RULE_argumentList);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 452;
@@ -2258,7 +2257,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 457;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===ECMAScriptParser.Comma) {
+	        while(_la===10) {
 	            this.state = 453;
 	            this.match(ECMAScriptParser.Comma);
 	            this.state = 454;
@@ -2330,13 +2329,13 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 86;
 	    this.enterRecursionRule(localctx, 86, ECMAScriptParser.RULE_singleExpression, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 514;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ECMAScriptParser.Function:
+	        case 73:
 	            localctx = new FunctionExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2346,7 +2345,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 471;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ECMAScriptParser.Identifier) {
+	            if(_la===98) {
 	                this.state = 470;
 	                this.match(ECMAScriptParser.Identifier);
 	            }
@@ -2356,7 +2355,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 475;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===ECMAScriptParser.Identifier) {
+	            if(_la===98) {
 	                this.state = 474;
 	                this.formalParameterList();
 	            }
@@ -2370,7 +2369,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 480;
 	            this.match(ECMAScriptParser.CloseBrace);
 	            break;
-	        case ECMAScriptParser.New:
+	        case 62:
 	            localctx = new NewExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2387,7 +2386,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 
 	            }
 	            break;
-	        case ECMAScriptParser.Delete:
+	        case 79:
 	            localctx = new DeleteExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2396,7 +2395,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 488;
 	            this.singleExpression(30);
 	            break;
-	        case ECMAScriptParser.Void:
+	        case 67:
 	            localctx = new VoidExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2405,7 +2404,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 490;
 	            this.singleExpression(29);
 	            break;
-	        case ECMAScriptParser.Typeof:
+	        case 59:
 	            localctx = new TypeofExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2414,7 +2413,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 492;
 	            this.singleExpression(28);
 	            break;
-	        case ECMAScriptParser.PlusPlus:
+	        case 15:
 	            localctx = new PreIncrementExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2423,7 +2422,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 494;
 	            this.singleExpression(27);
 	            break;
-	        case ECMAScriptParser.MinusMinus:
+	        case 16:
 	            localctx = new PreDecreaseExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2432,7 +2431,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 496;
 	            this.singleExpression(26);
 	            break;
-	        case ECMAScriptParser.Plus:
+	        case 17:
 	            localctx = new UnaryPlusExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2441,7 +2440,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 498;
 	            this.singleExpression(25);
 	            break;
-	        case ECMAScriptParser.Minus:
+	        case 18:
 	            localctx = new UnaryMinusExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2450,7 +2449,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 500;
 	            this.singleExpression(24);
 	            break;
-	        case ECMAScriptParser.BitNot:
+	        case 19:
 	            localctx = new BitNotExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2459,7 +2458,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 502;
 	            this.singleExpression(23);
 	            break;
-	        case ECMAScriptParser.Not:
+	        case 20:
 	            localctx = new NotExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2468,48 +2467,48 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	            this.state = 504;
 	            this.singleExpression(22);
 	            break;
-	        case ECMAScriptParser.This:
+	        case 74:
 	            localctx = new ThisExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 505;
 	            this.match(ECMAScriptParser.This);
 	            break;
-	        case ECMAScriptParser.Identifier:
+	        case 98:
 	            localctx = new IdentifierExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 506;
 	            this.match(ECMAScriptParser.Identifier);
 	            break;
-	        case ECMAScriptParser.RegularExpressionLiteral:
-	        case ECMAScriptParser.NullLiteral:
-	        case ECMAScriptParser.BooleanLiteral:
-	        case ECMAScriptParser.DecimalLiteral:
-	        case ECMAScriptParser.HexIntegerLiteral:
-	        case ECMAScriptParser.OctalIntegerLiteral:
-	        case ECMAScriptParser.StringLiteral:
+	        case 1:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 99:
 	            localctx = new LiteralExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 507;
 	            this.literal();
 	            break;
-	        case ECMAScriptParser.OpenBracket:
+	        case 3:
 	            localctx = new ArrayLiteralExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 508;
 	            this.arrayLiteral();
 	            break;
-	        case ECMAScriptParser.OpenBrace:
+	        case 7:
 	            localctx = new ObjectLiteralExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 509;
 	            this.objectLiteral();
 	            break;
-	        case ECMAScriptParser.OpenParen:
+	        case 5:
 	            localctx = new ParenthesizedExpressionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -2546,7 +2545,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 517;
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.Multiply) | (1 << ECMAScriptParser.Divide) | (1 << ECMAScriptParser.Modulus))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 14680064) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2566,7 +2565,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 520;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===ECMAScriptParser.Plus || _la===ECMAScriptParser.Minus)) {
+	                    if(!(_la===17 || _la===18)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2586,7 +2585,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 523;
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RightShiftArithmetic) | (1 << ECMAScriptParser.LeftShiftArithmetic) | (1 << ECMAScriptParser.RightShiftLogical))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 117440512) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2606,7 +2605,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 526;
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.LessThan) | (1 << ECMAScriptParser.MoreThan) | (1 << ECMAScriptParser.LessThanEquals) | (1 << ECMAScriptParser.GreaterThanEquals))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2013265920) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2652,7 +2651,7 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	                    }
 	                    this.state = 535;
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (ECMAScriptParser.Equals - 31)) | (1 << (ECMAScriptParser.NotEquals - 31)) | (1 << (ECMAScriptParser.IdentityEquals - 31)) | (1 << (ECMAScriptParser.IdentityNotEquals - 31)))) !== 0))) {
+	                    if(!(((((_la - 31)) & ~0x1f) === 0 && ((1 << (_la - 31)) & 15) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2866,12 +2865,12 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	assignmentOperator() {
 	    let localctx = new AssignmentOperatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 88, ECMAScriptParser.RULE_assignmentOperator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 586;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (ECMAScriptParser.MultiplyAssign - 40)) | (1 << (ECMAScriptParser.DivideAssign - 40)) | (1 << (ECMAScriptParser.ModulusAssign - 40)) | (1 << (ECMAScriptParser.PlusAssign - 40)) | (1 << (ECMAScriptParser.MinusAssign - 40)) | (1 << (ECMAScriptParser.LeftShiftArithmeticAssign - 40)) | (1 << (ECMAScriptParser.RightShiftArithmeticAssign - 40)) | (1 << (ECMAScriptParser.RightShiftLogicalAssign - 40)) | (1 << (ECMAScriptParser.BitAndAssign - 40)) | (1 << (ECMAScriptParser.BitXorAssign - 40)) | (1 << (ECMAScriptParser.BitOrAssign - 40)))) !== 0))) {
+	        if(!(((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 2047) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2897,19 +2896,19 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	literal() {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, ECMAScriptParser.RULE_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 590;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ECMAScriptParser.RegularExpressionLiteral:
-	        case ECMAScriptParser.NullLiteral:
-	        case ECMAScriptParser.BooleanLiteral:
-	        case ECMAScriptParser.StringLiteral:
+	        case 1:
+	        case 51:
+	        case 52:
+	        case 99:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 588;
 	            _la = this._input.LA(1);
-	            if(!(_la===ECMAScriptParser.RegularExpressionLiteral || _la===ECMAScriptParser.NullLiteral || _la===ECMAScriptParser.BooleanLiteral || _la===ECMAScriptParser.StringLiteral)) {
+	            if(!(_la===1 || _la===51 || _la===52 || _la===99)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2917,9 +2916,9 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case ECMAScriptParser.DecimalLiteral:
-	        case ECMAScriptParser.HexIntegerLiteral:
-	        case ECMAScriptParser.OctalIntegerLiteral:
+	        case 53:
+	        case 54:
+	        case 55:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 589;
 	            this.numericLiteral();
@@ -2946,12 +2945,12 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	numericLiteral() {
 	    let localctx = new NumericLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, ECMAScriptParser.RULE_numericLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 592;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 53)) & ~0x1f) == 0 && ((1 << (_la - 53)) & ((1 << (ECMAScriptParser.DecimalLiteral - 53)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 53)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 53)))) !== 0))) {
+	        if(!(((((_la - 53)) & ~0x1f) === 0 && ((1 << (_la - 53)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2981,55 +2980,55 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	        this.state = 596;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ECMAScriptParser.Identifier:
+	        case 98:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 594;
 	            this.match(ECMAScriptParser.Identifier);
 	            break;
-	        case ECMAScriptParser.NullLiteral:
-	        case ECMAScriptParser.BooleanLiteral:
-	        case ECMAScriptParser.Break:
-	        case ECMAScriptParser.Do:
-	        case ECMAScriptParser.Instanceof:
-	        case ECMAScriptParser.Typeof:
-	        case ECMAScriptParser.Case:
-	        case ECMAScriptParser.Else:
-	        case ECMAScriptParser.New:
-	        case ECMAScriptParser.Var:
-	        case ECMAScriptParser.Catch:
-	        case ECMAScriptParser.Finally:
-	        case ECMAScriptParser.Return:
-	        case ECMAScriptParser.Void:
-	        case ECMAScriptParser.Continue:
-	        case ECMAScriptParser.For:
-	        case ECMAScriptParser.Switch:
-	        case ECMAScriptParser.While:
-	        case ECMAScriptParser.Debugger:
-	        case ECMAScriptParser.Function:
-	        case ECMAScriptParser.This:
-	        case ECMAScriptParser.With:
-	        case ECMAScriptParser.Default:
-	        case ECMAScriptParser.If:
-	        case ECMAScriptParser.Throw:
-	        case ECMAScriptParser.Delete:
-	        case ECMAScriptParser.In:
-	        case ECMAScriptParser.Try:
-	        case ECMAScriptParser.Class:
-	        case ECMAScriptParser.Enum:
-	        case ECMAScriptParser.Extends:
-	        case ECMAScriptParser.Super:
-	        case ECMAScriptParser.Const:
-	        case ECMAScriptParser.Export:
-	        case ECMAScriptParser.Import:
-	        case ECMAScriptParser.Implements:
-	        case ECMAScriptParser.Let:
-	        case ECMAScriptParser.Private:
-	        case ECMAScriptParser.Public:
-	        case ECMAScriptParser.Interface:
-	        case ECMAScriptParser.Package:
-	        case ECMAScriptParser.Protected:
-	        case ECMAScriptParser.Static:
-	        case ECMAScriptParser.Yield:
+	        case 51:
+	        case 52:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 595;
 	            this.reservedWord();
@@ -3056,67 +3055,67 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	reservedWord() {
 	    let localctx = new ReservedWordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 96, ECMAScriptParser.RULE_reservedWord);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 601;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case ECMAScriptParser.Break:
-	        case ECMAScriptParser.Do:
-	        case ECMAScriptParser.Instanceof:
-	        case ECMAScriptParser.Typeof:
-	        case ECMAScriptParser.Case:
-	        case ECMAScriptParser.Else:
-	        case ECMAScriptParser.New:
-	        case ECMAScriptParser.Var:
-	        case ECMAScriptParser.Catch:
-	        case ECMAScriptParser.Finally:
-	        case ECMAScriptParser.Return:
-	        case ECMAScriptParser.Void:
-	        case ECMAScriptParser.Continue:
-	        case ECMAScriptParser.For:
-	        case ECMAScriptParser.Switch:
-	        case ECMAScriptParser.While:
-	        case ECMAScriptParser.Debugger:
-	        case ECMAScriptParser.Function:
-	        case ECMAScriptParser.This:
-	        case ECMAScriptParser.With:
-	        case ECMAScriptParser.Default:
-	        case ECMAScriptParser.If:
-	        case ECMAScriptParser.Throw:
-	        case ECMAScriptParser.Delete:
-	        case ECMAScriptParser.In:
-	        case ECMAScriptParser.Try:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 65:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 70:
+	        case 71:
+	        case 72:
+	        case 73:
+	        case 74:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 81:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 598;
 	            this.keyword();
 	            break;
-	        case ECMAScriptParser.Class:
-	        case ECMAScriptParser.Enum:
-	        case ECMAScriptParser.Extends:
-	        case ECMAScriptParser.Super:
-	        case ECMAScriptParser.Const:
-	        case ECMAScriptParser.Export:
-	        case ECMAScriptParser.Import:
-	        case ECMAScriptParser.Implements:
-	        case ECMAScriptParser.Let:
-	        case ECMAScriptParser.Private:
-	        case ECMAScriptParser.Public:
-	        case ECMAScriptParser.Interface:
-	        case ECMAScriptParser.Package:
-	        case ECMAScriptParser.Protected:
-	        case ECMAScriptParser.Static:
-	        case ECMAScriptParser.Yield:
+	        case 82:
+	        case 83:
+	        case 84:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 89:
+	        case 90:
+	        case 91:
+	        case 92:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 599;
 	            this.futureReservedWord();
 	            break;
-	        case ECMAScriptParser.NullLiteral:
-	        case ECMAScriptParser.BooleanLiteral:
+	        case 51:
+	        case 52:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 600;
 	            _la = this._input.LA(1);
-	            if(!(_la===ECMAScriptParser.NullLiteral || _la===ECMAScriptParser.BooleanLiteral)) {
+	            if(!(_la===51 || _la===52)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3146,12 +3145,12 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	keyword() {
 	    let localctx = new KeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, ECMAScriptParser.RULE_keyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 603;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 56)) & ~0x1f) == 0 && ((1 << (_la - 56)) & ((1 << (ECMAScriptParser.Break - 56)) | (1 << (ECMAScriptParser.Do - 56)) | (1 << (ECMAScriptParser.Instanceof - 56)) | (1 << (ECMAScriptParser.Typeof - 56)) | (1 << (ECMAScriptParser.Case - 56)) | (1 << (ECMAScriptParser.Else - 56)) | (1 << (ECMAScriptParser.New - 56)) | (1 << (ECMAScriptParser.Var - 56)) | (1 << (ECMAScriptParser.Catch - 56)) | (1 << (ECMAScriptParser.Finally - 56)) | (1 << (ECMAScriptParser.Return - 56)) | (1 << (ECMAScriptParser.Void - 56)) | (1 << (ECMAScriptParser.Continue - 56)) | (1 << (ECMAScriptParser.For - 56)) | (1 << (ECMAScriptParser.Switch - 56)) | (1 << (ECMAScriptParser.While - 56)) | (1 << (ECMAScriptParser.Debugger - 56)) | (1 << (ECMAScriptParser.Function - 56)) | (1 << (ECMAScriptParser.This - 56)) | (1 << (ECMAScriptParser.With - 56)) | (1 << (ECMAScriptParser.Default - 56)) | (1 << (ECMAScriptParser.If - 56)) | (1 << (ECMAScriptParser.Throw - 56)) | (1 << (ECMAScriptParser.Delete - 56)) | (1 << (ECMAScriptParser.In - 56)) | (1 << (ECMAScriptParser.Try - 56)))) !== 0))) {
+	        if(!(((((_la - 56)) & ~0x1f) === 0 && ((1 << (_la - 56)) & 67108863) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3177,12 +3176,12 @@ export default class ECMAScriptParser extends antlr4.Parser {
 	futureReservedWord() {
 	    let localctx = new FutureReservedWordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, ECMAScriptParser.RULE_futureReservedWord);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 605;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 82)) & ~0x1f) == 0 && ((1 << (_la - 82)) & ((1 << (ECMAScriptParser.Class - 82)) | (1 << (ECMAScriptParser.Enum - 82)) | (1 << (ECMAScriptParser.Extends - 82)) | (1 << (ECMAScriptParser.Super - 82)) | (1 << (ECMAScriptParser.Const - 82)) | (1 << (ECMAScriptParser.Export - 82)) | (1 << (ECMAScriptParser.Import - 82)) | (1 << (ECMAScriptParser.Implements - 82)) | (1 << (ECMAScriptParser.Let - 82)) | (1 << (ECMAScriptParser.Private - 82)) | (1 << (ECMAScriptParser.Public - 82)) | (1 << (ECMAScriptParser.Interface - 82)) | (1 << (ECMAScriptParser.Package - 82)) | (1 << (ECMAScriptParser.Protected - 82)) | (1 << (ECMAScriptParser.Static - 82)) | (1 << (ECMAScriptParser.Yield - 82)))) !== 0))) {
+	        if(!(((((_la - 82)) & ~0x1f) === 0 && ((1 << (_la - 82)) & 65535) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8016,3 +8015,12 @@ ECMAScriptParser.GetterContext = GetterContext;
 ECMAScriptParser.SetterContext = SetterContext; 
 ECMAScriptParser.EosContext = EosContext; 
 ECMAScriptParser.EofContext = EofContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

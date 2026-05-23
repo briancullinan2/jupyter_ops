@@ -1,29 +1,29 @@
-// Generated from ./tnt/tnt.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/tnt/tnt.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import tntListener from './tntListener.js';
-const serializedATN = [4,1,18,79,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,2,6,7,6,1,0,1,0,1,0,1,0,1,1,1,1,3,1,21,8,1,1,2,5,2,24,8,2,10,2,12,
-2,27,9,2,1,2,1,2,1,3,5,3,32,8,3,10,3,12,3,35,9,3,1,3,1,3,5,3,39,8,3,10,3,
-12,3,42,9,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,
-58,8,4,1,4,1,4,1,4,1,4,1,4,1,4,5,4,66,8,4,10,4,12,4,69,9,4,1,5,1,5,1,5,1,
-5,1,6,1,6,1,6,1,6,1,6,0,1,8,7,0,2,4,6,8,10,12,0,1,1,0,10,14,81,0,14,1,0,
-0,0,2,20,1,0,0,0,4,25,1,0,0,0,6,33,1,0,0,0,8,57,1,0,0,0,10,70,1,0,0,0,12,
-74,1,0,0,0,14,15,3,8,4,0,15,16,5,1,0,0,16,17,3,8,4,0,17,1,1,0,0,0,18,21,
-3,4,2,0,19,21,3,6,3,0,20,18,1,0,0,0,20,19,1,0,0,0,21,3,1,0,0,0,22,24,5,9,
-0,0,23,22,1,0,0,0,24,27,1,0,0,0,25,23,1,0,0,0,25,26,1,0,0,0,26,28,1,0,0,
-0,27,25,1,0,0,0,28,29,5,8,0,0,29,5,1,0,0,0,30,32,5,9,0,0,31,30,1,0,0,0,32,
-35,1,0,0,0,33,31,1,0,0,0,33,34,1,0,0,0,34,36,1,0,0,0,35,33,1,0,0,0,36,40,
-7,0,0,0,37,39,5,15,0,0,38,37,1,0,0,0,39,42,1,0,0,0,40,38,1,0,0,0,40,41,1,
-0,0,0,41,7,1,0,0,0,42,40,1,0,0,0,43,44,6,4,-1,0,44,58,3,2,1,0,45,46,5,4,
-0,0,46,47,3,8,4,0,47,48,5,5,0,0,48,58,1,0,0,0,49,50,5,6,0,0,50,58,3,8,4,
-3,51,52,3,10,5,0,52,53,3,8,4,2,53,58,1,0,0,0,54,55,3,12,6,0,55,56,3,8,4,
-1,56,58,1,0,0,0,57,43,1,0,0,0,57,45,1,0,0,0,57,49,1,0,0,0,57,51,1,0,0,0,
-57,54,1,0,0,0,58,67,1,0,0,0,59,60,10,6,0,0,60,61,5,2,0,0,61,66,3,8,4,7,62,
-63,10,5,0,0,63,64,5,3,0,0,64,66,3,8,4,6,65,59,1,0,0,0,65,62,1,0,0,0,66,69,
-1,0,0,0,67,65,1,0,0,0,67,68,1,0,0,0,68,9,1,0,0,0,69,67,1,0,0,0,70,71,5,16,
-0,0,71,72,3,6,3,0,72,73,5,7,0,0,73,11,1,0,0,0,74,75,5,17,0,0,75,76,3,6,3,
-0,76,77,5,7,0,0,77,13,1,0,0,0,7,20,25,33,40,57,65,67];
+const serializedATN = [4,1,18,80,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+2,5,7,5,2,6,7,6,1,0,1,0,1,0,1,0,1,0,1,1,1,1,3,1,22,8,1,1,2,5,2,25,8,2,10,
+2,12,2,28,9,2,1,2,1,2,1,3,5,3,33,8,3,10,3,12,3,36,9,3,1,3,1,3,5,3,40,8,3,
+10,3,12,3,43,9,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,
+3,4,59,8,4,1,4,1,4,1,4,1,4,1,4,1,4,5,4,67,8,4,10,4,12,4,70,9,4,1,5,1,5,1,
+5,1,5,1,6,1,6,1,6,1,6,1,6,0,1,8,7,0,2,4,6,8,10,12,0,1,1,0,10,14,82,0,14,
+1,0,0,0,2,21,1,0,0,0,4,26,1,0,0,0,6,34,1,0,0,0,8,58,1,0,0,0,10,71,1,0,0,
+0,12,75,1,0,0,0,14,15,3,8,4,0,15,16,5,1,0,0,16,17,3,8,4,0,17,18,5,0,0,1,
+18,1,1,0,0,0,19,22,3,4,2,0,20,22,3,6,3,0,21,19,1,0,0,0,21,20,1,0,0,0,22,
+3,1,0,0,0,23,25,5,9,0,0,24,23,1,0,0,0,25,28,1,0,0,0,26,24,1,0,0,0,26,27,
+1,0,0,0,27,29,1,0,0,0,28,26,1,0,0,0,29,30,5,8,0,0,30,5,1,0,0,0,31,33,5,9,
+0,0,32,31,1,0,0,0,33,36,1,0,0,0,34,32,1,0,0,0,34,35,1,0,0,0,35,37,1,0,0,
+0,36,34,1,0,0,0,37,41,7,0,0,0,38,40,5,15,0,0,39,38,1,0,0,0,40,43,1,0,0,0,
+41,39,1,0,0,0,41,42,1,0,0,0,42,7,1,0,0,0,43,41,1,0,0,0,44,45,6,4,-1,0,45,
+59,3,2,1,0,46,47,5,4,0,0,47,48,3,8,4,0,48,49,5,5,0,0,49,59,1,0,0,0,50,51,
+5,6,0,0,51,59,3,8,4,3,52,53,3,10,5,0,53,54,3,8,4,2,54,59,1,0,0,0,55,56,3,
+12,6,0,56,57,3,8,4,1,57,59,1,0,0,0,58,44,1,0,0,0,58,46,1,0,0,0,58,50,1,0,
+0,0,58,52,1,0,0,0,58,55,1,0,0,0,59,68,1,0,0,0,60,61,10,6,0,0,61,62,5,2,0,
+0,62,67,3,8,4,7,63,64,10,5,0,0,64,65,5,3,0,0,65,67,3,8,4,6,66,60,1,0,0,0,
+66,63,1,0,0,0,67,70,1,0,0,0,68,66,1,0,0,0,68,69,1,0,0,0,69,9,1,0,0,0,70,
+68,1,0,0,0,71,72,5,16,0,0,72,73,3,6,3,0,73,74,5,7,0,0,74,11,1,0,0,0,75,76,
+5,17,0,0,76,77,3,6,3,0,77,78,5,7,0,0,78,13,1,0,0,0,7,21,26,34,41,58,66,68];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -50,10 +50,6 @@ export default class tntParser extends antlr4.Parser {
         this.ruleNames = tntParser.ruleNames;
         this.literalNames = tntParser.literalNames;
         this.symbolicNames = tntParser.symbolicNames;
-    }
-
-    get atn() {
-        return atn;
     }
 
     sempred(localctx, ruleIndex, predIndex) {
@@ -90,6 +86,8 @@ export default class tntParser extends antlr4.Parser {
 	        this.match(tntParser.T__0);
 	        this.state = 16;
 	        this.expression(0);
+	        this.state = 17;
+	        this.match(tntParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -110,19 +108,19 @@ export default class tntParser extends antlr4.Parser {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, tntParser.RULE_atom);
 	    try {
-	        this.state = 20;
+	        this.state = 21;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 18;
+	            this.state = 19;
 	            this.number();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 19;
+	            this.state = 20;
 	            this.variable();
 	            break;
 
@@ -146,20 +144,20 @@ export default class tntParser extends antlr4.Parser {
 	number() {
 	    let localctx = new NumberContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, tntParser.RULE_number);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 25;
+	        this.state = 26;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===tntParser.SUCCESSOR) {
-	            this.state = 22;
+	        while(_la===9) {
+	            this.state = 23;
 	            this.match(tntParser.SUCCESSOR);
-	            this.state = 27;
+	            this.state = 28;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 28;
+	        this.state = 29;
 	        this.match(tntParser.ZERO);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -180,37 +178,37 @@ export default class tntParser extends antlr4.Parser {
 	variable() {
 	    let localctx = new VariableContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, tntParser.RULE_variable);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 33;
+	        this.state = 34;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===tntParser.SUCCESSOR) {
-	            this.state = 30;
+	        while(_la===9) {
+	            this.state = 31;
 	            this.match(tntParser.SUCCESSOR);
-	            this.state = 35;
+	            this.state = 36;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 36;
+	        this.state = 37;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << tntParser.A) | (1 << tntParser.B) | (1 << tntParser.C) | (1 << tntParser.D) | (1 << tntParser.E))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 31744) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
 	        	this._errHandler.reportMatch(this);
 	            this.consume();
 	        }
-	        this.state = 40;
+	        this.state = 41;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,3,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 37;
+	                this.state = 38;
 	                this.match(tntParser.PRIME); 
 	            }
-	            this.state = 42;
+	            this.state = 43;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        }
@@ -242,50 +240,50 @@ export default class tntParser extends antlr4.Parser {
 	    this.enterRecursionRule(localctx, 8, tntParser.RULE_expression, _p);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 57;
+	        this.state = 58;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case tntParser.ZERO:
-	        case tntParser.SUCCESSOR:
-	        case tntParser.A:
-	        case tntParser.B:
-	        case tntParser.C:
-	        case tntParser.D:
-	        case tntParser.E:
-	            this.state = 44;
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	            this.state = 45;
 	            this.atom();
 	            break;
-	        case tntParser.T__3:
-	            this.state = 45;
-	            this.match(tntParser.T__3);
+	        case 4:
 	            this.state = 46;
-	            this.expression(0);
+	            this.match(tntParser.T__3);
 	            this.state = 47;
+	            this.expression(0);
+	            this.state = 48;
 	            this.match(tntParser.T__4);
 	            break;
-	        case tntParser.T__5:
-	            this.state = 49;
-	            this.match(tntParser.T__5);
+	        case 6:
 	            this.state = 50;
+	            this.match(tntParser.T__5);
+	            this.state = 51;
 	            this.expression(3);
 	            break;
-	        case tntParser.FOREVERY:
-	            this.state = 51;
-	            this.forevery();
+	        case 16:
 	            this.state = 52;
+	            this.forevery();
+	            this.state = 53;
 	            this.expression(2);
 	            break;
-	        case tntParser.EXISTS:
-	            this.state = 54;
-	            this.exists();
+	        case 17:
 	            this.state = 55;
+	            this.exists();
+	            this.state = 56;
 	            this.expression(1);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 67;
+	        this.state = 68;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,6,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -294,39 +292,39 @@ export default class tntParser extends antlr4.Parser {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 65;
+	                this.state = 66;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new ExpressionContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, tntParser.RULE_expression);
-	                    this.state = 59;
+	                    this.state = 60;
 	                    if (!( this.precpred(this._ctx, 6))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
 	                    }
-	                    this.state = 60;
-	                    this.match(tntParser.T__1);
 	                    this.state = 61;
+	                    this.match(tntParser.T__1);
+	                    this.state = 62;
 	                    this.expression(7);
 	                    break;
 
 	                case 2:
 	                    localctx = new ExpressionContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, tntParser.RULE_expression);
-	                    this.state = 62;
+	                    this.state = 63;
 	                    if (!( this.precpred(this._ctx, 5))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
 	                    }
-	                    this.state = 63;
-	                    this.match(tntParser.T__2);
 	                    this.state = 64;
+	                    this.match(tntParser.T__2);
+	                    this.state = 65;
 	                    this.expression(6);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 69;
+	            this.state = 70;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,6,this._ctx);
 	        }
@@ -352,11 +350,11 @@ export default class tntParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, tntParser.RULE_forevery);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 70;
-	        this.match(tntParser.FOREVERY);
 	        this.state = 71;
-	        this.variable();
+	        this.match(tntParser.FOREVERY);
 	        this.state = 72;
+	        this.variable();
+	        this.state = 73;
 	        this.match(tntParser.T__6);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -379,11 +377,11 @@ export default class tntParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, tntParser.RULE_exists);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 74;
-	        this.match(tntParser.EXISTS);
 	        this.state = 75;
-	        this.variable();
+	        this.match(tntParser.EXISTS);
 	        this.state = 76;
+	        this.variable();
+	        this.state = 77;
 	        this.match(tntParser.T__6);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -453,6 +451,10 @@ class EquationContext extends antlr4.ParserRuleContext {
 	    } else {
 	        return this.getTypedRuleContext(ExpressionContext,i);
 	    }
+	};
+
+	EOF() {
+	    return this.getToken(tntParser.EOF, 0);
 	};
 
 	enterRule(listener) {
@@ -773,3 +775,12 @@ tntParser.VariableContext = VariableContext;
 tntParser.ExpressionContext = ExpressionContext; 
 tntParser.ForeveryContext = ForeveryContext; 
 tntParser.ExistsContext = ExistsContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

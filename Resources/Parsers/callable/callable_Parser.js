@@ -1,19 +1,19 @@
-// Generated from ./callable/callable_.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/callable/callable_.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import callable_Listener from './callable_Listener.js';
-const serializedATN = [4,1,9,40,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,
-4,0,11,8,0,11,0,12,0,12,1,0,5,0,16,8,0,10,0,12,0,19,9,0,1,1,1,1,1,1,3,1,
-24,8,1,1,1,1,1,1,2,1,2,1,2,5,2,31,8,2,10,2,12,2,34,9,2,1,3,1,3,3,3,38,8,
-3,1,3,0,0,4,0,2,4,6,0,0,40,0,8,1,0,0,0,2,20,1,0,0,0,4,27,1,0,0,0,6,37,1,
-0,0,0,8,17,3,2,1,0,9,11,5,8,0,0,10,9,1,0,0,0,11,12,1,0,0,0,12,10,1,0,0,0,
-12,13,1,0,0,0,13,14,1,0,0,0,14,16,3,2,1,0,15,10,1,0,0,0,16,19,1,0,0,0,17,
-15,1,0,0,0,17,18,1,0,0,0,18,1,1,0,0,0,19,17,1,0,0,0,20,21,5,4,0,0,21,23,
-5,1,0,0,22,24,3,4,2,0,23,22,1,0,0,0,23,24,1,0,0,0,24,25,1,0,0,0,25,26,5,
-2,0,0,26,3,1,0,0,0,27,32,3,6,3,0,28,29,5,3,0,0,29,31,3,6,3,0,30,28,1,0,0,
-0,31,34,1,0,0,0,32,30,1,0,0,0,32,33,1,0,0,0,33,5,1,0,0,0,34,32,1,0,0,0,35,
-38,3,2,1,0,36,38,5,5,0,0,37,35,1,0,0,0,37,36,1,0,0,0,38,7,1,0,0,0,5,12,17,
-23,32,37];
+const serializedATN = [4,1,9,42,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,
+4,0,11,8,0,11,0,12,0,12,1,0,5,0,16,8,0,10,0,12,0,19,9,0,1,0,1,0,1,1,1,1,
+1,1,3,1,26,8,1,1,1,1,1,1,2,1,2,1,2,5,2,33,8,2,10,2,12,2,36,9,2,1,3,1,3,3,
+3,40,8,3,1,3,0,0,4,0,2,4,6,0,0,42,0,8,1,0,0,0,2,22,1,0,0,0,4,29,1,0,0,0,
+6,39,1,0,0,0,8,17,3,2,1,0,9,11,5,8,0,0,10,9,1,0,0,0,11,12,1,0,0,0,12,10,
+1,0,0,0,12,13,1,0,0,0,13,14,1,0,0,0,14,16,3,2,1,0,15,10,1,0,0,0,16,19,1,
+0,0,0,17,15,1,0,0,0,17,18,1,0,0,0,18,20,1,0,0,0,19,17,1,0,0,0,20,21,5,0,
+0,1,21,1,1,0,0,0,22,23,5,4,0,0,23,25,5,1,0,0,24,26,3,4,2,0,25,24,1,0,0,0,
+25,26,1,0,0,0,26,27,1,0,0,0,27,28,5,2,0,0,28,3,1,0,0,0,29,34,3,6,3,0,30,
+31,5,3,0,0,31,33,3,6,3,0,32,30,1,0,0,0,33,36,1,0,0,0,34,32,1,0,0,0,34,35,
+1,0,0,0,35,5,1,0,0,0,36,34,1,0,0,0,37,40,3,2,1,0,38,40,5,5,0,0,39,37,1,0,
+0,0,39,38,1,0,0,0,40,7,1,0,0,0,5,12,17,25,34,39];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -38,16 +38,12 @@ export default class callable_Parser extends antlr4.Parser {
         this.symbolicNames = callable_Parser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	program() {
 	    let localctx = new ProgramContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, callable_Parser.RULE_program);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 8;
@@ -55,7 +51,7 @@ export default class callable_Parser extends antlr4.Parser {
 	        this.state = 17;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===callable_Parser.EOL) {
+	        while(_la===8) {
 	            this.state = 10; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -65,13 +61,15 @@ export default class callable_Parser extends antlr4.Parser {
 	                this.state = 12; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===callable_Parser.EOL);
+	            } while(_la===8);
 	            this.state = 14;
 	            this.line();
 	            this.state = 19;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 20;
+	        this.match(callable_Parser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -91,22 +89,22 @@ export default class callable_Parser extends antlr4.Parser {
 	line() {
 	    let localctx = new LineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, callable_Parser.RULE_line);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 20;
+	        this.state = 22;
 	        this.match(callable_Parser.ID);
-	        this.state = 21;
-	        this.match(callable_Parser.T__0);
 	        this.state = 23;
+	        this.match(callable_Parser.T__0);
+	        this.state = 25;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===callable_Parser.ID || _la===callable_Parser.STRING) {
-	            this.state = 22;
+	        if(_la===4 || _la===5) {
+	            this.state = 24;
 	            this.f_inner();
 	        }
 
-	        this.state = 25;
+	        this.state = 27;
 	        this.match(callable_Parser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -127,20 +125,20 @@ export default class callable_Parser extends antlr4.Parser {
 	f_inner() {
 	    let localctx = new F_innerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, callable_Parser.RULE_f_inner);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 27;
+	        this.state = 29;
 	        this.f_arg();
-	        this.state = 32;
+	        this.state = 34;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===callable_Parser.T__2) {
-	            this.state = 28;
+	        while(_la===3) {
+	            this.state = 30;
 	            this.match(callable_Parser.T__2);
-	            this.state = 29;
+	            this.state = 31;
 	            this.f_arg();
-	            this.state = 34;
+	            this.state = 36;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -164,17 +162,17 @@ export default class callable_Parser extends antlr4.Parser {
 	    let localctx = new F_argContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, callable_Parser.RULE_f_arg);
 	    try {
-	        this.state = 37;
+	        this.state = 39;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case callable_Parser.ID:
+	        case 4:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 35;
+	            this.state = 37;
 	            this.line();
 	            break;
-	        case callable_Parser.STRING:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 36;
+	            this.state = 38;
 	            this.match(callable_Parser.STRING);
 	            break;
 	        default:
@@ -236,6 +234,10 @@ class ProgramContext extends antlr4.ParserRuleContext {
 	    } else {
 	        return this.getTypedRuleContext(LineContext,i);
 	    }
+	};
+
+	EOF() {
+	    return this.getToken(callable_Parser.EOF, 0);
 	};
 
 	EOL = function(i) {
@@ -392,3 +394,12 @@ callable_Parser.ProgramContext = ProgramContext;
 callable_Parser.LineContext = LineContext; 
 callable_Parser.F_innerContext = F_innerContext; 
 callable_Parser.F_argContext = F_argContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

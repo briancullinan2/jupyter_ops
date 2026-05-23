@@ -1,4 +1,4 @@
-// Generated from ./stacktrace/StackTrace.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/stacktrace/StackTrace.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import StackTraceListener from './StackTraceListener.js';
@@ -71,10 +71,6 @@ export default class StackTraceParser extends antlr4.Parser {
         this.symbolicNames = StackTraceParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	startRule() {
@@ -105,7 +101,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	stackTrace() {
 	    let localctx = new StackTraceContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, StackTraceParser.RULE_stackTrace);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 38; 
@@ -117,11 +113,11 @@ export default class StackTraceParser extends antlr4.Parser {
 	            this.state = 40; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===StackTraceParser.JavaWord);
+	        } while(_la===6);
 	        this.state = 45;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===StackTraceParser.AT || _la===StackTraceParser.ELLIPSIS) {
+	        while(_la===8 || _la===11) {
 	            this.state = 42;
 	            this.stackTraceLine();
 	            this.state = 47;
@@ -131,7 +127,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	        this.state = 49;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===StackTraceParser.CAUSED_BY) {
+	        if(_la===9) {
 	            this.state = 48;
 	            this.causedByLine();
 	        }
@@ -160,11 +156,11 @@ export default class StackTraceParser extends antlr4.Parser {
 	        this.state = 53;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case StackTraceParser.AT:
+	        case 8:
 	            this.state = 51;
 	            this.atLine();
 	            break;
-	        case StackTraceParser.ELLIPSIS:
+	        case 11:
 	            this.state = 52;
 	            this.ellipsisLine();
 	            break;
@@ -190,7 +186,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	atLine() {
 	    let localctx = new AtLineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, StackTraceParser.RULE_atLine);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 55;
@@ -204,7 +200,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	        this.state = 61;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===StackTraceParser.COLON) {
+	        if(_la===12) {
 	            this.state = 59;
 	            this.match(StackTraceParser.COLON);
 	            this.state = 60;
@@ -284,7 +280,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	messageLine() {
 	    let localctx = new MessageLineContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, StackTraceParser.RULE_messageLine);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 72;
@@ -292,7 +288,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	        this.state = 74;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===StackTraceParser.COLON) {
+	        if(_la===12) {
 	            this.state = 73;
 	            this.message();
 	        }
@@ -316,7 +312,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	qualifiedClass() {
 	    let localctx = new QualifiedClassContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, StackTraceParser.RULE_qualifiedClass);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 77;
@@ -332,7 +328,7 @@ export default class StackTraceParser extends antlr4.Parser {
 	        this.state = 83;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===StackTraceParser.T__2) {
+	        while(_la===3) {
 	            this.state = 80;
 	            this.innerClassName();
 	            this.state = 85;
@@ -388,17 +384,17 @@ export default class StackTraceParser extends antlr4.Parser {
 	        this.state = 94;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case StackTraceParser.JavaWord:
+	        case 6:
 	            this.state = 89;
 	            this.identifier();
 	            this.state = 90;
 	            this.match(StackTraceParser.T__3);
 	            break;
-	        case StackTraceParser.NATIVE_METHOD:
+	        case 13:
 	            this.state = 92;
 	            this.match(StackTraceParser.NATIVE_METHOD);
 	            break;
-	        case StackTraceParser.UNKNOWN_SOURCE:
+	        case 14:
 	            this.state = 93;
 	            this.match(StackTraceParser.UNKNOWN_SOURCE);
 	            break;
@@ -433,15 +429,15 @@ export default class StackTraceParser extends antlr4.Parser {
 	        this.state = 100;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case StackTraceParser.JavaWord:
+	        case 6:
 	        	this.state = 98;
 	        	this.methodName();
 	        	break;
-	        case StackTraceParser.INIT:
+	        case 15:
 	        	this.state = 99;
 	        	this.constructor();
 	        	break;
-	        case StackTraceParser.T__0:
+	        case 1:
 	        	break;
 	        default:
 	        	break;
@@ -1399,3 +1395,12 @@ StackTraceParser.PackagePathContext = PackagePathContext;
 StackTraceParser.ClassNameContext = ClassNameContext; 
 StackTraceParser.IdentifierContext = IdentifierContext; 
 StackTraceParser.MessageContext = MessageContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

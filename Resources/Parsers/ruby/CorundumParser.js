@@ -1,4 +1,4 @@
-// Generated from ./ruby/Corundum.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/ruby/Corundum.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CorundumListener from './CorundumListener.js';
@@ -339,10 +339,6 @@ export default class CorundumParser extends antlr4.Parser {
         this.symbolicNames = CorundumParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 1:
@@ -577,33 +573,33 @@ export default class CorundumParser extends antlr4.Parser {
 	        this.state = 151;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CorundumParser.LITERAL:
-	        case CorundumParser.REQUIRE:
-	        case CorundumParser.DEF:
-	        case CorundumParser.RETURN:
-	        case CorundumParser.PIR:
-	        case CorundumParser.IF:
-	        case CorundumParser.UNLESS:
-	        case CorundumParser.WHILE:
-	        case CorundumParser.FOR:
-	        case CorundumParser.TRUE:
-	        case CorundumParser.FALSE:
-	        case CorundumParser.BIT_NOT:
-	        case CorundumParser.NOT:
-	        case CorundumParser.LEFT_RBRACKET:
-	        case CorundumParser.NIL:
-	        case CorundumParser.INT:
-	        case CorundumParser.FLOAT:
-	        case CorundumParser.ID:
-	        case CorundumParser.ID_GLOBAL:
-	        case CorundumParser.ID_FUNCTION:
+	        case 1:
+	        case 5:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 13:
+	        case 14:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 42:
+	        case 47:
+	        case 48:
+	        case 52:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
 	            this.state = 147;
 	            this.expression();
 	            this.state = 148;
 	            this.terminator(0);
 	            break;
-	        case CorundumParser.SEMICOLON:
-	        case CorundumParser.CRLF:
+	        case 3:
+	        case 4:
 	            this.state = 150;
 	            this.terminator(0);
 	            break;
@@ -1018,12 +1014,12 @@ export default class CorundumParser extends antlr4.Parser {
 	        this.state = 215;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CorundumParser.ID_FUNCTION:
+	        case 60:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 213;
 	            this.id_function();
 	            break;
-	        case CorundumParser.ID:
+	        case 58:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 214;
 	            this.id_();
@@ -2146,38 +2142,38 @@ export default class CorundumParser extends antlr4.Parser {
 	        this.state = 442;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CorundumParser.LITERAL:
-	        case CorundumParser.REQUIRE:
-	        case CorundumParser.DEF:
-	        case CorundumParser.RETURN:
-	        case CorundumParser.PIR:
-	        case CorundumParser.IF:
-	        case CorundumParser.UNLESS:
-	        case CorundumParser.WHILE:
-	        case CorundumParser.FOR:
-	        case CorundumParser.TRUE:
-	        case CorundumParser.FALSE:
-	        case CorundumParser.BIT_NOT:
-	        case CorundumParser.NOT:
-	        case CorundumParser.LEFT_RBRACKET:
-	        case CorundumParser.NIL:
-	        case CorundumParser.INT:
-	        case CorundumParser.FLOAT:
-	        case CorundumParser.ID:
-	        case CorundumParser.ID_GLOBAL:
-	        case CorundumParser.ID_FUNCTION:
+	        case 1:
+	        case 5:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 13:
+	        case 14:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 42:
+	        case 47:
+	        case 48:
+	        case 52:
+	        case 56:
+	        case 57:
+	        case 58:
+	        case 59:
+	        case 60:
 	            this.state = 434;
 	            this.expression();
 	            this.state = 435;
 	            this.terminator(0);
 	            break;
-	        case CorundumParser.RETRY:
+	        case 15:
 	            this.state = 437;
 	            this.match(CorundumParser.RETRY);
 	            this.state = 438;
 	            this.terminator(0);
 	            break;
-	        case CorundumParser.BREAK:
+	        case 16:
 	            this.state = 439;
 	            this.break_expression();
 	            this.state = 440;
@@ -2265,7 +2261,7 @@ export default class CorundumParser extends antlr4.Parser {
 	assignment() {
 	    let localctx = new AssignmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, CorundumParser.RULE_assignment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 468;
 	        this._errHandler.sync(this);
@@ -2288,7 +2284,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 465;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (CorundumParser.PLUS_ASSIGN - 33)) | (1 << (CorundumParser.MINUS_ASSIGN - 33)) | (1 << (CorundumParser.MUL_ASSIGN - 33)) | (1 << (CorundumParser.DIV_ASSIGN - 33)) | (1 << (CorundumParser.MOD_ASSIGN - 33)) | (1 << (CorundumParser.EXP_ASSIGN - 33)))) !== 0))) {
+	            if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 63) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2319,7 +2315,7 @@ export default class CorundumParser extends antlr4.Parser {
 	dynamic_assignment() {
 	    let localctx = new Dynamic_assignmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, CorundumParser.RULE_dynamic_assignment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 478;
 	        this._errHandler.sync(this);
@@ -2342,7 +2338,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 475;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (CorundumParser.PLUS_ASSIGN - 33)) | (1 << (CorundumParser.MINUS_ASSIGN - 33)) | (1 << (CorundumParser.MUL_ASSIGN - 33)) | (1 << (CorundumParser.DIV_ASSIGN - 33)) | (1 << (CorundumParser.MOD_ASSIGN - 33)) | (1 << (CorundumParser.EXP_ASSIGN - 33)))) !== 0))) {
+	            if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 63) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2373,7 +2369,7 @@ export default class CorundumParser extends antlr4.Parser {
 	int_assignment() {
 	    let localctx = new Int_assignmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, CorundumParser.RULE_int_assignment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 488;
 	        this._errHandler.sync(this);
@@ -2396,7 +2392,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 485;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (CorundumParser.PLUS_ASSIGN - 33)) | (1 << (CorundumParser.MINUS_ASSIGN - 33)) | (1 << (CorundumParser.MUL_ASSIGN - 33)) | (1 << (CorundumParser.DIV_ASSIGN - 33)) | (1 << (CorundumParser.MOD_ASSIGN - 33)) | (1 << (CorundumParser.EXP_ASSIGN - 33)))) !== 0))) {
+	            if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 63) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2427,7 +2423,7 @@ export default class CorundumParser extends antlr4.Parser {
 	float_assignment() {
 	    let localctx = new Float_assignmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, CorundumParser.RULE_float_assignment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 498;
 	        this._errHandler.sync(this);
@@ -2450,7 +2446,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 495;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (CorundumParser.PLUS_ASSIGN - 33)) | (1 << (CorundumParser.MINUS_ASSIGN - 33)) | (1 << (CorundumParser.MUL_ASSIGN - 33)) | (1 << (CorundumParser.DIV_ASSIGN - 33)) | (1 << (CorundumParser.MOD_ASSIGN - 33)) | (1 << (CorundumParser.EXP_ASSIGN - 33)))) !== 0))) {
+	            if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 63) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2694,7 +2690,7 @@ export default class CorundumParser extends antlr4.Parser {
 	        this.state = 555;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CorundumParser.ID:
+	        case 58:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 539;
 	            this.id_();
@@ -2718,7 +2714,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 545;
 	            this.match(CorundumParser.RIGHT_SBRACKET);
 	            break;
-	        case CorundumParser.ID_GLOBAL:
+	        case 59:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 547;
 	            this.id_global();
@@ -2770,7 +2766,7 @@ export default class CorundumParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 100;
 	    this.enterRecursionRule(localctx, 100, CorundumParser.RULE_dynamic_result, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 583;
@@ -2783,7 +2779,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 559;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2800,7 +2796,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 563;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2826,7 +2822,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 571;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	            if(!(_la===20 || _la===21)) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2843,7 +2839,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 575;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	            if(!(_la===20 || _la===21)) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2893,7 +2889,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 586;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2914,7 +2910,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 589;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	                    if(!(_la===20 || _la===21)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2935,7 +2931,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 592;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2956,7 +2952,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 595;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2990,7 +2986,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 601;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	                    if(!(_la===20 || _la===21)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3011,7 +3007,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 604;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	                    if(!(_la===20 || _la===21)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3097,13 +3093,13 @@ export default class CorundumParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 104;
 	    this.enterRecursionRule(localctx, 104, CorundumParser.RULE_int_result, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 622;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CorundumParser.LEFT_RBRACKET:
+	        case 48:
 	            this.state = 617;
 	            this.match(CorundumParser.LEFT_RBRACKET);
 	            this.state = 618;
@@ -3111,7 +3107,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 619;
 	            this.match(CorundumParser.RIGHT_RBRACKET);
 	            break;
-	        case CorundumParser.INT:
+	        case 56:
 	            this.state = 621;
 	            this.int_t();
 	            break;
@@ -3142,7 +3138,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 625;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3163,7 +3159,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 628;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	                    if(!(_la===20 || _la===21)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3206,7 +3202,7 @@ export default class CorundumParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 106;
 	    this.enterRecursionRule(localctx, 106, CorundumParser.RULE_float_result, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 649;
@@ -3219,7 +3215,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 637;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3236,7 +3232,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 641;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	            if(!(_la===20 || _la===21)) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3286,7 +3282,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 652;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3307,7 +3303,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 655;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	                    if(!(_la===20 || _la===21)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3328,7 +3324,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 658;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3349,7 +3345,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    this.state = 661;
 	                    localctx.op = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	                    if(!(_la===20 || _la===21)) {
 	                        localctx.op = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3397,8 +3393,8 @@ export default class CorundumParser extends antlr4.Parser {
 	        this.state = 674;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CorundumParser.LEFT_RBRACKET:
-	        case CorundumParser.INT:
+	        case 48:
+	        case 56:
 	            this.state = 669;
 	            this.int_result(0);
 	            this.state = 670;
@@ -3406,7 +3402,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 671;
 	            this.string_result(3);
 	            break;
-	        case CorundumParser.LITERAL:
+	        case 1:
 	            this.state = 673;
 	            this.literal_t();
 	            break;
@@ -3560,7 +3556,7 @@ export default class CorundumParser extends antlr4.Parser {
 	comparison() {
 	    let localctx = new ComparisonContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 112, CorundumParser.RULE_comparison);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 718;
 	        this._errHandler.sync(this);
@@ -3573,7 +3569,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 711;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.GREATER) | (1 << CorundumParser.LESS) | (1 << CorundumParser.LESS_EQUAL) | (1 << CorundumParser.GREATER_EQUAL))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4026531840) !== 0))) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3591,7 +3587,7 @@ export default class CorundumParser extends antlr4.Parser {
 	            this.state = 715;
 	            localctx.op = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(_la===CorundumParser.EQUAL || _la===CorundumParser.NOT_EQUAL)) {
+	            if(!(_la===26 || _la===27)) {
 	                localctx.op = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3694,7 +3690,7 @@ export default class CorundumParser extends antlr4.Parser {
 	    let _prevctx = localctx;
 	    const _startState = 118;
 	    this.enterRecursionRule(localctx, 118, CorundumParser.RULE_rvalue, _p);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 753;
@@ -3799,7 +3795,7 @@ export default class CorundumParser extends antlr4.Parser {
 	        case 20:
 	            this.state = 747;
 	            _la = this._input.LA(1);
-	            if(!(_la===CorundumParser.BIT_NOT || _la===CorundumParser.NOT)) {
+	            if(!(_la===42 || _la===47)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3856,7 +3852,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    }
 	                    this.state = 759;
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.MUL) | (1 << CorundumParser.DIV) | (1 << CorundumParser.MOD))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3876,7 +3872,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    }
 	                    this.state = 762;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.PLUS || _la===CorundumParser.MINUS)) {
+	                    if(!(_la===20 || _la===21)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3896,7 +3892,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    }
 	                    this.state = 765;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.BIT_SHL || _la===CorundumParser.BIT_SHR)) {
+	                    if(!(_la===43 || _la===44)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3929,7 +3925,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    }
 	                    this.state = 771;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.BIT_OR || _la===CorundumParser.BIT_XOR)) {
+	                    if(!(_la===40 || _la===41)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3949,7 +3945,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    }
 	                    this.state = 774;
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CorundumParser.GREATER) | (1 << CorundumParser.LESS) | (1 << CorundumParser.LESS_EQUAL) | (1 << CorundumParser.GREATER_EQUAL))) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4026531840) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3969,7 +3965,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    }
 	                    this.state = 777;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.EQUAL || _la===CorundumParser.NOT_EQUAL)) {
+	                    if(!(_la===26 || _la===27)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -3989,7 +3985,7 @@ export default class CorundumParser extends antlr4.Parser {
 	                    }
 	                    this.state = 780;
 	                    _la = this._input.LA(1);
-	                    if(!(_la===CorundumParser.AND || _la===CorundumParser.OR)) {
+	                    if(!(_la===45 || _la===46)) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -4118,12 +4114,12 @@ export default class CorundumParser extends antlr4.Parser {
 	bool_t() {
 	    let localctx = new Bool_tContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 128, CorundumParser.RULE_bool_t);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 795;
 	        _la = this._input.LA(1);
-	        if(!(_la===CorundumParser.TRUE || _la===CorundumParser.FALSE)) {
+	        if(!(_la===18 || _la===19)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4252,11 +4248,11 @@ export default class CorundumParser extends antlr4.Parser {
 	        this.state = 808;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CorundumParser.SEMICOLON:
+	        case 3:
 	            this.state = 806;
 	            this.match(CorundumParser.SEMICOLON);
 	            break;
-	        case CorundumParser.CRLF:
+	        case 4:
 	            this.state = 807;
 	            this.crlf();
 	            break;
@@ -4665,9 +4661,9 @@ class Global_getContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_global_get;
-        this.var_name = null; // LvalueContext
-        this.op = null; // Token
-        this.global_name = null; // Id_globalContext
+        this.var_name = null;
+        this.op = null;
+        this.global_name = null;
     }
 
 	lvalue() {
@@ -4711,9 +4707,9 @@ class Global_setContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_global_set;
-        this.global_name = null; // Id_globalContext
-        this.op = null; // Token
-        this.result = null; // All_resultContext
+        this.global_name = null;
+        this.op = null;
+        this.result = null;
     }
 
 	id_global() {
@@ -5272,8 +5268,8 @@ class Function_callContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_function_call;
-        this.name = null; // Function_nameContext
-        this.params = null; // Function_call_param_listContext
+        this.name = null;
+        this.params = null;
     }
 
 	LEFT_RBRACKET() {
@@ -5485,7 +5481,7 @@ class Function_named_paramContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_function_named_param;
-        this.op = null; // Token
+        this.op = null;
     }
 
 	id_() {
@@ -6331,8 +6327,8 @@ class AssignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_assignment;
-        this.var_id = null; // LvalueContext
-        this.op = null; // Token
+        this.var_id = null;
+        this.op = null;
     }
 
 	rvalue() {
@@ -6400,8 +6396,8 @@ class Dynamic_assignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_dynamic_assignment;
-        this.var_id = null; // LvalueContext
-        this.op = null; // Token
+        this.var_id = null;
+        this.op = null;
     }
 
 	dynamic_result() {
@@ -6469,8 +6465,8 @@ class Int_assignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_int_assignment;
-        this.var_id = null; // LvalueContext
-        this.op = null; // Token
+        this.var_id = null;
+        this.op = null;
     }
 
 	int_result() {
@@ -6538,8 +6534,8 @@ class Float_assignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_float_assignment;
-        this.var_id = null; // LvalueContext
-        this.op = null; // Token
+        this.var_id = null;
+        this.op = null;
     }
 
 	float_result() {
@@ -6607,8 +6603,8 @@ class String_assignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_string_assignment;
-        this.var_id = null; // LvalueContext
-        this.op = null; // Token
+        this.var_id = null;
+        this.op = null;
     }
 
 	string_result() {
@@ -6656,8 +6652,8 @@ class Initial_array_assignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_initial_array_assignment;
-        this.var_id = null; // LvalueContext
-        this.op = null; // Token
+        this.var_id = null;
+        this.op = null;
     }
 
 	LEFT_SBRACKET() {
@@ -6705,9 +6701,9 @@ class Array_assignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_array_assignment;
-        this.arr_def = null; // Array_selectorContext
-        this.op = null; // Token
-        this.arr_val = null; // All_resultContext
+        this.arr_def = null;
+        this.op = null;
+        this.arr_val = null;
     }
 
 	array_selector() {
@@ -6896,7 +6892,7 @@ class Dynamic_resultContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_dynamic_result;
-        this.op = null; // Token
+        this.op = null;
     }
 
 	int_result() {
@@ -7026,7 +7022,7 @@ class Int_resultContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_int_result;
-        this.op = null; // Token
+        this.op = null;
     }
 
 	LEFT_RBRACKET() {
@@ -7101,7 +7097,7 @@ class Float_resultContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_float_result;
-        this.op = null; // Token
+        this.op = null;
     }
 
 	int_result() {
@@ -7180,7 +7176,7 @@ class String_resultContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_string_result;
-        this.op = null; // Token
+        this.op = null;
     }
 
 	int_result() {
@@ -7239,9 +7235,9 @@ class Comparison_listContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_comparison_list;
-        this.left = null; // ComparisonContext
-        this.op = null; // Token
-        this.right = null; // Comparison_listContext
+        this.left = null;
+        this.op = null;
+        this.right = null;
     }
 
 	comparison() {
@@ -7305,9 +7301,9 @@ class ComparisonContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CorundumParser.RULE_comparison;
-        this.left = null; // Comp_varContext
-        this.op = null; // Token
-        this.right = null; // Comp_varContext
+        this.left = null;
+        this.op = null;
+        this.right = null;
     }
 
 	comp_var = function(i) {

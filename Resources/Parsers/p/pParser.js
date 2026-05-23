@@ -1,15 +1,16 @@
-// Generated from ./p/p.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/p/p.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import pListener from './pListener.js';
-const serializedATN = [4,1,5,28,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,4,0,
-10,8,0,11,0,12,0,11,1,1,1,1,3,1,16,8,1,1,2,1,2,4,2,20,8,2,11,2,12,2,21,1,
-2,1,2,1,3,1,3,1,3,0,0,4,0,2,4,6,0,1,1,0,3,4,26,0,9,1,0,0,0,2,15,1,0,0,0,
-4,17,1,0,0,0,6,25,1,0,0,0,8,10,3,2,1,0,9,8,1,0,0,0,10,11,1,0,0,0,11,9,1,
-0,0,0,11,12,1,0,0,0,12,1,1,0,0,0,13,16,3,4,2,0,14,16,3,6,3,0,15,13,1,0,0,
-0,15,14,1,0,0,0,16,3,1,0,0,0,17,19,5,1,0,0,18,20,3,2,1,0,19,18,1,0,0,0,20,
-21,1,0,0,0,21,19,1,0,0,0,21,22,1,0,0,0,22,23,1,0,0,0,23,24,5,2,0,0,24,5,
-1,0,0,0,25,26,7,0,0,0,26,7,1,0,0,0,3,11,15,21];
+const serializedATN = [4,1,5,30,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,4,0,
+10,8,0,11,0,12,0,11,1,0,1,0,1,1,1,1,3,1,18,8,1,1,2,1,2,4,2,22,8,2,11,2,12,
+2,23,1,2,1,2,1,3,1,3,1,3,0,0,4,0,2,4,6,0,1,1,0,3,4,28,0,9,1,0,0,0,2,17,1,
+0,0,0,4,19,1,0,0,0,6,27,1,0,0,0,8,10,3,2,1,0,9,8,1,0,0,0,10,11,1,0,0,0,11,
+9,1,0,0,0,11,12,1,0,0,0,12,13,1,0,0,0,13,14,5,0,0,1,14,1,1,0,0,0,15,18,3,
+4,2,0,16,18,3,6,3,0,17,15,1,0,0,0,17,16,1,0,0,0,18,3,1,0,0,0,19,21,5,1,0,
+0,20,22,3,2,1,0,21,20,1,0,0,0,22,23,1,0,0,0,23,21,1,0,0,0,23,24,1,0,0,0,
+24,25,1,0,0,0,25,26,5,2,0,0,26,5,1,0,0,0,27,28,7,0,0,0,28,7,1,0,0,0,3,11,
+17,23];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -33,16 +34,12 @@ export default class pParser extends antlr4.Parser {
         this.symbolicNames = pParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	prog() {
 	    let localctx = new ProgContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, pParser.RULE_prog);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 9; 
@@ -54,7 +51,9 @@ export default class pParser extends antlr4.Parser {
 	            this.state = 11; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << pParser.T__0) | (1 << pParser.R) | (1 << pParser.L))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 26) !== 0));
+	        this.state = 13;
+	        this.match(pParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -75,18 +74,18 @@ export default class pParser extends antlr4.Parser {
 	    let localctx = new SymbolContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, pParser.RULE_symbol);
 	    try {
-	        this.state = 15;
+	        this.state = 17;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case pParser.T__0:
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 13;
+	            this.state = 15;
 	            this.iterate();
 	            break;
-	        case pParser.R:
-	        case pParser.L:
+	        case 3:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 14;
+	            this.state = 16;
 	            this.atom();
 	            break;
 	        default:
@@ -111,22 +110,22 @@ export default class pParser extends antlr4.Parser {
 	iterate() {
 	    let localctx = new IterateContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, pParser.RULE_iterate);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 17;
+	        this.state = 19;
 	        this.match(pParser.T__0);
-	        this.state = 19; 
+	        this.state = 21; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 18;
+	            this.state = 20;
 	            this.symbol();
-	            this.state = 21; 
+	            this.state = 23; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << pParser.T__0) | (1 << pParser.R) | (1 << pParser.L))) !== 0));
-	        this.state = 23;
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 26) !== 0));
+	        this.state = 25;
 	        this.match(pParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -147,12 +146,12 @@ export default class pParser extends antlr4.Parser {
 	atom() {
 	    let localctx = new AtomContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, pParser.RULE_atom);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 25;
+	        this.state = 27;
 	        _la = this._input.LA(1);
-	        if(!(_la===pParser.R || _la===pParser.L)) {
+	        if(!(_la===3 || _la===4)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -201,6 +200,10 @@ class ProgContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = pParser.RULE_prog;
     }
+
+	EOF() {
+	    return this.getToken(pParser.EOF, 0);
+	};
 
 	symbol = function(i) {
 	    if(i===undefined) {
@@ -355,3 +358,12 @@ pParser.ProgContext = ProgContext;
 pParser.SymbolContext = SymbolContext; 
 pParser.IterateContext = IterateContext; 
 pParser.AtomContext = AtomContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

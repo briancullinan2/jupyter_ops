@@ -1,106 +1,107 @@
-// Generated from ./plucid/plucid.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/plucid/plucid.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import plucidListener from './plucidListener.js';
-const serializedATN = [4,1,55,320,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,55,321,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
-7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,1,0,1,0,1,1,1,1,1,
+7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,1,0,1,0,1,0,1,1,1,
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,100,8,1,1,1,1,1,1,1,1,1,5,
-1,106,8,1,10,1,12,1,109,9,1,1,2,1,2,1,2,1,2,3,2,115,8,2,1,3,1,3,3,3,119,
-8,3,1,4,4,4,122,8,4,11,4,12,4,123,1,4,1,4,3,4,128,8,4,1,5,1,5,1,5,5,5,133,
-8,5,10,5,12,5,136,9,5,1,6,1,6,1,6,1,6,1,7,1,7,5,7,144,8,7,10,7,12,7,147,
-9,7,1,7,4,7,150,8,7,11,7,12,7,151,1,7,1,7,1,7,1,7,3,7,158,8,7,1,8,1,8,1,
-8,1,8,5,8,164,8,8,10,8,12,8,167,9,8,1,8,3,8,170,8,8,1,9,1,9,1,9,1,9,3,9,
-176,8,9,1,10,1,10,5,10,180,8,10,10,10,12,10,183,9,10,1,11,1,11,1,12,1,12,
-1,13,1,13,1,13,5,13,192,8,13,10,13,12,13,195,9,13,1,13,3,13,198,8,13,1,14,
-1,14,1,14,1,14,5,14,204,8,14,10,14,12,14,207,9,14,3,14,209,8,14,1,15,1,15,
-3,15,213,8,15,1,16,1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,17,1,17,
-1,17,1,17,1,17,1,17,3,17,231,8,17,1,18,1,18,1,18,1,18,1,18,1,18,1,19,1,19,
-1,19,1,19,1,20,1,20,1,20,1,20,1,20,5,20,248,8,20,10,20,12,20,251,9,20,1,
-20,1,20,1,21,1,21,1,21,1,21,1,22,1,22,1,22,1,22,1,22,1,23,1,23,1,23,1,23,
-1,23,3,23,269,8,23,1,24,1,24,1,24,1,24,1,24,1,25,1,25,1,25,1,26,1,26,1,26,
-5,26,282,8,26,10,26,12,26,285,9,26,1,27,1,27,1,27,1,27,1,27,1,28,1,28,1,
-28,5,28,295,8,28,10,28,12,28,298,9,28,1,29,1,29,3,29,302,8,29,1,30,1,30,
-1,30,1,30,1,31,1,31,1,31,1,31,1,31,1,32,1,32,1,32,1,32,1,32,3,32,318,8,32,
-1,32,0,1,2,33,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,
-42,44,46,48,50,52,54,56,58,60,62,64,0,2,1,0,41,46,1,0,47,51,333,0,66,1,0,
-0,0,2,99,1,0,0,0,4,114,1,0,0,0,6,118,1,0,0,0,8,127,1,0,0,0,10,129,1,0,0,
-0,12,137,1,0,0,0,14,157,1,0,0,0,16,169,1,0,0,0,18,175,1,0,0,0,20,177,1,0,
-0,0,22,184,1,0,0,0,24,186,1,0,0,0,26,197,1,0,0,0,28,208,1,0,0,0,30,212,1,
-0,0,0,32,214,1,0,0,0,34,230,1,0,0,0,36,232,1,0,0,0,38,238,1,0,0,0,40,249,
-1,0,0,0,42,254,1,0,0,0,44,258,1,0,0,0,46,268,1,0,0,0,48,270,1,0,0,0,50,275,
-1,0,0,0,52,283,1,0,0,0,54,286,1,0,0,0,56,296,1,0,0,0,58,301,1,0,0,0,60,303,
-1,0,0,0,62,307,1,0,0,0,64,317,1,0,0,0,66,67,3,2,1,0,67,1,1,0,0,0,68,69,6,
-1,-1,0,69,100,3,4,2,0,70,100,3,20,10,0,71,100,5,1,0,0,72,100,5,2,0,0,73,
-74,3,22,11,0,74,75,3,2,1,11,75,100,1,0,0,0,76,77,5,3,0,0,77,78,3,2,1,0,78,
-79,5,4,0,0,79,80,3,2,1,0,80,81,5,4,0,0,81,82,3,2,1,0,82,100,1,0,0,0,83,84,
-5,5,0,0,84,85,3,2,1,0,85,86,5,4,0,0,86,87,3,2,1,0,87,88,5,4,0,0,88,89,3,
-2,1,0,89,100,1,0,0,0,90,91,5,6,0,0,91,100,3,2,1,7,92,93,5,7,0,0,93,100,3,
-2,1,6,94,100,3,26,13,0,95,100,3,32,16,0,96,100,3,36,18,0,97,100,3,38,19,
-0,98,100,3,44,22,0,99,68,1,0,0,0,99,70,1,0,0,0,99,71,1,0,0,0,99,72,1,0,0,
-0,99,73,1,0,0,0,99,76,1,0,0,0,99,83,1,0,0,0,99,90,1,0,0,0,99,92,1,0,0,0,
-99,94,1,0,0,0,99,95,1,0,0,0,99,96,1,0,0,0,99,97,1,0,0,0,99,98,1,0,0,0,100,
-107,1,0,0,0,101,102,10,10,0,0,102,103,3,24,12,0,103,104,3,2,1,11,104,106,
-1,0,0,0,105,101,1,0,0,0,106,109,1,0,0,0,107,105,1,0,0,0,107,108,1,0,0,0,
-108,3,1,0,0,0,109,107,1,0,0,0,110,115,3,6,3,0,111,115,3,12,6,0,112,115,5,
-40,0,0,113,115,3,16,8,0,114,110,1,0,0,0,114,111,1,0,0,0,114,112,1,0,0,0,
-114,113,1,0,0,0,115,5,1,0,0,0,116,119,3,8,4,0,117,119,3,10,5,0,118,116,1,
-0,0,0,118,117,1,0,0,0,119,7,1,0,0,0,120,122,5,53,0,0,121,120,1,0,0,0,122,
-123,1,0,0,0,123,121,1,0,0,0,123,124,1,0,0,0,124,128,1,0,0,0,125,126,5,34,
-0,0,126,128,3,8,4,0,127,121,1,0,0,0,127,125,1,0,0,0,128,9,1,0,0,0,129,130,
-3,8,4,0,130,134,5,38,0,0,131,133,5,53,0,0,132,131,1,0,0,0,133,136,1,0,0,
-0,134,132,1,0,0,0,134,135,1,0,0,0,135,11,1,0,0,0,136,134,1,0,0,0,137,138,
-5,36,0,0,138,139,3,14,7,0,139,140,5,36,0,0,140,13,1,0,0,0,141,145,5,54,0,
-0,142,144,5,52,0,0,143,142,1,0,0,0,144,147,1,0,0,0,145,143,1,0,0,0,145,146,
-1,0,0,0,146,158,1,0,0,0,147,145,1,0,0,0,148,150,5,35,0,0,149,148,1,0,0,0,
-150,151,1,0,0,0,151,149,1,0,0,0,151,152,1,0,0,0,152,158,1,0,0,0,153,158,
-5,37,0,0,154,158,5,38,0,0,155,158,5,39,0,0,156,158,5,36,0,0,157,141,1,0,
-0,0,157,149,1,0,0,0,157,153,1,0,0,0,157,154,1,0,0,0,157,155,1,0,0,0,157,
-156,1,0,0,0,158,15,1,0,0,0,159,170,5,8,0,0,160,170,5,9,0,0,161,165,5,10,
-0,0,162,164,3,18,9,0,163,162,1,0,0,0,164,167,1,0,0,0,165,163,1,0,0,0,165,
-166,1,0,0,0,166,168,1,0,0,0,167,165,1,0,0,0,168,170,5,11,0,0,169,159,1,0,
-0,0,169,160,1,0,0,0,169,161,1,0,0,0,170,17,1,0,0,0,171,176,3,6,3,0,172,176,
-3,14,7,0,173,176,5,40,0,0,174,176,3,16,8,0,175,171,1,0,0,0,175,172,1,0,0,
-0,175,173,1,0,0,0,175,174,1,0,0,0,176,19,1,0,0,0,177,181,5,54,0,0,178,180,
-5,52,0,0,179,178,1,0,0,0,180,183,1,0,0,0,181,179,1,0,0,0,181,182,1,0,0,0,
-182,21,1,0,0,0,183,181,1,0,0,0,184,185,7,0,0,0,185,23,1,0,0,0,186,187,7,
-1,0,0,187,25,1,0,0,0,188,198,5,12,0,0,189,193,5,13,0,0,190,192,3,28,14,0,
-191,190,1,0,0,0,192,195,1,0,0,0,193,191,1,0,0,0,193,194,1,0,0,0,194,196,
-1,0,0,0,195,193,1,0,0,0,196,198,5,14,0,0,197,188,1,0,0,0,197,189,1,0,0,0,
-198,27,1,0,0,0,199,209,3,30,15,0,200,201,3,30,15,0,201,205,5,4,0,0,202,204,
-3,28,14,0,203,202,1,0,0,0,204,207,1,0,0,0,205,203,1,0,0,0,205,206,1,0,0,
-0,206,209,1,0,0,0,207,205,1,0,0,0,208,199,1,0,0,0,208,200,1,0,0,0,209,29,
-1,0,0,0,210,213,3,2,1,0,211,213,3,26,13,0,212,210,1,0,0,0,212,211,1,0,0,
-0,213,31,1,0,0,0,214,215,5,15,0,0,215,216,3,2,1,0,216,217,5,16,0,0,217,218,
-3,2,1,0,218,219,3,34,17,0,219,33,1,0,0,0,220,221,5,17,0,0,221,222,3,2,1,
-0,222,223,5,18,0,0,223,231,1,0,0,0,224,225,5,19,0,0,225,226,3,2,1,0,226,
-227,5,16,0,0,227,228,3,2,1,0,228,229,5,20,0,0,229,231,1,0,0,0,230,220,1,
-0,0,0,230,224,1,0,0,0,231,35,1,0,0,0,232,233,5,21,0,0,233,234,3,2,1,0,234,
-235,5,22,0,0,235,236,3,40,20,0,236,237,5,23,0,0,237,37,1,0,0,0,238,239,5,
-24,0,0,239,240,3,40,20,0,240,241,5,23,0,0,241,39,1,0,0,0,242,243,3,2,1,0,
-243,244,5,25,0,0,244,245,3,2,1,0,245,246,5,26,0,0,246,248,1,0,0,0,247,242,
-1,0,0,0,248,251,1,0,0,0,249,247,1,0,0,0,249,250,1,0,0,0,250,252,1,0,0,0,
-251,249,1,0,0,0,252,253,3,42,21,0,253,41,1,0,0,0,254,255,5,27,0,0,255,256,
-5,25,0,0,256,257,3,2,1,0,257,43,1,0,0,0,258,259,3,20,10,0,259,260,5,28,0,
-0,260,261,3,46,23,0,261,262,5,29,0,0,262,45,1,0,0,0,263,269,3,2,1,0,264,
-265,3,2,1,0,265,266,5,4,0,0,266,267,3,46,23,0,267,269,1,0,0,0,268,263,1,
-0,0,0,268,264,1,0,0,0,269,47,1,0,0,0,270,271,3,2,1,0,271,272,5,30,0,0,272,
-273,3,50,25,0,273,274,5,23,0,0,274,49,1,0,0,0,275,276,3,52,26,0,276,277,
-3,56,28,0,277,51,1,0,0,0,278,279,3,54,27,0,279,280,5,26,0,0,280,282,1,0,
-0,0,281,278,1,0,0,0,282,285,1,0,0,0,283,281,1,0,0,0,283,284,1,0,0,0,284,
-53,1,0,0,0,285,283,1,0,0,0,286,287,3,20,10,0,287,288,5,31,0,0,288,289,5,
-32,0,0,289,290,3,2,1,0,290,55,1,0,0,0,291,292,3,58,29,0,292,293,5,26,0,0,
-293,295,1,0,0,0,294,291,1,0,0,0,295,298,1,0,0,0,296,294,1,0,0,0,296,297,
-1,0,0,0,297,57,1,0,0,0,298,296,1,0,0,0,299,302,3,60,30,0,300,302,3,62,31,
-0,301,299,1,0,0,0,301,300,1,0,0,0,302,59,1,0,0,0,303,304,3,20,10,0,304,305,
-5,33,0,0,305,306,3,2,1,0,306,61,1,0,0,0,307,308,3,20,10,0,308,309,3,64,32,
-0,309,310,5,33,0,0,310,311,3,2,1,0,311,63,1,0,0,0,312,318,3,20,10,0,313,
-314,3,20,10,0,314,315,5,4,0,0,315,316,3,64,32,0,316,318,1,0,0,0,317,312,
-1,0,0,0,317,313,1,0,0,0,318,65,1,0,0,0,26,99,107,114,118,123,127,134,145,
-151,157,165,169,175,181,193,197,205,208,212,230,249,268,283,296,301,317];
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,101,8,1,1,1,1,1,1,1,1,
+1,5,1,107,8,1,10,1,12,1,110,9,1,1,2,1,2,1,2,1,2,3,2,116,8,2,1,3,1,3,3,3,
+120,8,3,1,4,4,4,123,8,4,11,4,12,4,124,1,4,1,4,3,4,129,8,4,1,5,1,5,1,5,5,
+5,134,8,5,10,5,12,5,137,9,5,1,6,1,6,1,6,1,6,1,7,1,7,5,7,145,8,7,10,7,12,
+7,148,9,7,1,7,4,7,151,8,7,11,7,12,7,152,1,7,1,7,1,7,1,7,3,7,159,8,7,1,8,
+1,8,1,8,1,8,5,8,165,8,8,10,8,12,8,168,9,8,1,8,3,8,171,8,8,1,9,1,9,1,9,1,
+9,3,9,177,8,9,1,10,1,10,5,10,181,8,10,10,10,12,10,184,9,10,1,11,1,11,1,12,
+1,12,1,13,1,13,1,13,5,13,193,8,13,10,13,12,13,196,9,13,1,13,3,13,199,8,13,
+1,14,1,14,1,14,1,14,5,14,205,8,14,10,14,12,14,208,9,14,3,14,210,8,14,1,15,
+1,15,3,15,214,8,15,1,16,1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,17,
+1,17,1,17,1,17,1,17,1,17,3,17,232,8,17,1,18,1,18,1,18,1,18,1,18,1,18,1,19,
+1,19,1,19,1,19,1,20,1,20,1,20,1,20,1,20,5,20,249,8,20,10,20,12,20,252,9,
+20,1,20,1,20,1,21,1,21,1,21,1,21,1,22,1,22,1,22,1,22,1,22,1,23,1,23,1,23,
+1,23,1,23,3,23,270,8,23,1,24,1,24,1,24,1,24,1,24,1,25,1,25,1,25,1,26,1,26,
+1,26,5,26,283,8,26,10,26,12,26,286,9,26,1,27,1,27,1,27,1,27,1,27,1,28,1,
+28,1,28,5,28,296,8,28,10,28,12,28,299,9,28,1,29,1,29,3,29,303,8,29,1,30,
+1,30,1,30,1,30,1,31,1,31,1,31,1,31,1,31,1,32,1,32,1,32,1,32,1,32,3,32,319,
+8,32,1,32,0,1,2,33,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,
+40,42,44,46,48,50,52,54,56,58,60,62,64,0,2,1,0,41,46,1,0,47,51,334,0,66,
+1,0,0,0,2,100,1,0,0,0,4,115,1,0,0,0,6,119,1,0,0,0,8,128,1,0,0,0,10,130,1,
+0,0,0,12,138,1,0,0,0,14,158,1,0,0,0,16,170,1,0,0,0,18,176,1,0,0,0,20,178,
+1,0,0,0,22,185,1,0,0,0,24,187,1,0,0,0,26,198,1,0,0,0,28,209,1,0,0,0,30,213,
+1,0,0,0,32,215,1,0,0,0,34,231,1,0,0,0,36,233,1,0,0,0,38,239,1,0,0,0,40,250,
+1,0,0,0,42,255,1,0,0,0,44,259,1,0,0,0,46,269,1,0,0,0,48,271,1,0,0,0,50,276,
+1,0,0,0,52,284,1,0,0,0,54,287,1,0,0,0,56,297,1,0,0,0,58,302,1,0,0,0,60,304,
+1,0,0,0,62,308,1,0,0,0,64,318,1,0,0,0,66,67,3,2,1,0,67,68,5,0,0,1,68,1,1,
+0,0,0,69,70,6,1,-1,0,70,101,3,4,2,0,71,101,3,20,10,0,72,101,5,1,0,0,73,101,
+5,2,0,0,74,75,3,22,11,0,75,76,3,2,1,11,76,101,1,0,0,0,77,78,5,3,0,0,78,79,
+3,2,1,0,79,80,5,4,0,0,80,81,3,2,1,0,81,82,5,4,0,0,82,83,3,2,1,0,83,101,1,
+0,0,0,84,85,5,5,0,0,85,86,3,2,1,0,86,87,5,4,0,0,87,88,3,2,1,0,88,89,5,4,
+0,0,89,90,3,2,1,0,90,101,1,0,0,0,91,92,5,6,0,0,92,101,3,2,1,7,93,94,5,7,
+0,0,94,101,3,2,1,6,95,101,3,26,13,0,96,101,3,32,16,0,97,101,3,36,18,0,98,
+101,3,38,19,0,99,101,3,44,22,0,100,69,1,0,0,0,100,71,1,0,0,0,100,72,1,0,
+0,0,100,73,1,0,0,0,100,74,1,0,0,0,100,77,1,0,0,0,100,84,1,0,0,0,100,91,1,
+0,0,0,100,93,1,0,0,0,100,95,1,0,0,0,100,96,1,0,0,0,100,97,1,0,0,0,100,98,
+1,0,0,0,100,99,1,0,0,0,101,108,1,0,0,0,102,103,10,10,0,0,103,104,3,24,12,
+0,104,105,3,2,1,11,105,107,1,0,0,0,106,102,1,0,0,0,107,110,1,0,0,0,108,106,
+1,0,0,0,108,109,1,0,0,0,109,3,1,0,0,0,110,108,1,0,0,0,111,116,3,6,3,0,112,
+116,3,12,6,0,113,116,5,40,0,0,114,116,3,16,8,0,115,111,1,0,0,0,115,112,1,
+0,0,0,115,113,1,0,0,0,115,114,1,0,0,0,116,5,1,0,0,0,117,120,3,8,4,0,118,
+120,3,10,5,0,119,117,1,0,0,0,119,118,1,0,0,0,120,7,1,0,0,0,121,123,5,53,
+0,0,122,121,1,0,0,0,123,124,1,0,0,0,124,122,1,0,0,0,124,125,1,0,0,0,125,
+129,1,0,0,0,126,127,5,34,0,0,127,129,3,8,4,0,128,122,1,0,0,0,128,126,1,0,
+0,0,129,9,1,0,0,0,130,131,3,8,4,0,131,135,5,38,0,0,132,134,5,53,0,0,133,
+132,1,0,0,0,134,137,1,0,0,0,135,133,1,0,0,0,135,136,1,0,0,0,136,11,1,0,0,
+0,137,135,1,0,0,0,138,139,5,36,0,0,139,140,3,14,7,0,140,141,5,36,0,0,141,
+13,1,0,0,0,142,146,5,54,0,0,143,145,5,52,0,0,144,143,1,0,0,0,145,148,1,0,
+0,0,146,144,1,0,0,0,146,147,1,0,0,0,147,159,1,0,0,0,148,146,1,0,0,0,149,
+151,5,35,0,0,150,149,1,0,0,0,151,152,1,0,0,0,152,150,1,0,0,0,152,153,1,0,
+0,0,153,159,1,0,0,0,154,159,5,37,0,0,155,159,5,38,0,0,156,159,5,39,0,0,157,
+159,5,36,0,0,158,142,1,0,0,0,158,150,1,0,0,0,158,154,1,0,0,0,158,155,1,0,
+0,0,158,156,1,0,0,0,158,157,1,0,0,0,159,15,1,0,0,0,160,171,5,8,0,0,161,171,
+5,9,0,0,162,166,5,10,0,0,163,165,3,18,9,0,164,163,1,0,0,0,165,168,1,0,0,
+0,166,164,1,0,0,0,166,167,1,0,0,0,167,169,1,0,0,0,168,166,1,0,0,0,169,171,
+5,11,0,0,170,160,1,0,0,0,170,161,1,0,0,0,170,162,1,0,0,0,171,17,1,0,0,0,
+172,177,3,6,3,0,173,177,3,14,7,0,174,177,5,40,0,0,175,177,3,16,8,0,176,172,
+1,0,0,0,176,173,1,0,0,0,176,174,1,0,0,0,176,175,1,0,0,0,177,19,1,0,0,0,178,
+182,5,54,0,0,179,181,5,52,0,0,180,179,1,0,0,0,181,184,1,0,0,0,182,180,1,
+0,0,0,182,183,1,0,0,0,183,21,1,0,0,0,184,182,1,0,0,0,185,186,7,0,0,0,186,
+23,1,0,0,0,187,188,7,1,0,0,188,25,1,0,0,0,189,199,5,12,0,0,190,194,5,13,
+0,0,191,193,3,28,14,0,192,191,1,0,0,0,193,196,1,0,0,0,194,192,1,0,0,0,194,
+195,1,0,0,0,195,197,1,0,0,0,196,194,1,0,0,0,197,199,5,14,0,0,198,189,1,0,
+0,0,198,190,1,0,0,0,199,27,1,0,0,0,200,210,3,30,15,0,201,202,3,30,15,0,202,
+206,5,4,0,0,203,205,3,28,14,0,204,203,1,0,0,0,205,208,1,0,0,0,206,204,1,
+0,0,0,206,207,1,0,0,0,207,210,1,0,0,0,208,206,1,0,0,0,209,200,1,0,0,0,209,
+201,1,0,0,0,210,29,1,0,0,0,211,214,3,2,1,0,212,214,3,26,13,0,213,211,1,0,
+0,0,213,212,1,0,0,0,214,31,1,0,0,0,215,216,5,15,0,0,216,217,3,2,1,0,217,
+218,5,16,0,0,218,219,3,2,1,0,219,220,3,34,17,0,220,33,1,0,0,0,221,222,5,
+17,0,0,222,223,3,2,1,0,223,224,5,18,0,0,224,232,1,0,0,0,225,226,5,19,0,0,
+226,227,3,2,1,0,227,228,5,16,0,0,228,229,3,2,1,0,229,230,5,20,0,0,230,232,
+1,0,0,0,231,221,1,0,0,0,231,225,1,0,0,0,232,35,1,0,0,0,233,234,5,21,0,0,
+234,235,3,2,1,0,235,236,5,22,0,0,236,237,3,40,20,0,237,238,5,23,0,0,238,
+37,1,0,0,0,239,240,5,24,0,0,240,241,3,40,20,0,241,242,5,23,0,0,242,39,1,
+0,0,0,243,244,3,2,1,0,244,245,5,25,0,0,245,246,3,2,1,0,246,247,5,26,0,0,
+247,249,1,0,0,0,248,243,1,0,0,0,249,252,1,0,0,0,250,248,1,0,0,0,250,251,
+1,0,0,0,251,253,1,0,0,0,252,250,1,0,0,0,253,254,3,42,21,0,254,41,1,0,0,0,
+255,256,5,27,0,0,256,257,5,25,0,0,257,258,3,2,1,0,258,43,1,0,0,0,259,260,
+3,20,10,0,260,261,5,28,0,0,261,262,3,46,23,0,262,263,5,29,0,0,263,45,1,0,
+0,0,264,270,3,2,1,0,265,266,3,2,1,0,266,267,5,4,0,0,267,268,3,46,23,0,268,
+270,1,0,0,0,269,264,1,0,0,0,269,265,1,0,0,0,270,47,1,0,0,0,271,272,3,2,1,
+0,272,273,5,30,0,0,273,274,3,50,25,0,274,275,5,23,0,0,275,49,1,0,0,0,276,
+277,3,52,26,0,277,278,3,56,28,0,278,51,1,0,0,0,279,280,3,54,27,0,280,281,
+5,26,0,0,281,283,1,0,0,0,282,279,1,0,0,0,283,286,1,0,0,0,284,282,1,0,0,0,
+284,285,1,0,0,0,285,53,1,0,0,0,286,284,1,0,0,0,287,288,3,20,10,0,288,289,
+5,31,0,0,289,290,5,32,0,0,290,291,3,2,1,0,291,55,1,0,0,0,292,293,3,58,29,
+0,293,294,5,26,0,0,294,296,1,0,0,0,295,292,1,0,0,0,296,299,1,0,0,0,297,295,
+1,0,0,0,297,298,1,0,0,0,298,57,1,0,0,0,299,297,1,0,0,0,300,303,3,60,30,0,
+301,303,3,62,31,0,302,300,1,0,0,0,302,301,1,0,0,0,303,59,1,0,0,0,304,305,
+3,20,10,0,305,306,5,33,0,0,306,307,3,2,1,0,307,61,1,0,0,0,308,309,3,20,10,
+0,309,310,3,64,32,0,310,311,5,33,0,0,311,312,3,2,1,0,312,63,1,0,0,0,313,
+319,3,20,10,0,314,315,3,20,10,0,315,316,5,4,0,0,316,317,3,64,32,0,317,319,
+1,0,0,0,318,313,1,0,0,0,318,314,1,0,0,0,319,65,1,0,0,0,26,100,108,115,119,
+124,128,135,146,152,158,166,170,176,182,194,198,206,209,213,231,250,269,
+284,297,302,318];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -150,10 +151,6 @@ export default class plucidParser extends antlr4.Parser {
         this.symbolicNames = plucidParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 1:
@@ -182,6 +179,8 @@ export default class plucidParser extends antlr4.Parser {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 66;
 	        this.expression(0);
+	        this.state = 67;
+	        this.match(plucidParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -209,111 +208,111 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRecursionRule(localctx, 2, plucidParser.RULE_expression, _p);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 99;
+	        this.state = 100;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
 	        switch(la_) {
 	        case 1:
-	            this.state = 69;
+	            this.state = 70;
 	            this.constant();
 	            break;
 
 	        case 2:
-	            this.state = 70;
+	            this.state = 71;
 	            this.identifier();
 	            break;
 
 	        case 3:
-	            this.state = 71;
+	            this.state = 72;
 	            this.match(plucidParser.T__0);
 	            break;
 
 	        case 4:
-	            this.state = 72;
+	            this.state = 73;
 	            this.match(plucidParser.T__1);
 	            break;
 
 	        case 5:
-	            this.state = 73;
-	            this.prefix_operator();
 	            this.state = 74;
+	            this.prefix_operator();
+	            this.state = 75;
 	            this.expression(11);
 	            break;
 
 	        case 6:
-	            this.state = 76;
+	            this.state = 77;
 	            this.match(plucidParser.T__2);
 
-	            this.state = 77;
-	            this.expression(0);
 	            this.state = 78;
-	            this.match(plucidParser.T__3);
-	            this.state = 79;
 	            this.expression(0);
-	            this.state = 80;
+	            this.state = 79;
 	            this.match(plucidParser.T__3);
+	            this.state = 80;
+	            this.expression(0);
 	            this.state = 81;
+	            this.match(plucidParser.T__3);
+	            this.state = 82;
 	            this.expression(0);
 	            break;
 
 	        case 7:
-	            this.state = 83;
+	            this.state = 84;
 	            this.match(plucidParser.T__4);
 
-	            this.state = 84;
-	            this.expression(0);
 	            this.state = 85;
-	            this.match(plucidParser.T__3);
-	            this.state = 86;
 	            this.expression(0);
-	            this.state = 87;
+	            this.state = 86;
 	            this.match(plucidParser.T__3);
+	            this.state = 87;
+	            this.expression(0);
 	            this.state = 88;
+	            this.match(plucidParser.T__3);
+	            this.state = 89;
 	            this.expression(0);
 	            break;
 
 	        case 8:
-	            this.state = 90;
-	            this.match(plucidParser.T__5);
 	            this.state = 91;
+	            this.match(plucidParser.T__5);
+	            this.state = 92;
 	            this.expression(7);
 	            break;
 
 	        case 9:
-	            this.state = 92;
-	            this.match(plucidParser.T__6);
 	            this.state = 93;
+	            this.match(plucidParser.T__6);
+	            this.state = 94;
 	            this.expression(6);
 	            break;
 
 	        case 10:
-	            this.state = 94;
+	            this.state = 95;
 	            this.list_expression();
 	            break;
 
 	        case 11:
-	            this.state = 95;
+	            this.state = 96;
 	            this.if_expression();
 	            break;
 
 	        case 12:
-	            this.state = 96;
+	            this.state = 97;
 	            this.case_expression();
 	            break;
 
 	        case 13:
-	            this.state = 97;
+	            this.state = 98;
 	            this.cond_expression();
 	            break;
 
 	        case 14:
-	            this.state = 98;
+	            this.state = 99;
 	            this.function_call();
 	            break;
 
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 107;
+	        this.state = 108;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,1,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -324,16 +323,16 @@ export default class plucidParser extends antlr4.Parser {
 	                _prevctx = localctx;
 	                localctx = new ExpressionContext(this, _parentctx, _parentState);
 	                this.pushNewRecursionContext(localctx, _startState, plucidParser.RULE_expression);
-	                this.state = 101;
+	                this.state = 102;
 	                if (!( this.precpred(this._ctx, 10))) {
 	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 10)");
 	                }
-	                this.state = 102;
-	                this.infix_operator();
 	                this.state = 103;
+	                this.infix_operator();
+	                this.state = 104;
 	                this.expression(11); 
 	            }
-	            this.state = 109;
+	            this.state = 110;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        }
@@ -358,30 +357,30 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new ConstantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, plucidParser.RULE_constant);
 	    try {
-	        this.state = 114;
+	        this.state = 115;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case plucidParser.N_SIGN:
-	        case plucidParser.DIGIT:
+	        case 34:
+	        case 53:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 110;
+	            this.state = 111;
 	            this.numeric_constant();
 	            break;
-	        case plucidParser.QUOTE:
+	        case 36:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 111;
+	            this.state = 112;
 	            this.word_constant();
 	            break;
-	        case plucidParser.STRING_CONSTANT:
+	        case 40:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 112;
+	            this.state = 113;
 	            this.match(plucidParser.STRING_CONSTANT);
 	            break;
-	        case plucidParser.T__7:
-	        case plucidParser.T__8:
-	        case plucidParser.T__9:
+	        case 8:
+	        case 9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 113;
+	            this.state = 114;
 	            this.list_constant();
 	            break;
 	        default:
@@ -407,19 +406,19 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new Numeric_constantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, plucidParser.RULE_numeric_constant);
 	    try {
-	        this.state = 118;
+	        this.state = 119;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 116;
+	            this.state = 117;
 	            this.integer_constant();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 117;
+	            this.state = 118;
 	            this.real_constant();
 	            break;
 
@@ -444,33 +443,33 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new Integer_constantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, plucidParser.RULE_integer_constant);
 	    try {
-	        this.state = 127;
+	        this.state = 128;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case plucidParser.DIGIT:
+	        case 53:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 121; 
+	            this.state = 122; 
 	            this._errHandler.sync(this);
 	            var _alt = 1;
 	            do {
 	            	switch (_alt) {
 	            	case 1:
-	            		this.state = 120;
+	            		this.state = 121;
 	            		this.match(plucidParser.DIGIT);
 	            		break;
 	            	default:
 	            		throw new antlr4.error.NoViableAltException(this);
 	            	}
-	            	this.state = 123; 
+	            	this.state = 124; 
 	            	this._errHandler.sync(this);
 	            	_alt = this._interp.adaptivePredict(this._input,4, this._ctx);
 	            } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
 	            break;
-	        case plucidParser.N_SIGN:
+	        case 34:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 125;
-	            this.match(plucidParser.N_SIGN);
 	            this.state = 126;
+	            this.match(plucidParser.N_SIGN);
+	            this.state = 127;
 	            this.integer_constant();
 	            break;
 	        default:
@@ -497,19 +496,19 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, plucidParser.RULE_real_constant);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 129;
-	        this.integer_constant();
 	        this.state = 130;
+	        this.integer_constant();
+	        this.state = 131;
 	        this.match(plucidParser.PERIOD);
-	        this.state = 134;
+	        this.state = 135;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,6,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 131;
+	                this.state = 132;
 	                this.match(plucidParser.DIGIT); 
 	            }
-	            this.state = 136;
+	            this.state = 137;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,6,this._ctx);
 	        }
@@ -535,11 +534,11 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, plucidParser.RULE_word_constant);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 137;
-	        this.match(plucidParser.QUOTE);
 	        this.state = 138;
-	        this.word_constant_less_the_quotes();
+	        this.match(plucidParser.QUOTE);
 	        this.state = 139;
+	        this.word_constant_less_the_quotes();
+	        this.state = 140;
 	        this.match(plucidParser.QUOTE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -560,63 +559,63 @@ export default class plucidParser extends antlr4.Parser {
 	word_constant_less_the_quotes() {
 	    let localctx = new Word_constant_less_the_quotesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, plucidParser.RULE_word_constant_less_the_quotes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 157;
+	        this.state = 158;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case plucidParser.LETTER:
+	        case 54:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 141;
+	            this.state = 142;
 	            this.match(plucidParser.LETTER);
-	            this.state = 145;
+	            this.state = 146;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===plucidParser.ALPHANUMERIC) {
-	                this.state = 142;
+	            while(_la===52) {
+	                this.state = 143;
 	                this.match(plucidParser.ALPHANUMERIC);
-	                this.state = 147;
+	                this.state = 148;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case plucidParser.SIGN:
+	        case 35:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 149; 
+	            this.state = 150; 
 	            this._errHandler.sync(this);
 	            var _alt = 1;
 	            do {
 	            	switch (_alt) {
 	            	case 1:
-	            		this.state = 148;
+	            		this.state = 149;
 	            		this.match(plucidParser.SIGN);
 	            		break;
 	            	default:
 	            		throw new antlr4.error.NoViableAltException(this);
 	            	}
-	            	this.state = 151; 
+	            	this.state = 152; 
 	            	this._errHandler.sync(this);
 	            	_alt = this._interp.adaptivePredict(this._input,8, this._ctx);
 	            } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
 	            break;
-	        case plucidParser.BRACKET:
+	        case 37:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 153;
+	            this.state = 154;
 	            this.match(plucidParser.BRACKET);
 	            break;
-	        case plucidParser.PERIOD:
+	        case 38:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 154;
+	            this.state = 155;
 	            this.match(plucidParser.PERIOD);
 	            break;
-	        case plucidParser.SEPARATOR:
+	        case 39:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 155;
+	            this.state = 156;
 	            this.match(plucidParser.SEPARATOR);
 	            break;
-	        case plucidParser.QUOTE:
+	        case 36:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 156;
+	            this.state = 157;
 	            this.match(plucidParser.QUOTE);
 	            break;
 	        default:
@@ -641,36 +640,36 @@ export default class plucidParser extends antlr4.Parser {
 	list_constant() {
 	    let localctx = new List_constantContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, plucidParser.RULE_list_constant);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 169;
+	        this.state = 170;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case plucidParser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 159;
+	            this.state = 160;
 	            this.match(plucidParser.T__7);
 	            break;
-	        case plucidParser.T__8:
+	        case 9:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 160;
+	            this.state = 161;
 	            this.match(plucidParser.T__8);
 	            break;
-	        case plucidParser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 161;
+	            this.state = 162;
 	            this.match(plucidParser.T__9);
-	            this.state = 165;
+	            this.state = 166;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << plucidParser.T__7) | (1 << plucidParser.T__8) | (1 << plucidParser.T__9))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (plucidParser.N_SIGN - 34)) | (1 << (plucidParser.SIGN - 34)) | (1 << (plucidParser.QUOTE - 34)) | (1 << (plucidParser.BRACKET - 34)) | (1 << (plucidParser.PERIOD - 34)) | (1 << (plucidParser.SEPARATOR - 34)) | (1 << (plucidParser.STRING_CONSTANT - 34)) | (1 << (plucidParser.DIGIT - 34)) | (1 << (plucidParser.LETTER - 34)))) !== 0)) {
-	                this.state = 162;
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1792) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 1572991) !== 0)) {
+	                this.state = 163;
 	                this.list_constant_element();
-	                this.state = 167;
+	                this.state = 168;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 168;
+	            this.state = 169;
 	            this.match(plucidParser.T__10);
 	            break;
 	        default:
@@ -696,35 +695,35 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new List_constant_elementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, plucidParser.RULE_list_constant_element);
 	    try {
-	        this.state = 175;
+	        this.state = 176;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case plucidParser.N_SIGN:
-	        case plucidParser.DIGIT:
+	        case 34:
+	        case 53:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 171;
+	            this.state = 172;
 	            this.numeric_constant();
 	            break;
-	        case plucidParser.SIGN:
-	        case plucidParser.QUOTE:
-	        case plucidParser.BRACKET:
-	        case plucidParser.PERIOD:
-	        case plucidParser.SEPARATOR:
-	        case plucidParser.LETTER:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 54:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 172;
+	            this.state = 173;
 	            this.word_constant_less_the_quotes();
 	            break;
-	        case plucidParser.STRING_CONSTANT:
+	        case 40:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 173;
+	            this.state = 174;
 	            this.match(plucidParser.STRING_CONSTANT);
 	            break;
-	        case plucidParser.T__7:
-	        case plucidParser.T__8:
-	        case plucidParser.T__9:
+	        case 8:
+	        case 9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 174;
+	            this.state = 175;
 	            this.list_constant();
 	            break;
 	        default:
@@ -751,17 +750,17 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, plucidParser.RULE_identifier);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 177;
+	        this.state = 178;
 	        this.match(plucidParser.LETTER);
-	        this.state = 181;
+	        this.state = 182;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,13,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 178;
+	                this.state = 179;
 	                this.match(plucidParser.ALPHANUMERIC); 
 	            }
-	            this.state = 183;
+	            this.state = 184;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,13,this._ctx);
 	        }
@@ -785,12 +784,12 @@ export default class plucidParser extends antlr4.Parser {
 	prefix_operator() {
 	    let localctx = new Prefix_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, plucidParser.RULE_prefix_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 184;
+	        this.state = 185;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (plucidParser.P_NUMERIC_OPERATOR - 41)) | (1 << (plucidParser.P_WORD_OPERATOR - 41)) | (1 << (plucidParser.P_STRING_OPERATOR - 41)) | (1 << (plucidParser.P_LIST_OPERATOR - 41)) | (1 << (plucidParser.P_LUCID_OPERATOR - 41)) | (1 << (plucidParser.P_SPECIAL_OPERATOR - 41)))) !== 0))) {
+	        if(!(((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 63) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -816,12 +815,12 @@ export default class plucidParser extends antlr4.Parser {
 	infix_operator() {
 	    let localctx = new Infix_operatorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, plucidParser.RULE_infix_operator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 186;
+	        this.state = 187;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 47)) & ~0x1f) == 0 && ((1 << (_la - 47)) & ((1 << (plucidParser.I_NUMERIC_OPERATOR - 47)) | (1 << (plucidParser.I_WORD_OPERATOR - 47)) | (1 << (plucidParser.I_STRING_OPERATOR - 47)) | (1 << (plucidParser.I_LIST_OPERATOR - 47)) | (1 << (plucidParser.I_LUCID_OPERATOR - 47)))) !== 0))) {
+	        if(!(((((_la - 47)) & ~0x1f) === 0 && ((1 << (_la - 47)) & 31) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -847,31 +846,31 @@ export default class plucidParser extends antlr4.Parser {
 	list_expression() {
 	    let localctx = new List_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, plucidParser.RULE_list_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
-	        this.state = 197;
+	        this.state = 198;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case plucidParser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 188;
+	            this.state = 189;
 	            this.match(plucidParser.T__11);
 	            break;
-	        case plucidParser.T__12:
+	        case 13:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 189;
+	            this.state = 190;
 	            this.match(plucidParser.T__12);
-	            this.state = 193;
+	            this.state = 194;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << plucidParser.T__0) | (1 << plucidParser.T__1) | (1 << plucidParser.T__2) | (1 << plucidParser.T__4) | (1 << plucidParser.T__5) | (1 << plucidParser.T__6) | (1 << plucidParser.T__7) | (1 << plucidParser.T__8) | (1 << plucidParser.T__9) | (1 << plucidParser.T__11) | (1 << plucidParser.T__12) | (1 << plucidParser.T__14) | (1 << plucidParser.T__20) | (1 << plucidParser.T__23))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (plucidParser.N_SIGN - 34)) | (1 << (plucidParser.QUOTE - 34)) | (1 << (plucidParser.STRING_CONSTANT - 34)) | (1 << (plucidParser.P_NUMERIC_OPERATOR - 34)) | (1 << (plucidParser.P_WORD_OPERATOR - 34)) | (1 << (plucidParser.P_STRING_OPERATOR - 34)) | (1 << (plucidParser.P_LIST_OPERATOR - 34)) | (1 << (plucidParser.P_LUCID_OPERATOR - 34)) | (1 << (plucidParser.P_SPECIAL_OPERATOR - 34)) | (1 << (plucidParser.DIGIT - 34)) | (1 << (plucidParser.LETTER - 34)))) !== 0)) {
-	                this.state = 190;
+	            while((((_la) & ~0x1f) === 0 && ((1 << _la) & 18921454) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 1580997) !== 0)) {
+	                this.state = 191;
 	                this.expressions_list();
-	                this.state = 195;
+	                this.state = 196;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
-	            this.state = 196;
+	            this.state = 197;
 	            this.match(plucidParser.T__13);
 	            break;
 	        default:
@@ -897,31 +896,31 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new Expressions_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, plucidParser.RULE_expressions_list);
 	    try {
-	        this.state = 208;
+	        this.state = 209;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,17,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 199;
+	            this.state = 200;
 	            this.expression_item();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 200;
-	            this.expression_item();
 	            this.state = 201;
+	            this.expression_item();
+	            this.state = 202;
 	            this.match(plucidParser.T__3);
-	            this.state = 205;
+	            this.state = 206;
 	            this._errHandler.sync(this);
 	            var _alt = this._interp.adaptivePredict(this._input,16,this._ctx)
 	            while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	                if(_alt===1) {
-	                    this.state = 202;
+	                    this.state = 203;
 	                    this.expressions_list(); 
 	                }
-	                this.state = 207;
+	                this.state = 208;
 	                this._errHandler.sync(this);
 	                _alt = this._interp.adaptivePredict(this._input,16,this._ctx);
 	            }
@@ -949,19 +948,19 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new Expression_itemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, plucidParser.RULE_expression_item);
 	    try {
-	        this.state = 212;
+	        this.state = 213;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,18,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 210;
+	            this.state = 211;
 	            this.expression(0);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 211;
+	            this.state = 212;
 	            this.list_expression();
 	            break;
 
@@ -987,15 +986,15 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 32, plucidParser.RULE_if_expression);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 214;
-	        this.match(plucidParser.T__14);
 	        this.state = 215;
-	        this.expression(0);
+	        this.match(plucidParser.T__14);
 	        this.state = 216;
-	        this.match(plucidParser.T__15);
-	        this.state = 217;
 	        this.expression(0);
+	        this.state = 217;
+	        this.match(plucidParser.T__15);
 	        this.state = 218;
+	        this.expression(0);
+	        this.state = 219;
 	        this.endif();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1017,29 +1016,29 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new EndifContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, plucidParser.RULE_endif);
 	    try {
-	        this.state = 230;
+	        this.state = 231;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case plucidParser.T__16:
+	        case 17:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 220;
-	            this.match(plucidParser.T__16);
 	            this.state = 221;
-	            this.expression(0);
+	            this.match(plucidParser.T__16);
 	            this.state = 222;
+	            this.expression(0);
+	            this.state = 223;
 	            this.match(plucidParser.T__17);
 	            break;
-	        case plucidParser.T__18:
+	        case 19:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 224;
-	            this.match(plucidParser.T__18);
 	            this.state = 225;
-	            this.expression(0);
+	            this.match(plucidParser.T__18);
 	            this.state = 226;
-	            this.match(plucidParser.T__15);
-	            this.state = 227;
 	            this.expression(0);
+	            this.state = 227;
+	            this.match(plucidParser.T__15);
 	            this.state = 228;
+	            this.expression(0);
+	            this.state = 229;
 	            this.match(plucidParser.T__19);
 	            break;
 	        default:
@@ -1066,15 +1065,15 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 36, plucidParser.RULE_case_expression);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 232;
-	        this.match(plucidParser.T__20);
 	        this.state = 233;
-	        this.expression(0);
+	        this.match(plucidParser.T__20);
 	        this.state = 234;
-	        this.match(plucidParser.T__21);
+	        this.expression(0);
 	        this.state = 235;
-	        this.cbody();
+	        this.match(plucidParser.T__21);
 	        this.state = 236;
+	        this.cbody();
+	        this.state = 237;
 	        this.match(plucidParser.T__22);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1097,11 +1096,11 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 38, plucidParser.RULE_cond_expression);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 238;
-	        this.match(plucidParser.T__23);
 	        this.state = 239;
-	        this.cbody();
+	        this.match(plucidParser.T__23);
 	        this.state = 240;
+	        this.cbody();
+	        this.state = 241;
 	        this.match(plucidParser.T__22);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1122,26 +1121,26 @@ export default class plucidParser extends antlr4.Parser {
 	cbody() {
 	    let localctx = new CbodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, plucidParser.RULE_cbody);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 249;
+	        this.state = 250;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << plucidParser.T__0) | (1 << plucidParser.T__1) | (1 << plucidParser.T__2) | (1 << plucidParser.T__4) | (1 << plucidParser.T__5) | (1 << plucidParser.T__6) | (1 << plucidParser.T__7) | (1 << plucidParser.T__8) | (1 << plucidParser.T__9) | (1 << plucidParser.T__11) | (1 << plucidParser.T__12) | (1 << plucidParser.T__14) | (1 << plucidParser.T__20) | (1 << plucidParser.T__23))) !== 0) || ((((_la - 34)) & ~0x1f) == 0 && ((1 << (_la - 34)) & ((1 << (plucidParser.N_SIGN - 34)) | (1 << (plucidParser.QUOTE - 34)) | (1 << (plucidParser.STRING_CONSTANT - 34)) | (1 << (plucidParser.P_NUMERIC_OPERATOR - 34)) | (1 << (plucidParser.P_WORD_OPERATOR - 34)) | (1 << (plucidParser.P_STRING_OPERATOR - 34)) | (1 << (plucidParser.P_LIST_OPERATOR - 34)) | (1 << (plucidParser.P_LUCID_OPERATOR - 34)) | (1 << (plucidParser.P_SPECIAL_OPERATOR - 34)) | (1 << (plucidParser.DIGIT - 34)) | (1 << (plucidParser.LETTER - 34)))) !== 0)) {
-	            this.state = 242;
-	            this.expression(0);
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 18921454) !== 0) || ((((_la - 34)) & ~0x1f) === 0 && ((1 << (_la - 34)) & 1580997) !== 0)) {
 	            this.state = 243;
-	            this.match(plucidParser.T__24);
-	            this.state = 244;
 	            this.expression(0);
+	            this.state = 244;
+	            this.match(plucidParser.T__24);
 	            this.state = 245;
+	            this.expression(0);
+	            this.state = 246;
 	            this.match(plucidParser.T__25);
-	            this.state = 251;
+	            this.state = 252;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 252;
+	        this.state = 253;
 	        this.defaultcase();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1164,11 +1163,11 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 42, plucidParser.RULE_defaultcase);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 254;
-	        this.match(plucidParser.T__26);
 	        this.state = 255;
-	        this.match(plucidParser.T__24);
+	        this.match(plucidParser.T__26);
 	        this.state = 256;
+	        this.match(plucidParser.T__24);
+	        this.state = 257;
 	        this.expression(0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1191,13 +1190,13 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 44, plucidParser.RULE_function_call);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 258;
-	        this.identifier();
 	        this.state = 259;
-	        this.match(plucidParser.T__27);
+	        this.identifier();
 	        this.state = 260;
-	        this.actuals_list();
+	        this.match(plucidParser.T__27);
 	        this.state = 261;
+	        this.actuals_list();
+	        this.state = 262;
 	        this.match(plucidParser.T__28);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1219,23 +1218,23 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new Actuals_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, plucidParser.RULE_actuals_list);
 	    try {
-	        this.state = 268;
+	        this.state = 269;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,21,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 263;
+	            this.state = 264;
 	            this.expression(0);
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 264;
-	            this.expression(0);
 	            this.state = 265;
-	            this.match(plucidParser.T__3);
+	            this.expression(0);
 	            this.state = 266;
+	            this.match(plucidParser.T__3);
+	            this.state = 267;
 	            this.actuals_list();
 	            break;
 
@@ -1261,13 +1260,13 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 48, plucidParser.RULE_where_clause);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 270;
-	        this.expression(0);
 	        this.state = 271;
-	        this.match(plucidParser.T__29);
+	        this.expression(0);
 	        this.state = 272;
-	        this.body();
+	        this.match(plucidParser.T__29);
 	        this.state = 273;
+	        this.body();
+	        this.state = 274;
 	        this.match(plucidParser.T__22);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1290,9 +1289,9 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 50, plucidParser.RULE_body);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 275;
-	        this.declarations_list();
 	        this.state = 276;
+	        this.declarations_list();
+	        this.state = 277;
 	        this.definitions_list();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1315,17 +1314,17 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 52, plucidParser.RULE_declarations_list);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 283;
+	        this.state = 284;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,22,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 278;
-	                this.current_declaration();
 	                this.state = 279;
+	                this.current_declaration();
+	                this.state = 280;
 	                this.match(plucidParser.T__25); 
 	            }
-	            this.state = 285;
+	            this.state = 286;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,22,this._ctx);
 	        }
@@ -1351,13 +1350,13 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 54, plucidParser.RULE_current_declaration);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 286;
-	        this.identifier();
 	        this.state = 287;
-	        this.match(plucidParser.T__30);
+	        this.identifier();
 	        this.state = 288;
-	        this.match(plucidParser.T__31);
+	        this.match(plucidParser.T__30);
 	        this.state = 289;
+	        this.match(plucidParser.T__31);
+	        this.state = 290;
 	        this.expression(0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1378,18 +1377,18 @@ export default class plucidParser extends antlr4.Parser {
 	definitions_list() {
 	    let localctx = new Definitions_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, plucidParser.RULE_definitions_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 296;
+	        this.state = 297;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===plucidParser.LETTER) {
-	            this.state = 291;
-	            this.definition();
+	        while(_la===54) {
 	            this.state = 292;
+	            this.definition();
+	            this.state = 293;
 	            this.match(plucidParser.T__25);
-	            this.state = 298;
+	            this.state = 299;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -1413,19 +1412,19 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new DefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, plucidParser.RULE_definition);
 	    try {
-	        this.state = 301;
+	        this.state = 302;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,24,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 299;
+	            this.state = 300;
 	            this.simple_definition();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 300;
+	            this.state = 301;
 	            this.function_definition();
 	            break;
 
@@ -1451,11 +1450,11 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 60, plucidParser.RULE_simple_definition);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 303;
-	        this.identifier();
 	        this.state = 304;
-	        this.match(plucidParser.T__32);
+	        this.identifier();
 	        this.state = 305;
+	        this.match(plucidParser.T__32);
+	        this.state = 306;
 	        this.expression(0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1478,14 +1477,14 @@ export default class plucidParser extends antlr4.Parser {
 	    this.enterRule(localctx, 62, plucidParser.RULE_function_definition);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 307;
+	        this.state = 308;
 	        this.identifier();
 
-	        this.state = 308;
-	        this.formals_list();
 	        this.state = 309;
-	        this.match(plucidParser.T__32);
+	        this.formals_list();
 	        this.state = 310;
+	        this.match(plucidParser.T__32);
+	        this.state = 311;
 	        this.expression(0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1507,23 +1506,23 @@ export default class plucidParser extends antlr4.Parser {
 	    let localctx = new Formals_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, plucidParser.RULE_formals_list);
 	    try {
-	        this.state = 317;
+	        this.state = 318;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,25,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 312;
+	            this.state = 313;
 	            this.identifier();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 313;
-	            this.identifier();
 	            this.state = 314;
-	            this.match(plucidParser.T__3);
+	            this.identifier();
 	            this.state = 315;
+	            this.match(plucidParser.T__3);
+	            this.state = 316;
 	            this.formals_list();
 	            break;
 
@@ -1652,6 +1651,10 @@ class ProgramContext extends antlr4.ParserRuleContext {
 
 	expression() {
 	    return this.getTypedRuleContext(ExpressionContext,0);
+	};
+
+	EOF() {
+	    return this.getToken(plucidParser.EOF, 0);
 	};
 
 	enterRule(listener) {
@@ -3144,3 +3147,12 @@ plucidParser.DefinitionContext = DefinitionContext;
 plucidParser.Simple_definitionContext = Simple_definitionContext; 
 plucidParser.Function_definitionContext = Function_definitionContext; 
 plucidParser.Formals_listContext = Formals_listContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

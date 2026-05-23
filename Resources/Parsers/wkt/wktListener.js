@@ -1,16 +1,16 @@
-// Generated from ./wkt/wkt.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/wkt/wkt.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
 // This class defines a complete listener for a parse tree produced by wktParser.
 export default class wktListener extends antlr4.tree.ParseTreeListener {
 
-	// Enter a parse tree produced by wktParser#geometryCollection.
-	enterGeometryCollection(ctx) {
+	// Enter a parse tree produced by wktParser#file_.
+	enterFile_(ctx) {
 	}
 
-	// Exit a parse tree produced by wktParser#geometryCollection.
-	exitGeometryCollection(ctx) {
+	// Exit a parse tree produced by wktParser#file_.
+	exitFile_(ctx) {
 	}
 
 
@@ -20,6 +20,15 @@ export default class wktListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by wktParser#geometry.
 	exitGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#dim.
+	enterDim(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#dim.
+	exitDim(ctx) {
 	}
 
 
@@ -41,6 +50,15 @@ export default class wktListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by wktParser#linearRingGeometry.
+	enterLinearRingGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#linearRingGeometry.
+	exitLinearRingGeometry(ctx) {
+	}
+
+
 	// Enter a parse tree produced by wktParser#polygonGeometry.
 	enterPolygonGeometry(ctx) {
 	}
@@ -50,39 +68,12 @@ export default class wktListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by wktParser#multiCurveGeometry.
-	enterMultiCurveGeometry(ctx) {
+	// Enter a parse tree produced by wktParser#triangleGeometry.
+	enterTriangleGeometry(ctx) {
 	}
 
-	// Exit a parse tree produced by wktParser#multiCurveGeometry.
-	exitMultiCurveGeometry(ctx) {
-	}
-
-
-	// Enter a parse tree produced by wktParser#multiSurfaceGeometry.
-	enterMultiSurfaceGeometry(ctx) {
-	}
-
-	// Exit a parse tree produced by wktParser#multiSurfaceGeometry.
-	exitMultiSurfaceGeometry(ctx) {
-	}
-
-
-	// Enter a parse tree produced by wktParser#curvePolygonGeometry.
-	enterCurvePolygonGeometry(ctx) {
-	}
-
-	// Exit a parse tree produced by wktParser#curvePolygonGeometry.
-	exitCurvePolygonGeometry(ctx) {
-	}
-
-
-	// Enter a parse tree produced by wktParser#compoundCurveGeometry.
-	enterCompoundCurveGeometry(ctx) {
-	}
-
-	// Exit a parse tree produced by wktParser#compoundCurveGeometry.
-	exitCompoundCurveGeometry(ctx) {
+	// Exit a parse tree produced by wktParser#triangleGeometry.
+	exitTriangleGeometry(ctx) {
 	}
 
 
@@ -113,21 +104,12 @@ export default class wktListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by wktParser#multiPolyhedralSurfaceGeometry.
-	enterMultiPolyhedralSurfaceGeometry(ctx) {
+	// Enter a parse tree produced by wktParser#geometryCollection.
+	enterGeometryCollection(ctx) {
 	}
 
-	// Exit a parse tree produced by wktParser#multiPolyhedralSurfaceGeometry.
-	exitMultiPolyhedralSurfaceGeometry(ctx) {
-	}
-
-
-	// Enter a parse tree produced by wktParser#multiTinGeometry.
-	enterMultiTinGeometry(ctx) {
-	}
-
-	// Exit a parse tree produced by wktParser#multiTinGeometry.
-	exitMultiTinGeometry(ctx) {
+	// Exit a parse tree produced by wktParser#geometryCollection.
+	exitGeometryCollection(ctx) {
 	}
 
 
@@ -140,30 +122,120 @@ export default class wktListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by wktParser#compoundCurveGeometry.
+	enterCompoundCurveGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#compoundCurveGeometry.
+	exitCompoundCurveGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#compoundCurveMember.
+	enterCompoundCurveMember(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#compoundCurveMember.
+	exitCompoundCurveMember(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#clothoidGeometry.
+	enterClothoidGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#clothoidGeometry.
+	exitClothoidGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#curvePolygonGeometry.
+	enterCurvePolygonGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#curvePolygonGeometry.
+	exitCurvePolygonGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#multiCurveGeometry.
+	enterMultiCurveGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#multiCurveGeometry.
+	exitMultiCurveGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#curveMember.
+	enterCurveMember(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#curveMember.
+	exitCurveMember(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#multiSurfaceGeometry.
+	enterMultiSurfaceGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#multiSurfaceGeometry.
+	exitMultiSurfaceGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#surfaceMember.
+	enterSurfaceMember(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#surfaceMember.
+	exitSurfaceMember(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#polyhedralSurfaceGeometry.
+	enterPolyhedralSurfaceGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#polyhedralSurfaceGeometry.
+	exitPolyhedralSurfaceGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#tinGeometry.
+	enterTinGeometry(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#tinGeometry.
+	exitTinGeometry(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#polygonText.
+	enterPolygonText(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#polygonText.
+	exitPolygonText(ctx) {
+	}
+
+
+	// Enter a parse tree produced by wktParser#lineStringText.
+	enterLineStringText(ctx) {
+	}
+
+	// Exit a parse tree produced by wktParser#lineStringText.
+	exitLineStringText(ctx) {
+	}
+
+
 	// Enter a parse tree produced by wktParser#pointOrClosedPoint.
 	enterPointOrClosedPoint(ctx) {
 	}
 
 	// Exit a parse tree produced by wktParser#pointOrClosedPoint.
 	exitPointOrClosedPoint(ctx) {
-	}
-
-
-	// Enter a parse tree produced by wktParser#polygon.
-	enterPolygon(ctx) {
-	}
-
-	// Exit a parse tree produced by wktParser#polygon.
-	exitPolygon(ctx) {
-	}
-
-
-	// Enter a parse tree produced by wktParser#lineString.
-	enterLineString(ctx) {
-	}
-
-	// Exit a parse tree produced by wktParser#lineString.
-	exitLineString(ctx) {
 	}
 
 
@@ -176,12 +248,12 @@ export default class wktListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by wktParser#name.
-	enterName(ctx) {
+	// Enter a parse tree produced by wktParser#ordinate.
+	enterOrdinate(ctx) {
 	}
 
-	// Exit a parse tree produced by wktParser#name.
-	exitName(ctx) {
+	// Exit a parse tree produced by wktParser#ordinate.
+	exitOrdinate(ctx) {
 	}
 
 

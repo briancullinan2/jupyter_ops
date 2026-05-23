@@ -1,4 +1,4 @@
-// Generated from ./rust/RustParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/rust/RustParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -1346,15 +1346,6 @@ export default class RustParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by RustParser#matchArmPatterns.
-	enterMatchArmPatterns(ctx) {
-	}
-
-	// Exit a parse tree produced by RustParser#matchArmPatterns.
-	exitMatchArmPatterns(ctx) {
-	}
-
-
 	// Enter a parse tree produced by RustParser#matchArmGuard.
 	enterMatchArmGuard(ctx) {
 	}
@@ -1370,6 +1361,15 @@ export default class RustParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by RustParser#pattern.
 	exitPattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by RustParser#patternNoTopAlt.
+	enterPatternNoTopAlt(ctx) {
+	}
+
+	// Exit a parse tree produced by RustParser#patternNoTopAlt.
+	exitPatternNoTopAlt(ctx) {
 	}
 
 
@@ -1418,20 +1418,29 @@ export default class RustParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by RustParser#rangePattern.
-	enterRangePattern(ctx) {
+	// Enter a parse tree produced by RustParser#InclusiveRangePattern.
+	enterInclusiveRangePattern(ctx) {
 	}
 
-	// Exit a parse tree produced by RustParser#rangePattern.
-	exitRangePattern(ctx) {
+	// Exit a parse tree produced by RustParser#InclusiveRangePattern.
+	exitInclusiveRangePattern(ctx) {
 	}
 
 
-	// Enter a parse tree produced by RustParser#obsoleteRangePattern.
+	// Enter a parse tree produced by RustParser#HalfOpenRangePattern.
+	enterHalfOpenRangePattern(ctx) {
+	}
+
+	// Exit a parse tree produced by RustParser#HalfOpenRangePattern.
+	exitHalfOpenRangePattern(ctx) {
+	}
+
+
+	// Enter a parse tree produced by RustParser#ObsoleteRangePattern.
 	enterObsoleteRangePattern(ctx) {
 	}
 
-	// Exit a parse tree produced by RustParser#obsoleteRangePattern.
+	// Exit a parse tree produced by RustParser#ObsoleteRangePattern.
 	exitObsoleteRangePattern(ctx) {
 	}
 

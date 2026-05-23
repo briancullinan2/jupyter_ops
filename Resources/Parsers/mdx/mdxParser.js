@@ -1,4 +1,4 @@
-// Generated from ./mdx/mdx.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/mdx/mdx.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import mdxListener from './mdxListener.js';
@@ -181,10 +181,6 @@ export default class mdxParser extends antlr4.Parser {
         this.symbolicNames = mdxParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	mdx_statement() {
@@ -215,13 +211,13 @@ export default class mdxParser extends antlr4.Parser {
 	select_statement() {
 	    let localctx = new Select_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, mdxParser.RULE_select_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 101;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.WITH) {
+	        if(_la===48) {
 	            this.state = 99;
 	            this.match(mdxParser.WITH);
 	            this.state = 100;
@@ -233,7 +229,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 105;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.LBRACE) | (1 << mdxParser.LPAREN) | (1 << mdxParser.MINUS) | (1 << mdxParser.PLUS) | (1 << mdxParser.CASE) | (1 << mdxParser.DIMENSION))) !== 0) || ((((_la - 35)) & ~0x1f) == 0 && ((1 << (_la - 35)) & ((1 << (mdxParser.NON - 35)) | (1 << (mdxParser.NOT - 35)) | (1 << (mdxParser.PROPERTIES - 35)) | (1 << (mdxParser.NUMBER - 35)) | (1 << (mdxParser.ID - 35)) | (1 << (mdxParser.QUOTED_ID - 35)) | (1 << (mdxParser.STRING - 35)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 142780416) !== 0) || ((((_la - 35)) & ~0x1f) === 0 && ((1 << (_la - 35)) & 868371) !== 0)) {
 	            this.state = 104;
 	            this.axis_specification_list();
 	        }
@@ -245,7 +241,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.WHERE) {
+	        if(_la===46) {
 	            this.state = 109;
 	            this.match(mdxParser.WHERE);
 	            this.state = 110;
@@ -255,7 +251,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 114;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.CELL || _la===mdxParser.PROPERTIES) {
+	        if(_la===24 || _la===39) {
 	            this.state = 113;
 	            this.cell_props();
 	        }
@@ -279,7 +275,7 @@ export default class mdxParser extends antlr4.Parser {
 	formula_specification() {
 	    let localctx = new Formula_specificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, mdxParser.RULE_formula_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 117; 
@@ -291,7 +287,7 @@ export default class mdxParser extends antlr4.Parser {
 	            this.state = 119; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===mdxParser.MEMBER || _la===mdxParser.SET);
+	        } while(_la===34 || _la===42);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -315,12 +311,12 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 123;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.MEMBER:
+	        case 34:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 121;
 	            this.member_specification();
 	            break;
-	        case mdxParser.SET:
+	        case 42:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 122;
 	            this.set_specification();
@@ -358,7 +354,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 133;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.QUOTE:
+	        case 1:
 	            this.state = 128;
 	            this.match(mdxParser.QUOTE);
 	            this.state = 129;
@@ -366,18 +362,18 @@ export default class mdxParser extends antlr4.Parser {
 	            this.state = 130;
 	            this.match(mdxParser.QUOTE);
 	            break;
-	        case mdxParser.LBRACE:
-	        case mdxParser.LPAREN:
-	        case mdxParser.MINUS:
-	        case mdxParser.PLUS:
-	        case mdxParser.CASE:
-	        case mdxParser.DIMENSION:
-	        case mdxParser.NOT:
-	        case mdxParser.PROPERTIES:
-	        case mdxParser.NUMBER:
-	        case mdxParser.ID:
-	        case mdxParser.QUOTED_ID:
-	        case mdxParser.STRING:
+	        case 11:
+	        case 13:
+	        case 15:
+	        case 17:
+	        case 23:
+	        case 27:
+	        case 36:
+	        case 39:
+	        case 49:
+	        case 51:
+	        case 53:
+	        case 54:
 	            this.state = 132;
 	            this.expression();
 	            break;
@@ -403,7 +399,7 @@ export default class mdxParser extends antlr4.Parser {
 	member_specification() {
 	    let localctx = new Member_specificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, mdxParser.RULE_member_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 135;
@@ -416,7 +412,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 143;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.QUOTE:
+	        case 1:
 	            this.state = 138;
 	            this.match(mdxParser.QUOTE);
 	            this.state = 139;
@@ -424,18 +420,18 @@ export default class mdxParser extends antlr4.Parser {
 	            this.state = 140;
 	            this.match(mdxParser.QUOTE);
 	            break;
-	        case mdxParser.LBRACE:
-	        case mdxParser.LPAREN:
-	        case mdxParser.MINUS:
-	        case mdxParser.PLUS:
-	        case mdxParser.CASE:
-	        case mdxParser.DIMENSION:
-	        case mdxParser.NOT:
-	        case mdxParser.PROPERTIES:
-	        case mdxParser.NUMBER:
-	        case mdxParser.ID:
-	        case mdxParser.QUOTED_ID:
-	        case mdxParser.STRING:
+	        case 11:
+	        case 13:
+	        case 15:
+	        case 17:
+	        case 23:
+	        case 27:
+	        case 36:
+	        case 39:
+	        case 49:
+	        case 51:
+	        case 53:
+	        case 54:
 	            this.state = 142;
 	            this.value_expression();
 	            break;
@@ -447,7 +443,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 147;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 27)) & ~0x1f) == 0 && ((1 << (_la - 27)) & ((1 << (mdxParser.DIMENSION - 27)) | (1 << (mdxParser.PROPERTIES - 27)) | (1 << (mdxParser.ID - 27)) | (1 << (mdxParser.QUOTED_ID - 27)))) !== 0)) {
+	        if(((((_la - 27)) & ~0x1f) === 0 && ((1 << (_la - 27)) & 83890177) !== 0)) {
 	            this.state = 146;
 	            this.member_property_def_list();
 	        }
@@ -471,7 +467,7 @@ export default class mdxParser extends antlr4.Parser {
 	axis_specification_list() {
 	    let localctx = new Axis_specification_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 12, mdxParser.RULE_axis_specification_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 149;
@@ -479,7 +475,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 154;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.COMMA) {
+	        while(_la===5) {
 	            this.state = 150;
 	            this.match(mdxParser.COMMA);
 	            this.state = 151;
@@ -507,7 +503,7 @@ export default class mdxParser extends antlr4.Parser {
 	member_property_def_list() {
 	    let localctx = new Member_property_def_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, mdxParser.RULE_member_property_def_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 157;
@@ -515,7 +511,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 162;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.COMMA) {
+	        while(_la===5) {
 	            this.state = 158;
 	            this.match(mdxParser.COMMA);
 	            this.state = 159;
@@ -616,7 +612,7 @@ export default class mdxParser extends antlr4.Parser {
 	compound_id() {
 	    let localctx = new Compound_idContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, mdxParser.RULE_compound_id);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 173;
@@ -624,7 +620,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 178;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.DOT) {
+	        while(_la===7) {
 	            this.state = 174;
 	            this.match(mdxParser.DOT);
 	            this.state = 175;
@@ -652,13 +648,13 @@ export default class mdxParser extends antlr4.Parser {
 	axis_specification() {
 	    let localctx = new Axis_specificationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, mdxParser.RULE_axis_specification);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 183;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.NON) {
+	        if(_la===35) {
 	            this.state = 181;
 	            this.match(mdxParser.NON);
 	            this.state = 182;
@@ -670,7 +666,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 187;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.DIMENSION || _la===mdxParser.PROPERTIES) {
+	        if(_la===27 || _la===39) {
 	            this.state = 186;
 	            this.dim_props();
 	        }
@@ -721,13 +717,13 @@ export default class mdxParser extends antlr4.Parser {
 	dim_props() {
 	    let localctx = new Dim_propsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, mdxParser.RULE_dim_props);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 195;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.DIMENSION) {
+	        if(_la===27) {
 	            this.state = 194;
 	            this.match(mdxParser.DIMENSION);
 	        }
@@ -755,7 +751,7 @@ export default class mdxParser extends antlr4.Parser {
 	property_list() {
 	    let localctx = new Property_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, mdxParser.RULE_property_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 200;
@@ -763,7 +759,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 205;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.COMMA) {
+	        while(_la===5) {
 	            this.state = 201;
 	            this.match(mdxParser.COMMA);
 	            this.state = 202;
@@ -883,13 +879,13 @@ export default class mdxParser extends antlr4.Parser {
 	cell_props() {
 	    let localctx = new Cell_propsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, mdxParser.RULE_cell_props);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 217;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.CELL) {
+	        if(_la===24) {
 	            this.state = 216;
 	            this.match(mdxParser.CELL);
 	        }
@@ -917,7 +913,7 @@ export default class mdxParser extends antlr4.Parser {
 	cell_property_list() {
 	    let localctx = new Cell_property_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, mdxParser.RULE_cell_property_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 222;
@@ -925,7 +921,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 227;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.COMMA) {
+	        while(_la===5) {
 	            this.state = 223;
 	            this.match(mdxParser.COMMA);
 	            this.state = 224;
@@ -957,17 +953,17 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.CELL_ORDINAL:
-	        case mdxParser.FORMATTED_VALUE:
-	        case mdxParser.VALUE:
+	        case 25:
+	        case 31:
+	        case 44:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 230;
 	            this.mandatory_cell_property();
 	            break;
-	        case mdxParser.DIMENSION:
-	        case mdxParser.PROPERTIES:
-	        case mdxParser.ID:
-	        case mdxParser.QUOTED_ID:
+	        case 27:
+	        case 39:
+	        case 51:
+	        case 53:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 231;
 	            this.provider_specific_cell_property();
@@ -994,12 +990,12 @@ export default class mdxParser extends antlr4.Parser {
 	mandatory_cell_property() {
 	    let localctx = new Mandatory_cell_propertyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, mdxParser.RULE_mandatory_cell_property);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 234;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 25)) & ~0x1f) == 0 && ((1 << (_la - 25)) & ((1 << (mdxParser.CELL_ORDINAL - 25)) | (1 << (mdxParser.FORMATTED_VALUE - 25)) | (1 << (mdxParser.VALUE - 25)))) !== 0))) {
+	        if(!(((((_la - 25)) & ~0x1f) === 0 && ((1 << (_la - 25)) & 524353) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1048,7 +1044,7 @@ export default class mdxParser extends antlr4.Parser {
 	expression() {
 	    let localctx = new ExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, mdxParser.RULE_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 238;
@@ -1056,7 +1052,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 243;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.COLON) {
+	        while(_la===3) {
 	            this.state = 239;
 	            this.match(mdxParser.COLON);
 	            this.state = 240;
@@ -1084,7 +1080,7 @@ export default class mdxParser extends antlr4.Parser {
 	value_expression() {
 	    let localctx = new Value_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, mdxParser.RULE_value_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 246;
@@ -1092,15 +1088,15 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 251;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.OR || _la===mdxParser.XOR) {
+	        while(_la===38 || _la===47) {
 	            this.state = 249;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case mdxParser.XOR:
+	            case 47:
 	                this.state = 247;
 	                this.value_xor_expression();
 	                break;
-	            case mdxParser.OR:
+	            case 38:
 	                this.state = 248;
 	                this.value_or_expression();
 	                break;
@@ -1180,7 +1176,7 @@ export default class mdxParser extends antlr4.Parser {
 	term5() {
 	    let localctx = new Term5Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, mdxParser.RULE_term5);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 260;
@@ -1188,7 +1184,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 265;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.AND) {
+	        while(_la===21) {
 	            this.state = 261;
 	            this.match(mdxParser.AND);
 	            this.state = 262;
@@ -1220,24 +1216,24 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 271;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.NOT:
+	        case 36:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 268;
 	            this.match(mdxParser.NOT);
 	            this.state = 269;
 	            this.term4();
 	            break;
-	        case mdxParser.LBRACE:
-	        case mdxParser.LPAREN:
-	        case mdxParser.MINUS:
-	        case mdxParser.PLUS:
-	        case mdxParser.CASE:
-	        case mdxParser.DIMENSION:
-	        case mdxParser.PROPERTIES:
-	        case mdxParser.NUMBER:
-	        case mdxParser.ID:
-	        case mdxParser.QUOTED_ID:
-	        case mdxParser.STRING:
+	        case 11:
+	        case 13:
+	        case 15:
+	        case 17:
+	        case 23:
+	        case 27:
+	        case 39:
+	        case 49:
+	        case 51:
+	        case 53:
+	        case 54:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 270;
 	            this.term3();
@@ -1264,7 +1260,7 @@ export default class mdxParser extends antlr4.Parser {
 	term3() {
 	    let localctx = new Term3Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 62, mdxParser.RULE_term3);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 273;
@@ -1272,7 +1268,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 279;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.EQ) | (1 << mdxParser.GE) | (1 << mdxParser.GT) | (1 << mdxParser.LE) | (1 << mdxParser.LT) | (1 << mdxParser.NE))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 87808) !== 0)) {
 	            this.state = 274;
 	            this.comp_op();
 	            this.state = 275;
@@ -1300,7 +1296,7 @@ export default class mdxParser extends antlr4.Parser {
 	term2() {
 	    let localctx = new Term2Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, mdxParser.RULE_term2);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 282;
@@ -1308,10 +1304,10 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 287;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.CONCAT) | (1 << mdxParser.MINUS) | (1 << mdxParser.PLUS))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 163904) !== 0)) {
 	            this.state = 283;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.CONCAT) | (1 << mdxParser.MINUS) | (1 << mdxParser.PLUS))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 163904) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1343,7 +1339,7 @@ export default class mdxParser extends antlr4.Parser {
 	term() {
 	    let localctx = new TermContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, mdxParser.RULE_term);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 290;
@@ -1351,10 +1347,10 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 295;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.ASTERISK || _la===mdxParser.SOLIDUS) {
+	        while(_la===2 || _la===20) {
 	            this.state = 291;
 	            _la = this._input.LA(1);
-	            if(!(_la===mdxParser.ASTERISK || _la===mdxParser.SOLIDUS)) {
+	            if(!(_la===2 || _la===20)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1390,29 +1386,29 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 303;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.MINUS:
+	        case 15:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 298;
 	            this.match(mdxParser.MINUS);
 	            this.state = 299;
 	            this.value_expression_primary();
 	            break;
-	        case mdxParser.PLUS:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 300;
 	            this.match(mdxParser.PLUS);
 	            this.state = 301;
 	            this.value_expression_primary();
 	            break;
-	        case mdxParser.LBRACE:
-	        case mdxParser.LPAREN:
-	        case mdxParser.CASE:
-	        case mdxParser.DIMENSION:
-	        case mdxParser.PROPERTIES:
-	        case mdxParser.NUMBER:
-	        case mdxParser.ID:
-	        case mdxParser.QUOTED_ID:
-	        case mdxParser.STRING:
+	        case 11:
+	        case 13:
+	        case 23:
+	        case 27:
+	        case 39:
+	        case 49:
+	        case 51:
+	        case 53:
+	        case 54:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 302;
 	            this.value_expression_primary();
@@ -1439,7 +1435,7 @@ export default class mdxParser extends antlr4.Parser {
 	function_() {
 	    let localctx = new Function_Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, mdxParser.RULE_function_);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 305;
@@ -1449,7 +1445,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 308;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.LBRACE) | (1 << mdxParser.LPAREN) | (1 << mdxParser.MINUS) | (1 << mdxParser.PLUS) | (1 << mdxParser.CASE) | (1 << mdxParser.DIMENSION))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (mdxParser.NOT - 36)) | (1 << (mdxParser.PROPERTIES - 36)) | (1 << (mdxParser.NUMBER - 36)) | (1 << (mdxParser.ID - 36)) | (1 << (mdxParser.QUOTED_ID - 36)) | (1 << (mdxParser.STRING - 36)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 142780416) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 434185) !== 0)) {
 	            this.state = 307;
 	            this.exp_list();
 	        }
@@ -1475,7 +1471,7 @@ export default class mdxParser extends antlr4.Parser {
 	value_expression_primary() {
 	    let localctx = new Value_expression_primaryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, mdxParser.RULE_value_expression_primary);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 312;
@@ -1483,7 +1479,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 322;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.DOT) {
+	        while(_la===7) {
 	            this.state = 313;
 	            this.match(mdxParser.DOT);
 	            this.state = 318;
@@ -1534,7 +1530,7 @@ export default class mdxParser extends antlr4.Parser {
 	value_expression_primary0() {
 	    let localctx = new Value_expression_primary0Context(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, mdxParser.RULE_value_expression_primary0);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 339;
 	        this._errHandler.sync(this);
@@ -1563,7 +1559,7 @@ export default class mdxParser extends antlr4.Parser {
 	            this.state = 332;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.LBRACE) | (1 << mdxParser.LPAREN) | (1 << mdxParser.MINUS) | (1 << mdxParser.PLUS) | (1 << mdxParser.CASE) | (1 << mdxParser.DIMENSION))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (mdxParser.NOT - 36)) | (1 << (mdxParser.PROPERTIES - 36)) | (1 << (mdxParser.NUMBER - 36)) | (1 << (mdxParser.ID - 36)) | (1 << (mdxParser.QUOTED_ID - 36)) | (1 << (mdxParser.STRING - 36)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 142780416) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 434185) !== 0)) {
 	                this.state = 331;
 	                this.exp_list();
 	            }
@@ -1616,7 +1612,7 @@ export default class mdxParser extends antlr4.Parser {
 	exp_list() {
 	    let localctx = new Exp_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, mdxParser.RULE_exp_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 341;
@@ -1624,7 +1620,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 346;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.COMMA) {
+	        while(_la===5) {
 	            this.state = 342;
 	            this.match(mdxParser.COMMA);
 	            this.state = 343;
@@ -1652,7 +1648,7 @@ export default class mdxParser extends antlr4.Parser {
 	case_expression() {
 	    let localctx = new Case_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, mdxParser.RULE_case_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 349;
@@ -1660,7 +1656,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 351;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.LBRACE) | (1 << mdxParser.LPAREN) | (1 << mdxParser.MINUS) | (1 << mdxParser.PLUS) | (1 << mdxParser.CASE) | (1 << mdxParser.DIMENSION))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (mdxParser.NOT - 36)) | (1 << (mdxParser.PROPERTIES - 36)) | (1 << (mdxParser.NUMBER - 36)) | (1 << (mdxParser.ID - 36)) | (1 << (mdxParser.QUOTED_ID - 36)) | (1 << (mdxParser.STRING - 36)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 142780416) !== 0) || ((((_la - 36)) & ~0x1f) === 0 && ((1 << (_la - 36)) & 434185) !== 0)) {
 	            this.state = 350;
 	            this.value_expression();
 	        }
@@ -1668,7 +1664,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 354;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.WHEN) {
+	        if(_la===45) {
 	            this.state = 353;
 	            this.when_list();
 	        }
@@ -1676,7 +1672,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 358;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===mdxParser.ELSE) {
+	        if(_la===28) {
 	            this.state = 356;
 	            this.match(mdxParser.ELSE);
 	            this.state = 357;
@@ -1704,7 +1700,7 @@ export default class mdxParser extends antlr4.Parser {
 	when_list() {
 	    let localctx = new When_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, mdxParser.RULE_when_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 362;
@@ -1712,7 +1708,7 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 366;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===mdxParser.WHEN) {
+	        while(_la===45) {
 	            this.state = 363;
 	            this.when_clause();
 	            this.state = 368;
@@ -1767,12 +1763,12 @@ export default class mdxParser extends antlr4.Parser {
 	comp_op() {
 	    let localctx = new Comp_opContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, mdxParser.RULE_comp_op);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 374;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << mdxParser.EQ) | (1 << mdxParser.GE) | (1 << mdxParser.GT) | (1 << mdxParser.LE) | (1 << mdxParser.LT) | (1 << mdxParser.NE))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 87808) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1803,13 +1799,13 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 378;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.DIMENSION:
-	        case mdxParser.PROPERTIES:
-	        case mdxParser.ID:
+	        case 27:
+	        case 39:
+	        case 51:
 	            this.state = 376;
 	            this.unquoted_identifier();
 	            break;
-	        case mdxParser.QUOTED_ID:
+	        case 53:
 	            this.state = 377;
 	            this.quoted_identifier();
 	            break;
@@ -1839,13 +1835,13 @@ export default class mdxParser extends antlr4.Parser {
 	        this.state = 382;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case mdxParser.DIMENSION:
-	        case mdxParser.PROPERTIES:
+	        case 27:
+	        case 39:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 380;
 	            this.keyword();
 	            break;
-	        case mdxParser.ID:
+	        case 51:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 381;
 	            this.match(mdxParser.ID);
@@ -1918,12 +1914,12 @@ export default class mdxParser extends antlr4.Parser {
 	keyword() {
 	    let localctx = new KeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 94, mdxParser.RULE_keyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 388;
 	        _la = this._input.LA(1);
-	        if(!(_la===mdxParser.DIMENSION || _la===mdxParser.PROPERTIES)) {
+	        if(!(_la===27 || _la===39)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -4412,3 +4408,12 @@ mdxParser.Unquoted_identifierContext = Unquoted_identifierContext;
 mdxParser.Amp_quoted_identifierContext = Amp_quoted_identifierContext; 
 mdxParser.Quoted_identifierContext = Quoted_identifierContext; 
 mdxParser.KeywordContext = KeywordContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

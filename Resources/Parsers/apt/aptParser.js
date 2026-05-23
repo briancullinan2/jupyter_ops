@@ -1,57 +1,58 @@
-// Generated from ./apt/apt.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/apt/apt.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import aptListener from './aptListener.js';
-const serializedATN = [4,1,19,176,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,19,178,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,1,0,
-3,0,56,8,0,1,0,1,0,1,0,3,0,61,8,0,1,0,1,0,1,0,1,0,1,0,3,0,68,8,0,1,1,1,1,
-1,2,4,2,73,8,2,11,2,12,2,74,1,3,1,3,1,3,1,4,4,4,81,8,4,11,4,12,4,82,1,5,
-1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,7,5,7,94,8,7,10,7,12,7,97,9,7,1,8,1,8,1,8,
-1,9,1,9,1,9,1,9,1,10,1,10,1,10,1,11,1,11,1,11,1,12,5,12,113,8,12,10,12,12,
-12,116,9,12,1,13,1,13,1,13,1,13,1,14,1,14,3,14,124,8,14,1,15,1,15,1,15,1,
-16,1,16,1,17,4,17,132,8,17,11,17,12,17,133,1,18,1,18,1,18,3,18,139,8,18,
-1,19,4,19,142,8,19,11,19,12,19,143,1,20,1,20,3,20,148,8,20,1,21,4,21,151,
-8,21,11,21,12,21,152,1,22,1,22,1,22,1,22,1,23,1,23,1,23,1,23,1,24,1,24,3,
-24,165,8,24,1,25,1,25,1,25,1,25,1,26,1,26,1,26,1,26,1,26,1,26,0,0,27,0,2,
-4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,
-0,2,2,0,4,4,15,15,4,0,1,4,7,7,12,13,15,15,163,0,55,1,0,0,0,2,69,1,0,0,0,
-4,72,1,0,0,0,6,76,1,0,0,0,8,80,1,0,0,0,10,84,1,0,0,0,12,89,1,0,0,0,14,95,
-1,0,0,0,16,98,1,0,0,0,18,101,1,0,0,0,20,105,1,0,0,0,22,108,1,0,0,0,24,114,
-1,0,0,0,26,117,1,0,0,0,28,123,1,0,0,0,30,125,1,0,0,0,32,128,1,0,0,0,34,131,
-1,0,0,0,36,138,1,0,0,0,38,141,1,0,0,0,40,147,1,0,0,0,42,150,1,0,0,0,44,154,
-1,0,0,0,46,158,1,0,0,0,48,164,1,0,0,0,50,166,1,0,0,0,52,170,1,0,0,0,54,56,
-3,30,15,0,55,54,1,0,0,0,55,56,1,0,0,0,56,57,1,0,0,0,57,58,5,1,0,0,58,60,
-5,5,0,0,59,61,3,10,5,0,60,59,1,0,0,0,60,61,1,0,0,0,61,62,1,0,0,0,62,63,3,
-28,14,0,63,64,5,5,0,0,64,65,3,4,2,0,65,67,3,8,4,0,66,68,5,5,0,0,67,66,1,
-0,0,0,67,68,1,0,0,0,68,1,1,0,0,0,69,70,7,0,0,0,70,3,1,0,0,0,71,73,3,2,1,
-0,72,71,1,0,0,0,73,74,1,0,0,0,74,72,1,0,0,0,74,75,1,0,0,0,75,5,1,0,0,0,76,
-77,5,5,0,0,77,78,3,4,2,0,78,7,1,0,0,0,79,81,3,6,3,0,80,79,1,0,0,0,81,82,
-1,0,0,0,82,80,1,0,0,0,82,83,1,0,0,0,83,9,1,0,0,0,84,85,5,8,0,0,85,86,3,12,
-6,0,86,87,5,9,0,0,87,88,5,5,0,0,88,11,1,0,0,0,89,90,3,18,9,0,90,91,3,14,
-7,0,91,13,1,0,0,0,92,94,3,16,8,0,93,92,1,0,0,0,94,97,1,0,0,0,95,93,1,0,0,
-0,95,96,1,0,0,0,96,15,1,0,0,0,97,95,1,0,0,0,98,99,5,14,0,0,99,100,3,18,9,
-0,100,17,1,0,0,0,101,102,5,2,0,0,102,103,5,10,0,0,103,104,3,34,17,0,104,
-19,1,0,0,0,105,106,5,12,0,0,106,107,5,4,0,0,107,21,1,0,0,0,108,109,5,4,0,
-0,109,110,3,24,12,0,110,23,1,0,0,0,111,113,3,20,10,0,112,111,1,0,0,0,113,
-116,1,0,0,0,114,112,1,0,0,0,114,115,1,0,0,0,115,25,1,0,0,0,116,114,1,0,0,
-0,117,118,3,22,11,0,118,119,5,13,0,0,119,120,3,42,21,0,120,27,1,0,0,0,121,
-124,3,52,26,0,122,124,3,26,13,0,123,121,1,0,0,0,123,122,1,0,0,0,124,29,1,
-0,0,0,125,126,5,11,0,0,126,127,5,5,0,0,127,31,1,0,0,0,128,129,7,1,0,0,129,
-33,1,0,0,0,130,132,3,32,16,0,131,130,1,0,0,0,132,133,1,0,0,0,133,131,1,0,
-0,0,133,134,1,0,0,0,134,35,1,0,0,0,135,139,5,19,0,0,136,139,3,32,16,0,137,
-139,5,10,0,0,138,135,1,0,0,0,138,136,1,0,0,0,138,137,1,0,0,0,139,37,1,0,
-0,0,140,142,3,36,18,0,141,140,1,0,0,0,142,143,1,0,0,0,143,141,1,0,0,0,143,
-144,1,0,0,0,144,39,1,0,0,0,145,148,3,36,18,0,146,148,5,9,0,0,147,145,1,0,
-0,0,147,146,1,0,0,0,148,41,1,0,0,0,149,151,3,40,20,0,150,149,1,0,0,0,151,
-152,1,0,0,0,152,150,1,0,0,0,152,153,1,0,0,0,153,43,1,0,0,0,154,155,5,16,
-0,0,155,156,3,38,19,0,156,157,5,16,0,0,157,45,1,0,0,0,158,159,5,17,0,0,159,
-160,3,38,19,0,160,161,5,17,0,0,161,47,1,0,0,0,162,165,3,44,22,0,163,165,
-3,46,23,0,164,162,1,0,0,0,164,163,1,0,0,0,165,49,1,0,0,0,166,167,5,8,0,0,
-167,168,3,48,24,0,168,169,5,9,0,0,169,51,1,0,0,0,170,171,5,3,0,0,171,172,
-5,13,0,0,172,173,3,50,25,0,173,174,3,42,21,0,174,53,1,0,0,0,14,55,60,67,
-74,82,95,114,123,133,138,143,147,152,164];
+3,0,56,8,0,1,0,1,0,1,0,3,0,61,8,0,1,0,1,0,1,0,1,0,1,0,3,0,68,8,0,1,0,1,0,
+1,1,1,1,1,2,4,2,75,8,2,11,2,12,2,76,1,3,1,3,1,3,1,4,4,4,83,8,4,11,4,12,4,
+84,1,5,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,7,5,7,96,8,7,10,7,12,7,99,9,7,1,8,1,
+8,1,8,1,9,1,9,1,9,1,9,1,10,1,10,1,10,1,11,1,11,1,11,1,12,5,12,115,8,12,10,
+12,12,12,118,9,12,1,13,1,13,1,13,1,13,1,14,1,14,3,14,126,8,14,1,15,1,15,
+1,15,1,16,1,16,1,17,4,17,134,8,17,11,17,12,17,135,1,18,1,18,1,18,3,18,141,
+8,18,1,19,4,19,144,8,19,11,19,12,19,145,1,20,1,20,3,20,150,8,20,1,21,4,21,
+153,8,21,11,21,12,21,154,1,22,1,22,1,22,1,22,1,23,1,23,1,23,1,23,1,24,1,
+24,3,24,167,8,24,1,25,1,25,1,25,1,25,1,26,1,26,1,26,1,26,1,26,1,26,0,0,27,
+0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,
+52,0,2,2,0,4,4,15,15,4,0,1,4,7,7,12,13,15,15,165,0,55,1,0,0,0,2,71,1,0,0,
+0,4,74,1,0,0,0,6,78,1,0,0,0,8,82,1,0,0,0,10,86,1,0,0,0,12,91,1,0,0,0,14,
+97,1,0,0,0,16,100,1,0,0,0,18,103,1,0,0,0,20,107,1,0,0,0,22,110,1,0,0,0,24,
+116,1,0,0,0,26,119,1,0,0,0,28,125,1,0,0,0,30,127,1,0,0,0,32,130,1,0,0,0,
+34,133,1,0,0,0,36,140,1,0,0,0,38,143,1,0,0,0,40,149,1,0,0,0,42,152,1,0,0,
+0,44,156,1,0,0,0,46,160,1,0,0,0,48,166,1,0,0,0,50,168,1,0,0,0,52,172,1,0,
+0,0,54,56,3,30,15,0,55,54,1,0,0,0,55,56,1,0,0,0,56,57,1,0,0,0,57,58,5,1,
+0,0,58,60,5,5,0,0,59,61,3,10,5,0,60,59,1,0,0,0,60,61,1,0,0,0,61,62,1,0,0,
+0,62,63,3,28,14,0,63,64,5,5,0,0,64,65,3,4,2,0,65,67,3,8,4,0,66,68,5,5,0,
+0,67,66,1,0,0,0,67,68,1,0,0,0,68,69,1,0,0,0,69,70,5,0,0,1,70,1,1,0,0,0,71,
+72,7,0,0,0,72,3,1,0,0,0,73,75,3,2,1,0,74,73,1,0,0,0,75,76,1,0,0,0,76,74,
+1,0,0,0,76,77,1,0,0,0,77,5,1,0,0,0,78,79,5,5,0,0,79,80,3,4,2,0,80,7,1,0,
+0,0,81,83,3,6,3,0,82,81,1,0,0,0,83,84,1,0,0,0,84,82,1,0,0,0,84,85,1,0,0,
+0,85,9,1,0,0,0,86,87,5,8,0,0,87,88,3,12,6,0,88,89,5,9,0,0,89,90,5,5,0,0,
+90,11,1,0,0,0,91,92,3,18,9,0,92,93,3,14,7,0,93,13,1,0,0,0,94,96,3,16,8,0,
+95,94,1,0,0,0,96,99,1,0,0,0,97,95,1,0,0,0,97,98,1,0,0,0,98,15,1,0,0,0,99,
+97,1,0,0,0,100,101,5,14,0,0,101,102,3,18,9,0,102,17,1,0,0,0,103,104,5,2,
+0,0,104,105,5,10,0,0,105,106,3,34,17,0,106,19,1,0,0,0,107,108,5,12,0,0,108,
+109,5,4,0,0,109,21,1,0,0,0,110,111,5,4,0,0,111,112,3,24,12,0,112,23,1,0,
+0,0,113,115,3,20,10,0,114,113,1,0,0,0,115,118,1,0,0,0,116,114,1,0,0,0,116,
+117,1,0,0,0,117,25,1,0,0,0,118,116,1,0,0,0,119,120,3,22,11,0,120,121,5,13,
+0,0,121,122,3,42,21,0,122,27,1,0,0,0,123,126,3,52,26,0,124,126,3,26,13,0,
+125,123,1,0,0,0,125,124,1,0,0,0,126,29,1,0,0,0,127,128,5,11,0,0,128,129,
+5,5,0,0,129,31,1,0,0,0,130,131,7,1,0,0,131,33,1,0,0,0,132,134,3,32,16,0,
+133,132,1,0,0,0,134,135,1,0,0,0,135,133,1,0,0,0,135,136,1,0,0,0,136,35,1,
+0,0,0,137,141,5,19,0,0,138,141,3,32,16,0,139,141,5,10,0,0,140,137,1,0,0,
+0,140,138,1,0,0,0,140,139,1,0,0,0,141,37,1,0,0,0,142,144,3,36,18,0,143,142,
+1,0,0,0,144,145,1,0,0,0,145,143,1,0,0,0,145,146,1,0,0,0,146,39,1,0,0,0,147,
+150,3,36,18,0,148,150,5,9,0,0,149,147,1,0,0,0,149,148,1,0,0,0,150,41,1,0,
+0,0,151,153,3,40,20,0,152,151,1,0,0,0,153,154,1,0,0,0,154,152,1,0,0,0,154,
+155,1,0,0,0,155,43,1,0,0,0,156,157,5,16,0,0,157,158,3,38,19,0,158,159,5,
+16,0,0,159,45,1,0,0,0,160,161,5,17,0,0,161,162,3,38,19,0,162,163,5,17,0,
+0,163,47,1,0,0,0,164,167,3,44,22,0,165,167,3,46,23,0,166,164,1,0,0,0,166,
+165,1,0,0,0,167,49,1,0,0,0,168,169,5,8,0,0,169,170,3,48,24,0,170,171,5,9,
+0,0,171,51,1,0,0,0,172,173,5,3,0,0,173,174,5,13,0,0,174,175,3,50,25,0,175,
+176,3,42,21,0,176,53,1,0,0,0,14,55,60,67,76,84,97,116,125,135,140,145,149,
+154,166];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -90,22 +91,18 @@ export default class aptParser extends antlr4.Parser {
         this.symbolicNames = aptParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	record() {
 	    let localctx = new RecordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, aptParser.RULE_record);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 55;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===aptParser.CommentMarker) {
+	        if(_la===11) {
 	            this.state = 54;
 	            localctx.commented = this.commenterR();
 	        }
@@ -117,9 +114,9 @@ export default class aptParser extends antlr4.Parser {
 	        this.state = 60;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===aptParser.OptionsStart) {
+	        if(_la===8) {
 	            this.state = 59;
-	            localctx.options = this.optionsR();
+	            localctx.options_ = this.optionsR();
 	        }
 
 	        this.state = 62;
@@ -133,11 +130,13 @@ export default class aptParser extends antlr4.Parser {
 	        this.state = 67;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===aptParser.WSS) {
+	        if(_la===5) {
 	            this.state = 66;
 	            this.match(aptParser.WSS);
 	        }
 
+	        this.state = 69;
+	        this.match(aptParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -157,12 +156,12 @@ export default class aptParser extends antlr4.Parser {
 	wordWithDashSegment() {
 	    let localctx = new WordWithDashSegmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, aptParser.RULE_wordWithDashSegment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 69;
+	        this.state = 71;
 	        _la = this._input.LA(1);
-	        if(!(_la===aptParser.Word || _la===aptParser.Dash)) {
+	        if(!(_la===4 || _la===15)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -188,19 +187,19 @@ export default class aptParser extends antlr4.Parser {
 	wordWithDash() {
 	    let localctx = new WordWithDashContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, aptParser.RULE_wordWithDash);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 72; 
+	        this.state = 74; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 71;
+	            this.state = 73;
 	            this.wordWithDashSegment();
-	            this.state = 74; 
+	            this.state = 76; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===aptParser.Word || _la===aptParser.Dash);
+	        } while(_la===4 || _la===15);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -222,9 +221,9 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, aptParser.RULE_component);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 76;
+	        this.state = 78;
 	        this.match(aptParser.WSS);
-	        this.state = 77;
+	        this.state = 79;
 	        localctx.cId = this.wordWithDash();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -247,19 +246,19 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, aptParser.RULE_componentsR);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 80; 
+	        this.state = 82; 
 	        this._errHandler.sync(this);
 	        var _alt = 1;
 	        do {
 	        	switch (_alt) {
 	        	case 1:
-	        		this.state = 79;
+	        		this.state = 81;
 	        		this.component();
 	        		break;
 	        	default:
 	        		throw new antlr4.error.NoViableAltException(this);
 	        	}
-	        	this.state = 82; 
+	        	this.state = 84; 
 	        	this._errHandler.sync(this);
 	        	_alt = this._interp.adaptivePredict(this._input,4, this._ctx);
 	        } while ( _alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER );
@@ -284,13 +283,13 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, aptParser.RULE_optionsR);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 84;
-	        localctx.openingBrace = this.match(aptParser.OptionsStart);
-	        this.state = 85;
-	        localctx.pairs = this.optionsList();
 	        this.state = 86;
-	        localctx.closingBrace = this.match(aptParser.OptionsEnd);
+	        localctx.openingBrace = this.match(aptParser.OptionsStart);
 	        this.state = 87;
+	        localctx.pairs = this.optionsList();
+	        this.state = 88;
+	        localctx.closingBrace = this.match(aptParser.OptionsEnd);
+	        this.state = 89;
 	        this.match(aptParser.WSS);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -313,9 +312,9 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, aptParser.RULE_optionsList);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 89;
+	        this.state = 91;
 	        localctx.firstOption = this.optionR();
-	        this.state = 90;
+	        this.state = 92;
 	        localctx.restOptions = this.additionalOptions();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -336,16 +335,16 @@ export default class aptParser extends antlr4.Parser {
 	additionalOptions() {
 	    let localctx = new AdditionalOptionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, aptParser.RULE_additionalOptions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 95;
+	        this.state = 97;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===aptParser.OptionsSeparator) {
-	            this.state = 92;
+	        while(_la===14) {
+	            this.state = 94;
 	            this.additionalOption();
-	            this.state = 97;
+	            this.state = 99;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -370,9 +369,9 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, aptParser.RULE_additionalOption);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 98;
+	        this.state = 100;
 	        localctx.separator = this.match(aptParser.OptionsSeparator);
-	        this.state = 99;
+	        this.state = 101;
 	        localctx.option = this.optionR();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -395,11 +394,11 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 18, aptParser.RULE_optionR);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 101;
-	        localctx.key = this.match(aptParser.OptionName);
-	        this.state = 102;
-	        this.match(aptParser.OptionNameValueSeparator);
 	        this.state = 103;
+	        localctx.key = this.match(aptParser.OptionName);
+	        this.state = 104;
+	        this.match(aptParser.OptionNameValueSeparator);
+	        this.state = 105;
 	        localctx.value = this.optionValue();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -422,9 +421,9 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 20, aptParser.RULE_wordWithPlus);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 105;
+	        this.state = 107;
 	        this.match(aptParser.Plus);
-	        this.state = 106;
+	        this.state = 108;
 	        localctx.word = this.match(aptParser.Word);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -447,9 +446,9 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 22, aptParser.RULE_uriSchema);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 108;
+	        this.state = 110;
 	        localctx.word = this.match(aptParser.Word);
-	        this.state = 109;
+	        this.state = 111;
 	        localctx.restWords = this.restSchemaWords();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -470,16 +469,16 @@ export default class aptParser extends antlr4.Parser {
 	restSchemaWords() {
 	    let localctx = new RestSchemaWordsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, aptParser.RULE_restSchemaWords);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 114;
+	        this.state = 116;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===aptParser.Plus) {
-	            this.state = 111;
+	        while(_la===12) {
+	            this.state = 113;
 	            this.wordWithPlus();
-	            this.state = 116;
+	            this.state = 118;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -504,11 +503,11 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 26, aptParser.RULE_genericURI);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 117;
-	        localctx.schema = this.uriSchema();
-	        this.state = 118;
-	        this.match(aptParser.Colon);
 	        this.state = 119;
+	        localctx.schema = this.uriSchema();
+	        this.state = 120;
+	        this.match(aptParser.Colon);
+	        this.state = 121;
 	        localctx.restOfURI = this.nonSpaceString();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -530,17 +529,17 @@ export default class aptParser extends antlr4.Parser {
 	    let localctx = new UriRContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, aptParser.RULE_uriR);
 	    try {
-	        this.state = 123;
+	        this.state = 125;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case aptParser.CdromSchema:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 121;
+	            this.state = 123;
 	            this.cdromURI();
 	            break;
-	        case aptParser.Word:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 122;
+	            this.state = 124;
 	            this.genericURI();
 	            break;
 	        default:
@@ -567,9 +566,9 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, aptParser.RULE_commenterR);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 125;
+	        this.state = 127;
 	        this.match(aptParser.CommentMarker);
-	        this.state = 126;
+	        this.state = 128;
 	        this.match(aptParser.WSS);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -590,12 +589,12 @@ export default class aptParser extends antlr4.Parser {
 	optionValueSegment() {
 	    let localctx = new OptionValueSegmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, aptParser.RULE_optionValueSegment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 128;
+	        this.state = 130;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << aptParser.TypeR) | (1 << aptParser.OptionName) | (1 << aptParser.CdromSchema) | (1 << aptParser.Word) | (1 << aptParser.PunctuationAllowedInOptionValue) | (1 << aptParser.Plus) | (1 << aptParser.Colon) | (1 << aptParser.Dash))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 45214) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -621,19 +620,19 @@ export default class aptParser extends antlr4.Parser {
 	optionValue() {
 	    let localctx = new OptionValueContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, aptParser.RULE_optionValue);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 131; 
+	        this.state = 133; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 130;
+	            this.state = 132;
 	            this.optionValueSegment();
-	            this.state = 133; 
+	            this.state = 135; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << aptParser.TypeR) | (1 << aptParser.OptionName) | (1 << aptParser.CdromSchema) | (1 << aptParser.Word) | (1 << aptParser.PunctuationAllowedInOptionValue) | (1 << aptParser.Plus) | (1 << aptParser.Colon) | (1 << aptParser.Dash))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 45214) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -654,29 +653,29 @@ export default class aptParser extends antlr4.Parser {
 	    let localctx = new NonSquareBracketStringSegmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, aptParser.RULE_nonSquareBracketStringSegment);
 	    try {
-	        this.state = 138;
+	        this.state = 140;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case aptParser.NonWhitespaceNonOptionValueNonSquareRightBracketNonEq:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 135;
+	            this.state = 137;
 	            this.match(aptParser.NonWhitespaceNonOptionValueNonSquareRightBracketNonEq);
 	            break;
-	        case aptParser.TypeR:
-	        case aptParser.OptionName:
-	        case aptParser.CdromSchema:
-	        case aptParser.Word:
-	        case aptParser.PunctuationAllowedInOptionValue:
-	        case aptParser.Plus:
-	        case aptParser.Colon:
-	        case aptParser.Dash:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 7:
+	        case 12:
+	        case 13:
+	        case 15:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 136;
+	            this.state = 138;
 	            this.optionValueSegment();
 	            break;
-	        case aptParser.OptionNameValueSeparator:
+	        case 10:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 137;
+	            this.state = 139;
 	            this.match(aptParser.OptionNameValueSeparator);
 	            break;
 	        default:
@@ -701,19 +700,19 @@ export default class aptParser extends antlr4.Parser {
 	nonSquareBracketString() {
 	    let localctx = new NonSquareBracketStringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, aptParser.RULE_nonSquareBracketString);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 141; 
+	        this.state = 143; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 140;
+	            this.state = 142;
 	            this.nonSquareBracketStringSegment();
-	            this.state = 143; 
+	            this.state = 145; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << aptParser.TypeR) | (1 << aptParser.OptionName) | (1 << aptParser.CdromSchema) | (1 << aptParser.Word) | (1 << aptParser.PunctuationAllowedInOptionValue) | (1 << aptParser.OptionNameValueSeparator) | (1 << aptParser.Plus) | (1 << aptParser.Colon) | (1 << aptParser.Dash) | (1 << aptParser.NonWhitespaceNonOptionValueNonSquareRightBracketNonEq))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 570526) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -734,26 +733,26 @@ export default class aptParser extends antlr4.Parser {
 	    let localctx = new NonSpaceStringSegmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, aptParser.RULE_nonSpaceStringSegment);
 	    try {
-	        this.state = 147;
+	        this.state = 149;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case aptParser.TypeR:
-	        case aptParser.OptionName:
-	        case aptParser.CdromSchema:
-	        case aptParser.Word:
-	        case aptParser.PunctuationAllowedInOptionValue:
-	        case aptParser.OptionNameValueSeparator:
-	        case aptParser.Plus:
-	        case aptParser.Colon:
-	        case aptParser.Dash:
-	        case aptParser.NonWhitespaceNonOptionValueNonSquareRightBracketNonEq:
+	        case 1:
+	        case 2:
+	        case 3:
+	        case 4:
+	        case 7:
+	        case 10:
+	        case 12:
+	        case 13:
+	        case 15:
+	        case 19:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 145;
+	            this.state = 147;
 	            this.nonSquareBracketStringSegment();
 	            break;
-	        case aptParser.OptionsEnd:
+	        case 9:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 146;
+	            this.state = 148;
 	            this.match(aptParser.OptionsEnd);
 	            break;
 	        default:
@@ -778,19 +777,19 @@ export default class aptParser extends antlr4.Parser {
 	nonSpaceString() {
 	    let localctx = new NonSpaceStringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, aptParser.RULE_nonSpaceString);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 150; 
+	        this.state = 152; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 149;
+	            this.state = 151;
 	            this.nonSpaceStringSegment();
-	            this.state = 152; 
+	            this.state = 154; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << aptParser.TypeR) | (1 << aptParser.OptionName) | (1 << aptParser.CdromSchema) | (1 << aptParser.Word) | (1 << aptParser.PunctuationAllowedInOptionValue) | (1 << aptParser.OptionsEnd) | (1 << aptParser.OptionNameValueSeparator) | (1 << aptParser.Plus) | (1 << aptParser.Colon) | (1 << aptParser.Dash) | (1 << aptParser.NonWhitespaceNonOptionValueNonSquareRightBracketNonEq))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 571038) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -812,11 +811,11 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 44, aptParser.RULE_singleTickEnclosedString);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 154;
-	        this.match(aptParser.SingleTick);
-	        this.state = 155;
-	        this.nonSquareBracketString();
 	        this.state = 156;
+	        this.match(aptParser.SingleTick);
+	        this.state = 157;
+	        this.nonSquareBracketString();
+	        this.state = 158;
 	        this.match(aptParser.SingleTick);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -839,11 +838,11 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 46, aptParser.RULE_doubleTickEnclosedString);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 158;
-	        this.match(aptParser.DoubleTick);
-	        this.state = 159;
-	        this.nonSquareBracketString();
 	        this.state = 160;
+	        this.match(aptParser.DoubleTick);
+	        this.state = 161;
+	        this.nonSquareBracketString();
+	        this.state = 162;
 	        this.match(aptParser.DoubleTick);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -865,17 +864,17 @@ export default class aptParser extends antlr4.Parser {
 	    let localctx = new TickEnclosedStringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, aptParser.RULE_tickEnclosedString);
 	    try {
-	        this.state = 164;
+	        this.state = 166;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case aptParser.SingleTick:
+	        case 16:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 162;
+	            this.state = 164;
 	            this.singleTickEnclosedString();
 	            break;
-	        case aptParser.DoubleTick:
+	        case 17:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 163;
+	            this.state = 165;
 	            this.doubleTickEnclosedString();
 	            break;
 	        default:
@@ -902,11 +901,11 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 50, aptParser.RULE_enclosedString);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 166;
-	        this.match(aptParser.OptionsStart);
-	        this.state = 167;
-	        this.tickEnclosedString();
 	        this.state = 168;
+	        this.match(aptParser.OptionsStart);
+	        this.state = 169;
+	        this.tickEnclosedString();
+	        this.state = 170;
 	        this.match(aptParser.OptionsEnd);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -929,13 +928,13 @@ export default class aptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 52, aptParser.RULE_cdromURI);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 170;
-	        this.match(aptParser.CdromSchema);
-	        this.state = 171;
-	        this.match(aptParser.Colon);
 	        this.state = 172;
-	        this.enclosedString();
+	        this.match(aptParser.CdromSchema);
 	        this.state = 173;
+	        this.match(aptParser.Colon);
+	        this.state = 174;
+	        this.enclosedString();
+	        this.state = 175;
 	        this.nonSpaceString();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1015,12 +1014,12 @@ class RecordContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_record;
-        this.commented = null; // CommenterRContext
-        this.rType = null; // Token
-        this.options = null; // OptionsRContext
-        this.uri = null; // UriRContext
-        this.distribution = null; // WordWithDashContext
-        this.components = null; // ComponentsRContext
+        this.commented = null;
+        this.rType = null;
+        this.options_ = null;
+        this.uri = null;
+        this.distribution = null;
+        this.components = null;
     }
 
 	WSS = function(i) {
@@ -1034,6 +1033,10 @@ class RecordContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
+
+	EOF() {
+	    return this.getToken(aptParser.EOF, 0);
+	};
 
 	TypeR() {
 	    return this.getToken(aptParser.TypeR, 0);
@@ -1169,7 +1172,7 @@ class ComponentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_component;
-        this.cId = null; // WordWithDashContext
+        this.cId = null;
     }
 
 	WSS() {
@@ -1251,9 +1254,9 @@ class OptionsRContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_optionsR;
-        this.openingBrace = null; // Token
-        this.pairs = null; // OptionsListContext
-        this.closingBrace = null; // Token
+        this.openingBrace = null;
+        this.pairs = null;
+        this.closingBrace = null;
     }
 
 	WSS() {
@@ -1301,8 +1304,8 @@ class OptionsListContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_optionsList;
-        this.firstOption = null; // OptionRContext
-        this.restOptions = null; // AdditionalOptionsContext
+        this.firstOption = null;
+        this.restOptions = null;
     }
 
 	optionR() {
@@ -1384,8 +1387,8 @@ class AdditionalOptionContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_additionalOption;
-        this.separator = null; // Token
-        this.option = null; // OptionRContext
+        this.separator = null;
+        this.option = null;
     }
 
 	OptionsSeparator() {
@@ -1425,8 +1428,8 @@ class OptionRContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_optionR;
-        this.key = null; // Token
-        this.value = null; // OptionValueContext
+        this.key = null;
+        this.value = null;
     }
 
 	OptionNameValueSeparator() {
@@ -1470,7 +1473,7 @@ class WordWithPlusContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_wordWithPlus;
-        this.word = null; // Token
+        this.word = null;
     }
 
 	Plus() {
@@ -1510,8 +1513,8 @@ class UriSchemaContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_uriSchema;
-        this.word = null; // Token
-        this.restWords = null; // RestSchemaWordsContext
+        this.word = null;
+        this.restWords = null;
     }
 
 	Word() {
@@ -1593,8 +1596,8 @@ class GenericURIContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = aptParser.RULE_genericURI;
-        this.schema = null; // UriSchemaContext
-        this.restOfURI = null; // NonSpaceStringContext
+        this.schema = null;
+        this.restOfURI = null;
     }
 
 	Colon() {
@@ -2226,3 +2229,12 @@ aptParser.DoubleTickEnclosedStringContext = DoubleTickEnclosedStringContext;
 aptParser.TickEnclosedStringContext = TickEnclosedStringContext; 
 aptParser.EnclosedStringContext = EnclosedStringContext; 
 aptParser.CdromURIContext = CdromURIContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}

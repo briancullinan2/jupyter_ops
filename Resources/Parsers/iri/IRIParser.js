@@ -1,4 +1,4 @@
-// Generated from ./iri/IRI.g4 by ANTLR 4.10.1
+// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/iri/IRI.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import IRIListener from './IRIListener.js';
@@ -243,10 +243,6 @@ export default class IRIParser extends antlr4.Parser {
         this.symbolicNames = IRIParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
 
 
 	parse() {
@@ -277,7 +273,7 @@ export default class IRIParser extends antlr4.Parser {
 	iri() {
 	    let localctx = new IriContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, IRIParser.RULE_iri);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 87;
@@ -289,7 +285,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 92;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===IRIParser.QMARK) {
+	        if(_la===59) {
 	            this.state = 90;
 	            this.match(IRIParser.QMARK);
 	            this.state = 91;
@@ -299,7 +295,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 96;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===IRIParser.HASH) {
+	        if(_la===60) {
 	            this.state = 94;
 	            this.match(IRIParser.HASH);
 	            this.state = 95;
@@ -329,7 +325,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 105;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.FSLASH2:
+	        case 57:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 98;
 	            this.match(IRIParser.FSLASH2);
@@ -338,73 +334,73 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 100;
 	            this.ipath_abempty();
 	            break;
-	        case IRIParser.FSLASH:
+	        case 58:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 102;
 	            this.ipath_absolute();
 	            break;
-	        case IRIParser.UCSCHAR:
-	        case IRIParser.D0:
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
-	        case IRIParser.A:
-	        case IRIParser.B:
-	        case IRIParser.C:
-	        case IRIParser.D:
-	        case IRIParser.E:
-	        case IRIParser.F:
-	        case IRIParser.G:
-	        case IRIParser.H:
-	        case IRIParser.I:
-	        case IRIParser.J:
-	        case IRIParser.K:
-	        case IRIParser.L:
-	        case IRIParser.M:
-	        case IRIParser.N:
-	        case IRIParser.O:
-	        case IRIParser.P:
-	        case IRIParser.Q:
-	        case IRIParser.R:
-	        case IRIParser.S:
-	        case IRIParser.T:
-	        case IRIParser.U:
-	        case IRIParser.V:
-	        case IRIParser.W:
-	        case IRIParser.X:
-	        case IRIParser.Y:
-	        case IRIParser.Z:
-	        case IRIParser.COL:
-	        case IRIParser.DOT:
-	        case IRIParser.PERCENT:
-	        case IRIParser.HYPHEN:
-	        case IRIParser.TILDE:
-	        case IRIParser.USCORE:
-	        case IRIParser.EXCL:
-	        case IRIParser.DOLLAR:
-	        case IRIParser.AMP:
-	        case IRIParser.SQUOTE:
-	        case IRIParser.OPAREN:
-	        case IRIParser.CPAREN:
-	        case IRIParser.STAR:
-	        case IRIParser.PLUS:
-	        case IRIParser.COMMA:
-	        case IRIParser.SCOL:
-	        case IRIParser.EQUALS:
-	        case IRIParser.AT:
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 40:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 63:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 103;
 	            this.ipath_rootless();
 	            break;
-	        case IRIParser.EOF:
-	        case IRIParser.QMARK:
-	        case IRIParser.HASH:
+	        case -1:
+	        case 59:
+	        case 60:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 104;
 	            this.ipath_empty();
@@ -468,7 +464,7 @@ export default class IRIParser extends antlr4.Parser {
 	absolute_iri() {
 	    let localctx = new Absolute_iriContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, IRIParser.RULE_absolute_iri);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 111;
@@ -480,7 +476,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 116;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===IRIParser.QMARK) {
+	        if(_la===59) {
 	            this.state = 114;
 	            this.match(IRIParser.QMARK);
 	            this.state = 115;
@@ -506,7 +502,7 @@ export default class IRIParser extends antlr4.Parser {
 	irelative_ref() {
 	    let localctx = new Irelative_refContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, IRIParser.RULE_irelative_ref);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 118;
@@ -514,7 +510,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 121;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===IRIParser.QMARK) {
+	        if(_la===59) {
 	            this.state = 119;
 	            this.match(IRIParser.QMARK);
 	            this.state = 120;
@@ -524,7 +520,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 125;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===IRIParser.HASH) {
+	        if(_la===60) {
 	            this.state = 123;
 	            this.match(IRIParser.HASH);
 	            this.state = 124;
@@ -554,7 +550,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 134;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.FSLASH2:
+	        case 57:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 127;
 	            this.match(IRIParser.FSLASH2);
@@ -563,72 +559,72 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 129;
 	            this.ipath_abempty();
 	            break;
-	        case IRIParser.FSLASH:
+	        case 58:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 131;
 	            this.ipath_absolute();
 	            break;
-	        case IRIParser.UCSCHAR:
-	        case IRIParser.D0:
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
-	        case IRIParser.A:
-	        case IRIParser.B:
-	        case IRIParser.C:
-	        case IRIParser.D:
-	        case IRIParser.E:
-	        case IRIParser.F:
-	        case IRIParser.G:
-	        case IRIParser.H:
-	        case IRIParser.I:
-	        case IRIParser.J:
-	        case IRIParser.K:
-	        case IRIParser.L:
-	        case IRIParser.M:
-	        case IRIParser.N:
-	        case IRIParser.O:
-	        case IRIParser.P:
-	        case IRIParser.Q:
-	        case IRIParser.R:
-	        case IRIParser.S:
-	        case IRIParser.T:
-	        case IRIParser.U:
-	        case IRIParser.V:
-	        case IRIParser.W:
-	        case IRIParser.X:
-	        case IRIParser.Y:
-	        case IRIParser.Z:
-	        case IRIParser.DOT:
-	        case IRIParser.PERCENT:
-	        case IRIParser.HYPHEN:
-	        case IRIParser.TILDE:
-	        case IRIParser.USCORE:
-	        case IRIParser.EXCL:
-	        case IRIParser.DOLLAR:
-	        case IRIParser.AMP:
-	        case IRIParser.SQUOTE:
-	        case IRIParser.OPAREN:
-	        case IRIParser.CPAREN:
-	        case IRIParser.STAR:
-	        case IRIParser.PLUS:
-	        case IRIParser.COMMA:
-	        case IRIParser.SCOL:
-	        case IRIParser.EQUALS:
-	        case IRIParser.AT:
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 41:
+	        case 42:
+	        case 43:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
+	        case 63:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 132;
 	            this.ipath_noscheme();
 	            break;
-	        case IRIParser.EOF:
-	        case IRIParser.QMARK:
-	        case IRIParser.HASH:
+	        case -1:
+	        case 59:
+	        case 60:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 133;
 	            this.ipath_empty();
@@ -655,7 +651,7 @@ export default class IRIParser extends antlr4.Parser {
 	iauthority() {
 	    let localctx = new IauthorityContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, IRIParser.RULE_iauthority);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 139;
@@ -673,7 +669,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 144;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===IRIParser.COL) {
+	        if(_la===40) {
 	            this.state = 142;
 	            this.match(IRIParser.COL);
 	            this.state = 143;
@@ -699,79 +695,79 @@ export default class IRIParser extends antlr4.Parser {
 	iuserinfo() {
 	    let localctx = new IuserinfoContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, IRIParser.RULE_iuserinfo);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 152;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.COL - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967290) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 33554303) !== 0)) {
 	            this.state = 150;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case IRIParser.UCSCHAR:
-	            case IRIParser.D0:
-	            case IRIParser.D1:
-	            case IRIParser.D2:
-	            case IRIParser.D3:
-	            case IRIParser.D4:
-	            case IRIParser.D5:
-	            case IRIParser.D6:
-	            case IRIParser.D7:
-	            case IRIParser.D8:
-	            case IRIParser.D9:
-	            case IRIParser.A:
-	            case IRIParser.B:
-	            case IRIParser.C:
-	            case IRIParser.D:
-	            case IRIParser.E:
-	            case IRIParser.F:
-	            case IRIParser.G:
-	            case IRIParser.H:
-	            case IRIParser.I:
-	            case IRIParser.J:
-	            case IRIParser.K:
-	            case IRIParser.L:
-	            case IRIParser.M:
-	            case IRIParser.N:
-	            case IRIParser.O:
-	            case IRIParser.P:
-	            case IRIParser.Q:
-	            case IRIParser.R:
-	            case IRIParser.S:
-	            case IRIParser.T:
-	            case IRIParser.U:
-	            case IRIParser.V:
-	            case IRIParser.W:
-	            case IRIParser.X:
-	            case IRIParser.Y:
-	            case IRIParser.Z:
-	            case IRIParser.DOT:
-	            case IRIParser.HYPHEN:
-	            case IRIParser.TILDE:
-	            case IRIParser.USCORE:
+	            case 1:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
+	            case 41:
+	            case 43:
+	            case 44:
+	            case 45:
 	                this.state = 146;
 	                this.iunreserved();
 	                break;
-	            case IRIParser.PERCENT:
+	            case 42:
 	                this.state = 147;
 	                this.pct_encoded();
 	                break;
-	            case IRIParser.EXCL:
-	            case IRIParser.DOLLAR:
-	            case IRIParser.AMP:
-	            case IRIParser.SQUOTE:
-	            case IRIParser.OPAREN:
-	            case IRIParser.CPAREN:
-	            case IRIParser.STAR:
-	            case IRIParser.PLUS:
-	            case IRIParser.COMMA:
-	            case IRIParser.SCOL:
-	            case IRIParser.EQUALS:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 52:
+	            case 53:
+	            case 54:
+	            case 55:
+	            case 56:
 	                this.state = 148;
 	                this.sub_delims();
 	                break;
-	            case IRIParser.COL:
+	            case 40:
 	                this.state = 149;
 	                this.match(IRIParser.COL);
 	                break;
@@ -844,75 +840,75 @@ export default class IRIParser extends antlr4.Parser {
 	ireg_name() {
 	    let localctx = new Ireg_nameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, IRIParser.RULE_ireg_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 165;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967290) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 33554047) !== 0)) {
 	            this.state = 163;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case IRIParser.UCSCHAR:
-	            case IRIParser.D0:
-	            case IRIParser.D1:
-	            case IRIParser.D2:
-	            case IRIParser.D3:
-	            case IRIParser.D4:
-	            case IRIParser.D5:
-	            case IRIParser.D6:
-	            case IRIParser.D7:
-	            case IRIParser.D8:
-	            case IRIParser.D9:
-	            case IRIParser.A:
-	            case IRIParser.B:
-	            case IRIParser.C:
-	            case IRIParser.D:
-	            case IRIParser.E:
-	            case IRIParser.F:
-	            case IRIParser.G:
-	            case IRIParser.H:
-	            case IRIParser.I:
-	            case IRIParser.J:
-	            case IRIParser.K:
-	            case IRIParser.L:
-	            case IRIParser.M:
-	            case IRIParser.N:
-	            case IRIParser.O:
-	            case IRIParser.P:
-	            case IRIParser.Q:
-	            case IRIParser.R:
-	            case IRIParser.S:
-	            case IRIParser.T:
-	            case IRIParser.U:
-	            case IRIParser.V:
-	            case IRIParser.W:
-	            case IRIParser.X:
-	            case IRIParser.Y:
-	            case IRIParser.Z:
-	            case IRIParser.DOT:
-	            case IRIParser.HYPHEN:
-	            case IRIParser.TILDE:
-	            case IRIParser.USCORE:
+	            case 1:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
+	            case 41:
+	            case 43:
+	            case 44:
+	            case 45:
 	                this.state = 160;
 	                this.iunreserved();
 	                break;
-	            case IRIParser.PERCENT:
+	            case 42:
 	                this.state = 161;
 	                this.pct_encoded();
 	                break;
-	            case IRIParser.EXCL:
-	            case IRIParser.DOLLAR:
-	            case IRIParser.AMP:
-	            case IRIParser.SQUOTE:
-	            case IRIParser.OPAREN:
-	            case IRIParser.CPAREN:
-	            case IRIParser.STAR:
-	            case IRIParser.PLUS:
-	            case IRIParser.COMMA:
-	            case IRIParser.SCOL:
-	            case IRIParser.EQUALS:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 52:
+	            case 53:
+	            case 54:
+	            case 55:
+	            case 56:
 	                this.state = 162;
 	                this.sub_delims();
 	                break;
@@ -997,13 +993,13 @@ export default class IRIParser extends antlr4.Parser {
 	ipath_abempty() {
 	    let localctx = new Ipath_abemptyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, IRIParser.RULE_ipath_abempty);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 179;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===IRIParser.FSLASH) {
+	        while(_la===58) {
 	            this.state = 175;
 	            this.match(IRIParser.FSLASH);
 	            this.state = 176;
@@ -1031,7 +1027,7 @@ export default class IRIParser extends antlr4.Parser {
 	ipath_absolute() {
 	    let localctx = new Ipath_absoluteContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, IRIParser.RULE_ipath_absolute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 182;
@@ -1039,13 +1035,13 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 191;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.COL - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)) | (1 << (IRIParser.AT - 32)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967290) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2181037951) !== 0)) {
 	            this.state = 183;
 	            this.isegment_nz();
 	            this.state = 188;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===IRIParser.FSLASH) {
+	            while(_la===58) {
 	                this.state = 184;
 	                this.match(IRIParser.FSLASH);
 	                this.state = 185;
@@ -1075,7 +1071,7 @@ export default class IRIParser extends antlr4.Parser {
 	ipath_noscheme() {
 	    let localctx = new Ipath_noschemeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 28, IRIParser.RULE_ipath_noscheme);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 193;
@@ -1083,7 +1079,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 198;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===IRIParser.FSLASH) {
+	        while(_la===58) {
 	            this.state = 194;
 	            this.match(IRIParser.FSLASH);
 	            this.state = 195;
@@ -1111,7 +1107,7 @@ export default class IRIParser extends antlr4.Parser {
 	ipath_rootless() {
 	    let localctx = new Ipath_rootlessContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, IRIParser.RULE_ipath_rootless);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 201;
@@ -1119,7 +1115,7 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 206;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===IRIParser.FSLASH) {
+	        while(_la===58) {
 	            this.state = 202;
 	            this.match(IRIParser.FSLASH);
 	            this.state = 203;
@@ -1169,13 +1165,13 @@ export default class IRIParser extends antlr4.Parser {
 	isegment() {
 	    let localctx = new IsegmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, IRIParser.RULE_isegment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 214;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.COL - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)) | (1 << (IRIParser.AT - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967290) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2181037951) !== 0)) {
 	            this.state = 211;
 	            this.ipchar();
 	            this.state = 216;
@@ -1201,7 +1197,7 @@ export default class IRIParser extends antlr4.Parser {
 	isegment_nz() {
 	    let localctx = new Isegment_nzContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, IRIParser.RULE_isegment_nz);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 218; 
@@ -1213,7 +1209,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 220; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.COL - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)) | (1 << (IRIParser.AT - 32)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967290) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2181037951) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1233,7 +1229,7 @@ export default class IRIParser extends antlr4.Parser {
 	isegment_nz_nc() {
 	    let localctx = new Isegment_nz_ncContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 38, IRIParser.RULE_isegment_nz_nc);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 226; 
@@ -1243,69 +1239,69 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 226;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case IRIParser.UCSCHAR:
-	            case IRIParser.D0:
-	            case IRIParser.D1:
-	            case IRIParser.D2:
-	            case IRIParser.D3:
-	            case IRIParser.D4:
-	            case IRIParser.D5:
-	            case IRIParser.D6:
-	            case IRIParser.D7:
-	            case IRIParser.D8:
-	            case IRIParser.D9:
-	            case IRIParser.A:
-	            case IRIParser.B:
-	            case IRIParser.C:
-	            case IRIParser.D:
-	            case IRIParser.E:
-	            case IRIParser.F:
-	            case IRIParser.G:
-	            case IRIParser.H:
-	            case IRIParser.I:
-	            case IRIParser.J:
-	            case IRIParser.K:
-	            case IRIParser.L:
-	            case IRIParser.M:
-	            case IRIParser.N:
-	            case IRIParser.O:
-	            case IRIParser.P:
-	            case IRIParser.Q:
-	            case IRIParser.R:
-	            case IRIParser.S:
-	            case IRIParser.T:
-	            case IRIParser.U:
-	            case IRIParser.V:
-	            case IRIParser.W:
-	            case IRIParser.X:
-	            case IRIParser.Y:
-	            case IRIParser.Z:
-	            case IRIParser.DOT:
-	            case IRIParser.HYPHEN:
-	            case IRIParser.TILDE:
-	            case IRIParser.USCORE:
+	            case 1:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
+	            case 41:
+	            case 43:
+	            case 44:
+	            case 45:
 	                this.state = 222;
 	                this.iunreserved();
 	                break;
-	            case IRIParser.PERCENT:
+	            case 42:
 	                this.state = 223;
 	                this.pct_encoded();
 	                break;
-	            case IRIParser.EXCL:
-	            case IRIParser.DOLLAR:
-	            case IRIParser.AMP:
-	            case IRIParser.SQUOTE:
-	            case IRIParser.OPAREN:
-	            case IRIParser.CPAREN:
-	            case IRIParser.STAR:
-	            case IRIParser.PLUS:
-	            case IRIParser.COMMA:
-	            case IRIParser.SCOL:
-	            case IRIParser.EQUALS:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 52:
+	            case 53:
+	            case 54:
+	            case 55:
+	            case 56:
 	                this.state = 224;
 	                this.sub_delims();
 	                break;
-	            case IRIParser.AT:
+	            case 63:
 	                this.state = 225;
 	                this.match(IRIParser.AT);
 	                break;
@@ -1315,7 +1311,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 228; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)) | (1 << (IRIParser.AT - 32)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967290) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2181037695) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -1335,82 +1331,82 @@ export default class IRIParser extends antlr4.Parser {
 	ipchar() {
 	    let localctx = new IpcharContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, IRIParser.RULE_ipchar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 234;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.UCSCHAR:
-	        case IRIParser.D0:
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
-	        case IRIParser.A:
-	        case IRIParser.B:
-	        case IRIParser.C:
-	        case IRIParser.D:
-	        case IRIParser.E:
-	        case IRIParser.F:
-	        case IRIParser.G:
-	        case IRIParser.H:
-	        case IRIParser.I:
-	        case IRIParser.J:
-	        case IRIParser.K:
-	        case IRIParser.L:
-	        case IRIParser.M:
-	        case IRIParser.N:
-	        case IRIParser.O:
-	        case IRIParser.P:
-	        case IRIParser.Q:
-	        case IRIParser.R:
-	        case IRIParser.S:
-	        case IRIParser.T:
-	        case IRIParser.U:
-	        case IRIParser.V:
-	        case IRIParser.W:
-	        case IRIParser.X:
-	        case IRIParser.Y:
-	        case IRIParser.Z:
-	        case IRIParser.DOT:
-	        case IRIParser.HYPHEN:
-	        case IRIParser.TILDE:
-	        case IRIParser.USCORE:
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
+	        case 41:
+	        case 43:
+	        case 44:
+	        case 45:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 230;
 	            this.iunreserved();
 	            break;
-	        case IRIParser.PERCENT:
+	        case 42:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 231;
 	            this.pct_encoded();
 	            break;
-	        case IRIParser.EXCL:
-	        case IRIParser.DOLLAR:
-	        case IRIParser.AMP:
-	        case IRIParser.SQUOTE:
-	        case IRIParser.OPAREN:
-	        case IRIParser.CPAREN:
-	        case IRIParser.STAR:
-	        case IRIParser.PLUS:
-	        case IRIParser.COMMA:
-	        case IRIParser.SCOL:
-	        case IRIParser.EQUALS:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 232;
 	            this.sub_delims();
 	            break;
-	        case IRIParser.COL:
-	        case IRIParser.AT:
+	        case 40:
+	        case 63:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 233;
 	            _la = this._input.LA(1);
-	            if(!(_la===IRIParser.COL || _la===IRIParser.AT)) {
+	            if(!(_la===40 || _la===63)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1440,80 +1436,80 @@ export default class IRIParser extends antlr4.Parser {
 	iquery() {
 	    let localctx = new IqueryContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 42, IRIParser.RULE_iquery);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 240;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.IPRIVATE) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.COL - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)) | (1 << (IRIParser.FSLASH - 32)) | (1 << (IRIParser.QMARK - 32)) | (1 << (IRIParser.AT - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2382364543) !== 0)) {
 	            this.state = 238;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case IRIParser.UCSCHAR:
-	            case IRIParser.D0:
-	            case IRIParser.D1:
-	            case IRIParser.D2:
-	            case IRIParser.D3:
-	            case IRIParser.D4:
-	            case IRIParser.D5:
-	            case IRIParser.D6:
-	            case IRIParser.D7:
-	            case IRIParser.D8:
-	            case IRIParser.D9:
-	            case IRIParser.A:
-	            case IRIParser.B:
-	            case IRIParser.C:
-	            case IRIParser.D:
-	            case IRIParser.E:
-	            case IRIParser.F:
-	            case IRIParser.G:
-	            case IRIParser.H:
-	            case IRIParser.I:
-	            case IRIParser.J:
-	            case IRIParser.K:
-	            case IRIParser.L:
-	            case IRIParser.M:
-	            case IRIParser.N:
-	            case IRIParser.O:
-	            case IRIParser.P:
-	            case IRIParser.Q:
-	            case IRIParser.R:
-	            case IRIParser.S:
-	            case IRIParser.T:
-	            case IRIParser.U:
-	            case IRIParser.V:
-	            case IRIParser.W:
-	            case IRIParser.X:
-	            case IRIParser.Y:
-	            case IRIParser.Z:
-	            case IRIParser.COL:
-	            case IRIParser.DOT:
-	            case IRIParser.PERCENT:
-	            case IRIParser.HYPHEN:
-	            case IRIParser.TILDE:
-	            case IRIParser.USCORE:
-	            case IRIParser.EXCL:
-	            case IRIParser.DOLLAR:
-	            case IRIParser.AMP:
-	            case IRIParser.SQUOTE:
-	            case IRIParser.OPAREN:
-	            case IRIParser.CPAREN:
-	            case IRIParser.STAR:
-	            case IRIParser.PLUS:
-	            case IRIParser.COMMA:
-	            case IRIParser.SCOL:
-	            case IRIParser.EQUALS:
-	            case IRIParser.AT:
+	            case 1:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
+	            case 40:
+	            case 41:
+	            case 42:
+	            case 43:
+	            case 44:
+	            case 45:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 52:
+	            case 53:
+	            case 54:
+	            case 55:
+	            case 56:
+	            case 63:
 	                this.state = 236;
 	                this.ipchar();
 	                break;
-	            case IRIParser.IPRIVATE:
-	            case IRIParser.FSLASH:
-	            case IRIParser.QMARK:
+	            case 2:
+	            case 58:
+	            case 59:
 	                this.state = 237;
 	                _la = this._input.LA(1);
-	                if(!(_la===IRIParser.IPRIVATE || _la===IRIParser.FSLASH || _la===IRIParser.QMARK)) {
+	                if(!(_la===2 || _la===58 || _la===59)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1547,79 +1543,79 @@ export default class IRIParser extends antlr4.Parser {
 	ifragment() {
 	    let localctx = new IfragmentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 44, IRIParser.RULE_ifragment);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 247;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.UCSCHAR) | (1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.COL - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.PERCENT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)) | (1 << (IRIParser.FSLASH - 32)) | (1 << (IRIParser.QMARK - 32)) | (1 << (IRIParser.AT - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967290) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2382364543) !== 0)) {
 	            this.state = 245;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case IRIParser.UCSCHAR:
-	            case IRIParser.D0:
-	            case IRIParser.D1:
-	            case IRIParser.D2:
-	            case IRIParser.D3:
-	            case IRIParser.D4:
-	            case IRIParser.D5:
-	            case IRIParser.D6:
-	            case IRIParser.D7:
-	            case IRIParser.D8:
-	            case IRIParser.D9:
-	            case IRIParser.A:
-	            case IRIParser.B:
-	            case IRIParser.C:
-	            case IRIParser.D:
-	            case IRIParser.E:
-	            case IRIParser.F:
-	            case IRIParser.G:
-	            case IRIParser.H:
-	            case IRIParser.I:
-	            case IRIParser.J:
-	            case IRIParser.K:
-	            case IRIParser.L:
-	            case IRIParser.M:
-	            case IRIParser.N:
-	            case IRIParser.O:
-	            case IRIParser.P:
-	            case IRIParser.Q:
-	            case IRIParser.R:
-	            case IRIParser.S:
-	            case IRIParser.T:
-	            case IRIParser.U:
-	            case IRIParser.V:
-	            case IRIParser.W:
-	            case IRIParser.X:
-	            case IRIParser.Y:
-	            case IRIParser.Z:
-	            case IRIParser.COL:
-	            case IRIParser.DOT:
-	            case IRIParser.PERCENT:
-	            case IRIParser.HYPHEN:
-	            case IRIParser.TILDE:
-	            case IRIParser.USCORE:
-	            case IRIParser.EXCL:
-	            case IRIParser.DOLLAR:
-	            case IRIParser.AMP:
-	            case IRIParser.SQUOTE:
-	            case IRIParser.OPAREN:
-	            case IRIParser.CPAREN:
-	            case IRIParser.STAR:
-	            case IRIParser.PLUS:
-	            case IRIParser.COMMA:
-	            case IRIParser.SCOL:
-	            case IRIParser.EQUALS:
-	            case IRIParser.AT:
+	            case 1:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
+	            case 40:
+	            case 41:
+	            case 42:
+	            case 43:
+	            case 44:
+	            case 45:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 52:
+	            case 53:
+	            case 54:
+	            case 55:
+	            case 56:
+	            case 63:
 	                this.state = 243;
 	                this.ipchar();
 	                break;
-	            case IRIParser.FSLASH:
-	            case IRIParser.QMARK:
+	            case 58:
+	            case 59:
 	                this.state = 244;
 	                _la = this._input.LA(1);
-	                if(!(_la===IRIParser.FSLASH || _la===IRIParser.QMARK)) {
+	                if(!(_la===58 || _la===59)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1653,64 +1649,64 @@ export default class IRIParser extends antlr4.Parser {
 	iunreserved() {
 	    let localctx = new IunreservedContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, IRIParser.RULE_iunreserved);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 253;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.A:
-	        case IRIParser.B:
-	        case IRIParser.C:
-	        case IRIParser.D:
-	        case IRIParser.E:
-	        case IRIParser.F:
-	        case IRIParser.G:
-	        case IRIParser.H:
-	        case IRIParser.I:
-	        case IRIParser.J:
-	        case IRIParser.K:
-	        case IRIParser.L:
-	        case IRIParser.M:
-	        case IRIParser.N:
-	        case IRIParser.O:
-	        case IRIParser.P:
-	        case IRIParser.Q:
-	        case IRIParser.R:
-	        case IRIParser.S:
-	        case IRIParser.T:
-	        case IRIParser.U:
-	        case IRIParser.V:
-	        case IRIParser.W:
-	        case IRIParser.X:
-	        case IRIParser.Y:
-	        case IRIParser.Z:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 250;
 	            this.alpha();
 	            break;
-	        case IRIParser.D0:
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 251;
 	            this.digit();
 	            break;
-	        case IRIParser.UCSCHAR:
-	        case IRIParser.DOT:
-	        case IRIParser.HYPHEN:
-	        case IRIParser.TILDE:
-	        case IRIParser.USCORE:
+	        case 1:
+	        case 41:
+	        case 43:
+	        case 44:
+	        case 45:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 252;
 	            _la = this._input.LA(1);
-	            if(!(_la===IRIParser.UCSCHAR || ((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (IRIParser.DOT - 41)) | (1 << (IRIParser.HYPHEN - 41)) | (1 << (IRIParser.TILDE - 41)) | (1 << (IRIParser.USCORE - 41)))) !== 0))) {
+	            if(!(_la===1 || ((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 29) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1740,7 +1736,7 @@ export default class IRIParser extends antlr4.Parser {
 	scheme() {
 	    let localctx = new SchemeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 48, IRIParser.RULE_scheme);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 255;
@@ -1748,58 +1744,58 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 261;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.PLUS - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967288) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 2099839) !== 0)) {
 	            this.state = 259;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case IRIParser.A:
-	            case IRIParser.B:
-	            case IRIParser.C:
-	            case IRIParser.D:
-	            case IRIParser.E:
-	            case IRIParser.F:
-	            case IRIParser.G:
-	            case IRIParser.H:
-	            case IRIParser.I:
-	            case IRIParser.J:
-	            case IRIParser.K:
-	            case IRIParser.L:
-	            case IRIParser.M:
-	            case IRIParser.N:
-	            case IRIParser.O:
-	            case IRIParser.P:
-	            case IRIParser.Q:
-	            case IRIParser.R:
-	            case IRIParser.S:
-	            case IRIParser.T:
-	            case IRIParser.U:
-	            case IRIParser.V:
-	            case IRIParser.W:
-	            case IRIParser.X:
-	            case IRIParser.Y:
-	            case IRIParser.Z:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
 	                this.state = 256;
 	                this.alpha();
 	                break;
-	            case IRIParser.D0:
-	            case IRIParser.D1:
-	            case IRIParser.D2:
-	            case IRIParser.D3:
-	            case IRIParser.D4:
-	            case IRIParser.D5:
-	            case IRIParser.D6:
-	            case IRIParser.D7:
-	            case IRIParser.D8:
-	            case IRIParser.D9:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
 	                this.state = 257;
 	                this.digit();
 	                break;
-	            case IRIParser.DOT:
-	            case IRIParser.HYPHEN:
-	            case IRIParser.PLUS:
+	            case 41:
+	            case 43:
+	            case 53:
 	                this.state = 258;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (IRIParser.DOT - 41)) | (1 << (IRIParser.HYPHEN - 41)) | (1 << (IRIParser.PLUS - 41)))) !== 0))) {
+	                if(!(((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 4101) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1833,13 +1829,13 @@ export default class IRIParser extends antlr4.Parser {
 	port() {
 	    let localctx = new PortContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, IRIParser.RULE_port);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 267;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 8184) !== 0)) {
 	            this.state = 264;
 	            this.digit();
 	            this.state = 269;
@@ -1872,27 +1868,27 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 273;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.D0:
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
-	        case IRIParser.A:
-	        case IRIParser.B:
-	        case IRIParser.C:
-	        case IRIParser.D:
-	        case IRIParser.E:
-	        case IRIParser.F:
-	        case IRIParser.COL2:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 39:
 	            this.state = 271;
 	            this.ip_v6_address();
 	            break;
-	        case IRIParser.V:
+	        case 34:
 	            this.state = 272;
 	            this.ip_v_future();
 	            break;
@@ -1920,7 +1916,7 @@ export default class IRIParser extends antlr4.Parser {
 	ip_v_future() {
 	    let localctx = new Ip_v_futureContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 54, IRIParser.RULE_ip_v_future);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 277;
@@ -1934,7 +1930,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 281; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0));
 	        this.state = 283;
 	        this.match(IRIParser.DOT);
 	        this.state = 287; 
@@ -1944,64 +1940,64 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 287;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case IRIParser.D0:
-	            case IRIParser.D1:
-	            case IRIParser.D2:
-	            case IRIParser.D3:
-	            case IRIParser.D4:
-	            case IRIParser.D5:
-	            case IRIParser.D6:
-	            case IRIParser.D7:
-	            case IRIParser.D8:
-	            case IRIParser.D9:
-	            case IRIParser.A:
-	            case IRIParser.B:
-	            case IRIParser.C:
-	            case IRIParser.D:
-	            case IRIParser.E:
-	            case IRIParser.F:
-	            case IRIParser.G:
-	            case IRIParser.H:
-	            case IRIParser.I:
-	            case IRIParser.J:
-	            case IRIParser.K:
-	            case IRIParser.L:
-	            case IRIParser.M:
-	            case IRIParser.N:
-	            case IRIParser.O:
-	            case IRIParser.P:
-	            case IRIParser.Q:
-	            case IRIParser.R:
-	            case IRIParser.S:
-	            case IRIParser.T:
-	            case IRIParser.U:
-	            case IRIParser.V:
-	            case IRIParser.W:
-	            case IRIParser.X:
-	            case IRIParser.Y:
-	            case IRIParser.Z:
-	            case IRIParser.DOT:
-	            case IRIParser.HYPHEN:
-	            case IRIParser.TILDE:
-	            case IRIParser.USCORE:
+	            case 3:
+	            case 4:
+	            case 5:
+	            case 6:
+	            case 7:
+	            case 8:
+	            case 9:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 13:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 19:
+	            case 20:
+	            case 21:
+	            case 22:
+	            case 23:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 34:
+	            case 35:
+	            case 36:
+	            case 37:
+	            case 38:
+	            case 41:
+	            case 43:
+	            case 44:
+	            case 45:
 	                this.state = 284;
 	                this.unreserved();
 	                break;
-	            case IRIParser.EXCL:
-	            case IRIParser.DOLLAR:
-	            case IRIParser.AMP:
-	            case IRIParser.SQUOTE:
-	            case IRIParser.OPAREN:
-	            case IRIParser.CPAREN:
-	            case IRIParser.STAR:
-	            case IRIParser.PLUS:
-	            case IRIParser.COMMA:
-	            case IRIParser.SCOL:
-	            case IRIParser.EQUALS:
+	            case 46:
+	            case 47:
+	            case 48:
+	            case 49:
+	            case 50:
+	            case 51:
+	            case 52:
+	            case 53:
+	            case 54:
+	            case 55:
+	            case 56:
 	                this.state = 285;
 	                this.sub_delims();
 	                break;
-	            case IRIParser.COL:
+	            case 40:
 	                this.state = 286;
 	                this.match(IRIParser.COL);
 	                break;
@@ -2011,7 +2007,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 289; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F) | (1 << IRIParser.G) | (1 << IRIParser.H) | (1 << IRIParser.I) | (1 << IRIParser.J) | (1 << IRIParser.K) | (1 << IRIParser.L) | (1 << IRIParser.M) | (1 << IRIParser.N) | (1 << IRIParser.O) | (1 << IRIParser.P) | (1 << IRIParser.Q) | (1 << IRIParser.R) | (1 << IRIParser.S))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (IRIParser.T - 32)) | (1 << (IRIParser.U - 32)) | (1 << (IRIParser.V - 32)) | (1 << (IRIParser.W - 32)) | (1 << (IRIParser.X - 32)) | (1 << (IRIParser.Y - 32)) | (1 << (IRIParser.Z - 32)) | (1 << (IRIParser.COL - 32)) | (1 << (IRIParser.DOT - 32)) | (1 << (IRIParser.HYPHEN - 32)) | (1 << (IRIParser.TILDE - 32)) | (1 << (IRIParser.USCORE - 32)) | (1 << (IRIParser.EXCL - 32)) | (1 << (IRIParser.DOLLAR - 32)) | (1 << (IRIParser.AMP - 32)) | (1 << (IRIParser.SQUOTE - 32)) | (1 << (IRIParser.OPAREN - 32)) | (1 << (IRIParser.CPAREN - 32)) | (1 << (IRIParser.STAR - 32)) | (1 << (IRIParser.PLUS - 32)) | (1 << (IRIParser.COMMA - 32)) | (1 << (IRIParser.SCOL - 32)) | (1 << (IRIParser.EQUALS - 32)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967288) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 33553279) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -2031,7 +2027,7 @@ export default class IRIParser extends antlr4.Parser {
 	ip_v6_address() {
 	    let localctx = new Ip_v6_addressContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, IRIParser.RULE_ip_v6_address);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 481;
 	        this._errHandler.sync(this);
@@ -2100,7 +2096,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 319;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0)) {
 	                this.state = 318;
 	                this.h16();
 	            }
@@ -2132,7 +2128,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 338;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0)) {
 	                this.state = 335;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,39,this._ctx);
@@ -2170,7 +2166,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 360;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0)) {
 	                this.state = 357;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,42,this._ctx);
@@ -2214,7 +2210,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 385;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0)) {
 	                this.state = 382;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,46,this._ctx);
@@ -2264,7 +2260,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 413;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0)) {
 	                this.state = 410;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,51,this._ctx);
@@ -2320,7 +2316,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 443;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0)) {
 	                this.state = 440;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,57,this._ctx);
@@ -2386,7 +2382,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.state = 478;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9) | (1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 524280) !== 0)) {
 	                this.state = 475;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,64,this._ctx);
@@ -2612,7 +2608,7 @@ export default class IRIParser extends antlr4.Parser {
 	dec_octet() {
 	    let localctx = new Dec_octetContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, IRIParser.RULE_dec_octet);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 527;
 	        this._errHandler.sync(this);
@@ -2648,7 +2644,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.match(IRIParser.D2);
 	            this.state = 522;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 248) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2667,7 +2663,7 @@ export default class IRIParser extends antlr4.Parser {
 	            this.match(IRIParser.D5);
 	            this.state = 526;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D0) | (1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 504) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2723,63 +2719,63 @@ export default class IRIParser extends antlr4.Parser {
 	unreserved() {
 	    let localctx = new UnreservedContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 68, IRIParser.RULE_unreserved);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 536;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.A:
-	        case IRIParser.B:
-	        case IRIParser.C:
-	        case IRIParser.D:
-	        case IRIParser.E:
-	        case IRIParser.F:
-	        case IRIParser.G:
-	        case IRIParser.H:
-	        case IRIParser.I:
-	        case IRIParser.J:
-	        case IRIParser.K:
-	        case IRIParser.L:
-	        case IRIParser.M:
-	        case IRIParser.N:
-	        case IRIParser.O:
-	        case IRIParser.P:
-	        case IRIParser.Q:
-	        case IRIParser.R:
-	        case IRIParser.S:
-	        case IRIParser.T:
-	        case IRIParser.U:
-	        case IRIParser.V:
-	        case IRIParser.W:
-	        case IRIParser.X:
-	        case IRIParser.Y:
-	        case IRIParser.Z:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 22:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 36:
+	        case 37:
+	        case 38:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 533;
 	            this.alpha();
 	            break;
-	        case IRIParser.D0:
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 534;
 	            this.digit();
 	            break;
-	        case IRIParser.DOT:
-	        case IRIParser.HYPHEN:
-	        case IRIParser.TILDE:
-	        case IRIParser.USCORE:
+	        case 41:
+	        case 43:
+	        case 44:
+	        case 45:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 535;
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (IRIParser.DOT - 41)) | (1 << (IRIParser.HYPHEN - 41)) | (1 << (IRIParser.TILDE - 41)) | (1 << (IRIParser.USCORE - 41)))) !== 0))) {
+	            if(!(((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 29) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2813,28 +2809,28 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 540;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.COL:
-	        case IRIParser.FSLASH:
-	        case IRIParser.QMARK:
-	        case IRIParser.HASH:
-	        case IRIParser.OBRACK:
-	        case IRIParser.CBRACK:
-	        case IRIParser.AT:
+	        case 40:
+	        case 58:
+	        case 59:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 538;
 	            this.gen_delims();
 	            break;
-	        case IRIParser.EXCL:
-	        case IRIParser.DOLLAR:
-	        case IRIParser.AMP:
-	        case IRIParser.SQUOTE:
-	        case IRIParser.OPAREN:
-	        case IRIParser.CPAREN:
-	        case IRIParser.STAR:
-	        case IRIParser.PLUS:
-	        case IRIParser.COMMA:
-	        case IRIParser.SCOL:
-	        case IRIParser.EQUALS:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 53:
+	        case 54:
+	        case 55:
+	        case 56:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 539;
 	            this.sub_delims();
@@ -2861,12 +2857,12 @@ export default class IRIParser extends antlr4.Parser {
 	gen_delims() {
 	    let localctx = new Gen_delimsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, IRIParser.RULE_gen_delims);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 542;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 40)) & ~0x1f) == 0 && ((1 << (_la - 40)) & ((1 << (IRIParser.COL - 40)) | (1 << (IRIParser.FSLASH - 40)) | (1 << (IRIParser.QMARK - 40)) | (1 << (IRIParser.HASH - 40)) | (1 << (IRIParser.OBRACK - 40)) | (1 << (IRIParser.CBRACK - 40)) | (1 << (IRIParser.AT - 40)))) !== 0))) {
+	        if(!(((((_la - 40)) & ~0x1f) === 0 && ((1 << (_la - 40)) & 16515073) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2892,12 +2888,12 @@ export default class IRIParser extends antlr4.Parser {
 	sub_delims() {
 	    let localctx = new Sub_delimsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 74, IRIParser.RULE_sub_delims);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 544;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 46)) & ~0x1f) == 0 && ((1 << (_la - 46)) & ((1 << (IRIParser.EXCL - 46)) | (1 << (IRIParser.DOLLAR - 46)) | (1 << (IRIParser.AMP - 46)) | (1 << (IRIParser.SQUOTE - 46)) | (1 << (IRIParser.OPAREN - 46)) | (1 << (IRIParser.CPAREN - 46)) | (1 << (IRIParser.STAR - 46)) | (1 << (IRIParser.PLUS - 46)) | (1 << (IRIParser.COMMA - 46)) | (1 << (IRIParser.SCOL - 46)) | (1 << (IRIParser.EQUALS - 46)))) !== 0))) {
+	        if(!(((((_la - 46)) & ~0x1f) === 0 && ((1 << (_la - 46)) & 2047) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2923,12 +2919,12 @@ export default class IRIParser extends antlr4.Parser {
 	alpha() {
 	    let localctx = new AlphaContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 76, IRIParser.RULE_alpha);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 546;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 13)) & ~0x1f) == 0 && ((1 << (_la - 13)) & ((1 << (IRIParser.A - 13)) | (1 << (IRIParser.B - 13)) | (1 << (IRIParser.C - 13)) | (1 << (IRIParser.D - 13)) | (1 << (IRIParser.E - 13)) | (1 << (IRIParser.F - 13)) | (1 << (IRIParser.G - 13)) | (1 << (IRIParser.H - 13)) | (1 << (IRIParser.I - 13)) | (1 << (IRIParser.J - 13)) | (1 << (IRIParser.K - 13)) | (1 << (IRIParser.L - 13)) | (1 << (IRIParser.M - 13)) | (1 << (IRIParser.N - 13)) | (1 << (IRIParser.O - 13)) | (1 << (IRIParser.P - 13)) | (1 << (IRIParser.Q - 13)) | (1 << (IRIParser.R - 13)) | (1 << (IRIParser.S - 13)) | (1 << (IRIParser.T - 13)) | (1 << (IRIParser.U - 13)) | (1 << (IRIParser.V - 13)) | (1 << (IRIParser.W - 13)) | (1 << (IRIParser.X - 13)) | (1 << (IRIParser.Y - 13)) | (1 << (IRIParser.Z - 13)))) !== 0))) {
+	        if(!(((((_la - 13)) & ~0x1f) === 0 && ((1 << (_la - 13)) & 67108863) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2954,35 +2950,35 @@ export default class IRIParser extends antlr4.Parser {
 	hexdig() {
 	    let localctx = new HexdigContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, IRIParser.RULE_hexdig);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 550;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.D0:
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 548;
 	            this.digit();
 	            break;
-	        case IRIParser.A:
-	        case IRIParser.B:
-	        case IRIParser.C:
-	        case IRIParser.D:
-	        case IRIParser.E:
-	        case IRIParser.F:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 549;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.A) | (1 << IRIParser.B) | (1 << IRIParser.C) | (1 << IRIParser.D) | (1 << IRIParser.E) | (1 << IRIParser.F))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 516096) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -3016,20 +3012,20 @@ export default class IRIParser extends antlr4.Parser {
 	        this.state = 554;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case IRIParser.D0:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 552;
 	            this.match(IRIParser.D0);
 	            break;
-	        case IRIParser.D1:
-	        case IRIParser.D2:
-	        case IRIParser.D3:
-	        case IRIParser.D4:
-	        case IRIParser.D5:
-	        case IRIParser.D6:
-	        case IRIParser.D7:
-	        case IRIParser.D8:
-	        case IRIParser.D9:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 553;
 	            this.non_zero_digit();
@@ -3056,12 +3052,12 @@ export default class IRIParser extends antlr4.Parser {
 	non_zero_digit() {
 	    let localctx = new Non_zero_digitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 82, IRIParser.RULE_non_zero_digit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 556;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << IRIParser.D1) | (1 << IRIParser.D2) | (1 << IRIParser.D3) | (1 << IRIParser.D4) | (1 << IRIParser.D5) | (1 << IRIParser.D6) | (1 << IRIParser.D7) | (1 << IRIParser.D8) | (1 << IRIParser.D9))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 8176) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -5674,3 +5670,12 @@ IRIParser.AlphaContext = AlphaContext;
 IRIParser.HexdigContext = HexdigContext; 
 IRIParser.DigitContext = DigitContext; 
 IRIParser.Non_zero_digitContext = Non_zero_digitContext; 
+
+// --- Dynamic Universal Module Wrapper ---
+if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = { CPP14Lexer };
+} else if (typeof window !== 'undefined') {
+    window.CPP14Lexer = CPP14Lexer;
+} else if (typeof self !== 'undefined') {
+    self.CPP14Lexer = CPP14Lexer;
+}
