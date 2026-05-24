@@ -1,34 +1,114 @@
 // languages-index-browser.js
 
-// 1. CORE LIBRARY IMPORTS
+// =====================================================================
+// 1. CORE RUNTIME LIBRARY IMPORT
+// =====================================================================
 import antlr4 from 'antlr4';
 
-// 2. PARSER & LEXER SPECIFIC IMPORTS
+// =====================================================================
+// 2. PARSER & LEXER SPECIFIC IMPORTS (12-LANGUAGE PIPELINE)
+// =====================================================================
+// Native Engine & System Architecture
 import c_CLexer from './c/CLexer.js';
-import c_CListener from './c/CListener.js';
 import c_CParser from './c/CParser.js';
+import cpp_CPP14Lexer from './cpp/CPP14Lexer.js';
+import cpp_CPP14Parser from './cpp/CPP14Parser.js';
 
-// 3. CONSOLIDATE THE CORE REGISTRY OBJECT
+// Gameplay & Engine Scripting Systems
+import angelscript_Lexer from './angelscript/angelscriptLexer.js';
+import angelscript_Parser from './angelscript/angelscriptParser.js';
+import lua_LuaLexer from './lua/LuaLexer.js';
+import lua_LuaParser from './lua/LuaParser.js';
+
+// Lower-Level Targeting Matrix
+import wat_WatLexer from './wat/WatLexer.js';
+import wat_WatParser from './wat/WatParser.js';
+import asmMASM_asmMASMLexer from './asm/asmMASM/asmMASMLexer.js';
+import asmMASM_asmMASMParser from './asm/asmMASM/asmMASMParser.js';
+
+// Quake 3 Dedicated Asset Layouts
+import quakemap_quakemapLexer from './quakemap/quakemapLexer.js';
+import quakemap_quakemapParser from './quakemap/quakemapParser.js';
+
+// Web System Engineering Layer
+import javascript_JavaScriptLexer from './javascript/javascript/JavaScriptLexer.js';
+import javascript_JavaScriptParser from './javascript/javascript/JavaScriptParser.js';
+import typescript_TypeScriptLexer from './javascript/typescript/TypeScriptLexer.js';
+import typescript_TypeScriptParser from './javascript/typescript/TypeScriptParser.js';
+import html_HTMLLexer from './html/HTMLLexer.js';
+import html_HTMLParser from './html/HTMLParser.js';
+import css3_css3Lexer from './css3/css3Lexer.js';
+import css3_css3Parser from './css3/css3Parser.js';
+import json_JSONLexer from './json/JSONLexer.js';
+import json_JSONParser from './json/JSONParser.js';
+
+// =====================================================================
+// 3. CONSOLIDATE THE CORE REGISTRY OBJECT (MATCHES WORKER DYNAMIC RESOLUTION)
+// =====================================================================
+// languages-index-browser.js
+
 const AntlrRegistry = {
     antlr4: antlr4,
-    c: {
-        CLexer: c_CLexer,
-        CListener: c_CListener,
-        CParser: c_CParser
-    }
+
+    // Explicit Lowercase Flat Index Matrix (Zero nesting, completely normalized)
+    "c_lexer": c_CLexer,                  "c_parser": c_CParser,
+    "cpp_lexer": cpp_CPP14Lexer,          "cpp_parser": cpp_CPP14Parser,
+    "angelscript_lexer": angelscript_Lexer,"angelscript_parser": angelscript_Parser,
+    "lua_lexer": lua_LuaLexer,            "lua_parser": lua_LuaParser,
+    "wat_lexer": wat_WatLexer,            "wat_parser": wat_WatParser,
+    "asm_lexer": asmMASM_asmMASMLexer,    "asm_parser": asmMASM_asmMASMParser,
+    "quakemap_lexer": quakemap_quakemapLexer, "quakemap_parser": quakemap_quakemapParser,
+    "javascript_lexer": javascript_JavaScriptLexer, "javascript_parser": javascript_JavaScriptParser,
+    "typescript_lexer": typescript_TypeScriptLexer, "typescript_parser": typescript_TypeScriptParser,
+    "html_lexer": html_HTMLLexer,         "html_parser": html_HTMLParser,
+    "css3_lexer": css3_css3Lexer,         "css3_parser": css3_css3Parser,
+    "json_lexer": json_JSONLexer,         "json_parser": json_JSONParser
 };
 
+// Aliases for historical call-sites or specific grammar fallback overrides
+AntlrRegistry['cpp_clexer'] = c_CLexer;
+AntlrRegistry['cpp_cpp14lexer'] = cpp_CPP14Lexer;
+
+if (typeof self !== 'undefined') {
+    self.AntlrRegistry = AntlrRegistry;
+    self.AntlrLanguages = AntlrRegistry;
+}
+// Flatten out old flat string naming conventions for backwards compatibility in mapToRowBucket
+AntlrRegistry['c_CParser'] = c_CParser;
+AntlrRegistry['cpp_CLexer'] = c_CLexer; // Safe internal fallback alias
+AntlrRegistry['cpp_CPP14Lexer'] = cpp_CPP14Lexer;
+AntlrRegistry['cpp_CPP14Parser'] = cpp_CPP14Parser;
+
+// =====================================================================
 // 4. BIND IMMEDIATELY TO THE WEB WORKER EXECUTION CONTEXT
-// This solves the "is not defined" crashes inside worker-antlr.js
-self.AntlrRegistry = AntlrRegistry;
-self.AntlrLanguages = AntlrRegistry;
+// =====================================================================
+if (typeof self !== 'undefined') {
+    self.AntlrRegistry = AntlrRegistry;
+    self.AntlrLanguages = AntlrRegistry;
+}
 
-// 5. EXPORT FOR WEBPACK'S UMD LIBRARY HOOK
-export { antlr4, AntlrRegistry, c_CLexer, c_CListener, c_CParser };
+// =====================================================================
+// 5. EXPORT HOOK MATRIX
+// =====================================================================
+export {
+    antlr4,
+    AntlrRegistry,
+    
+    c_CLexer, c_CParser,
+    cpp_CPP14Lexer, cpp_CPP14Parser,
+    angelscript_Lexer as angelscript_angelscriptLexer, angelscript_Parser as angelscript_angelscriptParser,
+    lua_LuaLexer as lua_LuaLexer, lua_LuaParser as lua_LuaParser,
+    wat_WatLexer as wat_WatLexer, wat_WatParser as wat_WatParser,
+    asmMASM_asmMASMLexer as asmMASM_asmMASMLexer, asmMASM_asmMASMParser as asmMASM_asmMASMParser,
+    quakemap_quakemapLexer as quakemap_quakemapLexer, quakemap_quakemapParser as quakemap_quakemapParser,
+    javascript_JavaScriptLexer as javascript_JavaScriptLexer, javascript_JavaScriptParser as javascript_JavaScriptParser,
+    typescript_TypeScriptLexer as typescript_TypeScriptLexer, typescript_TypeScriptParser as typescript_TypeScriptParser,
+    html_HTMLLexer as html_HTMLLexer, html_HTMLParser as html_HTMLParser,
+    css3_css3Lexer as css3_css3Lexer, css3_css3Parser as css3_css3Parser,
+    json_JSONLexer as json_JSONLexer, json_JSONParser as json_JSONParser
+};
 
-// Default export matching your webpack config setup
 export default AntlrRegistry;
-
 
 
 // import LangModule1 from './angelscript/angelscriptLexer.js';

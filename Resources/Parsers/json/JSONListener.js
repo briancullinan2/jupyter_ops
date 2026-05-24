@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/json/JSON.g4 by ANTLR 4.13.2
+// Generated from ./json/JSON.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -32,21 +32,30 @@ export default class JSONListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by JSONParser#jsonKey.
+	enterJsonKey(ctx) {
+	}
+
+	// Exit a parse tree produced by JSONParser#jsonKey.
+	exitJsonKey(ctx) {
+	}
+
+
+	// Enter a parse tree produced by JSONParser#jsonValue.
+	enterJsonValue(ctx) {
+	}
+
+	// Exit a parse tree produced by JSONParser#jsonValue.
+	exitJsonValue(ctx) {
+	}
+
+
 	// Enter a parse tree produced by JSONParser#arr.
 	enterArr(ctx) {
 	}
 
 	// Exit a parse tree produced by JSONParser#arr.
 	exitArr(ctx) {
-	}
-
-
-	// Enter a parse tree produced by JSONParser#value.
-	enterValue(ctx) {
-	}
-
-	// Exit a parse tree produced by JSONParser#value.
-	exitValue(ctx) {
 	}
 
 

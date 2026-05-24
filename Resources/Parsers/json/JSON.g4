@@ -1,14 +1,7 @@
-/** Taken from "The Definitive ANTLR 4 Reference" by Terence Parr */
-
-// Derived from https://json.org
-
-// $antlr-format alignTrailingComments true, columnLimit 150, minEmptyLines 1, maxEmptyLinesToKeep 1, reflowComments false, useTab false
-// $antlr-format allowShortRulesOnASingleLine false, allowShortBlocksOnASingleLine true, alignSemicolons hanging, alignColons hanging
-
 grammar JSON;
 
 json
-    : value EOF
+    : jsonValue EOF
     ;
 
 obj
@@ -17,16 +10,15 @@ obj
     ;
 
 pair
-    : STRING ':' value
+    : jsonKey ':' jsonValue
     ;
 
-arr
-    : '[' value (',' value)* ']'
-    | '[' ']'
+jsonKey
+    : STRING                     // Walks a dedicated path. Parser rule = "jsonKey"
     ;
 
-value
-    : STRING
+jsonValue
+    : STRING                     // Walks an explicit value path. Parser rule = "jsonValue"
     | NUMBER
     | obj
     | arr
@@ -34,6 +26,15 @@ value
     | 'false'
     | 'null'
     ;
+
+arr
+    : '[' jsonValue (',' jsonValue)* ']'  // Fixed: Points to your context values!
+    | '[' ']'
+    ;
+
+// =====================================================================
+// LEXER TERMINAL CORE (STAYS FULLY ENCAPSULATED)
+// =====================================================================
 
 STRING
     : '"' (ESC | SAFECODEPOINT)* '"'
@@ -60,18 +61,14 @@ NUMBER
     ;
 
 fragment INT
-    // integer part forbids leading 0s (e.g. `01`)
     : '0'
     | [1-9] [0-9]*
     ;
 
-// no leading zeros
-
 fragment EXP
-    // exponent number permits leading 0s (e.g. `1e01`)
     : [Ee] [+-]? [0-9]+
     ;
 
 WS
-    : [ \t\n\r]+ -> skip
+    : [ \t\n\r]+ -> channel(HIDDEN) // Safely routing to hidden channel 1
     ;
