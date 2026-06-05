@@ -750,3 +750,5 @@ BlockComment
 LineComment
     : '//' ~[\r\n]* -> channel(HIDDEN)
     ;
+
+UNKNOWN : . ;

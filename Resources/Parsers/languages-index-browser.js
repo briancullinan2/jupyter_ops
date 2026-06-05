@@ -6,31 +6,42 @@
 import antlr4 from 'antlr4';
 
 // =====================================================================
-// 2. PARSER & LEXER SPECIFIC IMPORTS (12-LANGUAGE PIPELINE)
+// 2. PARSER & LEXER SPECIFIC IMPORTS (50-LANGUAGE PIPELINE)
 // =====================================================================
-// Native Engine & System Architecture
+
+// C / C++ Engine & System Architecture (4)
 import c_CLexer from './c/CLexer.js';
 import c_CParser from './c/CParser.js';
 import cpp_CPP14Lexer from './cpp/CPP14Lexer.js';
 import cpp_CPP14Parser from './cpp/CPP14Parser.js';
 
-// Gameplay & Engine Scripting Systems
+// Gameplay & Engine Scripting Systems (2)
 import angelscript_Lexer from './angelscript/angelscriptLexer.js';
 import angelscript_Parser from './angelscript/angelscriptParser.js';
 import lua_LuaLexer from './lua/LuaLexer.js';
 import lua_LuaParser from './lua/LuaParser.js';
 
-// Lower-Level Targeting Matrix
+// Lower-Level Targeting Matrix & Low-Level Hardware Architectures (7)
 import wat_WatLexer from './wat/WatLexer.js';
 import wat_WatParser from './wat/WatParser.js';
 import asmMASM_asmMASMLexer from './asm/asmMASM/asmMASMLexer.js';
 import asmMASM_asmMASMParser from './asm/asmMASM/asmMASMParser.js';
+import asm6502_asm6502Lexer from './asm/asm6502/asm6502Lexer.js';
+import asm6502_asm6502Parser from './asm/asm6502/asm6502Parser.js';
+import asm8080_asm8080Lexer from './asm/asm8080/asm8080Lexer.js';
+import asm8080_asm8080Parser from './asm/asm8080/asm8080Parser.js';
+import asm8086_asm8086Lexer from './asm/asm8086/asm8086Lexer.js';
+import asm8086_asm8086Parser from './asm/asm8086/asm8086Parser.js';
+import asmZ80_asmZ80Lexer from './asm/asmZ80/asmZ80Lexer.js';
+import asmZ80_asmZ80Parser from './asm/asmZ80/asmZ80Parser.js';
+import pdp7_pdp7Lexer from './asm/pdp7/pdp7Lexer.js';
+import pdp7_pdp7Parser from './asm/pdp7/pdp7Parser.js';
 
-// Quake 3 Dedicated Asset Layouts
+// Quake Dedicated Asset Layouts (1)
 import quakemap_quakemapLexer from './quakemap/quakemapLexer.js';
 import quakemap_quakemapParser from './quakemap/quakemapParser.js';
 
-// Web System Engineering Layer
+// Web System Engineering Layer & Text Specs (6)
 import javascript_JavaScriptLexer from './javascript/javascript/JavaScriptLexer.js';
 import javascript_JavaScriptParser from './javascript/javascript/JavaScriptParser.js';
 import typescript_TypeScriptLexer from './javascript/typescript/TypeScriptLexer.js';
@@ -41,41 +52,119 @@ import css3_css3Lexer from './css3/css3Lexer.js';
 import css3_css3Parser from './css3/css3Parser.js';
 import json_JSONLexer from './json/JSONLexer.js';
 import json_JSONParser from './json/JSONParser.js';
+import graphql_GraphQLLexer from './graphql/GraphQLLexer.js';
+import graphql_GraphQLParser from './graphql/GraphQLParser.js';
+
+// Server-Side Systems Architecture (4)
+import php_PhpLexer from './php/PhpLexer.js';
+import php_PhpParser from './php/PhpParser.js';
+import csharp_CSharpLexer from './csharp/CSharpLexer.js';
+import csharp_CSharpParser from './csharp/CSharpParser.js';
+import golang_GoLexer from './golang/GoLexer.js';
+import golang_GoParser from './golang/GoParser.js';
+import rust_RustLexer from './rust/RustLexer.js';
+import rust_RustParser from './rust/RustParser.js';
+
+// Java Virtual Machine Trackers (3)
+//import java_JavaLexer from './java/java/JavaLexer.js';
+//import java_JavaParser from './java/java/JavaParser.js';
+import java8_Java8Lexer from './java/java8/Java8Lexer.js';
+import java8_Java8Parser from './java/java8/Java8Parser.js';
+import java9_Java9Lexer from './java/java9/Java9Lexer.js';
+import java9_Java9Parser from './java/java9/Java9Parser.js';
+
+// Python Runtimes (2)
+// Using standard Python3 grammars for foundational parsing stability
+import python3_Python3Lexer from './python/python3/Python3Lexer.js';
+import python3_Python3Parser from './python/python3/Python3Parser.js';
+import python2js_Python2Lexer from './python/python2-js/Python2Lexer.js';
+import python2js_Python2Parser from './python/python2-js/Python2Parser.js';
+
+// Relational Databases & Dialect Layers (5)
+import postgresql_PostgreSQLLexer from './sql/postgresql/PostgreSQLLexer.js';
+import postgresql_PostgreSQLParser from './sql/postgresql/PostgreSQLParser.js';
+import sqlite_SQLiteLexer from './sql/sqlite/SQLiteLexer.js';
+import sqlite_SQLiteParser from './sql/sqlite/SQLiteParser.js';
+import plsql_PlSqlLexer from './sql/plsql/PlSqlLexer.js';
+import plsql_PlSqlParser from './sql/plsql/PlSqlParser.js';
+import tsql_TSqlLexer from './sql/tsql/TSqlLexer.js';
+import tsql_TSqlParser from './sql/tsql/TSqlParser.js';
+import mysql_MySQLLexer from './sql/mysql/Oracle/MySQLLexer.js'; 
+import mysql_MySQLParser from './sql/mysql/Oracle/MySQLParser.js';
+
+// DevOps Infrastructure, Markup Languages & Structured Data (16)
+import cmake_CMakeLexer from './cmake/CMakeLexer.js';
+import cmake_CMakeParser from './cmake/CMakeParser.js';
+import protobuf3_Protobuf3Lexer from './protobuf3/Protobuf3Lexer.js';
+import protobuf3_Protobuf3Parser from './protobuf3/Protobuf3Parser.js';
+import toml_tomlLexer from './toml/tomlLexer.js';
+import toml_tomlParser from './toml/tomlParser.js';
+import xml_XMLLexer from './xml/XMLLexer.js';
+import xml_XMLParser from './xml/XMLParser.js';
+import csv_CSVLexer from './csv/CSVLexer.js';
+import csv_CSVParser from './csv/CSVParser.js';
+import properties_propertiesLexer from './properties/propertiesLexer.js';
+import properties_propertiesParser from './properties/propertiesParser.js';
+import terraform_terraformLexer from './terraform/terraformLexer.js';
+import terraform_terraformParser from './terraform/terraformParser.js';
+//import yaml_YamlLexer from './yaml/YamlLexer.js';
+//import yaml_YamlParser from './yaml/YamlParser.js';
+
 
 // =====================================================================
 // 3. CONSOLIDATE THE CORE REGISTRY OBJECT (MATCHES WORKER DYNAMIC RESOLUTION)
 // =====================================================================
-// languages-index-browser.js
-
 const AntlrRegistry = {
     antlr4: antlr4,
 
-    // Explicit Lowercase Flat Index Matrix (Zero nesting, completely normalized)
-    "c_lexer": c_CLexer,                  "c_parser": c_CParser,
-    "cpp_lexer": cpp_CPP14Lexer,          "cpp_parser": cpp_CPP14Parser,
-    "angelscript_lexer": angelscript_Lexer,"angelscript_parser": angelscript_Parser,
-    "lua_lexer": lua_LuaLexer,            "lua_parser": lua_LuaParser,
-    "wat_lexer": wat_WatLexer,            "wat_parser": wat_WatParser,
-    "asm_lexer": asmMASM_asmMASMLexer,    "asm_parser": asmMASM_asmMASMParser,
-    "quakemap_lexer": quakemap_quakemapLexer, "quakemap_parser": quakemap_quakemapParser,
-    "javascript_lexer": javascript_JavaScriptLexer, "javascript_parser": javascript_JavaScriptParser,
-    "typescript_lexer": typescript_TypeScriptLexer, "typescript_parser": typescript_TypeScriptParser,
-    "html_lexer": html_HTMLLexer,         "html_parser": html_HTMLParser,
-    "css3_lexer": css3_css3Lexer,         "css3_parser": css3_css3Parser,
-    "json_lexer": json_JSONLexer,         "json_parser": json_JSONParser
+    // Explicit Lowercase Flat Index Matrix
+    "c_lexer": c_CLexer,                                  "c_parser": c_CParser,
+    "cpp_lexer": cpp_CPP14Lexer,                          "cpp_parser": cpp_CPP14Parser,
+    "angelscript_lexer": angelscript_Lexer,              "angelscript_parser": angelscript_Parser,
+    "lua_lexer": lua_LuaLexer,                            "lua_parser": lua_LuaParser,
+    "wat_lexer": wat_WatLexer,                            "wat_parser": wat_WatParser,
+    "asm_lexer": asmMASM_asmMASMLexer,                    "asm_parser": asmMASM_asmMASMParser,
+    "asm6502_lexer": asm6502_asm6502Lexer,                "asm6502_parser": asm6502_asm6502Parser,
+    "asm8080_lexer": asm8080_asm8080Lexer,                "asm8080_parser": asm8080_asm8080Parser,
+    "asm8086_lexer": asm8086_asm8086Lexer,                "asm8086_parser": asm8086_asm8086Parser,
+    "asmz80_lexer": asmZ80_asmZ80Lexer,                    "asmz80_parser": asmZ80_asmZ80Parser,
+    "pdp7_lexer": pdp7_pdp7Lexer,                          "pdp7_parser": pdp7_pdp7Parser,
+    "quakemap_lexer": quakemap_quakemapLexer,              "quakemap_parser": quakemap_quakemapParser,
+    "javascript_lexer": javascript_JavaScriptLexer,        "javascript_parser": javascript_JavaScriptParser,
+    "typescript_lexer": typescript_TypeScriptLexer,        "typescript_parser": typescript_TypeScriptParser,
+    "html_lexer": html_HTMLLexer,                          "html_parser": html_HTMLParser,
+    "css3_lexer": css3_css3Lexer,                          "css3_parser": css3_css3Parser,
+    "json_lexer": json_JSONLexer,                          "json_parser": json_JSONParser,
+    "graphql_lexer": graphql_GraphQLLexer,                "graphql_parser": graphql_GraphQLParser,
+    "php_lexer": php_PhpLexer,                            "php_parser": php_PhpParser,
+    "csharp_lexer": csharp_CSharpLexer,                    "csharp_parser": csharp_CSharpParser,
+    "golang_lexer": golang_GoLexer,                        "golang_parser": golang_GoParser,
+    "rust_lexer": rust_RustLexer,                          "rust_parser": rust_RustParser,
+    //"java_lexer": java_JavaLexer,                          "java_parser": java_JavaParser,
+    "java8_lexer": java8_Java8Lexer,                        "java8_parser": java8_Java8Parser,
+    "java9_lexer": java9_Java9Lexer,                        "java9_parser": java9_Java9Parser,
+    "python3_lexer": python3_Python3Lexer,                "python3_parser": python3_Python3Parser,
+    "python2js_lexer": python2js_Python2Lexer,            "python2js_parser": python2js_Python2Parser,
+    "postgresql_lexer": postgresql_PostgreSQLLexer,        "postgresql_parser": postgresql_PostgreSQLParser,
+    "sqlite_lexer": sqlite_SQLiteLexer,                    "sqlite_parser": sqlite_SQLiteParser,
+    "plsql_lexer": plsql_PlSqlLexer,                      "plsql_parser": plsql_PlSqlParser,
+    "tsql_lexer": tsql_TSqlLexer,                          "tsql_parser": tsql_TSqlParser,
+    "mysql_lexer": mysql_MySQLLexer,                      "mysql_parser": mysql_MySQLParser,
+    "cmake_lexer": cmake_CMakeLexer,                      "cmake_parser": cmake_CMakeParser,
+    "protobuf3_lexer": protobuf3_Protobuf3Lexer,          "protobuf3_parser": protobuf3_Protobuf3Parser,
+    "toml_lexer": toml_tomlLexer,                          "toml_parser": toml_tomlParser,
+    "xml_lexer": xml_XMLLexer,                            "xml_parser": xml_XMLParser,
+    "csv_lexer": csv_CSVLexer,                            "csv_parser": csv_CSVParser,
+    "properties_lexer": properties_propertiesLexer,        "properties_parser": properties_propertiesParser,
+    "terraform_lexer": terraform_terraformLexer,          "terraform_parser": terraform_terraformParser,
+    //"yaml_lexer": yaml_YamlLexer,                          "yaml_parser": yaml_YamlParser
 };
 
-// Aliases for historical call-sites or specific grammar fallback overrides
+// Aliases for historical backwards-compatibility safety valves
 AntlrRegistry['cpp_clexer'] = c_CLexer;
 AntlrRegistry['cpp_cpp14lexer'] = cpp_CPP14Lexer;
-
-if (typeof self !== 'undefined') {
-    self.AntlrRegistry = AntlrRegistry;
-    self.AntlrLanguages = AntlrRegistry;
-}
-// Flatten out old flat string naming conventions for backwards compatibility in mapToRowBucket
 AntlrRegistry['c_CParser'] = c_CParser;
-AntlrRegistry['cpp_CLexer'] = c_CLexer; // Safe internal fallback alias
+AntlrRegistry['cpp_CLexer'] = c_CLexer;
 AntlrRegistry['cpp_CPP14Lexer'] = cpp_CPP14Lexer;
 AntlrRegistry['cpp_CPP14Parser'] = cpp_CPP14Parser;
 
@@ -97,19 +186,46 @@ export {
     c_CLexer, c_CParser,
     cpp_CPP14Lexer, cpp_CPP14Parser,
     angelscript_Lexer as angelscript_angelscriptLexer, angelscript_Parser as angelscript_angelscriptParser,
-    lua_LuaLexer as lua_LuaLexer, lua_LuaParser as lua_LuaParser,
-    wat_WatLexer as wat_WatLexer, wat_WatParser as wat_WatParser,
-    asmMASM_asmMASMLexer as asmMASM_asmMASMLexer, asmMASM_asmMASMParser as asmMASM_asmMASMParser,
-    quakemap_quakemapLexer as quakemap_quakemapLexer, quakemap_quakemapParser as quakemap_quakemapParser,
-    javascript_JavaScriptLexer as javascript_JavaScriptLexer, javascript_JavaScriptParser as javascript_JavaScriptParser,
-    typescript_TypeScriptLexer as typescript_TypeScriptLexer, typescript_TypeScriptParser as typescript_TypeScriptParser,
-    html_HTMLLexer as html_HTMLLexer, html_HTMLParser as html_HTMLParser,
-    css3_css3Lexer as css3_css3Lexer, css3_css3Parser as css3_css3Parser,
-    json_JSONLexer as json_JSONLexer, json_JSONParser as json_JSONParser
+    lua_LuaLexer, lua_LuaParser,
+    wat_WatLexer, wat_WatParser,
+    asmMASM_asmMASMLexer, asmMASM_asmMASMParser,
+    asm6502_asm6502Lexer, asm6502_asm6502Parser,
+    asm8080_asm8080Lexer, asm8080_asm8080Parser,
+    asm8086_asm8086Lexer, asm8086_asm8086Parser,
+    asmZ80_asmZ80Lexer, asmZ80_asmZ80Parser,
+    pdp7_pdp7Lexer, pdp7_pdp7Parser,
+    quakemap_quakemapLexer, quakemap_quakemapParser,
+    javascript_JavaScriptLexer, javascript_JavaScriptParser,
+    typescript_TypeScriptLexer, typescript_TypeScriptParser,
+    html_HTMLLexer, html_HTMLParser,
+    css3_css3Lexer, css3_css3Parser,
+    json_JSONLexer, json_JSONParser,
+    graphql_GraphQLLexer, graphql_GraphQLParser,
+    php_PhpLexer, php_PhpParser,
+    csharp_CSharpLexer, csharp_CSharpParser,
+    golang_GoLexer, golang_GoParser,
+    rust_RustLexer, rust_RustParser,
+    //java_JavaLexer, java_JavaParser,
+    java8_Java8Lexer, java8_Java8Parser,
+    java9_Java9Lexer, java9_Java9Parser,
+    python3_Python3Lexer, python3_Python3Parser,
+    python2js_Python2Lexer, python2js_Python2Parser,
+    postgresql_PostgreSQLLexer, postgresql_PostgreSQLParser,
+    sqlite_SQLiteLexer, sqlite_SQLiteParser,
+    plsql_PlSqlLexer, plsql_PlSqlParser,
+    tsql_TSqlLexer, tsql_TSqlParser,
+    mysql_MySQLLexer, mysql_MySQLParser,
+    cmake_CMakeLexer, cmake_CMakeParser,
+    protobuf3_Protobuf3Lexer, protobuf3_Protobuf3Parser,
+    toml_tomlLexer, toml_tomlParser,
+    xml_XMLLexer, xml_XMLParser,
+    csv_CSVLexer, csv_CSVParser,
+    properties_propertiesLexer, properties_propertiesParser,
+    terraform_terraformLexer, terraform_terraformParser,
+    //yaml_YamlLexer, yaml_YamlParser
 };
 
 export default AntlrRegistry;
-
 
 // import LangModule1 from './angelscript/angelscriptLexer.js';
 // import LangModule2 from './angelscript/angelscriptListener.js';
