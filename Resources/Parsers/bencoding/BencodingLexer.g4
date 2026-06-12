@@ -12,7 +12,7 @@ INT_START: 'i';
 
 INTEGER: '-'? [0-9]+;
 
-STRING_START: [0-9]+ ':' {setStringLength();} -> skip, pushMode(StringMode);
+STRING_START: [0-9]+ ':' {setStringLength();} -> channel(HIDDEN), pushMode(StringMode);
 
 LIST_START: 'l';
 

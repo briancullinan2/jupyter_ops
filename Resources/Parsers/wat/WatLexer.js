@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/wat/WatLexer.g4 by ANTLR 4.13.2
+// Generated from ./wat/WatLexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -561,7 +561,7 @@ const serializedATN = [4,0,76,1643,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,
 1626,1,0,0,0,1641,1631,1,0,0,0,1641,1636,1,0,0,0,1642,210,1,0,0,0,45,0,408,
 419,513,665,769,1040,1375,1386,1390,1398,1403,1408,1413,1429,1439,1444,1447,
 1452,1454,1458,1463,1471,1474,1482,1484,1488,1493,1499,1505,1516,1532,1536,
-1538,1548,1550,1559,1566,1570,1580,1587,1596,1608,1612,1641,1,6,0,0];
+1538,1548,1550,1559,1566,1570,1580,1587,1596,1608,1612,1641,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -713,12 +713,3 @@ WatLexer.COMMENT = 76;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

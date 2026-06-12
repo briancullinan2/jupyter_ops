@@ -468,7 +468,7 @@ ERE
     ;
 
 ESC_NEWLINE
-    : '\\' NEWLINE -> skip
+    : '\\' NEWLINE -> channel(HIDDEN)
     ;
 
 NEWLINE
@@ -483,7 +483,7 @@ NUMBER
     ;
 
 SPACE
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;
 
 STRING

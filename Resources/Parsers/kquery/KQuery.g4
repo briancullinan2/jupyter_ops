@@ -486,19 +486,19 @@ FP
     ;
 
 Whitespace
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;
 
 Newline
-    : ('\r' '\n'? | '\n') -> skip
+    : ('\r' '\n'? | '\n') -> channel(HIDDEN)
     ;
 
 BlockComment
-    : '#' .*? '#' -> skip
+    : '#' .*? '#' -> channel(HIDDEN)
     ;
 
 LineComment
-    : '#' ~[\r\n]* -> skip
+    : '#' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 LeftParen

@@ -108,6 +108,6 @@ fragment BRACE_ENCLOSED_SAFECODEPOINT: ~ [\\\u0000-\u001F];
 
 // Whitespace and Comment
 
-WS: [ \t\r\n\u000C]+ -> skip;
+WS: [ \t\r\n\u000C]+ -> channel(HIDDEN);
 
-LINE_COMMENT: '%' ~[\r\n]* -> skip;
+LINE_COMMENT: '%' ~[\r\n]* -> channel(HIDDEN);

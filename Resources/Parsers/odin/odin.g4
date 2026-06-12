@@ -765,6 +765,6 @@ DOLLAR : '$';
 
 // Whitespace and comments
 SPACE         : [ \t\r\n]+                    -> channel(HIDDEN);
-LINE_COMMENT  : '//' ~[\r\n]*                 -> skip;
-BUILD_TAG     : '#+' ~[\r\n]*                 -> skip;
-BLOCK_COMMENT : '/*' (BLOCK_COMMENT | .)*? '*/' -> skip;  // supports nesting
+LINE_COMMENT  : '//' ~[\r\n]*                 -> channel(HIDDEN);
+BUILD_TAG     : '#+' ~[\r\n]*                 -> channel(HIDDEN);
+BLOCK_COMMENT : '/*' (BLOCK_COMMENT | .)*? '*/' -> channel(HIDDEN);  // supports nesting

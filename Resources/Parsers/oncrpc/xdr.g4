@@ -91,7 +91,7 @@ xdrSpecification
 // lexer rules
 
 COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 OCTAL
@@ -111,5 +111,5 @@ IDENTIFIER
     ;
 
 WS
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;

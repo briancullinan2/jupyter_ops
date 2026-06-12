@@ -246,11 +246,11 @@ WS
     ;
 
 BlockComment
-    : '/*' (BlockComment | .)*? '*/' -> skip
+    : '/*' (BlockComment | .)*? '*/' -> channel(HIDDEN)
     ;
 
 LineComment
-    : '//' ~[\r\n]* -> skip
+    : '//' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 // -----------------------------------------------------------------------

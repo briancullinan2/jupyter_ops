@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cpp/CPP14Parser.g4 by ANTLR 4.13.2
+// Generated from ./cpp/CPP14Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CPP14ParserListener from './CPP14ParserListener.js';
@@ -21031,12 +21031,3 @@ CPP14Parser.TypeIdListContext = TypeIdListContext;
 CPP14Parser.NoExceptSpecificationContext = NoExceptSpecificationContext; 
 CPP14Parser.TheOperatorContext = TheOperatorContext; 
 CPP14Parser.LiteralContext = LiteralContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

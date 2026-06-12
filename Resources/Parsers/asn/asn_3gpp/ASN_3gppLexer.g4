@@ -470,7 +470,7 @@ NUMBER
     ;
 
 WS
-    : (' ' | '\r' | '\t' | '\u000C' | '\n') -> skip
+    : (' ' | '\r' | '\t' | '\u000C' | '\n') -> channel(HIDDEN)
     ;
 
 fragment Exponent
@@ -478,7 +478,7 @@ fragment Exponent
     ;
 
 LINE_COMMENT
-    : {this.IsColumnZero()}? (' ' | '\t')*? '--' ~('\n' | '\r')* '\r'? '\n' -> skip
+    : {this.IsColumnZero()}? (' ' | '\t')*? '--' ~('\n' | '\r')* '\r'? '\n' -> channel(HIDDEN)
     ;
 
 BSTRING

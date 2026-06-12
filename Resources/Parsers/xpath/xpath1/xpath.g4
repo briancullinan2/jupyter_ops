@@ -333,7 +333,7 @@ Literal
     ;
 
 Whitespace
-    : (' ' | '\t' | '\n' | '\r')+ -> skip
+    : (' ' | '\t' | '\n' | '\r')+ -> channel(HIDDEN)
     ;
 
 NCName

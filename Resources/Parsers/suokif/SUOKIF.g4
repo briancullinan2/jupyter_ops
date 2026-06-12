@@ -153,11 +153,11 @@ fragment EXPONENT
     ;
 
 WHITE
-    : [ \t\n\r\u000B] -> skip
+    : [ \t\n\r\u000B] -> channel(HIDDEN)
     ;
 
 COMMENT
-    : ';' ~ [\r\n]* -> skip
+    : ';' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 LPAREN

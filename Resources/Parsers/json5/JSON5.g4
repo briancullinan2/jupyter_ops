@@ -51,11 +51,11 @@ number
 // Lexer
 
 SINGLE_LINE_COMMENT
-    : '//' .*? (NEWLINE | EOF) -> skip
+    : '//' .*? (NEWLINE | EOF) -> channel(HIDDEN)
     ;
 
 MULTI_LINE_COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 LITERAL
@@ -149,5 +149,5 @@ fragment NEWLINE
     ;
 
 WS
-    : [ \t\n\r\u00A0\uFEFF\u2003]+ -> skip
+    : [ \t\n\r\u00A0\uFEFF\u2003]+ -> channel(HIDDEN)
     ;

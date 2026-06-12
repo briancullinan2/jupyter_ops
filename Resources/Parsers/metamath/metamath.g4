@@ -162,9 +162,9 @@ COMPRESSEDPROOFBLOCK
     ;
 
 BLOCK_COMMENT
-    : '$(' .*? '$)' -> skip
+    : '$(' .*? '$)' -> channel(HIDDEN)
     ;
 
 WS
-    : [ \r\n\t\f]+ -> skip
+    : [ \r\n\t\f]+ -> channel(HIDDEN)
     ;

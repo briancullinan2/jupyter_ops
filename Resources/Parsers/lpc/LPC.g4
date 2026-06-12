@@ -247,15 +247,15 @@ Parameter
 
 /* Pre processing */
 ComplexDefine
-    : '#' Whitespace* 'define' (~[\\\r\n] | '\\\\' '\r'? '\n' | '\\' .)* -> skip
+    : '#' Whitespace* 'define' (~[\\\r\n] | '\\\\' '\r'? '\n' | '\\' .)* -> channel(HIDDEN)
     ;
 
 ComplexInclude
-    : '#' Whitespace* 'include' ~[\r\n]* -> skip
+    : '#' Whitespace* 'include' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 ComplexPreprocessor
-    : '#' ~[\r\n]* -> skip
+    : '#' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 Real
@@ -416,19 +416,19 @@ TimeExpression
     ;
 
 BlockComment
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 LineComment
-    : '//' ~[\r\n]* -> skip
+    : '//' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 Whitespace
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;
 
 Newline
-    : ('\r' '\n'? | '\n') -> skip
+    : ('\r' '\n'? | '\n') -> channel(HIDDEN)
     ;
 
 lpc_program

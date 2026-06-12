@@ -549,7 +549,7 @@ fragment Z
     ;
 
 COMMENT
-    : ';' ~[\r\n]* -> skip
+    : ';' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 SPACE
@@ -561,5 +561,5 @@ CR
     ;
 
 WS
-    : [\t] -> skip
+    : [\t] -> channel(HIDDEN)
     ;

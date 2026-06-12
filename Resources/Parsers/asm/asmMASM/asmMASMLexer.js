@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/asmMASM/asmMASM.g4 by ANTLR 4.13.2
+// Generated from ./asm/asmMASM/asmMASM.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -289,7 +289,7 @@ const serializedATN = [4,0,54,824,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
 6,51,0,0,814,104,1,0,0,0,815,817,7,33,0,0,816,815,1,0,0,0,817,818,1,0,0,
 0,818,816,1,0,0,0,818,819,1,0,0,0,819,106,1,0,0,0,820,821,7,34,0,0,821,822,
 1,0,0,0,822,823,6,53,0,0,823,108,1,0,0,0,12,0,239,639,662,771,777,783,786,
-792,801,810,818,1,6,0,0];
+792,801,810,818,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -395,12 +395,3 @@ asmMASMLexer.WS = 54;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

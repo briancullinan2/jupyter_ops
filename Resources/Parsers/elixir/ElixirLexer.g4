@@ -4,7 +4,7 @@
 
 lexer grammar ElixirLexer;
 
-COMMENT: '#' ~[\r\n]* -> skip;
+COMMENT: '#' ~[\r\n]* -> channel(HIDDEN);
 
 NL: '\r'? '\n' | '\r';
 

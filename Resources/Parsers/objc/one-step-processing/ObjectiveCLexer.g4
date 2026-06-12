@@ -335,7 +335,7 @@ DIRECTIVE_FLOAT             : (Dec+ '.' Dec* | '.' Dec+) -> channel(DIRECTIVE_CH
 DIRECTIVE_NEWLINE           : '\r'? '\n'                 -> channel(HIDDEN), mode(DEFAULT_MODE);
 DIRECTIVE_MULTI_COMMENT     : '/*' .*? '*/'              -> channel(COMMENTS_CHANNEL);
 DIRECTIVE_SINGLE_COMMENT    : '//' ~[\r\n]*              -> channel(COMMENTS_CHANNEL);
-DIRECTIVE_BACKSLASH_NEWLINE : '\\' '\r'? '\n'            -> skip;
+DIRECTIVE_BACKSLASH_NEWLINE : '\\' '\r'? '\n'            -> channel(HIDDEN);
 
 mode DEFINE;
 

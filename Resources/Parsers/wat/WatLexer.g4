@@ -194,9 +194,9 @@ OUTPUT                       : 'output';
 
 VAR: Name;
 
-SPACE: [ \t\r\n] -> skip;
+SPACE: [ \t\r\n] -> channel(HIDDEN);
 
-COMMENT: ( '(;' .*? ';)' | ';;' .*? '\n') -> skip;
+COMMENT: ( '(;' .*? ';)' | ';;' .*? '\n') -> channel(HIDDEN);
 
 fragment Symbol:
     '.'

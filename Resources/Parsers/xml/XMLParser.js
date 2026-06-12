@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/xml/XMLParser.g4 by ANTLR 4.13.2
+// Generated from ./xml/XMLParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import XMLParserListener from './XMLParserListener.js';
@@ -920,12 +920,3 @@ XMLParser.ReferenceContext = ReferenceContext;
 XMLParser.AttributeContext = AttributeContext; 
 XMLParser.ChardataContext = ChardataContext; 
 XMLParser.MiscContext = MiscContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

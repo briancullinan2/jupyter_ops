@@ -425,9 +425,9 @@ fragment DIGIT
     ;
 
 COMMENT
-    : '%' ~ [\r\n]* -> skip
+    : '%' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 WS
-    : [ \r\n\t]+ -> skip
+    : [ \r\n\t]+ -> channel(HIDDEN)
     ;

@@ -767,11 +767,11 @@ fragment Z
     ;
 
 HEADERLINE
-    : '&' ~ ('\n' | '\r')* ('\r\n' | '\r' | '\n' | EOF) -> skip
+    : '&' ~ ('\n' | '\r')* ('\r\n' | '\r' | '\n' | EOF) -> channel(HIDDEN)
     ;
 
 WS
-    : (' ' | '\t' | '\u000C') -> skip
+    : (' ' | '\t' | '\u000C') -> channel(HIDDEN)
     ;
 
 NEWLINE
@@ -779,7 +779,7 @@ NEWLINE
     ;
 
 LINE_COMMENT
-    : ';' ~ ('\n' | '\r')* -> skip
+    : ';' ~ ('\n' | '\r')* -> channel(HIDDEN)
     ;
 
 CHARLITERAL

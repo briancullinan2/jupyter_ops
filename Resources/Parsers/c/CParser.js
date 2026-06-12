@@ -4,7 +4,7 @@ import antlr4 from 'antlr4';
 import CParserListener from './CParserListener.js';
 import CParserBrowserBase from './CParserBrowserBase.js';
 
-const serializedATN = [4,1,146,1501,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,
+const serializedATN = [4,1,147,1501,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,
 7,4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
@@ -621,7 +621,7 @@ export default class CParser extends CParserBrowserBase {
                              "FloatingConstant", "DigitSequence", "CharacterConstant", 
                              "StringLiteral", "MultiLineMacro", "LineDirective", 
                              "Directive", "Whitespace", "Newline", "BlockComment", 
-                             "LineComment" ];
+                             "LineComment", "UNKNOWN" ];
     static ruleNames = [ "compilationUnit", "constant", "enumerationConstant", 
                          "predefinedConstant", "primaryExpression", "exprList", 
                          "genericSelection", "genericAssocList", "genericAssociation", 
@@ -6664,7 +6664,7 @@ export default class CParser extends CParserBrowserBase {
 	        this.state = 1478;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4294967295) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4261412863) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294967295) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 524287) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4294967295) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4261412863) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4294967295) !== 0) || ((((_la - 128)) & ~0x1f) === 0 && ((1 << (_la - 128)) & 1048575) !== 0)) {
 	            this.state = 1475;
 	            this.gnuSingleAttribute();
 	            this.state = 1480;
@@ -6876,6 +6876,7 @@ export default class CParser extends CParserBrowserBase {
 	        case 144:
 	        case 145:
 	        case 146:
+	        case 147:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1486;
 	            _la = this._input.LA(1);
@@ -7123,6 +7124,7 @@ CParser.Whitespace = 143;
 CParser.Newline = 144;
 CParser.BlockComment = 145;
 CParser.LineComment = 146;
+CParser.UNKNOWN = 147;
 
 CParser.RULE_compilationUnit = 0;
 CParser.RULE_constant = 1;

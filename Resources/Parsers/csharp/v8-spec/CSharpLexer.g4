@@ -204,7 +204,7 @@ SLASH    : '/' ;
 New_Line
     : ( New_Line_Character
       | '\u000D\u000A'    // carriage return, line feed
-      ) -> skip
+      ) -> channel(HIDDEN)
     ;
 
 // Source: §6.3.3 Comments
@@ -219,7 +219,7 @@ New_Line
 Comment
     : ( Single_Line_Comment
       | Delimited_Comment
-      ) -> skip
+      ) -> channel(HIDDEN)
     ;
 
 fragment Single_Line_Comment
@@ -268,7 +268,7 @@ Whitespace
       | '\u0009'  // horizontal tab
       | '\u000B'  // vertical tab
       | '\u000C'  // form feed
-      ) -> skip
+      ) -> channel(HIDDEN)
     ;
 
 // Source: §6.4.2 Unicode character escape sequences

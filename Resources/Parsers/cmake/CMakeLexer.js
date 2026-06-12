@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cmake/CMake.g4 by ANTLR 4.13.2
+// Generated from ./cmake/CMake.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -61,7 +61,7 @@ const serializedATN = [4,0,11,173,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
 0,0,162,163,1,0,0,0,163,164,1,0,0,0,164,165,6,14,0,0,165,30,1,0,0,0,166,
 168,7,9,0,0,167,166,1,0,0,0,168,169,1,0,0,0,169,167,1,0,0,0,169,170,1,0,
 0,0,170,171,1,0,0,0,171,172,6,15,0,0,172,32,1,0,0,0,23,0,41,46,48,53,64,
-73,75,83,86,100,104,120,127,134,141,144,148,151,157,160,162,169,1,6,0,0];
+73,75,83,86,100,104,120,127,134,141,144,148,151,157,160,162,169,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -105,12 +105,3 @@ CMakeLexer.Space = 11;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

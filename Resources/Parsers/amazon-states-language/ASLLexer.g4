@@ -207,4 +207,4 @@ NUMBER: '-'? INT ('.' [0-9]+)? EXP?;
 fragment EXP: [Ee] [+\-]? INT;
 
 // Whitespace.
-WS: [ \t\n\r]+ -> skip;
+WS: [ \t\n\r]+ -> channel(HIDDEN);

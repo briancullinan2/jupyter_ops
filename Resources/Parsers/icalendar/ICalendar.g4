@@ -2025,7 +2025,7 @@ k_yearly
 ////////////////////////////// lexer rules //////////////////////////////
 
 LINE_FOLD
-    : CRLF WSP -> skip
+    : CRLF WSP -> channel(HIDDEN)
     ;
 
 WSP

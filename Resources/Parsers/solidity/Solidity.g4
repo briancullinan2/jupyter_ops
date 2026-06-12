@@ -482,7 +482,7 @@ VersionLiteral
   : [0-9]+ '.' [0-9]+ ('.' [0-9]+)? ;
 
 WS
-  : [ \t\r\n\u000C]+ -> skip ;
+  : [ \t\r\n\u000C]+ -> channel(HIDDEN) ;
 
 COMMENT
   : '/*' .*? '*/' -> channel(HIDDEN) ;

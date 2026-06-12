@@ -50,11 +50,11 @@ MULTIPLY             : '*';
 PERCENT              : '%';
 HASH                 : '#';
 
-WS: (' ' | '\t' | '\u000C') -> skip;
+WS: (' ' | '\t' | '\u000C') -> channel(HIDDEN);
 
 NEWLINE: '\r'? '\n';
 
-LINE_COMMENT: '!' ~ ('\n' | '\r')* -> skip;
+LINE_COMMENT: '!' ~ ('\n' | '\r')* -> channel(HIDDEN);
 
 BOOLLITERAL: 'FALSE' | 'TRUE';
 

@@ -228,11 +228,11 @@ ClosePragmaBracket : '#-}';
 // read about
 // https://medium.com/swiftify/parsing-preprocessor-directives-in-objective-c-714a3dde570
 // directives are skip now
-// MultiLineMacro : '#' (~ [\n]*? '\\' '\r'? '\n')+ ~ [\n]+ -> skip;
-// Directive : '#' ~ [\n]* -> skip;
+// MultiLineMacro : '#' (~ [\n]*? '\\' '\r'? '\n')+ ~ [\n]+ -> channel(HIDDEN);
+// Directive : '#' ~ [\n]* -> channel(HIDDEN);
 
-COMMENT  : '--' (~[\r\n])*    -> skip;
-NCOMMENT : '{-' ~[#] .*? '-}' -> skip;
+COMMENT  : '--' (~[\r\n])*    -> channel(HIDDEN);
+NCOMMENT : '{-' ~[#] .*? '-}' -> channel(HIDDEN);
 
 OCURLY  : '{';
 CCURLY  : '}';

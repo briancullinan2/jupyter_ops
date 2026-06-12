@@ -158,9 +158,9 @@ ARROW
     ;
 
 COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t\r\n] -> skip
+    : [ \t\r\n] -> channel(HIDDEN)
     ;

@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/python/python3/Python3Parser.g4 by ANTLR 4.13.2
+// Generated from ./python/python3/Python3Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

@@ -590,7 +590,7 @@ STRING2
     ;
 
 COMMENT
-    : ';' ~ [\r\n]* -> skip
+    : ';' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 EOL
@@ -598,5 +598,5 @@ EOL
     ;
 
 WS
-    : [ \t] -> skip
+    : [ \t] -> channel(HIDDEN)
     ;

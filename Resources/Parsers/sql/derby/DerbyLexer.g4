@@ -358,7 +358,7 @@ XMLQUERY              : 'XMLQUERY';
 XMLSERIALIZE          : 'XMLSERIALIZE';
 YEAR                  : 'YEAR';
 
-WHITE_SPACE: [ \t\r\n]+ -> skip;
+WHITE_SPACE: [ \t\r\n]+ -> channel(HIDDEN);
 
 SQL_COMMENT  : '/*' (SQL_COMMENT | .)*? '*/' -> channel(HIDDEN);
 LINE_COMMENT : '--' ~[\r\n]*                 -> channel(HIDDEN);

@@ -88,7 +88,7 @@ fragment SIGN
     ;
 
 COMMENT
-    : '"c' ~ ["]* '"' ' '* EOL -> skip
+    : '"c' ~ ["]* '"' ' '* EOL -> channel(HIDDEN)
     ;
 
 EOL
@@ -96,5 +96,5 @@ EOL
     ;
 
 WS
-    : [ \t\r\n] -> skip
+    : [ \t\r\n] -> channel(HIDDEN)
     ;

@@ -78,7 +78,7 @@ DOLLAR           : '$';
 BANG             : '!';
 QUESTION         : '?';
 
-SKIP_: ( SPACES | COMMENT | LINE_JOINING | NEWLINE) -> skip;
+SKIP_: ( SPACES | COMMENT | LINE_JOINING | NEWLINE) -> channel(HIDDEN);
 
 fragment SPACES: [ \t]+;
 

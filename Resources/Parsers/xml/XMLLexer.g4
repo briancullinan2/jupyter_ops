@@ -40,7 +40,7 @@ CDATA   : '<![CDATA[' .*? ']]>';
 /** Scarf all DTD stuff, Entity Declarations like <!ENTITY ...>,
  *  and Notation Declarations <!NOTATION ...>
  */
-DTD       : '<!' .*? '>' -> skip;
+DTD       : '<!' .*? '>' -> channel(HIDDEN);
 EntityRef : '&' Name ';';
 CharRef   : '&#' DIGIT+ ';' | '&#x' HEXDIGIT+ ';';
 SEA_WS    : (' ' | '\t' | '\r'? '\n')+;
@@ -61,7 +61,7 @@ SLASH         : '/';
 EQUALS        : '=';
 STRING        : '"' ~[<"]* '"' | '\'' ~[<']* '\'';
 Name          : NameStartChar NameChar*;
-S             : [ \t\r\n] -> skip;
+S             : [ \t\r\n] -> channel(HIDDEN);
 
 fragment HEXDIGIT: [a-fA-F0-9];
 

@@ -1,8 +1,9 @@
 lexer grammar Q3ConfigLexer;
 
 // =====================================================================
-// STRUCTURAL KEYWORDS
+// 1. STRUCTURAL KEYWORDS & OPERATORS (Highest Priority)
 // =====================================================================
+
 ASSIGNMENT_KEYWORD
     : [sS][eE][tT][aA]
     | [sS][eE][tT][sS]
@@ -16,61 +17,62 @@ BIND_KEYWORD
     : [bB][iI][nN][dD]
     ;
 
+SEMICOLON : ';' ;
+
 // =====================================================================
-// STANDALONE CONSOLE COMMANDS
+// 2. STANDALONE CONSOLE COMMANDS (Prefix Sorted)
 // =====================================================================
 COMMAND_KEYWORD
     : [uU][nN][bB][iI][nN][dD][aA][lL][lL]
     | [uU][nN][bB][iI][nN][dD]
-    | [eE][xX][eE][cC]
-    | [vV][sS][tT][rR]
-    | [eE][cC][hH][oO]
-    | [sS][aA][yY] '_' [tT][eE][aA][mM]
-    | [sS][aA][yY]
-    | [tT][oO][gG][gG][lL][eE]
     | [vV][iI][dD] '_' [rR][eE][sS][tT][aA][rR][tT]
     | [sS][nN][dD] '_' [rR][eE][sS][tT][aA][rR][tT]
+    | [cC][vV][aA][rR] '_' [rR][eE][sS][tT][aA][rR][tT]
+    | [iI][nN] '_' [rR][eE][sS][tT][aA][rR][tT]
+    | [mM][aA][pP] '_' [rR][eE][sS][tT][aA][rR][tT]
+    | [nN][eE][tT] '_' [rR][eE][sS][tT][aA][rR][tT]
     | [cC][aA][lL][lL][tT][eE][aA][mM][vV][oO][tT][eE]
     | [cC][aA][lL][lL][vV][oO][tT][eE]
     | [cC][lL][iI][eE][nN][tT][kK][iI][cC][kK]
-    | [cC][vV][aA][rR] '_' [rR][eE][sS][tT][aA][rR][tT]
     | [cC][vV][aA][rR][lL][iI][sS][tT]
+    | [kK][iI][lL][lL][sS][eE][rR][vV][eE][rR]
+    | [sS][eE][cC][tT][oO][rR][lL][iI][sS][tT]
+    | [sS][eE][rR][vV][eE][rR][iI][nN][fF][oO]
+    | [sS][eE][rR][vV][eE][rR][sS][tT][aA][tT][uU][sS]
+    | [sS][tT][oO][pP][rR][eE][cC][oO][rR][dD]
+    | [sS][tT][oO][pP][dD][eE][mM][oO]
+    | [wW][rR][iI][tT][eE][cC][oO][nN][fF][iI][gG]
+    | [vV][oO][sS][aA][yY] '_' [tT][eE][aA][mM]
+    | [vV][sS][aA][yY] '_' [tT][eE][aA][mM]
+    | [sS][aA][yY] '_' [tT][eE][aA][mM]
     | [dD][eE][vV][mM][aA][pP]
     | [dD][iI][sS][cC][oO][nN][nN][eE][cC][tT]
+    | [nN][oO][cC][lL][iI][pP]
+    | [nN][oO][tT][aA][rR][gG][eE][tT]
+    | [rR][eE][cC][oO][nN][nN][eE][cC][tT]
+    | [eE][xX][eE][cC]
+    | [vV][sS][tT][rR]
+    | [eE][cC][hH][oO]
+    | [sS][aA][yY]
+    | [tT][oO][gG][gG][lL][eE]
     | [eE][rR][rR][oO][rR]
     | [gG][iI][vV][eE]
     | [gG][oO][dD]
     | [hH][eE][aA][rR][tT][bB][eE][aA][tT]
-    | [iI][nN] '_' [rR][eE][sS][tT][aA][rR][tT]
-    | [kK][iI][cC][kK]
-    | [kK][iI][lL][lL][sS][eE][rR][vV][eE][rR]
     | [kK][iI][lL][lL]
-    | [mM][aA][pP] '_' [rR][eE][sS][tT][aA][rR][tT]
     | [mM][aA][pP]
-    | [nN][eE][tT] '_' [rR][eE][sS][tT][aA][rR][tT]
-    | [nN][oO][cC][lL][iI][pP]
-    | [nN][oO][tT][aA][rR][gG][eE][tT]
     | [pP][iI][nN][gG]
     | [qQ][uU][iI][tT]
     | [rR][cC][oO][nN]
-    | [rR][eE][cC][oO][nN][nN][eE][cC][tT]
     | [rR][eE][cC][oO][rR][dD]
-    | [sS][eE][cC][tT][oO][rR][lL][iI][sS][tT]
-    | [sS][eE][rR][vV][eE][rR][iI][nN][fF][oO]
-    | [sS][eE][rR][vV][eE][rR][sS][tT][aA][tT][uU][sS]
     | [sS][tT][aA][tT][uU][sS]
-    | [sS][tT][oO][pP][rR][eE][cC][oO][rR][dD]
-    | [sS][tT][oO][pP][dD][eE][mM][oO]
-    | [vV][oO][sS][aA][yY] '_' [tT][eE][aA][mM]
     | [vV][oO][sS][aA][yY]
-    | [vV][sS][aA][yY] '_' [tT][eE][aA][mM]
     | [vV][sS][aA][yY]
     | [vV][tT][aA][uU][nN][tT]
-    | [wW][rR][iI][tT][eE][cC][oO][nN][fF][iI][gG]
     ;
 
 // =====================================================================
-// KNOWN ENGINE REGISTERED CVARS
+// 3. KNOWN ENGINE REGISTERED CVARS
 // =====================================================================
 KNOWN_CVAR
     : [sS][vV] '_' ([hH][oO][sS][tT][n2][aA][mM][eE]|[mM][aA][xX][cC][lL][iI][eE][n2][tT][sS]|[pP][rR][iI][vV][aA][tT][eE][cC][lL][iI][eE][n2][tT][sS]|[pP][uU][rR][eE]|[mM][aA][xX][rR][aA][tT][eE]|[cC][hH][eE][aA][tT][sS]|[fF][lL][oO][oO][dD][pP][rR][oO][tT][eE][cC][tT]|[fF][pP][sS]|[pP][aA][uU][sS][eE][dD]|[pP][rR][iI][vV][aA][tT][eE][pP][aA][sS][sS][wW][oO][rR][dD]|[tT][iI][mM][eE][oO][uU][tT]|[zZ][oO][mB][iI][eE][tT][iI][mM][eE])
@@ -88,8 +90,9 @@ KNOWN_CVAR
     ;
 
 // =====================================================================
-// VALUES & LITERAL EXPRESSIONS
+// 4. ATOM VALUES & FALLBACK IDENTIFIERS
 // =====================================================================
+
 NUMBER
     : '-'? [0-9]+ ('.' [0-9]+)?
     ;
@@ -98,19 +101,27 @@ STRING_LITERAL
     : '"' (~["\\\r\n] | '\\' .)* '"'
     ;
 
+// Safely positioned at the bottom of the value match stack to act as a fallback text literal string
 IDENTIFIER
     : [-a-zA-Z_0-9/.:+\u005B\u005D]+
     ;
 
-SEMICOLON : ';' ;
+// =====================================================================
+// 5. COMMENTS & HIDDEN CHANNEL WHITESPACE
+// =====================================================================
 
-// =====================================================================
-// DISCARDED & HIDDEN UTILITIES
-// =====================================================================
 COMMENT
-    : '//' ~[\r\n]* -> channel(HIDDEN)
+    : '//' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN)
+    ;
+
+LINE_COMMENT_SL
+    : '//' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN)
+    ;
+
+LINE_COMMENT_BS
+    : '\\\\' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;

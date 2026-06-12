@@ -68,7 +68,7 @@ NEWLINE : '\r'? '\n' ;
 mode DIRECTIVE_MODE;
 
 IDENTIFIER : [a-zA-Z_][a-zA-Z0-9_]* ;
-WS         : [ \t]+ -> skip ;
+WS         : [ \t]+ -> channel(HIDDEN) ;
 DIRECTIVE_END : '\r'? '\n' -> popMode;
 
 

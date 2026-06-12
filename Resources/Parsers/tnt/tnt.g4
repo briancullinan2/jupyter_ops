@@ -110,5 +110,5 @@ EXISTS
     ;
 
 WS
-    : [ \r\t\n] -> skip
+    : [ \r\t\n] -> channel(HIDDEN)
     ;

@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/csharp/CSharpParser.g4 by ANTLR 4.13.2
+// Generated from ./csharp/CSharpParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CSharpParserListener from './CSharpParserListener.js';

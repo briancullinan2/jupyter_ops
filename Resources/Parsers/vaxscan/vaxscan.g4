@@ -1282,15 +1282,15 @@ XOR
     ;
 
 WS
-    : [ \t\n\r\f]+ -> skip
+    : [ \t\n\r\f]+ -> channel(HIDDEN)
     ;
 
 TrailingComment
-    : '!' .*? '\n' -> skip
+    : '!' .*? '\n' -> channel(HIDDEN)
     ;
 
 InlineComment
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 CHARACTER_LITERAL

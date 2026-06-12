@@ -82,5 +82,5 @@ RPAREN
     ;
 
 WS
-    : . -> skip
+    : . -> channel(HIDDEN)
     ;

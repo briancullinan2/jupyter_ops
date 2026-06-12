@@ -296,13 +296,13 @@ NAMECHARSEQUENCE
 
 // A.2.2.1 White space
 WHITE
-    : [ \t\n\r\u000B] -> skip
+    : [ \t\n\r\u000B] -> channel(HIDDEN)
     ;
 
 BLOCKCOMMENT
-    : '/*' (BLOCKCOMMENT | .)*? '*/' -> skip // nesting allowed (but should it be?)
+    : '/*' (BLOCKCOMMENT | .)*? '*/' -> channel(HIDDEN) // nesting allowed (but should it be?)
     ;
 
 LineComment
-    : '//' ~[\u000A\u000D]* -> skip
+    : '//' ~[\u000A\u000D]* -> channel(HIDDEN)
     ;

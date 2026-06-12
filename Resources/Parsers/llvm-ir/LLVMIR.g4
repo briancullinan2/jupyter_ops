@@ -2419,7 +2419,7 @@ Comment
     ;
 
 WhiteSpace
-    : [ \t\n\r]+ -> skip
+    : [ \t\n\r]+ -> channel(HIDDEN)
     ;
 
 IntLit

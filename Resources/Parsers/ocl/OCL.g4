@@ -254,7 +254,7 @@ MULTILINE_COMMENT
     ;
 
 // Skip comments starting with '--'
-LINE_COMMENT: '--' ~[\r\n]* -> skip;
+LINE_COMMENT: '--' ~[\r\n]* -> channel(HIDDEN);
 
 fragment EscapeSequence
     : '\\' [btnfr"'\\]
@@ -275,7 +275,7 @@ fragment Digits
     ;
 
 NEWLINE
-    : [\r\n]+ -> skip
+    : [\r\n]+ -> channel(HIDDEN)
     ;
 
 INT
@@ -287,5 +287,5 @@ ID
     ; // match identifiers
 
 WS
-    : [ \t\n\r]+ -> skip
+    : [ \t\n\r]+ -> channel(HIDDEN)
     ;

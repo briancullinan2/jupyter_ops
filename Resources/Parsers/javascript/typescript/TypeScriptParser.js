@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/javascript/typescript/TypeScriptParser.g4 by ANTLR 4.13.2
+// Generated from ./javascript/typescript/TypeScriptParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import TypeScriptParserListener from './TypeScriptParserListener.js';
@@ -21733,12 +21733,3 @@ TypeScriptParser.IdentifierOrKeyWordContext = IdentifierOrKeyWordContext;
 TypeScriptParser.ReservedWordContext = ReservedWordContext; 
 TypeScriptParser.KeywordContext = KeywordContext; 
 TypeScriptParser.EosContext = EosContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

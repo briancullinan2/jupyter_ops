@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/sql/mysql/Oracle/MySQLParser.g4 by ANTLR 4.13.2
+// Generated from ./sql/mysql/Oracle/MySQLParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import MySQLParserListener from './MySQLParserListener.js';
@@ -92102,12 +92102,3 @@ MySQLParser.LValueKeywordContext = LValueKeywordContext;
 MySQLParser.IdentifierKeywordsAmbiguous4SystemVariablesContext = IdentifierKeywordsAmbiguous4SystemVariablesContext; 
 MySQLParser.RoleOrIdentifierKeywordContext = RoleOrIdentifierKeywordContext; 
 MySQLParser.RoleOrLabelKeywordContext = RoleOrLabelKeywordContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

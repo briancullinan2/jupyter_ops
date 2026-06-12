@@ -390,5 +390,5 @@ fragment Z
     ;
 
 WS
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;

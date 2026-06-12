@@ -76,7 +76,7 @@ array_table : '[' '[' key ']' ']' ;
  * Lexer Rules
  */
 
-WS : [ \t]+ -> skip ;
+WS : [ \t]+ -> channel(HIDDEN) ;
 NL : ('\r'? '\n')+ ;
 COMMENT : '#' (~[\n])* ;
 

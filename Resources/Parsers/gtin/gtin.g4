@@ -253,9 +253,9 @@ DIGIT_9
     ;
 
 HYPHEN
-    : '-' -> skip
+    : '-' -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;

@@ -223,5 +223,5 @@ fragment PRINTABLE_CHAR
     ;
 
 WHITESPACE
-    : (' ' | '\t' | '\r' | '\n' | '\u000C')+ -> skip
+    : (' ' | '\t' | '\r' | '\n' | '\u000C')+ -> channel(HIDDEN)
     ;

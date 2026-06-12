@@ -68,9 +68,9 @@ EOL
     ;
 
 COMMENT
-    : '#' ~ [\r\n]+ -> skip
+    : '#' ~ [\r\n]+ -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;

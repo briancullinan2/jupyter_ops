@@ -35,7 +35,7 @@ grammar SMTLIBv2;
 // Lexer Rules Start
 
 Comment
-    : Semicolon ~[\r\n]* -> skip
+    : Semicolon ~[\r\n]* -> channel(HIDDEN)
     ;
 
 ParOpen
@@ -1167,5 +1167,5 @@ general_response
 // Parser Rules End
 
 WS
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;

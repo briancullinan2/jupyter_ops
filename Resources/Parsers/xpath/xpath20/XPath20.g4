@@ -291,7 +291,7 @@ BracedURILiteral : 'Q' '{' [^{}]* '}' ;
 fragment FragEscapeQuot : '""' ; 
 fragment FragEscapeApos : '\'';
 // Error in spec: Comment isn't really a terminal, but an off-channel object.
-Comment : '(:' (Comment | CommentContents)*? ':)' -> skip ;
+Comment : '(:' (Comment | CommentContents)*? ':)' -> channel(HIDDEN) ;
 QName  : FragQName ;
 NCName : FragmentNCName ;
 // Error in spec: Char is not a terminal!
@@ -337,7 +337,7 @@ fragment FragChar : '\u0009' | '\u000a' | '\u000d'
  ;
 
 // https://github.com/antlr/grammars-v4/blob/17d3db3fd6a8fc319a12176e0bb735b066ec0616/xpath/xpath31/XPath31.g4#L389
-Whitespace :  ('\u000d' | '\u000a' | '\u0020' | '\u0009')+ -> skip ;
+Whitespace :  ('\u000d' | '\u000a' | '\u0020' | '\u0009')+ -> channel(HIDDEN) ;
 
 // Not per spec. Specified for testing.
 SEMI : ';' ;

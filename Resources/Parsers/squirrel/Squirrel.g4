@@ -582,10 +582,10 @@ FLOAT: (([0-9]+'.'[0-9]* | [0-9]*'.'[0-9]+)([eE][+-]?[0-9]+)? | [0-9]+([eE][+-]?
 
 STRING: ('@"' (~["] | '""')* '"' | '"' ( '\\' . | ~["\r\n] )* '"');
 
-SINGLE_LINE_COMMENT: ('//' | '#') ~[\r\n]* -> skip;
+SINGLE_LINE_COMMENT: ('//' | '#') ~[\r\n]* -> channel(HIDDEN);
 
-MULTI_LINE_COMMENT: '/*' .*? '*/' -> skip;
+MULTI_LINE_COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
 
 NL: [\r\n]+;
 
-WS: [ \t\f]+ -> skip;
+WS: [ \t\f]+ -> channel(HIDDEN);

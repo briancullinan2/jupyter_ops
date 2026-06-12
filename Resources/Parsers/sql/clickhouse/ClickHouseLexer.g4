@@ -360,8 +360,8 @@ UNDERSCORE: '_';
 
 // Comments and whitespace
 
-MULTI_LINE_COMMENT: '/*' .*? '*/' -> skip;
+MULTI_LINE_COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
 SINGLE_LINE_COMMENT:
-	'--' ~('\n' | '\r')* ('\n' | '\r' | EOF) -> skip;
+	'--' ~('\n' | '\r')* ('\n' | '\r' | EOF) -> channel(HIDDEN);
 WHITESPACE:
-	[ \u000B\u000C\t\r\n] -> skip; // '\n' can be part of multiline single query
+	[ \u000B\u000C\t\r\n] -> channel(HIDDEN); // '\n' can be part of multiline single query

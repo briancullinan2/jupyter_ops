@@ -171,9 +171,9 @@ MultiLineString:
     | 'r\'\'\'' (~'\'' | '\'' ~'\'' | '\'\'' ~'\'')* '\'\'\''
 ;
 IDENTIFIER          : IDENTIFIER_START IDENTIFIER_PART*;
-WHITESPACE          : ( '\t' | ' ' | NEWLINE)+              -> skip;
-SINGLE_LINE_COMMENT : '//' ~[\r\n]*                         -> skip;
-MULTI_LINE_COMMENT  : '/*' ( MULTI_LINE_COMMENT | .)*? '*/' -> skip;
+WHITESPACE          : ( '\t' | ' ' | NEWLINE)+              -> channel(HIDDEN);
+SINGLE_LINE_COMMENT : '//' ~[\r\n]*                         -> channel(HIDDEN);
+MULTI_LINE_COMMENT  : '/*' ( MULTI_LINE_COMMENT | .)*? '*/' -> channel(HIDDEN);
 fragment EXPONENT   : ( 'e' | 'E') ( '+' | '-')? DIGIT+;
 fragment HEX_DIGIT  : 'a' .. 'f' | 'A' .. 'F' | DIGIT;
 fragment StringDQ   : '"' StringContentDQ*? '"';

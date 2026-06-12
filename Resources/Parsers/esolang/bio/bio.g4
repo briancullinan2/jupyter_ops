@@ -67,10 +67,10 @@ block
    ;
 
 COMMENT
-   : '//' ~ [\r\n]+ -> skip
+   : '//' ~ [\r\n]+ -> channel(HIDDEN)
    ;
 
 WS
-   : [ \r\n] -> skip
+   : [ \r\n] -> channel(HIDDEN)
    ;
 

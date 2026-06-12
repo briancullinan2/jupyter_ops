@@ -211,7 +211,7 @@ ECHAR
     ;
 
 WS
-    : [\u0020\u0009\u000D\u000A] -> skip
+    : [\u0020\u0009\u000D\u000A] -> channel(HIDDEN)
     ;
 
 ANON

@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/pdp7/pdp7.g4 by ANTLR 4.13.2
+// Generated from ./asm/pdp7/pdp7.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import pdp7Listener from './pdp7Listener.js';
@@ -2100,12 +2100,3 @@ pdp7Parser.CommentContext = CommentContext;
 pdp7Parser.LabelContext = LabelContext; 
 pdp7Parser.VariableContext = VariableContext; 
 pdp7Parser.OpcodeContext = OpcodeContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

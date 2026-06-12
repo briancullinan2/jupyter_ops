@@ -614,7 +614,7 @@ Delim
     ;
 
 Semi
-    : (';' | (NL)+) -> skip
+    : (';' | (NL)+) -> channel(HIDDEN)
     ;
 
 NL
@@ -1367,17 +1367,17 @@ fragment UnicodeDigit // UnicodeClass_ND
 // Whitespace and comments
 //
 NEWLINE
-    : NL+ -> skip
+    : NL+ -> channel(HIDDEN)
     ;
 
 WS
-    : WhiteSpace+ -> skip
+    : WhiteSpace+ -> channel(HIDDEN)
     ;
 
 COMMENT
-    : '/*' (COMMENT | .)* '*/' -> skip
+    : '/*' (COMMENT | .)* '*/' -> channel(HIDDEN)
     ;
 
 LINE_COMMENT
-    : '//' (~[\r\n])* -> skip
+    : '//' (~[\r\n])* -> channel(HIDDEN)
     ;

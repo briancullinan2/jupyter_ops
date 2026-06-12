@@ -264,5 +264,5 @@ NL
 SEMICOLON: ';';
 
 WS
-    : [ \t\u000C]+ -> skip
+    : [ \t\u000C]+ -> channel(HIDDEN)
     ;

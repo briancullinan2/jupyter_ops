@@ -608,7 +608,7 @@ if (self._tokenStartColumn == 0 and self._openBRCount == 0
     ;
 
 COMMENT
-    : '#' ~[\r\n]* -> skip
+    : '#' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 OPEN_PAREN
@@ -636,5 +636,5 @@ CLOSE_BRACKET
     ;
 
 UNKNOWN
-    : . -> skip
+    : . -> channel(HIDDEN)
     ;

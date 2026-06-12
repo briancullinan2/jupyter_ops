@@ -2,7 +2,7 @@
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import Q3MapParserListener from './Q3MapParserListener.js';
-const serializedATN = [4,1,9,83,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
+const serializedATN = [4,1,12,83,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
 2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,1,0,5,0,26,8,
 0,10,0,12,0,29,9,0,1,0,1,0,1,1,1,1,5,1,35,8,1,10,1,12,1,38,9,1,1,1,1,1,1,
 2,1,2,3,2,44,8,2,1,3,1,3,1,3,1,4,1,4,4,4,51,8,4,11,4,12,4,52,1,4,1,4,1,5,
@@ -12,15 +12,15 @@ const serializedATN = [4,1,9,83,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
 0,10,56,1,0,0,0,12,66,1,0,0,0,14,72,1,0,0,0,16,74,1,0,0,0,18,76,1,0,0,0,
 20,78,1,0,0,0,22,80,1,0,0,0,24,26,3,2,1,0,25,24,1,0,0,0,26,29,1,0,0,0,27,
 25,1,0,0,0,27,28,1,0,0,0,28,30,1,0,0,0,29,27,1,0,0,0,30,31,5,0,0,1,31,1,
-1,0,0,0,32,36,5,4,0,0,33,35,3,4,2,0,34,33,1,0,0,0,35,38,1,0,0,0,36,34,1,
-0,0,0,36,37,1,0,0,0,37,39,1,0,0,0,38,36,1,0,0,0,39,40,5,5,0,0,40,3,1,0,0,
+1,0,0,0,32,36,5,5,0,0,33,35,3,4,2,0,34,33,1,0,0,0,35,38,1,0,0,0,36,34,1,
+0,0,0,36,37,1,0,0,0,37,39,1,0,0,0,38,36,1,0,0,0,39,40,5,6,0,0,40,3,1,0,0,
 0,41,44,3,6,3,0,42,44,3,8,4,0,43,41,1,0,0,0,43,42,1,0,0,0,44,5,1,0,0,0,45,
-46,5,2,0,0,46,47,5,2,0,0,47,7,1,0,0,0,48,50,5,4,0,0,49,51,3,10,5,0,50,49,
+46,5,2,0,0,46,47,5,2,0,0,47,7,1,0,0,0,48,50,5,5,0,0,49,51,3,10,5,0,50,49,
 1,0,0,0,51,52,1,0,0,0,52,50,1,0,0,0,52,53,1,0,0,0,53,54,1,0,0,0,54,55,5,
-5,0,0,55,9,1,0,0,0,56,57,3,12,6,0,57,58,3,12,6,0,58,59,3,12,6,0,59,60,5,
+6,0,0,55,9,1,0,0,0,56,57,3,12,6,0,57,58,3,12,6,0,58,59,3,12,6,0,59,60,5,
 3,0,0,60,61,3,14,7,0,61,62,3,16,8,0,62,63,3,18,9,0,63,64,3,20,10,0,64,65,
-3,22,11,0,65,11,1,0,0,0,66,67,5,6,0,0,67,68,5,1,0,0,68,69,5,1,0,0,69,70,
-5,1,0,0,70,71,5,7,0,0,71,13,1,0,0,0,72,73,5,1,0,0,73,15,1,0,0,0,74,75,5,
+3,22,11,0,65,11,1,0,0,0,66,67,5,7,0,0,67,68,5,1,0,0,68,69,5,1,0,0,69,70,
+5,1,0,0,70,71,5,8,0,0,71,13,1,0,0,0,72,73,5,1,0,0,73,15,1,0,0,0,74,75,5,
 1,0,0,75,17,1,0,0,0,76,77,5,1,0,0,77,19,1,0,0,0,78,79,5,1,0,0,79,21,1,0,
 0,0,80,81,5,1,0,0,81,23,1,0,0,0,4,27,36,43,52];
 
@@ -34,10 +34,11 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class Q3MapParser extends antlr4.Parser {
 
     static grammarFileName = "Q3MapParser.g4";
-    static literalNames = [ null, null, null, null, "'{'", "'}'", "'('", 
-                            "')'" ];
+    static literalNames = [ null, null, null, null, null, "'{'", "'}'", 
+                            "'('", "')'" ];
     static symbolicNames = [ null, "NUMBER", "STRING_LITERAL", "TEXTURE_NAME", 
-                             "LBRACE", "RBRACE", "LPAREN", "RPAREN", "COMMENT", 
+                             "IDENTIFIER", "LBRACE", "RBRACE", "LPAREN", 
+                             "RPAREN", "COMMENT", "LINE_COMMENT_SL", "LINE_COMMENT_BS", 
                              "WS" ];
     static ruleNames = [ "mapFile", "entityBlock", "entityContent", "epair", 
                          "brushBlock", "faceDefinition", "planeDef", "texShiftX", 
@@ -62,7 +63,7 @@ export default class Q3MapParser extends antlr4.Parser {
 	        this.state = 27;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===4) {
+	        while(_la===5) {
 	            this.state = 24;
 	            this.entityBlock();
 	            this.state = 29;
@@ -98,7 +99,7 @@ export default class Q3MapParser extends antlr4.Parser {
 	        this.state = 36;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===2 || _la===4) {
+	        while(_la===2 || _la===5) {
 	            this.state = 33;
 	            this.entityContent();
 	            this.state = 38;
@@ -135,7 +136,7 @@ export default class Q3MapParser extends antlr4.Parser {
 	            this.state = 41;
 	            this.epair();
 	            break;
-	        case 4:
+	        case 5:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 42;
 	            this.brushBlock();
@@ -201,7 +202,7 @@ export default class Q3MapParser extends antlr4.Parser {
 	            this.state = 52; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===6);
+	        } while(_la===7);
 	        this.state = 54;
 	        this.match(Q3MapParser.RBRACE);
 	    } catch (re) {
@@ -410,12 +411,15 @@ Q3MapParser.EOF = antlr4.Token.EOF;
 Q3MapParser.NUMBER = 1;
 Q3MapParser.STRING_LITERAL = 2;
 Q3MapParser.TEXTURE_NAME = 3;
-Q3MapParser.LBRACE = 4;
-Q3MapParser.RBRACE = 5;
-Q3MapParser.LPAREN = 6;
-Q3MapParser.RPAREN = 7;
-Q3MapParser.COMMENT = 8;
-Q3MapParser.WS = 9;
+Q3MapParser.IDENTIFIER = 4;
+Q3MapParser.LBRACE = 5;
+Q3MapParser.RBRACE = 6;
+Q3MapParser.LPAREN = 7;
+Q3MapParser.RPAREN = 8;
+Q3MapParser.COMMENT = 9;
+Q3MapParser.LINE_COMMENT_SL = 10;
+Q3MapParser.LINE_COMMENT_BS = 11;
+Q3MapParser.WS = 12;
 
 Q3MapParser.RULE_mapFile = 0;
 Q3MapParser.RULE_entityBlock = 1;

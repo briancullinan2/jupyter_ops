@@ -2,7 +2,7 @@
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import Q3SkinParserListener from './Q3SkinParserListener.js';
-const serializedATN = [4,1,7,30,2,0,7,0,2,1,7,1,1,0,5,0,6,8,0,10,0,12,0,
+const serializedATN = [4,1,9,30,2,0,7,0,2,1,7,1,1,0,5,0,6,8,0,10,0,12,0,
 9,9,0,1,0,1,0,1,1,1,1,1,1,3,1,16,8,1,1,1,4,1,19,8,1,11,1,12,1,20,1,1,4,1,
 24,8,1,11,1,12,1,25,3,1,28,8,1,1,1,0,0,2,0,2,0,0,32,0,7,1,0,0,0,2,27,1,0,
 0,0,4,6,3,2,1,0,5,4,1,0,0,0,6,9,1,0,0,0,7,5,1,0,0,0,7,8,1,0,0,0,8,10,1,0,
@@ -24,7 +24,8 @@ export default class Q3SkinParser extends antlr4.Parser {
     static grammarFileName = "Q3SkinParser.g4";
     static literalNames = [ null, "','" ];
     static symbolicNames = [ null, "COMMA", "NEWLINE", "PATH_CHAR", "SURFACE_ID", 
-                             "ASSET_PATH", "COMMENT", "WS" ];
+                             "ASSET_PATH", "COMMENT", "LINE_COMMENT_SL", 
+                             "LINE_COMMENT_BS", "WS" ];
     static ruleNames = [ "skinFile", "skinLine" ];
 
     constructor(input) {
@@ -156,7 +157,9 @@ Q3SkinParser.PATH_CHAR = 3;
 Q3SkinParser.SURFACE_ID = 4;
 Q3SkinParser.ASSET_PATH = 5;
 Q3SkinParser.COMMENT = 6;
-Q3SkinParser.WS = 7;
+Q3SkinParser.LINE_COMMENT_SL = 7;
+Q3SkinParser.LINE_COMMENT_BS = 8;
+Q3SkinParser.WS = 9;
 
 Q3SkinParser.RULE_skinFile = 0;
 Q3SkinParser.RULE_skinLine = 1;

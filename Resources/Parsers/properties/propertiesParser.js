@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/properties/PropertiesParser.g4 by ANTLR 4.13.2
+// Generated from ./properties/PropertiesParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import PropertiesParserListener from './PropertiesParserListener.js';
@@ -538,12 +538,3 @@ PropertiesParser.LineContext = LineContext;
 PropertiesParser.KeyContext = KeyContext; 
 PropertiesParser.EolContext = EolContext; 
 PropertiesParser.CommentContext = CommentContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

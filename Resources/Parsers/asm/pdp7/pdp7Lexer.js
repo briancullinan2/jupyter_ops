@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/pdp7/pdp7.g4 by ANTLR 4.13.2
+// Generated from ./asm/pdp7/pdp7.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -224,7 +224,7 @@ const serializedATN = [4,0,111,698,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,
 218,1,0,0,0,688,686,1,0,0,0,689,691,7,7,0,0,690,689,1,0,0,0,691,692,1,0,
 0,0,692,690,1,0,0,0,692,693,1,0,0,0,693,220,1,0,0,0,694,695,7,8,0,0,695,
 696,1,0,0,0,696,697,6,110,0,0,697,222,1,0,0,0,10,0,634,642,649,656,662,670,
-676,686,692,1,6,0,0];
+676,686,692,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -411,12 +411,3 @@ pdp7Lexer.WS = 111;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

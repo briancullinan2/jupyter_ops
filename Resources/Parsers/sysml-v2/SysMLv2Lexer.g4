@@ -913,10 +913,10 @@ REGULAR_COMMENT
     ;
 
 SINGLE_LINE_NOTE
-    : '//' ~[\r\n]* -> skip
+    : '//' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 // Whitespace
 WS
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;

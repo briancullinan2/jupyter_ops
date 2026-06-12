@@ -84,7 +84,7 @@ COLOR            : '#' HEXBYTE HEXBYTE HEXBYTE HEXBYTE?;
 
 START_COMMENT: '#' -> pushMode(CMT), skip;
 
-WS: [ \t]+ -> skip;
+WS: [ \t]+ -> channel(HIDDEN);
 
 mode CMT;
 

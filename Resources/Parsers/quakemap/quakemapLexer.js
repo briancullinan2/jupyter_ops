@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/quakemap/quakemap.g4 by ANTLR 4.13.2
+// Generated from ./quakemap/quakemap.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -23,7 +23,7 @@ const serializedATN = [4,0,8,65,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,
 3,0,0,51,48,1,0,0,0,51,50,1,0,0,0,52,55,1,0,0,0,53,51,1,0,0,0,53,54,1,0,
 0,0,54,56,1,0,0,0,55,53,1,0,0,0,56,57,5,34,0,0,57,14,1,0,0,0,58,60,7,4,0,
 0,59,58,1,0,0,0,60,61,1,0,0,0,61,59,1,0,0,0,61,62,1,0,0,0,62,63,1,0,0,0,
-63,64,6,7,0,0,64,16,1,0,0,0,9,0,29,32,37,43,45,51,53,61,1,6,0,0];
+63,64,6,7,0,0,64,16,1,0,0,0,9,0,29,32,37,43,45,51,53,61,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -59,12 +59,3 @@ quakemapLexer.WS = 8;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

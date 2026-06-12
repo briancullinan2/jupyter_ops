@@ -814,7 +814,7 @@ fragment IdentifierPart
     ;
 
 WS
-    : [ \t\r\n\u000C]+ -> skip
+    : [ \t\r\n\u000C]+ -> channel(HIDDEN)
     ;
 
 COMMENT
@@ -853,7 +853,7 @@ AssemblyBlockComma
     ;
 
 AssemblyBlockWS
-    : [ \t\r\n\u000C]+ -> skip
+    : [ \t\r\n\u000C]+ -> channel(HIDDEN)
     ;
 
 AssemblyBlockCOMMENT
@@ -1085,7 +1085,7 @@ YulHexStringLiteral
     ;
 
 YulWS
-    : [ \t\r\n\u000C]+ -> skip
+    : [ \t\r\n\u000C]+ -> channel(HIDDEN)
     ;
 
 YulCOMMENT
@@ -1113,7 +1113,7 @@ PragmaSemicolon
     ;
 
 PragmaWS
-    : [ \t\r\n\u000C]+ -> skip
+    : [ \t\r\n\u000C]+ -> channel(HIDDEN)
     ;
 
 PragmaCOMMENT

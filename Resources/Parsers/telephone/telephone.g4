@@ -77,5 +77,5 @@ DIGIT
     ;
 
 WS
-    : [ \r\n]+ -> skip
+    : [ \r\n]+ -> channel(HIDDEN)
     ;

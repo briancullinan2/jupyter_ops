@@ -77,12 +77,12 @@ export default class Q3ShaderParserListener extends antlr4.tree.ParseTreeListene
 	}
 
 
-	// Enter a parse tree produced by Q3ShaderParser#tcModStatement.
-	enterTcModStatement(ctx) {
+	// Enter a parse tree produced by Q3ShaderParser#generalPaletteStatement.
+	enterGeneralPaletteStatement(ctx) {
 	}
 
-	// Exit a parse tree produced by Q3ShaderParser#tcModStatement.
-	exitTcModStatement(ctx) {
+	// Exit a parse tree produced by Q3ShaderParser#generalPaletteStatement.
+	exitGeneralPaletteStatement(ctx) {
 	}
 
 
@@ -131,6 +131,15 @@ export default class Q3ShaderParserListener extends antlr4.tree.ParseTreeListene
 	}
 
 
+	// Enter a parse tree produced by Q3ShaderParser#conditionExpression.
+	enterConditionExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Q3ShaderParser#conditionExpression.
+	exitConditionExpression(ctx) {
+	}
+
+
 	// Enter a parse tree produced by Q3ShaderParser#conditionalExpression.
 	enterConditionalExpression(ctx) {
 	}
@@ -146,6 +155,15 @@ export default class Q3ShaderParserListener extends antlr4.tree.ParseTreeListene
 
 	// Exit a parse tree produced by Q3ShaderParser#expressionTerm.
 	exitExpressionTerm(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Q3ShaderParser#executionBlock.
+	enterExecutionBlock(ctx) {
+	}
+
+	// Exit a parse tree produced by Q3ShaderParser#executionBlock.
+	exitExecutionBlock(ctx) {
 	}
 
 
@@ -173,6 +191,15 @@ export default class Q3ShaderParserListener extends antlr4.tree.ParseTreeListene
 
 	// Exit a parse tree produced by Q3ShaderParser#stageStatement.
 	exitStageStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Q3ShaderParser#tcModStatement.
+	enterTcModStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Q3ShaderParser#tcModStatement.
+	exitTcModStatement(ctx) {
 	}
 
 

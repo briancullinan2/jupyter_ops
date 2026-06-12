@@ -43,7 +43,7 @@ AFTER_COLON_TEXT
     ;
 
 NEWLINE: '\r'? '\n';
-WS  : [ \t]+ -> skip ;
+WS  : [ \t]+ -> channel(HIDDEN) ;
 COMMENT : ('/' '/' ~[\r\n]* | '/*' .*? '*/' | '\'' ~[\r\n]* ) -> channel(HIDDEN);
 
 FLOAT_LITERAL: [0-9]+ '.' [0-9]+ ;

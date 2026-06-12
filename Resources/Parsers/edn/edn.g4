@@ -213,9 +213,9 @@ fragment Special
     ;
 
 Comment
-    : ';' .*? '\r'? '\n' -> skip
+    : ';' .*? '\r'? '\n' -> channel(HIDDEN)
     ;
 
 Whitespace
-    : [ ,\r\n\t\u000C] -> skip
+    : [ ,\r\n\t\u000C] -> channel(HIDDEN)
     ;

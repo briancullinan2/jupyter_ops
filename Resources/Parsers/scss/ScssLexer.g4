@@ -48,10 +48,10 @@ fragment Nonascii : ~[\u0000-\u007f];
 fragment Name     : Nmchar+;
 fragment Url      : ( [!#$%&*-~] | Nonascii | Escape)*;
 
-Comment          : (LineComment | MultiLineComment) -> skip;
+Comment          : (LineComment | MultiLineComment) -> channel(HIDDEN);
 MultiLineComment : '/*' ~'*'* '*'+ ( ~[/*] ~'*'* '*'+)* '/';
 LineComment      : '//' ~([\n\r\u2028\u2029])*;
-Space            : [ \t\r\n\f]+ -> skip;
+Space            : [ \t\r\n\f]+ -> channel(HIDDEN);
 
 Uri    : 'url(' Whitespace (Url | String_) (Space (Url | String_))* Whitespace ')';
 Format : 'format(' Whitespace String_ Whitespace ')';

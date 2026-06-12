@@ -151,7 +151,7 @@ MOD          : '%';
 NOT_OP       : '~';
 DOLLAR       : '$';
 
-SKIP_: (SPACE | COMMENT | LINE_JOINING) -> skip;
+SKIP_: (SPACE | COMMENT | LINE_JOINING) -> channel(HIDDEN);
 
 fragment SPACE: [ \t]+;
 

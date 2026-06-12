@@ -1292,10 +1292,10 @@ LE_SIGN : '<=' ;
 GT_SIGN : '>' ;
 GE_SIGN : '>=' ;
 
-SINGLE_LINE_COMMENT : '--' ~('\r' | '\n')* NEWLINE_EOF -> skip ;
-MULTI_LINE_COMMENT :  '/*' .*? '*/' -> skip ;
+SINGLE_LINE_COMMENT : '--' ~('\r' | '\n')* NEWLINE_EOF -> channel(HIDDEN) ;
+MULTI_LINE_COMMENT :  '/*' .*? '*/' -> channel(HIDDEN) ;
 
-WS : [ \t\r\n\ufeff]+ -> skip ;
+WS : [ \t\r\n\ufeff]+ -> channel(HIDDEN) ;
 
 
 fragment NEWLINE_EOF : NEWLINE | EOF ;

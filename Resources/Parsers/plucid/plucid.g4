@@ -359,5 +359,5 @@ LETTER
     ;
 
 WS
-    : [ \r\n\t]+ -> skip
+    : [ \r\n\t]+ -> channel(HIDDEN)
     ;

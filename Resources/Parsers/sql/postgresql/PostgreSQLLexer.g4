@@ -1439,7 +1439,7 @@ AfterEscapeStringConstantMode_Newline:
 ;
 
 AfterEscapeStringConstantMode_NotContinued:
-     -> skip, popMode
+     -> channel(HIDDEN), popMode
 ;
 
 mode AfterEscapeStringConstantWithNewlineMode;
@@ -1454,7 +1454,7 @@ AfterEscapeStringConstantWithNewlineMode_Continued:
 ;
 
 AfterEscapeStringConstantWithNewlineMode_NotContinued:
-     -> skip, popMode
+     -> channel(HIDDEN), popMode
 ;
 
 mode DollarQuotedStringMode;

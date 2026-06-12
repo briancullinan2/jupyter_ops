@@ -12,9 +12,9 @@ fragment LEXICAL_UNIT     : LEXICAL_ELEMENTS;
 fragment LEXICAL_ELEMENTS : LEXICAL_ELEMENT LEXICAL_ELEMENTS?;
 fragment LEXICAL_ELEMENT  : WHITESPACE | TOKEN COMMENT;
 
-WHITESPACE                         : ( [\p{White_Space}] | [\u0009\u000B\u000C] | [\u000D][\u000A] NEW_LINE_CHAR) -> skip;
-NEW_LINE_CHAR                      : [\u000D\u000A\u0085\u2028\u2029]                                             -> skip;
-COMMENT                            : (SINGLE_LINE_COMMENT | DELIMITED_COMMENT)                                    -> skip;
+WHITESPACE                         : ( [\p{White_Space}] | [\u0009\u000B\u000C] | [\u000D][\u000A] NEW_LINE_CHAR) -> channel(HIDDEN);
+NEW_LINE_CHAR                      : [\u000D\u000A\u0085\u2028\u2029]                                             -> channel(HIDDEN);
+COMMENT                            : (SINGLE_LINE_COMMENT | DELIMITED_COMMENT)                                    -> channel(HIDDEN);
 fragment SINGLE_LINE_COMMENT       : '//' SINGLE_LINE_COMMENT_CHARS?;
 fragment SINGLE_LINE_COMMENT_CHARS : SINGLE_LINE_COMMENT_CHAR SINGLE_LINE_COMMENT_CHARS?;
 fragment SINGLE_LINE_COMMENT_CHAR  : ~'\n';

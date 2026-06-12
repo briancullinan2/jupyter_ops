@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/sql/sqlite/SQLiteParser.g4 by ANTLR 4.13.2
+// Generated from ./sql/sqlite/SQLiteParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import SQLiteParserListener from './SQLiteParserListener.js';
@@ -17573,12 +17573,3 @@ SQLiteParser.Any_name_excluding_raiseContext = Any_name_excluding_raiseContext;
 SQLiteParser.Any_name_excluding_joinsContext = Any_name_excluding_joinsContext; 
 SQLiteParser.Any_name_excluding_stringContext = Any_name_excluding_stringContext; 
 SQLiteParser.Any_nameContext = Any_nameContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

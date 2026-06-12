@@ -87,10 +87,10 @@ INT
    ;
 
 WS
-   : [ \t\r\n] -> skip
+   : [ \t\r\n] -> channel(HIDDEN)
    ;
 
 COMMENT
-   : '//' ([ \t]+) ~ [\r\n]* -> skip
+   : '//' ([ \t]+) ~ [\r\n]* -> channel(HIDDEN)
    ;
 

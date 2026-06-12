@@ -500,7 +500,7 @@ fragment DIGIT
     ;
 
 COMMENT
-    : '#' NON_NL* (NL | EOF) -> skip
+    : '#' NON_NL* (NL | EOF) -> channel(HIDDEN)
     ;
 
 // Names of identifiers specified in this file format and other related formats.
@@ -516,7 +516,7 @@ FILENAME
     ;
 
 WS
-    : (' ' | '\t' | '\\' NL)+ -> skip
+    : (' ' | '\t' | '\\' NL)+ -> channel(HIDDEN)
     ;
 
 NL

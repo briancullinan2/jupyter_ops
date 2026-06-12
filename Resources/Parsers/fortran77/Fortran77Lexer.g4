@@ -667,9 +667,9 @@ EOL
    ;
 
 LINECONT
-   : ((EOL '     $') | (EOL '     +')) -> skip
+   : ((EOL '     $') | (EOL '     +')) -> channel(HIDDEN)
    ;
    
 WS
-   : [\t ] + -> skip
+   : [\t ] + -> channel(HIDDEN)
    ;

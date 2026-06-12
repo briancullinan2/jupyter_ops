@@ -682,15 +682,15 @@ NIL
     ;
 
 SL_COMMENT
-    : ('#' ~('\r' | '\n')* '\r'? '\n') -> skip
+    : ('#' ~('\r' | '\n')* '\r'? '\n') -> channel(HIDDEN)
     ;
 
 ML_COMMENT
-    : ('=begin' .*? '=end' '\r'? '\n') -> skip
+    : ('=begin' .*? '=end' '\r'? '\n') -> channel(HIDDEN)
     ;
 
 WS
-    : (' ' | '\t')+ -> skip
+    : (' ' | '\t')+ -> channel(HIDDEN)
     ;
 
 INT

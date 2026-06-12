@@ -91,9 +91,9 @@ build/%.mkdir: build
 		then mkdir "./$(subst .mkdir,,$@)";fi;
 
 
-build/antlr4/%:
-	npx babel --plugins @babel/plugin-transform-modules-umd \
-		$(subst build/antlr4/,$(ANTLR_RUNTIME)/,$@) --out-file $@
+#build/antlr4/%:
+#	npx babel --plugins @babel/plugin-transform-modules-umd \
+#		$(subst build/antlr4/,$(ANTLR_RUNTIME)/,$@) --out-file $@
 
 
 antlr.js: build/antlr4.mkdir $(ANTLR_JSFILES) $(ANTLR_OBJS) \
@@ -109,6 +109,7 @@ parser/%:
 	@echo "MAKE $(RUNTIME) PARSER $@"
 #	-java -jar $(ANTLR_LSOURCE)/antlr-*.jar \
 #		-Dlanguage=$(RUNTIME) -XexportMacro "" $(subst parser/$(RUNTIME)/,,$@)
+
 build/antlr4/%:
 	npx babel --presets @babel/preset-env \
 		--plugins @babel/plugin-transform-modules-umd \

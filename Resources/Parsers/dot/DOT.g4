@@ -178,20 +178,20 @@ fragment TAG
     ;
 
 COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 LINE_COMMENT
-    : '//' .*? '\r'? '\n' -> skip
+    : '//' .*? '\r'? '\n' -> channel(HIDDEN)
     ;
 
 /** "a '#' character is considered a line output from a C preprocessor (e.g.,
  *  # 34 to indicate line 34 ) and discarded"
  */
 PREPROC
-    : '#' ~[\r\n]* -> skip
+    : '#' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t\n\r]+ -> skip
+    : [ \t\n\r]+ -> channel(HIDDEN)
     ;

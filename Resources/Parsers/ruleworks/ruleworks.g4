@@ -2015,9 +2015,9 @@ NONMAGIC
     ;
 
 WS
-    : [ \t\n\r\f]+ -> skip
+    : [ \t\n\r\f]+ -> channel(HIDDEN)
     ;
 
 TrailingComment
-    : ';' .*? '\n' -> skip
+    : ';' .*? '\n' -> channel(HIDDEN)
     ;

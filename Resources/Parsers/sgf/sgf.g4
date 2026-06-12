@@ -166,5 +166,5 @@ TEXT
     ;
 
 WS
-    : [ \n\r\t]+ -> skip
+    : [ \n\r\t]+ -> channel(HIDDEN)
     ;

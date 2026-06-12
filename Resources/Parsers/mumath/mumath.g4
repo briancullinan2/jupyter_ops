@@ -147,11 +147,11 @@ MOD
     ;
 
 WS
-    : (' ' | '\t' | '\n' | '\r') -> skip
+    : (' ' | '\t' | '\n' | '\r') -> channel(HIDDEN)
     ;
 
 COMMENT
-    : '%' ('\n' | ~ ('%' | '\n'))* '%' -> skip
+    : '%' ('\n' | ~ ('%' | '\n'))* '%' -> channel(HIDDEN)
     ;
 
 EQUATION

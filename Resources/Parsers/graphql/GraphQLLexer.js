@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/graphql/GraphQL.g4 by ANTLR 4.13.2
+// Generated from ./graphql/GraphQL.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -227,7 +227,7 @@ const serializedATN = [4,0,66,714,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
 704,5,66,0,0,704,705,5,70,0,0,705,152,1,0,0,0,706,707,5,65279,0,0,707,154,
 1,0,0,0,708,709,5,0,0,0,709,710,5,70,0,0,710,711,5,69,0,0,711,712,5,70,0,
 0,712,713,5,70,0,0,713,156,1,0,0,0,19,0,564,569,575,587,599,617,621,626,
-644,647,651,657,660,667,671,678,690,698,1,6,0,0];
+644,647,651,657,660,667,671,678,690,698,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -354,12 +354,3 @@ GraphQLLexer.UTF32_BOM = 66;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

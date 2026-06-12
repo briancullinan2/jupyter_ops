@@ -220,7 +220,7 @@ SKIPPED_SECTION : '\u0000' -> channel(HIDDEN);
 mode INTERPOLATION_STRING;
 
 DOUBLE_CURLY_INSIDE           : '{{';
-OPEN_BRACE_INSIDE             : '{' { this.OpenBraceInside(); } -> skip, pushMode(DEFAULT_MODE);
+OPEN_BRACE_INSIDE             : '{' { this.OpenBraceInside(); } -> channel(HIDDEN), pushMode(DEFAULT_MODE);
 REGULAR_CHAR_INSIDE           :     { this.IsRegularCharInside() }? SimpleEscapeSequence;
 VERBATIUM_DOUBLE_QUOTE_INSIDE :     { this.IsVerbatiumDoubleQuoteInside() }? '""';
 DOUBLE_QUOTE_INSIDE           : '"' { this.OnDoubleQuoteInside(); } -> popMode;
@@ -230,7 +230,7 @@ VERBATIUM_INSIDE_STRING       :     { this.IsVerbatiumDoubleQuoteInside() }? ~('
 mode INTERPOLATION_FORMAT;
 
 DOUBLE_CURLY_CLOSE_INSIDE : '}}' -> type(FORMAT_STRING);
-CLOSE_BRACE_INSIDE        : '}'  { this.OnCloseBraceInside(); } -> skip, popMode;
+CLOSE_BRACE_INSIDE        : '}'  { this.OnCloseBraceInside(); } -> channel(HIDDEN), popMode;
 FORMAT_STRING             : ~'}'+;
 
 mode DIRECTIVE_MODE;

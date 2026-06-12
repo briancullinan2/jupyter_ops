@@ -103,7 +103,7 @@ RANGEIN_START: '[' -> mode(R_MODE);
 RANGEEX_START: '{' -> mode(R_MODE);
 
 // <DEFAULT, Range, Function> SKIP : { < <_WHITESPACE> > }
-DEFAULT_SKIP: WHITESPACE -> skip;
+DEFAULT_SKIP: WHITESPACE -> channel(HIDDEN);
 
 // Fallthrough rule
 UNKNOWN: .;
@@ -132,7 +132,7 @@ fragment TERM_CHAR: ( TERM_START_CHAR | ESCAPED_CHAR | [\-+]);
 mode F_MODE;
 
 // <DEFAULT, Range, Function> SKIP : { < <_WHITESPACE> > }
-F_SKIP: WHITESPACE -> skip;
+F_SKIP: WHITESPACE -> channel(HIDDEN);
 
 // <LPAREN:        "(" > : DEFAULT
 F_LPAREN: '(' -> type(LPAREN), mode(DEFAULT_MODE);
@@ -204,7 +204,7 @@ WITHIN: 'within';
 mode R_MODE;
 
 // <DEFAULT, Range, Function> SKIP : { < <_WHITESPACE> > }
-R_SKIP: WHITESPACE -> skip;
+R_SKIP: WHITESPACE -> channel(HIDDEN);
 
 // <RANGE_TO:     "TO">
 RANGE_TO: 'TO';

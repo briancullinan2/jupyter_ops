@@ -308,15 +308,15 @@ CLOSE_COMMENT
     ;
 
 COMMENT
-    : OPEN_COMMENT (COMMENT | .)*? CLOSE_COMMENT -> skip
+    : OPEN_COMMENT (COMMENT | .)*? CLOSE_COMMENT -> channel(HIDDEN)
     ;
 
 ONE_LINE_COMMENT
-    : '--' (~ '\n')* '\n'? -> skip
+    : '--' (~ '\n')* '\n'? -> channel(HIDDEN)
     ;
 
 // skip spaces, tabs, newlines, note that \v is not suppoted in antlr
 
 WHITESPACE
-    : [ \t\r\n\f]+ -> skip
+    : [ \t\r\n\f]+ -> channel(HIDDEN)
     ;

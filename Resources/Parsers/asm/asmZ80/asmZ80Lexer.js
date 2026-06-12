@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/asmZ80/asmZ80.g4 by ANTLR 4.13.2
+// Generated from ./asm/asmZ80/asmZ80.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -139,7 +139,7 @@ const serializedATN = [4,0,18,368,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
 356,354,1,0,0,0,357,358,5,39,0,0,358,32,1,0,0,0,359,361,7,28,0,0,360,359,
 1,0,0,0,361,362,1,0,0,0,362,360,1,0,0,0,362,363,1,0,0,0,363,34,1,0,0,0,364,
 365,7,30,0,0,365,366,1,0,0,0,366,367,6,17,0,0,367,36,1,0,0,0,11,0,84,115,
-323,329,333,338,341,347,354,362,1,6,0,0];
+323,329,333,338,341,347,354,362,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -190,12 +190,3 @@ asmZ80Lexer.WS = 18;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

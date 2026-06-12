@@ -1337,5 +1337,5 @@ TERMINATOR
     ;
 
 LINE_COMMENT
-    : '//' ~[\r\n]* -> skip
+    : '//' ~[\r\n]* -> channel(HIDDEN)
     ;

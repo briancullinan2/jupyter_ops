@@ -404,15 +404,15 @@ identifier
 
 // disableNextLineDiagnosticsDirective-> #disable-next-line diagnosticCode1 diagnosticCode2 diagnosticCode3 NL
 DISABLE_NEXT_LINE_DIAGNOSTIC_DIRECTIVE
-    : '#disable-next-line' ~[\r\n]+ NL -> skip
+    : '#disable-next-line' ~[\r\n]+ NL -> channel(HIDDEN)
     ;
 
 SINGLE_LINE_COMMENT
-    : '//' ~[\r\n]* -> skip
+    : '//' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 MULTI_LINE_COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 // multilineString -> "'''" + MULTILINESTRINGCHAR+ + "'''"
@@ -666,7 +666,7 @@ NL
     ;
 
 SPACES
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;
 
 UNKNOWN

@@ -67,7 +67,7 @@ NUMBER
     ;
 
 WHITESPACE
-    : [\r\t\n] -> skip
+    : [\r\t\n] -> channel(HIDDEN)
     ;
 
 LOGOP

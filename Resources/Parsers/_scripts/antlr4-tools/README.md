@@ -83,7 +83,7 @@ expr:	expr ('*'|'/') expr
     |	INT
     |	'(' expr ')'
     ;
-NEWLINE : [\r\n]+ -> skip;
+NEWLINE : [\r\n]+ -> channel(HIDDEN);
 INT     : [0-9]+ ;
 ```
 

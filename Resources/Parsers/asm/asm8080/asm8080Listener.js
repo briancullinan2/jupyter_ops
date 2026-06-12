@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/asm8080/asm8080.g4 by ANTLR 4.13.2
+// Generated from ./asm/asm8080/asm8080.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

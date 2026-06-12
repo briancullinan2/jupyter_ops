@@ -36,7 +36,7 @@ fragment LC: 'a' .. 'z';
 
 fragment UC: 'A' .. 'Z';
 
-WS: ( ' ' | '\t' | '\r' | '\n') -> skip;
+WS: ( ' ' | '\t' | '\r' | '\n') -> channel(HIDDEN);
 
 DOT_ADI_: '_ADI_';
 
@@ -880,4 +880,4 @@ NEGATE: 'NEGATE';
 
 ID: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.') ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '0' .. '9')*;
 
-COMMENT: ( '//' ~ ( '\n' | '\r')* '\r'? '\n' | '/*' .*? '*/') -> skip;
+COMMENT: ( '//' ~ ( '\n' | '\r')* '\r'? '\n' | '/*' .*? '*/') -> channel(HIDDEN);

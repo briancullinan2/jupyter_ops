@@ -613,9 +613,9 @@ fragment DIGIT
     ;
 
 LINE_COMMENT
-    : ';' ~ ('\n' | '\r')* '\r'? '\n' -> skip
+    : ';' ~ ('\n' | '\r')* '\r'? '\n' -> channel(HIDDEN)
     ;
 
 WHITESPACE
-    : (' ' | '\t' | '\r' | '\n')+ -> skip
+    : (' ' | '\t' | '\r' | '\n')+ -> channel(HIDDEN)
     ;

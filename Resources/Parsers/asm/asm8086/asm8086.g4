@@ -456,7 +456,7 @@ MOD
     ;
 
 COMMENT
-    : ';' ~ [\r\n]* -> skip
+    : ';' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 AH
@@ -1108,5 +1108,5 @@ EOL
     ;
 
 WS
-    : [ \t] -> skip
+    : [ \t] -> channel(HIDDEN)
     ;

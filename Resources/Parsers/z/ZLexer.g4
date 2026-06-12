@@ -106,11 +106,11 @@ NLCHAR:
 //SPACE: '\u0020'; // ' '
 
 WS:
-    [\p{Zs}]+ -> skip
+    [\p{Zs}]+ -> channel(HIDDEN)
 ;             // All Unicode characters with General Category Zs shall be treated as SPACE.
 NL: [\r\n]+   {shouldNL(_input.LA(1))}?;
 //NL:  [\r\n]+ -> channel(HIDDEN);
-IGNORE_NL: [\r\n]+ -> skip;
+IGNORE_NL: [\r\n]+ -> channel(HIDDEN);
 
 // 7.4.2 Alphabetic keywords
 ELSE       : 'else';

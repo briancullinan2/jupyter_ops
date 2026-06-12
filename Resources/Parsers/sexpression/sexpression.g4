@@ -58,7 +58,7 @@ STRING
     ;
 
 WHITESPACE
-    : (' ' | '\n' | '\t' | '\r')+ -> skip
+    : (' ' | '\n' | '\t' | '\r')+ -> channel(HIDDEN)
     ;
 
 NUMBER

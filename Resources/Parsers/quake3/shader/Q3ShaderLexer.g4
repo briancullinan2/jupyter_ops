@@ -1,7 +1,7 @@
 lexer grammar Q3ShaderLexer;
 
 // =====================================================================
-// LEXER RULES
+// 1. KEYWORDS & STATIC DIRECTIVES (Highest Priority)
 // =====================================================================
 
 GLOBAL_DIRECTIVE
@@ -71,56 +71,9 @@ STAGE_DIRECTIVE
     | [sS][pP][eE][cC][uU][lL][aA][rR][sS][cC][aA][lL][eE]
     ;
 
-TOOL_EXTENSION
-    : [qQ][eE][rR] '_' [aA][zA-Z0-9_]+
-    | [qQ] [3mM] [mM][aA][pP] '_' [aA][zA-Z0-9_]+
-    | [qQ] [3gG] [gG][lL] [2_] [aA][zA-Z0-9_]+
-    | [dD][pP] '_' [aA][zA-Z0-9_]+
-    | [dD][pP][oO][fF][fF][sS][eE][tT][mM][aA][pP][pP][iI][nN][gG]
-    | [dD][pP][gG][lL][oO][sS][sS][eE][xX][pP][oO][nN][eE][nN][tT][mM][oO][dD]
-    | [dD][pP][gG][lL][oO][sS][sS][iI][nN][tT][eE][nN][sS][iI][tT][yY][mM][oO][dD]
-    | [xX][oO][nN] '_' [nN][oO][wW][aA][rR][nN]
-    | [dD][pP][rR][eE][fF][lL][eE][cC][tT][cC][uU][bB][eE]
-    ;
-
-SURFACE_PARM_VALUE
-    : [wW][aA][tT][eE][rR]
-    | [sS][lL][iI][mM][eE]
-    | [lL][aA][vV][aA]
-    | [pP][lL][aA][yY][eE][rR][cC][lL][iI][pP]
-    | [mM][oO][nN][sS][tT][eE][rR][cC][lL][iI][pP]
-    | [sS][hH][oO][tT][cC][lL][iI][pP]
-    | [nN][oO][dD][rR][oO][pP]
-    | [nN][oO][nN][sS][oO][lL][iI][dD]
-    | [oO][rR][iI][gG][iI][nN]
-    | [tT][rR][aA][nN][sS]
-    | [dD][eE][tT][aA][iI][lL]
-    | [sS][tT][rR][uU][cC][tT][uU][rR][aA][lL]
-    | [aA][rR][eE][aA][pP][oO][rR][tT][aA][lL]
-    | [aA][nN][tT][iI][pP][oO][rR][tT][aA][lL]
-    | [cC][lL][uU][sS][tT][eE][rR][pP][oO][rR][tT][aA][lL]
-    | [dD][oO][nN][oO][tT][eE][nN][tT][eE][rR]
-    | [fF][oO][gG]
-    | [sS][kK][yY]
-    | [lL][iI][gG][hH][tT][fF][iI][lL][tT][eE][rR]
-    | [aA][lL][pP][hH][aA][sS][hH][aA][dD][oO][wW]
-    | [hH][iI][nN][tT]
-    | [sS][lL][iI][cC][kK]
-    | [nN][oO][iI][mM][pP][aA][cC][tT]
-    | [nN][oO][mM][aA][rR][kK][sS]
-    | [lL][aA][dD][dD][eE][rR]
-    | [nN][oO][dD][aA][mM][aA][gG][eE]
-    | [mM][eE][tT][aA][lL][sS][tT][eE][pP][sS]
-    | [fF][lL][eE][sS][hH]
-    | [nN][oO][sS][tT][eE][pP][sS]
-    | [nN][oO][dD][rR][aA][wW]
-    | [pP][oO][iI][nN][tT][lL][iI][gG][hH][tT]
-    | [nN][oO][lL][iI][gG][hH][tT][mM][aA][pP]
-    | [nN][oO][dD][lL][iI][gG][hH][tT]
-    | [dD][uU][sS][tT]
-    | [tT][eE][rR][rR][aA][iI][nN]
-    | [sS][kK][iI][pP]
-    ;
+// =====================================================================
+// 2. MODIFIER ATOMS & ENUM TERMS (Context Constants)
+// =====================================================================
 
 DEFORM_MODIFIER
     : [pP][rR][oO][jJ][eE][cC][tT][iI][oO][nN][sS][hH][aA][dD][oO][wW]
@@ -130,6 +83,9 @@ DEFORM_MODIFIER
     | [nN][oO][rR][mM][aA][lL]
     | [wW][aA][vV][eE]
     | [tT][eE][xX][tT] [0-7]
+    | [bB][uU][lL][gG][eE][wW][iI][dD][tT][hH]
+    | [bB][uU][lL][gG][eE][hH][eE][iI][gG][hH][tT]
+    | [bB][uU][lL][gG][eE][sS][pP][eE][eE][dD]
     ;
 
 TC_MOD_MODIFIER
@@ -152,14 +108,14 @@ WAVE_FUNCTION
     ;
 
 ENUM_MODIFIER
-    : [iI][dD][eE][nN][tT][iI][tT][yY]
-    | [iI][dD][eE][nN][tT][iI][tT][yY][lL][iI][gG][hH][tT][iI][nN][gG]
-    | [eE][nN][tT][iI][tT][yY]
+    : [iI][dD][eE][nN][tT][iI][tT][yY][lL][iI][gG][hH][tT][iI][nN][gG]
+    | [iI][dD][eE][nN][tT][iI][tT][yY]
     | [oO][nN][eE][mM][iI][nN][uU][sS][eE][nN][tT][iI][tT][yY]
-    | [vV][eE][rR][tT][eE][xX]
-    | [eE][xX][aA][cC][tT][vV][eE][rR][tT][eE][xX]
-    | [vV][eE][rR][tT][eE][xX][lL][iI][tT]
+    | [eE][nN][tT][iI][tT][yY]
     | [eE][xX][aA][cC][tT][vV][eE][rR][tT][eE][xX][lL][iI][tT]
+    | [vV][eE][rR][tT][eE][xX][lL][iI][tT]
+    | [eE][xX][aA][cC][tT][vV][eE][rR][tT][eE][xX]
+    | [vV][eE][rR][tT][eE][xX]
     | [lL][iI][gG][hH][tT][iI][nN][gG][dD][iI][fF][fF][uU][sS][eE]
     | [oO][nN][eE][mM][iI][nN][uU][sS][vV][eE][rR][tT][eE][xX]
     | [lL][iI][gG][hH][tT][iI][nN][gG][sS][pP][eE][cC][uU][lL][aA][rR]
@@ -179,9 +135,9 @@ ENUM_MODIFIER
     | [eE][qQ][uU][aA][lL]
     | [dD][iI][sS][aA][bB][lL][eE]
     | [nN][oO][nN][eE]
-    | [bB][aA][cC][kK]
-    | [bB][aA][cC][kK][sS][iI][dD][eE]
     | [bB][aA][cC][kK][sS][iI][dD][eE][dD]
+    | [bB][aA][cC][kK][sS][iI][dD][eE]
+    | [bB][aA][cC][kK]
     | [oO][pP][aA][qQ][uU][eE]
     | [dD][eE][cC][aA][lL]
     | [sS][eE][eE][tT][hH][rR][oO][uU][gG][hH]
@@ -192,34 +148,55 @@ ENUM_MODIFIER
     ;
 
 GL_CONSTANT
-    : [gG][lL] '_' [oO][nN][eE]
-    | [gG][lL] '_' [zZ][eE][rR][oO]
+    : [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [dD][sS][tT] '_' [cC][oO][lL][oO][rR]
+    | [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [sS][rR][cC] '_' [cC][oO][lL][oO][rR]
+    | [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [dD][sS][tT] '_' [aA][lL][pP][hH][aA]
+    | [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [sS][rR][cC] '_' [aA][lL][pP][hH][aA]
     | [gG][lL] '_' [dD][sS][tT] '_' [cC][oO][lL][oO][rR]
     | [gG][lL] '_' [sS][rR][cC] '_' [cC][oO][lL][oO][rR]
-    | [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [dD][sS][tT] '_' [cC][oO][lL][oO][rR]
-    | [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [sS][rR][cC] '_' [cC][oO][lL][oO][rR]
     | [gG][lL] '_' [dD][sS][tT] '_' [aA][lL][pP][hH][aA]
-    | [gG][lL] '_' [sS][rR][cC] '_' [aA][lL][pP][hH][aA]
-    | [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [dD][sS][tT] '_' [aA][lL][pP][hH][aA]
-    | [gG][lL] '_' [oO][nN][eE] '_' [mM][iI][nN][uU][sS] '_' [sS][rR][cC] '_' [cC][oO][lL][oO][rR]
     | [gG][lL] '_' [sS][rR][cC] '_' [aA][lL][pP][hH][aA] '_' [sS][aA][tT][uU][rR][aA][tT][eE]
+    | [gG][lL] '_' [sS][rR][cC] '_' [aA][lL][pP][hH][aA]
+    | [gG][lL] '_' [oO][nN][eE]
+    | [gG][lL] '_' [zZ][eE][rR][oO]
     ;
 
-VARIABLE: '$'[a-zA-Z0-9_]+ ;
-
-IDENTIFIER
-    : [a-zA-Z_][a-zA-Z0-9_]*
-    | [0-9]+ [a-zA-Z_] [a-zA-Z0-9_]*
+TOOL_EXTENSION
+    : [qQ][eE][rR] '_' [aA][zA-Z0-9_]+
+    | [qQ] [3mM] [mM][aA][pP] '_' [aA][zA-Z0-9_]+
+    | [qQ] [3gG] [gG][lL] [2_] [aA][zA-Z0-9_]+
+    | [dD][pP] '_' [aA][zA-Z0-9_]+
+    | [dD][pP][oO][fF][fF][sS][eE][tT][mM][aA][pP][pP][iI][nN][gG]
+    | [dD][pP][gG][lL][oO][sS][sS][eE][xX][pP][oO][nN][eE][nN][tT][mM][oO][dD]
+    | [dD][pP][gG][lL][oO][sS][sS][iI][nN][tT][eE][nN][sS][iI][tT][yY][mM][oO][dD]
+    | [xX][oO][nN] '_' [nN][oO][wW][aA][rR][nN]
+    | [dD][pP][rR][eE][fF][lL][eE][cC][tT][cC][uU][bB][eE]
     ;
 
-L_VALUE     : [a-zA-Z0-9_]+ ;
-R_VALUE     : [a-zA-Z0-9_]+ ;
-NUMBER      : '-'? [0-9]+ ('.' [0-9]+)? ;
-STRING_LITERAL : '"' (~["\r\n])* '"' ;
+SURFACE_PARM_VALUE
+    : [wW][aA][tT][eE][rR] | [sS][lL][iI][mM][eE] | [lL][aA][vV][aA]
+    | [pP][lL][aA][yY][eE][rR][cC][lL][iI][pP] | [mM][oO][nN][sS][tT][eE][rR][cC][lL][iI][pP] | [sS][hH][oO][tT][cC][lL][iI][pP]
+    | [nN][oO][rR][mM][aA][lL][mM][aA][rR][kK][sS] | [nN][oO][dD][rR][oO][pP] | [nN][oO][nN][sS][oO][lL][iI][dD]
+    | [oO][rR][iI][gG][iI][nN] | [tT][rR][aA][nN][sS] | [dD][eE][tT][aA][iI][lL] | [sS][tT][rR][uU][cC][tT][uU][rR][aA][lL]
+    | [aA][rR][eE][aA][pP][oO][rR][tT][aA][lL] | [aA][nN][tT][iI][pP][oO][rR][tT][aA][lL] | [cC][lL][uU][sS][tT][eE][rR][pP][oO][rR][tT][aA][lL]
+    | [dD][oO][nN][oO][tT][eE][nN][tT][eE][rR] | [fF][oO][gG] | [sS][kK][yY] | [lL][iI][gG][hH][tT][fF][iI][lL][tT][eE][rR]
+    | [aA][lL][pP][hH][aA][sS][hH][aA][dD][oO][wW] | [hH][iI][nN][tT] | [sS][lL][iI][cC][kK] | [nN][oO][iI][mM][pP][aA][cC][tT]
+    | [nN][oO][mM][aA][rR][kK][sS] | [lL][aA][dD][dD][eE][rR] | [nN][oO][dD][aA][mM][aA][gG][eE] | [mM][eE][tT][aA][lL][sS][tT][eE][pP][sS]
+    | [fF][lL][eE][sS][hH] | [nN][oO][sS][tT][eE][pP][sS] | [nN][oO][dD][rR][aA][wW] | [pP][oO][iI][nN][tT][lL][iI][gG][hH][tT]
+    | [nN][oO][lL][iI][gG][hH][tT][mM][aA][pP] | [nN][oO][dD][lL][iI][gG][hH][tT] | [dD][uU][sS][tT] | [tT][eE][rR][rR][aA][iI][nN]
+    | [sS][kK][iI][pP]
+    ;
 
+// =====================================================================
+// 3. VARIABLE LITERAL TERMS & COMPLEX PATH MATRICES
+// =====================================================================
+
+VARIABLE : '$' [a-zA-Z0-9_]+ ;
+
+// Strict non-space delimited paths
 PATH
-    : [-a-zA-Z0-9_/. ]+ '.' [a-zA-Z0-9]+
-    | [-a-zA-Z0-9_/ ]+ '/' [-a-zA-Z0-9_/. ]+
+    : [-a-zA-Z0-9_/.]+ '.' [a-zA-Z0-9]+
+    | [-a-zA-Z0-9_/]+ '/' [-a-zA-Z0-9_/.]+
     ;
 
 LOGICAL_OP
@@ -230,13 +207,28 @@ LOGICAL_OP
 
 COMP_OP : '==' | '!=' | '>' | '>=' | '<' | '<=' ;
 
+// Added explicit placeholder definitions to satisfy parser conditionals
+L_VALUE : [a-zA-Z_][a-zA-Z0-9_]* ;
+R_VALUE : [a-zA-Z_][a-zA-Z0-9_]* ;
 
-LBRACE    : '{' ;
-RBRACE    : '}' ;
-LPAREN    : '(' ;
-RPAREN    : ')' ;
+IDENTIFIER
+    : [a-zA-Z_] [-a-zA-Z0-9_]*
+    ;
 
-COMMENT       : '//' ~[\r\n]* -> channel(HIDDEN) ;
-BLOCK_COMMENT : '/*' .*? '*/' -> channel(HIDDEN) ;
-WS            : [ \t\r\n]+    -> skip ;
+NUMBER         : '-'? [0-9]+ ('.' [0-9]+)? ;
+STRING_LITERAL : '"' (~["\r\n])* '"' ;
 
+// =====================================================================
+// 4. STRUCTURAL TERMINAL OPERATORS & WHITESPACE
+// =====================================================================
+
+LBRACE : '{' ;
+RBRACE : '}' ;
+LPAREN : '(' ;
+RPAREN : ')' ;
+
+COMMENT         : '//' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN) ;
+LINE_COMMENT_SL : '//' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN) ;
+LINE_COMMENT_BS : '\\\\' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN) ;
+BLOCK_COMMENT   : '/*' .*? '*/'                  -> channel(HIDDEN) ;
+WS              : [ \t\r\n]+                     -> channel(HIDDEN) ;

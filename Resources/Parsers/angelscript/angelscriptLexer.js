@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/angelscript/angelscript.g4 by ANTLR 4.13.2
+// Generated from ./angelscript/angelscript.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -240,7 +240,7 @@ const serializedATN = [4,0,73,714,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
 0,0,704,702,1,0,0,0,705,706,6,73,0,0,706,148,1,0,0,0,707,709,7,10,0,0,708,
 707,1,0,0,0,709,710,1,0,0,0,710,708,1,0,0,0,710,711,1,0,0,0,711,712,1,0,
 0,0,712,713,6,74,0,0,713,150,1,0,0,0,18,0,435,442,459,475,507,574,605,615,
-642,648,656,662,670,674,692,702,710,1,6,0,0];
+642,648,656,662,670,674,692,702,710,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -373,12 +373,3 @@ angelscriptLexer.WS = 73;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

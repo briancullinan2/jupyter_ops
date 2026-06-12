@@ -543,19 +543,19 @@ fragment EXP
 // \- since - means "range" inside [...]
 
 WS
-    : [ \t\n\r]+ -> skip
+    : [ \t\n\r]+ -> channel(HIDDEN)
     ;
 
 COMMA
-    : ',' -> skip
+    : ',' -> channel(HIDDEN)
     ;
 
 LineComment
-    : '#' ~[\r\n]* -> skip
+    : '#' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 UNICODE_BOM
-    : (UTF8_BOM | UTF16_BOM | UTF32_BOM) -> skip
+    : (UTF8_BOM | UTF16_BOM | UTF32_BOM) -> channel(HIDDEN)
     ;
 
 UTF8_BOM

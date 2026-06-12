@@ -178,15 +178,15 @@ Color: '#' ('0' .. '9' | 'a' .. 'f' | 'A' .. 'F')+;
 
 // Whitespace -- ignored
 
-WS: (' ' | '\t' | '\n' | '\r' | '\r\n')+ -> skip;
+WS: (' ' | '\t' | '\n' | '\r' | '\r\n')+ -> channel(HIDDEN);
 
 // Single-line comments
 
-SL_COMMENT: '//' (~ ('\n' | '\r'))* ('\n' | '\r' ('\n')?) -> skip;
+SL_COMMENT: '//' (~ ('\n' | '\r'))* ('\n' | '\r' ('\n')?) -> channel(HIDDEN);
 
 // multiple-line comments
 
-COMMENT: '/*' .*? '*/' -> skip;
+COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
 
 FUNCTION_NAME:
     COLOR

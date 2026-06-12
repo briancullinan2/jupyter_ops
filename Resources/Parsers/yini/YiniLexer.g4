@@ -205,7 +205,7 @@ NL: ( WS* COMMENT* SINGLE_NL COMMENT*);
 SINGLE_NL: ('\r' '\n'? | '\n');
 //NL: WS*('\r' '\n'? | '\n');
 
-WS: [ \t]+ -> skip;
+WS: [ \t]+ -> channel(HIDDEN);
 
 /*
  BLOCK_COMMENT:
@@ -214,7 +214,7 @@ WS: [ \t]+ -> skip;
  (doesn't interfere with parsing).
  */
 BLOCK_COMMENT:
-	'/*' .*? '*/' -> skip; // Block AKA Multi-line comment.
+	'/*' .*? '*/' -> channel(HIDDEN); // Block AKA Multi-line comment.
 	
 COMMENT: LINE_COMMENT | INLINE_COMMENT | BLOCK_COMMENT;
 /*
@@ -222,13 +222,13 @@ COMMENT: LINE_COMMENT | INLINE_COMMENT | BLOCK_COMMENT;
  Remains in input, but hidden
  (doesn't interfere with parsing).
  */
-LINE_COMMENT: ((DISABLE_LINE|';') ~[\r\n]*) -> skip;
+LINE_COMMENT: ((DISABLE_LINE|';') ~[\r\n]*) -> channel(HIDDEN);
 
 /*
  INLINE_COMMENT: 
  Remains in input, but hidden (doesn't interfere with parsing).
  */
-INLINE_COMMENT: ('//' | '#' [ \t]+) ~[\r\n]* -> skip;
+INLINE_COMMENT: ('//' | '#' [ \t]+) ~[\r\n]* -> channel(HIDDEN);
 
 fragment DISABLE_LINE: ('--' ~[\r\n]*);
 

@@ -33,14 +33,17 @@ blockStatement
     : globalDirectiveStatement
     | surfaceParmStatement
     | deformStatement
-    | tcModStatement
     | conditionalBlock
     | implicitMappingStatement
     | stageBlock
     | bypassedExtensionStatement
+    | generalPaletteStatement
     ;
 
-// Global Root Directives
+// =====================================================================
+// GLOBAL COMPONENT DIRECTIVES (Outer Block Scope Only)
+// =====================================================================
+
 globalDirectiveStatement
     : GLOBAL_DIRECTIVE argument*
     ;
@@ -54,33 +57,39 @@ deformStatement
     : DEFORM_VERTEXES_KEYWORD DEFORM_MODIFIER argument*
     ;
 
-tcModStatement
-    : TC_MOD_KEYWORD TC_MOD_MODIFIER argument*
+generalPaletteStatement
+    : IDENTIFIER argument* // Captures "palette <file> <args>" loops
     ;
 
-// Bypassed Tool & Vendor Extensions
+// Bypassed Tool, Darkplaces, & Vendor Extensions
 bypassedExtensionStatement
     : TOOL_EXTENSION argument*
     ;
 
-// Implicit structural block mappings
+// Implicit structural block mappings (ydnar additions)
 implicitMappingStatement
-    : IMPLICIT_MAPPING_KEYWORD (PATH | IDENTIFIER)?
+    : IMPLICIT_MAPPING_KEYWORD (PATH | IDENTIFIER | NUMBER)?
     ;
 
-// Preprocessor & Control-Flow Conditional Brackets
+// =====================================================================
+// CONDITIONS & PREPROCESSOR LAYOUTS
+// =====================================================================
+
 conditionalBlock
-    : CONDITIONAL_IF LPAREN conditionalExpression RPAREN LBRACE blockBody RBRACE ( conditionalElif | conditionalElse )*
-    | CONDITIONAL_IF argument LBRACE blockBody RBRACE ( conditionalElif | conditionalElse )*
+    : CONDITIONAL_IF conditionExpression executionBlock ( conditionalElif | conditionalElse )*
     ;
 
 conditionalElif
-    : CONDITIONAL_ELIF LPAREN conditionalExpression RPAREN LBRACE blockBody RBRACE
-    | CONDITIONAL_ELIF argument LBRACE blockBody RBRACE
+    : CONDITIONAL_ELIF conditionExpression executionBlock
     ;
 
 conditionalElse
-    : CONDITIONAL_ELSE LBRACE blockBody RBRACE
+    : CONDITIONAL_ELSE executionBlock
+    ;
+
+conditionExpression
+    : LPAREN conditionalExpression RPAREN
+    | argument
     ;
 
 conditionalExpression
@@ -93,7 +102,16 @@ expressionTerm
     | IDENTIFIER
     ;
 
-// Nested Stage Defs
+// Supports both braced blocks and inline single-statement loops
+executionBlock
+    : LBRACE blockBody RBRACE
+    | blockStatement
+    ;
+
+// =====================================================================
+// NESTED RENDER STAGES (Texture Unit Block Scope)
+// =====================================================================
+
 stageBlock
     : LBRACE stageBody RBRACE
     ;
@@ -104,9 +122,17 @@ stageBody
 
 stageStatement
     : STAGE_DIRECTIVE argument*
+    | tcModStatement              // Nested strictly inside stage paths
     ;
 
-// Shared Leaf Parameters
+tcModStatement
+    : TC_MOD_KEYWORD TC_MOD_MODIFIER argument*
+    ;
+
+// =====================================================================
+// SHARED LEAF PARAMETERS & ATOM VALUES
+// =====================================================================
+
 argument
     : PATH
     | VARIABLE
@@ -120,6 +146,8 @@ argument
     | SURFACE_PARM_VALUE
     | DEFORM_MODIFIER
     | TC_MOD_MODIFIER
+    | LPAREN                     // Exposed to satisfy ParseVector loops
+    | RPAREN                     // Exposed to satisfy ParseVector loops
     ;
 
 commentLine

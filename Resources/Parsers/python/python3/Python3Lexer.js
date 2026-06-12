@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/python/python3/Python3Lexer.g4 by ANTLR 4.13.2
+// Generated from ./python/python3/Python3Lexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -467,7 +467,7 @@ const serializedATN = [4,0,102,910,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,
 272,480,484,487,489,497,505,509,516,520,526,532,534,541,548,555,559,563,
 699,708,710,717,719,723,732,745,751,755,763,776,782,786,793,799,803,808,
 813,815,822,824,828,837,850,856,860,863,866,869,877,883,888,891,895,903,
-908,8,1,41,0,1,54,1,1,55,2,1,61,3,1,62,4,1,74,5,1,75,6,6,0,0];
+908,8,1,41,0,1,54,1,1,55,2,1,61,3,1,62,4,1,74,5,1,75,6,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -776,12 +776,3 @@ Python3Lexer.prototype.NEWLINE_sempred = function(localctx, predIndex) {
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

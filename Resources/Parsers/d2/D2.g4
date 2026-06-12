@@ -104,7 +104,7 @@ IDENTIFIER
    ;
 
 COMMENT
-   : '#' ~ [\r\n]* -> skip
+   : '#' ~ [\r\n]* -> channel(HIDDEN)
    ;
 
 LBRACK
@@ -148,7 +148,7 @@ DASH
    ;
 
 WS
-   : [ \t\r\n]+ -> skip
+   : [ \t\r\n]+ -> channel(HIDDEN)
    ;
 
 fragment DIGIT

@@ -121,7 +121,7 @@ WhiteSpace: [ \t] -> Channel(COMMENTS_AND_FORMATTING);
 LineEnd: [\n] -> Channel(COMMENTS_AND_FORMATTING);
 
 /*<31>*/
-WindowsLineEnd: [\r] -> skip;
+WindowsLineEnd: [\r] -> channel(HIDDEN);
 
 /*****************************************************************************/
 

@@ -439,5 +439,5 @@ STRING
     ;
 
 WS
-    : (' ' | '\t' | '\r' | '\f' | '\n')+ -> skip
+    : (' ' | '\t' | '\r' | '\f' | '\n')+ -> channel(HIDDEN)
     ;

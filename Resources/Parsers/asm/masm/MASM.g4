@@ -1539,9 +1539,9 @@ Separator
     ;
 
 WS
-    : (' ' | '\t' | '\n' | '\r') -> skip
+    : (' ' | '\t' | '\n' | '\r') -> channel(HIDDEN)
     ;
 
 LINE_COMMENT
-    : ';' ~ ('\n' | '\r')* '\r'? '\n' -> skip
+    : ';' ~ ('\n' | '\r')* '\r'? '\n' -> channel(HIDDEN)
     ;

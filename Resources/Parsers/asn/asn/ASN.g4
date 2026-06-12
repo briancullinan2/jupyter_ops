@@ -1172,7 +1172,7 @@ NUMBER
     ;
 
 WS
-    : (' ' | '\r' | '\t' | '\u000C' | '\n') -> skip
+    : (' ' | '\r' | '\t' | '\u000C' | '\n') -> channel(HIDDEN)
     ;
 
 fragment Exponent
@@ -1180,7 +1180,7 @@ fragment Exponent
     ;
 
 LINE_COMMENT
-    : '--' ~('\n' | '\r')* '\r'? '\n' -> skip
+    : '--' ~('\n' | '\r')* '\r'? '\n' -> channel(HIDDEN)
     ;
 
 BSTRING

@@ -35,8 +35,8 @@ grammar Dart2;
 compilationUnit: libraryDefinition | partDeclaration;
 
 WHITESPACE
-//  : ('\t' | ' ' | NEWLINE)+   -> skip
-  :  [ \t\r\n\u000C]+ -> skip
+//  : ('\t' | ' ' | NEWLINE)+   -> channel(HIDDEN)
+  :  [ \t\r\n\u000C]+ -> channel(HIDDEN)
   ;
 
 // 8 Variables
@@ -982,10 +982,10 @@ DIGIT
 // 20.1.2 Comments
 SINGLE_LINE_COMMENT
 //  : '//' ~(NEWLINE)* (NEWLINE)? // Origin Syntax
-  : '//' ~[\r\n]* -> skip
+  : '//' ~[\r\n]* -> channel(HIDDEN)
   ;
 MULTI_LINE_COMMENT
 //  : '/*' (MULTI_LINE_COMMENT | ~'*/')* '*/' // Origin Syntax
-  : '/*' .*? '*/' -> skip
+  : '/*' .*? '*/' -> channel(HIDDEN)
   ;
 

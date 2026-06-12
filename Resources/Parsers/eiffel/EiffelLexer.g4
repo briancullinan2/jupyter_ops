@@ -172,8 +172,8 @@ Real: [0-9]* [.] [0-9]+ ([e][+-]?[0-9]+)? | [0-9]+ [.] [0-9]* ([e][+-]?[0-9]+)?;
 FreeOperator: [!#$%&*+\-\\/:.<=>?@^|~\u0085-\u0089\u008B\u0095-\u0099\u009B\u00A1-\u00AC\u00B0-\u00B6\u00B9-\u00BF\u00D7\u00F7\u2200-\u22FF\u2A00-\u2AFF\u27C0-\u27EF\u2980-\u29FF\u2300-\u23FF\u25A0-\u25FF\u2190-\u21FF\u27F0-\u27FF\u2900-\u297F\u2B00-\u2BFF]+
    {this.IsFreeOperator()}?; // MOS: "a:=.33", <<-1>>, <<+1>>, :=+, ... recognized as FreeOperator!
 
-WhiteSpace: [ \t\n\r\uFEFF]+ -> skip; // MOS: gobo eiffel files with <feff> (BOM) character! treated as whitespace
-Comment: '--' .*? '\n' -> skip;
+WhiteSpace: [ \t\n\r\uFEFF]+ -> channel(HIDDEN); // MOS: gobo eiffel files with <feff> (BOM) character! treated as whitespace
+Comment: '--' .*? '\n' -> channel(HIDDEN);
 
 Error: .; // MOS: ensure no lexical errors
 

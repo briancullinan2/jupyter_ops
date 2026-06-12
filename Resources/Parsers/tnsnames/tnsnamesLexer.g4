@@ -115,7 +115,7 @@ ON_OFF: O N | O F F;
 
 TRUE_FALSE: T R U E | F A L S E;
 
-COMMENT: '#' (.)*? '\n' -> skip;
+COMMENT: '#' (.)*? '\n' -> channel(HIDDEN);
 
 INT: DIGIT+;
 
@@ -244,7 +244,7 @@ QUAD: '0' [xX] HEX_DIGIT+ | '0' OCT_DIGIT+ | INT;
 // Other lexer rules, and fragments.
 //-------------------------------------------------
 ID : [A-Za-z0-9][A-Za-z0-9_\-.]*;
-WS : [ \t\r\n]+ -> skip;
+WS : [ \t\r\n]+ -> channel(HIDDEN);
 
 // ----------
 // Fragments.
@@ -331,7 +331,7 @@ I_STRING   : (DQ_STRING | ISQ_STRING | IUQ_STRING) -> popMode;
 ISQ_STRING : S_QUOTE (~'\'')* S_QUOTE;
 //IUQ_STRING      :  ~["'=\n\r]*? NL ;
 IUQ_STRING : (~["'=])*? NL;
-I_WS       : [ \t\r\n]+   -> skip;
-I_COMMENT  : '#' (.)*? NL -> skip;
+I_WS       : [ \t\r\n]+   -> channel(HIDDEN);
+I_COMMENT  : '#' (.)*? NL -> channel(HIDDEN);
 
 fragment NL: '\n';

@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/java/java8/Java8Lexer.g4 by ANTLR 4.13.2
+// Generated from ./java/java8/Java8Lexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -457,7 +457,7 @@ const serializedATN = [4,0,107,1117,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,
 6,152,0,0,1116,306,1,0,0,0,59,0,650,654,658,662,666,673,678,680,684,687,
 691,698,702,707,715,718,725,729,733,739,742,749,753,761,764,771,775,779,
 784,787,790,795,798,803,808,816,827,831,836,840,856,866,872,879,883,891,
-896,904,913,924,930,938,1069,1073,1077,1088,1098,1112,1,6,0,0];
+896,904,913,924,930,938,1069,1073,1077,1088,1098,1112,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -665,12 +665,3 @@ Java8Lexer.LINE_COMMENT = 107;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

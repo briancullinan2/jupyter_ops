@@ -34,7 +34,7 @@ DGT: '>>';
 LTGT: '<>';
 GTPIPE: '>|';
 AND: '&';
-NL: '\n' -> skip;
+NL: '\n' -> channel(HIDDEN);
 RPAREN : ')' -> popMode;
 
 mode INSIDE_SQUOTE;

@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/asm6502/asm6502.g4 by ANTLR 4.13.2
+// Generated from ./asm/asm6502/asm6502.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import asm6502Listener from './asm6502Listener.js';
@@ -1455,12 +1455,3 @@ asm6502Parser.String_Context = String_Context;
 asm6502Parser.NameContext = NameContext; 
 asm6502Parser.NumberContext = NumberContext; 
 asm6502Parser.OpcodeContext = OpcodeContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

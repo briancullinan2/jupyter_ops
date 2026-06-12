@@ -322,7 +322,7 @@ OPEN_BRACE : '{';
 CLOSE_BRACE : '}';
 
 SKIP_
- : ( SPACES | COMMENT | LINE_JOINING ) -> skip
+ : ( SPACES | COMMENT | LINE_JOINING ) -> channel(HIDDEN)
  ;
 
 UNKNOWN_CHAR

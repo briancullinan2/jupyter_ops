@@ -1080,9 +1080,9 @@ COMMENT
     ;
 
 LOCAL_COMMENT
-    : '{' .*? '\n' -> skip
+    : '{' .*? '\n' -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t\r\n\f]+ -> skip
+    : [ \t\r\n\f]+ -> channel(HIDDEN)
     ;

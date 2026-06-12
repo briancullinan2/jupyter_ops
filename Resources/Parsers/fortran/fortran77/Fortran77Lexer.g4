@@ -305,6 +305,6 @@ STRINGLITERAL: '"' ~ ["\r\n]* '"';
 
 EOL: [\r\n]+;
 
-LINECONT: ((EOL '     $') | (EOL '     +')) -> skip;
+LINECONT: ((EOL '     $') | (EOL '     +')) -> channel(HIDDEN);
 
-WS: [\t ]+ -> skip;
+WS: [\t ]+ -> channel(HIDDEN);

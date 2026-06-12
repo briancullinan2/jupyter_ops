@@ -422,7 +422,7 @@ NUMBER
     ;
 
 COMMENT
-    : ';' ~ [\r\n]* -> skip
+    : ';' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 STRING
@@ -434,5 +434,5 @@ EOL
     ;
 
 WS
-    : [ \t] -> skip
+    : [ \t] -> channel(HIDDEN)
     ;

@@ -336,9 +336,9 @@ fragment OCTAL_DIGIT: [0-7];
 fragment HEX_DIGIT: [0-9A-Fa-f];
 
 // comments
-WS  :   [ \t\r\n\u000C]+ -> skip;
-LINE_COMMENT: '//' ~[\r\n]* -> skip;
-COMMENT: '/*' .*? '*/' -> skip;
+WS  :   [ \t\r\n\u000C]+ -> channel(HIDDEN);
+LINE_COMMENT: '//' ~[\r\n]* -> channel(HIDDEN);
+COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
 
 keywords
   : SYNTAX

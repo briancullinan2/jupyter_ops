@@ -462,5 +462,5 @@ INT
 // skip whitespace and periods (e.g., 7a.m.)
 
 WS
-    : [ \t\r\n.]+ -> skip
+    : [ \t\r\n.]+ -> channel(HIDDEN)
     ;

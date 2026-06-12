@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/java/java9/Java9Parser.g4 by ANTLR 4.13.2
+// Generated from ./java/java9/Java9Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/python/python3/Python3Parser.g4 by ANTLR 4.13.2
+// Generated from ./python/python3/Python3Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import Python3ParserListener from './Python3ParserListener.js';
@@ -13501,12 +13501,3 @@ Python3Parser.Encoding_declContext = Encoding_declContext;
 Python3Parser.Yield_exprContext = Yield_exprContext; 
 Python3Parser.Yield_argContext = Yield_argContext; 
 Python3Parser.StringsContext = StringsContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

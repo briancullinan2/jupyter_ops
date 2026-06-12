@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/toml/TomlParser.g4 by ANTLR 4.13.2
+// Generated from ./toml/TomlParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import TomlParserListener from './TomlParserListener.js';
@@ -2211,12 +2211,3 @@ TomlParser.Inline_tableContext = Inline_tableContext;
 TomlParser.Inline_table_keyvalsContext = Inline_table_keyvalsContext; 
 TomlParser.Inline_table_keyvals_non_emptyContext = Inline_table_keyvals_non_emptyContext; 
 TomlParser.Array_tableContext = Array_tableContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

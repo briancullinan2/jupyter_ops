@@ -119,7 +119,7 @@ NUMBER
     ;
 
 COMMENT
-    : 'comment' ~ [\r\n]* EOL -> skip
+    : 'comment' ~ [\r\n]* EOL -> channel(HIDDEN)
     ;
 
 EOL
@@ -127,5 +127,5 @@ EOL
     ;
 
 WS
-    : [ \t\r\n] -> skip
+    : [ \t\r\n] -> channel(HIDDEN)
     ;

@@ -151,11 +151,11 @@ NUMERICALVALUE
     ;
 
 WS
-    : (' ' | '\t' | '\n' | '\r' | '\f')+ -> skip
+    : (' ' | '\t' | '\n' | '\r' | '\f')+ -> channel(HIDDEN)
     ;
 
 LINE_COMMENT
-    : ('*' | '$') ~ ('\n' | '\r')* '\r'? '\n' -> skip
+    : ('*' | '$') ~ ('\n' | '\r')* '\r'? '\n' -> channel(HIDDEN)
     ;
 
 fragment CHARACTER

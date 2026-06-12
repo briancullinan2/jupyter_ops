@@ -1047,19 +1047,19 @@ UPPERCASE_OR_NUMBER_ID
     ;
 
 NATIVE_LANGUAGE
-    : INLINE NEWLINE .*? END_INLINE NEWLINE+ -> skip
+    : INLINE NEWLINE .*? END_INLINE NEWLINE+ -> channel(HIDDEN)
     ;
 
 CONTINUATION
-    : BACKSLASH NEWLINE -> skip
+    : BACKSLASH NEWLINE -> channel(HIDDEN)
     ;
 
 WHITESPACE
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;
 
 COMMENT
-    : HASH .*? NEWLINE+ -> skip
+    : HASH .*? NEWLINE+ -> channel(HIDDEN)
     ;
 
 NEWLINE

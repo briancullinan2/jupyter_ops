@@ -56,7 +56,7 @@ STATE: ('X' | 'x' | '*');
 
 EOR: '^';
 
-WS: [ \r\n\t]+ -> skip;
+WS: [ \r\n\t]+ -> channel(HIDDEN);
 
 mode LINETEXT;
 DATE: [0-9]+ '/' [0-9]+ '/' [0-9]+;
@@ -65,7 +65,7 @@ NUM: '-'? [0-9,]+ ('.' [0-9]+)?;
 
 TEXT: ~ [\r\n]+;
 
-EOL: [\r\n]+ -> skip, popMode;
+EOL: [\r\n]+ -> channel(HIDDEN), popMode;
 
 mode ACCTCATE;
 LB: '[';
@@ -74,4 +74,4 @@ ACCNTCATNAME: [a-zA-Z0-9 ]+;
 
 RB: ']';
 
-EOL2: [\r\n]+ -> skip, popMode;
+EOL2: [\r\n]+ -> channel(HIDDEN), popMode;

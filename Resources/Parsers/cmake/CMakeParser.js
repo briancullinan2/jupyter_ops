@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/cmake/CMake.g4 by ANTLR 4.13.2
+// Generated from ./cmake/CMake.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CMakeListener from './CMakeListener.js';
@@ -439,12 +439,3 @@ CMakeParser.File_Context = File_Context;
 CMakeParser.Command_invocationContext = Command_invocationContext; 
 CMakeParser.Single_argumentContext = Single_argumentContext; 
 CMakeParser.Compound_argumentContext = Compound_argumentContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

@@ -87,7 +87,7 @@ STRING
     ;
 
 COMMENT
-    : ';' ~ [\r\n]* EOL -> skip
+    : ';' ~ [\r\n]* EOL -> channel(HIDDEN)
     ;
 
 EOL
@@ -95,5 +95,5 @@ EOL
     ;
 
 WS
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;

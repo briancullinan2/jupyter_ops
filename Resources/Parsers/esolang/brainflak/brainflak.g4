@@ -91,5 +91,5 @@ RBRACK
     ;
 
 WS
-    : . -> skip
+    : . -> channel(HIDDEN)
     ;

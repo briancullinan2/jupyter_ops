@@ -44,9 +44,9 @@ TIMESTAMP: NUM ':' NUM '.' NUM;
 
 NUM: [0-9]+;
 
-WS: [ \r\n\t]+ -> skip;
+WS: [ \r\n\t]+ -> channel(HIDDEN);
 
 mode LINETEXT;
 TEXT: ~ [\r\n]+;
 
-EOL: [\r\n]+ -> skip, popMode;
+EOL: [\r\n]+ -> channel(HIDDEN), popMode;

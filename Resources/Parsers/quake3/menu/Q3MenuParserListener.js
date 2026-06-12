@@ -23,24 +23,6 @@ export default class Q3MenuParserListener extends antlr4.tree.ParseTreeListener 
 	}
 
 
-	// Enter a parse tree produced by Q3MenuParser#globalScopeWrapper.
-	enterGlobalScopeWrapper(ctx) {
-	}
-
-	// Exit a parse tree produced by Q3MenuParser#globalScopeWrapper.
-	exitGlobalScopeWrapper(ctx) {
-	}
-
-
-	// Enter a parse tree produced by Q3MenuParser#definitionBody.
-	enterDefinitionBody(ctx) {
-	}
-
-	// Exit a parse tree produced by Q3MenuParser#definitionBody.
-	exitDefinitionBody(ctx) {
-	}
-
-
 	// Enter a parse tree produced by Q3MenuParser#blockDeclaration.
 	enterBlockDeclaration(ctx) {
 	}
@@ -65,6 +47,15 @@ export default class Q3MenuParserListener extends antlr4.tree.ParseTreeListener 
 
 	// Exit a parse tree produced by Q3MenuParser#propertyStatement.
 	exitPropertyStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Q3MenuParser#initializationList.
+	enterInitializationList(ctx) {
+	}
+
+	// Exit a parse tree produced by Q3MenuParser#initializationList.
+	exitInitializationList(ctx) {
 	}
 
 
@@ -101,6 +92,15 @@ export default class Q3MenuParserListener extends antlr4.tree.ParseTreeListener 
 
 	// Exit a parse tree produced by Q3MenuParser#argument.
 	exitArgument(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Q3MenuParser#commentLine.
+	enterCommentLine(ctx) {
+	}
+
+	// Exit a parse tree produced by Q3MenuParser#commentLine.
+	exitCommentLine(ctx) {
 	}
 
 

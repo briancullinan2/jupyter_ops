@@ -655,15 +655,15 @@ fragment HEX_DIGIT
 
 // comments
 WS
-    : [ \t\r\n\u000C]+ -> skip
+    : [ \t\r\n\u000C]+ -> channel(HIDDEN)
     ;
 
 LINE_COMMENT
-    : '//' ~[\r\n]* -> skip
+    : '//' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 keywords

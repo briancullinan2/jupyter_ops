@@ -249,5 +249,5 @@ EOL
     ;
 
 WS
-    : [ \t] -> skip
+    : [ \t] -> channel(HIDDEN)
     ;

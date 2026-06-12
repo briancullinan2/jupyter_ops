@@ -107,7 +107,7 @@ BANG     : Bang;
 // -----------------------------------
 // Unknown content in mode Inside
 
-ERR_CHAR: . -> skip;
+ERR_CHAR: . -> channel(HIDDEN);
 
 // -----------------------------------
 mode SubTemplate;

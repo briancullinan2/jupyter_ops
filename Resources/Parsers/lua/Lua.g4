@@ -335,7 +335,7 @@ LINE_COMMENT
     ;
 
 WS
-    : [ \t\u000C\r\n]+ -> skip
+    : [ \t\u000C\r\n]+ -> channel(HIDDEN)
     ;
 
 SHEBANG

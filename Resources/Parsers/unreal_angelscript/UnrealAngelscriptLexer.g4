@@ -333,10 +333,10 @@ UserDefinedCharacterLiteral: CharacterLiteral Udsuffix;
 
 fragment Udsuffix: Identifier;
 
-Whitespace: [ \t]+ -> skip;
+Whitespace: [ \t]+ -> channel(HIDDEN);
 
-Newline                   : ('\r' '\n'? | '\n')                               -> skip;
-BlockComment              : '/*' .*? '*/'                                     -> skip;
-LineComment               : '//' ~ [\r\n]*                                    -> skip;
-PreprocessorBranchRemoval : '#else' .*? '#endif'                              -> skip;
-Preprocessor              : ('#if' | '#ifdef' | '#else' | '#endif') ~ [\r\n]* -> skip;
+Newline                   : ('\r' '\n'? | '\n')                               -> channel(HIDDEN);
+BlockComment              : '/*' .*? '*/'                                     -> channel(HIDDEN);
+LineComment               : '//' ~ [\r\n]*                                    -> channel(HIDDEN);
+PreprocessorBranchRemoval : '#else' .*? '#endif'                              -> channel(HIDDEN);
+Preprocessor              : ('#if' | '#ifdef' | '#else' | '#endif') ~ [\r\n]* -> channel(HIDDEN);

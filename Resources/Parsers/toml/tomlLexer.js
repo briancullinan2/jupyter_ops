@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/toml/TomlLexer.g4 by ANTLR 4.13.2
+// Generated from ./toml/TomlLexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -215,7 +215,7 @@ const serializedATN = [4,0,32,667,6,-1,6,-1,6,-1,6,-1,2,0,7,0,2,1,7,1,2,
 30,0,662,179,1,0,0,0,663,664,3,118,57,0,664,665,1,0,0,0,665,666,6,88,31,
 0,666,181,1,0,0,0,41,0,1,2,3,185,190,195,201,230,251,253,262,270,272,296,
 302,306,319,321,342,353,361,363,373,375,380,389,399,408,415,417,419,430,
-432,444,446,458,460,491,500,508,32,6,0,0,5,1,0,2,2,0,7,4,0,2,3,0,4,0,0,7,
+432,444,446,458,460,491,500,508,32,0,1,0,5,1,0,2,2,0,7,4,0,2,3,0,4,0,0,7,
 11,0,7,12,0,7,9,0,7,10,0,7,13,0,7,8,0,7,2,0,7,3,0,7,15,0,5,2,0,5,3,0,7,6,
 0,7,16,0,7,17,0,7,18,0,7,19,0,7,20,0,7,21,0,7,22,0,7,23,0,7,24,0,7,25,0,
 7,26,0,7,27,0,7,28,0,7,29,0];
@@ -315,12 +315,3 @@ TomlLexer.ARRAY_MODE = 3;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

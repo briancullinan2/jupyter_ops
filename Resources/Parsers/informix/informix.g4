@@ -2819,11 +2819,11 @@ HEX_DIGIT
 // Single-line comments
 
 SL_COMMENT
-    : '#' ~ [\r\n]* -> skip
+    : '#' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 SL_COMMENT_2
-    : '--' ~ [\r\n]* -> skip
+    : '--' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 EOL
@@ -2831,5 +2831,5 @@ EOL
     ;
 
 WS
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;

@@ -278,5 +278,5 @@ COLON
 // Whitespace -- ignored
 
 WS
-    : (' ' | '\t' | '\f' | ( '\r\n' | '\r' | '\n'))+ -> skip
+    : (' ' | '\t' | '\f' | ( '\r\n' | '\r' | '\n'))+ -> channel(HIDDEN)
     ;

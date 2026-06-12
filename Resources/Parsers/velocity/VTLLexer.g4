@@ -67,7 +67,7 @@ tokens {
 
 ESCAPED_CHAR: '\\' .;
 
-START_DIRECTIVE: '#' -> skip, pushMode(DIR_);
+START_DIRECTIVE: '#' -> channel(HIDDEN), pushMode(DIR_);
 
 DOLLAR_EXCL_OBRACE: '$' '\\'* '!{' -> pushMode(FRM_);
 
@@ -97,11 +97,11 @@ mode DIR_;
 
 ESCAPED_BLOCK: '[[' .*? ']]#' -> popMode;
 
-SNGLE_LINE_COMMENT: '#' ~[\r\n]* -> skip, popMode;
+SNGLE_LINE_COMMENT: '#' ~[\r\n]* -> channel(HIDDEN), popMode;
 
 VTL_COMMENT_BLOCK: '**' .*? '*#' -> channel(HIDDEN), popMode;
 
-MULTI_LINE_COMMENT: '*' .*? '*#' -> skip, popMode;
+MULTI_LINE_COMMENT: '*' .*? '*#' -> channel(HIDDEN), popMode;
 
 DIR_SET: ( 'set' | '{set}') SPACES? '(' -> type(SET), popMode, pushMode(CODE_);
 
@@ -148,7 +148,7 @@ VAR_DOLLAR_EXCL_OBRACE: '$' '\\'* '!{' -> type(DOLLAR_EXCL_OBRACE), popMode, pus
 
 VAR_DOLLAR_OBRACE: '$' '{' -> type(DOLLAR_OBRACE), popMode, pushMode(FRM_);
 
-VAR_HASH: '#' -> skip, popMode, pushMode(DIR_);
+VAR_HASH: '#' -> channel(HIDDEN), popMode, pushMode(DIR_);
 
 VAR_ID: ID -> type(ID);
 
@@ -221,7 +221,7 @@ CODE_GT: '>' -> type(GT);
 
 CODE_GE: '>=' -> type(GE);
 
-CODE_SPACES: SPACES -> skip;
+CODE_SPACES: SPACES -> channel(HIDDEN);
 
 CODE_REFERENCE: '$' ID -> type(REFERENCE);
 

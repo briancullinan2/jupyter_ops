@@ -44,7 +44,7 @@ COLON
     ;
 
 WS
-    : [ \t\n\r\u000C]+ -> skip
+    : [ \t\n\r\u000C]+ -> channel(HIDDEN)
     ;
 
 SHEBANG

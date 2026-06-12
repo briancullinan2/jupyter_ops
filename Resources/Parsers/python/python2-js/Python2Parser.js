@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/python/python2-js/Python2.g4 by ANTLR 4.13.2
+// Generated from ./python/python2-js/Python2.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import Python2Listener from './Python2Listener.js';
@@ -8615,12 +8615,3 @@ Python2Parser.Comp_ifContext = Comp_ifContext;
 Python2Parser.Testlist1Context = Testlist1Context; 
 Python2Parser.Encoding_declContext = Encoding_declContext; 
 Python2Parser.Yield_exprContext = Yield_exprContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

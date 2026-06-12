@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/asm6502/asm6502.g4 by ANTLR 4.13.2
+// Generated from ./asm/asm6502/asm6502.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -153,7 +153,7 @@ const serializedATN = [4,0,76,472,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
 459,1,0,0,0,459,461,1,0,0,0,460,458,1,0,0,0,461,462,5,34,0,0,462,148,1,0,
 0,0,463,465,7,28,0,0,464,463,1,0,0,0,465,466,1,0,0,0,466,464,1,0,0,0,466,
 467,1,0,0,0,467,150,1,0,0,0,468,469,7,30,0,0,469,470,1,0,0,0,470,471,6,75,
-0,0,471,152,1,0,0,0,8,0,184,434,438,443,449,458,466,1,6,0,0];
+0,0,471,152,1,0,0,0,8,0,184,434,438,443,449,458,466,1,0,1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -287,12 +287,3 @@ asm6502Lexer.WS = 76;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

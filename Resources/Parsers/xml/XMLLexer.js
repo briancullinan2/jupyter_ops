@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/xml/XMLLexer.g4 by ANTLR 4.13.2
+// Generated from ./xml/XMLLexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -76,7 +76,7 @@ const serializedATN = [4,0,18,231,6,-1,6,-1,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,
 219,1,0,0,0,221,46,1,0,0,0,222,223,5,63,0,0,223,224,5,62,0,0,224,225,1,0,
 0,0,225,226,6,22,4,0,226,48,1,0,0,0,227,228,9,0,0,0,228,229,1,0,0,0,229,
 230,6,23,2,0,230,50,1,0,0,0,19,0,1,2,59,79,92,109,120,124,128,131,133,160,
-184,192,196,202,217,220,5,6,0,0,5,1,0,3,0,0,5,2,0,4,0,0];
+184,192,196,202,217,220,5,0,1,0,5,1,0,3,0,0,5,2,0,4,0,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -132,12 +132,3 @@ XMLLexer.PROC_INSTR = 2;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

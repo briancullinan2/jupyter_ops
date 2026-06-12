@@ -82,4 +82,4 @@ fragment EXP: [Ee] [+\-]? INT;
 
 IDENTIFIER: ([0-9a-zA-Z_] | UNICODE)+;
 
-WS: [ \t\n]+ -> skip;
+WS: [ \t\n]+ -> channel(HIDDEN);

@@ -991,7 +991,7 @@ NUMBER
     ;
 
 WS
-    :  (' '|'\r'|'\t'|'\u000C'|'\n') -> skip
+    :  (' '|'\r'|'\t'|'\u000C'|'\n') -> channel(HIDDEN)
     ;
 
 fragment Exponent
@@ -999,7 +999,7 @@ fragment Exponent
     ;
 
 LINE_COMMENT
-    : {getCharPositionInLine() == 0}? (' ' | '\t')*? '--' ~('\n'|'\r')* '\r'? '\n' ->skip
+    : {getCharPositionInLine() == 0}? (' ' | '\t')*? '--' ~('\n'|'\r')* '\r'? '\n' -> channel(HIDDEN)
     ;
 
 BSTRING

@@ -139,7 +139,7 @@ BlankNode
     ;
 
 WS
-    : ([\t\r\n\u000C] | ' ')+ -> skip
+    : ([\t\r\n\u000C] | ' ')+ -> channel(HIDDEN)
     ;
 
 // LEXER

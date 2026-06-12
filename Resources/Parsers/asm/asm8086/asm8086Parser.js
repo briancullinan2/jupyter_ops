@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/asm8086/asm8086.g4 by ANTLR 4.13.2
+// Generated from ./asm/asm8086/asm8086.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import asm8086Listener from './asm8086Listener.js';
@@ -4225,12 +4225,3 @@ asm8086Parser.NumberContext = NumberContext;
 asm8086Parser.OpcodeContext = OpcodeContext; 
 asm8086Parser.RepContext = RepContext; 
 asm8086Parser.SignContext = SignContext; 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

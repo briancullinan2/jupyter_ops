@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/asm/nasm/nasm_x86_64_Parser.g4 by ANTLR 4.13.2
+// Generated from ./asm/nasm/nasm_x86_64_Parser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

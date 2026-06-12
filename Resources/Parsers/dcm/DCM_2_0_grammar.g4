@@ -233,9 +233,9 @@ fragment Exponent
     ;
 
 WS
-    : (' ' | '\r' | '\t' | '\u000C') -> skip
+    : (' ' | '\r' | '\t' | '\u000C') -> channel(HIDDEN)
     ;
 
 COMMENT
-    : ('*' | '!' | '.') .*? '\n' -> skip
+    : ('*' | '!' | '.') .*? '\n' -> channel(HIDDEN)
     ;

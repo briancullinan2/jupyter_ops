@@ -915,7 +915,7 @@ ID
     ;
 
 BREAK
-    : ('|' | '¬') WHITESPACE? COMMENT? WHITESPACE? NEWLINE -> skip
+    : ('|' | '¬') WHITESPACE? COMMENT? WHITESPACE? NEWLINE -> channel(HIDDEN)
     ;
 
 LITERAL

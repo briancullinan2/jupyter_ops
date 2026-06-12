@@ -185,9 +185,9 @@ STRINGLITERAL
     ;
 
 COMMENT
-    : '%' ~ [\r\n]* -> skip
+    : '%' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t\r\n] -> skip
+    : [ \t\r\n] -> channel(HIDDEN)
     ;

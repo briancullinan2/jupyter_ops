@@ -10,5 +10,16 @@ SURFACE_ID : [a-zA-Z_][a-zA-Z0-9_]* ;
 // Texture file paths or engine shaders
 ASSET_PATH : PATH_CHAR+ ;
 
-COMMENT    : '//' ~[\r\n]* -> channel(HIDDEN) ;
-WS         : [ \t]+ -> skip ; // Don't skip newlines, they delineate rules
+COMMENT
+    : '//' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN)
+    ;
+
+LINE_COMMENT_SL
+    : '//' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN)
+    ;
+
+LINE_COMMENT_BS
+    : '\\\\' ~[\r\n]* ([\r\n]+ | EOF) -> channel(HIDDEN)
+    ;
+
+WS         : [ \t]+ -> channel(HIDDEN) ; // Don't skip newlines, they delineate rules

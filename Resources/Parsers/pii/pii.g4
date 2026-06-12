@@ -67,17 +67,17 @@ DIGIT
     ;
 
 LPAREN
-    : '(' -> skip
+    : '(' -> channel(HIDDEN)
     ;
 
 RPAREN
-    : ')' -> skip
+    : ')' -> channel(HIDDEN)
     ;
 
 DASH
-    : '-' -> skip
+    : '-' -> channel(HIDDEN)
     ;
 
 WS
-    : [ \r\n\t]+ -> skip
+    : [ \r\n\t]+ -> channel(HIDDEN)
     ;

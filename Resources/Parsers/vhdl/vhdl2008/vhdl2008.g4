@@ -2208,27 +2208,27 @@ LETTER
     ;
 
 BLOCK_COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 COMMENT
-    : '--' (~'\n')* -> skip
+    : '--' (~'\n')* -> channel(HIDDEN)
     ;
 
 TAB
-    : ('\t')+ -> skip
+    : ('\t')+ -> channel(HIDDEN)
     ;
 
 SPACE
-    : (' ')+ -> skip
+    : (' ')+ -> channel(HIDDEN)
     ;
 
 NEWLINE
-    : '\n' -> skip
+    : '\n' -> channel(HIDDEN)
     ;
 
 CR
-    : '\r' -> skip
+    : '\r' -> channel(HIDDEN)
     ;
 
 CHARACTER_LITERAL

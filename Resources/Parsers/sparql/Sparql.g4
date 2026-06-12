@@ -501,5 +501,5 @@ WS
     : (' '
     | '\t'
     | '\n'
-    | '\r')+ ->skip
+    | '\r')+ -> channel(HIDDEN)
     ;

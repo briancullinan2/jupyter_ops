@@ -166,13 +166,13 @@ CHAR
     ;
 
 LINE_COMMENT
-    : '*' ~ [\r\n]* -> skip
+    : '*' ~ [\r\n]* -> channel(HIDDEN)
     ;
 
 BLOCK_COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 WS
-    : [ \r\n\t]+ -> skip
+    : [ \r\n\t]+ -> channel(HIDDEN)
     ;

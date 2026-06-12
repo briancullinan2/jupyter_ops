@@ -143,7 +143,7 @@ DRAWN_GAME
 /// starts with a left brace character and continues to the next right brace
 /// character.  Comments cannot appear inside any token.
 REST_OF_LINE_COMMENT
-    : ';' ~[\r\n]* -> skip
+    : ';' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 /// Brace comments do not nest; a left brace character appearing in a brace comment
@@ -151,7 +151,7 @@ REST_OF_LINE_COMMENT
 /// brace comment loses its special meaning and is ignored.  Braces appearing
 /// inside of a semicolon comments lose their special meaning and are ignored.
 BRACE_COMMENT
-    : '{' ~'}'* '}' -> skip
+    : '{' ~'}'* '}' -> channel(HIDDEN)
     ;
 
 /// There is a special escape mechanism for PGN data.  This mechanism is triggered
@@ -163,11 +163,11 @@ BRACE_COMMENT
 /// A percent sign appearing in any other place other than the first position in a
 /// line does not trigger the escape mechanism.
 ESCAPE
-    : {getCharPositionInLine() == 0}? '%' ~[\r\n]* -> skip
+    : {getCharPositionInLine() == 0}? '%' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 SPACES
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;
 
 /// A string token is a sequence of zero or more printing characters delimited by a

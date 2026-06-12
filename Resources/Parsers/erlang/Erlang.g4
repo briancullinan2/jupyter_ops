@@ -109,11 +109,11 @@ AttrName
     ;
 
 Comment
-    : '%' ~[\r\n]* '\r'? '\n' -> skip
+    : '%' ~[\r\n]* '\r'? '\n' -> channel(HIDDEN)
     ;
 
 WS
-    : [\u0000-\u0020\u0080-\u00a0]+ -> skip
+    : [\u0000-\u0020\u0080-\u00a0]+ -> channel(HIDDEN)
     ;
 
 attribute

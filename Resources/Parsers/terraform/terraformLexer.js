@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/terraform/terraform.g4 by ANTLR 4.13.2
+// Generated from ./terraform/terraform.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -123,9 +123,9 @@ const serializedATN = [4,0,49,390,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
 0,373,372,1,0,0,0,374,377,1,0,0,0,375,376,1,0,0,0,375,373,1,0,0,0,376,378,
 1,0,0,0,377,375,1,0,0,0,378,379,5,42,0,0,379,380,5,47,0,0,380,381,1,0,0,
 0,381,382,6,48,0,0,382,98,1,0,0,0,383,385,7,5,0,0,384,383,1,0,0,0,385,386,
-1,0,0,0,386,384,1,0,0,0,386,387,1,0,0,0,387,388,1,0,0,0,388,389,6,49,1,0,
-389,100,1,0,0,0,13,0,262,276,287,306,331,342,344,353,359,364,375,386,2,0,
-1,0,6,0,0];
+1,0,0,0,386,384,1,0,0,0,386,387,1,0,0,0,387,388,1,0,0,0,388,389,6,49,0,0,
+389,100,1,0,0,0,13,0,262,276,287,306,331,342,344,353,359,364,375,386,1,0,
+1,0];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -221,12 +221,3 @@ terraformLexer.WS = 49;
 
 
 
-
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}

@@ -1,4 +1,4 @@
-// Generated from C:/Users/megam/jupyter_ops/Resources/Parsers/sql/tsql/TSqlParser.g4 by ANTLR 4.13.2
+// Generated from ./sql/tsql/TSqlParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -236,6 +236,15 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#alter_application_role.
 	exitAlter_application_role(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#alter_xml_schema_collection.
+	enterAlter_xml_schema_collection(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#alter_xml_schema_collection.
+	exitAlter_xml_schema_collection(ctx) {
 	}
 
 
@@ -1319,6 +1328,42 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#create_endpoint.
+	enterCreate_endpoint(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#create_endpoint.
+	exitCreate_endpoint(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#endpoint_encryption_alogorithm_clause.
+	enterEndpoint_encryption_alogorithm_clause(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#endpoint_encryption_alogorithm_clause.
+	exitEndpoint_encryption_alogorithm_clause(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#endpoint_authentication_clause.
+	enterEndpoint_authentication_clause(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#endpoint_authentication_clause.
+	exitEndpoint_authentication_clause(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#endpoint_listener_clause.
+	enterEndpoint_listener_clause(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#endpoint_listener_clause.
+	exitEndpoint_listener_clause(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#create_event_notification.
 	enterCreate_event_notification(ctx) {
 	}
@@ -1598,12 +1643,75 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#alter_database_audit_specification.
+	enterAlter_database_audit_specification(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#alter_database_audit_specification.
+	exitAlter_database_audit_specification(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#audit_action_spec_group.
+	enterAudit_action_spec_group(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#audit_action_spec_group.
+	exitAudit_action_spec_group(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#audit_action_specification.
+	enterAudit_action_specification(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#audit_action_specification.
+	exitAudit_action_specification(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#action_specification.
+	enterAction_specification(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#action_specification.
+	exitAction_specification(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#audit_class_name.
+	enterAudit_class_name(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#audit_class_name.
+	exitAudit_class_name(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#audit_securable.
+	enterAudit_securable(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#audit_securable.
+	exitAudit_securable(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#alter_db_role.
 	enterAlter_db_role(ctx) {
 	}
 
 	// Exit a parse tree produced by TSqlParser#alter_db_role.
 	exitAlter_db_role(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#create_database_audit_specification.
+	enterCreate_database_audit_specification(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#create_database_audit_specification.
+	exitCreate_database_audit_specification(ctx) {
 	}
 
 
@@ -1784,6 +1892,15 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#alter_service.
 	exitAlter_service(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#opt_arg_clause.
+	enterOpt_arg_clause(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#opt_arg_clause.
+	exitOpt_arg_clause(ctx) {
 	}
 
 
@@ -2129,12 +2246,93 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#create_index_options.
+	enterCreate_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#create_index_options.
+	exitCreate_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#relational_index_option.
+	enterRelational_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#relational_index_option.
+	exitRelational_index_option(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#alter_index.
 	enterAlter_index(ctx) {
 	}
 
 	// Exit a parse tree produced by TSqlParser#alter_index.
 	exitAlter_index(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#resumable_index_options.
+	enterResumable_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#resumable_index_options.
+	exitResumable_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#resumable_index_option.
+	enterResumable_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#resumable_index_option.
+	exitResumable_index_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#reorganize_partition.
+	enterReorganize_partition(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#reorganize_partition.
+	exitReorganize_partition(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#reorganize_options.
+	enterReorganize_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#reorganize_options.
+	exitReorganize_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#reorganize_option.
+	enterReorganize_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#reorganize_option.
+	exitReorganize_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#set_index_options.
+	enterSet_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#set_index_options.
+	exitSet_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#set_index_option.
+	enterSet_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#set_index_option.
+	exitSet_index_option(ctx) {
 	}
 
 
@@ -2147,12 +2345,75 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#rebuild_index_options.
+	enterRebuild_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#rebuild_index_options.
+	exitRebuild_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#rebuild_index_option.
+	enterRebuild_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#rebuild_index_option.
+	exitRebuild_index_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#single_partition_rebuild_index_options.
+	enterSingle_partition_rebuild_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#single_partition_rebuild_index_options.
+	exitSingle_partition_rebuild_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#single_partition_rebuild_index_option.
+	enterSingle_partition_rebuild_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#single_partition_rebuild_index_option.
+	exitSingle_partition_rebuild_index_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#on_partitions.
+	enterOn_partitions(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#on_partitions.
+	exitOn_partitions(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#create_columnstore_index.
 	enterCreate_columnstore_index(ctx) {
 	}
 
 	// Exit a parse tree produced by TSqlParser#create_columnstore_index.
 	exitCreate_columnstore_index(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#create_columnstore_index_options.
+	enterCreate_columnstore_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#create_columnstore_index_options.
+	exitCreate_columnstore_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#columnstore_index_option.
+	enterColumnstore_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#columnstore_index_option.
+	exitColumnstore_index_option(ctx) {
 	}
 
 
@@ -2171,6 +2432,24 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#create_xml_index.
 	exitCreate_xml_index(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#xml_index_options.
+	enterXml_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#xml_index_options.
+	exitXml_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#xml_index_option.
+	enterXml_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#xml_index_option.
+	exitXml_index_option(ctx) {
 	}
 
 
@@ -2282,6 +2561,15 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#procedure_param_default_value.
+	enterProcedure_param_default_value(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#procedure_param_default_value.
+	exitProcedure_param_default_value(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#procedure_param.
 	enterProcedure_param(ctx) {
 	}
@@ -2327,6 +2615,24 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#update_statistics_options.
+	enterUpdate_statistics_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#update_statistics_options.
+	exitUpdate_statistics_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#update_statistics_option.
+	enterUpdate_statistics_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#update_statistics_option.
+	exitUpdate_statistics_option(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#create_table.
 	enterCreate_table(ctx) {
 	}
@@ -2351,6 +2657,33 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#table_options.
 	exitTable_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#table_option.
+	enterTable_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#table_option.
+	exitTable_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#create_table_index_options.
+	enterCreate_table_index_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#create_table_index_options.
+	exitCreate_table_index_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#create_table_index_option.
+	enterCreate_table_index_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#create_table_index_option.
+	exitCreate_table_index_option(ctx) {
 	}
 
 
@@ -3245,15 +3578,6 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#go_batch_statement.
-	enterGo_batch_statement(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#go_batch_statement.
-	exitGo_batch_statement(ctx) {
-	}
-
-
 	// Enter a parse tree produced by TSqlParser#go_statement.
 	enterGo_statement(ctx) {
 	}
@@ -3308,12 +3632,192 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#dbcc_special.
-	enterDbcc_special(ctx) {
+	// Enter a parse tree produced by TSqlParser#dbcc_checkalloc_option.
+	enterDbcc_checkalloc_option(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#dbcc_special.
-	exitDbcc_special(ctx) {
+	// Exit a parse tree produced by TSqlParser#dbcc_checkalloc_option.
+	exitDbcc_checkalloc_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkalloc.
+	enterDbcc_checkalloc(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkalloc.
+	exitDbcc_checkalloc(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkcatalog.
+	enterDbcc_checkcatalog(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkcatalog.
+	exitDbcc_checkcatalog(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkconstraints_option.
+	enterDbcc_checkconstraints_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkconstraints_option.
+	exitDbcc_checkconstraints_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkconstraints.
+	enterDbcc_checkconstraints(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkconstraints.
+	exitDbcc_checkconstraints(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkdb_table_option.
+	enterDbcc_checkdb_table_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkdb_table_option.
+	exitDbcc_checkdb_table_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkdb.
+	enterDbcc_checkdb(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkdb.
+	exitDbcc_checkdb(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkfilegroup_option.
+	enterDbcc_checkfilegroup_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkfilegroup_option.
+	exitDbcc_checkfilegroup_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checkfilegroup.
+	enterDbcc_checkfilegroup(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checkfilegroup.
+	exitDbcc_checkfilegroup(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_checktable.
+	enterDbcc_checktable(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_checktable.
+	exitDbcc_checktable(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_cleantable.
+	enterDbcc_cleantable(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_cleantable.
+	exitDbcc_cleantable(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_clonedatabase_option.
+	enterDbcc_clonedatabase_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_clonedatabase_option.
+	exitDbcc_clonedatabase_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_clonedatabase.
+	enterDbcc_clonedatabase(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_clonedatabase.
+	exitDbcc_clonedatabase(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_pdw_showspaceused.
+	enterDbcc_pdw_showspaceused(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_pdw_showspaceused.
+	exitDbcc_pdw_showspaceused(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_proccache.
+	enterDbcc_proccache(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_proccache.
+	exitDbcc_proccache(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_showcontig_option.
+	enterDbcc_showcontig_option(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_showcontig_option.
+	exitDbcc_showcontig_option(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_showcontig.
+	enterDbcc_showcontig(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_showcontig.
+	exitDbcc_showcontig(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_shrinklog.
+	enterDbcc_shrinklog(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_shrinklog.
+	exitDbcc_shrinklog(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_dbreindex.
+	enterDbcc_dbreindex(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_dbreindex.
+	exitDbcc_dbreindex(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_dll_free.
+	enterDbcc_dll_free(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_dll_free.
+	exitDbcc_dll_free(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dbcc_dropcleanbuffers.
+	enterDbcc_dropcleanbuffers(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dbcc_dropcleanbuffers.
+	exitDbcc_dropcleanbuffers(ctx) {
 	}
 
 
@@ -3323,24 +3827,6 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#dbcc_clause.
 	exitDbcc_clause(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#dbcc_command.
-	enterDbcc_command(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#dbcc_command.
-	exitDbcc_command(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#dbcc_options.
-	enterDbcc_options(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#dbcc_options.
-	exitDbcc_options(ctx) {
 	}
 
 
@@ -3425,6 +3911,24 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#column_definition_element.
+	enterColumn_definition_element(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#column_definition_element.
+	exitColumn_definition_element(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#column_modifier.
+	enterColumn_modifier(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#column_modifier.
+	exitColumn_modifier(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#materialized_column_definition.
 	enterMaterialized_column_definition(ctx) {
 	}
@@ -3443,12 +3947,66 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#column_index.
+	enterColumn_index(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#column_index.
+	exitColumn_index(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#on_partition_or_filegroup.
+	enterOn_partition_or_filegroup(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#on_partition_or_filegroup.
+	exitOn_partition_or_filegroup(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#table_constraint.
 	enterTable_constraint(ctx) {
 	}
 
 	// Exit a parse tree produced by TSqlParser#table_constraint.
 	exitTable_constraint(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#connection_node.
+	enterConnection_node(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#connection_node.
+	exitConnection_node(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#primary_key_options.
+	enterPrimary_key_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#primary_key_options.
+	exitPrimary_key_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#foreign_key_options.
+	enterForeign_key_options(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#foreign_key_options.
+	exitForeign_key_options(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#check_constraint.
+	enterCheck_constraint(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#check_constraint.
+	exitCheck_constraint(ctx) {
 	}
 
 
@@ -3470,21 +4028,21 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#index_options.
-	enterIndex_options(ctx) {
+	// Enter a parse tree produced by TSqlParser#alter_table_index_options.
+	enterAlter_table_index_options(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#index_options.
-	exitIndex_options(ctx) {
+	// Exit a parse tree produced by TSqlParser#alter_table_index_options.
+	exitAlter_table_index_options(ctx) {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#index_option.
-	enterIndex_option(ctx) {
+	// Enter a parse tree produced by TSqlParser#alter_table_index_option.
+	enterAlter_table_index_option(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#index_option.
-	exitIndex_option(ctx) {
+	// Exit a parse tree produced by TSqlParser#alter_table_index_option.
+	exitAlter_table_index_option(ctx) {
 	}
 
 
@@ -3560,6 +4118,15 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#parameter.
+	enterParameter(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#parameter.
+	exitParameter(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#time_zone.
 	enterTime_zone(ctx) {
 	}
@@ -3602,15 +4169,6 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#bracket_expression.
 	exitBracket_expression(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#constant_expression.
-	enterConstant_expression(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#constant_expression.
-	exitConstant_expression(ctx) {
 	}
 
 
@@ -3740,6 +4298,15 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#select_order_by_clause.
+	enterSelect_order_by_clause(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#select_order_by_clause.
+	exitSelect_order_by_clause(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#for_clause.
 	enterFor_clause(ctx) {
 	}
@@ -3764,6 +4331,15 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#order_by_expression.
 	exitOrder_by_expression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#grouping_sets_item.
+	enterGrouping_sets_item(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#grouping_sets_item.
+	exitGrouping_sets_item(ctx) {
 	}
 
 
@@ -3830,15 +4406,6 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#column_elem.
-	enterColumn_elem(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#column_elem.
-	exitColumn_elem(ctx) {
-	}
-
-
 	// Enter a parse tree produced by TSqlParser#udt_elem.
 	enterUdt_elem(ctx) {
 	}
@@ -3875,21 +4442,21 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#non_ansi_join.
+	enterNon_ansi_join(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#non_ansi_join.
+	exitNon_ansi_join(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#table_source.
 	enterTable_source(ctx) {
 	}
 
 	// Exit a parse tree produced by TSqlParser#table_source.
 	exitTable_source(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#table_source_item_joined.
-	enterTable_source_item_joined(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#table_source_item_joined.
-	exitTable_source_item_joined(ctx) {
 	}
 
 
@@ -4064,15 +4631,6 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#table_name_with_hint.
-	enterTable_name_with_hint(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#table_name_with_hint.
-	exitTable_name_with_hint(ctx) {
-	}
-
-
 	// Enter a parse tree produced by TSqlParser#rowset_function.
 	enterRowset_function(ctx) {
 	}
@@ -4163,6 +4721,15 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#HIERARCHYID_METHOD.
+	enterHIERARCHYID_METHOD(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#HIERARCHYID_METHOD.
+	exitHIERARCHYID_METHOD(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#partition_function.
 	enterPartition_function(ctx) {
 	}
@@ -4190,12 +4757,894 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#json_key_value.
+	enterJson_key_value(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#json_key_value.
+	exitJson_key_value(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#json_null_clause.
+	enterJson_null_clause(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#json_null_clause.
+	exitJson_null_clause(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#APP_NAME.
+	enterAPP_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#APP_NAME.
+	exitAPP_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#APPLOCK_MODE.
+	enterAPPLOCK_MODE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#APPLOCK_MODE.
+	exitAPPLOCK_MODE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#APPLOCK_TEST.
+	enterAPPLOCK_TEST(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#APPLOCK_TEST.
+	exitAPPLOCK_TEST(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ASSEMBLYPROPERTY.
+	enterASSEMBLYPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ASSEMBLYPROPERTY.
+	exitASSEMBLYPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#COL_LENGTH.
+	enterCOL_LENGTH(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#COL_LENGTH.
+	exitCOL_LENGTH(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#COL_NAME.
+	enterCOL_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#COL_NAME.
+	exitCOL_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#COLUMNPROPERTY.
+	enterCOLUMNPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#COLUMNPROPERTY.
+	exitCOLUMNPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATABASEPROPERTYEX.
+	enterDATABASEPROPERTYEX(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATABASEPROPERTYEX.
+	exitDATABASEPROPERTYEX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DB_ID.
+	enterDB_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DB_ID.
+	exitDB_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DB_NAME.
+	enterDB_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DB_NAME.
+	exitDB_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILE_ID.
+	enterFILE_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILE_ID.
+	exitFILE_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILE_IDEX.
+	enterFILE_IDEX(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILE_IDEX.
+	exitFILE_IDEX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILE_NAME.
+	enterFILE_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILE_NAME.
+	exitFILE_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILEGROUP_ID.
+	enterFILEGROUP_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILEGROUP_ID.
+	exitFILEGROUP_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILEGROUP_NAME.
+	enterFILEGROUP_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILEGROUP_NAME.
+	exitFILEGROUP_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILEGROUPPROPERTY.
+	enterFILEGROUPPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILEGROUPPROPERTY.
+	exitFILEGROUPPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILEPROPERTY.
+	enterFILEPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILEPROPERTY.
+	exitFILEPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FILEPROPERTYEX.
+	enterFILEPROPERTYEX(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FILEPROPERTYEX.
+	exitFILEPROPERTYEX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FULLTEXTCATALOGPROPERTY.
+	enterFULLTEXTCATALOGPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FULLTEXTCATALOGPROPERTY.
+	exitFULLTEXTCATALOGPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FULLTEXTSERVICEPROPERTY.
+	enterFULLTEXTSERVICEPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FULLTEXTSERVICEPROPERTY.
+	exitFULLTEXTSERVICEPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#INDEX_COL.
+	enterINDEX_COL(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#INDEX_COL.
+	exitINDEX_COL(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#INDEXKEY_PROPERTY.
+	enterINDEXKEY_PROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#INDEXKEY_PROPERTY.
+	exitINDEXKEY_PROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#INDEXPROPERTY.
+	enterINDEXPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#INDEXPROPERTY.
+	exitINDEXPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#NEXT_VALUE_FOR.
+	enterNEXT_VALUE_FOR(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#NEXT_VALUE_FOR.
+	exitNEXT_VALUE_FOR(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#OBJECT_DEFINITION.
+	enterOBJECT_DEFINITION(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#OBJECT_DEFINITION.
+	exitOBJECT_DEFINITION(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#OBJECT_ID.
+	enterOBJECT_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#OBJECT_ID.
+	exitOBJECT_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#OBJECT_NAME.
+	enterOBJECT_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#OBJECT_NAME.
+	exitOBJECT_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#OBJECT_SCHEMA_NAME.
+	enterOBJECT_SCHEMA_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#OBJECT_SCHEMA_NAME.
+	exitOBJECT_SCHEMA_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#OBJECTPROPERTY.
+	enterOBJECTPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#OBJECTPROPERTY.
+	exitOBJECTPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#OBJECTPROPERTYEX.
+	enterOBJECTPROPERTYEX(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#OBJECTPROPERTYEX.
+	exitOBJECTPROPERTYEX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ORIGINAL_DB_NAME.
+	enterORIGINAL_DB_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ORIGINAL_DB_NAME.
+	exitORIGINAL_DB_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#PARSENAME.
+	enterPARSENAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#PARSENAME.
+	exitPARSENAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SCHEMA_ID.
+	enterSCHEMA_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SCHEMA_ID.
+	exitSCHEMA_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SCHEMA_NAME.
+	enterSCHEMA_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SCHEMA_NAME.
+	exitSCHEMA_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SCOPE_IDENTITY.
+	enterSCOPE_IDENTITY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SCOPE_IDENTITY.
+	exitSCOPE_IDENTITY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SERVERPROPERTY.
+	enterSERVERPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SERVERPROPERTY.
+	exitSERVERPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#STATS_DATE.
+	enterSTATS_DATE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#STATS_DATE.
+	exitSTATS_DATE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TYPE_ID.
+	enterTYPE_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TYPE_ID.
+	exitTYPE_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TYPE_NAME.
+	enterTYPE_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TYPE_NAME.
+	exitTYPE_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TYPEPROPERTY.
+	enterTYPEPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TYPEPROPERTY.
+	exitTYPEPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ASCII.
+	enterASCII(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ASCII.
+	exitASCII(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CHAR.
+	enterCHAR(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CHAR.
+	exitCHAR(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CHARINDEX.
+	enterCHARINDEX(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CHARINDEX.
+	exitCHARINDEX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CONCAT.
+	enterCONCAT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CONCAT.
+	exitCONCAT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CONCAT_WS.
+	enterCONCAT_WS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CONCAT_WS.
+	exitCONCAT_WS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DIFFERENCE.
+	enterDIFFERENCE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DIFFERENCE.
+	exitDIFFERENCE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FORMAT.
+	enterFORMAT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FORMAT.
+	exitFORMAT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LEFT.
+	enterLEFT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LEFT.
+	exitLEFT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LEN.
+	enterLEN(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LEN.
+	exitLEN(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LOWER.
+	enterLOWER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LOWER.
+	exitLOWER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LTRIM.
+	enterLTRIM(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LTRIM.
+	exitLTRIM(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#NCHAR.
+	enterNCHAR(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#NCHAR.
+	exitNCHAR(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#PATINDEX.
+	enterPATINDEX(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#PATINDEX.
+	exitPATINDEX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#QUOTENAME.
+	enterQUOTENAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#QUOTENAME.
+	exitQUOTENAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#REPLACE.
+	enterREPLACE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#REPLACE.
+	exitREPLACE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#REPLICATE.
+	enterREPLICATE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#REPLICATE.
+	exitREPLICATE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#REVERSE.
+	enterREVERSE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#REVERSE.
+	exitREVERSE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#RIGHT.
+	enterRIGHT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#RIGHT.
+	exitRIGHT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#RTRIM.
+	enterRTRIM(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#RTRIM.
+	exitRTRIM(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SOUNDEX.
+	enterSOUNDEX(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SOUNDEX.
+	exitSOUNDEX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SPACE.
+	enterSPACE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SPACE.
+	exitSPACE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#STR.
+	enterSTR(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#STR.
+	exitSTR(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#STRINGAGG.
+	enterSTRINGAGG(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#STRINGAGG.
+	exitSTRINGAGG(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#STRING_ESCAPE.
+	enterSTRING_ESCAPE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#STRING_ESCAPE.
+	exitSTRING_ESCAPE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#STUFF.
+	enterSTUFF(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#STUFF.
+	exitSTUFF(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SUBSTRING.
+	enterSUBSTRING(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SUBSTRING.
+	exitSUBSTRING(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TRANSLATE.
+	enterTRANSLATE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TRANSLATE.
+	exitTRANSLATE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TRIM.
+	enterTRIM(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TRIM.
+	exitTRIM(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#UNICODE.
+	enterUNICODE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#UNICODE.
+	exitUNICODE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#UPPER.
+	enterUPPER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#UPPER.
+	exitUPPER(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#BINARY_CHECKSUM.
 	enterBINARY_CHECKSUM(ctx) {
 	}
 
 	// Exit a parse tree produced by TSqlParser#BINARY_CHECKSUM.
 	exitBINARY_CHECKSUM(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CHECKSUM.
+	enterCHECKSUM(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CHECKSUM.
+	exitCHECKSUM(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#COMPRESS.
+	enterCOMPRESS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#COMPRESS.
+	exitCOMPRESS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CONNECTIONPROPERTY.
+	enterCONNECTIONPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CONNECTIONPROPERTY.
+	exitCONNECTIONPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CONTEXT_INFO.
+	enterCONTEXT_INFO(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CONTEXT_INFO.
+	exitCONTEXT_INFO(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CURRENT_REQUEST_ID.
+	enterCURRENT_REQUEST_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CURRENT_REQUEST_ID.
+	exitCURRENT_REQUEST_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CURRENT_TRANSACTION_ID.
+	enterCURRENT_TRANSACTION_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CURRENT_TRANSACTION_ID.
+	exitCURRENT_TRANSACTION_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DECOMPRESS.
+	enterDECOMPRESS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DECOMPRESS.
+	exitDECOMPRESS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ERROR_LINE.
+	enterERROR_LINE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ERROR_LINE.
+	exitERROR_LINE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ERROR_MESSAGE.
+	enterERROR_MESSAGE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ERROR_MESSAGE.
+	exitERROR_MESSAGE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ERROR_NUMBER.
+	enterERROR_NUMBER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ERROR_NUMBER.
+	exitERROR_NUMBER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ERROR_PROCEDURE.
+	enterERROR_PROCEDURE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ERROR_PROCEDURE.
+	exitERROR_PROCEDURE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ERROR_SEVERITY.
+	enterERROR_SEVERITY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ERROR_SEVERITY.
+	exitERROR_SEVERITY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ERROR_STATE.
+	enterERROR_STATE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ERROR_STATE.
+	exitERROR_STATE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FORMATMESSAGE.
+	enterFORMATMESSAGE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FORMATMESSAGE.
+	exitFORMATMESSAGE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#GET_FILESTREAM_TRANSACTION_CONTEXT.
+	enterGET_FILESTREAM_TRANSACTION_CONTEXT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#GET_FILESTREAM_TRANSACTION_CONTEXT.
+	exitGET_FILESTREAM_TRANSACTION_CONTEXT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#GETANSINULL.
+	enterGETANSINULL(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#GETANSINULL.
+	exitGETANSINULL(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#HOST_ID.
+	enterHOST_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#HOST_ID.
+	exitHOST_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#HOST_NAME.
+	enterHOST_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#HOST_NAME.
+	exitHOST_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ISNULL.
+	enterISNULL(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ISNULL.
+	exitISNULL(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ISNUMERIC.
+	enterISNUMERIC(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ISNUMERIC.
+	exitISNUMERIC(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#MIN_ACTIVE_ROWVERSION.
+	enterMIN_ACTIVE_ROWVERSION(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#MIN_ACTIVE_ROWVERSION.
+	exitMIN_ACTIVE_ROWVERSION(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#NEWID.
+	enterNEWID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#NEWID.
+	exitNEWID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#NEWSEQUENTIALID.
+	enterNEWSEQUENTIALID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#NEWSEQUENTIALID.
+	exitNEWSEQUENTIALID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ROWCOUNT_BIG.
+	enterROWCOUNT_BIG(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ROWCOUNT_BIG.
+	exitROWCOUNT_BIG(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SESSION_CONTEXT.
+	enterSESSION_CONTEXT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SESSION_CONTEXT.
+	exitSESSION_CONTEXT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#XACT_STATE.
+	enterXACT_STATE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#XACT_STATE.
+	exitXACT_STATE(ctx) {
 	}
 
 
@@ -4226,21 +5675,111 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#CHECKSUM.
-	enterCHECKSUM(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#CHECKSUM.
-	exitCHECKSUM(ctx) {
-	}
-
-
 	// Enter a parse tree produced by TSqlParser#COALESCE.
 	enterCOALESCE(ctx) {
 	}
 
 	// Exit a parse tree produced by TSqlParser#COALESCE.
 	exitCOALESCE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CURSOR_ROWS.
+	enterCURSOR_ROWS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CURSOR_ROWS.
+	exitCURSOR_ROWS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FETCH_STATUS.
+	enterFETCH_STATUS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FETCH_STATUS.
+	exitFETCH_STATUS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CURSOR_STATUS.
+	enterCURSOR_STATUS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CURSOR_STATUS.
+	exitCURSOR_STATUS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CERT_ID.
+	enterCERT_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CERT_ID.
+	exitCERT_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATALENGTH.
+	enterDATALENGTH(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATALENGTH.
+	exitDATALENGTH(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#IDENT_CURRENT.
+	enterIDENT_CURRENT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#IDENT_CURRENT.
+	exitIDENT_CURRENT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#IDENT_INCR.
+	enterIDENT_INCR(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#IDENT_INCR.
+	exitIDENT_INCR(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#IDENT_SEED.
+	enterIDENT_SEED(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#IDENT_SEED.
+	exitIDENT_SEED(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#IDENTITY.
+	enterIDENTITY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#IDENTITY.
+	exitIDENTITY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SQL_VARIANT_PROPERTY.
+	enterSQL_VARIANT_PROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SQL_VARIANT_PROPERTY.
+	exitSQL_VARIANT_PROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CURRENT_DATE.
+	enterCURRENT_DATE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CURRENT_DATE.
+	exitCURRENT_DATE(ctx) {
 	}
 
 
@@ -4253,12 +5792,30 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#CURRENT_USER.
-	enterCURRENT_USER(ctx) {
+	// Enter a parse tree produced by TSqlParser#CURRENT_TIMEZONE.
+	enterCURRENT_TIMEZONE(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#CURRENT_USER.
-	exitCURRENT_USER(ctx) {
+	// Exit a parse tree produced by TSqlParser#CURRENT_TIMEZONE.
+	exitCURRENT_TIMEZONE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CURRENT_TIMEZONE_ID.
+	enterCURRENT_TIMEZONE_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CURRENT_TIMEZONE_ID.
+	exitCURRENT_TIMEZONE_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATE_BUCKET.
+	enterDATE_BUCKET(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATE_BUCKET.
+	exitDATE_BUCKET(ctx) {
 	}
 
 
@@ -4280,6 +5837,24 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#DATEDIFF_BIG.
+	enterDATEDIFF_BIG(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATEDIFF_BIG.
+	exitDATEDIFF_BIG(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATEFROMPARTS.
+	enterDATEFROMPARTS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATEFROMPARTS.
+	exitDATEFROMPARTS(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#DATENAME.
 	enterDATENAME(ctx) {
 	}
@@ -4295,6 +5870,60 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#DATEPART.
 	exitDATEPART(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATETIME2FROMPARTS.
+	enterDATETIME2FROMPARTS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATETIME2FROMPARTS.
+	exitDATETIME2FROMPARTS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATETIMEFROMPARTS.
+	enterDATETIMEFROMPARTS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATETIMEFROMPARTS.
+	exitDATETIMEFROMPARTS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATETIMEOFFSETFROMPARTS.
+	enterDATETIMEOFFSETFROMPARTS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATETIMEOFFSETFROMPARTS.
+	exitDATETIMEOFFSETFROMPARTS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATETRUNC.
+	enterDATETRUNC(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATETRUNC.
+	exitDATETRUNC(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DAY.
+	enterDAY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DAY.
+	exitDAY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#EOMONTH.
+	enterEOMONTH(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#EOMONTH.
+	exitEOMONTH(ctx) {
 	}
 
 
@@ -4316,21 +5945,93 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#IDENTITY.
-	enterIDENTITY(ctx) {
+	// Enter a parse tree produced by TSqlParser#ISDATE.
+	enterISDATE(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#IDENTITY.
-	exitIDENTITY(ctx) {
+	// Exit a parse tree produced by TSqlParser#ISDATE.
+	exitISDATE(ctx) {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#MIN_ACTIVE_ROWVERSION.
-	enterMIN_ACTIVE_ROWVERSION(ctx) {
+	// Enter a parse tree produced by TSqlParser#MONTH.
+	enterMONTH(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#MIN_ACTIVE_ROWVERSION.
-	exitMIN_ACTIVE_ROWVERSION(ctx) {
+	// Exit a parse tree produced by TSqlParser#MONTH.
+	exitMONTH(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SMALLDATETIMEFROMPARTS.
+	enterSMALLDATETIMEFROMPARTS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SMALLDATETIMEFROMPARTS.
+	exitSMALLDATETIMEFROMPARTS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SWITCHOFFSET.
+	enterSWITCHOFFSET(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SWITCHOFFSET.
+	exitSWITCHOFFSET(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SYSDATETIME.
+	enterSYSDATETIME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SYSDATETIME.
+	exitSYSDATETIME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SYSDATETIMEOFFSET.
+	enterSYSDATETIMEOFFSET(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SYSDATETIMEOFFSET.
+	exitSYSDATETIMEOFFSET(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SYSUTCDATETIME.
+	enterSYSUTCDATETIME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SYSUTCDATETIME.
+	exitSYSUTCDATETIME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TIMEFROMPARTS.
+	enterTIMEFROMPARTS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TIMEFROMPARTS.
+	exitTIMEFROMPARTS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TODATETIMEOFFSET.
+	enterTODATETIMEOFFSET(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TODATETIMEOFFSET.
+	exitTODATETIMEOFFSET(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#YEAR.
+	enterYEAR(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#YEAR.
+	exitYEAR(ctx) {
 	}
 
 
@@ -4343,48 +6044,12 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#STUFF.
-	enterSTUFF(ctx) {
+	// Enter a parse tree produced by TSqlParser#PARSE.
+	enterPARSE(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#STUFF.
-	exitSTUFF(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#SESSION_USER.
-	enterSESSION_USER(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#SESSION_USER.
-	exitSESSION_USER(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#SYSTEM_USER.
-	enterSYSTEM_USER(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#SYSTEM_USER.
-	exitSYSTEM_USER(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#USER.
-	enterUSER(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#USER.
-	exitUSER(ctx) {
-	}
-
-
-	// Enter a parse tree produced by TSqlParser#ISNULL.
-	enterISNULL(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#ISNULL.
-	exitISNULL(ctx) {
+	// Exit a parse tree produced by TSqlParser#PARSE.
+	exitPARSE(ctx) {
 	}
 
 
@@ -4406,12 +6071,498 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#STRINGAGG.
-	enterSTRINGAGG(ctx) {
+	// Enter a parse tree produced by TSqlParser#ISJSON.
+	enterISJSON(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#STRINGAGG.
-	exitSTRINGAGG(ctx) {
+	// Exit a parse tree produced by TSqlParser#ISJSON.
+	exitISJSON(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#JSON_OBJECT.
+	enterJSON_OBJECT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#JSON_OBJECT.
+	exitJSON_OBJECT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#JSON_ARRAY.
+	enterJSON_ARRAY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#JSON_ARRAY.
+	exitJSON_ARRAY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#JSON_VALUE.
+	enterJSON_VALUE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#JSON_VALUE.
+	exitJSON_VALUE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#JSON_QUERY.
+	enterJSON_QUERY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#JSON_QUERY.
+	exitJSON_QUERY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#JSON_MODIFY.
+	enterJSON_MODIFY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#JSON_MODIFY.
+	exitJSON_MODIFY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#JSON_PATH_EXISTS.
+	enterJSON_PATH_EXISTS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#JSON_PATH_EXISTS.
+	exitJSON_PATH_EXISTS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ABS.
+	enterABS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ABS.
+	exitABS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ACOS.
+	enterACOS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ACOS.
+	exitACOS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ASIN.
+	enterASIN(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ASIN.
+	exitASIN(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ATAN.
+	enterATAN(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ATAN.
+	exitATAN(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ATN2.
+	enterATN2(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ATN2.
+	exitATN2(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CEILING.
+	enterCEILING(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CEILING.
+	exitCEILING(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#COS.
+	enterCOS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#COS.
+	exitCOS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#COT.
+	enterCOT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#COT.
+	exitCOT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DEGREES.
+	enterDEGREES(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DEGREES.
+	exitDEGREES(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#EXP.
+	enterEXP(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#EXP.
+	exitEXP(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#FLOOR.
+	enterFLOOR(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#FLOOR.
+	exitFLOOR(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LOG.
+	enterLOG(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LOG.
+	exitLOG(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LOG10.
+	enterLOG10(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LOG10.
+	exitLOG10(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#PI.
+	enterPI(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#PI.
+	exitPI(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#POWER.
+	enterPOWER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#POWER.
+	exitPOWER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#RADIANS.
+	enterRADIANS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#RADIANS.
+	exitRADIANS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#RAND.
+	enterRAND(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#RAND.
+	exitRAND(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ROUND.
+	enterROUND(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ROUND.
+	exitROUND(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#MATH_SIGN.
+	enterMATH_SIGN(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#MATH_SIGN.
+	exitMATH_SIGN(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SIN.
+	enterSIN(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SIN.
+	exitSIN(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SQRT.
+	enterSQRT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SQRT.
+	exitSQRT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SQUARE.
+	enterSQUARE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SQUARE.
+	exitSQUARE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#TAN.
+	enterTAN(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#TAN.
+	exitTAN(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#GREATEST.
+	enterGREATEST(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#GREATEST.
+	exitGREATEST(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LEAST.
+	enterLEAST(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LEAST.
+	exitLEAST(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CERTENCODED.
+	enterCERTENCODED(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CERTENCODED.
+	exitCERTENCODED(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CERTPRIVATEKEY.
+	enterCERTPRIVATEKEY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CERTPRIVATEKEY.
+	exitCERTPRIVATEKEY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#CURRENT_USER.
+	enterCURRENT_USER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#CURRENT_USER.
+	exitCURRENT_USER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#DATABASE_PRINCIPAL_ID.
+	enterDATABASE_PRINCIPAL_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#DATABASE_PRINCIPAL_ID.
+	exitDATABASE_PRINCIPAL_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#HAS_DBACCESS.
+	enterHAS_DBACCESS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#HAS_DBACCESS.
+	exitHAS_DBACCESS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#HAS_PERMS_BY_NAME.
+	enterHAS_PERMS_BY_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#HAS_PERMS_BY_NAME.
+	exitHAS_PERMS_BY_NAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#IS_MEMBER.
+	enterIS_MEMBER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#IS_MEMBER.
+	exitIS_MEMBER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#IS_ROLEMEMBER.
+	enterIS_ROLEMEMBER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#IS_ROLEMEMBER.
+	exitIS_ROLEMEMBER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#IS_SRVROLEMEMBER.
+	enterIS_SRVROLEMEMBER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#IS_SRVROLEMEMBER.
+	exitIS_SRVROLEMEMBER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#LOGINPROPERTY.
+	enterLOGINPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#LOGINPROPERTY.
+	exitLOGINPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#ORIGINAL_LOGIN.
+	enterORIGINAL_LOGIN(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#ORIGINAL_LOGIN.
+	exitORIGINAL_LOGIN(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#PERMISSIONS.
+	enterPERMISSIONS(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#PERMISSIONS.
+	exitPERMISSIONS(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#PWDENCRYPT.
+	enterPWDENCRYPT(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#PWDENCRYPT.
+	exitPWDENCRYPT(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#PWDCOMPARE.
+	enterPWDCOMPARE(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#PWDCOMPARE.
+	exitPWDCOMPARE(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SESSION_USER.
+	enterSESSION_USER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SESSION_USER.
+	exitSESSION_USER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SESSIONPROPERTY.
+	enterSESSIONPROPERTY(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SESSIONPROPERTY.
+	exitSESSIONPROPERTY(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SUSER_ID.
+	enterSUSER_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SUSER_ID.
+	exitSUSER_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SUSER_SNAME.
+	enterSUSER_SNAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SUSER_SNAME.
+	exitSUSER_SNAME(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SUSER_SID.
+	enterSUSER_SID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SUSER_SID.
+	exitSUSER_SID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#SYSTEM_USER.
+	enterSYSTEM_USER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#SYSTEM_USER.
+	exitSYSTEM_USER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#USER.
+	enterUSER(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#USER.
+	exitUSER(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#USER_ID.
+	enterUSER_ID(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#USER_ID.
+	exitUSER_ID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#USER_NAME.
+	enterUSER_NAME(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#USER_NAME.
+	exitUSER_NAME(ctx) {
 	}
 
 
@@ -4421,6 +6572,42 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by TSqlParser#xml_data_type_methods.
 	exitXml_data_type_methods(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dateparts_9.
+	enterDateparts_9(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dateparts_9.
+	exitDateparts_9(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dateparts_12.
+	enterDateparts_12(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dateparts_12.
+	exitDateparts_12(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dateparts_15.
+	enterDateparts_15(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dateparts_15.
+	exitDateparts_15(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#dateparts_datetrunc.
+	enterDateparts_datetrunc(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#dateparts_datetrunc.
+	exitDateparts_datetrunc(ctx) {
 	}
 
 
@@ -4496,6 +6683,24 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by TSqlParser#hierarchyid_call.
+	enterHierarchyid_call(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#hierarchyid_call.
+	exitHierarchyid_call(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#hierarchyid_static_method.
+	enterHierarchyid_static_method(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#hierarchyid_static_method.
+	exitHierarchyid_static_method(ctx) {
+	}
+
+
 	// Enter a parse tree produced by TSqlParser#nodes_method.
 	enterNodes_method(ctx) {
 	}
@@ -4559,12 +6764,30 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#insert_with_table_hints.
-	enterInsert_with_table_hints(ctx) {
+	// Enter a parse tree produced by TSqlParser#deprecated_table_hint.
+	enterDeprecated_table_hint(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#insert_with_table_hints.
-	exitInsert_with_table_hints(ctx) {
+	// Exit a parse tree produced by TSqlParser#deprecated_table_hint.
+	exitDeprecated_table_hint(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#sybase_legacy_hints.
+	enterSybase_legacy_hints(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#sybase_legacy_hints.
+	exitSybase_legacy_hints(ctx) {
+	}
+
+
+	// Enter a parse tree produced by TSqlParser#sybase_legacy_hint.
+	enterSybase_legacy_hint(ctx) {
+	}
+
+	// Exit a parse tree produced by TSqlParser#sybase_legacy_hint.
+	exitSybase_legacy_hint(ctx) {
 	}
 
 
@@ -4613,12 +6836,12 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#expression_list.
-	enterExpression_list(ctx) {
+	// Enter a parse tree produced by TSqlParser#expression_list_.
+	enterExpression_list_(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#expression_list.
-	exitExpression_list(ctx) {
+	// Exit a parse tree produced by TSqlParser#expression_list_.
+	exitExpression_list_(ctx) {
 	}
 
 
@@ -4928,15 +7151,6 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#null_or_default.
-	enterNull_or_default(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#null_or_default.
-	exitNull_or_default(ctx) {
-	}
-
-
 	// Enter a parse tree produced by TSqlParser#scalar_function_name.
 	enterScalar_function_name(ctx) {
 	}
@@ -5036,15 +7250,6 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#default_value.
-	enterDefault_value(ctx) {
-	}
-
-	// Exit a parse tree produced by TSqlParser#default_value.
-	exitDefault_value(ctx) {
-	}
-
-
 	// Enter a parse tree produced by TSqlParser#constant.
 	enterConstant(ctx) {
 	}
@@ -5054,12 +7259,12 @@ export default class TSqlParserListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by TSqlParser#sign.
-	enterSign(ctx) {
+	// Enter a parse tree produced by TSqlParser#primitive_constant.
+	enterPrimitive_constant(ctx) {
 	}
 
-	// Exit a parse tree produced by TSqlParser#sign.
-	exitSign(ctx) {
+	// Exit a parse tree produced by TSqlParser#primitive_constant.
+	exitPrimitive_constant(ctx) {
 	}
 
 

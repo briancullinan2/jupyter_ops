@@ -277,21 +277,21 @@ GENERIC_ID
     ;
 
 REM
-    : WS? [rR][eE][mM] WS .*? ';' -> skip
+    : WS? [rR][eE][mM] WS .*? ';' -> channel(HIDDEN)
     ;
 
 COMMENT_1
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 COMMENT_2
-    : '<*' .*? '*>' -> skip
+    : '<*' .*? '*>' -> channel(HIDDEN)
     ;
 
 COMMENT_3
-    : '/+' .*? '+/' ';'? -> skip
+    : '/+' .*? '+/' ';'? -> channel(HIDDEN)
     ;
 
 WS
-    : [ \t\r\n]+ -> skip
+    : [ \t\r\n]+ -> channel(HIDDEN)
     ;

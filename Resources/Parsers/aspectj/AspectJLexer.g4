@@ -145,9 +145,9 @@ TARGET1 : TARGET -> type(TARGET), mode(DEFAULT_MODE);
 THIS1   : THIS   -> type(THIS), mode(DEFAULT_MODE);
 
 Identifier1   : Identifier       -> type(Identifier), mode(DEFAULT_MODE);
-WS1           : [ \t\r\n\u000C]+ -> skip;
-COMMENT1      : '/*' .*? '*/'    -> skip;
-LINE_COMMENT1 : '//' ~[\r\n]*    -> skip;
+WS1           : [ \t\r\n\u000C]+ -> channel(HIDDEN);
+COMMENT1      : '/*' .*? '*/'    -> channel(HIDDEN);
+LINE_COMMENT1 : '//' ~[\r\n]*    -> channel(HIDDEN);
 INVALID1      : .                -> mode(DEFAULT_MODE);
 
 mode AspectJAnnotationMode;
@@ -300,9 +300,9 @@ Identifier2     : Identifier     -> type(Identifier), mode(DEFAULT_MODE);
 AT2: AT -> type(AT), mode(Annotation);
 
 ELLIPSIS2     : ELLIPSIS     -> type(ELLIPSIS), mode(DEFAULT_MODE);
-WS2           : WS           -> skip;
-COMMENT2      : COMMENT      -> skip;
-LINE_COMMENT2 : LINE_COMMENT -> skip;
+WS2           : WS           -> channel(HIDDEN);
+COMMENT2      : COMMENT      -> channel(HIDDEN);
+LINE_COMMENT2 : LINE_COMMENT -> channel(HIDDEN);
 
 mode AspectJAnnotationScope;
 
@@ -326,9 +326,9 @@ RETURNING3             : RETURNING              -> type(RETURNING);
 VALUE3                 : ANNOTATION_VALUE       -> type(ANNOTATION_VALUE);
 
 Identifier3   : Identifier       -> type(Identifier);
-WS3           : [ \t\r\n\u000C]+ -> skip;
-COMMENT3      : '/*' .*? '*/'    -> skip;
-LINE_COMMENT3 : '//' ~[\r\n]*    -> skip;
+WS3           : [ \t\r\n\u000C]+ -> channel(HIDDEN);
+COMMENT3      : '/*' .*? '*/'    -> channel(HIDDEN);
+LINE_COMMENT3 : '//' ~[\r\n]*    -> channel(HIDDEN);
 INVALID3      : .                -> mode(DEFAULT_MODE);
 
 mode AspectJAnnotationString;
@@ -399,7 +399,7 @@ WITHIN4               : WITHIN               -> type(WITHIN );
 WITHINCODE4           : WITHINCODE           -> type(WITHINCODE);
 
 Identifier4   : Identifier       -> type(Identifier);
-WS4           : [ \t\r\n\u000C]+ -> skip;
-COMMENT4      : '/*' .*? '*/'    -> skip;
-LINE_COMMENT4 : '//' ~[\r\n]*    -> skip;
+WS4           : [ \t\r\n\u000C]+ -> channel(HIDDEN);
+COMMENT4      : '/*' .*? '*/'    -> channel(HIDDEN);
+LINE_COMMENT4 : '//' ~[\r\n]*    -> channel(HIDDEN);
 INVALID4      : .                -> popMode, mode(DEFAULT_MODE);

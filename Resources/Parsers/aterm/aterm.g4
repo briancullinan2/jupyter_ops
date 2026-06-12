@@ -68,5 +68,5 @@ ID_: [a-zA-Z][a-zA-Z0-9]*;
 STRING_: '"' ~'"'* '"';
 
 WS
-    : [ \r\n\t]+ -> skip
+    : [ \r\n\t]+ -> channel(HIDDEN)
     ;

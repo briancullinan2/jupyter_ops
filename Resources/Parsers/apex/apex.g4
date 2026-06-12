@@ -1330,27 +1330,27 @@ ELLIPSIS
 //
 
 WS
-    : [ \t\r\n\u000C]+ -> skip
+    : [ \t\r\n\u000C]+ -> channel(HIDDEN)
     ;
 
 APEXDOC_COMMENT
-    : '/**' [\r\n] .*? '*/' -> skip
+    : '/**' [\r\n] .*? '*/' -> channel(HIDDEN)
     ;
 
 APEXDOC_COMMENT_START
-    : '/**' -> skip
+    : '/**' -> channel(HIDDEN)
     ;
 
 COMMENT
-    : '/*' .*? '*/' -> skip
+    : '/*' .*? '*/' -> channel(HIDDEN)
     ;
 
 COMMENT_START
-    : '/*' -> skip
+    : '/*' -> channel(HIDDEN)
     ;
 
 LINE_COMMENT
-    : '//' ~[\r\n]* -> skip
+    : '//' ~[\r\n]* -> channel(HIDDEN)
     ;
 
 //
@@ -1358,7 +1358,7 @@ LINE_COMMENT
 //
 
 QUOTE
-    : '\'' -> skip
+    : '\'' -> channel(HIDDEN)
     ;
 
 // characters

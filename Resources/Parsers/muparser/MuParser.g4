@@ -227,5 +227,5 @@ ID
     ;
 
 SPACE
-    : [ \t\r\n] -> skip
+    : [ \t\r\n] -> channel(HIDDEN)
     ;

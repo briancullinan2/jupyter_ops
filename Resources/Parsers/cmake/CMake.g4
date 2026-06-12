@@ -78,7 +78,7 @@ fragment Bracket_arg_nested
     ;
 
 Bracket_comment
-    : '#[' Bracket_arg_nested ']' -> skip
+    : '#[' Bracket_arg_nested ']' -> channel(HIDDEN)
     ;
 
 Line_comment
@@ -87,13 +87,13 @@ Line_comment
         | '[' '='*                                            // #[==
         | '[' '='* ~('=' | '[' | '\r' | '\n') ~('\r' | '\n')* // #[==xx
         | ~('[' | '\r' | '\n') ~('\r' | '\n')*                // #xx
-    ) ('\r' '\n'? | '\n' | EOF) -> skip
+    ) ('\r' '\n'? | '\n' | EOF) -> channel(HIDDEN)
     ;
 
 Newline
-    : ('\r' '\n'? | '\n')+ -> skip
+    : ('\r' '\n'? | '\n')+ -> channel(HIDDEN)
     ;
 
 Space
-    : [ \t]+ -> skip
+    : [ \t]+ -> channel(HIDDEN)
     ;

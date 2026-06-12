@@ -167,6 +167,6 @@ EOL
    ;
 
 WHITESPACE
-   : [ \t]+ -> skip
+   : [ \t]+ -> channel(HIDDEN)
    ;
 
