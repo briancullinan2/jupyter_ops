@@ -37,9 +37,6 @@ import asmZ80_asmZ80Parser from './asm/asmZ80/asmZ80Parser.js';
 import pdp7_pdp7Lexer from './asm/pdp7/pdp7Lexer.js';
 import pdp7_pdp7Parser from './asm/pdp7/pdp7Parser.js';
 
-// Quake Dedicated Asset Layouts (1)
-import quakemap_quakemapLexer from './quakemap/quakemapLexer.js';
-import quakemap_quakemapParser from './quakemap/quakemapParser.js';
 
 // Web System Engineering Layer & Text Specs (6)
 import javascript_JavaScriptLexer from './javascript/javascript/JavaScriptLexer.js';
@@ -111,6 +108,25 @@ import terraform_terraformParser from './terraform/terraformParser.js';
 //import yaml_YamlParser from './yaml/YamlParser.js';
 
 
+// Quake Dedicated Asset Layouts (7 Modules Total)
+import quakemap_quakemapLexer from './quakemap/quakemapLexer.js';
+import quakemap_quakemapParser from './quakemap/quakemapParser.js';
+import quake3_Q3ArenaLexer from './quake3/arena/Q3ArenaLexer.js';
+import quake3_Q3ArenaParser from './quake3/arena/Q3ArenaParser.js';
+import quake3_Q3CameraLexer from './quake3/camera/Q3CameraLexer.js';
+import quake3_Q3CameraParser from './quake3/camera/Q3CameraParser.js';
+import quake3_Q3ConfigLexer from './quake3/config/Q3ConfigLexer.js';
+import quake3_Q3ConfigParser from './quake3/config/Q3ConfigParser.js';
+import quake3_Q3MapLexer from './quake3/map/Q3MapLexer.js';
+import quake3_Q3MapParser from './quake3/map/Q3MapParser.js';
+import quake3_Q3MenuLexer from './quake3/menu/Q3MenuLexer.js';
+import quake3_Q3MenuParser from './quake3/menu/Q3MenuParser.js';
+import quake3_Q3ShaderLexer from './quake3/shader/Q3ShaderLexer.js';
+import quake3_Q3ShaderParser from './quake3/shader/Q3ShaderParser.js';
+import quake3_Q3SkinLexer from './quake3/skin/Q3SkinLexer.js';
+import quake3_Q3SkinParser from './quake3/skin/Q3SkinParser.js';
+
+
 // =====================================================================
 // 3. CONSOLIDATE THE CORE REGISTRY OBJECT (MATCHES WORKER DYNAMIC RESOLUTION)
 // =====================================================================
@@ -129,7 +145,7 @@ const AntlrRegistry = {
     "asm8086_lexer": asm8086_asm8086Lexer,                "asm8086_parser": asm8086_asm8086Parser,
     "asmz80_lexer": asmZ80_asmZ80Lexer,                    "asmz80_parser": asmZ80_asmZ80Parser,
     "pdp7_lexer": pdp7_pdp7Lexer,                          "pdp7_parser": pdp7_pdp7Parser,
-    "quakemap_lexer": quakemap_quakemapLexer,              "quakemap_parser": quakemap_quakemapParser,
+
     "javascript_lexer": javascript_JavaScriptLexer,        "javascript_parser": javascript_JavaScriptParser,
     "typescript_lexer": typescript_TypeScriptLexer,        "typescript_parser": typescript_TypeScriptParser,
     "html_lexer": html_HTMLLexer,                          "html_parser": html_HTMLParser,
@@ -158,6 +174,15 @@ const AntlrRegistry = {
     "properties_lexer": properties_propertiesLexer,        "properties_parser": properties_propertiesParser,
     "terraform_lexer": terraform_terraformLexer,          "terraform_parser": terraform_terraformParser,
     //"yaml_lexer": yaml_YamlLexer,                          "yaml_parser": yaml_YamlParser
+
+    "quakemap_lexer": quakemap_quakemapLexer,              "quakemap_parser": quakemap_quakemapParser,
+    "q3arena_lexer": quake3_Q3ArenaLexer,                  "q3arena_parser": quake3_Q3ArenaParser,
+    "q3camera_lexer": quake3_Q3CameraLexer,                "q3camera_parser": quake3_Q3CameraParser,
+    "q3config_lexer": quake3_Q3ConfigLexer,                "q3config_parser": quake3_Q3ConfigParser,
+    "q3map_lexer": quake3_Q3MapLexer,                      "q3map_parser": quake3_Q3MapParser,
+    "q3menu_lexer": quake3_Q3MenuLexer,                    "q3menu_parser": quake3_Q3MenuParser,
+    "q3shader_lexer": quake3_Q3ShaderLexer,                "q3shader_parser": quake3_Q3ShaderParser,
+    "q3skin_lexer": quake3_Q3SkinLexer,                    "q3skin_parser": quake3_Q3SkinParser,
 };
 
 // Aliases for historical backwards-compatibility safety valves
@@ -167,6 +192,22 @@ AntlrRegistry['c_CParser'] = c_CParser;
 AntlrRegistry['cpp_CLexer'] = c_CLexer;
 AntlrRegistry['cpp_CPP14Lexer'] = cpp_CPP14Lexer;
 AntlrRegistry['cpp_CPP14Parser'] = cpp_CPP14Parser;
+// Quake 3 Structural Compatibility Safety Valves
+AntlrRegistry['quake3_Q3ArenaLexer'] = quake3_Q3ArenaLexer;
+AntlrRegistry['quake3_Q3ArenaParser'] = quake3_Q3ArenaParser;
+AntlrRegistry['quake3_Q3CameraLexer'] = quake3_Q3CameraLexer;
+AntlrRegistry['quake3_Q3CameraParser'] = quake3_Q3CameraParser;
+AntlrRegistry['quake3_Q3ConfigLexer'] = quake3_Q3ConfigLexer;
+AntlrRegistry['quake3_Q3ConfigParser'] = quake3_Q3ConfigParser;
+AntlrRegistry['quake3_Q3MapLexer'] = quake3_Q3MapLexer;
+AntlrRegistry['quake3_Q3MapParser'] = quake3_Q3MapParser;
+AntlrRegistry['quake3_Q3MenuLexer'] = quake3_Q3MenuLexer;
+AntlrRegistry['quake3_Q3MenuParser'] = quake3_Q3MenuParser;
+AntlrRegistry['quake3_Q3ShaderLexer'] = quake3_Q3ShaderLexer;
+AntlrRegistry['quake3_Q3ShaderParser'] = quake3_Q3ShaderParser;
+AntlrRegistry['quake3_Q3SkinLexer'] = quake3_Q3SkinLexer;
+AntlrRegistry['quake3_Q3SkinParser'] = quake3_Q3SkinParser;
+
 
 // =====================================================================
 // 4. BIND IMMEDIATELY TO THE WEB WORKER EXECUTION CONTEXT
@@ -194,7 +235,7 @@ export {
     asm8086_asm8086Lexer, asm8086_asm8086Parser,
     asmZ80_asmZ80Lexer, asmZ80_asmZ80Parser,
     pdp7_pdp7Lexer, pdp7_pdp7Parser,
-    quakemap_quakemapLexer, quakemap_quakemapParser,
+
     javascript_JavaScriptLexer, javascript_JavaScriptParser,
     typescript_TypeScriptLexer, typescript_TypeScriptParser,
     html_HTMLLexer, html_HTMLParser,
@@ -223,6 +264,16 @@ export {
     properties_propertiesLexer, properties_propertiesParser,
     terraform_terraformLexer, terraform_terraformParser,
     //yaml_YamlLexer, yaml_YamlParser
+
+    quakemap_quakemapLexer, quakemap_quakemapParser,
+    quake3_Q3ArenaLexer, quake3_Q3ArenaParser,
+    quake3_Q3CameraLexer, quake3_Q3CameraParser,
+    quake3_Q3ConfigLexer, quake3_Q3ConfigParser,
+    quake3_Q3MapLexer, quake3_Q3MapParser,
+    quake3_Q3MenuLexer, quake3_Q3MenuParser,
+    quake3_Q3ShaderLexer, quake3_Q3ShaderParser,
+    quake3_Q3SkinLexer, quake3_Q3SkinParser,
+
 };
 
 export default AntlrRegistry;
