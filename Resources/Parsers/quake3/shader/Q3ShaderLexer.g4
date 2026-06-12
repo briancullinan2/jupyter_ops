@@ -19,9 +19,11 @@ GLOBAL_DIRECTIVE
     | [tT][wW][oO][sS][iI][dD][eE][dD]
     | [pP][oO][rR][tT][aA][lL]
     | [fF][oO][gG][pP][aA][rR][mM][sS]
-    | [lL][iI][gG][hH][tT]
+    | [lL][iI][gG][hH][tT]                             // Explicitly catches "light"
     | [sS][kK][yY][pP][aA][rR][mM][sS]
     | [pP][aA][lL][eE][tT][tT][eE]
+    | [qQ] [3gG] [mM][aA][pP] '_' [a-zA-Z0-9_]+        // Standardized bounds
+    | [qQ] [3gG] [gG][lL] [2_] [a-zA-Z0-9_]+          
     ;
 
 SURFACE_PARM_KEYWORD
@@ -161,22 +163,10 @@ GL_CONSTANT
     | [gG][lL] '_' [zZ][eE][rR][oO]
     ;
 
-TOOL_EXTENSION
-    : [qQ][eE][rR] '_' [aA][zA-Z0-9_]+
-    | [qQ] [3mM] [mM][aA][pP] '_' [aA][zA-Z0-9_]+
-    | [qQ] [3gG] [gG][lL] [2_] [aA][zA-Z0-9_]+
-    | [dD][pP] '_' [aA][zA-Z0-9_]+
-    | [dD][pP][oO][fF][fF][sS][eE][tT][mM][aA][pP][pP][iI][nN][gG]
-    | [dD][pP][gG][lL][oO][sS][sS][eE][xX][pP][oO][nN][eE][nN][tT][mM][oO][dD]
-    | [dD][pP][gG][lL][oO][sS][sS][iI][nN][tT][eE][nN][sS][iI][tT][yY][mM][oO][dD]
-    | [xX][oO][nN] '_' [nN][oO][wW][aA][rR][nN]
-    | [dD][pP][rR][eE][fF][lL][eE][cC][tT][cC][uU][bB][eE]
-    ;
-
 SURFACE_PARM_VALUE
     : [wW][aA][tT][eE][rR] | [sS][lL][iI][mM][eE] | [lL][aA][vV][aA]
     | [pP][lL][aA][yY][eE][rR][cC][lL][iI][pP] | [mM][oO][nN][sS][tT][eE][rR][cC][lL][iI][pP] | [sS][hH][oO][tT][cC][lL][iI][pP]
-    | [nN][oO][rR][mM][aA][lL][mM][aA][rR][kK][sS] | [nN][oO][dD][rR][oO][pP] | [nN][oO][nN][sS][oO][lL][iI][dD]
+    | [nN][oO][rR][mM][aA][lL][mM][aA][rR][kK][sS] | [nN][oO][dD][rR][oO][pP] | [nN][oO][nN][sS][oO][lL][iI][solid]
     | [oO][rR][iI][gG][iI][nN] | [tT][rR][aA][nN][sS] | [dD][eE][tT][aA][iI][lL] | [sS][tT][rR][uU][cC][tT][uU][rR][aA][lL]
     | [aA][rR][eE][aA][pP][oO][rR][tT][aA][lL] | [aA][nN][tT][iI][pP][oO][rR][tT][aA][lL] | [cC][lL][uU][sS][tT][eE][rR][pP][oO][rR][tT][aA][lL]
     | [dD][oO][nN][oO][tT][eE][nN][tT][eE][rR] | [fF][oO][gG] | [sS][kK][yY] | [lL][iI][gG][hH][tT][fF][iI][lL][tT][eE][rR]
@@ -188,15 +178,18 @@ SURFACE_PARM_VALUE
     ;
 
 // =====================================================================
-// 3. VARIABLE LITERAL TERMS & COMPLEX PATH MATRICES
+// 3. NUMERICS, CHANNELS, & VALUE PRIMITIVES (High Float Priority)
 // =====================================================================
+
+NUMBER
+    : '-'? [0-9]+ ('.' [0-9]+)?
+    | '-'? '.' [0-9]+
+    ;
 
 VARIABLE : '$' [a-zA-Z0-9_]+ ;
 
-// Strict non-space delimited paths
 PATH
-    : [-a-zA-Z0-9_/.]+ '.' [a-zA-Z0-9]+
-    | [-a-zA-Z0-9_/]+ '/' [-a-zA-Z0-9_/.]+
+    : [a-zA-Z0-9_]+ '/' [-a-zA-Z0-9_/.]+
     ;
 
 LOGICAL_OP
@@ -207,7 +200,19 @@ LOGICAL_OP
 
 COMP_OP : '==' | '!=' | '>' | '>=' | '<' | '<=' ;
 
-// Added explicit placeholder definitions to satisfy parser conditionals
+// Cleaned lines 167–170 here
+TOOL_EXTENSION
+    : [qQ][eE][rR] '_' [a-zA-Z0-9_]+
+    | [qQ] [3mM] [mM][aA][pP] '_' [a-zA-Z0-9_]+
+    | [qQ] [3gG] [gG][lL] [2_] [a-zA-Z0-9_]+
+    | [dD][pP] '_' [a-zA-Z0-9_]+
+    | [dD][pP][oO][fF][fF][sS][eE][tT][mM][aA][pP][pP][iI][nN][gG]
+    | [dD][pP][gG][lL][oO][sS][sS][eE][xX][pP][oO][nN][eE][nN][tT][mM][oO][dD]
+    | [dD][pP][gG][lL][oO][sS][sS][iI][nN][tT][eE][nN][sS][iI][tT][yY][mM][oO][dD]
+    | [xX][oO][nN] '_' [nN][oO][wW][aA][rR][nN]
+    | [dD][pP][rR][eE][fF][lL][eE][cC][tT][cC][uU][bB][eE]
+    ;
+
 L_VALUE : [a-zA-Z_][a-zA-Z0-9_]* ;
 R_VALUE : [a-zA-Z_][a-zA-Z0-9_]* ;
 
@@ -215,7 +220,6 @@ IDENTIFIER
     : [a-zA-Z_] [-a-zA-Z0-9_]*
     ;
 
-NUMBER         : '-'? [0-9]+ ('.' [0-9]+)? ;
 STRING_LITERAL : '"' (~["\r\n])* '"' ;
 
 // =====================================================================
