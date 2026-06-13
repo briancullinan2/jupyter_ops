@@ -116,6 +116,7 @@ ACTION_COMMAND
 
 NUMBER
     : '-'? [0-9]+ ('.' [0-9]+)?
+    | '-'? '.' [0-9]+
     ;
 
 STRING_LITERAL
