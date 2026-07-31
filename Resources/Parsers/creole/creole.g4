@@ -98,6 +98,7 @@ RBRACE
 
 CODE_BLOCK
     : '```' [ \t]* LANG_NAME? [ \t]* ('\r'? '\n')? .*? '```'
+    | '`' [ \t]* LANG_NAME? [ \t]* .*? '`'
     ;
 
 NOWIKI_CREOLE

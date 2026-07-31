@@ -92,6 +92,8 @@ import mysql_MySQLParser from './sql/mysql/Oracle/MySQLParser.js';
 // DevOps Infrastructure, Markup Languages & Structured Data (16)
 import creole_CreoleLexer from './creole/creoleLexer.js';
 import creole_CreoleParser from './creole/creoleParser.js';
+import makefile_MakefileLexer from './make/MakefileLexer.js';
+import makefile_MakefileParser from './make/MakefileParser.js';
 import cmake_CMakeLexer from './cmake/CMakeLexer.js';
 import cmake_CMakeParser from './cmake/CMakeParser.js';
 import protobuf3_Protobuf3Lexer from './protobuf3/Protobuf3Lexer.js';
@@ -148,6 +150,7 @@ const AntlrRegistry = {
     "asmz80_lexer": asmZ80_asmZ80Lexer, "asmz80_parser": asmZ80_asmZ80Parser,
     "pdp7_lexer": pdp7_pdp7Lexer, "pdp7_parser": pdp7_pdp7Parser,
     "creole_lexer": creole_CreoleLexer, "creole_parser": creole_CreoleParser,
+    "makefile_lexer": makefile_MakefileLexer, "makefile_parser": makefile_MakefileParser,
 
     "javascript_lexer": javascript_JavaScriptLexer, "javascript_parser": javascript_JavaScriptParser,
     "typescript_lexer": typescript_TypeScriptLexer, "typescript_parser": typescript_TypeScriptParser,
@@ -267,6 +270,7 @@ export {
     properties_propertiesLexer, properties_propertiesParser,
     terraform_terraformLexer, terraform_terraformParser,
     creole_CreoleLexer, creole_CreoleParser,
+    makefile_MakefileLexer, makefile_MakefileParser,
     //yaml_YamlLexer, yaml_YamlParser
 
     quakemap_quakemapLexer, quakemap_quakemapParser,
