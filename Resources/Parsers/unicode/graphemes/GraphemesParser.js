@@ -456,11 +456,4 @@ GraphemesParser.Emoji_sequenceContext = Emoji_sequenceContext;
 GraphemesParser.Grapheme_clusterContext = Grapheme_clusterContext; 
 GraphemesParser.GraphemesContext = GraphemesContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

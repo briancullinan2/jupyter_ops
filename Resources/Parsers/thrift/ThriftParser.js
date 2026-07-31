@@ -3808,11 +3808,4 @@ ThriftParser.Const_mapContext = Const_mapContext;
 ThriftParser.List_separatorContext = List_separatorContext; 
 ThriftParser.Real_base_typeContext = Real_base_typeContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

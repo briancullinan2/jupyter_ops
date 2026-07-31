@@ -81790,11 +81790,4 @@ TeradataSQLRequestModifiersParser.Dataset_storage_formatContext = Dataset_storag
 TeradataSQLRequestModifiersParser.With_schemaContext = With_schemaContext; 
 TeradataSQLRequestModifiersParser.With_time_zoneContext = With_time_zoneContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

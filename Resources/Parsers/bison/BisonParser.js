@@ -3873,11 +3873,4 @@ BisonParser.String_as_idContext = String_as_idContext;
 BisonParser.Epilogue_optContext = Epilogue_optContext; 
 BisonParser.ActionBlockContext = ActionBlockContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

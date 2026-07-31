@@ -4628,11 +4628,4 @@ PROV_NParser.ExtensibilityExpressionContext = ExtensibilityExpressionContext;
 PROV_NParser.ExtensibilityArgumentContext = ExtensibilityArgumentContext; 
 PROV_NParser.ExtensibilityTupleContext = ExtensibilityTupleContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

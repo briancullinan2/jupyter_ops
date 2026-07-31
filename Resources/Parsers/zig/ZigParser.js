@@ -11338,11 +11338,4 @@ ZigParser.Asm_input_listContext = Asm_input_listContext;
 ZigParser.Param_decl_listContext = Param_decl_listContext; 
 ZigParser.Expr_listContext = Expr_listContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

@@ -4289,11 +4289,4 @@ WavefrontOBJParser.Curve_approximation_techniqueContext = Curve_approximation_te
 WavefrontOBJParser.Surface_approximation_techniqueContext = Surface_approximation_techniqueContext; 
 WavefrontOBJParser.DecimalContext = DecimalContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

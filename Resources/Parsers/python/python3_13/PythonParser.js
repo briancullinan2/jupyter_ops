@@ -20733,11 +20733,4 @@ PythonParser.Func_type_commentContext = Func_type_commentContext;
 PythonParser.Name_except_underscoreContext = Name_except_underscoreContext; 
 PythonParser.NameContext = NameContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

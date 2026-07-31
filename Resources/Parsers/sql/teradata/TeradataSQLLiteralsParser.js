@@ -3312,11 +3312,4 @@ TeradataSQLLiteralsParser.Interval_literalContext = Interval_literalContext;
 TeradataSQLLiteralsParser.Interval_qualifierContext = Interval_qualifierContext; 
 TeradataSQLLiteralsParser.Period_literalContext = Period_literalContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

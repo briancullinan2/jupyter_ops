@@ -3402,11 +3402,4 @@ PowerBuilderDWParser.Identifier_name_exContext = Identifier_name_exContext;
 PowerBuilderDWParser.Atom_sub_member1Context = Atom_sub_member1Context; 
 PowerBuilderDWParser.Boolean_atomContext = Boolean_atomContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

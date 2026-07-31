@@ -36730,11 +36730,4 @@ PtxParser.Base_10_integerContext = Base_10_integerContext;
 PtxParser.Base_8_integerContext = Base_8_integerContext; 
 PtxParser.Base_16_integerContext = Base_16_integerContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

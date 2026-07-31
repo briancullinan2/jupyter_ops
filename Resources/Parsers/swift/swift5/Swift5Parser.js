@@ -31620,11 +31620,4 @@ Swift5Parser.Extended_string_literalContext = Extended_string_literalContext;
 Swift5Parser.Static_string_literalContext = Static_string_literalContext; 
 Swift5Parser.Interpolated_string_literalContext = Interpolated_string_literalContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

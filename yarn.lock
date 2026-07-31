@@ -1803,6 +1803,13 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+exports-loader@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/exports-loader/-/exports-loader-5.0.0.tgz"
+  integrity sha512-W15EyyytBwd30yCCieTCqZSCUvU/o3etj2IUItSMjVQEzAf5xOQx8JL9iMo7ERnuAzIA6eapGSFWl7E9F+Wy9g==
+  dependencies:
+    source-map "^0.6.1"
+
 extend-shallow@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/extend-shallow/-/extend-shallow-2.0.1.tgz"
@@ -2069,6 +2076,14 @@ import-local@^3.0.2:
   dependencies:
     pkg-dir "^4.2.0"
     resolve-cwd "^3.0.0"
+
+imports-loader@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/imports-loader/-/imports-loader-5.0.0.tgz"
+  integrity sha512-tXgL8xxZFjOjQLLiE7my00UUQfktg4G8fdpXcZphL0bJWbk9eCxKKFaCwmFRcwyRJQl95GXBL1DoE1rCS/tcPw==
+  dependencies:
+    source-map-js "^1.0.2"
+    strip-comments "^2.0.1"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -3048,6 +3063,11 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
+source-map-js@^1.0.2:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz"
+  integrity sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==
+
 source-map-resolve@^0.5.0:
   version "0.5.3"
   resolved "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.5.3.tgz"
@@ -3089,7 +3109,7 @@ source-map@^0.5.6:
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz"
   integrity sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==
 
-source-map@^0.6.0:
+source-map@^0.6.0, source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
@@ -3150,6 +3170,11 @@ strip-ansi@^3.0.0:
   dependencies:
     ansi-regex "^2.0.0"
 
+strip-comments@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/strip-comments/-/strip-comments-2.0.1.tgz"
+  integrity sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/supports-color/-/supports-color-2.0.0.tgz"
@@ -3172,10 +3197,10 @@ tapable@^2.3.0, tapable@^2.3.3:
   resolved "https://registry.npmjs.org/tapable/-/tapable-2.3.3.tgz"
   integrity sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==
 
-terser-webpack-plugin@^5.5.0:
-  version "5.6.0"
-  resolved "https://registry.npmjs.org/terser-webpack-plugin/-/terser-webpack-plugin-5.6.0.tgz"
-  integrity sha512-Eum+5ajkaOhf5KbM26osvv21kLD7BaGqQ1UA4Ami4arYwylmGUQTgHFpHDdmJod1q4QXa66p0to/FBKID+J1vA==
+terser-webpack-plugin@^5.5.0, terser-webpack-plugin@^5.6.1:
+  version "5.6.1"
+  resolved "https://registry.npmjs.org/terser-webpack-plugin/-/terser-webpack-plugin-5.6.1.tgz"
+  integrity sha512-201R5j+sJpK8nFWwKVyNfZot8FaJbLZDq5evriVzbV1wDtSXDjRUDRfJzHpAaxFDMEhsZL1QkeqM61wgsS3KaQ==
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.25"
     jest-worker "^27.4.5"
@@ -3353,7 +3378,7 @@ webpack-sources@^3.4.1:
   resolved "https://registry.npmjs.org/webpack-sources/-/webpack-sources-3.5.0.tgz"
   integrity sha512-HPuy+uuoTCaaoEoI1LQ3JN9+vrPBvEesnnX1jADHy728cHSMlq4wUc4afYqahq2B1mhQVZxCXOkNTnXltr+2vQ==
 
-webpack@^5.1.0, webpack@^5.101.0, webpack@>=5.61.0:
+webpack@^5.0.0, webpack@^5.1.0, webpack@^5.101.0, webpack@>=5.61.0:
   version "5.107.1"
   resolved "https://registry.npmjs.org/webpack/-/webpack-5.107.1.tgz"
   integrity sha512-mvdIWxj/H6QsfgDdH9djne3a5dYcmEmtsXGESkypaGN5jXjF/b+9KDlmTDQ2TKlFUeA2fI9Y65kihD30JOdB+Q==

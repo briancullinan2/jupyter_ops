@@ -10608,11 +10608,4 @@ ASLParser.Json_arr_declContext = Json_arr_declContext;
 ASLParser.Json_value_declContext = Json_value_declContext; 
 ASLParser.Keyword_or_stringContext = Keyword_or_stringContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

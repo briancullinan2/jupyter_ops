@@ -797,11 +797,4 @@ ASLIntrinsicParser.State_fun_nameContext = State_fun_nameContext;
 ASLIntrinsicParser.Func_arg_listContext = Func_arg_listContext; 
 ASLIntrinsicParser.Func_argContext = Func_argContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

@@ -130,7 +130,7 @@ foreach ($runtime in $AntlrRuntimes) {
         foreach ($targetOut in $OutputsToPatch) {
             $Content = Get-Content $targetOut -Raw
             if ($Content -notlike "*Dynamic Universal Module Wrapper*") {
-                Add-Content -Path $targetOut -Value $JupyterFooter
+            #    Add-Content -Path $targetOut -Value $JupyterFooter
             }
         }
     }

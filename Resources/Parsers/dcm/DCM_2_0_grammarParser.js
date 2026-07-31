@@ -4217,11 +4217,4 @@ DCM_2_0_grammarParser.Kf_zeile_liste_rContext = Kf_zeile_liste_rContext;
 DCM_2_0_grammarParser.Kf_zeile_liste_txContext = Kf_zeile_liste_txContext; 
 DCM_2_0_grammarParser.RealzahlContext = RealzahlContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

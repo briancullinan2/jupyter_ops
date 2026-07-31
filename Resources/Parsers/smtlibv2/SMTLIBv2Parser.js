@@ -10326,11 +10326,4 @@ SMTLIBv2Parser.Get_value_responseContext = Get_value_responseContext;
 SMTLIBv2Parser.Specific_success_responseContext = Specific_success_responseContext; 
 SMTLIBv2Parser.General_responseContext = General_responseContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

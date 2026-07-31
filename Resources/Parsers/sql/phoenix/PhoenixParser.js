@@ -13561,11 +13561,4 @@ PhoenixParser.Scale_intContext = Scale_intContext;
 PhoenixParser.Sql_data_typeContext = Sql_data_typeContext; 
 PhoenixParser.Hbase_data_typeContext = Hbase_data_typeContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

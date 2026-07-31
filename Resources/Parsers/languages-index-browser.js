@@ -86,10 +86,12 @@ import plsql_PlSqlLexer from './sql/plsql/PlSqlLexer.js';
 import plsql_PlSqlParser from './sql/plsql/PlSqlParser.js';
 import tsql_TSqlLexer from './sql/tsql/TSqlLexer.js';
 import tsql_TSqlParser from './sql/tsql/TSqlParser.js';
-import mysql_MySQLLexer from './sql/mysql/Oracle/MySQLLexer.js'; 
+import mysql_MySQLLexer from './sql/mysql/Oracle/MySQLLexer.js';
 import mysql_MySQLParser from './sql/mysql/Oracle/MySQLParser.js';
 
 // DevOps Infrastructure, Markup Languages & Structured Data (16)
+import creole_CreoleLexer from './creole/creoleLexer.js';
+import creole_CreoleParser from './creole/creoleParser.js';
 import cmake_CMakeLexer from './cmake/CMakeLexer.js';
 import cmake_CMakeParser from './cmake/CMakeParser.js';
 import protobuf3_Protobuf3Lexer from './protobuf3/Protobuf3Lexer.js';
@@ -134,55 +136,56 @@ const AntlrRegistry = {
     antlr4: antlr4,
 
     // Explicit Lowercase Flat Index Matrix
-    "c_lexer": c_CLexer,                                  "c_parser": c_CParser,
-    "cpp_lexer": cpp_CPP14Lexer,                          "cpp_parser": cpp_CPP14Parser,
-    "angelscript_lexer": angelscript_Lexer,              "angelscript_parser": angelscript_Parser,
-    "lua_lexer": lua_LuaLexer,                            "lua_parser": lua_LuaParser,
-    "wat_lexer": wat_WatLexer,                            "wat_parser": wat_WatParser,
-    "asm_lexer": asmMASM_asmMASMLexer,                    "asm_parser": asmMASM_asmMASMParser,
-    "asm6502_lexer": asm6502_asm6502Lexer,                "asm6502_parser": asm6502_asm6502Parser,
-    "asm8080_lexer": asm8080_asm8080Lexer,                "asm8080_parser": asm8080_asm8080Parser,
-    "asm8086_lexer": asm8086_asm8086Lexer,                "asm8086_parser": asm8086_asm8086Parser,
-    "asmz80_lexer": asmZ80_asmZ80Lexer,                    "asmz80_parser": asmZ80_asmZ80Parser,
-    "pdp7_lexer": pdp7_pdp7Lexer,                          "pdp7_parser": pdp7_pdp7Parser,
+    "c_lexer": c_CLexer, "c_parser": c_CParser,
+    "cpp_lexer": cpp_CPP14Lexer, "cpp_parser": cpp_CPP14Parser,
+    "angelscript_lexer": angelscript_Lexer, "angelscript_parser": angelscript_Parser,
+    "lua_lexer": lua_LuaLexer, "lua_parser": lua_LuaParser,
+    "wat_lexer": wat_WatLexer, "wat_parser": wat_WatParser,
+    "asm_lexer": asmMASM_asmMASMLexer, "asm_parser": asmMASM_asmMASMParser,
+    "asm6502_lexer": asm6502_asm6502Lexer, "asm6502_parser": asm6502_asm6502Parser,
+    "asm8080_lexer": asm8080_asm8080Lexer, "asm8080_parser": asm8080_asm8080Parser,
+    "asm8086_lexer": asm8086_asm8086Lexer, "asm8086_parser": asm8086_asm8086Parser,
+    "asmz80_lexer": asmZ80_asmZ80Lexer, "asmz80_parser": asmZ80_asmZ80Parser,
+    "pdp7_lexer": pdp7_pdp7Lexer, "pdp7_parser": pdp7_pdp7Parser,
+    "creole_lexer": creole_CreoleLexer, "creole_parser": creole_CreoleParser,
 
-    "javascript_lexer": javascript_JavaScriptLexer,        "javascript_parser": javascript_JavaScriptParser,
-    "typescript_lexer": typescript_TypeScriptLexer,        "typescript_parser": typescript_TypeScriptParser,
-    "html_lexer": html_HTMLLexer,                          "html_parser": html_HTMLParser,
-    "css3_lexer": css3_css3Lexer,                          "css3_parser": css3_css3Parser,
-    "json_lexer": json_JSONLexer,                          "json_parser": json_JSONParser,
-    "graphql_lexer": graphql_GraphQLLexer,                "graphql_parser": graphql_GraphQLParser,
-    "php_lexer": php_PhpLexer,                            "php_parser": php_PhpParser,
-    "csharp_lexer": csharp_CSharpLexer,                    "csharp_parser": csharp_CSharpParser,
-    "golang_lexer": golang_GoLexer,                        "golang_parser": golang_GoParser,
-    "rust_lexer": rust_RustLexer,                          "rust_parser": rust_RustParser,
+    "javascript_lexer": javascript_JavaScriptLexer, "javascript_parser": javascript_JavaScriptParser,
+    "typescript_lexer": typescript_TypeScriptLexer, "typescript_parser": typescript_TypeScriptParser,
+    "html_lexer": html_HTMLLexer, "html_parser": html_HTMLParser,
+    "css3_lexer": css3_css3Lexer, "css3_parser": css3_css3Parser,
+    "json_lexer": json_JSONLexer, "json_parser": json_JSONParser,
+    "graphql_lexer": graphql_GraphQLLexer, "graphql_parser": graphql_GraphQLParser,
+    "php_lexer": php_PhpLexer, "php_parser": php_PhpParser,
+    "csharp_lexer": csharp_CSharpLexer, "csharp_parser": csharp_CSharpParser,
+    "golang_lexer": golang_GoLexer, "golang_parser": golang_GoParser,
+    "rust_lexer": rust_RustLexer, "rust_parser": rust_RustParser,
     //"java_lexer": java_JavaLexer,                          "java_parser": java_JavaParser,
-    "java8_lexer": java8_Java8Lexer,                        "java8_parser": java8_Java8Parser,
-    "java9_lexer": java9_Java9Lexer,                        "java9_parser": java9_Java9Parser,
-    "python3_lexer": python3_Python3Lexer,                "python3_parser": python3_Python3Parser,
-    "python2js_lexer": python2js_Python2Lexer,            "python2js_parser": python2js_Python2Parser,
-    "postgresql_lexer": postgresql_PostgreSQLLexer,        "postgresql_parser": postgresql_PostgreSQLParser,
-    "sqlite_lexer": sqlite_SQLiteLexer,                    "sqlite_parser": sqlite_SQLiteParser,
-    "plsql_lexer": plsql_PlSqlLexer,                      "plsql_parser": plsql_PlSqlParser,
-    "tsql_lexer": tsql_TSqlLexer,                          "tsql_parser": tsql_TSqlParser,
-    "mysql_lexer": mysql_MySQLLexer,                      "mysql_parser": mysql_MySQLParser,
-    "cmake_lexer": cmake_CMakeLexer,                      "cmake_parser": cmake_CMakeParser,
-    "protobuf3_lexer": protobuf3_Protobuf3Lexer,          "protobuf3_parser": protobuf3_Protobuf3Parser,
-    "toml_lexer": toml_tomlLexer,                          "toml_parser": toml_tomlParser,
-    "xml_lexer": xml_XMLLexer,                            "xml_parser": xml_XMLParser,
-    "csv_lexer": csv_CSVLexer,                            "csv_parser": csv_CSVParser,
-    "properties_lexer": properties_propertiesLexer,        "properties_parser": properties_propertiesParser,
-    "terraform_lexer": terraform_terraformLexer,          "terraform_parser": terraform_terraformParser,
+    "java8_lexer": java8_Java8Lexer, "java8_parser": java8_Java8Parser,
+    "java9_lexer": java9_Java9Lexer, "java9_parser": java9_Java9Parser,
+    "python3_lexer": python3_Python3Lexer, "python3_parser": python3_Python3Parser,
+    "python2js_lexer": python2js_Python2Lexer, "python2js_parser": python2js_Python2Parser,
+    "postgresql_lexer": postgresql_PostgreSQLLexer, "postgresql_parser": postgresql_PostgreSQLParser,
+    "sqlite_lexer": sqlite_SQLiteLexer, "sqlite_parser": sqlite_SQLiteParser,
+    "plsql_lexer": plsql_PlSqlLexer, "plsql_parser": plsql_PlSqlParser,
+    "tsql_lexer": tsql_TSqlLexer, "tsql_parser": tsql_TSqlParser,
+    "mysql_lexer": mysql_MySQLLexer, "mysql_parser": mysql_MySQLParser,
+    "cmake_lexer": cmake_CMakeLexer, "cmake_parser": cmake_CMakeParser,
+    "protobuf3_lexer": protobuf3_Protobuf3Lexer, "protobuf3_parser": protobuf3_Protobuf3Parser,
+    "toml_lexer": toml_tomlLexer, "toml_parser": toml_tomlParser,
+    "xml_lexer": xml_XMLLexer, "xml_parser": xml_XMLParser,
+    "csv_lexer": csv_CSVLexer, "csv_parser": csv_CSVParser,
+    "properties_lexer": properties_propertiesLexer, "properties_parser": properties_propertiesParser,
+    "terraform_lexer": terraform_terraformLexer, "terraform_parser": terraform_terraformParser,
     //"yaml_lexer": yaml_YamlLexer,                          "yaml_parser": yaml_YamlParser
 
-    "quakemap_lexer": quakemap_quakemapLexer,              "quakemap_parser": quakemap_quakemapParser,
-    "q3arena_lexer": quake3_Q3ArenaLexer,                  "q3arena_parser": quake3_Q3ArenaParser,
-    "q3camera_lexer": quake3_Q3CameraLexer,                "q3camera_parser": quake3_Q3CameraParser,
-    "q3config_lexer": quake3_Q3ConfigLexer,                "q3config_parser": quake3_Q3ConfigParser,
-    "q3map_lexer": quake3_Q3MapLexer,                      "q3map_parser": quake3_Q3MapParser,
-    "q3menu_lexer": quake3_Q3MenuLexer,                    "q3menu_parser": quake3_Q3MenuParser,
-    "q3shader_lexer": quake3_Q3ShaderLexer,                "q3shader_parser": quake3_Q3ShaderParser,
-    "q3skin_lexer": quake3_Q3SkinLexer,                    "q3skin_parser": quake3_Q3SkinParser,
+    "quakemap_lexer": quakemap_quakemapLexer, "quakemap_parser": quakemap_quakemapParser,
+    "q3arena_lexer": quake3_Q3ArenaLexer, "q3arena_parser": quake3_Q3ArenaParser,
+    "q3camera_lexer": quake3_Q3CameraLexer, "q3camera_parser": quake3_Q3CameraParser,
+    "q3config_lexer": quake3_Q3ConfigLexer, "q3config_parser": quake3_Q3ConfigParser,
+    "q3map_lexer": quake3_Q3MapLexer, "q3map_parser": quake3_Q3MapParser,
+    "q3menu_lexer": quake3_Q3MenuLexer, "q3menu_parser": quake3_Q3MenuParser,
+    "q3shader_lexer": quake3_Q3ShaderLexer, "q3shader_parser": quake3_Q3ShaderParser,
+    "q3skin_lexer": quake3_Q3SkinLexer, "q3skin_parser": quake3_Q3SkinParser,
 };
 
 // Aliases for historical backwards-compatibility safety valves
@@ -223,7 +226,7 @@ if (typeof self !== 'undefined') {
 export {
     antlr4,
     AntlrRegistry,
-    
+
     c_CLexer, c_CParser,
     cpp_CPP14Lexer, cpp_CPP14Parser,
     angelscript_Lexer as angelscript_angelscriptLexer, angelscript_Parser as angelscript_angelscriptParser,
@@ -263,6 +266,7 @@ export {
     csv_CSVLexer, csv_CSVParser,
     properties_propertiesLexer, properties_propertiesParser,
     terraform_terraformLexer, terraform_terraformParser,
+    creole_CreoleLexer, creole_CreoleParser,
     //yaml_YamlLexer, yaml_YamlParser
 
     quakemap_quakemapLexer, quakemap_quakemapParser,

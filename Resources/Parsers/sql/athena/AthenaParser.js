@@ -14278,11 +14278,4 @@ AthenaParser.If_existsContext = If_existsContext;
 AthenaParser.Or_replaceContext = Or_replaceContext; 
 AthenaParser.From_inContext = From_inContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

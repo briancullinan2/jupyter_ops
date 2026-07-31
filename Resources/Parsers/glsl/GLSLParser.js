@@ -9679,11 +9679,4 @@ GLSLParser.Jump_statementContext = Jump_statementContext;
 GLSLParser.External_declarationContext = External_declarationContext; 
 GLSLParser.Function_definitionContext = Function_definitionContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

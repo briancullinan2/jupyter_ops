@@ -47376,11 +47376,4 @@ SysMLv2Parser.FilterPackageImportContext = FilterPackageImportContext;
 SysMLv2Parser.NonFeatureChainPrimaryExpressionContext = NonFeatureChainPrimaryExpressionContext; 
 SysMLv2Parser.PortConjugationContext = PortConjugationContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

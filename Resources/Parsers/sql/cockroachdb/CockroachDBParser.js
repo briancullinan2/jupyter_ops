@@ -116792,11 +116792,4 @@ CockroachDBParser.Type_func_name_keywordContext = Type_func_name_keywordContext;
 CockroachDBParser.Reserved_keywordContext = Reserved_keywordContext; 
 CockroachDBParser.Cockroachdb_extra_reserved_keywordContext = Cockroachdb_extra_reserved_keywordContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

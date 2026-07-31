@@ -4173,11 +4173,4 @@ VerilogPreParser.Unconnected_drive_valueContext = Unconnected_drive_valueContext
 VerilogPreParser.Undef_directiveContext = Undef_directiveContext; 
 VerilogPreParser.Version_specifierContext = Version_specifierContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

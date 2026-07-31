@@ -1,32 +1,40 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    mode: 'production', 
-    entry: './languages-index-browser.js', 
+    mode: 'production',
+    entry: './languages-index-browser.js',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'antlr-languages.bundle.js',
-        // FORCE WEBPACK TO EXPOSE THE MODULE GLOBALLY
         library: {
-            name: 'AntlrLanguages', // This creates self.AntlrLanguages automatically!
-            type: 'assign-properties' // Stamped straight onto the global container
+            name: 'AntlrLanguages',
+            type: 'assign-properties'
         },
-        globalObject: 'self' // Locks the target scope explicitly to Web Worker global
+        globalObject: 'self'
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    keep_classnames: true, // Stops Terser from renaming CPP14Lexer to 'R'
+                    keep_fnames: true
+                }
+            })
+        ]
     },
     resolve: {
         extensions: ['.ts', '.js'],
         modules: [path.resolve(__dirname, '../../node_modules'), 'node_modules'],
-        
-        // FIX: Moved 'fallback' inside the resolve block where Webpack 5 expects it
         fallback: {
             "fs": false
         },
-        
         plugins: [
             {
                 apply(resolver) {
                     const targetHook = resolver.ensureHook('resolve');
-                    
+
                     resolver.getHook('described-resolve').tapAsync('AntlrBaseResolverPlugin', (request, resolveContext, callback) => {
                         const importPath = request.request;
                         if (!importPath) return callback();
@@ -35,7 +43,7 @@ module.exports = {
                         if (importPath.startsWith('.') && importPath.endsWith('Base.js')) {
                             const fileName = path.basename(importPath);
                             const absoluteFileDestination = path.resolve(request.path, 'JavaScript', fileName);
-                            
+
                             const updatedRequest = Object.assign({}, request, {
                                 request: absoluteFileDestination
                             });
@@ -43,20 +51,20 @@ module.exports = {
                         }
 
                         // ROUTE B: Bounce requests for core Lexer/Parser files made from INSIDE /JavaScript back UP one folder
-                        if (importPath.startsWith('.') && 
-                            request.path.endsWith('JavaScript') && 
-                            (importPath.includes('Lexer') || importPath.includes('Parser')) && 
+                        if (importPath.startsWith('.') &&
+                            request.path.endsWith('JavaScript') &&
+                            (importPath.includes('Lexer') || importPath.includes('Parser')) &&
                             !importPath.endsWith('Base.js')) {
-                            
-                            const fileName = path.basename(importPath); // e.g., 'CLexer.js'
+
+                            const fileName = path.basename(importPath);
                             const absoluteParentDestination = path.resolve(request.path, '..', fileName);
-                            
+
                             const updatedRequest = Object.assign({}, request, {
                                 request: absoluteParentDestination
                             });
                             return resolver.doResolve(targetHook, updatedRequest, `Bounced token layer up to main lang directory`, resolveContext, callback);
                         }
-                        
+
                         return callback();
                     });
                 }
@@ -74,7 +82,10 @@ module.exports = {
                         babelrc: false,
                         configFile: false,
                         presets: [
-                            ['@babel/preset-env', { targets: { browsers: "last 2 versions" } }]
+                            ['@babel/preset-env', {
+                                modules: 'commonjs',
+                                targets: { browsers: "last 2 versions" }
+                            }]
                         ]
                     }
                 }
@@ -82,3 +93,4 @@ module.exports = {
         ]
     }
 };
+

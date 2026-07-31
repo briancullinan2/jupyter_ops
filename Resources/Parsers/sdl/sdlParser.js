@@ -12119,11 +12119,4 @@ sdlParser.Expression_5Context = Expression_5Context;
 sdlParser.Expression_6Context = Expression_6Context; 
 sdlParser.NumericContext = NumericContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

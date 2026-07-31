@@ -7229,11 +7229,4 @@ m2pim4Parser.DefinitionContext = DefinitionContext;
 m2pim4Parser.ProgramModuleContext = ProgramModuleContext; 
 m2pim4Parser.CompilationUnitContext = CompilationUnitContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

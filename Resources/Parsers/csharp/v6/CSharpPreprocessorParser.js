@@ -1209,11 +1209,4 @@ CSharpPreprocessorParser.Preprocessor_directiveContext = Preprocessor_directiveC
 CSharpPreprocessorParser.Directive_new_line_or_sharpContext = Directive_new_line_or_sharpContext; 
 CSharpPreprocessorParser.Preprocessor_expressionContext = Preprocessor_expressionContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

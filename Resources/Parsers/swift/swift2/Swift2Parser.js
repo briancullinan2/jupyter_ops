@@ -24351,11 +24351,4 @@ Swift2Parser.Nil_literalContext = Nil_literalContext;
 Swift2Parser.Integer_literalContext = Integer_literalContext; 
 Swift2Parser.String_literalContext = String_literalContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

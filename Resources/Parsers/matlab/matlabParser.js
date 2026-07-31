@@ -3930,11 +3930,4 @@ matlabParser.Func_return_listContext = Func_return_listContext;
 matlabParser.Function_declare_lhsContext = Function_declare_lhsContext; 
 matlabParser.Function_declareContext = Function_declareContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

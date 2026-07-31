@@ -176015,11 +176015,4 @@ TeradataSQLParser.With_admin_optionContext = With_admin_optionContext;
 TeradataSQLParser.With_grant_optionContext = With_grant_optionContext; 
 TeradataSQLParser.Grant_option_forContext = Grant_option_forContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

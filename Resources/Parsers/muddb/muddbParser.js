@@ -1518,11 +1518,4 @@ muddbParser.StringContext = StringContext;
 muddbParser.RefContext = RefContext; 
 muddbParser.Bool_Context = Bool_Context; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

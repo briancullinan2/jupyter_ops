@@ -3427,11 +3427,4 @@ CapnProtoParser.Literal_bytesContext = Literal_bytesContext;
 CapnProtoParser.Union_mappingContext = Union_mappingContext; 
 CapnProtoParser.Inner_usingContext = Inner_usingContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

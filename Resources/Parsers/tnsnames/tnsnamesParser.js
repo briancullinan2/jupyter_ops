@@ -8502,11 +8502,4 @@ tnsnamesParser.Fo_methodContext = Fo_methodContext;
 tnsnamesParser.Fo_retriesContext = Fo_retriesContext; 
 tnsnamesParser.Fo_delayContext = Fo_delayContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

@@ -43955,11 +43955,4 @@ HiveParser.PrincipalIdentifierContext = PrincipalIdentifierContext;
 HiveParser.NonReservedContext = NonReservedContext; 
 HiveParser.Sql11ReservedKeywordsUsedAsFunctionNameContext = Sql11ReservedKeywordsUsedAsFunctionNameContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

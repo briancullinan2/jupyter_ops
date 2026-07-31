@@ -810,11 +810,4 @@ vba_likeParser.CharListElementContext = CharListElementContext;
 vba_likeParser.CharlistCharContext = CharlistCharContext; 
 vba_likeParser.CharRangeContext = CharRangeContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

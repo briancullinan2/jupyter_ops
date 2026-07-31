@@ -8600,11 +8600,4 @@ PowerQueryParser.List_literalContext = List_literalContext;
 PowerQueryParser.Literal_item_listContext = Literal_item_listContext; 
 PowerQueryParser.Any_literalContext = Any_literalContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+

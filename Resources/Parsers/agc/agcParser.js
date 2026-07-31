@@ -3868,11 +3868,4 @@ agcParser.Axt_opcodeContext = Axt_opcodeContext;
 agcParser.Pseudo_opcodeContext = Pseudo_opcodeContext; 
 agcParser.Standard_opcodeContext = Standard_opcodeContext; 
 
-// --- Dynamic Universal Module Wrapper ---
-if (typeof exports === 'object' && typeof module === 'object') {
-    module.exports = { CPP14Lexer };
-} else if (typeof window !== 'undefined') {
-    window.CPP14Lexer = CPP14Lexer;
-} else if (typeof self !== 'undefined') {
-    self.CPP14Lexer = CPP14Lexer;
-}
+
