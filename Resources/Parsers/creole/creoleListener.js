@@ -59,12 +59,39 @@ export default class creoleListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by creoleParser#strikethrough.
+	enterStrikethrough(ctx) {
+	}
+
+	// Exit a parse tree produced by creoleParser#strikethrough.
+	exitStrikethrough(ctx) {
+	}
+
+
+	// Enter a parse tree produced by creoleParser#inline_code.
+	enterInline_code(ctx) {
+	}
+
+	// Exit a parse tree produced by creoleParser#inline_code.
+	exitInline_code(ctx) {
+	}
+
+
 	// Enter a parse tree produced by creoleParser#href.
 	enterHref(ctx) {
 	}
 
 	// Exit a parse tree produced by creoleParser#href.
 	exitHref(ctx) {
+	}
+
+
+	// Enter a parse tree produced by creoleParser#url_autolink.
+	enterUrl_autolink(ctx) {
+	}
+
+	// Exit a parse tree produced by creoleParser#url_autolink.
+	exitUrl_autolink(ctx) {
 	}
 
 
@@ -83,6 +110,15 @@ export default class creoleListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by creoleParser#hline.
 	exitHline(ctx) {
+	}
+
+
+	// Enter a parse tree produced by creoleParser#task_listitem.
+	enterTask_listitem(ctx) {
+	}
+
+	// Exit a parse tree produced by creoleParser#task_listitem.
+	exitTask_listitem(ctx) {
 	}
 
 

@@ -1,11 +1,15 @@
 /*
-* examples here: http://web.archive.org/web/20141011223900/http://svn.ez.no:80/svn/ezcomponents/trunk/Document/tests/files/wiki/creole/
+* Combined Creole + GitHub Markdown Grammar
 */
 
 // $antlr-format alignTrailingComments true, columnLimit 150, minEmptyLines 1, maxEmptyLinesToKeep 1, reflowComments false, useTab false
 // $antlr-format allowShortRulesOnASingleLine false, allowShortBlocksOnASingleLine true, alignSemicolons hanging, alignColons hanging
 
 grammar creole;
+
+// ==========================================
+// PARSER RULES
+// ==========================================
 
 document
     : (line? CR)* EOF
@@ -18,32 +22,51 @@ line
 markup
     : bold
     | italics
+    | strikethrough
+    | inline_code
     | href
+    | url_autolink
     | title
     | hline
-    | text_
+    | task_listitem
     | listitem
     | image
     | tablerow
     | tableheader
     | nowiki
+    | text_
     ;
 
 text_
-    : (TEXT | RSLASH)+ ('\\\\' text_)*
+    : (TEXT | RSLASH | COLON)+ ('\\\\' text_)*
     ;
 
 bold
     : '**' markup+ '**'?
+    | '__' markup+ '__'?
     ;
 
 italics
     : RSLASH RSLASH markup+ RSLASH RSLASH
+    | '*' markup+ '*'?
+    | '_' markup+ '_'?
+    ;
+
+strikethrough
+    : '~~' markup+ '~~'?
+    ;
+
+inline_code
+    : CODE_INLINE
     ;
 
 href
     : LBRACKET text_ ('|' markup+)? RBRACKET
     | LBRACE text_ '|' markup+ RBRACE
+    ;
+
+url_autolink
+    : URL_LINK
     ;
 
 image
@@ -52,11 +75,20 @@ image
 
 hline
     : '----'
+    | '***'
+    | '___'
+    ;
+
+task_listitem
+    : ('*'+ | '#'+ | '-') WS* '[ ]' markup+
+    | ('*'+ | '#'+ | '-') WS* '[x]' markup+
+    | ('*'+ | '#'+ | '-') WS* '[X]' markup+
     ;
 
 listitem
     : ('*'+ markup)
     | ('#'+ markup)
+    | ('-'+ markup)
     ;
 
 tableheader
@@ -68,13 +100,19 @@ tablerow
     ;
 
 title
-    : '='+ markup '='*
+    : '='+ markup '='*               // Creole style: = Title =
+    | HASH+ markup                  // GitHub style: # Title / ## Subtitle
     ;
 
 nowiki
     : NOWIKI_CREOLE
     | CODE_BLOCK
     ;
+
+
+// ==========================================
+// LEXER RULES
+// ==========================================
 
 HASH
     : '#'
@@ -96,9 +134,20 @@ RBRACE
     : '}}'
     ;
 
+COLON
+    : ':'
+    ;
+
+URL_LINK
+    : ('http' 's'? | 'ftp' | 'mailto') '://' ~[ \t\r\n<>()"']+
+    ;
+
 CODE_BLOCK
     : '```' [ \t]* LANG_NAME? [ \t]* ('\r'? '\n')? .*? '```'
-    | '`' [ \t]* LANG_NAME? [ \t]* .*? '`'
+    ;
+
+CODE_INLINE
+    : '`' ~[\r\n`]+ '`'
     ;
 
 NOWIKI_CREOLE
@@ -137,7 +186,6 @@ fragment DIGITS
 fragment SYMBOL
     : '.'
     | ';'
-    | ':'
     | ','
     | '('
     | ')'
@@ -147,7 +195,6 @@ fragment SYMBOL
     | '~'
     | '"'
     | '+'
-    | '`'
     | '_'
     | '$'
     ;
